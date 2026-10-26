@@ -438,3 +438,61 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
 /* Don Cherry gyümölcse: kis befőttesüveg – arányosan kisebb az ívben */
 .p-media .arch img.jar{height:44%;max-width:56%;margin-bottom:9%}
 .vrow img.jar{height:80px;margin-top:60px}
+
+/* ===== Kampány-landingek (BlackFriday.dc / Karacsony.dc design) ===== */
+.xbar{background:#F3C66B;color:#4A0F19;text-align:center;font-size:13px;font-weight:800;letter-spacing:.08em;padding:10px 16px;position:relative;z-index:35}
+.hero .copy .txt .t2{font-family:var(--serif);font-style:italic;font-size:20px;opacity:.9;margin:0}
+.hero .copy .txt h1.t,.hero .copy .txt h2.t{font-weight:600;font-size:clamp(28px,2.6vw,36px)}
+@media (min-width:861px){.lp-bf .word{font-size:clamp(110px,20vw,340px)}}
+@media (max-width:860px){.lp-bf .word{font-size:clamp(60px,20vw,150px)}}
+.lp-boxes{background:#F3EEE5;color:#1B2A5C}
+.lp-boxes .wrap{display:flex;flex-wrap:wrap;gap:26px;align-items:stretch;padding-top:clamp(56px,7vw,90px);padding-bottom:clamp(56px,7vw,90px)}
+.lp-box{background:#fff;padding:10px;border-radius:8px 8px 4px 4px;min-width:0}
+.lp-box.big{flex:3 1 560px;box-shadow:0 24px 50px rgba(27,42,92,.16);transform:rotate(-.8deg)}
+.lp-box.small{flex:2 1 340px;transform:rotate(1deg);align-self:flex-end}
+.lp-box .in,.lp-pack .in{position:relative;border:1px solid #1B2A5C;border-radius:3px;padding:50px clamp(18px,2.5vw,30px) 28px;display:flex;flex-direction:column;gap:16px;height:100%}
+.lp-box .in::before,.lp-pack .in::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:#F3EEE5;box-shadow:inset 0 0 0 1px #1B2A5C}
+.lp-box .tagrow,.lp-pack .tagrow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;font-weight:800;letter-spacing:.18em}
+.lp-box h2{font-family:var(--serif);font-weight:800;font-size:clamp(36px,4.2vw,58px);line-height:.95}
+.lp-box.small h2{font-size:clamp(30px,3vw,38px)}
+.lp-box .ph,.lp-pack .ph{display:flex;align-items:flex-end;justify-content:center;gap:2px;height:240px;background:var(--tint);border-radius:999px 999px 4px 4px;padding:18px 12px 0;overflow:hidden}
+.lp-box .ph img,.lp-pack .ph img{height:88%;width:auto;min-width:0;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.18))}
+.lp-box .ph img.jar,.lp-pack .ph img.jar{height:42%}
+.lp-box .ct,.lp-pack .ct{font-size:14px;line-height:1.6;color:#39404F}
+.lp-box .pr,.lp-pack .pr{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-top:1px dashed #1B2A5C;padding-top:16px}
+.lp-box .pr s,.lp-pack .pr s{font-size:17px;color:#6A6F7E}
+.lp-box .pr b{font-family:var(--serif);font-weight:800;font-size:clamp(40px,4vw,54px);line-height:1}
+.lp-box.small .pr b{font-size:40px}
+.lp-box .pr em{font-style:normal;font-size:13px;font-weight:800;color:#034EA2}
+.lp-box .btn,.lp-pack .btn{min-height:56px;font-size:16px}
+.note2{padding:12px 14px;background:#F3EEE5;border-radius:4px;font-size:13px;line-height:1.5}
+.lp-wait{background:#EF4E73;color:#fff}
+.lp-wait .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;padding-top:40px;padding-bottom:40px}
+.lp-wait h2{flex:1 1 320px;font-family:var(--serif);font-weight:700;font-size:34px}
+.lp-wait form{flex:1 1 420px;display:flex;flex-wrap:wrap;gap:10px;min-width:0}
+.lp-wait input{flex:1 1 220px;min-width:0;min-height:52px;border:0;border-radius:999px;padding:0 22px;font:inherit;font-size:16px}
+.lp-xpacks{background:#F3EEE5;color:#1B2A5C}
+.lp-xpacks .wrap{display:flex;flex-direction:column;gap:30px;padding-top:40px;padding-bottom:clamp(56px,7vw,90px)}
+.lp-xpacks .filters{align-items:center}
+.lp-pack{background:#fff;padding:10px;border-radius:8px 8px 4px 4px;box-shadow:0 20px 44px rgba(27,42,92,.1)}
+.lp-pack .in{flex-direction:row;flex-wrap:wrap;gap:30px;align-items:center}
+.lp-pack .ph{flex:1.3 1 420px;min-width:0;height:260px}
+.lp-pack .tx{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.lp-pack h2{font-family:var(--serif);font-weight:800;font-size:clamp(32px,3.6vw,48px);line-height:.98}
+.lp-pack .dots i{width:18px;height:18px}
+.lp-pack .pr b{font-family:var(--serif);font-weight:800;font-size:44px;line-height:1}
+.lp-don{background:#fff}
+.lp-don .wrap{max-width:1240px;display:flex;flex-wrap:wrap;gap:clamp(40px,7vw,100px);align-items:center;padding-top:clamp(56px,8vw,100px);padding-bottom:clamp(56px,8vw,100px)}
+.lp-don img{flex:1 1 380px;min-width:0;height:520px;object-fit:cover;border-radius:4px}
+.lp-don .tx{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.lp-don h2{font-family:var(--sans);font-weight:800;font-size:44px;line-height:.95;color:#C8282E}
+.lp-don h2 span{color:#2A1416;font-size:.6em;letter-spacing:.1em}
+.lp-don p{font-size:15px;line-height:1.7;color:#4A3436}
+@media (max-width:860px){
+  .lp-box.big,.lp-box.small,.lp-pack{transform:none}
+  .lp-box .ph{height:190px}.lp-pack .ph{height:200px;flex-basis:100%}
+  .lp-box .in,.lp-pack .in{padding:42px 16px 18px}
+  .lp-don img{height:380px}
+  .hero .copy .txt .t2{font-size:17px}
+}
+@media (min-width:861px){.lp-bf .stamp{left:calc(max(0px,(100% - var(--max))/2) + clamp(420px,38vw,600px));top:clamp(250px,34vh,330px)}}

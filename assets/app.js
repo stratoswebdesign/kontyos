@@ -244,13 +244,24 @@
     var root = document.documentElement;
     root.classList.remove('burger');
     if (getComputedStyle(nav).display !== 'none' && nav.scrollWidth > nav.clientWidth + 1) root.classList.add('burger');
-    var hero = document.querySelector('.overlay-head .hero');
-    if (hero) hero.style.marginTop = (-head.offsetHeight) + 'px';
+    document.querySelectorAll('.overlay-head main > .hero, .overlay-head main > [data-season] > .hero:first-child, .overlay-head main > [data-phase] > .hero:first-child').forEach(function (hero) { hero.style.marginTop = (-head.offsetHeight) + 'px'; });
   }
   fit();
   window.addEventListener('resize', fit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   window.addEventListener('load', fit);
+
+  /* Visszaszámláló (Black Friday) */
+  var cds = document.querySelectorAll('[data-countdown]');
+  function tick() {
+    cds.forEach(function (el) {
+      var ms = new Date(el.getAttribute('data-countdown')) - new Date();
+      if (ms <= 0) { el.textContent = 'VÉGET ÉRT'; return; }
+      var d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4);
+      el.textContent = 'MÉG ' + (d ? d + ' NAP ' : '') + h + ' ÓRA ' + m + ' PERC';
+    });
+  }
+  if (cds.length) { tick(); setInterval(tick, 30000); }
 
   badge();
 })();

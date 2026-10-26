@@ -22,18 +22,18 @@ LINE_LABEL = {'klasszikus': 'Klasszikus gyümölcsbor', 'klara': 'Klára prémiu
 
 # Szezonális (demó) csomagok – árak a designból, tartalom javaslat
 SEASON_PACKS = [
-    dict(id='ujbor-valogatas', name='Újbor-válogatás – 6 palack', price=22340, old=26480, free=True,
-         items=['edes-meggybor', 'edes-eperbor', 'edes-ribizlibor', 'edes-kajszibor', 'edes-oszibarackbor', 'szaraz-meggybor'], tint='#F6E1E4'),
-    dict(id='bf-premium', name='Prémium csomag – Black Friday', price=19900, old=26840, free=True,
-         items=['klara-edes-malnabor', 'klara-szaraz-roze-eperbor', 'klara-szaraz-barrique-meggybor', 'don-cherry'], tint='#F7F1F2'),
-    dict(id='bf-diszkont', name='Könnyű csomag – Black Friday', price=9900, old=13140, free=False,
-         items=['friss-eper', 'friss-malna', 'friss-meggy', 'berry-secco', 'berry-secco-tonic', 'berry-secco-yuzu-lime'], tint='#FBD5D9'),
-    dict(id='edes-unnepek', name='Édes ünnepek', price=19900, old=24840, free=True,
-         items=['edes-meggybor', 'edes-ribizlibor', 'edes-kajszibor', 'klara-edes-malnabor'], tint='#F6E1E4'),
-    dict(id='premium-advent', name='Prémium advent', price=28900, old=36040, free=True,
-         items=['klara-edes-malnabor', 'klara-szaraz-barrique-meggybor', 'don-cherry', 'szamocapalinka'], tint='#F7F1F2'),
-    dict(id='konnyu-karacsony', name='Könnyű karácsony', price=10900, old=13140, free=False,
-         items=['friss-meggy', 'friss-eper', 'piri-mama-forralt-bora', 'epres-piri-mama-forralt-bora', 'berry-secco'], tint='#FBE3E6'),
+    dict(id='ujbor-valogatas', name='Újbor-válogatás', price=22340, old=26480, free=True,
+         items=['edes-eperbor', 'edes-oszibarackbor', 'edes-bodza-almabor', 'szaraz-meggybor', 'friss-narancs', 'berry-secco-tonic'], extra='6 × EASY Cider 0,33 l', tint='#F6E1E4'),
+    dict(id='bf-premium', name='Black Friday Prémium', price=19900, old=26840, free=True,
+         items=['edes-meggybor', 'edes-ribizlibor', 'klara-edes-malnabor', 'berry-secco', 'piri-mama-forralt-bora', 'don-cherry'], tint='#F3EEE5'),
+    dict(id='bf-diszkont', name='Black Friday diszkont', price=9900, old=13140, free=False,
+         items=['friss-eper', 'friss-malna', 'friss-meggy'], qty=2, tint='#FBE3D2'),
+    dict(id='edes-unnepek', name='Édes Ünnepek Borcsomag', price=19900, old=24840, free=True,
+         items=['edes-eperbor', 'edes-meggybor', 'edes-oszibarackbor', 'edes-bodza-almabor', 'berry-secco', 'don-cherry'], tint='#FBE3E6', tag='FŐ AJÁNLAT'),
+    dict(id='premium-advent', name='Prémium adventi borválogatás', price=28900, old=36040, free=True,
+         items=['edes-eperbor', 'edes-ribizlibor', 'edes-kajszibor', 'edes-szilvabor', 'klara-edes-malnabor', 'don-cherry', 'don-cherry-gyumolcse', 'meggymag-parna'], tint='#EFE6D2', tag='PRÉMIUM AJÁNDÉK'),
+    dict(id='konnyu-karacsony', name='Könnyű Karácsonyi Borcsomag', price=10900, old=13140, free=False,
+         items=['friss-eper', 'friss-malna', 'friss-meggy', 'berry-secco-tonic', 'berry-secco-yuzu-lime', 'piri-mama-forralt-bora'], tint='#FFE8CF', tag='KISEBB KERETBŐL'),
 ]
 SP = {s['id']: s for s in SEASON_PACKS}
 
@@ -64,7 +64,7 @@ NAV = [('gyumolcsbor.html', 'Gyümölcsborok', ''), ('termek/piri-mama-forralt-b
        ('palinka.html', 'Pálinka', ''), ('black-friday.html', 'Akciók', 'sale')]
 
 
-def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra=''):
+def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra='', topbar=''):
     return f'''<!doctype html>
 <html lang="hu" data-root="{r}">
 <head>
@@ -81,6 +81,7 @@ def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra=''):
 </head>
 <body data-page="{page}" class="{body_cls}">
 <div class="demo-bar"><span><b>DEMO</b> · Stratos Webdesign – nem valódi rendelés, a [szögletes] részek helykitöltők</span>{demo_extra}</div>
+{topbar}
 '''
 
 
@@ -145,8 +146,8 @@ def hb(p, r, h, ml=0, rot='0deg'):
 <button class="hbp" type="button" data-add="{p['id']}" aria-label="{e(p['name'])} kosárba">+</button></div></div>'''
 
 
-STAMP = '''<div class="stamp" aria-hidden="true"><svg viewBox="0 0 200 200" width="168" height="168"><defs><path id="sc" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-<circle cx="100" cy="100" r="98" fill="{bg}"/><text font-family="Manrope" font-weight="800" font-size="15" letter-spacing="4" fill="{fg}"><textPath href="#sc">{txt}</textPath></text></svg><b style="color:{fg}">100%</b></div>'''
+STAMP = '''<div class="stamp" aria-hidden="true"><svg viewBox="0 0 200 200" width="168" height="168"><defs><path id="sc-{uid}" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+<circle cx="100" cy="100" r="98" fill="{bg}"/><text font-family="Manrope" font-weight="800" font-size="15" letter-spacing="4" fill="{fg}"><textPath href="#sc-{uid}">{txt}</textPath></text></svg><b style="color:{fg}">{center}</b></div>'''
 
 
 def write(path, s):
@@ -191,7 +192,7 @@ def season_hero(s, r):
     return f'''<section class="hero" data-season="{s['k']}" style="--hbg:{s['bg']};--hfg:{s['fg']};--hword:{s['hword']};--haccent:{s['acc']};--hctafg:{s['ctafg']}">
 <p class="word" aria-hidden="true">{s['word']}</p>
 <div class="bottles">{b}</div>
-{STAMP.format(bg=s.get('stampbg', s['acc']), fg=s.get('stampfg', s['ctafg']), txt=s.get('stamp', '100% GYÜMÖLCSBŐL · KLÁRAFALVA · KONTYOS ·'))}
+{STAMP.format(bg=s.get('stampbg', s['acc']), fg=s.get('stampfg', s['ctafg']), txt=s.get('stamp', '100% GYÜMÖLCSBŐL · KLÁRAFALVA · KONTYOS ·'), uid=s['k'], center='100%')}
 <div class="copy"><div class="wrap"><div class="txt"><span class="eyebrow">{s['eyebrow']}</span><p class="t">{s['t']}</p><p class="s">{s['s']}</p><a class="btn" href="{r}{s['cta'][1]}">{s['cta'][0]} →</a></div>
 {price}</div></div>
 </section>'''
@@ -220,38 +221,176 @@ def fruit_selector(r):
 </div></section>'''
 
 
-def index():
+# ---------- kampány-landingek a design (BlackFriday.dc / Karacsony.dc) alapján ----------
+XMAS_BAR = '<div class="xbar">UTOLSÓ RENDELÉS KARÁCSONYRA: [DÁTUM – A KONTYOS ADJA]</div>'
+
+
+def dotc(p):
+    c = p['accent']
+    return p['arch'] if c.upper() in ('#FFFFFF', '#FFF6EA', '#1B2A5C') and p['line'] == 'friss' else c
+
+
+def pack_bottles(sp, r, h='88%'):
+    return ''.join(f'<img src="{r}{P[i]["tight"]}" alt="{e(P[i]["name"])}" loading="lazy"{" class=jar" if i in ("don-cherry-gyumolcse",) else ""}{" class=pil" if i == "meggymag-parna" else ""}>' for i in sp['items'] if i != 'meggymag-parna')
+
+
+def pack_contents(sp):
+    names = [P[i]['name'] for i in sp['items']]
+    if sp.get('qty'):
+        names = [f"{sp['qty']}× {n}" for n in names]
+    if sp.get('extra'):
+        names.append(sp['extra'])
+    return ' · '.join(names)
+
+
+def bf_landing(r, phase, htag='h1', uid='bf'):
+    wait = phase == 'varolista'
+    eyebrow = 'NOV. 23–29. · HAMAROSAN' if wait else 'NOV. 23–29. · MOST FUT · <span data-countdown="2026-11-29T23:59:59+01:00"></span>'
+    note = 'Iratkozz fel, és elsőként szólunk.' if wait else 'Nov. 29-ig, vagy amíg a készlet tart.'
+    prem, disz = SP['bf-premium'], SP['bf-diszkont']
+
+    def cta(sp, primary):
+        if wait:
+            return f'<a class="btn {"navy" if primary else "ghost"} block" href="#bf-wait-{uid}">Értesítést kérek</a>'
+        return f'<button class="btn {"blue" if primary else "ghost"} block" type="button" data-add="{sp["id"]}">Kosárba teszem</button>'
+    b = hb(P['piri-mama-forralt-bora'], r, 'clamp(300px,58vh,540px)', 0, '-9deg') + hb(P['don-cherry'], r, 'clamp(340px,66vh,620px)', 12, '4deg')
+    out = f'''<section class="hero lp-bf" style="--hbg:#141A33;--hfg:#fff;--hword:#EF4E73;--haccent:#EF4E73;--hctafg:#fff">
+<p class="word" aria-hidden="true">−25,9%</p>
+<div class="bottles">{b}</div>
+{STAMP.format(bg='#F3C66B', fg='#141A33', txt='BLACK FRIDAY · NOV. 23–29. · INGYEN SZÁLLÍTVA · ', uid='bf-' + uid, center='BF')}
+<div class="copy"><div class="wrap"><div class="txt" style="text-shadow:0 2px 18px rgba(20,26,51,.6)"><span class="eyebrow">{eyebrow}</span>
+<{htag} class="t">Black Friday borcsomag akció – akár −25,9%</{htag}><p class="t2">Black Friday a borházban.</p><p class="s">Két doboz, egy hét. {note}</p>
+<a class="btn" href="#bf-dobozok-{uid}">A dobozok →</a></div></div></div></section>
+<section class="lp-boxes" id="bf-dobozok-{uid}"><div class="wrap">
+<article class="lp-box big"><div class="in">
+<div class="tagrow"><span style="color:#C8284E">LEGJOBB VÁLASZTÁS</span><span>40 DOBOZ</span></div>
+<h2>Black Friday Prémium</h2>
+<div class="ph" style="--tint:{prem['tint']}">{pack_bottles(prem, r)}</div>
+<p class="ct">{e(pack_contents(prem))}</p>
+<div class="pr"><s>{ft(prem['old'])}</s><b>{ft(prem['price'])}</b><em>INGYENES SZÁLLÍTÁS</em></div>
+{cta(prem, True)}</div></article>
+<article class="lp-box small"><div class="in">
+<div class="tagrow"><span style="color:#6A6F7E">KISEBB KERETBŐL</span></div>
+<h2>Black Friday diszkont</h2>
+<div class="ph" style="--tint:{disz['tint']};height:180px">{pack_bottles(disz, r)}</div>
+<p class="ct">2-2 palack FRISS eper, málna és meggy</p>
+<div class="pr"><s>{ft(disz['old'])}</s><b>{ft(disz['price'])}</b></div>
+<span style="font-size:12px;font-weight:700;color:#6A6F7E">−24,7% · szállítási díjas</span>
+<p class="note2">A Prémiumban pluszban: Klára Málna, Don Cherry, PIRI Mama és Berry Secco – és ingyen jön.</p>
+{cta(disz, False)}</div></article></div></section>'''
+    if wait:
+        out += f'''<section class="lp-wait" id="bf-wait-{uid}"><div class="wrap"><h2>Szólunk nov. 23-án reggel.</h2>
+<form data-newsletter><label class="sr" for="bfm-{uid}">E-mail-cím</label><input id="bfm-{uid}" type="email" required placeholder="E-mail-címed"><button class="btn" style="background:#141A33" type="submit">Értesítést kérek</button></form></div></section>'''
+    return out
+
+
+def xmas_landing(r, phase, htag='h1', uid='x'):
+    pre = phase == 'elozetes'
+    eyebrow = 'DEC. 1-TŐL RENDELHETŐ' if pre else 'KARÁCSONY · DEC. 1–22.'
+    b = (hb(P['epres-piri-mama-forralt-bora'], r, 'clamp(290px,54vh,500px)', 0, '-10deg')
+         + hb(P['don-cherry'], r, 'clamp(330px,64vh,590px)', 12, '3deg')
+         + hb(P['narancsos-piri-mama-forralt-bora'], r, 'clamp(280px,52vh,470px)', 12, '11deg'))
+
+    def band(price):
+        return 'lt5' if price < 5000 else ('5-15' if price <= 15000 else 'gt15')
+    packs = ''
+    for k, pid in enumerate(['edes-unnepek', 'premium-advent', 'konnyu-karacsony']):
+        sp = SP[pid]
+        rot = ['-0.6deg', '0.5deg', '-0.4deg'][k]
+        dots = ''.join(f'<i title="{e(P[i]["name"])}" style="background:{dotc(P[i])}"></i>' for i in sp['items'])
+        btn = (f'<a class="btn navy block" href="#xn-{uid}">Értesítést kérek dec. 1-jén</a>' if pre
+               else f'<button class="btn block" style="background:#7A1C2C" type="button" data-add="{pid}">Ajándékba kérem</button>')
+        packs += f'''<article class="lp-pack" data-taste="{band(sp['price'])}" data-xpack style="transform:rotate({rot})"><div class="in">
+<div class="ph" style="--tint:{sp['tint']}">{pack_bottles(sp, r)}</div>
+<div class="tx"><div class="tagrow"><span style="color:#7A1C2C">{sp['tag']}</span><span>{'INGYENES SZÁLLÍTÁS' if sp['free'] else '+ SZÁLLÍTÁSI DÍJ'}</span></div>
+<h2>{e(sp['name'])}</h2><div class="dots">{dots}</div><p class="ct">{e(pack_contents(sp))}</p>
+<div class="pr"><s>{ft(sp['old'])}</s><b>{ft(sp['price'])}</b></div>{btn}</div></div></article>'''
+    extras = ['szamocapalinka', 'birspalinka', 'meggypalinka', 'kontyos-borospohar', 'piri-mama-bogreje', 'meggymag-parna']
+    out = f'''<section class="hero lp-xmas" style="--hbg:#7A1C2C;--hfg:#fff;--hword:#F3C66B;--haccent:#F3C66B;--hctafg:#4A0F19">
+<p class="word" aria-hidden="true">ÜNNEP</p>
+<div class="bottles">{b}</div>
+<div class="copy"><div class="wrap"><div class="txt" style="text-shadow:0 2px 18px rgba(74,15,25,.6)"><span class="eyebrow">{eyebrow}</span>
+<{htag} class="t">Karácsonyi ajándék bor és borcsomagok</{htag}><p class="s">Dobozba rakva, a pöttysor megmutatja, mi van benne.</p>
+<a class="btn" href="#csomagok-{uid}">Ajándékcsomagok →</a></div></div></div></section>
+<section class="lp-xpacks" id="csomagok-{uid}"><div class="wrap">
+<div class="filters" data-filter-group="#csomagok-{uid} [data-xpack]"><span class="kicker" style="--accent:#1B2A5C;margin-right:8px">Keret</span><button type="button" data-filter="all" aria-pressed="true">Mind</button><button type="button" data-filter="lt5" aria-pressed="false">5 000 Ft alatt</button><button type="button" data-filter="5-15" aria-pressed="false">5–15 000 Ft</button><button type="button" data-filter="gt15" aria-pressed="false">15 000 Ft felett</button></div>
+{packs}'''
+    if pre:
+        out += f'''<div class="lp-wait" id="xn-{uid}" style="background:#7A1C2C;border-radius:6px"><div style="padding:30px;display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center"><h2>Dec. 1-jén szólunk.</h2>
+<form data-newsletter><label class="sr" for="xm-{uid}">E-mail-cím</label><input id="xm-{uid}" type="email" required placeholder="E-mail-címed"><button class="btn" style="background:#F3C66B;color:#4A0F19" type="submit">Értesítést kérek</button></form></div></div>'''
+    out += f'''</div></section>
+<section class="lp-don"><div class="wrap"><img src="{r}img/photo/don_ajandek.webp" alt="Don Cherry palack és üveg meggy" loading="lazy">
+<div class="tx"><p class="kicker" style="--accent:#2E8C86;letter-spacing:.3em">AJÁNDÉKBA – PRÉMIUM</p><h2>DON <span>CHERRY</span></h2>
+<p>Kis és nagy ajándékcsomag. [Összetétel és ár – a Kontyos adja]</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" style="background:#C8282E;letter-spacing:.14em;font-size:13px" href="{r}termek/don-cherry.html">KIS CSOMAG</a><a class="btn ghost" style="color:#C8282E;letter-spacing:.14em;font-size:13px" href="{r}termek/don-cherry.html">NAGY CSOMAG</a></div></div></div></section>
+<section class="sec" id="palinka-{uid}"><div class="wrap" style="display:flex;flex-direction:column;gap:26px"><h2 class="h2">Mellé: pálinka és apróság</h2>{cards(extras, r)}</div></section>'''
+    return out
+
+
+def bf_page():
     r = ''
-    segs = '<span class="seg" aria-label="Szezon váltó">' + ''.join(f'<button type="button" data-season-btn="{s["k"]}">{s["lbl"]}</button>' for s in SEASONS) + '</span>'
-    heroes = ''.join(season_hero(s, r) for s in SEASONS)
+    segs = '<span class="seg">' + ''.join(f'<button type="button" data-phase-btn="{k}">{l}</button>' for k, l in [('aktiv', 'BF aktív'), ('varolista', 'BF előtt (várólista)')]) + '</span>'
+    pg = head('Black Friday borcsomag akció – akár −25,9% | Kontyos', 'Black Friday borcsomag akció nov. 23–29.: Prémium csomag 19 900 Ft ingyenes szállítással, diszkont csomag 9 900 Ft.', r, 'black-friday', 'overlay-head', demo_extra=segs)
+    pg += header(r, 'black-friday.html') + '<main>'
+    pg += ''.join(f'<div data-phase="{ph}">{bf_landing(r, ph, "h1", ph)}</div>' for ph in ('aktiv', 'varolista'))
+    pg += home_body(r, 'h2') + '</main>' + footer(r)
+    write('black-friday.html', pg)
+
+
+def xmas_page():
+    r = ''
+    segs = '<span class="seg">' + ''.join(f'<button type="button" data-phase-btn="{k}">{l}</button>' for k, l in [('aktiv', 'Aktív'), ('elozetes', 'Előzetes')]) + '</span>'
+    pg = head('Karácsonyi ajándék bor és borcsomagok | Kontyos', 'Karácsonyi ajándék bor és borcsomagok dec. 1–22.: Édes Ünnepek, Prémium adventi és Könnyű karácsonyi borcsomag.', r, 'karacsony', 'overlay-head', demo_extra=segs, topbar=XMAS_BAR)
+    pg += header(r, 'karacsonyi-ajandek-bor.html') + '<main>'
+    pg += ''.join(f'<div data-phase="{ph}">{xmas_landing(r, ph, "h1", ph)}</div>' for ph in ('aktiv', 'elozetes'))
+    pg += home_body(r, 'h2') + '</main>' + footer(r)
+    write('karacsonyi-ajandek-bor.html', pg)
+
+
+def home_body(r='', h='h1'):
     mq = ' · '.join(['100% gyümölcsből', 'Klárafalvi Kontyos Borház', 'Ingyenes szállítás 20 000 Ft felett', '6 palacktól mennyiségi ár'] * 2)
-    pg = head('Kontyos – 100%-os gyümölcsborok a klárafalvi Kontyos Borháztól', 'Meggybor, eperbor, ribizlibor, forralt bor, Don Cherry és pálinka – 100%-os gyümölcsborok közvetlenül a klárafalvi Kontyos Borháztól.', r, 'home', 'overlay-head', demo_extra=segs)
-    pg += header(r) + '<main>' + heroes
+    pg = ''
     pg += f'<div class="marquee" aria-hidden="true"><div><span>{mq} · </span><span>{mq} · </span></div></div>'
     pg += f'''<section class="sec" style="padding-bottom:40px"><div class="wrap" style="display:flex;flex-direction:column;gap:22px">
-<h1 class="h2" style="max-width:980px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól</h1>
+<{h} class="h2" style="max-width:980px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól</{h}>
 <ul class="usp"><li>100% gyümölcsből</li><li>Ingyenes szállítás 20 000 Ft felett</li><li>6 palacktól mennyiségi ár</li><li>Kiszállítás 1–5 munkanap</li><li>Törzsvásárlói kedvezmény akár 15%</li></ul>
 <div style="margin-top:20px">{cards(['edes-meggybor', 'edes-eperbor', 'klara-edes-malnabor', 'friss-malna', 'don-cherry'], r)}</div>
 </div></section>'''
     pg += fruit_selector(r)
     pg += f'''<section class="sec"><div class="wrap"><div class="collage">
-<img class="a" src="img/photo/piri_nar_life.webp" alt="Piri Mama narancsos forralt bora" loading="lazy">
-<img src="img/photo/don_life.webp" alt="Don Cherry meggyvermut" loading="lazy"><img src="img/photo/friss_malna.webp" alt="FRISS málna" loading="lazy">
-<img src="img/photo/klara.webp" alt="Klára prémium gyümölcsbor" loading="lazy" style="grid-column:2/4;aspect-ratio:2/1"></div></div></section>'''
+<img class="a" src="{r}img/photo/piri_nar_life.webp" alt="Piri Mama narancsos forralt bora" loading="lazy">
+<img src="{r}img/photo/don_life.webp" alt="Don Cherry meggyvermut" loading="lazy"><img src="{r}img/photo/friss_malna.webp" alt="FRISS málna" loading="lazy">
+<img src="{r}img/photo/klara.webp" alt="Klára prémium gyümölcsbor" loading="lazy" style="grid-column:2/4;aspect-ratio:2/1"></div></div></section>'''
     pg += f'''<section class="sec" style="background:#F28C28;color:#1B2A5C"><div class="wrap split">
-<div><img src="img/photo/friss_flat.webp" alt="FRISS gyümölcsborok" loading="lazy"></div>
+<div><img src="{r}img/photo/friss_flat.webp" alt="FRISS gyümölcsborok" loading="lazy"></div>
 <div style="display:flex;flex-direction:column;gap:18px"><p class="kicker" style="--accent:#1B2A5C">FRISS · Berry Secco</p><h2 class="h2">Könnyű, színes, hűtve az igazi.</h2>
 <p class="lead">A FRISS gyümölcsborok és a Berry Secco a könnyebb, lazább oldal – {ft(2190)}-tól.</p>
-<div>{cards(['friss-narancs', 'friss-eper', 'friss-malna', 'friss-meggy'], r, 'scroller')}</div><a class="btn navy" href="friss.html" style="align-self:flex-start">Mind a FRISS →</a></div></div></section>'''
+<div>{cards(['friss-narancs', 'friss-eper', 'friss-malna', 'friss-meggy'], r, 'scroller')}</div><a class="btn navy" href="{r}friss.html" style="align-self:flex-start">Mind a FRISS →</a></div></div></section>'''
     pg += f'''<section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:28px"><p class="kicker">Válogatások</p><h2 class="h2">Csomagban jobban megéri</h2>
 {cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r)}</div></section>'''
     pg += f'''<section class="sec" style="background:#fff"><div class="wrap split">
 <div style="display:flex;flex-direction:column;gap:18px"><p class="kicker">Klárafalva</p><h2 class="h2">Mitől 100%-os a gyümölcsbor?</h2>
 <p class="lead">Gyümölcsboraink 100%-ban magyar gyümölcsökből készülnek. Édesapánk közel két évtizede alkotta meg első gyümölcsborát: a család hölgy tagjai olyan italra vágytak, mely édes és zamatos, akár egy nyári gyümölcs.</p>
 <p style="line-height:1.7;opacity:.85">2006 óta alkotunk elsőrangú hazai gyümölcsökből gyümölcsbor-különlegességeket, hagyományos és reduktív eljárással. A 2019-ben épült modern üzemünk Szegedhez közel, Klárafalván működik.</p>
-<a class="btn ghost" href="info.html#rolunk" style="align-self:flex-start">Rólunk</a></div>
-<div><img src="img/photo/borhaz.webp" alt="A klárafalvi Kontyos Borház" loading="lazy"></div></div></section>'''
+<a class="btn ghost" href="{r}info.html#rolunk" style="align-self:flex-start">Rólunk</a></div>
+<div><img src="{r}img/photo/borhaz.webp" alt="A klárafalvi Kontyos Borház" loading="lazy"></div></div></section>'''
     pg += newsletter()
+    return pg
+
+
+def index():
+    r = ''
+    segs = '<span class="seg" aria-label="Szezon váltó">' + ''.join(f'<button type="button" data-season-btn="{s["k"]}">{s["lbl"]}</button>' for s in SEASONS) + '</span>'
+    heroes = ''
+    for s_ in SEASONS:
+        if s_['k'] == 'bf':
+            heroes += f'<div data-season="bf">{bf_landing(r, "aktiv", "h2", "home")}</div>'
+        elif s_['k'] == 'karacsony':
+            heroes += f'<div data-season="karacsony">{xmas_landing(r, "aktiv", "h2", "home")}</div>'
+        else:
+            heroes += season_hero(s_, r)
+    pg = head('Kontyos – 100%-os gyümölcsborok a klárafalvi Kontyos Borháztól', 'Meggybor, eperbor, ribizlibor, forralt bor, Don Cherry és pálinka – 100%-os gyümölcsborok közvetlenül a klárafalvi Kontyos Borháztól.', r, 'home', 'overlay-head', demo_extra=segs, topbar=f'<div data-season="karacsony">{XMAS_BAR}</div>')
+    pg += header(r) + '<main>' + heroes + home_body(r, 'h1')
     pg += '</main>' + footer(r)
     write('index.html', pg)
 
@@ -612,13 +751,8 @@ def main():
     campaign('ujbor-valogatas.html', 'Újbor-válogatás 2026 | Kontyos', 'Az idei gyümölcsborok válogatásban, ingyenes szállítással.', 'Újbor-válogatás', 'Limitált · nov. 5–23.',
              '6 klasszikus gyümölcsbor egy dobozban – ingyenes szállítással.', '#F6E1E4', '#1B2A5C', '#EF4E73', ['ujbor-valogatas'],
              ['edes-eperbor', 'edes-meggybor', 'edes-ribizlibor', 'edes-kajszibor'])
-    campaign('black-friday.html', 'Black Friday bor akció | Kontyos', 'Black Friday gyümölcsbor akció: prémium és könnyű csomagok kedvezménnyel.', 'Black Friday borakció', 'Black Friday · nov. 23–29.',
-             'Két csomag, egy évben egyszer ennyiért. Csak a kampány idején.', '#141A33', '#F3EEE5', '#EF4E73', ['bf-premium', 'bf-diszkont'],
-             ['klara-szaraz-barrique-meggybor', 'klara-edes-malnabor', 'don-cherry'], phases=[('varolista', 'BF előtt (várólista)'), ('aktiv', 'BF aktív')], start='november 23.')
-    campaign('karacsonyi-ajandek-bor.html', 'Karácsonyi ajándék bor – ajándékcsomagok | Kontyos', 'Karácsonyi ajándék bor és ajándékcsomagok a Kontyostól. Ajándékcsomagok dec. 1–22. között.', 'Karácsonyi ajándék bor', 'Karácsony · dec. 1–22. · utolsó rendelési nap: [DÁTUM]',
-             'Összeállított ajándékcsomagok gyümölcsborból, Don Cherryből és pálinkából.', '#7A1C2C', '#F3EEE5', '#F3C66B', ['edes-unnepek', 'premium-advent', 'konnyu-karacsony'],
-             ['edes-ribizlibor', 'klara-edes-malnabor', 'szamocapalinka'], phases=[('elozetes', 'Előzetes'), ('aktiv', 'Aktív')], start='december 1.',
-             extra=f'<section class="sec" style="background:#fff"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><h2 class="h2">Válogatások egész évben</h2>{cards(["meggy-paros", "eper-paros", "konnyu-trio", "bubi-paros", "kontyos-borospohar", "kontyos-szovettaska"], "")}</div></section>')
+    bf_page()
+    xmas_page()
     cart()
     checkout()
     thanks()
