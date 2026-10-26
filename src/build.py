@@ -138,15 +138,15 @@ def cards(ids, r, cls='cards'):
     return f'<div class="{cls}">' + ''.join(card(P[i], r) for i in ids) + '</div>'
 
 
-def hb(p, r, h, ml=0):
-    return f'''<div class="hb" style="--h:{h};margin-left:{ml}px"><div class="hbi"><span class="hbr"><img src="{r}{p['tight']}" alt="{e(p['name'])}"></span>
-<a class="hbl" href="{r}{url(p)}" aria-label="{e(p['name'])} – termékoldal"></a>
+def hb(p, r, h, ml=0, rot='0deg'):
+    return f'''<div class="hb" style="--h:{h};margin-left:{ml}px"><div class="hbi"><span class="hbr" style="transform:rotate({rot})"><img src="{r}{p['tight']}" alt="{e(p['name'])}">
+<a class="hbl" href="{r}{url(p)}" aria-label="{e(p['name'])} – termékoldal"></a></span>
 <div class="hw"><div class="in"><span class="n">{e(p['name'])}</span><span class="p">{ft(p['price'])}</span><button type="button" data-add="{p['id']}">Kosárba +</button></div></div>
 <button class="hbp" type="button" data-add="{p['id']}" aria-label="{e(p['name'])} kosárba">+</button></div></div>'''
 
 
 STAMP = '''<div class="stamp" aria-hidden="true"><svg viewBox="0 0 200 200" width="168" height="168"><defs><path id="sc" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-<circle cx="100" cy="100" r="98" fill="{bg}"/><text font-family="Manrope" font-weight="800" font-size="15" letter-spacing="4" fill="{fg}"><textPath href="#sc">100% GYÜMÖLCSBŐL · KLÁRAFALVA · KONTYOS ·</textPath></text></svg><b style="color:{fg}">100%</b></div>'''
+<circle cx="100" cy="100" r="98" fill="{bg}"/><text font-family="Manrope" font-weight="800" font-size="15" letter-spacing="4" fill="{fg}"><textPath href="#sc">{txt}</textPath></text></svg><b style="color:{fg}">100%</b></div>'''
 
 
 def write(path, s):
@@ -157,10 +157,11 @@ def write(path, s):
 
 # ---------- főoldal ----------
 SEASONS = [
-    dict(k='forralt', lbl='Forralt szezon', bg='#2B3B78', fg='#F3EEE5', word='FORRALT', hword='#3B4C8C', acc='#F08A3C', ctafg='#1B2A5C',
-         bottles=[('narancsos-piri-mama-forralt-bora', 'clamp(300px,58vh,560px)'), ('piri-mama-forralt-bora', 'clamp(330px,64vh,610px)'), ('epres-piri-mama-forralt-bora', 'clamp(300px,58vh,560px)')],
-         eyebrow='Piri Mama forralt bora', t='Kibontod, melegíted, kész.', s='Azonnal fogyasztható forralt bor 1 literes palackban – narancsos, epres és alkoholmentes változatban is.',
-         cta=('Forralt borok', 'termek/piri-mama-forralt-bora.html'), price=('piri-mama-forralt-bora', '/ 1 liter')),
+    dict(k='forralt', lbl='Forralt szezon', bg='#F08A3C', fg='#1B2A5C', word='FORRALT', hword='#1B2A5C', acc='#1B2A5C', ctafg='#FFFFFF',
+         stampbg='#1B2A5C', stampfg='#F3C66B', stamp='CSAK MEGMELEGÍTED · ÉS KÉSZ · PIRI MAMA · ',
+         bottles=[('piri-mama-forralt-bora', 'clamp(280px,50vh,430px)', '-9deg'), ('narancsos-piri-mama-forralt-bora', 'clamp(330px,60vh,520px)', '4deg'), ('epres-piri-mama-forralt-bora', 'clamp(270px,49vh,420px)', '12deg')],
+         ml=-36, eyebrow='Új · Narancsos PIRI Mama', t='Csak megmelegíted, és kész.', s='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.',
+         cta=('PIRI Mama forralt borok', 'termek/narancsos-piri-mama-forralt-bora.html'), price=None),
     dict(k='ujbor', lbl='Újbor', bg='#F6E1E4', fg='#1B2A5C', word='ÚJBOR', hword='#EFC9CF', acc='#EF4E73', ctafg='#fff',
          bottles=[('edes-eperbor', 'clamp(300px,58vh,560px)'), ('edes-meggybor', 'clamp(330px,64vh,610px)'), ('edes-kajszibor', 'clamp(300px,58vh,560px)')],
          eyebrow='Megérkezett az idei termés', t='Az idei gyümölcs, palackban.', s='Válogass a klasszikus gyümölcsborokból – 6 palacktól mennyiségi áron.',
@@ -181,15 +182,18 @@ def price_of(pid):
 
 
 def season_hero(s, r):
-    b = ''.join(hb(P[pid], r, h, 0 if i == 0 else -28) for i, (pid, h) in enumerate(s['bottles']))
-    pp = price_of(s['price'][0])
-    old = f'<s>{ft(pp["old"])}</s>' if pp.get('old') else ''
+    b = ''.join(hb(P[bt[0]], r, bt[1], 0 if i == 0 else s.get('ml', -28), bt[2] if len(bt) > 2 else '0deg') for i, bt in enumerate(s['bottles']))
+    price = ''
+    if s['price']:
+        pp = price_of(s['price'][0])
+        old = f'<s>{ft(pp["old"])}</s>' if pp.get('old') else ''
+        price = f'<div class="price"><div class="in">{old}<b>{ft(pp["price"])}</b><small>{s["price"][1]}</small></div></div>'
     return f'''<section class="hero" data-season="{s['k']}" style="--hbg:{s['bg']};--hfg:{s['fg']};--hword:{s['hword']};--haccent:{s['acc']};--hctafg:{s['ctafg']}">
 <p class="word" aria-hidden="true">{s['word']}</p>
 <div class="bottles">{b}</div>
-{STAMP.format(bg=s['acc'], fg=s['ctafg'])}
+{STAMP.format(bg=s.get('stampbg', s['acc']), fg=s.get('stampfg', s['ctafg']), txt=s.get('stamp', '100% GYÜMÖLCSBŐL · KLÁRAFALVA · KONTYOS ·'))}
 <div class="copy"><div class="wrap"><div class="txt"><span class="eyebrow">{s['eyebrow']}</span><p class="t">{s['t']}</p><p class="s">{s['s']}</p><a class="btn" href="{r}{s['cta'][1]}">{s['cta'][0]} →</a></div>
-<div class="price"><div class="in">{old}<b>{ft(pp['price'])}</b><small>{s['price'][1]}</small></div></div></div></div>
+{price}</div></div>
 </section>'''
 
 

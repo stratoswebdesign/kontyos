@@ -415,3 +415,5 @@ details.coupon summary{min-height:44px;display:flex;align-items:center;font-size
 @media (max-width:1100px){.cart-grid{flex-direction:column;align-items:stretch}.cart-main,.cart-side{flex:1 1 auto;width:100%}.cart-side{position:static}}
 @media (max-width:1100px){.cart-btn{min-height:46px}}
 .story .bigword{left:calc(max(0px,(100% - var(--max))/2) + var(--gutter))}
+@media (max-width:599px){.hero .copy{top:172px}}
+@media (min-width:600px) and (max-width:860px){.hero .copy{top:238px}.hero .hb .hbr img{height:calc(var(--h) * .9)}}
