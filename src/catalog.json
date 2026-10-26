@@ -1,0 +1,2568 @@
+[
+ {
+  "id": "edes-meggybor",
+  "src": "edes-meggybor",
+  "name": "Édes meggybor",
+  "line": "klasszikus",
+  "accent": "#A3203A",
+  "arch": "#F6E1E4",
+  "price": 3990,
+  "old": null,
+  "tier": [
+   6,
+   3791
+  ],
+  "avail": true,
+  "short": "100% hajnalbordó meggyből reduktív borászati eljárással készült eszményi különlegesség. Karakteres meggyíze estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: meggy, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "Az Édes Meggybor egy kiváló minőségű, 100% cigánymeggyből készült, szenvedélyes és meggyőző ital. A friss meggyből készült bor intenzív gyümölcsös ízvilággal rendelkezik, mely tökéletes választás lehet egy romantikus vacsora vagy egy baráti összejövetel alkalmával. Az Édes Meggybor 0,75 literes kiszerelésben kapható, így ideális választás lehet otthoni vagy bulis közösségi alkalmakra is.",
+   "Kóstold meg ezt az estét pezsdítő borunkat, és garantáltan elvarázsol majd mindenkit!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "12 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Meggybor"
+   ],
+   [
+    "Egységár",
+    "5.320 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1260 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "4.98",
+  "rcount": 44,
+  "reviews": [
+   {
+    "d": "2025. 09. 23.",
+    "n": "Gerendai",
+    "t": "Nagyon ízletes, jól érződik benne a meggy.",
+    "v": false
+   },
+   {
+    "d": "2024. 11. 26.",
+    "n": "Éva K.",
+    "t": "Igazi IMÁDOM bor!",
+    "v": false
+   },
+   {
+    "d": "2024. 01. 11.",
+    "n": "Edit B.",
+    "t": "Nagyon finomak a boraik",
+    "v": false
+   },
+   {
+    "d": "2023. 06. 29.",
+    "n": "László M.",
+    "t": "Kiválló ízvilág és frissesség, kiemelkedő segítőkészség, gyors és precíz szállítás. 100% elégedetség !",
+    "v": false
+   },
+   {
+    "d": "2023. 06. 27.",
+    "n": "Etelka R.",
+    "t": "A legkedvencebb kedvencünk! Édes borokat szeretjük, és ez a meggybor magában is kiváló, de a szentségtörésnek számító fröccsként valósággal isteni!!",
+    "v": false
+   },
+   {
+    "d": "2023. 04. 25.",
+    "n": "Katalin M.",
+    "t": "Imádom az ízét, illatát. Bárhol, bármikor szívesen fogyasztom. Igazi gyümölcsbor, nem lehet csalódni benne.",
+    "v": true
+   }
+  ],
+  "img": "img/p/edes-meggybor.webp",
+  "tight": "img/t/edes-meggybor.webp"
+ },
+ {
+  "id": "edes-eperbor",
+  "src": "edes-eperbor",
+  "name": "Édes eperbor",
+  "line": "klasszikus",
+  "accent": "#C9314A",
+  "arch": "#FBE3E6",
+  "price": 4990,
+  "old": null,
+  "tier": [
+   6,
+   4741
+  ],
+  "avail": true,
+  "short": "100% illatos-üde földieperből reduktív borászati eljárással készült eszményi különlegesség. Lágy eperíze hűvös szódával estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: földieper, cukor, víz, szulfitot tartalmaz",
+  "long": [
+   "Az Édes Eperbor egy prémium minőségű, klasszikus és frissítő gyümölcsbor, melyet kifejezetten azoknak ajánlunk, akik szeretik az édes, gyümölcsös ízeket. Az eperbor 0,75 literes kiszerelésben kapható, így ideális választás baráti összejövetelekre, romantikus vacsorákhoz vagy bármilyen más eseményre, ahol szeretnéd valami különlegessel kínálni vendégeidet, szeretteidet. A bor különleges színe illetve egyszerre friss és gyümölcsösen zamatos íze garantáltan elvarázsolja az ízlelőbimbókat.",
+   "Kóstold meg Te is az Édes Eperbort, és minden kortyban a tavaszi, friss eper íze fog megcsillanni; garantáltan emlékezetessé téve minden alkalmat."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "11 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Eperbor"
+   ],
+   [
+    "Egységár",
+    "6,653,3 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1300 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "4.98",
+  "rcount": 41,
+  "reviews": [
+   {
+    "d": "2024. 12. 21.",
+    "n": "Zsolt H.",
+    "t": "Bor téren válogatós vagyok,csak édes jöhet számításba legyen az fehér,vagy vörös.A kontyos eper bor sikeresen ötvözte az ízt az álltalam szeretett édességgel,kellemesen finom,mondhatni itatja magát,szóval tőlem a maximális értékelést kapja",
+    "v": false
+   },
+   {
+    "d": "2024. 12. 05.",
+    "n": "Bozkat",
+    "t": "Nagyon fontos,zamatos gyümölcsbor. Ajánlom mindenkinek ❤️.",
+    "v": false
+   },
+   {
+    "d": "2023. 10. 07.",
+    "n": "István V.",
+    "t": "Nagyon finom, minőségi borok, a Klárafalvi \"Kontyos\" termékek. Egyszerűen finom, és minősègi. Szuper",
+    "v": false
+   },
+   {
+    "d": "2023. 10. 03.",
+    "n": "Attila",
+    "t": "A rendelést követően gyorsan és jól becsomagoltan érkezett meg a csomag. A borról annyit, hogy a feleségem imádja. Biztosan fogunk még rendelni. Köszönöm.",
+    "v": false
+   },
+   {
+    "d": "2023. 04. 09.",
+    "n": "Szabina",
+    "t": "Minden rendezvényen, ahol jelen vannak, csak az Önök Eperborát fogyasztom. Bár most ajándékba szánom a rendelt üveggel, de így biztos lehetek benne, hogy nem okozok csalódást annak, aki kapja.",
+    "v": false
+   },
+   {
+    "d": "2022. 10. 02.",
+    "n": "Sis",
+    "t": "Best!",
+    "v": false
+   }
+  ],
+  "img": "img/p/edes-eperbor.webp",
+  "tight": "img/t/edes-eperbor.webp"
+ },
+ {
+  "id": "edes-ribizlibor",
+  "src": "edes-ribizlibor",
+  "name": "Édes ribizlibor",
+  "line": "klasszikus",
+  "accent": "#3A2A6B",
+  "arch": "#E6E1F0",
+  "price": 5490,
+  "old": null,
+  "tier": [
+   6,
+   5215
+  ],
+  "avail": true,
+  "short": "100% fekete ribizliből reduktív borászati eljárással készült eszményi különlegesség. Üde fekete ribizli íze estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: fekete ribizli, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "Az Édes Ribizlibor egy feketeribizliből készült, enyhén fanyar, de annál ízletesebb és különlegesebb gyümölcsbor, mely tökéletes választás az év bármely időszakában, legyen szó akár egy nyári jéghideg fröccsről, vagy bármikor, amikor egy kis vitamin- és energiafeltöltésre van szükséged. A ribizli intenzív íze, tompított savai és az édes bor tökéletes egyensúlyt teremt az borban, mely garantáltan elvarázsolja az ízlelőbimbóidat.",
+   "Kóstold meg ezt a különleges italt, és bízd rá magad a frissítő élményre, amit nyújtani tud!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "11 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Ribizlibor"
+   ],
+   [
+    "Egységár",
+    "6.653,33 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1260 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 27,
+  "reviews": [
+   {
+    "d": "2026. 08. 27.",
+    "n": "Melinda",
+    "t": "A szegedi borfesztiválon ittam először Kontyos bort, Ribizli ízben. Lenyűgözött az ízvilága. Utána rendeltem is és kimentem érte Klárafalvára. Nagyon kedvesek voltak a munkatársak. A kontyos.hu oldalon rákerestem hogy hol van viszonteladó Szegeden és el is mentem egybe, de ők mondták hogy náluk nem lehet kapni. Így javaslom hogy frissítsék az adatbázist és azt írják ki hogy valóban kik azok akik árulják ezt a fajta bort. De minden rendben volt és nagyon köszönöm hogy vásárolhattak!",
+    "v": false
+   },
+   {
+    "d": "2026. 02. 06.",
+    "n": "Bence",
+    "t": "Finom és minőségi.",
+    "v": false
+   },
+   {
+    "d": "2025. 05. 26.",
+    "n": "Júlia D.",
+    "t": "Csodálatos ! Igazi finom zamatos . Igazi minőség . Csak ajanlani tudom . Ajándékként is fenséges . Otthon fogyasztásra valódi vitamin forrás . Egészség .",
+    "v": false
+   },
+   {
+    "d": "2025. 01. 26.",
+    "n": "Barby",
+    "t": "A kedvenc borom. Isteni íze van!",
+    "v": false
+   },
+   {
+    "d": "2024. 12. 05.",
+    "n": "Bozkat",
+    "t": "Iszonyatosan finom ☺️❤️❤️❤️❤️",
+    "v": false
+   },
+   {
+    "d": "2023. 12. 25.",
+    "n": "Mariann T.",
+    "t": "Egyszerűen isteni finom!!!",
+    "v": false
+   }
+  ],
+  "img": "img/p/edes-ribizlibor.webp",
+  "tight": "img/t/edes-ribizlibor.webp"
+ },
+ {
+  "id": "edes-kajszibor",
+  "src": "edes-kajszibor",
+  "name": "Édes kajszibor",
+  "line": "klasszikus",
+  "accent": "#C9711A",
+  "arch": "#FBE7CC",
+  "price": 5490,
+  "old": null,
+  "tier": [
+   6,
+   5215
+  ],
+  "avail": true,
+  "short": "100% felhőpuha kajszibarackból reduktív borászati eljárással készült eszményi különlegesség. Lágy kajszibarackíze hűvös szódával estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: kajszibarack, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "Az Édes Kajszibor egy különleges minőségű, nemzteközi versenygyőztes gyümölcsbor, mely tökéletes választás, ha valami igazán fantasztikus ízbombára vágysz. A gönci sárgabarack alapanyag friss és lédús, gyümölcsös-lekváros ízvilágot varázsol az üvegbe, ami igazi ínyencség lehet bármelyik alkalomra. Könnyed, üde savaival, frissítő jellegével remek választás lehet egy forró nyári napon, de tapasztalatunk szerint az év bármely szakában képes felidézni a nyári naplementéket.",
+   "Bátran válaszd az Édes Kajszibort, ha szeretnél valami újat és különlegeset kínálni vendégeidnek!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "11 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Kajszibor"
+   ],
+   [
+    "Egységár",
+    "6.653,3 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1260 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 25,
+  "reviews": [
+   {
+    "d": "2026. 03. 19.",
+    "n": "Klári",
+    "t": "Nagyon finom bor!",
+    "v": false
+   },
+   {
+    "d": "2023. 08. 26.",
+    "n": "László M.",
+    "t": "Fantasztikus ízvilág! Nagyon jó ízek.",
+    "v": false
+   },
+   {
+    "d": "2022. 10. 17.",
+    "n": "Csaba",
+    "t": "Fantasztikusan finom!",
+    "v": false
+   },
+   {
+    "d": "2022. 07. 06.",
+    "n": "Gábor G.",
+    "t": "Tökéletes",
+    "v": false
+   },
+   {
+    "d": "2022. 04. 11.",
+    "n": "Kitti",
+    "t": "Ez valami csoda. Isteni barack íze van.",
+    "v": false
+   },
+   {
+    "d": "2022. 03. 08.",
+    "n": "Eve",
+    "t": "Nagyon finom! :)",
+    "v": false
+   }
+  ],
+  "img": "img/p/edes-kajszibor.webp",
+  "tight": "img/t/edes-kajszibor.webp"
+ },
+ {
+  "id": "edes-oszibarackbor",
+  "src": "edes-oszibarackbor",
+  "name": "Édes őszibarackbor",
+  "line": "klasszikus",
+  "accent": "#D9724A",
+  "arch": "#FCE3D6",
+  "price": 4990,
+  "old": null,
+  "tier": [
+   6,
+   4741
+  ],
+  "avail": true,
+  "short": "100% élénk-üde őszibarackból készült. Összetevők: őszibarack, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "Az Édes Őszibarackbor kiváló választás lehet, ha valami igazán különleges, de könnyed borral szeretnéd meglepni szeretteidet vagy magad. Az édes ízvilágú borunk - a nektarinnak köszönhetően - fennséges gyümölcsaromákkal rendelkezik, amely jól lehűtve tökéletes kiegészítése lehet az esti desszertnek vagy akár egy romantikus vacsorának is. A borkülönlegesség igazi élményt nyújt minden kortyával, és egyúttal tökéletes ajándék lehet bármilyen alkalomra - legyen szó születésnapról, névnapról vagy karácsonyról.",
+   "Az édes őszibarackbor mindig garantáltan sikert arat majd!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "11 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Őszibarackbor"
+   ],
+   [
+    "Egységár",
+    "6.653,3 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1260 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 9,
+  "reviews": [
+   {
+    "d": "2025. 11. 19.",
+    "n": "Tünde",
+    "t": "A budafoki bornapokon kóstoltuk először, már akkor helyben vásároltunk többféle ízből, több üveg bort. Mindegyik nagyon finom volt, barátoktól is ezt a visszajelzést kaptunk, amikor felbontottuk egy beszélgetéshez például. Most ajándékba rendeltem az egyik üveget. Biztos, hogy még fogok vasárolni máskor is.",
+    "v": false
+   },
+   {
+    "d": "2023. 04. 25.",
+    "n": "Katalin M.",
+    "t": "Egyszerűen csodás.",
+    "v": true
+   },
+   {
+    "d": "2022. 04. 11.",
+    "n": "Kitti",
+    "t": "Nagyon finom és zamatos.",
+    "v": false
+   },
+   {
+    "d": "2021. 02. 26.",
+    "n": "Marietta",
+    "t": "Nagyon finom. Gyorsan és rendben megérkezett. Csak ajánlani tudom.",
+    "v": false
+   },
+   {
+    "d": "2021. 02. 25.",
+    "n": "Anita",
+    "t": "Nagyon finom. Csomagolás teljesen rendben volt. Gyors kiszállítás.",
+    "v": false
+   },
+   {
+    "d": "2020. 12. 16.",
+    "n": "Kinga",
+    "t": "Egyszerűen mennyei!",
+    "v": false
+   }
+  ],
+  "img": "img/p/edes-oszibarackbor.webp",
+  "tight": "img/t/edes-oszibarackbor.webp"
+ },
+ {
+  "id": "edes-szilvabor",
+  "src": "edes-szilvabor",
+  "name": "Édes szilvabor",
+  "line": "klasszikus",
+  "accent": "#5B3A7A",
+  "arch": "#E9DFF0",
+  "price": 3690,
+  "old": null,
+  "tier": [
+   6,
+   3505
+  ],
+  "avail": true,
+  "short": "100% hamvas-kék szilvából reduktív borászati eljárással készült eszményi különlegesség. Friss szilvaíze estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: szilva, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "Az Édes Szilvabor egy klasszikus desszertbor; kiváló minőségű, zamatos, érett szilvából készült. A gyümölcsbor kedvelői között igazi ínyencségnek számít, így ideális választás lehet ünnepi összejövetelekre, vacsorákhoz vagy ajándékként is - egy pohár finom szilvaborral könnyedén feldobhatod bármelyik alkalom hangulatát.",
+   "Kóstold meg ezt az ízletes bort és élvezd a szilva fahélas-fűszeres, édes aromáját! Legyen szó ünnepi alkalmakról vagy egy egyszerű hétköznapi sütizésről, az Édes Szilvabor mindig jó választás lesz a különlegességek kedvelői számára."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "12 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Szilvabor"
+   ],
+   [
+    "Egységár",
+    "4.920 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1260 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "4.92",
+  "rcount": 12,
+  "reviews": [
+   {
+    "d": "2024. 06. 16.",
+    "n": "Timi",
+    "t": "Nagyon finom, biztosan fogok még rendelni. :)",
+    "v": false
+   },
+   {
+    "d": "2023. 11. 09.",
+    "n": "József",
+    "t": "Én inkább sörös vagyok, de ez a szilvabor mindent visz nálam!",
+    "v": false
+   },
+   {
+    "d": "2022. 10. 17.",
+    "n": "Linda",
+    "t": "Nagyon finom, igazi nekem való, édes, aromás gyümölcsbor ☺️",
+    "v": false
+   },
+   {
+    "d": "2022. 02. 14.",
+    "n": "Károly",
+    "t": "Nagyon finom!",
+    "v": false
+   },
+   {
+    "d": "2021. 12. 26.",
+    "n": "làszlóné B.",
+    "t": "Nagyon ízletes finom bor.",
+    "v": false
+   },
+   {
+    "d": "2020. 12. 26.",
+    "n": "Réka",
+    "t": "Desszertbornak ajánlom, édes italok kedvelőinek.",
+    "v": false
+   }
+  ],
+  "img": "img/p/edes-szilvabor.webp",
+  "tight": "img/t/edes-szilvabor.webp"
+ },
+ {
+  "id": "edes-bodza-almabor",
+  "src": "edes-bodza-almabor",
+  "name": "Édes bodza-almabor",
+  "line": "klasszikus",
+  "accent": "#7C7A2A",
+  "arch": "#EEF0D2",
+  "price": 3690,
+  "old": null,
+  "tier": [
+   6,
+   3505
+  ],
+  "avail": true,
+  "short": "100% roppanós almából reduktív borászati eljárással készült eszményi különlegesség. Bodzavirágtól nyárillatú szelíd almaíze szódával estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: alma, almasűrítmény, bodzavirág kivonat, cukor, víz, szulfitot tartalmaz",
+  "long": [
+   "Az Édes Bodza-Almabor egy nyáras és könnyű ízvilágú, de friss savakkal rendelkező bor, melyet a gyümölcsös fröccsök kedvelőinek ajánlunk. Friss bodzavirágok és érett, ropogós almák harmonikus kombinációjából született ez a gyümölcsbor-különlegesség, mely garantáltan felüdülést és élvezetet nyújt minden kortyában. Könnyűsége és szerény savai miatt kiváló választás lehet egy meleg nyári napon, vagy akár egy hosszú nap után; társaságban fogyasztva vagy akár egy romantikus vacsorához is.",
+   "Legyél Te is a gyümölcsborok világának rajongója és kóstold meg akár jéggel, jól behűtve! Legyen mindig otthon egy üveggel, sose tudhatod ki lép be váratlanul!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "11 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Almabor"
+   ],
+   [
+    "Egységár",
+    "4.920 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1260 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 17,
+  "reviews": [
+   {
+    "d": "2023. 12. 17.",
+    "n": "Mária",
+    "t": "Évek óta az óbudai adventi vásárban látogatójuk és a boraik, forralt boraik fogyasztója vagyok. Isteni ízek, gyönyörű design, kitűnő kiszolgálás. Az idén Piri mama újdonság, az egyik legkiválóbb forralt bor, amit eddig ittam. Mindegyik íz utánozhatatlan, kedvencem az epres forralt bor alap. Rendeltem is alapokat, borokat, csomagban jobban megéri. Mindenkinek csak ajánlani tudom, nem fogják megbánni!",
+    "v": false
+   },
+   {
+    "d": "2023. 09. 05.",
+    "n": "Gery",
+    "t": "Egyszerűen IMÁDOM",
+    "v": false
+   },
+   {
+    "d": "2023. 04. 09.",
+    "n": "Zsuzsanna N.",
+    "t": "Kiváló minőségű finom bor!",
+    "v": false
+   },
+   {
+    "d": "2023. 01. 31.",
+    "n": "Ágnes P.",
+    "t": "Csak ajánlani tudom mindenkinek! Imádom a Kontyos édes gyümölcs borokat. Kedvenceim: Alma - bodza Szilva Eper",
+    "v": false
+   },
+   {
+    "d": "2023. 01. 04.",
+    "n": "Bogi",
+    "t": "Egyszerűen ISTENI!",
+    "v": false
+   },
+   {
+    "d": "2022. 11. 23.",
+    "n": "Tamás",
+    "t": "Igazán különleges ízvilágú,nehéz belőle 1 pohárral fogyasztani mindig 2-3 lesz belőle,szóval fincsi.",
+    "v": false
+   }
+  ],
+  "img": "img/p/edes-bodza-almabor.webp",
+  "tight": "img/t/edes-bodza-almabor.webp"
+ },
+ {
+  "id": "szaraz-meggybor",
+  "src": "szaraz-meggybor",
+  "name": "Száraz meggybor",
+  "line": "klasszikus",
+  "accent": "#6E1426",
+  "arch": "#EBD7DB",
+  "price": 3990,
+  "old": null,
+  "tier": [
+   6,
+   3791
+  ],
+  "avail": true,
+  "short": "100% hajnalbordó meggyből reduktív borászati eljárással készült eszményi különlegesség. Karakteres meggyíze estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: meggy, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "A Száraz Meggybor egy különleges minőségű, hagyományosan borászati eljárással készült valódi gyümölcsbor, melyet a legjobb minőségű cigány- és Újfehértói fürtös fajtákból készítünk. Friss, gyümölcsös aromájával, a gyümölcsre jellemző savaival és kellemesen száraz ízvilágával garantáltan elvarázsolja az ínyenceket.",
+   "Borászunk kedvence, az igazi ínyenceknek ajánljuk!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "12 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Száraz"
+   ],
+   [
+    "Gyümölcs",
+    "Meggybor"
+   ],
+   [
+    "Egységár",
+    "5.320 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1260 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "4.95",
+  "rcount": 19,
+  "reviews": [
+   {
+    "d": "2026. 06. 03.",
+    "n": "Tamás",
+    "t": "Prémium minőségű bor! Nyáron a melegben szóba se jöhet más :)",
+    "v": false
+   },
+   {
+    "d": "2023. 05. 14.",
+    "n": "Lajos",
+    "t": "Hihetetlenül jó mikőség",
+    "v": false
+   },
+   {
+    "d": "2022. 11. 30.",
+    "n": "Éva",
+    "t": "Egerben vásároltuk először amikor ott nyaraltunk, és nemrég került elő a pincéből, el is feledkeztünk róla. Annyira bejött hogy rögtön rendeltem még két üveggel. Nekem nagyon tetszik hogy nem édes, teljesen jól kijön a meggy íze és a karakteres savanyúsága.",
+    "v": false
+   },
+   {
+    "d": "2022. 10. 19.",
+    "n": "Hedvig B.",
+    "t": "Egyik kedvenc borom. Isteni illat, aroma.",
+    "v": false
+   },
+   {
+    "d": "2022. 08. 30.",
+    "n": "Tibor S.",
+    "t": "Nagyon finom száraz gyümölcsbor. Az ár érték aránya is kitűnő. Mindenkinek ajánlom.",
+    "v": false
+   },
+   {
+    "d": "2022. 07. 03.",
+    "n": "Gábor G.",
+    "t": "Fenséges.",
+    "v": false
+   }
+  ],
+  "img": "img/p/szaraz-meggybor.webp",
+  "tight": "img/t/szaraz-meggybor.webp"
+ },
+ {
+  "id": "klara-edes-malnabor",
+  "src": "klara-edes-malnabor",
+  "name": "Klára édes málnabor",
+  "line": "klara",
+  "accent": "#C0284A",
+  "arch": "#F7F1F2",
+  "price": 7990,
+  "old": null,
+  "tier": [
+   6,
+   7591
+  ],
+  "avail": true,
+  "short": "100% nyárérelte málnából reduktív borászati eljárással készült eszményi különlegesség. Nyáridéző málnaíze estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: málna, cukor, víz szulfitot tartalmaz",
+  "long": [],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "12 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Málnabor"
+   ],
+   [
+    "Egységár",
+    "10.653,33 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1480 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 31,
+  "reviews": [
+   {
+    "d": "2025. 06. 25.",
+    "n": "Katalin M.",
+    "t": "Ez már nem az első és nem is az utolsó üveg finom, zamatos, édes bor amit megiszunk a csajokkal.",
+    "v": false
+   },
+   {
+    "d": "2025. 01. 15.",
+    "n": "Anikó",
+    "t": "Nagyon ízletes a bor, üdítő mámor. Köszönjük a pontos kiszállítást. A borok csomagolása is precíz, minőségi munka.",
+    "v": false
+   },
+   {
+    "d": "2024. 11. 26.",
+    "n": "Éva K.",
+    "t": "Imádjuk a kedvességüket, gyorsaságukat és nem utolsó sorban a finom málnabort, melynél érezni a málna utánozhatatlan ízét!",
+    "v": false
+   },
+   {
+    "d": "2024. 07. 12.",
+    "n": "Szabolcs",
+    "t": "Egy fesztiválon kóstoltuk meg ezt a málnabort és rögtön szerelem lett belőle. :) Olyan, mintha málnát ennénk, a gyümölcs íze teljesen átjön, könnyű, ízletes, zamatos ital. Fröccsnek ittuk, üdítő a nagy melegben, itatja magát. Közben nagyanyám házi málnaszörpje villan be az agyamba.",
+    "v": false
+   },
+   {
+    "d": "2024. 05. 30.",
+    "n": "Bertold G.",
+    "t": "Mióta rátaláltunk a Kontyos gyümölcsborokra,más bort nem is vásárolunk. Számunkra felülmúlhatatlan!",
+    "v": true
+   },
+   {
+    "d": "2023. 12. 23.",
+    "n": "Pál B.",
+    "t": "Ízletes.",
+    "v": false
+   }
+  ],
+  "img": "img/p/klara-edes-malnabor.webp",
+  "tight": "img/t/klara-edes-malnabor.webp"
+ },
+ {
+  "id": "klara-szaraz-roze-eperbor",
+  "src": "klara-szaraz-roze-eperbor",
+  "name": "Klára száraz rozé eperbor",
+  "line": "klara",
+  "accent": "#C0284A",
+  "arch": "#F7F1F2",
+  "price": 5990,
+  "old": null,
+  "tier": [
+   6,
+   5691
+  ],
+  "avail": true,
+  "short": "100% illatos-üde földieperből reduktív borászati eljárással készült eszményi különlegesség. Lágy eperíze hűvös szódával estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: földieper, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "A Klára száraz Rozé eperbor igazi nyári frissességet azoknak, akik szeretik az illatos, gyümölcsös rozékat! Az eper ízével és illatával kápráztatja el az ínyenceket, könnyed savasságával pedig tökéletes kísérője lehet egy különleges vacsorának vagy baráti összejövetelnek. Kitűnő választás a rozé borok kedvelőinek, akik szeretik a friss, gyümölcsös ízeket.",
+   "Próbáld ki a Klára száraz Rozé eperbort, és élvezd az elegáns ízvilágot és a kellemesen hatást!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "12 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Száraz"
+   ],
+   [
+    "Gyümölcs",
+    "Eperbor Típus Rozé bor"
+   ],
+   [
+    "Egységár",
+    "7.986,66 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1480 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 9,
+  "reviews": [
+   {
+    "d": "2025. 10. 12.",
+    "n": "Robi",
+    "t": "Extra finom!",
+    "v": false
+   },
+   {
+    "d": "2023. 02. 01.",
+    "n": "Szilvi",
+    "t": "Legfinomabb",
+    "v": false
+   },
+   {
+    "d": "2022. 11. 27.",
+    "n": "Ernő",
+    "t": "Szuper gyümölcsbor. Párom és lányom kedvence, No1! : ) Ajándéknak mindig ezt adom és változatlanul örülnek neki.",
+    "v": false
+   },
+   {
+    "d": "2022. 11. 24.",
+    "n": "Károly",
+    "t": "Fantasztikus!!!!!",
+    "v": false
+   },
+   {
+    "d": "2020. 09. 14.",
+    "n": "Noémi N.",
+    "t": "Nem szeretem az édes bort, ezért kóstoltam szárazon, először vonakodva. DE! Amint robbant az íz a számban... na akkor lettem szerelmes! Én. Aki nagyon kényes ízlésvilággal vagyok... Letehetetlen Jah, és fröccsnek (is)!",
+    "v": false
+   },
+   {
+    "d": "2020. 08. 29.",
+    "n": "Lujza",
+    "t": "A Káli medence legjobb fröccsét ebből ittam!",
+    "v": false
+   }
+  ],
+  "img": "img/p/klara-szaraz-roze-eperbor.webp",
+  "tight": "img/t/klara-szaraz-roze-eperbor.webp"
+ },
+ {
+  "id": "klara-szaraz-barrique-meggybor",
+  "src": "klara-szaraz-barrique-meggybor",
+  "name": "Klára száraz barrique meggybor",
+  "line": "klara",
+  "accent": "#7A1C2C",
+  "arch": "#F4EEEF",
+  "price": 5990,
+  "old": null,
+  "tier": [
+   6,
+   5690
+  ],
+  "avail": true,
+  "short": "100% hajnalhordó meggyből hagyományos borászati eljárással készült eszményi különlegesség. FLEX tartályban, speciális tölgyfadongával 8 hónapig érleljük, mely páratlan gyümölcsborrá nemesedik; aperitifként a mély beszélgetésekhez simul. Összetevők: meggy, cukor, víz szulfitot tartalmaz",
+  "long": [
+   "Különleges borélmény, válogatott cigánymeggyből és újfehértói meggyből készülő boraink legjavát összeházasítjuk, majd modern FLEX tartályban, speciális tölgyfadongával 8 hónapig érleljük."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "15 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Száraz"
+   ],
+   [
+    "Gyümölcs",
+    "Meggybor Típus Barrique bor"
+   ],
+   [
+    "Egységár",
+    "7.986,66Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1480 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 1,
+  "reviews": [
+   {
+    "d": "2021. 04. 02.",
+    "n": "Áron T.",
+    "t": "Eper bor mellé választottam, remek választás volt. Kevésbé édes, nagyon érződik benne a gyümölcs, remek választás!",
+    "v": false
+   }
+  ],
+  "img": "img/p/klara-szaraz-barrique-meggybor.webp",
+  "tight": "img/t/klara-szaraz-barrique-meggybor.webp"
+ },
+ {
+  "id": "klara-edes-afonyabor",
+  "src": "klara-edes-afonyabor-075l",
+  "name": "Klára édes áfonyabor",
+  "line": "klara",
+  "accent": "#3A2A6B",
+  "arch": "#F1EFF6",
+  "price": 0,
+  "old": null,
+  "tier": null,
+  "avail": false,
+  "short": "100% éjfekete áfonyából készült. Összetevők: erdei áfonya, cukor, víz szulfitot tartalmaz",
+  "long": [],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "12 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Áfonyabor"
+   ],
+   [
+    "Egységár",
+    "Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1480 gramm"
+   ],
+   [
+    "Technológia",
+    "Reduktív, gyors feldolgozás"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 9,
+  "reviews": [
+   {
+    "d": "2022. 11. 15.",
+    "n": "Lackó",
+    "t": "Kiváló",
+    "v": false
+   },
+   {
+    "d": "2022. 09. 24.",
+    "n": "Melinda",
+    "t": "Szuper!",
+    "v": false
+   },
+   {
+    "d": "2022. 08. 03.",
+    "n": "Laci",
+    "t": "Nem lehet megúnni!",
+    "v": false
+   },
+   {
+    "d": "2022. 05. 16.",
+    "n": "Melinda",
+    "t": "Szuper!",
+    "v": false
+   },
+   {
+    "d": "2021. 12. 14.",
+    "n": "Mária",
+    "t": "Kitűnő aromák jellemzik, mindenkinek ajánlani tudom az ünnep fényét emeli",
+    "v": false
+   },
+   {
+    "d": "2021. 09. 26.",
+    "n": "Lajos N.",
+    "t": "Zamatos áfonya íz, nagyon élvezetes.",
+    "v": false
+   }
+  ],
+  "img": "img/p/klara-edes-afonyabor-075l.webp",
+  "tight": "img/t/klara-edes-afonyabor-075l.webp"
+ },
+ {
+  "id": "friss-narancs",
+  "src": "narancs-edes-gyumolcsbor-075-l",
+  "name": "Narancs édes gyümölcsbor",
+  "line": "friss",
+  "accent": "#1B2A5C",
+  "arch": "#F28C28",
+  "price": 2190,
+  "old": null,
+  "tier": [
+   6,
+   2081
+  ],
+  "avail": true,
+  "short": "A mai trendet követve készítettük el az új termékünket. 50%-ban narancsborból és 50%-ban almaborból, könnyen fogyasztható, mégis gazdag ízvilágú édes gyümölcsbor.",
+  "long": [
+   "Édes Narancs -Almabor 0,75 l:",
+   "50%-ban narancsborból és 50%-ban almaborból, modern reduktív technológiával készült,citrusos, friss narancsos ízvilágú édes gyümölcsbor."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "9 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Almabor"
+   ],
+   [
+    "Kiszerelés",
+    "750 ml"
+   ],
+   [
+    "Évjárat",
+    "2026."
+   ],
+   [
+    "Összetétel",
+    "narancsbor, almabor, cukor, víz,karamell, citromsav, aroma, szulfitot tartalmaz"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "5-8 °C , szódával is kiváló"
+   ],
+   [
+    "Egységár",
+    "2.920 Ft/liter"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/narancs-edes-gyumolcsbor-075-l.webp",
+  "tight": "img/t/narancs-edes-gyumolcsbor-075-l.webp"
+ },
+ {
+  "id": "friss-eper",
+  "src": "eper-edes-gyumolcsbor-075-l",
+  "name": "Eper édes gyümölcsbor",
+  "line": "friss",
+  "accent": "#A3203A",
+  "arch": "#FBD5D9",
+  "price": 2190,
+  "old": null,
+  "tier": [
+   6,
+   2081
+  ],
+  "avail": true,
+  "short": "Napfényízű eperborunk friss, ropogós almaborral készült könnyű, édes gyümölcsbor-házasítása",
+  "long": [
+   "A nyáridéző eperillatok és zamatok elérése érdekében mind az almabor, mind az eperbor 100%-ban friss gyümölcsök felhasználásával készül. A házasítás célja az volt, hogy egy könnyű, frissítő, visszafogottabb alkohollal bíró epres, csajos bor jöjjön létre.",
+   "Az Eper édes gyümölcsbor kitűnő választás lehet, ha valami frissítő és kellemesen édes bort szeretnél kipróbálni barátaiddal vagy egy nehéz nap után két szem jéggel egy szép pohárkával a naplemetébe. Vigyázat: egy palackkal nem lesz elég!",
+   "A reduktív borászati eljárással készült Eper édes gyümölcsbor könnyed és gyümölcsös ízvilága garantáltan elvarázsol majd mindenkit, aki megkóstolja."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "9 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Alma-eperbor"
+   ],
+   [
+    "Kiszerelés",
+    "750 ml"
+   ],
+   [
+    "Évjárat",
+    "2024."
+   ],
+   [
+    "Összetétel",
+    "almabor, eperbor, cukor, víz, aromák, színezőkoncentrátum szőlőhély kivonatból, szulfitot tartalmaz"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "7-10 °C"
+   ],
+   [
+    "Egységár",
+    "2.920 Ft/liter"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 10,
+  "reviews": [
+   {
+    "d": "2024. 08. 14.",
+    "n": "Erika Z.",
+    "t": "Szerintem kimondhatom, hogy a legfinomabb gyümölcsbor amit valaha is ittam. Bevallom kicsit az alma miatt szkeptikus voltam, de azt hiszem, miután már jó pár palackkal rendeltem, megállapítható, hogy kifejezetten ízletes lett ez a két íz együtt. Mint egy mosolygó nyári napfény, így tudnám jellemezni. Kedvenc gyümölcsborom. ❤️",
+    "v": false
+   },
+   {
+    "d": "2024. 05. 30.",
+    "n": "Bertold G.",
+    "t": "Elvarázsol a zamata, fantasztikus",
+    "v": true
+   },
+   {
+    "d": "2023. 12. 12.",
+    "n": "Mónika",
+    "t": "Könnyed nagyon gyümölcsös bor. Alig várom a nyarat hogy fröccsnek is kipróbáljuk a kertben ülve.",
+    "v": false
+   },
+   {
+    "d": "2023. 11. 30.",
+    "n": "Lívia M.",
+    "t": "Nagyon finom bor. Karàcsonyra vettem, de megittuk! Rendelem a következôt! Gyors szàllítàs, nagyon precíz csomagolàs! Köszönöm",
+    "v": false
+   },
+   {
+    "d": "2023. 10. 22.",
+    "n": "Katalin L.",
+    "t": "Nagyon finom.",
+    "v": false
+   },
+   {
+    "d": "2023. 08. 18.",
+    "n": "Gábor Ó.",
+    "t": "Nagyon szeretem és a kedvesem is. Minden nagyobb eseménynél jelen van ez a bor vagy valamelyik Kontyos. Édes de nem erősen alkoholos.",
+    "v": true
+   }
+  ],
+  "img": "img/p/eper-edes-gyumolcsbor-075-l.webp",
+  "tight": "img/t/eper-edes-gyumolcsbor-075-l.webp"
+ },
+ {
+  "id": "friss-malna",
+  "src": "malna-edes-gyumolcsbor-075-l",
+  "name": "Málna édes gyümölcsbor",
+  "line": "friss",
+  "accent": "#FFFFFF",
+  "arch": "#D23C6E",
+  "price": 2190,
+  "old": null,
+  "tier": [
+   6,
+   2081
+  ],
+  "avail": true,
+  "short": "Nyáridéző illatos málnaborunk friss, ropogós almaborral készült könnyű, édes gyümölcsbor-házasítása",
+  "long": [
+   "A Málna Édes Gyümölcsbor a különleges minőségű málnaborunk, és a ropogós almaborunk házasítása annak érdekében, hogy egy könnyed, jól iható, de mégis karakteres bor jöjjön létre.",
+   "A gazdag málna aromák és az édes íz egyedülálló élvezetet nyújt minden kortyban, köszönhetően a reduktív borászati módszereknek. Ideális választás desszertekhez, gyümölcssalátákhoz vagy akár önmagában is megkoronázhat egy romantikus vacsorát.",
+   "A Málna Édes Gyümölcsbor 0,75 literes palackban kapható, mely tökéletes választás lehet bármilyen alkalomra. Legyen szó egy családi összejövetelről vagy egy baráti összejövetelről, ez a bor biztosan lenyűgözi majd az ínyenceket."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "9 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Alma-málnabor"
+   ],
+   [
+    "Kiszerelés",
+    "750 ml"
+   ],
+   [
+    "Évjárat",
+    "2024."
+   ],
+   [
+    "Összetétel",
+    "almabor, málnabor, cukor, víz, aroma, színezőkoncentrátum szőlőhély kivonatból, szulfitot tartalmaz"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "7-10 °C / jégkockával is kiváló /"
+   ],
+   [
+    "Egységár",
+    "2920 Ft/liter"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 4,
+  "reviews": [
+   {
+    "d": "2026. 07. 28.",
+    "n": "Zsuzsanna",
+    "t": "Nagyon finom.",
+    "v": false
+   },
+   {
+    "d": "2023. 07. 01.",
+    "n": "Raberhoffer C.",
+    "t": "Nagyon finomak!",
+    "v": false
+   },
+   {
+    "d": "2023. 04. 03.",
+    "n": "Tímea S.",
+    "t": "Könnyed, kellemes málna íz. Fantasztikus!",
+    "v": false
+   },
+   {
+    "d": "2023. 03. 05.",
+    "n": "Barbara",
+    "t": "mintha egy forró nyári napon egy marék friss érett lédús málnába szagolnék bele. Kellemesen édes.",
+    "v": true
+   }
+  ],
+  "img": "img/p/malna-edes-gyumolcsbor-075-l.webp",
+  "tight": "img/t/malna-edes-gyumolcsbor-075-l.webp"
+ },
+ {
+  "id": "friss-meggy",
+  "src": "meggy-edes-gyumolcsbor-075-l",
+  "name": "Meggy édes gyümölcsbor",
+  "line": "friss",
+  "accent": "#FFF6EA",
+  "arch": "#A3203A",
+  "price": 2190,
+  "old": null,
+  "tier": [
+   6,
+   2081
+  ],
+  "avail": true,
+  "short": "Kirobbanóan zamatos meggyborunk friss, ropogós almaborral készült könnyű, édes gyümölcsbor-házasítása",
+  "long": [
+   "Az intenzív gyümölcsösség elérése érdekében mind az almabor, mind a meggybor 100%-ban friss gyümölcsök felhasználásával készül. A házasítás célja az volt, hogy egy könnyű, frissítő, visszafogottabb alkohollal bíró meggyes, karakteres bor jöjjön létre.",
+   "A Meggy édes gyümölcsbor kitűnő választás lehet, ha valami frissítő és kellemesen édes bort szeretnél kipróbálni; akár egy baráti társasággal, akár a nyári hónapokban pár szem jéggel a naplementét bámulva.",
+   "A reduktív borászati eljárással készült Meggy édes gyümölcsbor könnyed és gyümölcsös ízvilága garantáltan elvarázsol majd mindenkit, aki megkóstolja."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "9 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Alma-meggybor"
+   ],
+   [
+    "Kiszerelés",
+    "750 ml"
+   ],
+   [
+    "Évjárat",
+    "2024."
+   ],
+   [
+    "Összetétel",
+    "almabor, meggybor, cukor, víz,színezőkoncentrátum szőlőhély kivonatból, aroma, szulfitot tartalmaz"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "5-8 °C / jégkockával is kiváló /"
+   ],
+   [
+    "Egységár",
+    "2.920 Ft/liter"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 1,
+  "reviews": [
+   {
+    "d": "2026. 07. 28.",
+    "n": "Zsuzsanna",
+    "t": "Finom, jó ízélmény.",
+    "v": false
+   }
+  ],
+  "img": "img/p/meggy-edes-gyumolcsbor-075-l.webp",
+  "tight": "img/t/meggy-edes-gyumolcsbor-075-l.webp"
+ },
+ {
+  "id": "berry-secco",
+  "src": "berry-secco-075-l",
+  "name": "Berry Secco",
+  "line": "secco",
+  "accent": "#1E3E9A",
+  "arch": "#DCE3FA",
+  "price": 2190,
+  "old": null,
+  "tier": [
+   6,
+   2081
+  ],
+  "avail": true,
+  "short": "Erdei gyümölcs ízű, édes habzó gyümölcsbor, a buborékok kedvelőinek",
+  "long": [
+   "A Berry Secco erdei gyümölcsös, édes szén-dioxiddal dúsított, reduktív borászati eljárással készült különlegesség, ami magában hordozza az összetevők házasításából eredő előnyöket. A ropogós almabor, a különleges málnabor, az eperbor és az ínyencek kedvence, a feketeribizli-bor mind-mind hozzájárultak ehhez a fantasztikus, pezsgésétől friss habzó gyümölcsunknak.",
+   "Kínáld vendégeidnek alaposan behűtve, piros gyümölcsökkel, pár szem jégkockával és azonnal a kedvenc italukká válik."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "8 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Eperbor"
+   ],
+   [
+    "Kiszerelés",
+    "750 ml"
+   ],
+   [
+    "Évjárat",
+    "2024."
+   ],
+   [
+    "Összetétel",
+    "Almabor, Eperbor, Meggybor, Málnabor, Víz, Cukor, Szén-dioxid, Savanyúságot szabályzó anyag (citromsav), Színezék (szőlőhéj kivonat), Antioxidáns (kálium-metabiszulfit), Tartósítószer (kálium-szorbát), Aromák. Szulfitot tartalmaz."
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "5-7 °C"
+   ],
+   [
+    "Bor pezsgése",
+    "Habzó gyümölcsbor"
+   ],
+   [
+    "Egységár",
+    "2.920 Ft/liter"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 3,
+  "reviews": [
+   {
+    "d": "2026. 07. 28.",
+    "n": "Zsuzsanna",
+    "t": "Nagyon finom. Kifejezetten jó kortyolgatni a meleg napokon.",
+    "v": false
+   },
+   {
+    "d": "2025. 06. 25.",
+    "n": "Katalin M.",
+    "t": "Fantasztikusan finom, egyszerűen itatja magát.",
+    "v": false
+   },
+   {
+    "d": "2024. 10. 02.",
+    "n": "Katalin J.",
+    "t": "Nagyon szeretjük a Kontyos minden termékét, igazi áttörés hoztak az édes borok kedvelőinek és még savat sem csinálnak a boraik. A Berry secco még ezen kínálaton belül is különleges. Könnyű habzóbor, amelyben nagyon jól kiérződik a gyümölcsök íze. Édes, mégis könnyed és nem geil. Azoknak is merem ajánlani, akik egyébként nem szeretik az édesebb borokat. Még eggyel kevésbé édes verziója a tonikos Berry secco. Az is isteni finom.",
+    "v": false
+   }
+  ],
+  "img": "img/p/berry-secco-075-l.webp",
+  "tight": "img/t/berry-secco-075-l.webp"
+ },
+ {
+  "id": "berry-secco-tonic",
+  "src": "berry-secco-and-tonic-075-l",
+  "name": "Berry Secco & Tonic",
+  "line": "secco",
+  "accent": "#1B2A5C",
+  "arch": "#FCEFB4",
+  "price": 2190,
+  "old": null,
+  "tier": [
+   6,
+   2081
+  ],
+  "avail": true,
+  "short": "Epres és tonic ízű, édes habzó gyümölcsbor, a buborékok kedvelőinek",
+  "long": [
+   "A Berry Secco & tonic egy szén-dioxiddal frissített különlegesség; a nyári italok kiváló választása, az epres gin-tonic ízvilágát idézve. Újdonságunk a friss, reduktív borászati eljárással készült almabor és a különleges eperbor házasítása, tonic és boróka ízesítéssel. Kinint tartalmaz.",
+   "Kóstold meg Te is az új Berry Secco & tonic -ot, és minden kortyában a nyári estéket pezsdítő emlékek íze fog megjelenni. Behűtve, egy karika lime-al és jéggel az élmény tovább fokozható!"
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "8 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Eperbor"
+   ],
+   [
+    "Kiszerelés",
+    "750 ml"
+   ],
+   [
+    "Évjárat",
+    "2024."
+   ],
+   [
+    "Összetétel",
+    "Almabor, Eperbor, Ribizlibor, Málnabor, Víz, Cukor, Szén-dioxid, Savanyúságot szabályzó anyag (citromsav), Színezék (szőlőhéj kivonat), Antioxidáns (kálium-metabiszulfit), Tartósítószer (kálium-szorbát), Aromák. Szulfitot tartalmaz"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "5-7 C"
+   ],
+   [
+    "Bor pezsgése",
+    "Habzó gyümölcsbor"
+   ],
+   [
+    "Egységár",
+    "2.920 Ft/liter"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/berry-secco-and-tonic-075-l.webp",
+  "tight": "img/t/berry-secco-and-tonic-075-l.webp"
+ },
+ {
+  "id": "berry-secco-yuzu-lime",
+  "src": "berry-secco-yuzu-and-lime-075-l",
+  "name": "Berry Secco Yuzu & Lime",
+  "line": "secco",
+  "accent": "#2E5A12",
+  "arch": "#DDF0C4",
+  "price": 2190,
+  "old": null,
+  "tier": [
+   6,
+   2081
+  ],
+  "avail": true,
+  "short": "Yuzu és Lime ízű, édes habzó gyümölcsbor, a buborékok kedvelőinek.",
+  "long": [
+   "A Berry Secco Yuzu & Lime édes szén-dioxiddal dúsított almabor alapú ital, reduktív borászati eljárással készült különlegesség, ami magában hordozza a citrus és lime frisseségét. A ropogós almabor mind-mind hozzájárultak ehhez a fantasztikus, pezsgésétől friss habzó gyümölcsborunknak.",
+   "Kínáld vendégeidnek alaposan behűtve, lime-al és mentával, pár szem jégkockával és azonnal a kedvenc italukká válik."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "8 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Almabor"
+   ],
+   [
+    "Kiszerelés",
+    "750 ml"
+   ],
+   [
+    "Évjárat",
+    "2025."
+   ],
+   [
+    "Összetétel",
+    "Almabor, Víz, Cukor, Szén-dioxid, Savanyúságot szabályzó anyag (citromsav), Színezék (karamell ), Antioxidáns (kálium-metabiszulfit), Tartósítószer (kálium-szorbát), Aromák. Szulfitot tartalmaz."
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "5 °C"
+   ],
+   [
+    "Bor pezsgése",
+    "Habzó gyümölcsbor"
+   ],
+   [
+    "Egységár",
+    "2.920 Ft/liter"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/berry-secco-yuzu-and-lime-075-l.webp",
+  "tight": "img/t/berry-secco-yuzu-and-lime-075-l.webp"
+ },
+ {
+  "id": "piri-mama-forralt-bora",
+  "src": "piri-mama-forralt-bora-1l",
+  "name": "PIRI Mama forralt bora",
+  "line": "piri",
+  "accent": "#2B3B78",
+  "arch": "#2B3B78",
+  "price": 2190,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Valódi fűszerekkel ízesített kész forralt gyümölcsbor, a tél fűszerei mellett a meggy és a szilva dominál, ahogy Piri mama készíti.",
+  "long": [
+   "PIRI MAMA FORRALT BORA 1 l - valódi fahéj és szegfűszeg hozzáadásával.",
+   "Vidd haza az adventi vásárok forralt bor hangulatát! Otthon csak melegíteni kell és már fogyaszthatod is.",
+   "A közönség régi óhaját tudtuk most teljesíteni: \"az adventeken fogyasztott forralt borainkat, hogyan tudná hazavinni?\", mert épp autóval jött, vagy egy baráti összejövetelre jó lett volna vinni belőle, vagy csak épp meg akarta lepni a párját. Most elkészült, egészségedre!",
+   "Fontos megjegyezni: a bort sosem forraljuk (nevével ellentétben), így max 55-60 C-ig lassan melegítjük. Mindig csak annyit készítsünk belőle egyszerre, ami fél órán belül elfogy, hiszen a melegtől az alkohol gyorsan tud távozni az italból."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "8 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Meggybor"
+   ],
+   [
+    "Kiszerelés",
+    "1000 ml"
+   ],
+   [
+    "Évjárat",
+    "2026."
+   ],
+   [
+    "Összetétel",
+    "meggybor, almabor,szilvabor, víz, izoglükóz szörp, cukor, fahéj, szegfűszeg, aromák, szulfit"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "55 °C"
+   ],
+   [
+    "Egységár",
+    "2190 Ft/liter"
+   ],
+   [
+    "Minőségét megőrzi",
+    "címke szerint (24 hónap, felbontás után 2 hét)"
+   ]
+  ],
+  "rating": "4.93",
+  "rcount": 15,
+  "reviews": [
+   {
+    "d": "2026. 05. 17.",
+    "n": "Kános K.",
+    "t": "Sziasztok szerintem jó íz világa van és kellemesen dominálnak az ízek.Akálom alkalmakra meg beszélésekre és párok aesti enyhe beszélgetéséhez",
+    "v": false
+   },
+   {
+    "d": "2025. 12. 19.",
+    "n": "Piroska B.",
+    "t": "Zseniális",
+    "v": false
+   },
+   {
+    "d": "2025. 12. 02.",
+    "n": "Borsi M.",
+    "t": "Imádjuk tavaly is együtt karácsonyoztunk ezzel az isteni forralt borral és idén is,a legjobb forralt bor ❤️",
+    "v": false
+   },
+   {
+    "d": "2024. 12. 21.",
+    "n": "Zoltán L.",
+    "t": "Nagyon jó,izekben adta a ráirtakat. Kellemes Ünnepeket kívánok a Konhtyos Borház KFT-nek!",
+    "v": false
+   },
+   {
+    "d": "2024. 01. 18.",
+    "n": "Gabriella S.",
+    "t": "Kiváló ízélmény! Egyszerűen felülmúlhatatlan. A webshop kiszolgálása villámgyors, korrekt csomagolás, pontosság... Egyszerűen nagyszerűek! :) A Kontyos üdítően tiszta színfolt, egy zavaros világ elszürkült palettáján.",
+    "v": false
+   },
+   {
+    "d": "2024. 01. 14.",
+    "n": "Csilla G.",
+    "t": "A legjobb készen kapható forralt bor amit eddig kóstoltam!",
+    "v": false
+   }
+  ],
+  "img": "img/p/piri-mama-forralt-bora-1l.webp",
+  "tight": "img/t/piri-mama-forralt-bora-1l.webp"
+ },
+ {
+  "id": "epres-piri-mama-forralt-bora",
+  "src": "epres-piri-mama-forralt-bora-1l",
+  "name": "Epres PIRI Mama forralt bora",
+  "line": "piri",
+  "accent": "#B8322A",
+  "arch": "#E2574C",
+  "price": 2190,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Gyümölcsös ízvilágú kész forralt bor, amelyben az eper, az narancs és egy leheletnyi vanília harmonikusan érvényesül, ahogy Piri mama készíti.",
+  "long": [
+   "EPRES PIRI MAMA FORRALT BORA 1 l - eper, vanília és őszibarack",
+   "Vidd haza az adventi vásárok forralt bor hangulatát! Otthon csak melegíteni kell és már fogyaszthatod is.",
+   "A közönség régi óhaját tudtuk most teljesíteni: \"az adventeken fogyasztott forralt borainkat, hogyan tudná hazavinni?\", mert épp autóval jött, vagy egy baráti összejövetelre jó lett volna vinni belőle, vagy csak épp meg akarta lepni a párját. Most elkészült, egészségedre!",
+   "Fontos megjegyezni: a bort sosem forraljuk (nevével ellentétben), így max 55-60 C-ig lassan melegítjük. Mindig csak annyit készítsünk belőle egyszerre, ami fél órán belül elfogy, hiszen a melegtől az alkohol gyorsan tud távozni az italból."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "8 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Eperbor"
+   ],
+   [
+    "Kiszerelés",
+    "1000 ml"
+   ],
+   [
+    "Évjárat",
+    "2026."
+   ],
+   [
+    "Összetétel",
+    "almabor,eperbor, narancsbor, víz, izoglükóz szörp, cukor, fahéj, aromák, szulfit"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "55 °C"
+   ],
+   [
+    "Egységár",
+    "2190 Ft/liter"
+   ],
+   [
+    "Minőségét megőrzi",
+    "címke szerint (24 hónap, felbontás után 2 hét)"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 1,
+  "reviews": [
+   {
+    "d": "2025. 12. 07.",
+    "n": "Enikő",
+    "t": "Nagyon finom melegen és hidegen is. Nem túl édes. Pont jó. Ajánlom mindenkinek!",
+    "v": false
+   }
+  ],
+  "img": "img/p/epres-piri-mama-forralt-bora-1l.webp",
+  "tight": "img/t/epres-piri-mama-forralt-bora-1l.webp"
+ },
+ {
+  "id": "narancsos-piri-mama-forralt-bora",
+  "src": "piri-mama-narancsos-forralt-bora-1l",
+  "name": "Narancsos PIRI Mama forralt bora",
+  "line": "piri",
+  "accent": "#C25E14",
+  "arch": "#F08A3C",
+  "price": 2190,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Valódi fűszerekkel ízesített kész forralt gyümölcsbor, a tél fűszerei mellett a narancsos a szegfőszeg dominál, ahogy Piri mama készíti.",
+  "long": [
+   "PIRI MAMA NARANCSOS FORRALT BORA 1 l - valódi fahéj és szegfűszeg hozzáadásával.",
+   "Vidd haza az adventi vásárok forralt bor hangulatát! Otthon csak melegíteni kell és már fogyaszthatod is.",
+   "A közönség régi óhaját tudtuk most teljesíteni: \"az adventeken fogyasztott forralt borainkat, hogyan tudná hazavinni?\", mert épp autóval jött, vagy egy baráti összejövetelre jó lett volna vinni belőle, vagy csak épp meg akarta lepni a párját. Most elkészült, egészségedre!",
+   "Fontos megjegyezni: a bort sosem forraljuk (nevével ellentétben), így max 55-60 C-ig lassan melegítjük. Mindig csak annyit készítsünk belőle egyszerre, ami fél órán belül elfogy, hiszen a melegtől az alkohol gyorsan tud távozni az italból."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "8 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Almabor"
+   ],
+   [
+    "Kiszerelés",
+    "1000 ml"
+   ],
+   [
+    "Évjárat",
+    "2026."
+   ],
+   [
+    "Összetétel",
+    "narancsbor, almabor, víz, cukor, fahéj, szegfűszeg, aromák, szulfit"
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "55 °C"
+   ],
+   [
+    "Egységár",
+    "2190 Ft/liter"
+   ],
+   [
+    "Minőségét megőrzi",
+    "címke szerint (24 hónap, felbontás után 2 hét)"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/piri-mama-narancsos-forralt-bora-1l.webp",
+  "tight": "img/t/piri-mama-narancsos-forralt-bora-1l.webp"
+ },
+ {
+  "id": "piri-mama-forro-itala-0",
+  "src": "piri-mama-forro-itala-0-alc",
+  "name": "PIRI Mama forró itala 0%",
+  "line": "piri",
+  "accent": "#2F6E92",
+  "arch": "#9CCBE3",
+  "price": 2190,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Valódi fűszerekkel ízesített forralt bor ízű 70 % - os gyümölcsital, a tél fűszerei mellett a meggy és a szilva dominál, ahogy Piri mama készíti. Felbontás után hűtőben tárolandó, 1 héten belül fogyasztandó !",
+  "long": [
+   "PIRI MAMA FORRÓ ITALA 1 l - Forralt bor ízű szűrt szénsavmentes ízesített gyümölcsital.",
+   "Vidd haza az adventi vásárok forralt italának hangulatát! Felbontás után hűtőben tárolandó, 1 héten belül fogyasztandó !",
+   "Hidegen és melegen is fogyasztható ! Otthon csak melegíteni kell, és már fogyaszthatod is.",
+   "A közönség régi óhaját teljesítettük: „Hogyan tudnánk hazavinni az adventi forralt italainkat?”, hiszen sokan autóval érkeztek, baráti összejövetelre vittek volna belőle, vagy épp meg akarták lepni a párjukat. Most végre elkészült — gyerekek és sofőrök is bátran fogyaszthatják, hiszen alkoholmentes, forralt bor ízű gyümölcsitalról van szó.",
+   "Fontos megjegyezni: az italt sosem forraljuk (nevével ellentétben), hanem legfeljebb 55–60 °C-ig lassan melegítjük. Mindig csak annyit készítsünk belőle egyszerre, ami fél órán belül elfogy, így megőrizhető a legfinomabb gyümölcsös ízvilág."
+  ],
+  "params": [
+   [
+    "Gyümölcs",
+    "Alma"
+   ],
+   [
+    "Gyümölcstartalom",
+    "minimum 70 %"
+   ],
+   [
+    "Alkoholtartalom",
+    "0%"
+   ],
+   [
+    "Kiszerelés",
+    "1000 ml"
+   ],
+   [
+    "Évjárat",
+    "2025."
+   ],
+   [
+    "Összetevők",
+    "gyümölcs sűrítmény (szőlő 23%, alma 19%, meggy 13%, narancs 13%, szilva 3%), szűrt ivóvíz, cukor, fahéj, szegfűszeg,savanyúságot szabályozó anyag citromsav, aromák (vanília, meggy),"
+   ],
+   [
+    "tartósítószer",
+    "kálium–szorbát,nátrium–benzoát."
+   ],
+   [
+    "Ajánlott fogyasztási hőmérséklet",
+    "55 °C"
+   ],
+   [
+    "Egységár",
+    "2190 Ft/liter"
+   ],
+   [
+    "Minőségét megőrzi",
+    "címke szerint (6 hónap, száraz hűvös helyen tárolandó! Felbontás után hűtőben tárolandó,1 héten belül fogyasztandó!)"
+   ],
+   [
+    "Energia",
+    "200 kJ / 47 kcal"
+   ],
+   [
+    "Cukor",
+    "11,3 g"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/piri-mama-forro-itala-0-alc.webp",
+  "tight": "img/t/piri-mama-forro-itala-0-alc.webp"
+ },
+ {
+  "id": "don-cherry",
+  "src": "don-cherry-edes-meggyvermut-075-l",
+  "name": "Don Cherry édes meggyvermut",
+  "line": "don",
+  "accent": "#C8282E",
+  "arch": "#5FB8B3",
+  "price": 4990,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Prémium minőségű édes meggyvermut: friss meggy ágyon érlelt 100% különleges minőségű meggybor, dió pálinka, fűszerek hozzáadásával! Hogyan készítsd el a tökéletes meggyvermutot? Két külön út a meggyvermut élvezetéhez. Válaszd az alkalmadhoz illőt! Klasszikus (hűsítő aperitif) : Ha az esti beszélgetésekhez keresel egy finom, lágyan fűszeres italt.Tölts meg egy poharat roskadásig jéggel, helyezz rá egy narancskarikát. Öntsd rá a 8 cl prémium meggyvermutot . A frissesség és az aromák tökéletes harmóniáját kapod. Intenzív Meggy Shot (\"Shout\" Élmény): A gyors, brutális ízrobbanás kedvelőinek. Egy 5 cl-es pohár aljára helyezz egy meggyszemet ( amit a webshopunkban megtalálsz ). Önts rá 4 cl meggyvermutot. Idd két kortyban, hogy a végén a meggyszem felerősítse az ízélményt! Szulfátot és kinint is tartalmaz !",
+  "long": [],
+  "params": [
+   [
+    "Egységár",
+    "6.653 Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "750 ml"
+   ],
+   [
+    "Alkoholtartalom",
+    "20 %"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "1360 gramm"
+   ],
+   [
+    "Technológia",
+    "Különleges érlelésű, minőségi vermut"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/don-cherry-edes-meggyvermut-075-l.webp",
+  "tight": "img/t/don-cherry-edes-meggyvermut-075-l.webp"
+ },
+ {
+  "id": "don-cherry-gyumolcse",
+  "src": "don-cherry-edes-meggyvermut-025-l-and-meggy-100-g",
+  "name": "Don Cherry gyümölcse",
+  "line": "don",
+  "accent": "#C8282E",
+  "arch": "#5FB8B3",
+  "price": 1990,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Prémium minőségű édes meggyvermut és magozott meggy .Az üveg tartalmaz 20-25 db meggyet, ami 1 liter vermuthoz elegendő gyümölcsöt biztosít a tökéletes meggy shothoz. Elkészítési javaslat ! Intenzív Meggy Shot (A \"Shout\" Élmény): A gyors, brutális ízrobbanás kedvelőinek. Egy 5 cl-es pohár aljára helyezz egy meggyszemet és önts rá 4 cl meggyvermutot. Idd két kortyban, hogy a végén a meggyszem felerősítse az ízélményt! Kinint és szulfátot tartalmaz !",
+  "long": [],
+  "params": [
+   [
+    "Egységár",
+    "7960Ft/l"
+   ],
+   [
+    "Űrmérték",
+    "250ml Gyümölcs (meggy) 100 g ( 20-25 db )"
+   ],
+   [
+    "Alkoholtartalom",
+    "20 %"
+   ],
+   [
+    "Palackzárás",
+    "csavarzáras"
+   ],
+   [
+    "Súly",
+    "400 gramm"
+   ],
+   [
+    "Technológia",
+    "Különleges érlelésű, minőségi vermut és gyümölcs"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/don-cherry-edes-meggyvermut-025-l-and-meggy-100-g.webp",
+  "tight": "img/t/don-cherry-edes-meggyvermut-025-l-and-meggy-100-g.webp"
+ },
+ {
+  "id": "szamocapalinka",
+  "src": "szamocapalinka",
+  "name": "Szamócapálinka",
+  "line": "palinka",
+  "accent": "#8E2430",
+  "arch": "#F6E3E1",
+  "price": 19000,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Hagyományos (kisüsti) Ágyas pálinka",
+  "long": [
+   "Kisüsti módon készült pálinka: friss, zamatos és illatos, csumátlanított földieperből cefrézve, 46% -os alkoholra beállítva a szín kedvéért egy szem kandírozott szamócával ágyazva",
+   "Fogyasztása a zamatok teljessége érdekében pincehidegen ajánlott."
+  ],
+  "params": [
+   [
+    "Gyümölcs",
+    "Szamóca"
+   ],
+   [
+    "Alkoholtartalom",
+    "46%"
+   ],
+   [
+    "Kiszerelés",
+    "500 ml"
+   ],
+   [
+    "Összetétel",
+    "szamócapálinka, kezelt ivóvíz, kandírozott szamóca"
+   ],
+   [
+    "Egységár",
+    "38.000 Ft/liter"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 1,
+  "reviews": [
+   {
+    "d": "2020. 10. 08.",
+    "n": "Judit S.",
+    "t": "Ilyet máskor is veszek!",
+    "v": false
+   }
+  ],
+  "img": "img/p/szamocapalinka.webp",
+  "tight": "img/t/szamocapalinka.webp"
+ },
+ {
+  "id": "meggypalinka",
+  "src": "meggypalinka",
+  "name": "Meggypálinka",
+  "line": "palinka",
+  "accent": "#6E1426",
+  "arch": "#EAD9DE",
+  "price": 13000,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Hagyományos (kisüsti) Ágyas pálinka",
+  "long": [
+   "Kisüsti módon készült pálinka: friss, piacos minőségű Újfehértói fürtös fajtájú meggyből cefrézve, 46% -os alkoholra beállítva a szín kedvéért pár szem aszalt meggyel ágyazva",
+   "Fogyasztása a zamatok teljessége érdekében pincehidegen ajánlott."
+  ],
+  "params": [
+   [
+    "Gyümölcs",
+    "Meggy"
+   ],
+   [
+    "Alkoholtartalom",
+    "46%"
+   ],
+   [
+    "Kiszerelés",
+    "500 ml"
+   ],
+   [
+    "Összetétel",
+    "meggypálinka, kezelt ivóvíz, aszalt meggy"
+   ],
+   [
+    "Egységár",
+    "26 000 Ft/liter"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/meggypalinka.webp",
+  "tight": "img/t/meggypalinka.webp"
+ },
+ {
+  "id": "birspalinka",
+  "src": "birspalinka",
+  "name": "Birspálinka",
+  "line": "palinka",
+  "accent": "#6B5414",
+  "arch": "#F4ECCB",
+  "price": 17000,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Kisüsti pálinka",
+  "long": [
+   "Kisüsti módon készült pálinka: érett birsalmából cefrézve, 46% -os alkoholra beállítva",
+   "Fogyasztása a zamatok teljessége érdekében pincehidegen ajánlott."
+  ],
+  "params": [
+   [
+    "Gyümölcs",
+    "Birs"
+   ],
+   [
+    "Alkoholtartalom",
+    "46%"
+   ],
+   [
+    "Kiszerelés",
+    "500 ml"
+   ],
+   [
+    "Összetétel",
+    "birspálinka, kezelt ivóvíz"
+   ],
+   [
+    "Egységár",
+    "34 000 Ft/liter"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 2,
+  "reviews": [
+   {
+    "d": "2025. 12. 22.",
+    "n": "Ilona",
+    "t": "Ajándékba vásároltam. Nagyon sok jót olvastam róla. A csomagolás nagyon szép, a vásárlás gyors volt mindenkinek csak ajánlani tudom.",
+    "v": false
+   },
+   {
+    "d": "2020. 10. 08.",
+    "n": "Fanni",
+    "t": "Kulonleges es karakteres palinka.",
+    "v": false
+   }
+  ],
+  "img": "img/p/birspalinka.webp",
+  "tight": "img/t/birspalinka.webp"
+ },
+ {
+  "id": "kortepalinka",
+  "src": "kortepalinka",
+  "name": "Körtepálinka",
+  "line": "palinka",
+  "accent": "#6B6A14",
+  "arch": "#EEF0D2",
+  "price": 13000,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Hagyományos (kisüsti technológiával készült) Ágyas pálinka",
+  "long": [
+   "Kisüsti módon készült pálinka: őszi, zamatos, érett Kiffer körtéből cefrézve, 46% -os alkoholra beállítva a szín kedvéért egy darab aszalt körtével ágyazva",
+   "Fogyasztása a zamatok teljessége érdekében pincehidegen ajánlott."
+  ],
+  "params": [
+   [
+    "Gyümölcs",
+    "Körte"
+   ],
+   [
+    "Alkoholtartalom",
+    "46%"
+   ],
+   [
+    "Kiszerelés",
+    "500 ml"
+   ],
+   [
+    "Összetétel",
+    "körtepálinka, kezelt ivóvíz, aszalt körte"
+   ],
+   [
+    "Egységár",
+    "26 000 Ft/liter"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 1,
+  "reviews": [
+   {
+    "d": "2021. 04. 28.",
+    "n": "Erika Z.",
+    "t": "Én nem vagyok pálinkás, inkább boros, de akinek ajándékoztam, annak nagyon ízlett. Ütős, az egyszer biztos.",
+    "v": false
+   }
+  ],
+  "img": "img/p/kortepalinka.webp",
+  "tight": "img/t/kortepalinka.webp"
+ },
+ {
+  "id": "szilvapalinka",
+  "src": "szilvapalinka",
+  "name": "Szilvapálinka",
+  "line": "palinka",
+  "accent": "#4A2E6B",
+  "arch": "#E6DFF0",
+  "price": 13000,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Hagyományos (kisüsti) Ágyas pálinka",
+  "long": [
+   "Kisüsti módon készült pálinka: friss, zamatos és magozott Stanley szilvából cefrézve, 46% -os alkoholra beállítva a szín kedvéért egy szem aszalt szilvával ágyazva",
+   "Fogyasztása a zamatok teljessége érdekében pincehidegen ajánlott."
+  ],
+  "params": [
+   [
+    "Gyümölcs",
+    "Szilva"
+   ],
+   [
+    "Alkoholtartalom",
+    "46%"
+   ],
+   [
+    "Kiszerelés",
+    "500 ml"
+   ],
+   [
+    "Összetétel",
+    "szilvapálinka, kezelt ivóvíz, aszalt szilva"
+   ],
+   [
+    "Egységár",
+    "26 000 Ft/liter"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/szilvapalinka.webp",
+  "tight": "img/t/szilvapalinka.webp"
+ },
+ {
+  "id": "meggy-paros",
+  "src": "meggy-paros",
+  "name": "Meggy Páros",
+  "line": "csomag",
+  "accent": "#A3203A",
+  "arch": "#F6E1E4",
+  "price": 7581,
+  "old": 7980,
+  "tier": null,
+  "avail": true,
+  "short": "100% hajnalbordó meggyből készült, klasszikus édes és különleges, száraz boraink párosítása",
+  "long": [
+   "A",
+   "Meggy Páros tartalmazza borászatunk két kedvencét, a kizárólag friss, ropogós meggyből, hagyományos borászati eljárással készült gyümölcsboraink száraz és édes verzióját.",
+   "Száraz",
+   ": reduktívan készített, szárazra erjesztett cigánymeggy-bor",
+   "Édes: a gyümölcs mustjával visszaédesített klasszikus borkülönlegesség, nyáridéző emlékekkel"
+  ],
+  "params": [],
+  "rating": "5.00",
+  "rcount": 2,
+  "reviews": [
+   {
+    "d": "2024. 08. 05.",
+    "n": "Klára",
+    "t": "Magam részéről a száraz meggybort kedvelem, finom a zamata, óvatosan fogyasztandó, mert \"erős\".",
+    "v": false
+   },
+   {
+    "d": "2023. 12. 21.",
+    "n": "Mónika P.",
+    "t": "Isteni finom, imàdom",
+    "v": false
+   }
+  ],
+  "img": "img/p/meggy-paros.webp",
+  "tight": "img/t/meggy-paros.webp"
+ },
+ {
+  "id": "eper-paros",
+  "src": "eper-paros",
+  "name": "Eper Páros",
+  "line": "csomag",
+  "accent": "#C9314A",
+  "arch": "#FBE3E6",
+  "price": 10431,
+  "old": 10980,
+  "tier": null,
+  "avail": true,
+  "short": "100% üde és illatos földieperből készült, különleges minőségű boraink édes és száraz fajtáinak párosítása",
+  "long": [
+   "Az",
+   "Eper Páros tartalmazza borászatunk két büszkeségét, a kizárólag földieperből, hagyományos borászati eljárással készült gyümölcsboraink száraz és édes verzióját.",
+   "Száraz",
+   ": reduktívan készített, szárazra erjesztett eperbor, üde illatokkal és friss savakkal, rozékedvelők részére ajánlott",
+   "Édes",
+   ": a gyümölcs mustjával visszaédesített eszményi borkülönlegesség, abszolút közöségkedvenc a Kontyos táborában"
+  ],
+  "params": [],
+  "rating": "5.00",
+  "rcount": 6,
+  "reviews": [
+   {
+    "d": "2025. 05. 30.",
+    "n": "Dávid",
+    "t": "Nagyon finom,olyan mint ha magát az epret falatoznám. Nemrégiben meg kóstoltam a cherydady-t és vàrom mikor lehet rendelni.",
+    "v": false
+   },
+   {
+    "d": "2024. 07. 02.",
+    "n": "Mihaly",
+    "t": "Nagyon finom és isteni minőség",
+    "v": false
+   },
+   {
+    "d": "2023. 04. 12.",
+    "n": "Icu",
+    "t": "Ebben a párosításban sem csalódtunk!",
+    "v": false
+   },
+   {
+    "d": "2022. 12. 04.",
+    "n": "Alexandra",
+    "t": "Az édes az én kedvencem a száraz pedig a férjem kedvence lett! Pont olyan jó páros, mint mi vagyunk!",
+    "v": true
+   }
+  ],
+  "img": "img/p/eper-paros.webp",
+  "tight": "img/t/eper-paros.webp"
+ },
+ {
+  "id": "konnyu-trio",
+  "src": "konnyu-trio-483",
+  "name": "Könnyű Trió",
+  "line": "csomag",
+  "accent": "#D23C6E",
+  "arch": "#FCE3EC",
+  "price": 6241,
+  "old": 6570,
+  "tier": null,
+  "avail": true,
+  "short": "Válogatás a nyáridéző, prémium gyümölcsboraink érdekházasságaiból",
+  "long": [
+   "A csomag tartalma: Édes Alma-eperbor 0,75 l:",
+   "100% roppanós almából és eperből reduktív borászati eljárással készült frissítő különlegesség. Kellemesen édes, kirobbanóan epres, könnyed alkoltartalmú gyümölcsbor házasítás",
+   "Édes Alma-Meggybor 0,75 l: reduktív, könnyű almabor és az intenzív zamatú cigánymeggy házasításából, reduktív borászati eljárással készült, visszafogott alkohollal bíró, karakteres, meggyes frissítő",
+   "Édes Alma-Málnabor 0,75 l: a Málna Édes Gyümölcsbor a különleges minőségű málnaborunk, és a ropogós almaborunk házasítása annak érdekében, hogy egy könnyed, jól iható, de mégis karakteres bor jöjjön létre. A gazdag málna aromák és az édes íz egyedülálló élvezetet nyújt minden kortyban"
+  ],
+  "params": [],
+  "rating": "5.00",
+  "rcount": 2,
+  "reviews": [
+   {
+    "d": "2025. 12. 05.",
+    "n": "Tibor P.",
+    "t": "Igazából édesanyámnak rendeltem karácsonyi ajándéknak mivel soha nem ivott még eperbort.A párom és én már nem egy borukat kostoltuk és minddel nagyon meg voltunk elégedve fantasztikusan jó ízűek!!",
+    "v": false
+   },
+   {
+    "d": "2025. 03. 24.",
+    "n": "Katalin",
+    "t": "Nagyon finom,könnyed,jó zamatú borok.",
+    "v": false
+   }
+  ],
+  "img": "img/p/konnyu-trio-483.webp",
+  "tight": "img/t/konnyu-trio-483.webp"
+ },
+ {
+  "id": "bubi-paros",
+  "src": "bubi-paros-482",
+  "name": "Bubi Páros",
+  "line": "csomag",
+  "accent": "#1E3E9A",
+  "arch": "#DCE3FA",
+  "price": 4161,
+  "old": 4380,
+  "tier": null,
+  "avail": true,
+  "short": "Erdei gyümölcsös, édes habzó gyümölcsboraink, borászatunk újdonságai a buborékok kedvelőinek",
+  "long": [
+   "A Berry Secco borcsalád ötleténél a gyümölcsösség, frissesség volt a fő kritérium. Az erdei gyümölcsös, édes szén-dioxiddal dúsított, reduktív borászati eljárással készült különlegesség magában hordozza az összetevők házasításából eredő előnyöket. A ropogós almabor, a különleges málnabor, az eperbor és az ínyencek kedvence, a feketeribizli-bor mind-mind hozzájárultak ezekhez a fantasztikus, pezsgésétől friss habzó gyümölcsboroknak.",
+   "A Berry Secco & Tonic a mai, fiatalok körében közkedvelt gin-tonicos ízvilágot követi, tompítva az édes ízeken.",
+   "Kínáld vendégeidnek alaposan behűtve, piros gyümölcsökkel, pár szem jégkockával és azonnal a kedvenc italukká válik."
+  ],
+  "params": [
+   [
+    "Alkoholtartalom",
+    "9 %vol"
+   ],
+   [
+    "Édes/Száraz",
+    "Édes"
+   ],
+   [
+    "Gyümölcs",
+    "Eperbor Típus Rozé bor"
+   ]
+  ],
+  "rating": "5.00",
+  "rcount": 1,
+  "reviews": [
+   {
+    "d": "2025. 03. 24.",
+    "n": "Katalin",
+    "t": "Könnyű,zamatos ízvilág.",
+    "v": false
+   }
+  ],
+  "img": "img/p/bubi-paros-482.webp",
+  "tight": "img/t/bubi-paros-482.webp"
+ },
+ {
+  "id": "kontyos-borospohar",
+  "src": "kontyos-borospohar-388",
+  "name": "Kontyos borospohár",
+  "line": "kiegeszito",
+  "accent": "#034EA2",
+  "arch": "#E3ECF8",
+  "price": 1800,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "KÉK és PIROS színben választható! A kecses, női kezekhez tervezett idomaival egy felejthetetlen élményt nyújt gyümölcsborainkhoz",
+  "long": [
+   "Anyaga kristályüveg",
+   "Űrmértéke",
+   "300 ml"
+  ],
+  "params": [],
+  "rating": "5.00",
+  "rcount": 3,
+  "reviews": [
+   {
+    "d": "2022. 09. 06.",
+    "n": "Tünde",
+    "t": "Gyönyörű,kecses pohár, jó kézbevenni.",
+    "v": false
+   },
+   {
+    "d": "2021. 11. 30.",
+    "n": "Zsolt",
+    "t": "A Kontyos borok mellé saját pohár dukál.",
+    "v": true
+   }
+  ],
+  "img": "img/p/kontyos-borospohar-388.webp",
+  "tight": "img/t/kontyos-borospohar-388.webp"
+ },
+ {
+  "id": "piri-mama-bogreje",
+  "src": "piri-mama-bogreje-032-l",
+  "name": "PIRI Mama bögréje 0,32 l",
+  "line": "kiegeszito",
+  "accent": "#C25E14",
+  "arch": "#FBE7D6",
+  "price": 1500,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Hőálló üvegbögre a tökéletes forralt boros élményhez",
+  "long": [],
+  "params": [],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/piri-mama-bogreje-032-l.webp",
+  "tight": "img/t/piri-mama-bogreje-032-l.webp"
+ },
+ {
+  "id": "meggymag-parna",
+  "src": "meggymag-parna",
+  "name": "Meggymag párna",
+  "line": "kiegeszito",
+  "accent": "#7A1C2C",
+  "arch": "#F2E6E8",
+  "price": 1500,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "A meggymag párna sokáig sugározza a gyógyító meleget, illetve fájdalomra enyhülést adó hideget.",
+  "long": [
+   "Nem hiányozhat senki otthonából!",
+   "(A leírást a www.nyirfatornac.hu oldalon találtuk, ők mindent összeszedtek, amit tudni kell a párnáról. Köszönjük nekik.)",
+   "A nyári napsütés energiáját magába zárva az apró meggymagok természetes megoldást nyújtanak fájdalomra, stresszre.",
+   "Gyermekeknél, ha bármilyen fülpanasz jelentkezik, az orvosi kezelés mellett kitűnő segítőtárs természetes alapanyagokból.",
+   "A meggymag párna megnyugtathatja a lurkó pocakját, ennek köszönhetően a sírás is megszűnik.",
+   "Görcsoldásra, fájdalomcsillapításra is kiváló a népi megfigyelések szerint.",
+   "Hasi fájdalmak, mensruációs görcsök enyhítésére remek megoldás lehet.",
+   "Fül-és hasfájásra 1-2 percig melegíteni, majd a kívánt testrészre helyezni. Próbáld ki, oszd meg a tapasztalataidat!",
+   "Lehűtve kiváló zúzódásokra, hideg borogatásként, ficamokra, fejfájásra enyhülést hozhat.",
+   "Masszírozó jellegénél fogva nyugtató hatású, így alvászavarok esetén kiváló megoldás lehet. Masszírozd át, ill. masszíroztasd a hátad, végtagjaidat, válladat a meggymag párnával lefekvés előtt, érdemes kipróbálnod a hatását!",
+   "Ha a lábaid hidegek, fáznak, nem kell mást tenned, mint felmelegíted a meggymag párnát, a lábadhoz teszed a takaró alá.",
+   "A meggymag párna közérzet javító hatása népgyógyászati megfigyeléseken, tapasztalatokon alapul.",
+   "Melegítési javaslat: sütőben alufóliába tekerve (100˚C -on 15-20 perc)",
+   "Tűzveszély miatt melegítéskor ne hagyd a meggymag párnát felügyelet nélkül!",
+   "Használat előtt győződj meg róla, hogy ne legyen túlforrósodva a zsák! Ha túl forrónak bizonyul, tegyél egy réteget (valamilyen ruhaanyagot) a testrész és a párna közé.",
+   "Hűtési javaslat: hűtőben vagy fagyasztóban, műanyag zacskóba téve.",
+   "A meggymag párna tisztítása:",
+   "Kézzel vagy gépben (kíméletes programon) jól tisztítható. Ecetes vízben öblíthető. A fertőtlenítés megoldható kifőzéssel. A vászon strapabíró, nem feslik, nem rojtosodik, jól szellőzik.",
+   "Ami nagyon fontos!!!: Mosás után egyből meg kell szárítani a magokat akár napra vagy radiátorra téve. Lényeges, hogy hagyjunk megfelelő időt a magok száradásának, ami legalább 1-2 napig is eltarthat.",
+   "Tárolása száraz, hűvös helyen történjen.",
+   "A zsákocska mérete",
+   ": 170 x 140 mm",
+   "Könnyen elfér a fagyasztóban vagy a mikróban, a kicsi gyermeknek nem okoz terhet a meggymag párna súlya.",
+   "Saját termésű meggyünkből bort készítettünk, a magját átmostuk és napon szárítottuk, saját kezűleg tisztítottuk.",
+   "Így a meggymagpárna töltete garantáltan tiszta, antiallergén; a szövet anyaga pamutvászon."
+  ],
+  "params": [],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/meggymag-parna.webp",
+  "tight": "img/t/meggymag-parna.webp"
+ },
+ {
+  "id": "kontyos-szovettaska",
+  "src": "kontyos-szovettaska-392",
+  "name": "Kontyos szövettáska",
+  "line": "kiegeszito",
+  "accent": "#1B2A5C",
+  "arch": "#ECE7DD",
+  "price": 1200,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Hosszú fülű, női vászontáska; ideális és kényelmes a napi bevásárláshoz",
+  "long": [],
+  "params": [],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/kontyos-szovettaska-392.webp",
+  "tight": "img/t/kontyos-szovettaska-392.webp"
+ }
+]
