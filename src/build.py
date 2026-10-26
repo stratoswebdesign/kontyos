@@ -602,7 +602,7 @@ def product(p):
 <section class="wrap p-hero"><div class="p-media"><div class="arch"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{badge}</div>
 <div class="p-buy"><span class="kicker">{LINE_LABEL[L]}</span><h1>{e(p['name'])}</h1>{rating}
 <p style="font-size:16px;line-height:1.6;opacity:.9">{e(p['short'])}</p>{f'<p style="font-size:13px;font-weight:700;opacity:.75">{e(meta)}</p>' if meta else ''}
-{chips}{packs}<div data-buy="{p['id']}" style="display:flex;flex-direction:column;gap:16px">{buy}</div>{ship}</div></section>
+{chips}{packs}<div data-buy="{p['id']}" style="display:flex;flex-direction:column;gap:16px">{buy}</div>{ship}{pdp.upsell(p)}</div></section>
 {story}
 <section class="p-info" style="{info_style}"><div class="wrap"><div class="desc"><h2 class="h2" style="font-size:36px">A termékről</h2><p>{e(p['short'])}</p>{long}</div>
 <div class="side">{f'<dl class="kv">{params}</dl>' if params else ''}{legal}</div></div></section>

@@ -167,6 +167,43 @@ def cross(ids, title, ring_of, h2style=''):
     return f'<section class="pd-wrap pd-cross"><h2 style="{h2style}">{title}</h2><div class="pd-cgrid">' + ''.join(mini_card(P[i], ring_of(P[i])) for i in ids if i in P) + '</div></section>'
 
 
+def prem_buy(p, kind):
+    """Klára (k) és Don Cherry (d) vásárlási blokk: 1/3/6 palack, saját arculatú ingyenes szállítás csík."""
+    tier = p['tier']
+    unit6 = tier[1] if tier else p['price']
+    lab = 'üveg' if p['id'] == 'don-cherry-gyumolcse' else 'palack'
+    packs = f'<div class="pd-ppacks {kind}" role="group" aria-label="Kiszerelés">' + ''.join(
+        f'<button type="button" data-pack="{n}" aria-pressed="{"true" if n == 1 else "false"}"><strong>{n} {lab}</strong><span>{ft(unit6 if (tier and n >= tier[0]) else p["price"])} / {lab}</span>{f"<em>−{round((1 - tier[1] / p['price']) * 100)}%</em>" if tier and n >= tier[0] else ""}</button>' for n in (1, 3, 6)) + '</div>'
+    return f'''<div class="pd-pbox {kind}" data-buy="{p['id']}">
+{packs}
+<div class="pd-kbuy"><span class="pr" data-unit>{ft(p['price'])}</span><span data-q id="q" hidden>1</span><button type="button" class="pd-kbtn" data-add="{p['id']}" data-qty-from="#q">KOSÁRBA · <span data-line>{ft(p['price'])}</span></button></div>
+<div class="pd-pfree {kind}"><span data-free-text></span><div class="trk"><i data-free-bar></i></div></div></div>'''
+
+
+UPSELL = {
+    'klasszikus': lambda p: ['kontyos-borospohar', 'szaraz-meggybor' if p['id'] != 'szaraz-meggybor' else 'edes-meggybor', 'don-cherry'],
+    'klara': lambda p: ['kontyos-borospohar', next(i for i in ('klara-szaraz-roze-eperbor', 'klara-szaraz-barrique-meggybor', 'klara-edes-malnabor') if i != p['id']), 'don-cherry'],
+    'piri': lambda p: ['piri-mama-bogreje', next(i for i in ('narancsos-piri-mama-forralt-bora', 'epres-piri-mama-forralt-bora', 'piri-mama-forralt-bora') if i != p['id']), 'kontyos-szovettaska'],
+    'don': lambda p: ['don-cherry-gyumolcse' if p['id'] == 'don-cherry' else 'don-cherry', 'kontyos-borospohar', 'klara-szaraz-barrique-meggybor'],
+    'friss': lambda p: [next(i for i in ('friss-eper', 'friss-malna', 'friss-meggy') if i != p['id']), 'berry-secco', 'kontyos-borospohar'],
+    'secco': lambda p: [next(i for i in ('berry-secco-tonic', 'berry-secco-yuzu-lime', 'berry-secco') if i != p['id']), 'friss-eper', 'kontyos-borospohar'],
+    'palinka': lambda p: [next(i for i in ('szamocapalinka', 'birspalinka', 'meggypalinka') if i != p['id']), 'meggymag-parna', 'don-cherry'],
+    'csomag': lambda p: ['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry'],
+    'kiegeszito': lambda p: ['edes-meggybor', 'klara-edes-malnabor', 'piri-mama-forralt-bora'],
+}
+
+
+def upsell(p, kind=''):
+    """Kis „illik mellé” csík a vásárlási blokk alatt – összeillő termékek egy kattintásos kosárba tétellel."""
+    r = '../'
+    P = _('P')
+    ids = [i for i in UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3]
+    if not ids:
+        return ''
+    items = ''.join(f'''<li><a href="{r}{_('url')(P[i])}" class="im"><img src="{r}{P[i]['img']}" alt="" loading="lazy"></a><a href="{r}{_('url')(P[i])}" class="nm">{e(P[i]['name'])}<small>{ft(P[i]['price'])}</small></a><button type="button" data-add="{i}" aria-label="{e(P[i]['name'])} kosárba">+</button></li>''' for i in ids)
+    return f'<div class="pd-ups {kind}"><p>Illik mellé</p><ul>{items}</ul></div>'
+
+
 # ---------------------------------------------------------------- KLASSZIKUS (Termek.dc)
 def caption(p):
     m = re.search(r'100%\s+(?:[\w\-]+\s+)*?([\w\-]+(?:ből|ból))', p['short'])
@@ -211,6 +248,7 @@ def t_klasszikus(p):
 <div class="pd-spec"><span>℮ {vol}</span><span>{alc}</span><span>{e(taste)}</span></div>
 {buy}
 {ship_dl('#E2DACB', '#39404F')}
+{upsell(p)}
 </div></div></div></section>
 {info(p, c)}
 <section class="pd-illu"><img src="{r}img/photo/bottles_shadow.webp" alt="" loading="lazy"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div></section>
@@ -232,7 +270,7 @@ def t_klara(p):
     tiertxt = f'6 palacktól {ft(tier[1])} / palack · ' if tier else ''
     nm = p['name'].replace('Klára ', '')
     if p['avail']:
-        buy = f'''<div class="pd-kbuy" data-buy="{p['id']}"><span class="pr">{ft(p['price'])}</span><span data-q id="q" hidden>1</span><button type="button" class="pd-kbtn" data-add="{p['id']}" data-qty-from="#q">KOSÁRBA</button></div>'''
+        buy = prem_buy(p, 'k')
     else:
         buy = '<div class="pd-kbuy"><span class="pr" style="font-size:24px">Elfogyott</span><button type="button" class="pd-kbtn" disabled style="opacity:.5">ÉRTESÍTÉST KÉREK</button></div>'
     others = [x for x in CAT if x['line'] == 'klara' and x['id'] != p['id']]
@@ -253,6 +291,7 @@ def t_klara(p):
 <dl class="pd-mini"><dt>KISZERELÉS</dt><dd>{vol.replace('750 ml', '0,75 l')}</dd><dt>ALKOHOL</dt><dd>{alc}</dd>{f'<dt>ZÁRÁS</dt><dd>{e(zar)}</dd>' if zar else ''}</dl>
 {buy}
 {ship_dl('#EEE8E1', '#6A6F7E', 12)}
+{upsell(p, 'k')}
 <p class="pd-small">{tiertxt}{e(param(p, 'Egységár') or '')}<br>Összetevők: {e(ingr(p).replace(' szulfitot tartalmaz', ''))} · <strong>szulfitot tartalmaz</strong></p>
 </div></section>
 {info(p, c)}
@@ -293,6 +332,7 @@ def t_piri(p):
 {chips}
 {buy}
 {ship_dl('#E2DACB', '#39404F')}
+{upsell(p)}
 </div></section>
 {info(p, c)}
 <section class="pd-steps"><div class="pd-wrap"><div class="tx"><p class="pd-lab" style="color:#F3C66B">HÁROM LÉPÉS</p><ol><li><b>1</b><span>Nyisd ki a palackot.</span></li><li><b>2</b><span>Melegítsd fel, ne forrald.</span></li><li><b>3</b><span>Bögrébe vele – kész.</span></li></ol>
@@ -326,8 +366,9 @@ def t_don(p):
 <p style="margin-top:14px">{stars_link(p, '#C8282E')}</p></div>
 <p class="pd-lead" style="color:#4A3436">{e(short_desc(p))}</p>
 <dl class="pd-mini"><dt>ALKOHOL</dt><dd>{e(alc)}</dd><dt>KISZERELÉS</dt><dd>{e(vol)}</dd><dt>EGYSÉGÁR</dt><dd>{e(param(p, 'Egységár') or '')}</dd>{f'<dt>TARTALMAZ</dt><dd style="font-weight:800">{e(contains)}</dd>' if contains else ''}</dl>
-<div class="pd-kbuy" data-buy="{p['id']}"><span class="pr" style="font-family:var(--sans);font-weight:800">{ft(p['price'])}</span><span data-q id="q" hidden>1</span><button type="button" class="pd-kbtn" style="background:#C8282E;border-color:#C8282E;font-weight:800" data-add="{p['id']}" data-qty-from="#q">KOSÁRBA</button></div>
+{prem_buy(p, 'd')}
 {ship_dl('#EAF3F2', '#4A3436')}
+{upsell(p, 'd')}
 </div></section>
 {info(p, c)}
 <section class="pd-wrap pd-dphotos"><img src="{r}img/photo/don_cimke.webp" alt="Don Cherry címke közelről, meggyekkel" loading="lazy"><img src="{r}img/photo/don_ajandek.webp" alt="Don Cherry palack és üveg meggy felülnézetből" loading="lazy"></section>
@@ -408,6 +449,7 @@ def t_fsp(p):
 {chips}
 {buy}
 {ship_dl(cf['rule'], 'inherit')}
+{upsell(p)}
 </div></section>
 {story}
 {info(p, c)}

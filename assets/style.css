@@ -757,3 +757,51 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
 .m-search nav a{flex:none;display:flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:800;text-decoration:none;color:#1B2A5C}
 @media (max-width:860px){main>.m-search{display:block}}
 @media (max-width:860px){.pd-gal .pd-arch{width:min(100%,520px)}}@media (min-width:600px) and (max-width:860px){.pd-gal .pd-arch,.pd-pwrap .pd-arch{height:560px}}
+/* Klára / Don: palackszám-választó és saját ingyenes szállítás csík */
+.pd-pbox{display:flex;flex-direction:column;gap:20px}
+.pd-ppacks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pd-ppacks button{position:relative;min-height:60px;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:inherit}
+.pd-ppacks strong{font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.pd-ppacks span{font-size:11px;letter-spacing:.04em;opacity:.65}
+.pd-ppacks em{position:absolute;top:-9px;right:8px;padding:1px 8px;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.08em}
+.pd-ppacks.k button{border:1px solid #EEE8E1;border-radius:0;font-family:var(--sans)}
+.pd-ppacks.k button[aria-pressed="true"]{border-color:#1B2A5C;box-shadow:inset 0 0 0 1px #1B2A5C}
+.pd-ppacks.k em{background:#fff;color:#C0284A;border:1px solid #C0284A;border-radius:999px}
+.pd-ppacks.d button{border:2px solid #EAF3F2;border-radius:999px;color:#2A1416}
+.pd-ppacks.d strong{font-weight:800}
+.pd-ppacks.d button[aria-pressed="true"]{border-color:#5FB8B3;background:#F2FAF9}
+.pd-ppacks.d em{background:#C8282E;color:#fff;border-radius:999px}
+.pd-pbox .pd-kbuy{padding-top:0}
+.pd-pfree{display:flex;flex-direction:column;gap:10px}
+.pd-pfree .trk{position:relative;overflow:hidden}
+.pd-pfree .trk i{display:block;height:100%;transition:width .3s}
+.pd-pfree.k span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6A6F7E}
+.pd-pfree.k .trk{height:1px;background:#EEE8E1;overflow:visible}
+.pd-pfree.k .trk i{height:3px;margin-top:-1px;background:#C0284A}
+.pd-pfree.d span{font-size:13px;font-weight:700;color:#2A1416}
+.pd-pfree.d .trk{height:10px;border-radius:999px;background:#EAF3F2;box-shadow:inset 0 0 0 1px #D6ECEA}
+.pd-pfree.d .trk i{border-radius:999px;background:repeating-linear-gradient(90deg,#C8282E 0 3px,#9E1B21 3px 5px)}
+/* „Illik mellé” upsell csík */
+.pd-ups{border-top:1px dashed currentColor;padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.pd-ups>p{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.pd-ups ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pd-ups li{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.75);border:1px solid rgba(27,42,92,.12);border-radius:8px;padding:6px;min-width:0}
+.pd-ups .im{flex:none;width:44px;height:44px;border-radius:6px;background:#F3EEE5;display:flex;overflow:hidden}
+.pd-ups .im img{width:100%;height:100%;object-fit:contain}
+.pd-ups .nm{flex:1;min-width:0;font-size:12px;font-weight:700;line-height:1.25;text-decoration:none;color:inherit;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pd-ups .nm small{display:block;font-weight:800;opacity:.75;margin-top:2px}
+.pd-ups button{flex:none;width:30px;height:30px;border:0;border-radius:50%;background:#EF4E73;color:#fff;font:800 17px/1 var(--sans);cursor:pointer}
+.pd-ups.k{border-top-style:solid;border-color:#EEE8E1;color:#1B2A5C}
+.pd-ups.k li{border-radius:0;border-color:#EEE8E1;background:#fff}
+.pd-ups.k button{background:#1B2A5C}
+.pd-ups.d{border-color:#5FB8B3;color:#2A1416}
+.pd-ups.d li{border-color:#D6ECEA;background:#F2FAF9}
+.pd-ups.d .im{background:#fff}
+.pd-ups.d button{background:#C8282E}
+.p-buy .pd-ups{color:var(--ink)}
+@media (max-width:860px){.pd-ups ul{grid-template-columns:1fr}.pd-ups li{padding:8px}.pd-ups .nm{font-size:13px}
+  .pd-pbox .pd-kbtn{display:none}}
+.pd-pbox.d .pd-kbtn{background:#C8282E;border-color:#C8282E;font-weight:800}
+.pd-pbox.d .pr{font-family:var(--sans);font-weight:800;font-size:32px}
+.pd-ups.k ul,.pd-ups.d ul{grid-template-columns:1fr}
+.pd-ups.k .nm,.pd-ups.d .nm{font-size:13px}
