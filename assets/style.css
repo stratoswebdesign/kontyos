@@ -805,3 +805,14 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
 .pd-pbox.d .pr{font-family:var(--sans);font-weight:800;font-size:32px}
 .pd-ups.k ul,.pd-ups.d ul{grid-template-columns:1fr}
 .pd-ups.k .nm,.pd-ups.d .nm{font-size:13px}
+/* Klára / Don: a kép maradjon fent, első megnyitásra látszódjon (görgetéskor is kísér) */
+@media (min-width:861px){
+  .pd-hero-kl,.pd-hero-d{align-items:flex-start;padding-top:clamp(30px,4vw,60px)}
+  .pd-hero-kl .pd-klimg,.pd-hero-d .pd-gal{position:sticky;top:24px;align-self:flex-start}
+  .pd-hero-p .pd-gal,.pd-hero-f .pd-gal,.pd-hero-k .pd-gal{position:sticky;top:24px;align-self:flex-start}
+}
+@media (min-width:861px){
+  .pd-gal .pd-arch,.pd-pwrap .pd-arch{height:min(625px,calc(100vh - 200px));width:auto;max-width:100%;aspect-ratio:4/5}
+  .pd-pwrap{width:auto}
+  .pd-klimg img{height:min(560px,calc(100vh - 210px))}
+}
