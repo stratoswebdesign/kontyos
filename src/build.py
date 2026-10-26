@@ -9,6 +9,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAT = json.load(open(os.path.join(ROOT, 'src', 'catalog.json'), encoding='utf-8'))
 P = {p['id']: p for p in CAT}
 LIMIT = 20000
+VER = 'dev'
 e = lambda s: html.escape(str(s), quote=True)
 
 
@@ -76,7 +77,7 @@ def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra='', to
 <link rel="icon" href="{r}img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{r}assets/style.css">
+<link rel="stylesheet" href="{r}assets/style.css?v={VER}">
 {extra_style}
 </head>
 <body data-page="{page}" class="{body_cls}">
@@ -107,8 +108,8 @@ def footer(r):
 <div><h4>Infó</h4><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185 · Demó: Stratos Webdesign</p>
 </div></footer>
-<script src="{r}assets/catalog.js"></script>
-<script src="{r}assets/app.js"></script>
+<script src="{r}assets/catalog.js?v={VER}"></script>
+<script src="{r}assets/app.js?v={VER}"></script>
 </body></html>
 '''
 
@@ -739,7 +740,13 @@ def info():
 
 
 def main():
+    global VER
     write_catalog_js()
+    import hashlib
+    h = hashlib.sha1()
+    for f in ('assets/style.css', 'assets/app.js', 'assets/catalog.js'):
+        h.update(open(os.path.join(ROOT, f), 'rb').read())
+    VER = h.hexdigest()[:10]
     index()
     category()
     simple_list('friss.html', 'FRISS gyümölcsbor és Berry Secco | Kontyos', 'Könnyű, színes FRISS gyümölcsborok és Berry Secco 2190 Ft-tól.', 'FRISS & Berry Secco',
