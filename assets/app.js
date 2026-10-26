@@ -251,6 +251,29 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   window.addEventListener('load', fit);
 
+  /* Keresés (kereses.html) – kliensoldali, a katalógusból */
+  var sres = document.getElementById('search-res');
+  if (sres) {
+    var norm = function (t) { return (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
+    var q = ''; try { q = new URLSearchParams(location.search).get('q') || ''; } catch (e) {}
+    var inp = document.getElementById('sq'); if (inp) inp.value = q;
+    var words = norm(q).split(/\s+/).filter(Boolean);
+    var hits = Object.keys(K.p).filter(function (id) { var p = K.p[id], h = norm(p.n + ' ' + p.sub + ' ' + id); return words.length && words.every(function (w) { return h.indexOf(w) >= 0; }); });
+    document.getElementById('search-sum').textContent = q ? (hits.length + ' találat: „' + q + '”') : 'Írd be, mit keresel.';
+    sres.innerHTML = hits.map(function (id) { var p = K.p[id]; return '<div class="pcard" style="position:relative"><a class="in" href="' + ROOT + p.url + '" style="text-decoration:none;display:flex;flex-direction:column;flex:1"><div class="ph" style="--tint:' + p.tint + '">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="" loading="lazy">' : '') + '</div><div class="tx"><span class="k">' + esc(p.sub) + '</span><span class="n">' + esc(p.n) + '</span><div class="row"><span class="pr">' + (p.price ? fmt(p.price) : 'Elfogyott') + '</span></div></div></a><div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="' + id + '" aria-label="Kosárba">+</button></div></div>'; }).join('');
+  }
+
+  /* Termékgaléria (íves ablak + bélyegképek) */
+  document.querySelectorAll('[data-gal]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var main = document.querySelector('[data-gal-main]'); if (!main) return;
+      main.src = b.getAttribute('data-gal');
+      main.className = b.getAttribute('data-fit') === 'cover' ? 'fit-cover' : 'fit-contain';
+      var cap = main.parentNode.querySelector('.cap'); if (cap) cap.hidden = b.getAttribute('data-fit') === 'cover';
+      document.querySelectorAll('[data-gal]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    });
+  });
+
   /* Visszaszámláló (Black Friday) */
   var cds = document.querySelectorAll('[data-countdown]');
   function tick() {

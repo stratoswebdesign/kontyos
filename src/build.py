@@ -3,7 +3,9 @@
 Futtatás a repo gyökeréből:  python3 src/build.py
 Bemenet: src/catalog.json  →  kimenet: *.html, termek/*.html, assets/catalog.js
 """
-import json, os, html, re
+import json, os, html, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import pdp
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAT = json.load(open(os.path.join(ROOT, 'src', 'catalog.json'), encoding='utf-8'))
@@ -86,14 +88,15 @@ def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra='', to
 '''
 
 
-def header(r, cur=''):
+def header(r, cur='', theme='pill', back=None):
     links = ''.join(f'<a href="{r}{h}" class="{c}"{" aria-current=page" if h == cur else ""}>{t}</a>' for h, t, c in NAV)
     dlinks = ''.join(f'<a href="{r}{h}">{t}</a>' for h, t, c in NAV)
-    return f'''<header class="site-head"><div class="wrap">
-<button class="menu-btn" type="button" data-menu aria-label="Menü"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 1h20M0 7h20M0 13h20" stroke="#1B2A5C" stroke-width="2"/></svg></button>
+    backbtn = f'<a class="back-btn" href="{r}{back}" aria-label="Vissza">←</a>' if back else ''
+    return f'''<header class="site-head hd-{theme}{' has-back' if back else ''}"><div class="wrap">
+{backbtn}<button class="menu-btn" type="button" data-menu aria-label="Menü"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 1h20M0 7h20M0 13h20" stroke="#1B2A5C" stroke-width="2"/></svg></button>
 <a class="logo" href="{r}index.html" aria-label="Kontyos – főoldal"><img src="{r}img/logo.png" alt="Kontyos" width="122" height="30"></a>
 <nav class="nav" aria-label="Fő menü">{links}</nav>
-<a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
+<a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
 <div class="drawer" id="drawer"><nav aria-label="Mobil menü"><button class="close" type="button" data-menu-close aria-label="Bezárás">×</button>
 <a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}friss.html">FRISS & Secco</a><a href="{r}kosar.html">Kosár</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
@@ -348,6 +351,19 @@ def xmas_page():
     write('karacsonyi-ajandek-bor.html', pg)
 
 
+MSEARCH = '''<section class="m-search"><form role="search" action="kereses.html"><label class="sr" for="ms">Keresés</label><input id="ms" name="q" type="search" placeholder="Meggy, forralt bor, ajándék…"><button type="submit" aria-label="Keresés"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button></form>
+<nav aria-label="Gyors kategóriák"><a href="termek/piri-mama-forralt-bora.html" style="background:#1B2A5C;color:#fff">Forralt bor</a><a href="gyumolcsbor.html#klasszikus" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Klasszikus</a><a href="friss.html" style="background:#F28C28">FRISS</a><a href="gyumolcsbor.html#klara" style="box-shadow:inset 0 0 0 1.5px #C0284A;color:#C0284A">Klára</a><a href="termek/don-cherry.html" style="box-shadow:inset 0 0 0 1.5px #5FB8B3;color:#C8282E">Don Cherry</a><a href="karacsonyi-ajandek-bor.html" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Csomagok</a><a href="palinka.html" style="box-shadow:inset 0 0 0 1.5px #A8823C;color:#6B5414">Pálinka</a></nav></section>'''
+
+
+def search_page():
+    r = ''
+    pg = head('Keresés | Kontyos', 'Keresés a Kontyos termékei között', r, 'search') + header(r)
+    pg += '''<main><div class="wrap" style="padding-top:10px;padding-bottom:90px;display:flex;flex-direction:column;gap:22px"><h1 class="h2">Keresés</h1>
+<form role="search" action="kereses.html" class="m-search" style="display:block;background:none;border:0;padding:0"><label class="sr" for="sq">Keresés</label><div style="display:flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:0 6px 0 18px;max-width:640px"><input id="sq" name="q" type="search" placeholder="Meggy, forralt bor, ajándék…" style="flex:1;min-width:0;height:52px;border:0;background:transparent;font:inherit;font-size:16px;outline:none"><button type="submit" class="btn blue" style="min-height:42px;padding:0 20px">Keresés</button></div></form>
+<p id="search-sum" class="muted"></p><div id="search-res" class="cards"></div></div></main>''' + footer(r)
+    write('kereses.html', pg)
+
+
 def home_body(r='', h='h1'):
     mq = ' · '.join(['100% gyümölcsből', 'Klárafalvi Kontyos Borház', 'Ingyenes szállítás 20 000 Ft felett', '6 palacktól mennyiségi ár'] * 2)
     pg = ''
@@ -391,7 +407,7 @@ def index():
         else:
             heroes += season_hero(s_, r)
     pg = head('Kontyos – 100%-os gyümölcsborok a klárafalvi Kontyos Borháztól', 'Meggybor, eperbor, ribizlibor, forralt bor, Don Cherry és pálinka – 100%-os gyümölcsborok közvetlenül a klárafalvi Kontyos Borháztól.', r, 'home', 'overlay-head', demo_extra=segs, topbar=f'<div data-season="karacsony">{XMAS_BAR}</div>')
-    pg += header(r) + '<main>' + heroes + home_body(r, 'h1')
+    pg += header(r) + '<main>' + heroes + MSEARCH + home_body(r, 'h1')
     pg += '</main>' + footer(r)
     write('index.html', pg)
 
@@ -484,8 +500,28 @@ STORY = {
 }
 
 
+BACK = {'klasszikus': 'gyumolcsbor.html', 'klara': 'gyumolcsbor.html#klara', 'piri': 'index.html', 'don': 'gyumolcsbor.html',
+        'friss': 'friss.html', 'secco': 'friss.html', 'palinka': 'palinka.html'}
+
+
+def product_designed(p):
+    r = '../'
+    res = pdp.TEMPLATES[p['line']](p)
+    ld = {"@context": "https://schema.org", "@type": "Product", "name": p['name'], "image": p['img'], "description": p['short'],
+          "brand": {"@type": "Brand", "name": "Kontyos"},
+          "offers": {"@type": "Offer", "priceCurrency": "HUF", "price": p['price'], "availability": "https://schema.org/" + ("InStock" if p['avail'] else "OutOfStock")}}
+    if p['rcount'] and p['rating']:
+        ld["aggregateRating"] = {"@type": "AggregateRating", "ratingValue": p['rating'], "reviewCount": p['rcount']}
+    style = f'<style>:root{{--page:{res["page"]};--ink:{res["ink"]}}}</style><script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
+    pg = head(f"{p['name']} – {LINE_LABEL[p['line']]} | Kontyos", p['short'][:155], r, 'product', 'pdp pdp-' + p['line'] + (' has-buybar' if res['bar'] else ''), style)
+    pg += header(r, '', res['theme'], BACK.get(p['line'])) + '<main>' + res['html'] + '</main>' + res['bar'] + footer(r)
+    write(f"termek/{p['id']}.html", pg)
+
+
 def product(p):
     r = '../'
+    if p['line'] in pdp.TEMPLATES:
+        return product_designed(p)
     t = theme(p)
     L = p['line']
     is_pack = L in ('csomag', 'kiegeszito')
@@ -741,6 +777,7 @@ def info():
 
 def main():
     global VER
+    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL)
     write_catalog_js()
     import hashlib
     h = hashlib.sha1()
@@ -761,6 +798,7 @@ def main():
     bf_page()
     xmas_page()
     cart()
+    search_page()
     checkout()
     thanks()
     info()
