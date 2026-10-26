@@ -159,7 +159,7 @@
     cr.innerHTML = '<div class="box" style="display:flex;flex-direction:column;gap:12px"><p class="serif" style="font-size:24px">' + (t.free ? 'Ingyenes a szállítás. 🎉' : 'Még <b style="color:#C8284E">' + fmt(t.left) + '</b>, és ingyen visszük.') + '</p><div class="bar" style="height:10px"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div></div>' +
       '<div class="box">' + lines + '</div>';
     document.querySelectorAll('[data-sum]').forEach(function (el) { el.textContent = fmt(t.sub); });
-    document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = t.free ? 'Ingyenes' : '[díj – a Kontyos díjszabása szerint]'; });
+    document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = t.free ? 'Ingyenes' : '1 800 Ft-tól'; });
     document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub) + (t.free ? '' : ' + szállítás'); });
   }
   if (cr) {
@@ -187,8 +187,22 @@
     else {
       sumEl.querySelector('[data-co-lines]').innerHTML = c.map(function (l) { var p = K.p[l.id]; if (!p) return ''; return '<div style="display:flex;align-items:center;gap:12px">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="" style="width:52px;height:52px;object-fit:contain;background:var(--paper);border-radius:4px">' : '') + '<span style="flex:1;font-size:14px;line-height:1.3"><b>' + esc(p.n) + '</b><br><span class="muted">' + l.q + ' db</span></span><b style="font-size:14px">' + fmt(unit(p, l.q) * l.q) + '</b></div>'; }).join('');
       document.querySelectorAll('[data-sum]').forEach(function (el) { el.textContent = fmt(t.sub); });
-      document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = t.free ? 'Ingyenes' : '[díj]'; });
-      document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub) + (t.free ? '' : ' + szállítás'); });
+      var recalc = function () {
+        var sh = co.querySelector('[name=ship]:checked'), py = co.querySelector('[name=pay]:checked');
+        var fee = +sh.getAttribute('data-fee'), freeAt = +sh.getAttribute('data-free'), key = sh.getAttribute('data-key');
+        var packFree = c.some(function (l) { return K.p[l.id] && K.p[l.id].free; });
+        var shipFee = (fee === 0 || packFree || (freeAt && t.sub >= freeAt)) ? 0 : fee;
+        var cod = co.querySelector('[name=pay][data-key=utanvet]'), codOk = key.indexOf('gls') === 0;
+        cod.disabled = !codOk; cod.closest('.opt').style.opacity = codOk ? 1 : .45;
+        if (!codOk && cod.checked) { co.querySelector('[name=pay][data-key=kartya]').checked = true; py = co.querySelector('[name=pay]:checked'); }
+        var codFee = py.getAttribute('data-key') === 'utanvet' ? 500 : 0;
+        document.querySelectorAll('[data-codrow]').forEach(function (el) { el.hidden = !codFee; });
+        document.querySelectorAll('[data-cod-note]').forEach(function (el) { el.hidden = codOk; });
+        document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = shipFee ? fmt(shipFee) : 'Ingyenes'; });
+        document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub + shipFee + codFee); });
+        co._total = t.sub + shipFee + codFee;
+      };
+      co.addEventListener('change', recalc); recalc();
       document.querySelectorAll('[data-free-left]').forEach(function (el) { el.innerHTML = t.free ? 'Ingyenes a szállítás.' : 'Még <b style="color:#C8284E">' + fmt(t.left) + '</b>, és ingyen visszük.'; });
       document.querySelectorAll('[data-free-bar]').forEach(function (el) { el.style.width = (t.free ? 100 : t.pct) + '%'; });
     }
@@ -205,7 +219,7 @@
       form.querySelectorAll('[data-req-check]').forEach(function (cb) { cb.closest('.check').classList.toggle('err', !cb.checked); if (!cb.checked) ok = false; });
       var msg = document.getElementById('co-msg');
       if (!ok) { msg.textContent = 'Kérjük, töltsd ki a pirossal jelölt mezőket, és fogadd el a 18 év feletti nyilatkozatot és az ÁSZF-et.'; var first = form.querySelector('.err'); if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-      var order = { no: 'DEMO-' + String(Date.now()).slice(-6), lines: load(), sub: totals(load()).sub, free: totals(load()).free, name: form.querySelector('[name=name]').value, email: form.querySelector('[name=email]').value, ship: (form.querySelector('[name=ship]:checked') || {}).value, pay: (form.querySelector('[name=pay]:checked') || {}).value };
+      var order = { no: 'DEMO-' + String(Date.now()).slice(-6), lines: load(), sub: totals(load()).sub, total: co._total, free: totals(load()).free, name: form.querySelector('[name=name]').value, email: form.querySelector('[name=email]').value, ship: (form.querySelector('[name=ship]:checked') || {}).value, pay: (form.querySelector('[name=pay]:checked') || {}).value };
       try { sessionStorage.setItem('kontyos-demo-order', JSON.stringify(order)); } catch (err) {}
       track('purchase', order.no, 1);
       save([]); location.href = ROOT + 'koszonjuk.html';
@@ -219,7 +233,7 @@
     if (o) {
       ty.querySelector('[data-o-no]').textContent = o.no;
       ty.querySelector('[data-o-mail]').textContent = o.email;
-      ty.querySelector('[data-o-lines]').innerHTML = o.lines.map(function (l) { var p = K.p[l.id]; return p ? '<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)"><span>' + esc(p.n) + ' × ' + l.q + '</span><b>' + fmt(unit(p, l.q) * l.q) + '</b></div>' : ''; }).join('') + '<div style="display:flex;justify-content:space-between;padding-top:10px"><b>Összesen</b><b>' + fmt(o.sub) + (o.free ? '' : ' + szállítás') + '</b></div>';
+      ty.querySelector('[data-o-lines]').innerHTML = o.lines.map(function (l) { var p = K.p[l.id]; return p ? '<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)"><span>' + esc(p.n) + ' × ' + l.q + '</span><b>' + fmt(unit(p, l.q) * l.q) + '</b></div>' : ''; }).join('') + '<div style="display:flex;justify-content:space-between;padding-top:10px"><b>Összesen (szállítással)</b><b>' + fmt(o.total || o.sub) + '</b></div>';
     }
   }
 

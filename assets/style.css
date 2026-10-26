@@ -435,3 +435,6 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
 @media (min-width:861px){.hero .stamp{top:clamp(320px,42vh,400px)}}
 @media (max-width:860px){.hero .copy .txt{gap:14px}.hero .bottles{bottom:16px}}
 @media (max-width:599px){.hero{min-height:870px}.hero .word{top:104px}.hero .copy{top:186px}.hero .hb .hbr img{height:calc(var(--h) * .72)}.hero .bottles{right:14px}}
+/* Don Cherry gyümölcse: kis befőttesüveg – arányosan kisebb az ívben */
+.p-media .arch img.jar{height:44%;max-width:56%;margin-bottom:9%}
+.vrow img.jar{height:80px;margin-top:60px}
