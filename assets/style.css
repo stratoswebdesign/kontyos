@@ -816,3 +816,15 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
   .pd-pwrap{width:auto}
   .pd-klimg img{height:min(560px,calc(100vh - 210px))}
 }
+/* Mini-kosár: szélesebb, egysoros gombok + ajánló */
+.mini{width:min(460px,calc(100vw - 24px))}
+.mini .acts .btn{white-space:nowrap;flex:1 1 auto;padding:0 18px}
+.mini .acts .btn.blue{flex:1.3 1 auto}
+.mini .pd-ups{color:var(--navy);margin-top:4px}
+.mini .pd-ups ul,#cart-ups .pd-ups ul{grid-template-columns:1fr}
+.mini .pd-ups li{padding:6px 8px}
+.mini .pd-ups .nm,#cart-ups .pd-ups .nm{font-size:13px}
+#cart-ups .pd-ups{color:var(--navy);margin-top:6px}
+@media (max-width:480px){.mini .acts .btn{padding:0 12px;font-size:14px}.mini .acts .btn.blue{flex:1.2 1 auto}}
+.tot .grand b small{display:block;font-family:var(--sans);font-size:12px;font-weight:600;opacity:.65;text-align:right}
+.tot .grand b{text-align:right}

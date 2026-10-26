@@ -31,6 +31,16 @@
   }
   function track(ev, id, q) { try { (window.dataLayer = window.dataLayer || []).push({ event: ev, item_id: id, quantity: q }); } catch (e) {} }
 
+  /* „Illik mellé” ajánló (mini-kosár, kosár) */
+  function upsHtml(ids, exclude) {
+    ids = ids.filter(function (i) { return K.p[i] && exclude.indexOf(i) < 0; }).slice(0, 3);
+    if (!ids.length) return '';
+    return '<div class="pd-ups mini-ups"><p>Illik mellé</p><ul>' + ids.map(function (i) {
+      var x = K.p[i];
+      return '<li><a href="' + ROOT + x.url + '" class="im"><img src="' + ROOT + x.img + '" alt="" loading="lazy"></a><a href="' + ROOT + x.url + '" class="nm">' + esc(x.n) + '<small>' + fmt(x.price) + '</small></a><button type="button" data-add="' + i + '" aria-label="' + esc(x.n) + ' kosárba">+</button></li>';
+    }).join('') + '</ul></div>';
+  }
+
   /* Mini-kosár */
   var miniEl;
   function mini(id) {
@@ -44,7 +54,8 @@
       '<div class="item">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="">' : '') + '<div><b>' + esc(p.n) + '</b><span>' + fmt(p.price) + '</span></div></div>' +
       '<span style="font-size:13px">' + (t.free ? 'Ingyenes a szállítás!' : 'Még <b>' + fmt(t.left) + '</b> az ingyenes szállításig.') + '</span>' +
       '<div class="bar"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div>' +
-      '<div class="acts"><a class="btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="btn ghost" type="button" data-mini-close>Vásárolok még</button></div></div>';
+      '<div class="acts"><a class="btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
+      upsHtml(p.ups || [], load().map(function (l) { return l.id; })) + '</div>';
     miniEl.classList.add('open');
     clearTimeout(miniEl._t); miniEl._t = setTimeout(function () { miniEl.classList.remove('open'); }, 6000);
   }
@@ -160,7 +171,14 @@
       '<div class="box">' + lines + '</div>';
     document.querySelectorAll('[data-sum]').forEach(function (el) { el.textContent = fmt(t.sub); });
     document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = t.free ? 'Ingyenes' : '1 800 Ft-tól'; });
-    document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub) + (t.free ? '' : ' + szállítás'); });
+    document.querySelectorAll('[data-grand]').forEach(function (el) { el.innerHTML = fmt(t.sub) + (t.free ? '' : '<small>+ szállítás (1 800 Ft-tól)</small>'); });
+    var cu = document.getElementById('cart-ups');
+    if (cu) {
+      var inCart = c.map(function (l) { return l.id; }), pool = [];
+      c.forEach(function (l) { (K.p[l.id] && K.p[l.id].ups || []).forEach(function (i) { if (pool.indexOf(i) < 0) pool.push(i); }); });
+      ['kontyos-borospohar', 'don-cherry-gyumolcse', 'friss-eper', 'piri-mama-bogreje'].forEach(function (i) { if (pool.indexOf(i) < 0) pool.push(i); });
+      cu.outerHTML = '<div id="cart-ups">' + upsHtml(pool, inCart) + '</div>';
+    }
   }
   if (cr) {
     renderCart();
