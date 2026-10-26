@@ -160,7 +160,7 @@ SEASONS = [
     dict(k='forralt', lbl='Forralt szezon', bg='#F08A3C', fg='#1B2A5C', word='FORRALT', hword='#1B2A5C', acc='#1B2A5C', ctafg='#FFFFFF',
          stampbg='#1B2A5C', stampfg='#F3C66B', stamp='CSAK MEGMELEGÍTED · ÉS KÉSZ · PIRI MAMA · ',
          bottles=[('piri-mama-forralt-bora', 'clamp(280px,50vh,430px)', '-9deg'), ('narancsos-piri-mama-forralt-bora', 'clamp(330px,60vh,520px)', '4deg'), ('epres-piri-mama-forralt-bora', 'clamp(270px,49vh,420px)', '12deg')],
-         ml=-36, eyebrow='Új · Narancsos PIRI Mama', t='Csak megmelegíted, és kész.', s='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.',
+         ml=18, eyebrow='Új · Narancsos PIRI Mama', t='Csak megmelegíted, és kész.', s='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.',
          cta=('PIRI Mama forralt borok', 'termek/narancsos-piri-mama-forralt-bora.html'), price=None),
     dict(k='ujbor', lbl='Újbor', bg='#F6E1E4', fg='#1B2A5C', word='ÚJBOR', hword='#EFC9CF', acc='#EF4E73', ctafg='#fff',
          bottles=[('edes-eperbor', 'clamp(300px,58vh,560px)'), ('edes-meggybor', 'clamp(330px,64vh,610px)'), ('edes-kajszibor', 'clamp(300px,58vh,560px)')],
@@ -182,7 +182,7 @@ def price_of(pid):
 
 
 def season_hero(s, r):
-    b = ''.join(hb(P[bt[0]], r, bt[1], 0 if i == 0 else s.get('ml', -28), bt[2] if len(bt) > 2 else '0deg') for i, bt in enumerate(s['bottles']))
+    b = ''.join(hb(P[bt[0]], r, bt[1], 0 if i == 0 else s.get('ml', 4), bt[2] if len(bt) > 2 else '0deg') for i, bt in enumerate(s['bottles']))
     price = ''
     if s['price']:
         pp = price_of(s['price'][0])
@@ -450,7 +450,7 @@ def campaign(path, title, desc, h1, eyebrow, lead, bg, fg, acc, packs, bottles, 
     if phases:
         demo = '<span class="seg">' + ''.join(f'<button type="button" data-phase-btn="{k}">{l}</button>' for k, l in phases) + '</span>'
     pg = head(title, desc, r, path.split('.')[0], demo_extra=demo) + header(r, 'black-friday.html' if 'black' in path else '')
-    b = ''.join(hb(P[pid], r, 'clamp(240px,46vh,440px)', 0 if i == 0 else -24) for i, pid in enumerate(bottles))
+    b = ''.join(hb(P[pid], r, 'clamp(240px,46vh,440px)', 0 if i == 0 else 6) for i, pid in enumerate(bottles))
     if phases:
         pre, act = phases[0][0], phases[1][0]
         body = f'''<div data-phase="{pre}"><section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:22px;max-width:760px">

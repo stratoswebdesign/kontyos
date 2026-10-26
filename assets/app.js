@@ -223,5 +223,20 @@
     }
   }
 
+  /* Menü: ha egy sorba nem fér ki, hamburgerre vált (soha nem tör két sorba) */
+  var head = document.querySelector('.site-head'), nav = head && head.querySelector('.nav');
+  function fit() {
+    if (!nav) return;
+    var root = document.documentElement;
+    root.classList.remove('burger');
+    if (getComputedStyle(nav).display !== 'none' && nav.scrollWidth > nav.clientWidth + 1) root.classList.add('burger');
+    var hero = document.querySelector('.overlay-head .hero');
+    if (hero) hero.style.marginTop = (-head.offsetHeight) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  window.addEventListener('load', fit);
+
   badge();
 })();
