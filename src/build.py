@@ -99,7 +99,7 @@ def header(r, cur='', theme='pill', back=None):
 <a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
 <div class="drawer" id="drawer"><nav aria-label="Mobil menü"><button class="close" type="button" data-menu-close aria-label="Bezárás">×</button>
-<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}friss.html">FRISS & Secco</a><a href="{r}kosar.html">Kosár</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
+<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}friss.html">FRISS & Secco</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}kosar.html">Kosár</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
 '''
 
 
@@ -107,11 +107,11 @@ def footer(r):
     return f'''<footer class="site-foot"><div class="wrap">
 <div class="brand"><img src="{r}img/logo.png" alt="Kontyos" width="210" height="52"><p style="margin-top:14px;max-width:340px;font-size:14px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól.</p></div>
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}friss.html">FRISS & Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">Piri Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}palinka.html">Pálinka</a></div>
-<div><h4>Kampányok</h4><a href="{r}ujbor-valogatas.html">Újbor-válogatás</a><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a></div>
+<div><h4>Kampányok</h4><a href="{r}ujbor-valogatas.html">Újbor-válogatás</a><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a></div>
 <div><h4>Infó</h4><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185 · Demó: Stratos Webdesign</p>
 </div></footer>
-<script src="{r}assets/catalog.js?v={VER}"></script>
+{fairs_js()}<script src="{r}assets/catalog.js?v={VER}"></script>
 <script src="{r}assets/app.js?v={VER}"></script>
 </body></html>
 '''
@@ -364,6 +364,56 @@ def search_page():
     write('kereses.html', pg)
 
 
+# ---------- Kövess minket: adventi standok (DEMÓ időpontok – a valós menetrendet a Kontyos adja) ----------
+FAIRS = [
+    dict(id='szeged', city='Szeged', place='Dóm tér – Szegedi Adventi Vásár', lat=46.2496, lng=20.1490, start='2026-11-20', end='2026-12-23', hours='[NYITVATARTÁS]'),
+    dict(id='obuda', city='Budapest – Óbuda', place='Fő tér – Óbudai Advent', lat=47.5414, lng=19.0450, start='2026-11-27', end='2026-12-23', hours='[NYITVATARTÁS]'),
+    dict(id='gyor', city='Győr', place='Árkád bevásárlóközpont', lat=47.6817, lng=17.6426, start='2026-11-23', end='2026-12-24', hours='[NYITVATARTÁS]'),
+    dict(id='veszprem', city='Veszprém', place='Óváros tér – Veszprémi Advent', lat=47.0932, lng=17.9076, start='2026-11-28', end='2026-12-23', hours='[NYITVATARTÁS]'),
+    dict(id='szombathely', city='Szombathely', place='Fő tér – Szombathelyi Advent', lat=47.2306, lng=16.6219, start='2026-12-04', end='2026-12-23', hours='[NYITVATARTÁS]'),
+]
+BORHAZ = dict(city='Klárafalva', place='Kontyos Borház – egész évben, személyes átvétel', lat=46.2209, lng=20.3266)
+
+
+def fairs_js():
+    return '<script>window.KONTYOS_FAIRS=' + json.dumps(FAIRS, ensure_ascii=False) + ';window.KONTYOS_BORHAZ=' + json.dumps(BORHAZ, ensure_ascii=False) + ';</script>'
+
+
+def fairs_strip(r=''):
+    cards = ''.join(f'''<a class="fair-card" href="{r}vasarok.html#{f['id']}" data-fair="{f['id']}"><span class="st" data-fair-status>Hamarosan</span><b>{e(f['city'])}</b><span class="pl">{e(f['place'])}</span><span class="dt" data-fair-dates></span></a>''' for f in FAIRS)
+    return f'''<section class="sec follow"><div class="wrap"><div class="fhead"><div><p class="kicker" style="--accent:#F3C66B">Kövess minket</p><h2 class="h2">Hol iszhatsz ma Piri Mamát?</h2>
+<p class="lead">Adventkor az ország öt pontján állunk standdal. Nézd meg, hol vagyunk most, és kérj értesítést, mielőtt a városodba érünk.</p></div>
+<a class="btn" style="background:#F3C66B;color:#1B2A5C" href="{r}vasarok.html">Térkép és értesítő →</a></div>
+<div class="fair-row">{cards}</div><p class="ph-note" style="color:#F3EEE5">Demó időpontok – a valós menetrendet a Kontyos adja.</p></div></section>'''
+
+
+def fairs_page():
+    r = ''
+    segs = '<span class="seg"><button type="button" data-sim="">Ma</button><button type="button" data-sim="2026-12-06">Szimuláció: dec. 6.</button></span>'
+    extra = '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">'
+    pg = head('Kövess minket – adventi standjaink térképen | Kontyos', 'Hol van most a Kontyos standja? Adventi vásárok térképen, élő státusszal és e-mail értesítővel: szólunk, mielőtt a városodba érünk.', r, 'fairs', '', extra, demo_extra=segs)
+    pg += header(r)
+    rows = ''.join(f'''<li id="{f['id']}" data-fair="{f['id']}"><button type="button" class="fl-go" data-go="{f['id']}"><span class="st" data-fair-status>Hamarosan</span><b>{e(f['city'])}</b><span class="pl">{e(f['place'])}</span><span class="dt" data-fair-dates></span><span class="hr">Nyitva: {e(f['hours'])}</span></button></li>''' for f in FAIRS)
+    checks = ''.join(f'''<label class="check"><input type="checkbox" name="fair" value="{f['id']}"> <span><b>{e(f['city'])}</b> · {e(f['place'])}</span></label>''' for f in FAIRS)
+    pg += f'''<main class="fairs"><section class="wrap fz-head"><p class="breadcrumb"><a href="index.html">Főoldal</a> / Kövess minket</p>
+<p class="kicker">Kövess minket</p><h1 class="h2">Merre jár most Piri Mama?</h1>
+<p class="lead">Adventi standjaink térképen – élőben látod, hol vagyunk most, és mikor érünk a városodba. Kérj értesítést, és szólunk, mielőtt odaérünk.</p>
+<div class="legend"><span><i class="lv"></i>Most itt vagyunk</span><span><i class="up"></i>Hamarosan</span><span><i class="dn"></i>Véget ért</span><span><i class="bh"></i>Borház</span></div></section>
+<section class="wrap fz-grid"><div id="fmap" class="fmap" role="region" aria-label="Standok térképe"></div>
+<ol class="flist">{rows}</ol></section>
+<section class="fz-sub" id="ertesito"><div class="wrap"><div class="tx"><p class="kicker" style="--accent:#F3C66B">Szólunk, mikor érünk hozzád</p><h2 class="h2">Kérj értesítést a vásárodról</h2>
+<p class="lead">Pipáld be, melyik vásárnál szóljunk. Automatikus e-mailt küldünk 3 nappal a nyitás előtt és a nyitás reggelén – és ha valahol változik az időpont, azt is megírjuk.</p>
+<div class="mailprev"><p class="mh">Így néz ki az e-mail</p><div class="mail"><small>Tárgy: Péntektől Szegeden vagyunk – Dóm tér 🍷</small><b>Szia! Megérkezünk a városodba.</b><p>Piri Mama standja nov. 20-tól a Dóm téren vár: forralt bor, újbor-kóstoló és ajándékcsomagok. Mutasd fel ezt a levelet a standon: [AJÁNDÉK / KEDVEZMÉNY – a Kontyos adja].</p><span class="btnlike">Útvonal a standhoz →</span></div></div></div>
+<form class="subform" data-fair-form><div class="field"><label for="fz-name">Keresztnév</label><input id="fz-name" name="name" autocomplete="given-name"></div>
+<div class="field"><label for="fz-mail">E-mail cím</label><input id="fz-mail" name="email" type="email" required autocomplete="email"><span class="msg">Adj meg érvényes e-mail címet</span></div>
+<fieldset><legend>Melyik vásárnál szóljunk?</legend>{checks}<label class="check all"><input type="checkbox" data-fair-all> <span><b>Mindegyiknél</b></span></label></fieldset>
+<label class="check"><input type="checkbox" required> <span>Hozzájárulok, hogy a Kontyos Borház Kft. a megadott vásárokról e-mailben értesítsen. Bármikor leiratkozhatok.</span></label>
+<button class="btn" type="submit" style="background:#F3C66B;color:#1B2A5C">Értesítést kérek</button><p class="fz-ok" data-fair-ok role="status"></p></form></div></section>
+<section class="wrap" style="padding-top:20px;padding-bottom:80px"><p class="ph-note">Demó időpontok és nyitvatartás – a valós menetrendet a Kontyos adja. A „Szimuláció” gombbal megnézheted, hogyan néz ki az oldal advent közepén, amikor több stand élőben fut.</p></section></main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>''' + footer(r)
+    write('vasarok.html', pg)
+
+
 def home_body(r='', h='h1'):
     mq = ' · '.join(['100% gyümölcsből', 'Klárafalvi Kontyos Borház', 'Ingyenes szállítás 20 000 Ft felett', '6 palacktól mennyiségi ár'] * 2)
     pg = ''
@@ -371,7 +421,7 @@ def home_body(r='', h='h1'):
     pg += f'''<section class="sec" style="padding-bottom:40px"><div class="wrap" style="display:flex;flex-direction:column;gap:22px">
 <{h} class="h2" style="max-width:980px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól</{h}>
 <ul class="usp"><li>100% gyümölcsből</li><li>Ingyenes szállítás 20 000 Ft felett</li><li>6 palacktól mennyiségi ár</li><li>Kiszállítás 1–5 munkanap</li><li>Törzsvásárlói kedvezmény akár 15%</li></ul>
-<div style="margin-top:20px">{cards(['edes-meggybor', 'edes-eperbor', 'klara-edes-malnabor', 'friss-malna', 'don-cherry'], r)}</div>
+<div style="margin-top:20px">{cards(['edes-meggybor', 'edes-eperbor', 'klara-edes-malnabor', 'friss-malna', 'don-cherry'], r, 'cards home-picks')}</div>
 </div></section>'''
     pg += fruit_selector(r)
     pg += f'''<section class="sec"><div class="wrap"><div class="collage">
@@ -391,6 +441,7 @@ def home_body(r='', h='h1'):
 <p style="line-height:1.7;opacity:.85">2006 óta alkotunk elsőrangú hazai gyümölcsökből gyümölcsbor-különlegességeket, hagyományos és reduktív eljárással. A 2019-ben épült modern üzemünk Szegedhez közel, Klárafalván működik.</p>
 <a class="btn ghost" href="{r}info.html#rolunk" style="align-self:flex-start">Rólunk</a></div>
 <div><img src="{r}img/photo/borhaz.webp" alt="A klárafalvi Kontyos Borház" loading="lazy"></div></div></section>'''
+    pg += fairs_strip(r)
     pg += newsletter()
     return pg
 
@@ -414,7 +465,7 @@ def index():
 
 def newsletter():
     return '''<section class="sec news"><div class="wrap" style="display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:space-between">
-<div><p class="kicker" style="--accent:#fff">Hírlevél</p><h2 class="h2">Iratkozz fel hírlevelünkre!</h2><p style="margin-top:8px">Újdonságok, szezonális csomagok és akciók – elsőként.</p></div>
+<div><p class="kicker" style="--accent:#fff">Hírlevél</p><h2 class="h2">−5% az első rendelésedből</h2><p style="margin-top:8px">Iratkozz fel: a kuponkódot azonnal küldjük, mellé újdonságok, szezonális csomagok és akciók – elsőként.</p></div>
 <form data-newsletter><label class="sr" for="nl">E-mail cím</label><input id="nl" type="email" placeholder="E-mail címed" required><button class="btn navy" type="submit">Feliratkozom</button></form></div></section>'''
 
 
@@ -699,7 +750,7 @@ def checkout():
 <div class="field"><label for="f-src">Honnan hallottál rólunk? (nem kötelező)</label><select id="f-src"><option value="">Válassz…</option><option>Google</option><option>Facebook / Instagram</option><option>Ismerős ajánlotta</option><option>Rendezvény, vásár</option><option>Egyéb</option></select></div>
 <label class="check"><input type="checkbox" data-req-check> <span>Kijelentem, hogy elmúltam 18 éves. <small class="muted">(Alkoholtermék csak nagykorú részére értékesíthető; átvételkor a futár ellenőrizheti.)</small></span></label>
 <label class="check"><input type="checkbox" data-req-check> <span>Elfogadom az <a href="info.html#aszf">ÁSZF</a>-et és az <a href="info.html#adatkezeles">adatkezelési tájékoztatót</a>.</span></label>
-<label class="check"><input type="checkbox"> <span>Hozzájárulok, hogy a Kontyos Borház Kft. a nevemet és e-mail címemet hírlevelezési céllal kezelje, és gazdasági reklámot is tartalmazó hírleveleket küldjön.</span></label>
+<label class="check"><input type="checkbox"> <span>Kérek hírlevelet (−5% a következő rendelésemből). Hozzájárulok, hogy a Kontyos Borház Kft. a nevemet és e-mail címemet hírlevelezési céllal kezelje, és gazdasági reklámot is tartalmazó hírleveleket küldjön.</span></label>
 <p id="co-msg" role="alert" style="color:#C8284E;font-weight:700;font-size:14px"></p>
 <button class="btn pink block" type="submit" style="min-height:60px;font-size:17px">Megrendelés elküldése (fizetési kötelezettséggel)</button>
 <p class="note">Demó: a gomb nem indít valódi rendelést, csak a köszönőoldalt mutatja.</p></div></form></div>
@@ -799,6 +850,7 @@ def main():
     xmas_page()
     cart()
     search_page()
+    fairs_page()
     checkout()
     thanks()
     info()

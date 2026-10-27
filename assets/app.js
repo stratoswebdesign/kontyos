@@ -111,9 +111,12 @@
       box.querySelectorAll('a[data-f-href]').forEach(function (a) { a.href = el.href; });
       box.querySelector('[data-add]').setAttribute('data-add', d.id);
     };
+    var touch = window.matchMedia('(hover: none), (max-width: 860px)');
     fsel.querySelectorAll('[data-fruit]').forEach(function (el) {
-      el.addEventListener('mouseenter', function () { show(el); });
+      el.addEventListener('mouseenter', function () { if (!touch.matches) show(el); });
       el.addEventListener('focus', function () { show(el); });
+      /* mobilon az első koppintás csak vált, a „Részletek” gomb visz a termékoldalra */
+      el.addEventListener('click', function (e) { if (touch.matches && el.getAttribute('aria-current') !== 'true') { e.preventDefault(); show(el); } });
     });
   }
 
@@ -147,7 +150,7 @@
 
   /* Hírlevél (demó) */
   document.querySelectorAll('form[data-newsletter]').forEach(function (f) {
-    f.addEventListener('submit', function (e) { e.preventDefault(); f.innerHTML = '<p style="font-weight:800">Köszönjük! (Demó: élesben itt indul a feliratkozás és a −10% kupon.)</p>'; });
+    f.addEventListener('submit', function (e) { e.preventDefault(); f.innerHTML = '<p style="font-weight:800">Köszönjük! Az 5%-os kuponkódot e-mailben küldjük. (Demó – élesben itt indul a feliratkozás és a kuponlevél.)</p>'; });
   });
 
   /* Kosár oldal */
@@ -291,6 +294,76 @@
       document.querySelectorAll('[data-gal]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
     });
   });
+
+  /* Kövess minket: adventi standok – státusz, térkép, értesítő */
+  var FAIRS = window.KONTYOS_FAIRS || [];
+  if (FAIRS.length && document.querySelector('[data-fair]')) {
+    var sim = null; try { sim = localStorage.getItem('kontyos-demo-sim') || null; } catch (e) {}
+    var HU = ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'];
+    var dfmt = function (d) { return HU[d.getMonth()] + ' ' + d.getDate() + '.'; };
+    var day = function (iso) { var a = iso.split('-'); return new Date(+a[0], a[1] - 1, +a[2]); };
+    var today = function () { var d = sim ? day(sim) : new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+    var status = function (f) { var t = today(), a = day(f.start), b = day(f.end); return t < a ? 'up' : (t > b ? 'dn' : 'lv'); };
+    var label = function (f) {
+      var st = status(f), t = today(), a = day(f.start);
+      if (st === 'lv') return 'Most itt vagyunk';
+      if (st === 'dn') return 'Véget ért';
+      var n = Math.round((a - t) / 864e5);
+      return n <= 14 ? (n === 1 ? 'Holnaptól' : n + ' nap múlva') : 'Hamarosan';
+    };
+    var paint = function () {
+      FAIRS.forEach(function (f) {
+        document.querySelectorAll('[data-fair="' + f.id + '"]').forEach(function (el) {
+          el.setAttribute('data-st', status(f));
+          var s1 = el.querySelector('[data-fair-status]'); if (s1) s1.textContent = label(f);
+          var s2 = el.querySelector('[data-fair-dates]'); if (s2) s2.textContent = dfmt(day(f.start)) + ' – ' + dfmt(day(f.end));
+        });
+      });
+      /* a sor: élők elöl, aztán a legközelebbi kezdés */
+      document.querySelectorAll('.fair-row, .flist').forEach(function (row) {
+        var order = { lv: 0, up: 1, dn: 2 };
+        Array.prototype.slice.call(row.children).sort(function (x, y) {
+          var fx = FAIRS.filter(function (f) { return f.id === x.getAttribute('data-fair'); })[0], fy = FAIRS.filter(function (f) { return f.id === y.getAttribute('data-fair'); })[0];
+          return (order[status(fx)] - order[status(fy)]) || (day(fx.start) - day(fy.start));
+        }).forEach(function (c) { row.appendChild(c); });
+      });
+      if (window.__fairMarkers) window.__fairMarkers.forEach(function (m) { m.setIcon(icon(status(m.fair))); m.setPopupContent(popup(m.fair)); });
+    };
+    var icon = function (st) { return window.L ? L.divIcon({ className: 'fmk ' + st, html: '<span></span>', iconSize: [26, 26], iconAnchor: [13, 13] }) : null; };
+    var popup = function (f) { return '<b>' + esc(f.city) + '</b><br>' + esc(f.place) + '<br>' + dfmt(day(f.start)) + ' – ' + dfmt(day(f.end)) + '<br><em>' + label(f) + '</em><br><a href="https://www.google.com/maps/dir/?api=1&destination=' + f.lat + ',' + f.lng + '" target="_blank" rel="noopener">Útvonal →</a>'; };
+    var mapEl = document.getElementById('fmap');
+    if (mapEl && window.L) {
+      var map = L.map(mapEl, { scrollWheelZoom: false }).setView([47.15, 19.2], 7);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map);
+      window.__fairMarkers = FAIRS.map(function (f) { var m = L.marker([f.lat, f.lng], { icon: icon(status(f)) }).addTo(map).bindPopup(popup(f)); m.fair = f; return m; });
+      var B = window.KONTYOS_BORHAZ; if (B) L.marker([B.lat, B.lng], { icon: L.divIcon({ className: 'fmk bh', html: '<span></span>', iconSize: [22, 22], iconAnchor: [11, 11] }) }).addTo(map).bindPopup('<b>' + esc(B.city) + '</b><br>' + esc(B.place));
+      map.fitBounds(FAIRS.map(function (f) { return [f.lat, f.lng]; }).concat(B ? [[B.lat, B.lng]] : []), { padding: [30, 30] });
+      document.querySelectorAll('[data-go]').forEach(function (b) {
+        b.addEventListener('click', function () { var m = window.__fairMarkers.filter(function (x) { return x.fair.id === b.getAttribute('data-go'); })[0]; map.setView(m.getLatLng(), 13); m.openPopup(); mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+      });
+    }
+    document.querySelectorAll('[data-sim]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String((b.getAttribute('data-sim') || null) === sim));
+      b.addEventListener('click', function () { sim = b.getAttribute('data-sim') || null; try { sim ? localStorage.setItem('kontyos-demo-sim', sim) : localStorage.removeItem('kontyos-demo-sim'); } catch (e) {} document.querySelectorAll('[data-sim]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); paint(); });
+    });
+    paint();
+    var ff = document.querySelector('[data-fair-form]');
+    if (ff) {
+      var all = ff.querySelector('[data-fair-all]');
+      all.addEventListener('change', function () { ff.querySelectorAll('[name=fair]').forEach(function (c) { c.checked = all.checked; }); });
+      ff.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var mail = ff.querySelector('[name=email]'), ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim());
+        mail.closest('.field').classList.toggle('err', !ok);
+        var picked = Array.prototype.slice.call(ff.querySelectorAll('[name=fair]:checked')).map(function (c) { return FAIRS.filter(function (f) { return f.id === c.value; })[0]; });
+        var msg = ff.querySelector('[data-fair-ok]');
+        if (!ok) return;
+        if (!picked.length) { msg.textContent = 'Jelölj be legalább egy vásárt.'; return; }
+        try { localStorage.setItem('kontyos-demo-fairsub', JSON.stringify({ email: mail.value, fairs: picked.map(function (f) { return f.id; }) })); } catch (e2) {}
+        msg.innerHTML = '✓ Feliratkoztál: <b>' + picked.map(function (f) { return esc(f.city); }).join(', ') + '</b>. Ütemezett e-mailek: ' + picked.map(function (f) { var a = day(f.start), b = new Date(a); b.setDate(a.getDate() - 3); return esc(f.city) + ' – ' + dfmt(b) + ' és ' + dfmt(a); }).join('; ') + ' <small>(Demó – élesben a levelezőrendszer küldi.)</small>';
+      });
+    }
+  }
 
   /* Visszaszámláló (Black Friday) */
   var cds = document.querySelectorAll('[data-countdown]');

@@ -239,7 +239,7 @@ def t_klasszikus(p):
     html = f'''<section class="pd-wrap pd-hero-k">
 {crumbs([('Főoldal', 'index.html'), ('Gyümölcsborok', 'gyumolcsbor.html'), ('Klasszikus', 'gyumolcsbor.html#klasszikus'), (e(p['name']), '')], 'font-size:13px')}
 <div class="pd-row">
-<div class="pd-gal"><div class="pd-arch" style="background:{p['arch']}"><img data-gal-main src="{r}{p['tight']}" alt="{e(p['name'])} {vol}" class="fit-contain"><span class="cap" style="color:{p['accent']}">{cap}</span></div>
+<div class="pd-gal"><div class="pd-arch" style="background:{p['arch']}"><img data-gal-main src="{r}{p['tight']}" alt="{e(p['name'])} {vol}" class="fit-contain"></div>
 <div class="pd-thumbs">{thumbs}</div></div>
 <div class="pd-label"><div class="in">
 <p class="pd-kick">KLASSZIKUS · {e(taste.upper())} GYÜMÖLCSBOR</p>
@@ -345,7 +345,7 @@ def t_piri(p):
 <div class="ph"><img src="{r}img/photo/piri_fa.webp" alt="Narancsos PIRI Mama karácsonyfa előtt" loading="lazy"><img src="{r}img/photo/piri_fahej.webp" alt="Narancsos PIRI Mama fahéjjal és narancsokkal" loading="lazy"></div></div></section>
 {reviews(p, c)}
 <section class="pd-wrap pd-pair"><div class="mug"><img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
-<div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged (Dóm tér) · Óbuda · Szombathely · Veszprém · Győr (Árkád)</span><a href="{r}termek/piri-mama-forralt-bora.html">A forralt borok →</a></div></section>'''
+<div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged (Dóm tér) · Óbuda · Szombathely · Veszprém · Győr (Árkád)</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section>'''
     return dict(html=html, page='#F3EEE5', ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline=p['arch'])))
 
 
