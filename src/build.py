@@ -157,6 +157,8 @@ STAMP = '''<div class="stamp" aria-hidden="true"><svg viewBox="0 0 200 200" widt
 def write(path, s):
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
+    if path.endswith('.html'):
+        s = re.sub(r'(img/[\w./-]+\.(?:webp|png))(?=["\)\s])', lambda m: m.group(1) + '?v=' + VER, s)
     open(full, 'w', encoding='utf-8').write(s)
 
 
@@ -834,6 +836,9 @@ def main():
     h = hashlib.sha1()
     for f in ('assets/style.css', 'assets/app.js', 'assets/catalog.js'):
         h.update(open(os.path.join(ROOT, f), 'rb').read())
+    for dp, dn, fn in sorted(os.walk(os.path.join(ROOT, 'img'))):
+        for f in sorted(fn):
+            st = os.stat(os.path.join(dp, f)); h.update(f'{f}{st.st_size}{int(st.st_mtime)}'.encode())
     VER = h.hexdigest()[:10]
     index()
     category()
