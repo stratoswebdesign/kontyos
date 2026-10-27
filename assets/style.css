@@ -872,3 +872,13 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
   .pd-hero-kl3 .right{justify-self:start;width:340px}
   .pd-hero-kl3 .pd-klimg{width:auto}
 }
+/* Klára: szekciók kijjebb, több levegő a palack körül */
+@media (min-width:1101px){
+  .pd-hero-kl3{column-gap:clamp(56px,9vw,190px);max-width:1640px}
+}
+@media (min-width:1101px){
+  .pd-hero-kl3{column-gap:clamp(40px,5vw,90px);max-width:1640px}
+  .pd-hero-kl3 .left{justify-self:start;max-width:none;width:min(380px,100%)}
+  .pd-hero-kl3 .right{justify-self:end;width:min(360px,100%)}
+}
+@media (min-width:1101px){.pd-hero-kl3 .left,.pd-hero-kl3 .right{width:min(370px,100%)}}
