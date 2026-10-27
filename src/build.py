@@ -165,7 +165,7 @@ SEASONS = [
     dict(k='forralt', lbl='Forralt szezon', bg='#F08A3C', fg='#1B2A5C', word='FORRALT', hword='#1B2A5C', acc='#1B2A5C', ctafg='#FFFFFF',
          stampbg='#1B2A5C', stampfg='#F3C66B', stamp='CSAK MEGMELEGÍTED · ÉS KÉSZ · PIRI MAMA · ',
          bottles=[('piri-mama-forralt-bora', 'clamp(280px,50vh,430px)', '-9deg'), ('narancsos-piri-mama-forralt-bora', 'clamp(330px,60vh,520px)', '4deg'), ('epres-piri-mama-forralt-bora', 'clamp(270px,49vh,420px)', '12deg')],
-         ml=18, eyebrow='Új · Narancsos PIRI Mama', t='Csak megmelegíted, és kész.', s='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.',
+         ml=64, eyebrow='Új · Narancsos PIRI Mama', t='Csak megmelegíted, és kész.', s='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.',
          cta=('PIRI Mama forralt borok', 'termek/narancsos-piri-mama-forralt-bora.html'), price=None),
     dict(k='ujbor', lbl='Újbor', bg='#F6E1E4', fg='#1B2A5C', word='ÚJBOR', hword='#EFC9CF', acc='#EF4E73', ctafg='#fff',
          bottles=[('edes-eperbor', 'clamp(300px,58vh,560px)'), ('edes-meggybor', 'clamp(330px,64vh,610px)'), ('edes-kajszibor', 'clamp(300px,58vh,560px)')],

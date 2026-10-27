@@ -882,3 +882,10 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
   .pd-hero-kl3 .right{justify-self:end;width:min(360px,100%)}
 }
 @media (min-width:1101px){.pd-hero-kl3 .left,.pd-hero-kl3 .right{width:min(370px,100%)}}
+/* Forralt hero: nagyobb köz a palackok között */
+.hero[data-season="forralt"] .bottles{width:auto}
+@media (max-width:1100px){.hero[data-season="forralt"] .hb+.hb{margin-left:34px!important}}
+@media (max-width:860px){.hero[data-season="forralt"] .hb+.hb{margin-left:14px!important}}
+@media (max-width:420px){.hero[data-season="forralt"] .hb+.hb{margin-left:4px!important}}
+@media (min-width:600px) and (max-width:860px){.hero[data-season="forralt"] .hb+.hb{margin-left:36px!important}.hero[data-season="forralt"] .hb .hbr img{height:calc(var(--h) * .78)}}
+@media (max-width:599px){.hero[data-season="forralt"] .hb+.hb{margin-left:18px!important}.hero[data-season="forralt"] .hb .hbr img{height:calc(var(--h) * .6)}.hero[data-season="forralt"] .bottles{right:50%;transform:translateX(50%)}}
