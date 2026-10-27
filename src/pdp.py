@@ -279,9 +279,8 @@ def t_klara(p):
         t = (param(x, 'Édes') or '').upper()
         return t + (' · 8 HÓNAP TÖLGY' if 'barrique' in x['id'] else '')
     row = ''.join(f'''<a href="{x['id']}.html"><img src="{r}{x['tight']}" alt="{e(x['name'])}" loading="lazy"{' style="opacity:.45"' if not x['avail'] else ''}><span class="k">{taste(x)}</span><span class="n">{e(x['name'].replace('Klára ', '').replace('édes ', '').replace('száraz ', '').capitalize())}</span><span class="p"{' style="color:#6A6F7E"' if not x['avail'] else ''}>{ft(x['price']) if x['avail'] else 'Elfogyott – értesítést kérek'}</span></a>''' for x in others)
-    html = f'''<section class="pd-wrap pd-hero-kl">
-<div class="pd-klimg"><img src="{r}{p['tight']}" alt="{e(p['name'])} {vol} palack"></div>
-<div class="pd-kltx">
+    html = f'''<section class="pd-wrap pd-hero-kl3">
+<div class="pd-kltx left">
 {crumbs([('Gyümölcsborok', 'gyumolcsbor.html'), ('Klára prémium', 'gyumolcsbor.html#klara')], 'font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6A6F7E')}
 <div><p aria-hidden="true" class="pd-klbig">KLÁRA</p>
 <h1 class="pd-klh1">{e(p['name'])} <span>{vol.replace('750 ml', '0,75 l')}</span></h1>
@@ -289,6 +288,9 @@ def t_klara(p):
 <span aria-hidden="true" class="pd-rule"></span>
 <p class="pd-lead">{e(short_desc(p))}</p>
 <dl class="pd-mini"><dt>KISZERELÉS</dt><dd>{vol.replace('750 ml', '0,75 l')}</dd><dt>ALKOHOL</dt><dd>{alc}</dd>{f'<dt>ZÁRÁS</dt><dd>{e(zar)}</dd>' if zar else ''}</dl>
+</div>
+<div class="pd-klimg"><img src="{r}{p['tight']}" alt="{e(p['name'])} {vol} palack"></div>
+<div class="pd-kltx right">
 {buy}
 {ship_dl('#EEE8E1', '#6A6F7E', 12)}
 {upsell(p, 'k')}
