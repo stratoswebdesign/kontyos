@@ -87,7 +87,7 @@
       document.querySelectorAll('[data-unit]').forEach(function (el) { el.textContent = fmt(u); });
       document.querySelectorAll('[data-line]').forEach(function (el) { el.textContent = fmt(u * q); });
       var t = totals(load()), after = t.sub + u * q, left = Math.max(0, LIMIT - after);
-      document.querySelectorAll('[data-free-text]').forEach(function (el) { el.textContent = (p.free || left === 0) ? 'Ezzel ingyenes a szállítás.' : 'Kosarad ezzel ' + fmt(after) + ' – még ' + fmt(left) + ' az ingyenes szállításig.'; });
+      document.querySelectorAll('[data-free-text]').forEach(function (el) { el.textContent = (p.free || left === 0) ? 'Ezzel ingyenes a szállítás.' : (el.hasAttribute('data-free-short') ? 'Még ' + fmt(left) + ' az ingyenes szállításig' : 'Kosarad ezzel ' + fmt(after) + ' – még ' + fmt(left) + ' az ingyenes szállításig.'); });
       document.querySelectorAll('[data-free-bar]').forEach(function (el) { el.style.width = (p.free ? 100 : Math.min(100, Math.round(after / LIMIT * 100))) + '%'; });
     };
     document.addEventListener('click', function (e) {

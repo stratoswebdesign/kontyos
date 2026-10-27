@@ -71,9 +71,12 @@ def allergens(p):
     return ' · '.join(out)
 
 
-def ship_dl(rule, dd, fs=13):
+SHIP_SHORT = [('Kézbesítés', '1–5 munkanap'), ('Szállítás', '1 800 Ft-tól · 20 000 Ft felett ingyen'), ('Fizetés', 'Kártya, átutalás, utánvét')]
+
+
+def ship_dl(rule, dd, fs=13, short=False):
     return '<dl class="pd-ship" style="--rule:' + rule + ';font-size:' + str(fs) + 'px">' + ''.join(
-        f'<div><dt>{a}</dt><dd style="color:{dd}">{b}</dd></div>' for a, b in SHIP) + '</dl>'
+        f'<div><dt>{a}</dt><dd style="color:{dd}">{b}</dd></div>' for a, b in (SHIP_SHORT if short else SHIP)) + '</dl>'
 
 
 def kv(rows, rule):
@@ -177,7 +180,7 @@ def prem_buy(p, kind):
     return f'''<div class="pd-pbox {kind}" data-buy="{p['id']}">
 {packs}
 <div class="pd-kbuy"><span class="pr" data-unit>{ft(p['price'])}</span><span data-q id="q" hidden>1</span><button type="button" class="pd-kbtn" data-add="{p['id']}" data-qty-from="#q">KOSÁRBA · <span data-line>{ft(p['price'])}</span></button></div>
-<div class="pd-pfree {kind}"><span data-free-text></span><div class="trk"><i data-free-bar></i></div></div></div>'''
+<div class="pd-pfree {kind}"><span data-free-text{' data-free-short' if kind == 'k' else ''}></span><div class="trk"><i data-free-bar></i></div></div></div>'''
 
 
 UPSELL = {
@@ -292,7 +295,7 @@ def t_klara(p):
 <div class="pd-klimg"><img src="{r}{p['tight']}" alt="{e(p['name'])} {vol} palack"></div>
 <div class="pd-kltx right">
 {buy}
-{ship_dl('#EEE8E1', '#6A6F7E', 12)}
+{ship_dl('#EEE8E1', '#6A6F7E', 12, True)}
 {upsell(p, 'k')}
 <p class="pd-small">{tiertxt}{e(param(p, 'Egységár') or '')}<br>Összetevők: {e(ingr(p).replace(' szulfitot tartalmaz', ''))} · <strong>szulfitot tartalmaz</strong></p>
 </div></section>
