@@ -240,7 +240,7 @@ def t_klasszikus(p):
 {crumbs([('Főoldal', 'index.html'), ('Gyümölcsborok', 'gyumolcsbor.html'), ('Klasszikus', 'gyumolcsbor.html#klasszikus'), (e(p['name']), '')], 'font-size:13px')}
 <div class="pd-row">
 <div class="pd-gal"><div class="pd-arch" style="background:{p['arch']}"><img data-gal-main src="{r}{p['tight']}" alt="{e(p['name'])} {vol}" class="fit-contain"></div>
-<div class="pd-thumbs">{thumbs}</div></div>
+</div>
 <div class="pd-label"><div class="in">
 <p class="pd-kick">KLASSZIKUS · {e(taste.upper())} GYÜMÖLCSBOR</p>
 <p aria-hidden="true" class="pd-big" style="color:{p['accent']};font-size:{fsz}">{e(bw)}</p>
@@ -254,7 +254,7 @@ def t_klasszikus(p):
 {upsell(p)}
 </div></div></div></section>
 {info(p, c)}
-<section class="pd-illu"><img src="{r}img/photo/bottles_shadow.webp" alt="" loading="lazy"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div></section>
+<section class="pd-illu noimg"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div></section>
 {reviews(p, c)}
 {cross(cross_ids, 'Ha a meggyet szereted' if 'meggy' in p['id'] else 'Ha ezt szereted', lambda x: ring.get(x['line'], '#1B2A5C'), 'font-family:var(--serif);font-weight:700;font-size:clamp(36px,4vw,54px)')}'''
     return dict(html=html, page='#F3EEE5', ink='#1B2A5C', theme='pill-b', bar=buybar(p, c) if p['avail'] else '')

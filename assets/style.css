@@ -973,3 +973,6 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
 @media (max-width:860px){.fsel .list{min-width:0;max-width:calc(100% + 2*var(--gutter))}.fsel>*{min-width:0}}
 [hidden]{display:none!important}
 @media (max-width:599px){.home-picks .pcard:nth-child(5){display:none}}
+.pd-illu.noimg{height:auto;background:#fff;padding:clamp(48px,6vw,80px) var(--gutter)}
+.pd-illu.noimg .box{position:static;margin:0 auto;width:min(640px,100%);background:#F3EEE5;text-align:center;align-items:center}
+.pd-label .pd-ups ul{grid-template-columns:1fr}
