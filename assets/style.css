@@ -865,3 +865,10 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
   .pd-hero-kl3 .right .pd-ups button{width:26px;height:26px;font-size:15px}
   .pd-hero-kl3 .right .pd-small{font-size:10.5px;letter-spacing:0}
 }
+/* Klára: palack pontosan középen, két oldalt azonos térköz */
+@media (min-width:1101px){
+  .pd-hero-kl3{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:clamp(40px,5vw,90px);max-width:1440px}
+  .pd-hero-kl3 .left{justify-self:end;width:100%;max-width:440px}
+  .pd-hero-kl3 .right{justify-self:start;width:340px}
+  .pd-hero-kl3 .pd-klimg{width:auto}
+}
