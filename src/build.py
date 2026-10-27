@@ -20,7 +20,7 @@ def ft(n):
 
 
 LINE_LABEL = {'klasszikus': 'Klasszikus gyümölcsbor', 'klara': 'Klára prémium', 'friss': 'FRISS gyümölcsbor',
-              'secco': 'Berry Secco', 'piri': 'Piri Mama forralt bor', 'don': 'Don Cherry', 'palinka': 'Pálinka',
+              'secco': 'Berry Secco', 'piri': 'PIRI Mama forralt bor', 'don': 'Don Cherry', 'palinka': 'Pálinka',
               'csomag': 'Válogatás', 'kiegeszito': 'Kiegészítő', 'szezon': 'Szezonális csomag'}
 
 # Szezonális (demó) csomagok – árak a designból, tartalom javaslat
@@ -106,7 +106,7 @@ def header(r, cur='', theme='pill', back=None):
 def footer(r):
     return f'''<footer class="site-foot"><div class="wrap">
 <div class="brand"><img src="{r}img/logo.png" alt="Kontyos" width="210" height="52"><p style="margin-top:14px;max-width:340px;font-size:14px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól.</p></div>
-<div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}friss.html">FRISS & Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">Piri Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}palinka.html">Pálinka</a></div>
+<div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}friss.html">FRISS & Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}palinka.html">Pálinka</a></div>
 <div><h4>Kampányok</h4><a href="{r}ujbor-valogatas.html">Újbor-válogatás</a><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a></div>
 <div><h4>Infó</h4><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185 · Demó: Stratos Webdesign</p>
@@ -366,7 +366,7 @@ def search_page():
 
 # ---------- Kövess minket: adventi standok (DEMÓ időpontok – a valós menetrendet a Kontyos adja) ----------
 FAIRS = [
-    dict(id='szeged', city='Szeged', place='Dóm tér – Szegedi Adventi Vásár', lat=46.2496, lng=20.1490, start='2026-11-20', end='2026-12-23', hours='[NYITVATARTÁS]'),
+    dict(id='szeged', city='Szeged', place='Dóm tér – Szegedi Adventi Vásár', lat=46.2496, lng=20.1490, start='2026-11-20', end='2027-01-04', hours='[NYITVATARTÁS]'),
     dict(id='obuda', city='Budapest – Óbuda', place='Fő tér – Óbudai Advent', lat=47.5414, lng=19.0450, start='2026-11-27', end='2026-12-23', hours='[NYITVATARTÁS]'),
     dict(id='gyor', city='Győr', place='Árkád bevásárlóközpont', lat=47.6817, lng=17.6426, start='2026-11-23', end='2026-12-24', hours='[NYITVATARTÁS]'),
     dict(id='veszprem', city='Veszprém', place='Óváros tér – Veszprémi Advent', lat=47.0932, lng=17.9076, start='2026-11-28', end='2026-12-23', hours='[NYITVATARTÁS]'),
@@ -381,10 +381,10 @@ def fairs_js():
 
 def fairs_strip(r=''):
     cards = ''.join(f'''<a class="fair-card" href="{r}vasarok.html#{f['id']}" data-fair="{f['id']}"><span class="st" data-fair-status>Hamarosan</span><b>{e(f['city'])}</b><span class="pl">{e(f['place'])}</span><span class="dt" data-fair-dates></span></a>''' for f in FAIRS)
-    return f'''<section class="sec follow"><div class="wrap"><div class="fhead"><div><p class="kicker" style="--accent:#F3C66B">Kövess minket</p><h2 class="h2">Hol iszhatsz ma Piri Mamát?</h2>
-<p class="lead">Adventkor az ország öt pontján állunk standdal. Nézd meg, hol vagyunk most, és kérj értesítést, mielőtt a városodba érünk.</p></div>
+    return f'''<section class="sec follow"><div class="wrap"><div class="fhead"><div><p class="kicker" style="--accent:#F3C66B">Kövess minket</p><h2 class="h2">Itt találkozhatunk adventkor</h2>
+<p class="lead">Öt városban várunk a standunkkal. Nézd meg, hol vagyunk éppen, és iratkozz fel: szólunk, mielőtt a városodba érkezünk.</p></div>
 <a class="btn" style="background:#F3C66B;color:#1B2A5C" href="{r}vasarok.html">Térkép és értesítő →</a></div>
-<div class="fair-row">{cards}</div><p class="ph-note" style="color:#F3EEE5">Demó időpontok – a valós menetrendet a Kontyos adja.</p></div></section>'''
+<div class="fair-row">{cards}</div><p class="ph-note" style="color:#F3EEE5">Időpontok: a 2026-os menetrend egyeztetés alatt.</p></div></section>'''
 
 
 def fairs_page():
@@ -396,17 +396,17 @@ def fairs_page():
     rows = ''.join(f'''<li id="{f['id']}" data-fair="{f['id']}"><button type="button" class="fl-go" data-go="{f['id']}"><span class="st" data-fair-status>Hamarosan</span><b>{e(f['city'])}</b><span class="pl">{e(f['place'])}</span><span class="dt" data-fair-dates></span><span class="hr">Nyitva: {e(f['hours'])}</span></button></li>''' for f in FAIRS)
     checks = ''.join(f'''<label class="check"><input type="checkbox" name="fair" value="{f['id']}"> <span><b>{e(f['city'])}</b> · {e(f['place'])}</span></label>''' for f in FAIRS)
     pg += f'''<main class="fairs"><section class="wrap fz-head"><p class="breadcrumb"><a href="index.html">Főoldal</a> / Kövess minket</p>
-<p class="kicker">Kövess minket</p><h1 class="h2">Merre jár most Piri Mama?</h1>
-<p class="lead">Adventi standjaink térképen – élőben látod, hol vagyunk most, és mikor érünk a városodba. Kérj értesítést, és szólunk, mielőtt odaérünk.</p>
+<p class="kicker">Kövess minket</p><h1 class="h2">Adventi standjaink</h1>
+<p class="lead">A térképen láthatod, melyik vásáron vagyunk éppen, és mikor érkezünk a te városodba. Iratkozz fel, és előre szólunk.</p>
 <div class="legend"><span><i class="lv"></i>Most itt vagyunk</span><span><i class="up"></i>Hamarosan</span><span><i class="dn"></i>Véget ért</span><span><i class="bh"></i>Borház</span></div></section>
 <section class="wrap fz-grid"><div id="fmap" class="fmap" role="region" aria-label="Standok térképe"></div>
 <ol class="flist">{rows}</ol></section>
-<section class="fz-sub" id="ertesito"><div class="wrap"><div class="tx"><p class="kicker" style="--accent:#F3C66B">Szólunk, mikor érünk hozzád</p><h2 class="h2">Kérj értesítést a vásárodról</h2>
-<p class="lead">Pipáld be, melyik vásárnál szóljunk. Automatikus e-mailt küldünk 3 nappal a nyitás előtt és a nyitás reggelén – és ha valahol változik az időpont, azt is megírjuk.</p>
-<div class="mailprev"><p class="mh">Így néz ki az e-mail</p><div class="mail"><small>Tárgy: Péntektől Szegeden vagyunk – Dóm tér 🍷</small><b>Szia! Megérkezünk a városodba.</b><p>Piri Mama standja nov. 20-tól a Dóm téren vár: forralt bor, újbor-kóstoló és ajándékcsomagok. Mutasd fel ezt a levelet a standon: [AJÁNDÉK / KEDVEZMÉNY – a Kontyos adja].</p><span class="btnlike">Útvonal a standhoz →</span></div></div></div>
+<section class="fz-sub" id="ertesito"><div class="wrap"><div class="tx"><p class="kicker" style="--accent:#F3C66B">Értesítő</p><h2 class="h2">Szólunk, mielőtt a városodba érkezünk</h2>
+<p class="lead">Jelöld be, melyik vásárról kérsz értesítést. Automatikus e-mailt küldünk 3 nappal a nyitás előtt és a nyitás reggelén, és ha valamelyik időpont változik, arról is szólunk.</p>
+<div class="mailprev"><p class="mh">Így néz ki az e-mail</p><div class="mail"><small>Tárgy: Péntektől Szegeden vagyunk – Dóm tér 🍷</small><b>Szia! Hamarosan a városodban leszünk.</b><p>A PIRI Mama standja nov. 20-tól a Dóm téren vár: forralt bor, újbor-kóstoló és ajándékcsomagok. Mutasd fel ezt a levelet a standon: [AJÁNDÉK / KEDVEZMÉNY – a Kontyos adja].</p><span class="btnlike">Útvonal a standhoz →</span></div></div></div>
 <form class="subform" data-fair-form><div class="field"><label for="fz-name">Keresztnév</label><input id="fz-name" name="name" autocomplete="given-name"></div>
 <div class="field"><label for="fz-mail">E-mail cím</label><input id="fz-mail" name="email" type="email" required autocomplete="email"><span class="msg">Adj meg érvényes e-mail címet</span></div>
-<fieldset><legend>Melyik vásárnál szóljunk?</legend>{checks}<label class="check all"><input type="checkbox" data-fair-all> <span><b>Mindegyiknél</b></span></label></fieldset>
+<fieldset><legend>Melyik vásárról kérsz értesítést?</legend>{checks}<label class="check all"><input type="checkbox" data-fair-all> <span><b>Mindegyikről</b></span></label></fieldset>
 <label class="check"><input type="checkbox" required> <span>Hozzájárulok, hogy a Kontyos Borház Kft. a megadott vásárokról e-mailben értesítsen. Bármikor leiratkozhatok.</span></label>
 <button class="btn" type="submit" style="background:#F3C66B;color:#1B2A5C">Értesítést kérek</button><p class="fz-ok" data-fair-ok role="status"></p></form></div></section>
 <section class="wrap" style="padding-top:20px;padding-bottom:80px"><p class="ph-note">Demó időpontok és nyitvatartás – a valós menetrendet a Kontyos adja. A „Szimuláció” gombbal megnézheted, hogyan néz ki az oldal advent közepén, amikor több stand élőben fut.</p></section></main>
@@ -425,7 +425,7 @@ def home_body(r='', h='h1'):
 </div></section>'''
     pg += fruit_selector(r)
     pg += f'''<section class="sec"><div class="wrap"><div class="collage">
-<img class="a" src="{r}img/photo/piri_nar_life.webp" alt="Piri Mama narancsos forralt bora" loading="lazy">
+<img class="a" src="{r}img/photo/piri_nar_life.webp" alt="Narancsos PIRI Mama forralt bora" loading="lazy">
 <img src="{r}img/photo/don_life.webp" alt="Don Cherry meggyvermut" loading="lazy"><img src="{r}img/photo/friss_malna.webp" alt="FRISS málna" loading="lazy">
 <img src="{r}img/photo/klara.webp" alt="Klára prémium gyümölcsbor" loading="lazy" style="grid-column:2/4;aspect-ratio:2/1"></div></div></section>'''
     pg += f'''<section class="sec" style="background:#F28C28;color:#1B2A5C"><div class="wrap split">
@@ -496,7 +496,7 @@ def category():
 <details><summary>Mennyi idő alatt érkezik meg?</summary><p>GLS-sel a visszaigazolástól számított 3–5, MPL PostaPontra vagy postára 1–3 munkanap.</p></details>
 <details><summary>Van mennyiségi kedvezmény?</summary><p>Igen: a legtöbb bornál 6 palacktól alacsonyabb darabár érvényes. Regisztrált vásárlóként 30 000 Ft összrendelés felett törzsvásárlói kedvezmény jár (5–15%) – részletek az <a href="info.html#torzsvasarlo">információs oldalon</a>.</p></details>
 </div><div style="display:flex;flex-direction:column;gap:12px;margin-top:10px"><h2 class="serif" style="font-size:30px">Miért a Kontyos?</h2><p class="lead">Magyarország legnagyobb különleges minőségű gyümölcsborászataként tradicionális és reduktív eljárásokat ötvözünk. Gyümölcsboraink 100%-ban magyar gyümölcsökből, szívvel-lélekkel készülnek – gazdag ízüknek és színüknek köszönhetően egész évben a nyár friss, üde hangulatát hordozzák.</p>
-<p>A <a href="#klasszikus">klasszikus gyümölcsborok</a> mellett a prémium <a href="#klara">Klára</a> sorozatot, a könnyű <a href="friss.html">FRISS és Berry Secco</a> borokat, a <a href="termek/piri-mama-forralt-bora.html">Piri Mama forralt borokat</a>, a <a href="termek/don-cherry.html">Don Cherry meggyvermutot</a> és kisüsti <a href="palinka.html">pálinkáinkat</a> is megtalálod.</p></div></div></section>
+<p>A <a href="#klasszikus">klasszikus gyümölcsborok</a> mellett a prémium <a href="#klara">Klára</a> sorozatot, a könnyű <a href="friss.html">FRISS és Berry Secco</a> borokat, a <a href="termek/piri-mama-forralt-bora.html">PIRI Mama forralt borokat</a>, a <a href="termek/don-cherry.html">Don Cherry meggyvermutot</a> és kisüsti <a href="palinka.html">pálinkáinkat</a> is megtalálod.</p></div></div></section>
 </main>''' + footer(r)
     write('gyumolcsbor.html', pg)
 
