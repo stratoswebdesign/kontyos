@@ -144,6 +144,7 @@ def cards(ids, r, cls='cards'):
 
 
 def hb(p, r, h, ml=0, rot='0deg'):
+    h = h.replace('vh', 'svh')  # iOS-en a vh a teljes (sáv nélküli) magasság – az svh a ténylegesen látható
     return f'''<div class="hb" style="--h:{h};margin-left:{ml}px"><div class="hbi"><span class="hbr" style="transform:rotate({rot})"><img src="{r}{p['tight']}" alt="{e(p['name'])}">
 <a class="hbl" href="{r}{url(p)}" aria-label="{e(p['name'])} – termékoldal"></a></span>
 <div class="hw"><div class="in"><span class="n">{e(p['name'])}</span><span class="p">{ft(p['price'])}</span><button type="button" data-add="{p['id']}">Kosárba</button></div></div>
@@ -424,7 +425,7 @@ def home_body(r='', h='h1'):
     pg += f'''<section class="sec" style="padding-bottom:40px"><div class="wrap" style="display:flex;flex-direction:column;gap:22px">
 <{h} class="h2" style="max-width:980px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól</{h}>
 <ul class="usp"><li>100% gyümölcsből</li><li>Ingyenes szállítás 20 000 Ft felett</li><li>6 palacktól mennyiségi ár</li><li>Kiszállítás 1–5 munkanap</li><li>Törzsvásárlói kedvezmény akár 15%</li></ul>
-<div style="margin-top:20px">{cards(['edes-meggybor', 'edes-eperbor', 'klara-edes-malnabor', 'friss-malna', 'don-cherry'], r, 'cards home-picks')}</div>
+<div style="margin-top:20px">{cards(['edes-meggybor', 'edes-eperbor', 'klara-edes-malnabor', 'friss-malna', 'piri-mama-forralt-bora', 'don-cherry'], r, 'cards home-picks')}</div>
 </div></section>'''
     pg += fruit_selector(r)
     pg += f'''<section class="sec"><div class="wrap"><div class="collage">
@@ -708,7 +709,7 @@ def cart():
     pg += f'''<main><div class="wrap" style="display:flex;flex-direction:column;gap:22px;padding-top:10px">
 <ol class="steps"><li class="on">1 · Kosár</li><li>2 · Adatok</li><li>3 · Fizetés</li></ol><h1 class="h2">Kosár</h1>
 <div class="cart-grid"><div class="cart-main"><div id="cart-root"></div>
-<div style="display:flex;flex-direction:column;gap:14px"><h2 class="serif" style="font-size:26px">Tedd mellé</h2>{cards(['friss-malna', 'berry-secco', 'kontyos-borospohar', 'don-cherry-gyumolcse'], r)}</div></div>
+<div style="display:flex;flex-direction:column;gap:14px"><h2 class="serif" style="font-size:26px">Tedd mellé</h2>{cards(['friss-malna', 'berry-secco', 'kontyos-borospohar', 'don-cherry-gyumolcse'], r, 'cards cards-4')}</div></div>
 <aside class="cart-side" id="cart-side"><div class="box" style="display:flex;flex-direction:column;gap:14px"><h2 class="serif" style="font-size:24px">Összesítő</h2>
 <div class="tot"><div><span>Részösszeg</span><b data-sum>0 Ft</b></div><div><span>Szállítás</span><span data-shipfee>–</span></div><div class="grand"><span>Fizetendő</span><b data-grand>0 Ft</b></div></div>
 <details class="coupon"><summary>Van kuponkódod?</summary><form data-coupon style="display:flex;gap:8px;margin-top:6px"><div class="field" style="flex:1"><input aria-label="Kuponkód" placeholder="KUPONKÓD"></div><button class="btn navy" type="submit">Beváltom</button></form><p data-coupon-msg class="muted" style="font-size:13px"></p></details>
