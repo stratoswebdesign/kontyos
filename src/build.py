@@ -373,7 +373,7 @@ FAIRS = [  # 2026: a 2025-ös forgalmi tábla menetrendje, azonos hétköznapokr
     dict(id='obuda', city='Budapest – Óbuda', place='Óbudai adventi vásár', lat=47.5414, lng=19.0450, start='2026-11-27', end='2026-12-23', closed=[], note='December 23-ig', hours='egyeztetés alatt'),
     dict(id='veszprem', city='Veszprém', place='Veszprémi adventi vásár', lat=47.0932, lng=17.9076, start='2026-11-27', end='2026-12-23', closed=[], note='December 23-ig', hours='egyeztetés alatt'),
     dict(id='gyor', city='Győr', place='Győri adventi vásár, belváros', lat=47.6875, lng=17.6355, start='2026-11-27', end='2026-12-31', closed=['2026-12-24'], note='Szenteste zárva, utána szilveszterig nyitva', hours='egyeztetés alatt'),
-    dict(id='arkad', city='Győr', place='Árkád bevásárlóközpont', lat=47.6817, lng=17.6426, start='2026-11-28', end='2026-12-23', closed=[], note='December 23-ig', hours='egyeztetés alatt'),
+    dict(id='arkad', city='Szeged', place='Árkád bevásárlóközpont', lat=46.2547, lng=20.1377, start='2026-11-28', end='2026-12-23', closed=[], note='December 23-ig', hours='egyeztetés alatt'),
 ]
 BORHAZ = dict(city='Klárafalva', place='Kontyos Borház – egész évben, személyes átvétel', lat=46.2209, lng=20.3266)
 
