@@ -895,7 +895,7 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
 .follow .wrap{display:flex;flex-direction:column;gap:26px}
 .follow .fhead{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between}
 .follow .fhead>div{max-width:640px;display:flex;flex-direction:column;gap:12px}
-.fair-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.fair-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
 .fair-card,.flist button{display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:8px;background:rgba(255,255,255,.08);color:inherit;text-decoration:none;border:1px solid rgba(255,255,255,.15)}
 .fair-card b,.flist b{font-family:var(--serif);font-size:22px;line-height:1.1}
 .fair-card .pl,.flist .pl{font-size:13px;opacity:.8;line-height:1.35}
@@ -906,7 +906,7 @@ html.burger .logo{padding:9px 18px}html.burger .logo img{height:24px}
 [data-st="dn"]{opacity:.55}
 [data-st="lv"].fair-card,[data-st="lv"]>button{border-color:#2E8C5A;box-shadow:0 0 0 2px #2E8C5A}
 @keyframes kpulse{50%{opacity:.6}}
-@media (max-width:1100px){.fair-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*var(--gutter));padding:0 var(--gutter) 6px}.fair-card{flex:none;width:210px;scroll-snap-align:start}}
+@media (max-width:1240px){.fair-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*var(--gutter));padding:0 var(--gutter) 6px}.fair-card{flex:none;width:210px;scroll-snap-align:start}}
 .fairs .fz-head{display:flex;flex-direction:column;gap:14px;padding-top:10px;padding-bottom:26px}
 .legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;font-weight:700}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}

@@ -367,12 +367,13 @@ def search_page():
 
 
 # ---------- Kövess minket: adventi standok (DEMÓ időpontok – a valós menetrendet a Kontyos adja) ----------
-FAIRS = [
-    dict(id='szeged', city='Szeged', place='Dóm tér – Szegedi Adventi Vásár', lat=46.2496, lng=20.1490, start='2026-11-20', end='2027-01-04', hours='[NYITVATARTÁS]'),
-    dict(id='obuda', city='Budapest – Óbuda', place='Fő tér – Óbudai Advent', lat=47.5414, lng=19.0450, start='2026-11-27', end='2026-12-23', hours='[NYITVATARTÁS]'),
-    dict(id='gyor', city='Győr', place='Árkád bevásárlóközpont', lat=47.6817, lng=17.6426, start='2026-11-23', end='2026-12-24', hours='[NYITVATARTÁS]'),
-    dict(id='veszprem', city='Veszprém', place='Óváros tér – Veszprémi Advent', lat=47.0932, lng=17.9076, start='2026-11-28', end='2026-12-23', hours='[NYITVATARTÁS]'),
-    dict(id='szombathely', city='Szombathely', place='Fő tér – Szombathelyi Advent', lat=47.2306, lng=16.6219, start='2026-12-04', end='2026-12-23', hours='[NYITVATARTÁS]'),
+FAIRS = [  # 2026: a 2025-ös forgalmi tábla menetrendje, azonos hétköznapokra tolva (nyitvatartás: a Kontyos adja)
+    dict(id='szeged', city='Szeged', place='Dóm tér – Szegedi Adventi Vásár', lat=46.2496, lng=20.1490, start='2026-11-27', end='2027-01-04', closed=[], note='Szenteste és karácsonykor is nyitva, január 4-ig', hours='egyeztetés alatt'),
+    dict(id='szombathely', city='Szombathely', place='Szombathelyi adventi vásár', lat=47.2306, lng=16.6219, start='2026-11-20', end='2026-12-23', closed=[], note='Elsőként nyitunk, december 23-ig', hours='egyeztetés alatt'),
+    dict(id='obuda', city='Budapest – Óbuda', place='Óbudai adventi vásár', lat=47.5414, lng=19.0450, start='2026-11-27', end='2026-12-23', closed=[], note='December 23-ig', hours='egyeztetés alatt'),
+    dict(id='veszprem', city='Veszprém', place='Veszprémi adventi vásár', lat=47.0932, lng=17.9076, start='2026-11-27', end='2026-12-23', closed=[], note='December 23-ig', hours='egyeztetés alatt'),
+    dict(id='gyor', city='Győr', place='Győri adventi vásár, belváros', lat=47.6875, lng=17.6355, start='2026-11-27', end='2026-12-31', closed=['2026-12-24'], note='Szenteste zárva, utána szilveszterig nyitva', hours='egyeztetés alatt'),
+    dict(id='arkad', city='Győr', place='Árkád bevásárlóközpont', lat=47.6817, lng=17.6426, start='2026-11-28', end='2026-12-23', closed=[], note='December 23-ig', hours='egyeztetés alatt'),
 ]
 BORHAZ = dict(city='Klárafalva', place='Kontyos Borház – egész évben, személyes átvétel', lat=46.2209, lng=20.3266)
 
@@ -384,9 +385,9 @@ def fairs_js():
 def fairs_strip(r=''):
     cards = ''.join(f'''<a class="fair-card" href="{r}vasarok.html#{f['id']}" data-fair="{f['id']}"><span class="st" data-fair-status>Hamarosan</span><b>{e(f['city'])}</b><span class="pl">{e(f['place'])}</span><span class="dt" data-fair-dates></span></a>''' for f in FAIRS)
     return f'''<section class="sec follow"><div class="wrap"><div class="fhead"><div><p class="kicker" style="--accent:#F3C66B">Kövess minket</p><h2 class="h2">Itt találkozhatunk adventkor</h2>
-<p class="lead">Öt városban várunk a standunkkal. Nézd meg, hol vagyunk éppen, és iratkozz fel: szólunk, mielőtt a városodba érkezünk.</p></div>
+<p class="lead">Hat standdal, öt városban várunk. Nézd meg, hol vagyunk éppen, és iratkozz fel: szólunk, mielőtt a városodba érkezünk.</p></div>
 <a class="btn" style="background:#F3C66B;color:#1B2A5C" href="{r}vasarok.html">Térkép és értesítő →</a></div>
-<div class="fair-row">{cards}</div><p class="ph-note" style="color:#F3EEE5">Időpontok: a 2026-os menetrend egyeztetés alatt.</p></div></section>'''
+<div class="fair-row">{cards}</div><p class="ph-note" style="color:#F3EEE5">Időpontok a tavalyi menetrend alapján – a 2026-os véglegesítés alatt.</p></div></section>'''
 
 
 def fairs_page():
@@ -395,7 +396,7 @@ def fairs_page():
     extra = '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">'
     pg = head('Kövess minket – adventi standjaink térképen | Kontyos', 'Hol van most a Kontyos standja? Adventi vásárok térképen, élő státusszal és e-mail értesítővel: szólunk, mielőtt a városodba érünk.', r, 'fairs', '', extra, demo_extra=segs)
     pg += header(r)
-    rows = ''.join(f'''<li id="{f['id']}" data-fair="{f['id']}"><button type="button" class="fl-go" data-go="{f['id']}"><span class="st" data-fair-status>Hamarosan</span><b>{e(f['city'])}</b><span class="pl">{e(f['place'])}</span><span class="dt" data-fair-dates></span><span class="hr">Nyitva: {e(f['hours'])}</span></button></li>''' for f in FAIRS)
+    rows = ''.join(f'''<li id="{f['id']}" data-fair="{f['id']}"><button type="button" class="fl-go" data-go="{f['id']}"><span class="st" data-fair-status>Hamarosan</span><b>{e(f['city'])}</b><span class="pl">{e(f['place'])}</span><span class="dt" data-fair-dates></span><span class="hr">{e(f['note'])} · Nyitvatartás: {e(f['hours'])}</span></button></li>''' for f in FAIRS)
     checks = ''.join(f'''<label class="check"><input type="checkbox" name="fair" value="{f['id']}"> <span><b>{e(f['city'])}</b> · {e(f['place'])}</span></label>''' for f in FAIRS)
     pg += f'''<main class="fairs"><section class="wrap fz-head"><p class="breadcrumb"><a href="index.html">Főoldal</a> / Kövess minket</p>
 <p class="kicker">Kövess minket</p><h1 class="h2">Adventi standjaink</h1>
@@ -405,13 +406,13 @@ def fairs_page():
 <ol class="flist">{rows}</ol></section>
 <section class="fz-sub" id="ertesito"><div class="wrap"><div class="tx"><p class="kicker" style="--accent:#F3C66B">Értesítő</p><h2 class="h2">Szólunk, mielőtt a városodba érkezünk</h2>
 <p class="lead">Jelöld be, melyik vásárról kérsz értesítést. Automatikus e-mailt küldünk 3 nappal a nyitás előtt és a nyitás reggelén, és ha valamelyik időpont változik, arról is szólunk.</p>
-<div class="mailprev"><p class="mh">Így néz ki az e-mail</p><div class="mail"><small>Tárgy: Péntektől Szegeden vagyunk – Dóm tér 🍷</small><b>Szia! Hamarosan a városodban leszünk.</b><p>A PIRI Mama standja nov. 20-tól a Dóm téren vár: forralt bor, újbor-kóstoló és ajándékcsomagok. Mutasd fel ezt a levelet a standon: [AJÁNDÉK / KEDVEZMÉNY – a Kontyos adja].</p><span class="btnlike">Útvonal a standhoz →</span></div></div></div>
+<div class="mailprev"><p class="mh">Így néz ki az e-mail</p><div class="mail"><small>Tárgy: Péntektől Szegeden vagyunk – Dóm tér 🍷</small><b>Szia! Hamarosan a városodban leszünk.</b><p>A PIRI Mama standja nov. 27-től a Dóm téren vár: forralt bor, újbor-kóstoló és ajándékcsomagok. Mutasd fel ezt a levelet a standon: [AJÁNDÉK / KEDVEZMÉNY – a Kontyos adja].</p><span class="btnlike">Útvonal a standhoz →</span></div></div></div>
 <form class="subform" data-fair-form><div class="field"><label for="fz-name">Keresztnév</label><input id="fz-name" name="name" autocomplete="given-name"></div>
 <div class="field"><label for="fz-mail">E-mail cím</label><input id="fz-mail" name="email" type="email" required autocomplete="email"><span class="msg">Adj meg érvényes e-mail címet</span></div>
 <fieldset><legend>Melyik vásárról kérsz értesítést?</legend>{checks}<label class="check all"><input type="checkbox" data-fair-all> <span><b>Mindegyikről</b></span></label></fieldset>
 <label class="check"><input type="checkbox" required> <span>Hozzájárulok, hogy a Kontyos Borház Kft. a megadott vásárokról e-mailben értesítsen. Bármikor leiratkozhatok.</span></label>
 <button class="btn" type="submit" style="background:#F3C66B;color:#1B2A5C">Értesítést kérek</button><p class="fz-ok" data-fair-ok role="status"></p></form></div></section>
-<section class="wrap" style="padding-top:20px;padding-bottom:80px"><p class="ph-note">Demó időpontok és nyitvatartás – a valós menetrendet a Kontyos adja. A „Szimuláció” gombbal megnézheted, hogyan néz ki az oldal advent közepén, amikor több stand élőben fut.</p></section></main>
+<section class="wrap" style="padding-top:20px;padding-bottom:80px"><p class="ph-note">Az időpontok a 2025-ös menetrendet követik, azonos hétköznapokra tolva; a nyitvatartást és a végleges dátumokat a Kontyos adja. A „Szimuláció” gombbal megnézheted, hogyan néz ki az oldal advent közepén, amikor több stand élőben fut.</p></section></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>''' + footer(r)
     write('vasarok.html', pg)
 

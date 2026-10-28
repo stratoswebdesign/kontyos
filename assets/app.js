@@ -306,7 +306,7 @@
     var status = function (f) { var t = today(), a = day(f.start), b = day(f.end); return t < a ? 'up' : (t > b ? 'dn' : 'lv'); };
     var label = function (f) {
       var st = status(f), t = today(), a = day(f.start);
-      if (st === 'lv') return 'Most itt vagyunk';
+      if (st === 'lv') { var iso = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2); return (f.closed || []).indexOf(iso) > -1 ? 'Ma zárva' : 'Most itt vagyunk'; }
       if (st === 'dn') return 'Véget ért';
       var n = Math.round((a - t) / 864e5);
       return n <= 14 ? (n === 1 ? 'Holnaptól' : n + ' nap múlva') : 'Hamarosan';
@@ -330,7 +330,7 @@
       if (window.__fairMarkers) window.__fairMarkers.forEach(function (m) { m.setIcon(icon(status(m.fair))); m.setPopupContent(popup(m.fair)); });
     };
     var icon = function (st) { return window.L ? L.divIcon({ className: 'fmk ' + st, html: '<span></span>', iconSize: [26, 26], iconAnchor: [13, 13] }) : null; };
-    var popup = function (f) { return '<b>' + esc(f.city) + '</b><br>' + esc(f.place) + '<br>' + dfmt(day(f.start)) + ' – ' + dfmt(day(f.end)) + '<br><em>' + label(f) + '</em><br><a href="https://www.google.com/maps/dir/?api=1&destination=' + f.lat + ',' + f.lng + '" target="_blank" rel="noopener">Útvonal →</a>'; };
+    var popup = function (f) { return '<b>' + esc(f.city) + '</b><br>' + esc(f.place) + '<br>' + dfmt(day(f.start)) + ' – ' + dfmt(day(f.end)) + (f.note ? '<br><small>' + esc(f.note) + '</small>' : '') + '<br><em>' + label(f) + '</em><br><a href="https://www.google.com/maps/dir/?api=1&destination=' + f.lat + ',' + f.lng + '" target="_blank" rel="noopener">Útvonal →</a>'; };
     var mapEl = document.getElementById('fmap');
     if (mapEl && window.L) {
       var map = L.map(mapEl, { scrollWheelZoom: false }).setView([47.15, 19.2], 7);
