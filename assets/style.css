@@ -151,7 +151,7 @@ p{margin:0}
 .hb:hover .hw,.hb:focus-within .hw{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
 .hw .in{display:flex;flex-direction:column;align-items:center;gap:6px;border:1px solid var(--navy);border-radius:2px;padding:10px 14px}
 .hw .n{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-.hw .p{font-family:var(--serif);font-weight:800;font-size:22px;line-height:1}
+.hw .p{font-family:var(--serif);font-weight:800;font-size:22px;line-height:1;white-space:nowrap}
 .hw button{display:flex;align-items:center;min-height:36px;padding:0 14px;border:0;border-radius:999px;background:var(--pink);color:#fff;font-weight:800;font-size:13px;cursor:pointer}
 .hb .hbp{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;border:0;background:var(--pink);color:#fff;font:800 20px/1 var(--sans);box-shadow:0 6px 14px rgba(0,0,0,.25);pointer-events:auto;cursor:pointer;display:none}
 @media (hover:none),(max-width:860px){.hb .hbp{display:block}}
