@@ -406,7 +406,7 @@ def fairs_page():
 <ol class="flist">{rows}</ol></section>
 <section class="fz-sub" id="ertesito"><div class="wrap"><div class="tx"><p class="kicker" style="--accent:#F3C66B">Értesítő</p><h2 class="h2">Szólunk, mielőtt a városodba érkezünk</h2>
 <p class="lead">Jelöld be, melyik vásárról kérsz értesítést. Automatikus e-mailt küldünk 3 nappal a nyitás előtt és a nyitás reggelén, és ha valamelyik időpont változik, arról is szólunk.</p>
-<div class="mailprev"><p class="mh">Így néz ki az e-mail</p><div class="mail"><small>Tárgy: Péntektől Szegeden vagyunk – Dóm tér 🍷</small><b>Szia! Hamarosan a városodban leszünk.</b><p>A PIRI Mama standja nov. 27-től a Dóm téren vár: forralt bor, újbor-kóstoló és ajándékcsomagok. Mutasd fel ezt a levelet a standon: [AJÁNDÉK / KEDVEZMÉNY – a Kontyos adja].</p><span class="btnlike">Útvonal a standhoz →</span></div></div></div>
+<div class="mailprev"><p class="mh">Így néz ki az e-mail</p><div class="mail"><small>Tárgy: Péntektől Szegeden vagyunk – Dóm tér 🍷</small><b>Szia! Hamarosan a városodban leszünk.</b><p>A PIRI Mama standja nov. 27-től a szegedi Dóm téren vár. Gyere el egy pohár forralt borra!</p><span class="btnlike">Útvonal a standhoz →</span></div></div></div>
 <form class="subform" data-fair-form><div class="field"><label for="fz-name">Keresztnév</label><input id="fz-name" name="name" autocomplete="given-name"></div>
 <div class="field"><label for="fz-mail">E-mail cím</label><input id="fz-mail" name="email" type="email" required autocomplete="email"><span class="msg">Adj meg érvényes e-mail címet</span></div>
 <fieldset><legend>Melyik vásárról kérsz értesítést?</legend>{checks}<label class="check all"><input type="checkbox" data-fair-all> <span><b>Mindegyikről</b></span></label></fieldset>
