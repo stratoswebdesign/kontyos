@@ -512,7 +512,7 @@ def trust_block(r, h='h2'):
 
 
 def polaroids(r):
-    return f'''<div class="polas" aria-hidden="true"><figure class="pola" style="--r:-7deg"><img src="{r}img/photo/don_life.webp" alt="" loading="lazy"></figure><figure class="pola" style="--r:6deg"><img src="{r}img/photo/piri_nar_life.webp" alt="" loading="lazy"></figure></div>'''
+    return f'''<div class="polas" aria-hidden="true"><figure class="pola" style="--r:-7deg"><img src="{r}img/photo/don_polaroid.webp" alt="" loading="lazy"></figure><figure class="pola" style="--r:6deg"><img src="{r}img/photo/piri_nar_life.webp" alt="" loading="lazy"></figure></div>'''
 
 
 def claim_block(r):

@@ -1373,3 +1373,5 @@ html.burger .site-head .logo img{height:30px!important}
 .trust .tbox .stats b{font-size:clamp(24px,2.6vw,38px)}
 .trust .h2{hyphens:manual!important;-webkit-hyphens:manual!important}
 @media (max-width:599px){.trust .h2{font-size:clamp(22px,7.2vw,40px)}.trust .kicker{font-size:10px;letter-spacing:.14em}}
+/* polaroid: enyhén antikolt, fakó színek */
+.pola img{filter:sepia(.18) saturate(.88) contrast(.96) brightness(1.03)}
