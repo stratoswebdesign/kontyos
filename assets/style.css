@@ -1066,3 +1066,12 @@ p,.lead,.desc,.reviews{font-family:var(--text)}
 }
 .pd-fh1{letter-spacing:.03em}
 .pd-label .in{container-type:inline-size}
+/* Logó: keret nélkül, csak a tiszta fekete vagy fehér változat – a háttér alapján vált (app.js: logoTone) */
+.logo,html.burger .logo{background:none!important;padding:0!important;border-radius:0;box-shadow:none}
+.site-head .logo img{height:38px!important;width:auto}
+@media (max-width:980px){.site-head .logo img{height:30px!important}}
+html.burger .site-head .logo img{height:30px!important}
+.logo .lw{display:none}
+.logo.on-dark .lb{display:none}
+.logo.on-dark .lw{display:block}
+.site-foot .brand .logo{display:inline-flex}

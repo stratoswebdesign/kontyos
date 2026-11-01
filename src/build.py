@@ -95,7 +95,7 @@ def header(r, cur='', theme='pill', back=None):
     backbtn = f'<a class="back-btn" href="{r}{back}" aria-label="Vissza">←</a>' if back else ''
     return f'''<header class="site-head hd-{theme}{' has-back' if back else ''}"><div class="wrap">
 {backbtn}<button class="menu-btn" type="button" data-menu aria-label="Menü"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 1h20M0 7h20M0 13h20" stroke="#1B2A5C" stroke-width="2"/></svg></button>
-<a class="logo" href="{r}index.html" aria-label="Kontyos – főoldal"><img src="{r}img/logo.png" alt="Kontyos" width="122" height="30"></a>
+<a class="logo" href="{r}index.html" aria-label="Kontyos – főoldal"><img class="lb" src="{r}img/logo-black.svg" alt="Kontyos" width="154" height="38"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="154" height="38"></a>
 <nav class="nav" aria-label="Fő menü">{links}</nav>
 <a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
@@ -106,7 +106,7 @@ def header(r, cur='', theme='pill', back=None):
 
 def footer(r):
     return f'''<footer class="site-foot"><div class="wrap">
-<div class="brand"><img src="{r}img/logo.png" alt="Kontyos" width="210" height="52"><p style="margin-top:14px;max-width:340px;font-size:14px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól.</p></div>
+<div class="brand"><span class="logo"><img class="lb" src="{r}img/logo-black.svg" alt="Kontyos" width="210" height="52"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="210" height="52"></span><p style="margin-top:14px;max-width:340px;font-size:14px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól.</p></div>
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}friss.html">FRISS & Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}palinka.html">Pálinka</a></div>
 <div><h4>Kampányok</h4><a href="{r}ujbor-valogatas.html">Újbor-válogatás</a><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a></div>
 <div><h4>Infó</h4><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>

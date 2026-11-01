@@ -378,4 +378,44 @@
   if (cds.length) { tick(); setInterval(tick, 30000); }
 
   badge();
+
+  /* Logó: fekete vagy fehér változat a mögötte lévő háttér világossága alapján */
+  function lum(c) {
+    var m = c && c.match(/rgba?\(([\d.]+)[, ]+([\d.]+)[, ]+([\d.]+)(?:[, /]+([\d.]+))?/);
+    if (!m) return null;
+    if (m[4] !== undefined && parseFloat(m[4]) < 0.5) return null;
+    var v = [m[1], m[2], m[3]].map(function (x) { x = x / 255; return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); });
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+  }
+  function bgLum(el) {
+    var cs = getComputedStyle(el), l = lum(cs.backgroundColor);
+    if (l !== null) return l;
+    if (cs.backgroundImage && cs.backgroundImage !== 'none' && cs.backgroundImage.indexOf('url(') > -1) return 0.1; // fotó háttér: sötétnek vesszük
+    return null;
+  }
+  function logoTone() {
+    document.querySelectorAll('.logo').forEach(function (logo) {
+      var r = logo.getBoundingClientRect(), l = null;
+      if (!r.width) return;
+      var x = r.left + r.width / 2, y = r.top + r.height / 2;
+      if (y > 0 && y < innerHeight && x > 0 && x < innerWidth) {
+        var stack = document.elementsFromPoint(x, y);
+        for (var i = 0; i < stack.length && l === null; i++) {
+          if (logo.contains(stack[i])) continue;
+          l = bgLum(stack[i]);
+        }
+      } else {
+        for (var el = logo.parentElement; el && l === null; el = el.parentElement) l = bgLum(el);
+      }
+      if (l === null) l = 1;
+      logo.classList.toggle('on-dark', l < 0.179); // ahol a fehér nagyobb kontrasztot ad, mint a fekete
+    });
+  }
+  var ltRaf = 0;
+  function logoToneSoon() { if (!ltRaf) ltRaf = requestAnimationFrame(function () { ltRaf = 0; logoTone(); }); }
+  logoTone();
+  window.addEventListener('load', logoTone);
+  window.addEventListener('resize', logoToneSoon);
+  window.addEventListener('scroll', logoToneSoon, { passive: true });
+  document.addEventListener('click', function () { setTimeout(logoTone, 60); });
 })();
