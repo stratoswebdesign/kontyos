@@ -1075,3 +1075,266 @@ html.burger .site-head .logo img{height:30px!important}
 .logo.on-dark .lb{display:none}
 .logo.on-dark .lw{display:block}
 .site-foot .brand .logo{display:inline-flex}
+
+/* ===== Egységes termékoldal (Klára-elrendezés minden termékcsaládra) – 2026-11 ===== */
+.pu-hero{background:var(--pu-bg);color:var(--pu-ink)}
+.pu-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.85fr) minmax(330px,390px);gap:clamp(28px,4vw,64px);align-items:start;padding-top:clamp(24px,3vw,44px);padding-bottom:clamp(60px,7vw,110px);max-width:1440px}
+.pu-l{container-type:inline-size;display:flex;flex-direction:column;gap:16px;min-width:0;padding-top:clamp(10px,3vw,50px)}
+.pu-l .pd-crumb{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--pu-muted)}
+.pu-kick{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--pu-acc);margin:6px 0 0}
+.pu-big{margin:0;font-family:var(--serif);font-weight:400;line-height:.95;letter-spacing:.02em;text-transform:uppercase;color:var(--pu-acc);white-space:nowrap}
+.pu-h1{margin:0;font-family:var(--text);font-style:italic;font-weight:400;font-size:clamp(22px,2vw,28px);line-height:1.15}
+.pu-h1 span{font-style:normal;font-size:.62em;letter-spacing:.08em;opacity:.8}
+.pu-l .pd-stars{font-size:14px;letter-spacing:0;text-transform:none}
+.pu-rule{width:48px;height:1px;background:currentColor;opacity:.5;display:block}
+.pu-lead{font-size:17px;line-height:1.7}
+.pu-mini{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 28px;font-size:14px}
+.pu-mini dt{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--pu-muted);align-self:center}
+.pu-mini dd{margin:0;font-family:var(--text);font-size:17px}
+.pu-ingr{font-size:13px;line-height:1.6;color:var(--pu-muted)}
+.pu-ingr strong{color:var(--pu-ink)}
+.pu-c{position:relative;display:flex;justify-content:center;align-items:center;position:sticky;top:20px}
+.pu-img{height:min(620px,calc(100vh - 190px));width:auto;max-width:100%;object-fit:contain;filter:none}
+.pu-img.jar{height:min(420px,calc(100vh - 260px))}
+.pu-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:30px;line-height:1;text-decoration:none;color:var(--pu-ink);background:var(--pu-panel);box-shadow:inset 0 0 0 1px var(--pu-line);transition:background .15s}
+.pu-arr:hover{background:var(--pu-bg);box-shadow:inset 0 0 0 1.5px var(--pu-ink)}
+.pu-arr.l{left:0}.pu-arr.r{right:0}
+.pu-badge{position:absolute;z-index:2;text-align:center;pointer-events:none}
+.pu-badge.sq{right:4%;bottom:6%;min-width:104px;min-height:96px;padding:12px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  border:1px solid var(--pu-ink);background:color-mix(in srgb,var(--pu-bg) 72%,transparent);color:var(--pu-ink);font:800 12px/1 var(--sans);letter-spacing:.16em;opacity:.92}
+.pu-badge.sq b{font:400 16px/1.1 var(--serif);letter-spacing:.06em;white-space:nowrap}
+.pu-badge.new{right:8%;top:4%;width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#EF4E73;color:#fff;font:400 24px/1 var(--serif);letter-spacing:.06em;transform:rotate(-10deg)}
+.pu-r{display:flex;flex-direction:column;gap:18px;min-width:0;padding-top:clamp(10px,3vw,50px)}
+.pu-lab{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--pu-muted)}
+.pu-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:-6px}
+.pu-chips a{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 15px;border-radius:999px;background:var(--pu-panel);box-shadow:inset 0 0 0 1px var(--pu-line);
+  font-size:14px;font-weight:700;color:var(--pu-ink);text-decoration:none;white-space:nowrap}
+.pu-chips a:hover{box-shadow:inset 0 0 0 1.5px var(--pu-ink)}
+.pu-chips a[aria-current="page"]{box-shadow:inset 0 0 0 2px var(--pu-ink);font-weight:800}
+.pu-chips i{width:14px;height:14px;border-radius:50%;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.pu-buy{display:flex;flex-direction:column;gap:16px}
+.pu-packs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pu-packs button{position:relative;min-height:64px;border:0;border-radius:6px;background:var(--pu-panel);box-shadow:inset 0 0 0 1px var(--pu-line);color:var(--pu-ink);cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-family:var(--sans)}
+.pu-packs button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--pu-ink)}
+.pu-packs strong{font-size:14px;font-weight:800}
+.pu-packs span{font-size:12px;opacity:.75}
+.pu-packs em{position:absolute;top:-9px;right:6px;padding:1px 8px;border-radius:999px;background:#EF4E73;color:#fff;font-style:normal;font-size:11px;font-weight:800}
+.pu-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pu-price b{font-family:var(--serif);font-weight:400;font-size:clamp(38px,3.4vw,48px);line-height:1}
+.pu-price span{font-size:13px;color:var(--pu-muted)}
+.pu-addrow{display:flex;gap:10px;align-items:stretch}
+.pu-qty{display:flex;align-items:center;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--pu-ink);height:58px;flex:none}
+.pu-qty button{width:46px;height:58px;border:0;background:transparent;font-size:24px;color:var(--pu-ink);cursor:pointer}
+.pu-qty span{min-width:26px;text-align:center;font-weight:800;font-size:17px}
+.pu-add{flex:1;min-height:58px;border:0;border-radius:999px;background:var(--pu-btn);color:var(--pu-btnfg);font:800 15px/1 var(--sans);letter-spacing:.06em;cursor:pointer;padding:0 18px;white-space:nowrap}
+.pu-add:disabled{opacity:.55;cursor:not-allowed}
+.pu-free{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.pu-free .bar{height:6px;border-radius:999px;background:var(--pu-line);overflow:hidden}
+.pu-free .bar i{display:block;height:100%;width:0;background:#EF4E73;transition:width .3s}
+.pu-r .pd-ship{border-color:var(--pu-line)}.pu-r .pd-ship div{border-color:var(--pu-line)}
+.pu-r .pd-ups{color:var(--pu-ink)}
+.pu-r .pd-ups ul{grid-template-columns:1fr}
+.pu-r .pd-ups .nm{font-size:13px}
+/* sötét oldal (PIRI Mama): arany szöveg a landing színeivel */
+.pdp-piri .pu-r .pd-ups li{background:rgba(255,255,255,.06);border-color:rgba(219,184,121,.25)}
+.pdp-piri .pu-r .pd-ups button{background:#DBB879;color:#111833}
+.pdp-piri .pu-free .bar i{background:#DBB879}
+.pdp-piri .pu-big{color:#DBB879}
+/* kötelező adatok: vékony sáv legalul */
+.pu-legal{background:rgba(27,42,92,.05);color:#4F5868;border-top:1px solid rgba(27,42,92,.12)}
+.pu-legal .pd-wrap{display:flex;flex-wrap:wrap;gap:4px 18px;padding-top:14px;padding-bottom:14px;font-size:12px;line-height:1.5}
+.pu-legal b{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#1B2A5C;margin-right:4px}
+.pu-legal i{font-style:normal;font-weight:700}
+/* PIRI: bögre + vásár sáv a hero folytatásaként */
+.pd-pairband{background:#111833;color:#E3CFA5}
+.pd-pairband .pd-pair{padding-top:0;padding-bottom:70px}
+.pd-pairband .pd-pair .mug{background:rgba(255,255,255,.06);color:#E3CFA5}
+.pd-pairband .pd-pair .mug .k{color:#DBB879}
+.pd-pairband .pd-pair .mug button{border-color:#DBB879;color:#DBB879}
+.pd-pairband .pd-pair .fair{background:#DBB879;color:#111833}.pd-pairband .pd-pair .fair a{color:#111833}
+/* Don Cherry csomagok */
+.dpacks{background:#fff;color:#2A1416;padding:clamp(60px,7vw,100px) 0}
+.dpacks .hd{display:flex;flex-direction:column;gap:12px;max-width:720px;margin-bottom:30px}
+.dpacks .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.dpk{display:flex;gap:20px;align-items:center;border:1px solid #D6ECEA;border-radius:10px;padding:20px;background:#F2FAF9}
+.dpk .ph{flex:none;width:44%;height:220px;display:flex;align-items:flex-end;justify-content:center;gap:2px;background:#D9EEF0;border-radius:8px;padding:12px 8px 0}
+.dpk .ph img{height:92%;width:auto;max-width:48%;object-fit:contain}
+.dpk .ph img.jar{height:52%}
+.dpk .tx{display:flex;flex-direction:column;gap:10px;min-width:0}
+.dpk .k{font-size:11px;font-weight:800;letter-spacing:.2em;color:#C8282E}
+.dpk h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1;text-transform:uppercase;letter-spacing:.04em}
+.dpk .ct{font-size:14px;line-height:1.5;color:#5B4A4C}
+.dpk .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dpk .row b{font-family:var(--serif);font-weight:400;font-size:30px}
+.cards.grid2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media (max-width:1100px){
+  .pu-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .pu-c{grid-column:2;grid-row:1/3}
+  .pu-l{grid-column:1;grid-row:1}.pu-r{grid-column:1;grid-row:2;padding-top:0}
+}
+@media (max-width:860px){
+  .pu-grid{display:flex;flex-direction:column;align-items:stretch;gap:18px;padding-top:8px;container-type:inline-size}
+  .pu-r{width:100%}
+  .pu-l{display:contents}
+  .pu-l .pd-crumb{order:1}.pu-kick{order:2}.pu-big{order:3}.pu-h1{order:4}.pu-l .pd-stars{order:5}
+  .pu-c{order:6;position:relative;top:auto;align-self:stretch;margin:4px 0}
+  .pu-r{order:7}
+  .pu-rule{order:8}.pu-lead{order:9}.pu-mini{order:10}.pu-ingr{order:11}
+  .pu-img{height:400px}.pu-img.jar{height:280px}
+  .pu-badge.sq{min-width:0;min-height:0;padding:9px 10px;right:0}.pu-badge.sq b{font-size:13px}
+  .pu-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:calc(-1 * var(--gutter));margin-right:calc(-1 * var(--gutter));padding:2px var(--gutter)}
+  .pu-chips::-webkit-scrollbar{display:none}
+  .pu-addrow{display:none}
+  .dpacks .grid{grid-template-columns:1fr}
+  .dpk{flex-direction:column;align-items:stretch}.dpk .ph{width:100%}
+}
+
+/* PIRI: a teljes oldal sötét (a hero és a fejléc egybefolyik), a tartalmi blokkok világos alapon */
+.pdp-piri main>section:not(.pu-hero):not(.pd-steps),.pdp-piri main>.pu-legal{background:#F3EEE5;color:#1B2A5C}
+.pdp-piri .pd-info.only-m{background:#F3EEE5}
+.pdp-piri main>section.pd-wrap{box-shadow:0 0 0 100vmax #F3EEE5;clip-path:inset(0 -100vmax)}
+
+/* ===== Főoldal 2026-11: hitelesítő blokk, gyümölcsök, polaroidok, 100%-os állítás, innováció ===== */
+.fburst{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.fburst img{position:absolute;height:auto;transform:rotate(var(--rot));animation:fbob 7s ease-in-out infinite alternate}
+@keyframes fbob{from{transform:rotate(var(--rot)) translateY(0)}to{transform:rotate(calc(var(--rot) + 8deg)) translateY(-14px)}}
+@media (prefers-reduced-motion:reduce){.fburst img{animation:none}}
+.trust{position:relative;background:#FBF4EA;color:#1B2A5C;padding:clamp(80px,10vw,150px) 0;overflow:hidden}
+.trust .fburst.edge img{opacity:.95}
+.trust .wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px}
+
+.trust .h2{max-width:980px;font-size:clamp(28px,4vw,58px);line-height:1.08}
+.trust .stats{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:0;width:min(980px,100%);border-top:1px solid rgba(27,42,92,.2);border-bottom:1px solid rgba(27,42,92,.2);background:rgba(251,244,234,.85)}
+.trust .stats div{display:flex;flex-direction:column;gap:6px;padding:22px 14px}
+.trust .stats div+div{border-left:1px solid rgba(27,42,92,.2)}
+.trust .stats b{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,52px);line-height:1;white-space:nowrap}
+.trust .stats span{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.trust .retail{display:flex;flex-direction:column;align-items:center;gap:14px;background:rgba(251,244,234,.85);padding:6px 16px}
+.trust .retail p{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.trust .retail ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:18px 34px}
+.rlogo{display:block;width:72px;height:72px;object-fit:contain}
+.trust .ph-note{max-width:640px}
+@media (max-width:760px){.trust .stats{grid-template-columns:1fr 1fr}.trust .stats div:nth-child(3){border-left:0}.trust .stats div:nth-child(n+3){border-top:1px solid rgba(27,42,92,.2)}.rlogo{width:56px;height:56px}}
+/* polaroid képek a kedvencek mellett (Sanyi ötlete: retro, mint egy polaroid) */
+.polas{position:absolute;right:var(--gutter);top:-64px;display:flex;gap:0;pointer-events:none}
+@media (min-width:1101px){.picks .usp{max-width:calc(100% - 330px)}}
+.pola{margin:0;width:136px;background:#fff;padding:10px 10px 36px;box-shadow:0 10px 26px rgba(27,42,92,.18);transform:rotate(var(--r))}
+.pola+.pola{margin-left:-26px;margin-top:22px}
+.pola img{width:100%;aspect-ratio:1;object-fit:cover}
+@media (max-width:1100px){.polas{display:none}}
+/* gyümölcsválasztó: ív nélkül, a teljes szekció színe vált */
+#frui .fsel .view .arch{background:none!important;aspect-ratio:auto;height:clamp(320px,40vw,460px);display:flex;align-items:flex-end;justify-content:center}
+#frui .fsel .view .arch img{height:100%;filter:none}
+/* FRISS a főoldalon: 2×2, lapozás nélkül */
+.friss-home .cards.grid2{gap:12px}
+/* 100%-os gyümölcsbor állítás */
+.claim{background:#fff;color:#1B2A5C;padding:clamp(70px,9vw,130px) 0}
+.claim .h2.big{font-size:clamp(40px,6vw,92px);line-height:.98}
+.claim-fruit{position:relative;min-height:clamp(320px,38vw,520px)}
+.claim-fruit .fburst.dense img{opacity:1}
+.innov{background:#1B2A5C;color:#F3EEE5;padding:clamp(60px,8vw,110px) 0}
+.innov .wrap{display:flex;flex-direction:column;gap:22px}
+.ilist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:10px}
+.ilist a{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid rgba(243,238,229,.25);border-radius:6px;color:inherit;text-decoration:none;transition:background .2s}
+.ilist a:hover{background:rgba(243,238,229,.06)}
+.ilist b{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.06em;text-transform:uppercase;color:#F3C66B}
+.ilist span{font-family:var(--text);font-size:15px;line-height:1.6}
+@media (max-width:980px){.ilist{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.ilist{grid-template-columns:1fr}}
+
+@media (max-width:760px){.trust .fburst img{width:14%!important;opacity:.85}}
+
+/* ===== Kampányoldalak 2026-11 ===== */
+/* Nem tudtál választani? – egyforma csempék */
+.choose{background:#F3EEE5;color:#1B2A5C;padding:clamp(60px,7vw,100px) 0}
+.choose .hd{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+.ctiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.ctiles a{position:relative;display:block;aspect-ratio:4/5;border-radius:6px;overflow:hidden;color:#fff;text-decoration:none;background:#1B2A5C}
+.ctiles img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ctiles a:hover img{transform:scale(1.05)}
+.ctiles span{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 16px;background:linear-gradient(transparent,rgba(10,15,30,.78));font-family:var(--serif);font-size:20px;letter-spacing:.05em;text-transform:uppercase;line-height:1.15}
+@media (max-width:980px){.ctiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.ctiles{grid-template-columns:repeat(2,minmax(0,1fr))}.ctiles span{font-size:16px}}
+/* Black Friday: fekete + pink, ív nélkül – a csomag színe a szaggatott vonalig tart */
+.lp-bf .word{font-size:clamp(64px,11.5vw,190px)!important;letter-spacing:.01em}
+.lp-bfx{background:#0B0B10;color:#fff;padding:clamp(50px,6vw,90px) 0}
+.lp-bfx .wrap:first-child{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;align-items:stretch}
+.bfx{display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.18);border-radius:8px;overflow:hidden;background:#15151C}
+.bfx .top{background:var(--tint);color:#fff;padding:24px clamp(18px,2.4vw,30px);display:flex;flex-direction:column;gap:14px;flex:1}
+.bfx .tagrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px;font-weight:800;letter-spacing:.16em}
+.bfx .tagrow span:last-child{background:#0B0B10;color:#fff;border-radius:999px;padding:3px 10px}
+.bfx h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.4vw,50px);line-height:1;text-transform:uppercase;letter-spacing:.04em}
+.bfx .ph{display:flex;align-items:flex-end;justify-content:center;gap:2px;height:230px}
+.bfx .ph img{height:92%;width:auto;min-width:0;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35))}
+.bfx .ph img.jar{height:44%}
+.bfx .ct{font-size:14px;line-height:1.6;opacity:.92}
+.bfx .pr{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px;padding:18px clamp(18px,2.4vw,30px) 4px;border-top:2px dashed rgba(255,255,255,.5)}
+.bfx .pr s{opacity:.6}.bfx .pr b{font-family:var(--serif);font-weight:400;font-size:clamp(38px,3.6vw,52px);line-height:1}
+.bfx .pr em{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.1em;color:#EF4E73}
+.bfx .stock{padding:0 clamp(18px,2.4vw,30px);font-size:13px;font-weight:800;letter-spacing:.08em;color:#F3C66B}
+.bfx .btn{margin:14px clamp(18px,2.4vw,30px) 22px;min-height:56px;font-size:16px;width:auto!important}
+.bfx .btn.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px #fff}
+.lp-wait.bf{background:#EF4E73;color:#fff}
+@media (max-width:860px){.lp-bfx .wrap:first-child{grid-template-columns:1fr}}
+/* Karácsony: sötétzöld, fenyők, hó */
+.lp-xmas .firs{position:absolute;inset:0;z-index:1;pointer-events:none}
+.fir{position:absolute;width:auto}
+.lp-xmas .snow{position:absolute;inset:0;z-index:0;pointer-events:none}
+.lp-xmas .snow i{position:absolute;width:var(--s);height:var(--s);border-radius:50%;background:#fff;opacity:.7;animation:snow 9s linear infinite}
+@keyframes snow{from{transform:translateY(-20px)}to{transform:translateY(60px)}}
+@media (prefers-reduced-motion:reduce){.lp-xmas .snow i{animation:none}}
+.lp-xmas .word{font-size:clamp(64px,12vw,200px)!important}
+.lp-xp{background:#F7F1E6;color:#1B2A5C;padding:clamp(56px,7vw,90px) 0}
+.lp-xp .hd{margin-bottom:26px;display:flex;flex-direction:column;gap:8px}
+.xgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:22px}
+.xpk{display:flex;flex-direction:column;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 14px 36px rgba(27,42,92,.1)}
+.xpk .ph{position:relative;aspect-ratio:1;background:radial-gradient(circle at 50% 30%,#1C5A40,#123B2B 70%);overflow:hidden}
+.xpk .ph .fir{opacity:.9}
+.xpk .bt{position:absolute;left:8%;right:8%;bottom:6%;top:18%;display:flex;align-items:flex-end;justify-content:center}
+.xpk .bt img{height:100%;width:auto;min-width:0;object-fit:contain;margin:0 -1.5%;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35))}
+.xpk .bt img.jar{height:40%}
+.xpk .ad{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;color:#F3C66B;background:rgba(18,59,43,.8);padding:3px 8px;border-radius:4px}
+.xpk .tx{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.xpk .k{font-size:11px;font-weight:800;letter-spacing:.2em;color:#7A1C2C}
+.xpk h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1;text-transform:uppercase;letter-spacing:.04em}
+.xpk ul{margin:0;padding-left:18px;font-family:var(--text);font-size:14px;line-height:1.6;color:#39404F;flex:1}
+.xpk .pr{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;border-top:1px dashed #1B2A5C;padding-top:14px}
+.xpk .pr s{color:#6A6F7E}.xpk .pr b{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1}.xpk .pr em{font-style:normal;font-size:12px;font-weight:700;color:#2E8C5A}
+@media (max-width:980px){.xgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.xgrid{grid-template-columns:1fr}}
+/* Újbor: rengeteg gyümölcs, 6 palackos válogatás */
+.hero.has-fruit .fburst{z-index:0}
+.hero.has-fruit .fburst img{opacity:.5}
+.hero.has-fruit .copy .txt{background:rgba(246,225,228,.9);padding:22px;border-radius:8px}
+.ujh{position:relative;overflow:hidden;background:#FBEFE8;color:#1B2A5C;padding:clamp(150px,16vw,200px) 0 clamp(60px,7vw,100px);margin-top:-104px}
+.ujh .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:end}
+.ujh .tx{display:flex;flex-direction:column;gap:18px;background:rgba(251,239,232,.88);padding:26px;border-radius:8px}
+.ujh h1{font-size:clamp(40px,5.4vw,84px);line-height:1}
+.ujh .btns{display:flex;flex-wrap:wrap;gap:10px}
+.ubt{display:flex;align-items:flex-end;justify-content:center}
+.ubt a{flex:1;min-width:0;display:flex;justify-content:center;transition:transform .2s}
+.ubt a:hover{transform:translateY(-8px)}
+.ubt img{height:clamp(240px,34vw,460px);width:auto;max-width:none;filter:drop-shadow(0 14px 14px rgba(0,0,0,.18))}
+.ujv{background:#fff;color:#1B2A5C;padding:clamp(60px,7vw,100px) 0}
+.ujv .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.ujv .ph{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:0;background:#F6E1E4;border-radius:8px;padding:50px 20px 20px;min-height:380px}
+.ujv .ph img{height:300px;width:auto;min-width:0;margin:0 -10px;object-fit:contain}
+.ujv .ph .tag{position:absolute;top:16px;left:16px;font-size:12px;font-weight:800;letter-spacing:.2em;background:#EF4E73;color:#fff;padding:4px 10px;border-radius:999px}
+.ujv .tx{display:flex;flex-direction:column;gap:16px}
+.ujv ul{list-style:none;margin:0;padding:0;border-top:1px solid #E2DACB}
+.ujv li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #E2DACB;font-size:15px}
+.ujv li a{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-weight:700}
+.ujv li i{width:12px;height:12px;border-radius:50%}
+.ujv .pr{display:flex;align-items:baseline;flex-wrap:wrap;gap:12px}
+.ujv .pr s{color:#6A6F7E}.ujv .pr b{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1}.ujv .pr em{font-style:normal;font-size:12px;font-weight:800;color:#2E8C5A;letter-spacing:.06em}
+.ujv .btn{align-self:flex-start}
+@media (max-width:860px){.ujh{margin-top:-70px;padding-top:120px}.ujh .wrap,.ujv .wrap{grid-template-columns:1fr}.ubt img{height:200px}.ujv .ph img{height:180px;margin:0 -8px}.ujv .ph{min-height:260px}}
+/* hosszú nagybetűs szavak: méret a tényleges oszlopszélességhez */
+.claim .split>div:first-child{container-type:inline-size}
+.claim .h2.big{font-size:min(86px,calc(100cqw / 9.6))}
+.ctiles a{container-type:inline-size}
+.ctiles span{font-size:min(20px,8cqw)}
+.split .h2{font-size:clamp(28px,3.6vw,50px)}
+@media (max-width:599px){.h2{hyphens:auto;-webkit-hyphens:auto}}

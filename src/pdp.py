@@ -25,7 +25,11 @@ SHIP = [('Várható kézbesítés', 'GLS 3–5, MPL 1–3 munkanap'),
 SHORT = {'friss-narancs': 'Narancs', 'friss-eper': 'Eper', 'friss-malna': 'Málna', 'friss-meggy': 'Meggy',
          'berry-secco': 'Berry', 'berry-secco-tonic': 'Tonic', 'berry-secco-yuzu-lime': 'Yuzu & Lime',
          'szamocapalinka': 'Szamóca', 'birspalinka': 'Birs', 'meggypalinka': 'Meggy', 'kortepalinka': 'Körte', 'szilvapalinka': 'Szilva',
-         'piri-mama-forralt-bora': 'Klasszikus', 'narancsos-piri-mama-forralt-bora': 'Narancsos', 'epres-piri-mama-forralt-bora': 'Epres', 'piri-mama-forro-itala-0': '0% alkohol'}
+         'piri-mama-forralt-bora': 'Klasszikus',
+         'edes-meggybor': 'Meggy', 'edes-eperbor': 'Eper', 'edes-ribizlibor': 'Ribizli', 'edes-kajszibor': 'Kajszi', 'edes-oszibarackbor': 'Őszibarack',
+         'edes-szilvabor': 'Szilva', 'edes-bodza-almabor': 'Bodza-alma', 'szaraz-meggybor': 'Száraz meggy',
+         'klara-edes-malnabor': 'Málna', 'klara-szaraz-roze-eperbor': 'Rozé eper', 'klara-szaraz-barrique-meggybor': 'Barrique meggy', 'klara-edes-afonyabor': 'Áfonya',
+         'don-cherry': 'Vermut 0,75 l', 'don-cherry-gyumolcse': 'Vermut meggyel', 'narancsos-piri-mama-forralt-bora': 'Narancsos', 'epres-piri-mama-forralt-bora': 'Epres', 'piri-mama-forro-itala-0': '0% alkohol'}
 BIG = {'friss-narancs': 'NARANCS', 'friss-eper': 'EPER', 'friss-malna': 'MÁLNA', 'friss-meggy': 'MEGGY',
        'berry-secco': 'BERRY', 'berry-secco-tonic': 'TONIC', 'berry-secco-yuzu-lime': 'YUZU'}
 
@@ -96,7 +100,6 @@ def legal_rows(p):
             ('Névleges térfogat', (vol + ' ℮') if vol else None),
             ('Összetevők', ingr(p)),
             ('Allergén', allergens(p)),
-            ('Előállító', 'Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183.'),
             ('Tételazonosító', 'a címkén')]
 
 
@@ -111,15 +114,13 @@ def info(p, c):
     """Leírás + paraméterek + kötelező adatok. Desktopon két oszlop, mobilon lenyíló blokkok (a mobil design szerint)."""
     long = ''.join(f'<p>{e(x)}</p>' for x in (p['long'] or [p['short']])) if p['id'] != 'meggymag-parna' else f'<p>{e(p["short"])}</p>'
     params = kv(p['params'], c['rule'])
-    legal = kv(legal_rows(p), c['rule'])
     lab = f'style="color:{c["accent"]}"'
     desk = f'''<section class="pd-info only-d" style="background:{c.get('infobg', '#fff')}"><div class="pd-wrap pd-cols">
 <div class="pd-desc"><p class="pd-lab" {lab}>LEÍRÁS</p><h2 style="{c['h2']}">{e(p['name'])}</h2>{long}</div>
-<div class="pd-side"><div><p class="pd-lab" {lab}>PARAMÉTEREK</p><div style="border-top:1px solid {c['ink']}">{params}</div></div>
-<div class="pd-legal" style="background:{c['legalbg']}"><div style="border-color:{c['ink']}"><p class="pd-lab">KÖTELEZŐ ADATOK</p>{legal}<p class="pd-note">{legal_note(p)}</p></div></div></div></div></section>'''
+<div class="pd-side"><div><p class="pd-lab" {lab}>PARAMÉTEREK</p><div style="border-top:1px solid {c['ink']}">{params}</div></div></div></div></section>'''
     acc = lambda t, body, op='': f'<details class="pd-acc" style="border-color:{c["ink"]}"{op}><summary style="{c.get("accfont", "")}">{t}<span aria-hidden="true">+</span></summary><div>{body}</div></details>'
     ship_txt = '<p>MPL csomagautomata / PostaPont / posta: 1 800 Ft, GLS csomagpont: 2 100 Ft – 20 000 Ft felett ingyenes. GLS házhoz: 2 400 Ft, 25 000 Ft felett ingyenes. Személyes átvétel Klárafalván. Regisztráció nélkül is rendelhetsz.</p>'
-    mob = f'''<section class="pd-info only-m"><div class="pd-wrap">{acc('Leírás', long, ' open')}{acc('Paraméterek', params)}{acc('Összetevők, allergének', f'<p>{e(ingr(p))}</p>' + (f'<p><b>{e(allergens(p))}</b></p>' if allergens(p) else ''))}{acc('Kötelező adatok', legal + f'<p class="pd-note">{legal_note(p)}</p>')}{acc('Szállítás', ship_txt)}</div></section>'''
+    mob = f'''<section class="pd-info only-m"><div class="pd-wrap">{acc('Leírás', long, ' open')}{acc('Paraméterek', params)}{acc('Összetevők, allergének', f'<p>{e(ingr(p))}</p>' + (f'<p><b>{e(allergens(p))}</b></p>' if allergens(p) else ''))}{acc('Szállítás', ship_txt)}</div></section>'''
     return desk + mob
 
 
@@ -242,28 +243,12 @@ def t_klasszikus(p):
     cross_ids = [i for i in cross_ids if i != p['id']][:4]
     ring = {'klara': '#E8DCE0', 'friss': '#F28C28', 'don': '#5FB8B3'}
     buy = buy_core(p, c) if p['avail'] else sold_out(p)
-    html = f'''<section class="pd-wrap pd-hero-k">
-{crumbs([('Főoldal', 'index.html'), ('Gyümölcsborok', 'gyumolcsbor.html'), ('Klasszikus', 'gyumolcsbor.html#klasszikus'), (e(p['name']), '')], 'font-size:13px')}
-<div class="pd-row">
-<div class="pd-gal"><div class="pd-arch" style="background:{p['arch']}"><img data-gal-main src="{r}{p['tight']}" alt="{e(p['name'])} {vol}" class="fit-contain"></div>
-</div>
-<div class="pd-label"><div class="in">
-<p class="pd-kick">KLASSZIKUS · {e(taste.upper())} GYÜMÖLCSBOR</p>
-<p aria-hidden="true" class="pd-big" style="color:{p['accent']};font-size:{fsz}">{e(bw)}</p>
-<h1 class="pd-h1k">{e(p['name'])} {vol.replace(' ml', ' ml').replace('750 ml', '0,75 l')} – {cap}</h1>
-{stars_link(p, '#EF4E73')}
-<p class="pd-lead">{e(short_desc(p))}</p>
-<p class="pd-ingr"><strong>Összetevők:</strong> {e(ingr(p).replace(' szulfitot tartalmaz', ''))}{' · <strong>szulfitot tartalmaz</strong>' if 'szulf' in p['short'].lower() else ''}</p>
-<div class="pd-spec"><span>℮ {vol}</span><span>{alc}</span><span>{e(taste)}</span></div>
-{buy}
-{ship_dl('#E2DACB', '#39404F')}
-{upsell(p)}
-</div></div></div></section>
+    html = f'''{u_hero(p)}
 {info(p, c)}
 <section class="pd-illu noimg"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div></section>
 {reviews(p, c)}
 {cross(cross_ids, 'Ha a meggyet szereted' if 'meggy' in p['id'] else 'Ha ezt szereted', lambda x: ring.get(x['line'], '#1B2A5C'), 'font-family:var(--serif);font-weight:700;font-size:clamp(36px,4vw,54px)')}'''
-    return dict(html=html, page='#F3EEE5', ink='#1B2A5C', theme='pill-b', bar=buybar(p, c) if p['avail'] else '')
+    return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, btn=ucfg(p)['btn'])) if p['avail'] else '')
 
 
 # ---------------------------------------------------------------- KLÁRA (TermekKlara.dc)
@@ -288,23 +273,7 @@ def t_klara(p):
         t = (param(x, 'Édes') or '').upper()
         return t + (' · 8 HÓNAP TÖLGY' if 'barrique' in x['id'] else '')
     row = ''.join(f'''<a href="{x['id']}.html"><img src="{r}{x['tight']}" alt="{e(x['name'])}" loading="lazy"{' style="opacity:.45"' if not x['avail'] else ''}><span class="k">{taste(x)}</span><span class="n">{e(x['name'].replace('Klára ', '').replace('édes ', '').replace('száraz ', '').capitalize())}</span><span class="p"{' style="color:#6A6F7E"' if not x['avail'] else ''}>{ft(x['price']) if x['avail'] else 'Elfogyott – értesítést kérek'}</span></a>''' for x in others)
-    html = f'''<section class="pd-wrap pd-hero-kl3">
-<div class="pd-kltx left">
-{crumbs([('Gyümölcsborok', 'gyumolcsbor.html'), ('Klára prémium', 'gyumolcsbor.html#klara')], 'font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6A6F7E')}
-<div><p aria-hidden="true" class="pd-klbig">KLÁRA</p>
-<h1 class="pd-klh1">{e(p['name'])} <span>{vol.replace('750 ml', '0,75 l')}</span></h1>
-<p style="margin-top:12px">{stars_link(p, '#C0284A')}</p></div>
-<span aria-hidden="true" class="pd-rule"></span>
-<p class="pd-lead">{e(short_desc(p))}</p>
-<dl class="pd-mini"><dt>KISZERELÉS</dt><dd>{vol.replace('750 ml', '0,75 l')}</dd><dt>ALKOHOL</dt><dd>{alc}</dd>{f'<dt>ZÁRÁS</dt><dd>{e(zar)}</dd>' if zar else ''}</dl>
-</div>
-<div class="pd-klimg"><img src="{r}{p['tight']}" alt="{e(p['name'])} {vol} palack"></div>
-<div class="pd-kltx right">
-{buy}
-{ship_dl('#EEE8E1', '#6A6F7E', 12, True)}
-{upsell(p, 'k')}
-<p class="pd-small">{tiertxt}{e(param(p, 'Egységár') or '')}<br>Összetevők: {e(ingr(p).replace(' szulfitot tartalmaz', ''))} · <strong>szulfitot tartalmaz</strong></p>
-</div></section>
+    html = f'''{u_hero(p)}
 {info(p, c)}
 <section class="pd-wrap pd-klstory"><img src="{r}img/photo/klara_pohar.webp" alt="Klára édes málnabor palack pezsgőspohárral és friss málnával" loading="lazy">
 <div><p class="pd-lab" style="color:#6A6F7E;letter-spacing:.3em">A SOR</p><p class="q">„A gyümölcskertek istennője.”</p>
@@ -312,7 +281,7 @@ def t_klara(p):
 {reviews(p, c)}
 <section class="pd-wrap pd-klrow"><p class="pd-lab" style="text-align:center;color:#6A6F7E;letter-spacing:.3em">A KLÁRA SOR TÖBBI TAGJA</p><div>{row}</div></section>'''
     cb = dict(c, btn='#1B2A5C', barline='#1B2A5C')
-    return dict(html=html, page='#FFFFFF', ink='#1B2A5C', theme='min-k', bar=buybar(p, cb) if p['avail'] else '')
+    return dict(html=html + legal_strip(p), page='#FFFFFF', ink='#1B2A5C', theme='pill', bar=buybar(p, cb) if p['avail'] else '')
 
 
 # ---------------------------------------------------------------- PIRI MAMA (TermekPiri.dc)
@@ -331,28 +300,16 @@ def t_piri(p):
     buy = f'''<div class="pd-pbuy" data-buy="{p['id']}"><span class="pr">{ft(p['price'])}</span><div class="pd-qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q id="q">1</span><button type="button" data-inc aria-label="Több">+</button></div><button type="button" class="pd-add" style="background:#1B2A5C" data-add="{p['id']}" data-qty-from="#q">Kosárba · <span data-line>{ft(p['price'])}</span></button></div>
 <div class="pd-free"><span data-free-text></span><div class="bar"><i data-free-bar></i></div></div>'''
     mug = P['piri-mama-bogreje']
-    html = f'''<section class="pd-wrap pd-hero-p">
-<div class="pd-gal"><div class="pd-pwrap"><div class="pd-arch" style="background:{p['arch']}"><img src="{r}{p['tight']}" alt="{e(full)}" class="fit-bottle"></div><span class="pd-badge">Azonnal<br>fogyaszt&shy;ható</span></div></div>
-<div class="pd-ptx">
-{crumbs([('Főoldal', 'index.html'), ('Forralt bor', 'termek/piri-mama-forralt-bora.html'), ('PIRI Mama', '')], 'font-size:13px')}
-<p class="pd-kick" style="color:{accent}">PIRI MAMA · 1 LITER · {abv}</p>
-<h1 class="pd-ph1">{e(full)} <span>1 l</span></h1>
-{stars_link(p, '#E2574C')}
-<p class="pd-tag" style="color:{accent}">Csak megmelegíted, és kész.</p>
-<p class="pd-lead">{e(short_desc(p))}</p>
-{chips}
-{buy}
-{ship_dl('#E2DACB', '#39404F')}
-{upsell(p)}
-</div></section>
+    html = f'''{u_hero(p)}
+<div class="pd-pairband"><section class="pd-wrap pd-pair"><div class="mug"><img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
+<div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged (Dóm tér, Árkád) · Óbuda · Szombathely · Veszprém · Győr</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
 {info(p, c)}
+{reviews(p, c)}
 <section class="pd-steps"><div class="pd-wrap"><div class="tx"><p class="pd-lab" style="color:#F3C66B">HÁROM LÉPÉS</p><ol><li><b>1</b><span>Nyisd ki a palackot.</span></li><li><b>2</b><span>Melegítsd fel, ne forrald.</span></li><li><b>3</b><span>Bögrébe vele – kész.</span></li></ol>
 <p style="opacity:.8;font-size:14px;line-height:1.6">Felbontás után hűtőben tárolandó, 1 héten belül fogyasztandó.</p></div>
 <div class="ph"><img src="{r}img/photo/piri_fa.webp" alt="Narancsos PIRI Mama karácsonyfa előtt" loading="lazy"><img src="{r}img/photo/piri_fahej.webp" alt="Narancsos PIRI Mama fahéjjal és narancsokkal" loading="lazy"></div></div></section>
-{reviews(p, c)}
-<section class="pd-wrap pd-pair"><div class="mug"><img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
-<div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged (Dóm tér) · Óbuda · Szombathely · Veszprém · Győr (Árkád)</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section>'''
-    return dict(html=html, page='#F3EEE5', ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline=p['arch'])))
+'''
+    return dict(html=html + legal_strip(p), page='#111833', ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline='#DBB879')))
 
 
 # ---------------------------------------------------------------- DON CHERRY (TermekDon.dc)
@@ -368,19 +325,8 @@ def t_don(p):
     pair = P['don-cherry-gyumolcse'] if not jar else P['don-cherry']
     pair_desc = '0,25 l édes meggyvermut és 100 g magozott meggy egy üvegben.' if not jar else 'Prémium minőségű édes meggyvermut 0,75 l-es palackban – friss meggy ágyon érlelt meggybor, dió pálinka, fűszerek.'
     contains = ', '.join(x.replace(' tartalmaz', '') for x in allergens(p).split(' · ') if x)
-    html = f'''<section class="pd-wrap pd-hero-d">
-<div class="pd-gal"><div class="pd-arch d" style="background:#5FB8B3"><img src="{r}{p['tight']}" alt="{e(p['name'])}" class="{'jar' if jar else 'fit-bottle'}"></div></div>
-<div class="pd-dtx">
-{crumbs([('Vermut', 'termek/don-cherry.html'), ('Don Cherry', '')], 'font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6A6F7E')}
-<div><p aria-hidden="true" class="pd-don">DON</p><p aria-hidden="true" class="pd-cherry">CHERRY</p>
-<h1 class="pd-dh1"><span class="sr">{e(p['name'])} </span>{sub}</h1>
-<p style="margin-top:14px">{stars_link(p, '#C8282E')}</p></div>
-<p class="pd-lead" style="color:#4A3436">{e(short_desc(p))}</p>
-<dl class="pd-mini"><dt>ALKOHOL</dt><dd>{e(alc)}</dd><dt>KISZERELÉS</dt><dd>{e(vol)}</dd><dt>EGYSÉGÁR</dt><dd>{e(param(p, 'Egységár') or '')}</dd>{f'<dt>TARTALMAZ</dt><dd style="font-weight:800">{e(contains)}</dd>' if contains else ''}</dl>
-{prem_buy(p, 'd')}
-{ship_dl('#EAF3F2', '#4A3436')}
-{upsell(p, 'd')}
-</div></section>
+    html = f'''{u_hero(p)}
+{_('don_packs')('../')}
 {info(p, c)}
 <section class="pd-wrap pd-dphotos"><img src="{r}img/photo/don_cimke.webp" alt="Don Cherry címke közelről, meggyekkel" loading="lazy"><img src="{r}img/photo/don_ajandek.webp" alt="Don Cherry palack és üveg meggy felülnézetből" loading="lazy"></section>
 <section class="pd-wrap pd-drink"><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">ÍGY IDD</p><p class="intro">Két külön út a meggyvermut élvezetéhez. Válaszd az alkalmadhoz illőt!</p>
@@ -390,7 +336,7 @@ def t_don(p):
 <section class="pd-dpair"><div class="pd-wrap"><img src="{r}{pair['tight']}" alt="{e(pair['name'])}" loading="lazy" class="{'jar' if not jar else ''}">
 <div><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">A PÁRJA</p><h2>{e(pair['name'])}</h2><p>{pair_desc}</p>
 <div class="row"><b>{ft(pair['price'])}</b><button type="button" data-add="{pair['id']}">KOSÁRBA</button><a href="{pair['id']}.html">Részletek →</a></div></div></div></section>'''
-    return dict(html=html, page='#FFFFFF', ink='#2A1416', theme='min-d', bar=buybar(p, dict(c, barline='#5FB8B3')))
+    return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#2A1416', theme='pill', bar=buybar(p, dict(c, barline='#5FB8B3')))
 
 
 # ---------------------------------------------------------------- FRISS / SECCO / PÁLINKA (TermekFriss/Secco/Palinka.dc)
@@ -449,29 +395,150 @@ def t_fsp(p):
         story = f'''<section class="pd-story p"><div class="pd-wrap"><div class="tx"><h2>Kisüsti, gyümölcsből.</h2><div class="facts">{''.join(f'<div><strong>{a}</strong><span>{b}</span></div>' for a, b in facts)}</div></div>
 <div class="tiles big">{tiles}</div></div></section>'''
     rating = stars_link(p, accent)
-    html = f'''<section class="pd-wrap pd-hero-f">
-<div class="pd-gal"><div class="pd-arch" style="background:{p['arch']}"><img src="{r}{p['tight']}" alt="{e(p['name'])}" class="fit-bottle"></div></div>
-<div class="pd-ftx">
-{crumbs([('Főoldal', 'index.html'), cf['crumb'], (SHORT.get(p['id'], e(p['name'])), '')], 'font-size:13px')}
-<p class="pd-kick" style="color:{accent}">{kick}</p>
-<h1 class="pd-fh1" style="font-weight:{cf['h1w']}">{e(p['name'])}</h1>
-{rating}
-<p class="pd-lead">{e(short_desc(p))}</p>
-{chips}
-{buy}
-{ship_dl(cf['rule'], 'inherit')}
-{upsell(p)}
-</div></section>
+    html = f'''{u_hero(p)}
 {story}
 {info(p, c)}
 {reviews(p, c)}
 {cross(cf['cross'], 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)')}'''
-    return dict(html=html, page=cf['page'], ink='#1B2A5C', theme=cf['theme'], bar=buybar(p, dict(c, barline=p['arch'])) if p['avail'] else '')
+    return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline=p['arch'])) if p['avail'] else '')
 
 
 def _dot(x):
     a = x['accent']
     return x['arch'] if a.upper() in ('#FFFFFF', '#FFF6EA', '#1B2A5C') else a
+
+
+# ================================================================ EGYSÉGES TERMÉKOLDAL-HERO (Klára-elrendezés minden termékcsaládra)
+# Sanyi (2026-11-01): egy elrendezés mindenhol – bal: leírás, közép: nagy palack árnyék nélkül, jobb: ízválasztó, 1/3/6, +/-, nagyobb betű.
+# A háttér termékcsaládonként más (minél népibb a termék, annál színesebb; a prémium fehér), ízenként nem változik.
+UCFG = {
+    'klasszikus': dict(bg='#E6EEDF', ink='#1B2A5C', muted='#4F5868', line='rgba(27,42,92,.16)', panel='rgba(255,255,255,.6)', btn='#1B2A5C', btnfg='#fff', crumb=('Klasszikus', 'gyumolcsbor.html#klasszikus')),
+    'klara': dict(bg='#FFFFFF', ink='#1B2A5C', muted='#6A6F7E', line='#EEE8E1', panel='#FAF7F4', btn='#1B2A5C', btnfg='#fff', acc='#C0284A', crumb=('Klára prémium', 'gyumolcsbor.html#klara')),
+    'friss': dict(bg='#F28C28', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'friss.html')),
+    'secco': dict(bg='#EEEAF6', ink='#1B2A5C', muted='#5A6072', line='rgba(27,42,92,.14)', panel='rgba(255,255,255,.7)', btn='#1B2A5C', btnfg='#fff', acc='#C84E85', crumb=('Berry Secco', 'friss.html')),
+    'palinka': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Pálinkák', 'palinka.html')),
+    'piri': dict(bg='#111833', ink='#E3CFA5', muted='rgba(227,207,165,.72)', line='rgba(219,184,121,.28)', panel='rgba(255,255,255,.05)', btn='#DBB879', btnfg='#111833', acc='#DBB879', crumb=('Forralt borok', 'termek/piri-mama-forralt-bora.html')),
+    'don': dict(bg='#D9EEF0', ink='#2A1416', muted='#5B4A4C', line='rgba(42,20,22,.14)', panel='rgba(255,255,255,.6)', btn='#C8282E', btnfg='#fff', acc='#C8282E', crumb=('Don Cherry', 'termek/don-cherry.html')),
+}
+LINE_KICK = {'klasszikus': 'KLASSZIKUS · {taste} GYÜMÖLCSBOR', 'klara': 'KLÁRA PRÉMIUM · {taste}', 'friss': 'FRISS · KÖNNYŰ GYÜMÖLCSBOR',
+             'secco': 'BERRY SECCO · HABZÓ GYÜMÖLCSBOR', 'palinka': 'KISÜSTI PÁLINKA · 46%', 'piri': 'PIRI MAMA · FORRALT BOR · 1 L', 'don': 'DON CHERRY · ÉDES MEGGYVERMUT'}
+# 100%-os gyümölcs jelvény a klasszikus gyümölcsborokon (csak ahol egyetlen gyümölcsből készül)
+PURE = {'edes-meggybor': 'MEGGY', 'szaraz-meggybor': 'MEGGY', 'edes-eperbor': 'EPER', 'edes-ribizlibor': 'RIBIZLI', 'edes-kajszibor': 'KAJSZIBARACK',
+        'edes-oszibarackbor': 'ŐSZIBARACK', 'edes-szilvabor': 'SZILVA'}
+
+
+def ucfg(p):
+    u = dict(UCFG[p['line']])
+    u.setdefault('acc', p['accent'] if p['accent'].upper() not in ('#FFFFFF', '#FFF6EA') else '#1B2A5C')
+    return u
+
+
+def u_big(p):
+    L = p['line']
+    if L == 'klara':
+        return 'KLÁRA'
+    if L == 'piri':
+        return 'PIRI MAMA'
+    if L == 'don':
+        return 'DON CHERRY'
+    if L in ('friss', 'secco'):
+        return BIG.get(p['id'], SHORT.get(p['id'], '').upper())
+    if L == 'palinka':
+        return SHORT.get(p['id'], p['name']).upper()
+    return bigword(p)
+
+
+def fit(word, cap=88):
+    """Betűméret a szó tényleges Prata HU szélességéből – a szülő (container) szélességébe egy sorban fér."""
+    em = sum(PRATA_W.get(ch, 0.75) + 0.02 for ch in word.upper()) + 0.04
+    return f'min({cap}px, calc(100cqw / {em:.2f}))'
+
+
+def u_badge(p):
+    L = p['line']
+    if L == 'klasszikus':
+        return f'<span class="pu-badge sq">100%<b>{PURE[p["id"]]}</b></span>' if p['id'] in PURE else ''
+    if L == 'friss':
+        return '<span class="pu-badge new">ÚJ</span>'
+    if L == 'piri':
+        return '<span class="pu-badge sq">AZONNAL<b>FOGYASZTHATÓ</b></span>'
+    return ''
+
+
+def u_buy(p, u):
+    tier = p['tier']
+    packs = ''
+    if tier:
+        pct = round((1 - tier[1] / p['price']) * 100)
+        packs = '<div class="pu-packs" role="group" aria-label="Kiszerelés">' + ''.join(
+            f'<button type="button" data-pack="{n}" aria-pressed="{"true" if n == 1 else "false"}"><strong>{n} palack</strong><span>{ft(tier[1] if n >= tier[0] else p["price"])}/db</span>{f"<em>−{pct}%</em>" if n >= tier[0] else ""}</button>' for n in (1, 3, 6)) + '</div>'
+    if not p['avail']:
+        return '<div class="pu-buy"><div class="pu-price"><b>Elfogyott</b></div><button class="pu-add" type="button" disabled>Értesítést kérek – élesben</button></div>'
+    unit_l = param(p, 'Egységár') or ''
+    return f'''<div class="pu-buy" data-buy="{p['id']}">{packs}
+<div class="pu-price"><b data-unit>{ft(p['price'])}</b><span>{e(unit_l)}</span></div>
+<div class="pu-addrow"><div class="pu-qty" role="group" aria-label="Mennyiség"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q id="q" aria-live="polite">1</span><button type="button" data-inc aria-label="Több">+</button></div>
+<button type="button" class="pu-add" data-add="{p['id']}" data-qty-from="#q">Kosárba · <span data-line>{ft(p['price'])}</span></button></div>
+<div class="pu-free"><span data-free-text></span><div class="bar"><i data-free-bar></i></div></div></div>'''
+
+
+def u_hero(p):
+    """A Klára-elrendezésű, minden termékcsaládra közös termékoldal-hero."""
+    r = '../'
+    CAT = _('CAT')
+    L = p['line']
+    u = ucfg(p)
+    sibs = [x for x in CAT if x['line'] == L]
+    i = next(k for k, x in enumerate(sibs) if x['id'] == p['id'])
+    prev, nxt = sibs[i - 1], sibs[(i + 1) % len(sibs)]
+    vol = param(p, 'Űrmérték') or param(p, 'Kiszerelés') or ''
+    vol_h = vol.replace('750 ml', '0,75 l').replace('1000 ml', '1 l').replace('500 ml', '0,5 l')
+    alc = (param(p, 'Alkohol') or '').replace(' %vol', '% vol').replace('%vol', '% vol')
+    taste = (param(p, 'Édes') or '').upper()
+    kick = LINE_KICK[L].replace('{taste}', taste).replace(' ·  GYÜMÖLCSBOR', ' · GYÜMÖLCSBOR').strip(' ·')
+    big = u_big(p)
+    mini = [('KISZERELÉS', vol_h), ('ALKOHOL', alc)]
+    if taste and L in ('klasszikus', 'klara'):
+        mini.append(('ÍZ', taste.capitalize()))
+    zar = param(p, 'Palackzárás')
+    if zar and L == 'klara':
+        mini.append(('ZÁRÁS', zar.replace('csavarzáras', 'csavarzár')))
+    minis = ''.join(f'<dt>{a}</dt><dd>{e(b)}</dd>' for a, b in mini if b)
+    ing = ingr(p).replace(' szulfitot tartalmaz', '')
+    alg = allergens(p)
+    chips = ''
+    if len(sibs) > 1:
+        chips = f'<p class="pu-lab">{"VÁLASZD KI" if L == "don" else "VÁLASSZ ÍZT"}</p><div class="pu-chips" role="group" aria-label="Változatok">' + ''.join(
+            f'<a href="{x["id"]}.html"{" aria-current=page" if x["id"] == p["id"] else ""}><i style="background:{_dot(x)}"></i>{SHORT.get(x["id"], x["name"])}</a>' for x in sibs) + '</div>'
+    arrows = (f'<a class="pu-arr l" href="{prev["id"]}.html" aria-label="Előző: {e(prev["name"])}">‹</a>'
+              f'<a class="pu-arr r" href="{nxt["id"]}.html" aria-label="Következő: {e(nxt["name"])}">›</a>') if len(sibs) > 1 else ''
+    jar = ' jar' if p['id'] == 'don-cherry-gyumolcse' else ''
+    style = f"--pu-bg:{u['bg']};--pu-ink:{u['ink']};--pu-muted:{u['muted']};--pu-line:{u['line']};--pu-panel:{u['panel']};--pu-btn:{u['btn']};--pu-btnfg:{u['btnfg']};--pu-acc:{u['acc']}"
+    return f'''<section class="pu-hero" style="{style}"><div class="pd-wrap pu-grid">
+<div class="pu-l">
+{crumbs([('Főoldal', 'index.html'), u['crumb'], (e(SHORT.get(p['id'], p['name'])), '')], '')}
+<p class="pu-kick">{e(kick)}</p>
+<p aria-hidden="true" class="pu-big" style="font-size:{fit(big)}">{e(big)}</p>
+<h1 class="pu-h1">{e(p['name'])} <span>{e(vol_h)}</span></h1>
+{stars_link(p, u['acc'])}
+<span class="pu-rule" aria-hidden="true"></span>
+<p class="pu-lead">{e(short_desc(p))}</p>
+<dl class="pu-mini">{minis}</dl>
+<p class="pu-ingr"><strong>Összetevők:</strong> {e(ing)}{f' · <strong>{e(alg)}</strong>' if alg else ''}</p>
+</div>
+<div class="pu-c">{arrows}<img src="{r}{p['tight']}" alt="{e(p['name'])} {e(vol_h)}" class="pu-img{jar}">{u_badge(p)}</div>
+<div class="pu-r">
+{chips}
+{u_buy(p, u)}
+{ship_dl(u['line'], 'inherit', 14)}
+{upsell(p)}
+</div></div></section>'''
+
+
+def legal_strip(p):
+    """Kötelező termékadatok vékony sávban, a termékoldal legalján (az előállító adatai a láblécben)."""
+    rows = [(a, b) for a, b in legal_rows(p) if b and a not in ('Tételazonosító',)]
+    return '<section class="pu-legal"><div class="pd-wrap"><b>Kötelező adatok</b>' + ''.join(f'<span><i>{e(a)}:</i> {e(b)}</span>' for a, b in rows) + f'<span>{legal_note(p)}</span></div></section>'
 
 
 TEMPLATES = {'klasszikus': t_klasszikus, 'klara': t_klara, 'piri': t_piri, 'don': t_don, 'friss': t_fsp, 'secco': t_fsp, 'palinka': t_fsp}
