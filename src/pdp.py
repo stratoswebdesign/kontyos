@@ -3,6 +3,10 @@
 import re
 import json
 
+# Prata HU nagybetűk szélessége em-ben (assets/fonts/PrataHU-Regular.woff2 hmtx alapján)
+PRATA_W = {'A': 0.719, 'B': 0.745, 'C': 0.745, 'D': 0.854, 'E': 0.721, 'F': 0.672, 'G': 0.813, 'H': 0.865, 'I': 0.374, 'J': 0.448, 'K': 0.738, 'L': 0.675, 'M': 1.012, 'N': 0.814, 'O': 0.862, 'P': 0.684, 'Q': 0.862, 'R': 0.727, 'S': 0.666, 'T': 0.7, 'U': 0.809, 'V': 0.681, 'W': 1.081, 'X': 0.76, 'Y': 0.657, 'Z': 0.685, 'Á': 0.719, 'É': 0.721, 'Í': 0.374, 'Ó': 0.862, 'Ö': 0.862, 'Ő': 0.862, 'Ú': 0.809, 'Ü': 0.809, 'Ű': 0.809, '-': 0.349, '.': 0.219, ' ': 0.239, '%': 0.829}
+
+
 G = {}
 
 
@@ -230,7 +234,9 @@ def t_klasszikus(p):
     gal = [(r + p['tight'], 'Palack', 'contain'), (r + 'img/photo/bottles_shadow.webp', 'Hangulatkép', 'cover'), (r + 'img/photo/borhaz.webp', 'A Borház', 'cover')]
     thumbs = ''.join(f'<button type="button" data-gal="{s}" data-fit="{f}" aria-label="{l}" aria-pressed="{"true" if i == 0 else "false"}"><img src="{s}" alt=""></button>' for i, (s, l, f) in enumerate(gal))
     bw = bigword(p)
-    fsz = 'clamp(40px,5vw,70px)' if len(bw) <= 10 else 'clamp(34px,3.8vw,54px)'
+    # nagybetűs Prata HU: a szó tényleges szélességéből (em) számolt méret, hogy egy sorban maradjon a dobozban
+    em = sum(PRATA_W.get(ch, 0.75) + 0.02 for ch in bw.upper()) + 0.04
+    fsz = f'min(70px, calc(100cqw / {em:.2f}))'
     sibs = [x['id'] for x in CAT if x['line'] == 'klasszikus' and x['id'] != p['id']]
     cross_ids = (['szaraz-meggybor', 'klara-szaraz-barrique-meggybor', 'friss-meggy', 'don-cherry'] if 'meggy' in p['id'] else sibs[:2] + ['klara-edes-malnabor', 'friss-' + ('eper' if 'eper' in p['id'] else 'malna')])
     cross_ids = [i for i in cross_ids if i != p['id']][:4]

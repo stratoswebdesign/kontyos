@@ -78,7 +78,8 @@ def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra='', to
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="{r}favicon.ico" sizes="any"><link rel="icon" type="image/png" href="{r}img/favicon.png"><link rel="apple-touch-icon" href="{r}img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="preload" href="{r}assets/fonts/PrataHU-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{r}assets/style.css?v={VER}">
 {extra_style}
 </head>
@@ -152,7 +153,7 @@ def hb(p, r, h, ml=0, rot='0deg'):
 
 
 STAMP = '''<div class="stamp" aria-hidden="true"><svg viewBox="0 0 200 200" width="168" height="168"><defs><path id="sc-{uid}" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-<circle cx="100" cy="100" r="98" fill="{bg}"/><text font-family="Manrope" font-weight="800" font-size="15" letter-spacing="4" fill="{fg}"><textPath href="#sc-{uid}">{txt}</textPath></text></svg><b style="color:{fg}">{center}</b></div>'''
+<circle cx="100" cy="100" r="98" fill="{bg}"/><text font-family="Montserrat" font-weight="800" font-size="15" letter-spacing="4" fill="{fg}"><textPath href="#sc-{uid}">{txt}</textPath></text></svg><b style="color:{fg}">{center}</b></div>'''
 
 
 def write(path, s):
@@ -481,7 +482,7 @@ def category():
     pg += header(r, 'gyumolcsbor.html')
     pg += f'''<main><section style="padding:20px 0 40px"><div class="wrap" style="display:flex;flex-direction:column;gap:16px">
 <p class="breadcrumb"><a href="index.html">Főoldal</a> / Gyümölcsborok</p>
-<h1 class="h2" style="font-size:clamp(44px,6vw,86px)">Gyümölcsborok</h1><p class="lead" style="max-width:640px">100%-os gyümölcsborok közvetlenül a klárafalvi Kontyos Borháztól – a klasszikus édesektől a prémium Klára sorozatig.</p>
+<h1 class="h2" style="font-size:clamp(30px,7.6vw,86px)">Gyümölcsborok</h1><p class="lead" style="max-width:640px">100%-os gyümölcsborok közvetlenül a klárafalvi Kontyos Borháztól – a klasszikus édesektől a prémium Klára sorozatig.</p>
 <nav class="chips" aria-label="Kategóriák"><a class="chip" href="#klasszikus">Klasszikus</a><a class="chip" href="#klara">Klára prémium</a><a class="chip" href="friss.html">FRISS & Secco</a><a class="chip" href="termek/piri-mama-forralt-bora.html">Forralt bor</a><a class="chip" href="termek/don-cherry.html">Don Cherry</a><a class="chip" href="palinka.html">Pálinka</a></nav></div></section>
 <section id="klasszikus" style="padding-bottom:70px"><div class="wrap" style="display:flex;flex-direction:column;gap:22px">
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px"><h2 class="h2">Klasszikus gyümölcsborok</h2>
@@ -511,7 +512,7 @@ def simple_list(path, title, desc, h1, lead, ids, bg, fg, kicker, photo=None, cu
     ph = f'<div><img src="{photo}" alt="" loading="lazy"></div>' if photo else ''
     pg += f'''<main><section class="sec" style="background:{bg};color:{fg};padding-top:30px"><div class="wrap split"><div style="display:flex;flex-direction:column;gap:16px">
 <p class="breadcrumb" style="color:inherit"><a href="index.html" style="color:inherit">Főoldal</a> / {h1}</p><p class="kicker" style="--accent:{fg}">{kicker}</p>
-<h1 class="h2" style="font-size:clamp(44px,6vw,86px)">{h1}</h1><p class="lead">{lead}</p></div>{ph}</div></section>
+<h1 class="h2" style="font-size:clamp(30px,7.6vw,86px)">{h1}</h1><p class="lead">{lead}</p></div>{ph}</div></section>
 <section class="sec"><div class="wrap">{cards(ids, r)}</div></section></main>''' + footer(r)
     write(path, pg)
 

@@ -11,6 +11,11 @@ Statikus, szerver nélkül működő webshop-demó a **kontyos.hu** újratervez�
 - Kampányoldalak: Újbor-válogatás, Black Friday (várólista/aktív fázis), Karácsonyi ajándék bor (előzetes/aktív)
 - Működő kosár (localStorage), mini-kosár, ingyenes-szállítás csík, pénztár validációval (18+ és ÁSZF nyilatkozat), köszönőoldal
 
+## Betűtípusok
+- **Prata HU** – címsorok, végig nagybetűvel. A Prata (OFL 1.1) kiegészítve a magyar ő ű Ő Ű betűkkel, mert az eredetiből hiányoznak (`assets/fonts`, licenc: `PrataHU-OFL.txt`)
+- **Lora** – folyószöveg és dőlt kiemelések · **Montserrat** – gombok, címkék, menü, űrlapok
+- A rendszer a Graphasel PIRI Mama landingjét követi
+
 ## Fontos
 - **Nem valódi bolt:** a rendelés nem megy el sehová, fizetés nincs.
 - A `[SZÖGLETES]` részek helykitöltők (díjak, dátumok, címek, ÁSZF), ezeket a Kontyos adja meg.
