@@ -1338,3 +1338,38 @@ html.burger .site-head .logo img{height:30px!important}
 .ctiles span{font-size:min(20px,8cqw)}
 .split .h2{font-size:clamp(28px,3.6vw,50px)}
 @media (max-width:599px){.h2{hyphens:auto;-webkit-hyphens:auto}}
+/* Hitelesítő blokk – a nagyker-kiajánló színeivel (navy #173450, lime #C1E359, kékesszürke #6B98AB) */
+.trust .tl{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#173450;opacity:.75}
+.trust .tbox{width:min(980px,100%);display:flex;flex-direction:column;align-items:center;gap:18px;background:rgba(251,244,234,.92);padding:10px 0}
+.trust .brow{display:flex;gap:6px;justify-content:center;width:100%;overflow:hidden}
+.trust .brow i{display:block;width:18px;flex:none}
+.trust .brow svg{display:block;width:18px;height:54px;fill:#6B98AB}
+.trust .tbox .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:100%;border:0;background:none}
+.trust .tbox .stats div{background:#6B98AB;color:#fff;border-radius:10px;padding:20px 14px;border:0!important}
+.trust .tbox .stats b{font-size:clamp(28px,3vw,44px)}
+.trust .tbox .stats span{opacity:.9}
+.trust .frow{display:flex;gap:6px;width:100%;text-align:left}
+.trust .frow div{min-width:0;display:flex;flex-direction:column;gap:4px}
+.trust .frow .bar{display:block;height:40px;border-radius:4px}
+.trust .frow b{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.2vw,30px);line-height:1;white-space:nowrap;color:#173450}
+.trust .frow span:last-child{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#173450}
+.trust .frow div:not(:first-child){flex-basis:90px!important;flex-grow:0!important}
+.trust .retail{background:none;padding:0;width:min(980px,100%)}
+.trust .retail ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:100%}
+.trust .retail li{display:flex;flex-direction:column;align-items:center;gap:8px;border-radius:12px;padding:24px 14px;color:#fff}
+.trust .retail li:nth-child(2){color:#173450}
+.trust .retail li b{font-family:var(--text);font-weight:600;font-size:16px}
+.trust .retail li span{font-size:13px;opacity:.9}
+.trust .retail .rlogo{width:84px;height:84px}
+.trust .retail .rlogo.w{filter:brightness(0) invert(1)}
+.trust .retail .more{font-size:14px;color:#173450}
+@media (max-width:760px){
+  .trust .tbox .stats,.trust .retail ul{grid-template-columns:1fr}
+  .trust .retail li{flex-direction:row;justify-content:flex-start;text-align:left;gap:14px;padding:14px}
+  .trust .retail li b,.trust .retail li span{display:block}
+  .trust .retail .rlogo{width:56px;height:56px;flex:none}
+  .trust .frow div:not(:first-child){flex-basis:64px!important}
+}
+.trust .tbox .stats b{font-size:clamp(24px,2.6vw,38px)}
+.trust .h2{hyphens:manual!important;-webkit-hyphens:manual!important}
+@media (max-width:599px){.trust .h2{font-size:clamp(22px,7.2vw,40px)}.trust .kicker{font-size:10px;letter-spacing:.14em}}

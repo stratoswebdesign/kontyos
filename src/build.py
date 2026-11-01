@@ -486,20 +486,28 @@ def fruit_burst(r, n=18, seed=1, fruits=None, cls=''):
     return f'<div class="fburst {cls}" aria-hidden="true">{out}</div>'
 
 
-RETAIL = [('Lidl', 'uzletlogo-lidl.svg'), ('Spar', 'uzletlogo-spar.svg'), ('Eco Family', 'uzletlogo-eco-family.svg'), ('CBA', 'uzletlogo-cba.svg')]
+RETAIL = [('Lidl', 'uzletlogo-lidl.svg', '#173450', 'w', '2 állandó termék', '2023 januárja óta'),
+          ('Spar', 'uzletlogo-spar.svg', '#C1E359', '', '5 állandó termék', '2023 júniusa óta'),
+          ('CBA', 'uzletlogo-cba.svg', '#6B98AB', 'w', '4 állandó termék', '2022 januárja óta')]
+BOTTLE_ICON = '<svg viewBox="0 0 20 60" aria-hidden="true"><path d="M7 0h6v14c0 3 5 6 5 13v31a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V27c0-7 5-10 5-13z"/></svg>'
 
 
 def trust_block(r, h='h2'):
-    """Hitelesítő blokk (Sanyi): magyar főcím, sok gyümölcs, alatta a mennyiségek és hogy hol kapható."""
-    stats = [('500–600 ezer', 'palack évente, ciderrel és habzóval együtt'), ('400 t', 'alma'), ('50 t', 'eper'), ('50 t', 'meggy')]
+    """Hitelesítő blokk (Sanyi) a nagykereskedőknek szóló 2026-os kiajánló adataival és színeivel:
+    magyar főcím, gyümölcsök, palackszámok, feldolgozott gyümölcs, és hogy mely láncokban kapható."""
+    bottles = ''.join(f'<i style="opacity:{1 - k / 30:.2f}">{BOTTLE_ICON}</i>' for k in range(24))
+    stats = [('600–800 ezer', 'palack éves gyártókapacitás – bővülőben'), ('400 ezer', 'palackot adtunk el 2025-ben'), ('2', 'automata palackozósor – csendes és habzó')]
     st = ''.join(f'<div><b>{a}</b><span>{b}</span></div>' for a, b in stats)
-    logos = ''.join(f'<li><img class="rlogo" src="{r}img/logos/{f}" alt="{n}" width="72" height="72" loading="lazy"></li>' for n, f in RETAIL)
+    fruit = [('alma', '400 t', 400, '#173450', '#fff'), ('eper', '50 t', 50, '#C1E359', '#173450'), ('meggy', '50 t', 50, '#6B98AB', '#fff'), ('egyéb', '5–10 t', 14, '#F48BAA', '#173450')]
+    fr = ''.join(f'<div style="flex:{g} 1 0"><span class="bar" style="background:{bg}"></span><b>{t}</b><span>{n}</span></div>' for n, t, g, bg, fg in fruit)
+    tiles = ''.join(f'<li style="background:{bg}"><img class="rlogo{" w" if w else ""}" src="{r}img/logos/{f}" alt="{n}" width="72" height="72" loading="lazy"><b>{a}</b><span>{b}</span></li>' for n, f, bg, w, a, b in RETAIL)
     return f'''<section class="trust">{fruit_burst(r, 22, 7, cls='edge')}<div class="wrap">
-<p class="kicker" style="--accent:#1B2A5C">Kontyos Borház · Klárafalva · 2006 óta</p>
+<p class="kicker" style="--accent:#173450">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
 <{h} class="h2">100% gyümölcsből erjesztett borra épülő, innovatív italokat fejlesztünk</{h}>
-<div class="stats">{st}</div>
-<div class="retail"><p>Megtalálsz a polcokon is</p><ul>{logos}</ul></div>
-<p class="ph-note">A mennyiségeket a Kontyos véglegesíti (a nagyker-partnereknek szóló anyag alapján). A gyümölcsök helyére Bandi valódi „szétrobbanó gyümölcs” képe kerül.</p>
+<div class="tbox"><p class="tl">Palackban mérve</p><div class="brow">{bottles}</div><div class="stats">{st}</div>
+<p class="tl">Évente feldolgozott gyümölcs</p><div class="frow">{fr}</div></div>
+<div class="retail"><p class="tl">Évek óta a polcokon</p><ul>{tiles}</ul><p class="more">További partnereink: Ecofamily, Janker Kft.</p></div>
+<p class="ph-note">Adatok: a Kontyos 2026-os nagykereskedelmi kiajánlója; az alma 400 t a 2026. 11. 01-i egyeztetés szerint (a kiajánlóban még 300 t). A gyümölcsök helyére Bandi „szétrobbanó gyümölcs” képe kerül.</p>
 </div></section>'''
 
 
