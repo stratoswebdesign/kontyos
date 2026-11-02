@@ -1676,3 +1676,14 @@ main.fairs .ph-note{color:#9AA0B4}
 /* karácsonyi hero: rénszarvas a régi címkéről, a KARÁCSONY felirat K betűje alatt (nem lóg rá) */
 .an.renszarvas{left:0;top:calc(clamp(100px,14svh,170px) + clamp(64px,12vw,200px) * .82 + 18px);width:clamp(110px,10.5vw,175px);animation:anbob 3.6s ease-in-out infinite alternate}
 @media (max-width:860px){.an.renszarvas{top:auto;bottom:34%;width:84px}}
+/* telefonon a nagy szezonfelirat mindig kifér (KARÁCSONY, BLACK FRIDAY) */
+.lp-xmas .word{font-size:min(clamp(64px,12vw,200px),calc((100vw - 28px) / 6.95))!important}
+@media (max-width:860px){.lp-bf .word{font-size:calc((100vw - 28px) / 7.95)!important}}
+/* 320 px-es telefonok: semmi ne lógjon ki */
+body{overflow-wrap:break-word}
+.fsel .view .meta{min-width:0;flex:1 1 0}
+.fsel .view .meta b{overflow-wrap:anywhere}
+.pd-pair .mug>*{min-width:0}
+.pd-pair .mug>div{flex:1 1 0}
+body[data-page="info"] main p,body[data-page="info"] main li,body[data-page="info"] main h4,body.info main p,body.info main li,body.info main h4{overflow-wrap:anywhere}
+@media (max-width:380px){.pd-pair .mug{gap:12px}.pd-pair .mug img{width:96px;height:96px}.pd-pair .mug button{padding:0 14px}}
