@@ -104,7 +104,7 @@ def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra='', to
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <meta name="robots" content="noindex,nofollow">
-<link rel="icon" href="{r}favicon.ico?v=k2" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="{r}img/favicon-32.png?v=k2"><link rel="icon" type="image/png" sizes="192x192" href="{r}img/icon-192.png?v=k2"><link rel="apple-touch-icon" href="{r}img/apple-touch-icon.png?v=k2">
+<link rel="icon" type="image/png" href="{r}img/kontyos-ikon-48.png?v=k3"><link rel="apple-touch-icon" href="{r}img/kontyos-ikon-180.png?v=k3">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="{r}assets/fonts/PrataHU-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400..800&display=swap" rel="stylesheet">
