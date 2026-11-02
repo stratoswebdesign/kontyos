@@ -1477,3 +1477,13 @@ html.burger .site-head .logo img{height:30px!important}
 .pd-cocktails ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
 .pd-cocktails p{font-size:14px;line-height:1.6;color:#4A3436}
 @media (max-width:860px){.pd-cocktails .cgrid{grid-template-columns:1fr}.pd-cocktails img{aspect-ratio:16/10}}
+/* forralt hero: a régi címke állatai */
+.animals{position:absolute;inset:0;z-index:2;pointer-events:none}
+.an{position:absolute;height:auto}
+.an.oz{left:0;top:30%;width:clamp(70px,7.5vw,118px);transform-origin:0 60%;animation:anpeek 6s ease-in-out infinite alternate}
+.an.cinege{left:0;top:30%;width:clamp(80px,8vw,130px);animation:anbob 3.2s ease-in-out infinite alternate}
+.an.mokus{left:46%;bottom:24px;width:clamp(80px,8vw,124px);animation:anbob 4.4s ease-in-out infinite alternate-reverse}
+@keyframes anpeek{from{transform:translateX(-14%) rotate(-2deg)}to{transform:translateX(0) rotate(2deg)}}
+@keyframes anbob{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.an{animation:none}}
+@media (max-width:860px){.an.oz{top:auto;bottom:38%;width:70px}.an.cinege{top:auto;bottom:38%;width:70px}.an.mokus{left:auto;right:8px;bottom:auto;top:52%;width:70px}}

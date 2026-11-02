@@ -232,6 +232,10 @@ def falling(r, kinds, n=22, seed=3):
     return f'<div class="fall" aria-hidden="true">{out}</div>'
 
 
+# A régi forralt bor alap címkék állatai (Sanyi, 2026-11-02) – ideiglenes kivágás, Bandi végleges kivágására cseréljük
+ANIMALS = '<div class="animals" aria-hidden="true"><img class="an cinege" src="{r}img/deco/allat-cinege.png" alt=""></div>'
+
+
 def season_hero(s, r):
     b = ''.join(hb(P[bt[0]], r, bt[1], 0 if i == 0 else s.get('ml', 4), bt[2] if len(bt) > 2 else '0deg') for i, bt in enumerate(s['bottles']))
     price = ''
@@ -240,7 +244,7 @@ def season_hero(s, r):
         old = f'<s>{ft(pp["old"])}</s>' if pp.get('old') else ''
         price = f'<div class="price"><div class="in">{old}<b>{ft(pp["price"])}</b><small>{s["price"][1]}</small></div></div>'
     return f'''<section class="hero{' has-fruit' if s.get('fruit') else ''}" data-season="{s['k']}" style="--hbg:{s['bg']};--hfg:{s['fg']};--hword:{s['hword']};--haccent:{s['acc']};--hctafg:{s['ctafg']}">
-{fruit_burst(r, 18, 5) if s.get('fruit') else ''}{falling(r, s['deco']) if s.get('deco') else ''}<p class="word" aria-hidden="true"{f' style="--wfx:{s["wf"]}"' if s.get('wf') else ''}>{s['word']}</p>
+{fruit_burst(r, 18, 5) if s.get('fruit') else ''}{falling(r, s['deco']) if s.get('deco') else ''}{ANIMALS.format(r=r) if s['k'] == 'forralt' else ''}<p class="word" aria-hidden="true"{f' style="--wfx:{s["wf"]}"' if s.get('wf') else ''}>{s['word']}</p>
 <div class="bottles">{b}</div>
 {STAMP.format(bg=s.get('stampbg', s['acc']), fg=s.get('stampfg', s['ctafg']), txt=s.get('stamp', '100% GYÜMÖLCSBŐL · KLÁRAFALVA · KONTYOS ·'), uid=s['k'], center='100%')}
 <div class="copy"><div class="wrap"><div class="txt"><span class="eyebrow">{s['eyebrow']}</span><p class="t">{s['t']}</p><p class="s">{s['s']}</p><a class="btn" href="{r}{s['cta'][1]}">{s['cta'][0]} →</a></div>
