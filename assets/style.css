@@ -1648,3 +1648,6 @@ main.fairs .ph-note{color:#9AA0B4}
 .camps .camp i{margin-top:auto;font-style:normal;font-weight:800;font-size:13px;letter-spacing:.08em}
 @media (max-width:860px){.camps{grid-template-columns:1fr 1fr}}
 @media (max-width:480px){.camps{grid-template-columns:1fr}}
+/* új cinege-kivágás: az ág teljes hosszában (a címkéről, a szöveg nélkül) */
+.an.cinege{width:clamp(100px,10vw,165px)}
+@media (max-width:860px){.an.cinege{width:88px}}
