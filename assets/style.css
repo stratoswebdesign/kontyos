@@ -1617,7 +1617,7 @@ html.burger .site-head .logo img{height:30px!important}
 .pd-story .bigw{top:clamp(44px,5vw,80px)}
 .friss-home .fcut{max-width:640px;margin:0 auto}
 /* forralt hero: a cinege lejjebb (Sanyi) */
-.an.cinege{top:39%;bottom:auto}
+.an.cinege{top:calc(132px + (100vw - 64px) / 7.9 * .82);bottom:auto;left:0}
 @media (max-width:860px){.an.cinege{top:auto;bottom:34%}}
 /* Don: „Koktélként” ugyanaz a betű, mint az Aperitifként/Shotként; hangulatképek lekerekítve, a felső nem a keretnél kezdődik */
 .pd-cocktails .ck-h{font-family:var(--sans);font-weight:700;font-size:26px;line-height:1.2;text-transform:none;letter-spacing:normal;color:#2A1416;margin:0 0 26px;border-top:2px solid #5FB8B3;padding-top:22px}
