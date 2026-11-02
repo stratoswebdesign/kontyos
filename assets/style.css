@@ -1387,3 +1387,93 @@ html.burger .site-head .logo img{height:30px!important}
 .pola img{aspect-ratio:auto;height:auto;object-fit:contain}
 .pola+.pola{margin-top:40px}
 .polas{align-items:flex-start}
+
+/* ===== Menü (Sanyi, 2026-11-02): a PIRI landing mintájára – nincs ovális keret, aláhúzás; logó balra ===== */
+.nav,.hd-pill-b .nav,.hd-min .nav,.hd-min-k .nav,.hd-min-d .nav{background:transparent!important;box-shadow:none!important;border-radius:0;padding:0;gap:4px clamp(14px,2.2vw,34px);justify-content:center}
+.nav a,.hd-min-k .nav a,.hd-min-d .nav a{position:relative;padding:10px 0;border-radius:0;background:none!important;font-family:var(--serif);font-weight:400;font-size:clamp(14px,1.15vw,17px);letter-spacing:.02em;text-transform:none;color:var(--navy)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
+.nav a[aria-current="page"],.nav a.sale[aria-current="page"]{color:var(--navy)}
+.nav a.sale,.nav a.sale[aria-current="page"]{color:#C8284E}
+.site-head:has(.logo.on-dark) .nav a{color:#F3EEE5}
+.site-head:has(.logo.on-dark) .nav a.sale{color:#F3C66B}
+.site-head:has(.logo.on-dark) .menu-btn{background:rgba(255,255,255,.12)}
+.site-head:has(.logo.on-dark) .menu-btn path{stroke:#fff}
+@media (max-width:1280px){.nav a{font-size:14px}}
+/* hulló hópihe / levél / dísz (a PIRI landing elemei) */
+.fall{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.fall img{position:absolute;top:-60px;height:auto;opacity:0;animation:kfall var(--dur) linear infinite;animation-delay:var(--delay)}
+@keyframes kfall{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}8%{opacity:var(--o)}90%{opacity:var(--o)}100%{opacity:0;transform:translate3d(var(--drift),calc(100% + 1100px),0) rotate(220deg)}}
+@media (max-width:860px){.fall img.d{display:none}}
+@media (prefers-reduced-motion:reduce){.fall img{animation:none;opacity:.6;top:auto}.fall img:nth-child(odd){top:12%}.fall img:nth-child(even){top:58%}}
+/* hosszabb hero-szó (pl. FORRALT BOR) – kisebb, hogy kiférjen */
+.hero .word[style*="--wfx"]{font-size:min(var(--wfx),var(--wf,330px))!important}
+@media (min-width:1700px){.hero .word[style*="--wfx"]{font-size:min(calc((100vw - 64px) / 7.9),300px)!important}}
+@media (max-width:860px){.hero .word[style*="--wfx"]{font-size:min(15vw,64px)!important;white-space:normal}}
+/* Karácsony: arany + a PIRI címke díszei */
+.lp-xmas{--hword:#DBB879!important;--haccent:#DBB879!important}
+.lp-xmas .word{color:#DBB879!important}
+.lp-xmas .copy .btn{background:#DBB879!important;color:#123B2B!important}
+.lp-xp{position:relative;overflow:hidden}
+.xdeco img{position:absolute;pointer-events:none;height:auto}
+.xdeco img:nth-child(1){width:64px;right:6%;top:30px;animation:kswing 4s ease-in-out infinite alternate;transform-origin:50% 0}
+.xdeco img:nth-child(2){width:70px;left:auto;right:24%;top:24px;transform:rotate(-18deg)}
+.xdeco img:nth-child(3){width:46px;right:16%;top:70px;animation:kspin 18s linear infinite}
+.xdeco img:nth-child(4){width:48px;right:11%;top:16px;animation:kswing 5s ease-in-out infinite alternate-reverse;transform-origin:50% 0}
+@keyframes kswing{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+@keyframes kspin{to{transform:rotate(360deg)}}
+@media (max-width:860px){.xdeco img:nth-child(n+3){display:none}.xdeco img:nth-child(1){width:44px}.xdeco img:nth-child(2){width:54px}}
+.xpk .pr b{color:#7A1C2C}
+.xpk .ph{border-bottom:3px solid #DBB879}
+.lp-xp .hd{position:relative;z-index:1;padding-right:min(34%,380px)}
+/* ===== Vásárok: a PIRI landing „Hol kapható?” designja ===== */
+.follow2{position:relative;overflow:hidden;background:#080D1B;color:#E3CFA5;padding:clamp(70px,9vw,120px) 0 clamp(50px,6vw,80px)}
+.follow2 .hd{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px;margin-bottom:clamp(36px,5vw,60px)}
+.lp-title{margin:0;font-family:var(--serif);font-weight:400;text-transform:uppercase;color:#DBB879;font-size:clamp(28px,3.4vw,48px);letter-spacing:clamp(.28em,.6vw,.5em);padding-left:clamp(.28em,.6vw,.5em);line-height:1.2}
+.lp-sub{margin:0;font-family:var(--serif);text-transform:uppercase;color:#DBB879;font-size:clamp(16px,1.8vw,26px);letter-spacing:clamp(.25em,.5vw,.42em);padding-left:clamp(.25em,.5vw,.42em)}
+.fair-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+@media (min-width:1500px){.fair-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.fair-card2{display:flex;flex-direction:column;border:1px solid rgba(219,184,121,.18);color:inherit;text-decoration:none;transition:border-color .3s}
+.fair-card2:hover{border-color:rgba(219,184,121,.7)}
+.fair-card2 .im{display:block;aspect-ratio:5/4;overflow:hidden}
+.fair-card2 img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.fair-card2:hover img{transform:scale(1.05)}
+.fair-card2 .tx{display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2vw,32px);min-height:150px}
+.fair-card2 .dt{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(219,184,121,.85)}
+.fair-card2 b{font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.5vw,22px);line-height:1.25;color:#E3CFA5}
+.fair-card2 .pl{font-family:var(--text);font-size:14px;color:rgba(227,207,165,.6)}
+.fair-card2[data-st="lv"]{border-color:#DBB879;box-shadow:inset 0 0 0 1px #DBB879}
+.follow2 .ft{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:40px;text-align:center}
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 26px;border:1px solid rgba(219,184,121,.5);border-radius:3px;color:#E3CFA5;text-decoration:none;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:border-color .2s,background .2s}
+.lp-btn:hover{border-color:#DBB879;background:rgba(219,184,121,.08)}
+.follow2 .ph-note{color:rgba(227,207,165,.6)}
+@media (max-width:760px){.fair-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.fair-grid::-webkit-scrollbar{display:none}.fair-card2{flex:none;width:78%;scroll-snap-align:start}}
+@media (max-width:1499px){.fair-card2 .im{aspect-ratio:16/10}}
+.trust .retail ul{grid-template-columns:repeat(5,minmax(0,1fr))}
+.trust .retail .rlogo.txt{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:800;font-size:17px;letter-spacing:.14em;color:#1B2A5C}
+@media (max-width:980px){.trust .retail ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.trust .retail ul{grid-template-columns:1fr}.trust .retail .rlogo.txt{font-size:12px}}
+/* képmátrix: 5 kattintható kép (Klára kettébontva + klasszikus hangulatkép) */
+.collage{grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:1fr 1fr}
+.collage a{position:relative;display:block;overflow:hidden;border-radius:6px;color:#fff;text-decoration:none;min-height:0;aspect-ratio:1}
+.collage a.a{grid-row:1/3;aspect-ratio:auto}
+.collage a img{width:100%;height:100%;object-fit:cover;border-radius:0;transition:transform .6s}
+.collage a:hover img{transform:scale(1.05)}
+.collage a span{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(10,15,30,.72));font-family:var(--serif);font-size:clamp(15px,1.4vw,20px);letter-spacing:.05em;text-transform:uppercase}
+@media (max-width:760px){.collage{grid-template-columns:1fr 1fr;grid-template-rows:auto}.collage a.a{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}}
+/* Don Cherry: a konzerv (üveg) ne lógjon fel – a palackok talpvonalán álljon */
+.pu-c:has(.pu-img.jar){align-items:flex-end;min-height:min(620px,calc(100vh - 190px))}
+.pu-c .pu-img.jar{margin-bottom:2%}
+@media (max-width:860px){.pu-c:has(.pu-img.jar){min-height:400px}}
+.pd-dpair .pd-wrap{align-items:flex-end}
+.pd-dpair .pd-wrap>img.jar{align-self:flex-end}
+/* koktélok */
+.pd-cocktails{padding-top:10px;padding-bottom:clamp(60px,7vw,100px);color:#2A1416}
+.pd-cocktails .cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:18px}
+.pd-cocktails article{display:flex;flex-direction:column;gap:10px}
+.pd-cocktails img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.pd-cocktails h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.04em;text-transform:uppercase;color:#C8282E;margin-top:6px}
+.pd-cocktails .d{font-family:var(--text);font-style:italic;font-size:16px}
+.pd-cocktails ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
+.pd-cocktails p{font-size:14px;line-height:1.6;color:#4A3436}
+@media (max-width:860px){.pd-cocktails .cgrid{grid-template-columns:1fr}.pd-cocktails img{aspect-ratio:16/10}}

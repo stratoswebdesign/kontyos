@@ -245,7 +245,7 @@ def t_klasszikus(p):
     buy = buy_core(p, c) if p['avail'] else sold_out(p)
     html = f'''{u_hero(p)}
 {info(p, c)}
-<section class="pd-illu noimg"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div></section>
+<section class="pd-illu noimg"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>{_('TXT')['klassz2']}</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div></section>
 {reviews(p, c)}
 {cross(cross_ids, 'Ha a meggyet szereted' if 'meggy' in p['id'] else 'Ha ezt szereted', lambda x: ring.get(x['line'], '#1B2A5C'), 'font-family:var(--serif);font-weight:700;font-size:clamp(36px,4vw,54px)')}'''
     return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, btn=ucfg(p)['btn'])) if p['avail'] else '')
@@ -329,9 +329,14 @@ def t_don(p):
 {_('don_packs')('../')}
 {info(p, c)}
 <section class="pd-wrap pd-dphotos"><img src="{r}img/photo/don_cimke.webp" alt="Don Cherry címke közelről, meggyekkel" loading="lazy"><img src="{r}img/photo/don_ajandek.webp" alt="Don Cherry palack és üveg meggy felülnézetből" loading="lazy"></section>
-<section class="pd-wrap pd-drink"><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">ÍGY IDD</p><p class="intro">Két külön út a meggyvermut élvezetéhez. Válaszd az alkalmadhoz illőt!</p>
-<div><div><span class="k">8 CL · JÉG · NARANCS</span><b>Klasszikus – hűsítő aperitif</b><span>Ha az esti beszélgetésekhez keresel egy finom, lágyan fűszeres italt. Tölts meg egy poharat roskadásig jéggel, helyezz rá egy narancskarikát. Öntsd rá a 8 cl prémium meggyvermutot. A frissesség és az aromák tökéletes harmóniáját kapod.</span></div>
-<div><span class="k">4 CL · 1 MEGGYSZEM</span><b>Intenzív meggy shot – „Shout” élmény</b><span>A gyors, brutális ízrobbanás kedvelőinek. Egy 5 cl-es pohár aljára helyezz egy meggyszemet (amit a webshopunkban megtalálsz). Önts rá 4 cl meggyvermutot. Idd két kortyban, hogy a végén a meggyszem felerősítse az ízélményt!</span></div></div></section>
+<section class="pd-wrap pd-drink"><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">ÍGY IDD</p><p class="intro">Aperitifként, shotként és koktélként is működik – válaszd az alkalomhoz illőt!</p>
+<div><div><span class="k">8 CL · JÉG · NARANCS</span><b>Aperitifként</b><span>8 cl Don Cherry, jég és egy narancskarika. Frissítő, társasági ital, hosszan kitartó meggyes aromával.</span></div>
+<div><span class="k">4 CL · 1 MEGGYSZEM</span><b>Shotként</b><span>Egy 5 cl-es pohár aljára tegyél egy meggyszemet, önts rá 4 cl Don Cherryt, és idd meg két kortyban. Rövid, intenzív élmény, ideális buliindító.</span></div></div></section>
+<section class="pd-wrap pd-cocktails"><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">KOKTÉLKÉNT</p><div class="cgrid">
+<article><img src="{r}img/cocktail/negroni.webp" alt="Don Cherry Negroni" loading="lazy"><h3>Don Cherry Negroni</h3><p class="d">Karakteres, gyümölcsös, kissé kesernyés – mégis selymesen fűszeres.</p><ul><li>3 cl Don Cherry</li><li>3 cl gin</li><li>3 cl Campari</li><li>jég, narancshéj</li></ul><p>Önts minden hozzávalót jéggel teli keverőpohárba, keverd össze, majd szűrd egy jéggel teli whiskys pohárba. Narancshéjjal díszítsd.</p></article>
+<article><img src="{r}img/cocktail/americano.webp" alt="Don Cherry Americano" loading="lazy"><h3>Don Cherry Americano</h3><p class="d">Erőteljes, elegáns és modern. Nem harsány, de nem is marad észrevétlen.</p><ul><li>6 cl Don Cherry</li><li>3 cl Campari</li><li>jég, narancskarika vagy narancshéj-spirál</li></ul><p>Öntsd a Don Cherryt és a Camparit egy jéggel teli whiskys pohárba, és keverd össze óvatosan. Díszítsd narancshéjjal.</p></article>
+<article><img src="{r}img/cocktail/manhattan.webp" alt="Don Cherry Manhattan" loading="lazy"><h3>Don Cherry Manhattan</h3><p class="d">A Manhattan ikonikus eleganciája, meggyes karakterrel.</p><ul><li>6 cl rye whiskey vagy bourbon</li><li>3 cl Don Cherry</li><li>2–3 csepp Angostura</li><li>koktélmeggy vagy narancshéj</li></ul><p>Keverd össze jéggel, és szűrd coupe pohárba. Díszítsd koktélmeggyel. Füstös whiskeyvel még komolyabb élmény.</p></article>
+</div></section>
 {reviews(p, c)}
 <section class="pd-dpair"><div class="pd-wrap"><img src="{r}{pair['tight']}" alt="{e(pair['name'])}" loading="lazy" class="{'jar' if not jar else ''}">
 <div><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">A PÁRJA</p><h2>{e(pair['name'])}</h2><p>{pair_desc}</p>
@@ -383,7 +388,7 @@ def t_fsp(p):
     tiles = ''.join(f'''<a href="{x['id']}.html" class="tile{' on' if x['id'] == p['id'] else ''}" style="background:{x['arch'] if L == 'friss' else ('rgba(255,255,255,.7)' if L == 'secco' else '#fff')}"><img src="{r}{x['tight']}" alt="" loading="lazy"><strong style="color:{x['accent'] if L == 'friss' else ('#1E1A1D' if L == 'palinka' else x['accent'])}">{SHORT.get(x['id'], '')}</strong></a>''' for x in vs)
     if L == 'friss':
         story = f'''<section class="pd-story f" style="background:{p['arch']};color:{fg}"><div class="pd-wrap"><p aria-hidden="true" class="bigw">{BIG.get(p['id'], '')}</p>
-<div class="tx"><h2>Fele gyümölcsbor, fele almabor.</h2><p class="s">Reduktív eljárással, friss gyümölcsből – könnyű, kellemesen édes, pár szem jéggel is. Négy íz, mind {ft(p['price'])}.</p><div class="tiles">{tiles}</div></div>
+<div class="tx"><h2>{_('TXT')['friss1']}</h2><p class="s">Reduktív eljárással, friss gyümölcsből – könnyű, kellemesen édes, pár szem jéggel is. Négy íz, mind {ft(p['price'])}.</p><div class="tiles">{tiles}</div></div>
 <img class="ph" src="{r}img/photo/friss_csalad.webp" alt="FRISS gyümölcsborok" loading="lazy"></div></section>'''
     elif L == 'secco':
         dots = ''.join(f'<span aria-hidden="true" class="bub" style="left:{x}%;top:{y}%;width:{s}px;height:{s}px"></span>' for x, y, s in [(6, 20, 26), (12, 62, 14), (30, 14, 10), (48, 72, 22), (66, 18, 16), (84, 64, 12), (92, 24, 20)])
