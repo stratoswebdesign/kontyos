@@ -561,6 +561,9 @@ def trust_block(r, h='h2'):
 def polaroids(r):
     return f'''<div class="polas" aria-hidden="true"><figure class="pola" style="--r:-7deg"><img src="{r}img/photo/don_polaroid.webp" alt="" loading="lazy"></figure><figure class="pola" style="--r:6deg"><img src="{r}img/photo/piri_nar_life.webp" alt="" loading="lazy"></figure></div>'''
 
+# A „100%-os gyümölcsbor” blokk: valódi gyümölcsfotók, mindegyik gyümölcsből egy (Unsplash/Pexels, körbevágva)
+FRUIT_PHOTOS = '<div class="fphotos" aria-hidden="true"><img src="{r}img/gyumolcs1/alma.webp" alt="" style="left:4%;top:8%;width:30%;--rot:-6deg;animation-delay:-0.0s" loading="lazy"><img src="{r}img/gyumolcs1/narancs.webp" alt="" style="left:38%;top:0%;width:30%;--rot:4deg;animation-delay:-0.7s" loading="lazy"><img src="{r}img/gyumolcs1/eper.webp" alt="" style="left:72%;top:4%;width:22%;--rot:8deg;animation-delay:-1.4s" loading="lazy"><img src="{r}img/gyumolcs1/meggy.webp" alt="" style="left:30%;top:36%;width:16%;--rot:-10deg;animation-delay:-2.1s" loading="lazy"><img src="{r}img/gyumolcs1/oszibarack.webp" alt="" style="left:52%;top:34%;width:28%;--rot:3deg;animation-delay:-2.8s" loading="lazy"><img src="{r}img/gyumolcs1/malna.webp" alt="" style="left:84%;top:40%;width:14%;--rot:12deg;animation-delay:-3.5s" loading="lazy"><img src="{r}img/gyumolcs1/szilva.webp" alt="" style="left:4%;top:46%;width:22%;--rot:-4deg;animation-delay:-4.2s" loading="lazy"><img src="{r}img/gyumolcs1/sargabarack.webp" alt="" style="left:22%;top:70%;width:24%;--rot:6deg;animation-delay:-4.9s" loading="lazy"><img src="{r}img/gyumolcs1/ribizli.webp" alt="" style="left:62%;top:68%;width:18%;--rot:-8deg;animation-delay:-5.6s" loading="lazy"></div>'
+
 
 def claim_block(r):
     """A főoldal vége: „100%-os gyümölcsbor” állítás sok gyümölccsel, alatta az innováció."""
@@ -569,7 +572,7 @@ def claim_block(r):
 <p class="lead">Gyümölcsboraink 100%-ban magyar gyümölcsökből készülnek. Édesapánk közel két évtizede alkotta meg első gyümölcsborát: a család hölgy tagjai olyan italra vágytak, mely édes és zamatos, akár egy nyári gyümölcs.</p>
 <p style="line-height:1.7;opacity:.85">2006 óta alkotunk elsőrangú hazai gyümölcsökből gyümölcsbor-különlegességeket, hagyományos és reduktív eljárással. A 2019-ben épült modern üzemünk Szegedhez közel, Klárafalván működik.</p>
 <p class="ph-note">[A „mitől 100%-os” szöveget Sanyival közösen véglegesítjük – addig a kontyos.hu jelenlegi szövege áll itt.]</p></div>
-<div class="claim-fruit">{fruit_burst(r, 26, 3, cls='dense')}</div></div></section>
+<div class="claim-fruit">{FRUIT_PHOTOS.format(r=r)}</div></div></section>
 <section class="innov"><div class="wrap"><p class="kicker" style="--accent:#F3C66B">Innováció</p><h2 class="h2">Gyümölcsborból, újragondolva</h2>
 <div class="ilist"><a href="{r}friss.html"><b>FRISS</b><span>{TXT['friss1']}</span></a>
 <a href="{r}termek/piri-mama-forralt-bora.html"><b>PIRI Mama</b><span>Kész forralt bor gyümölcsborból – csak melegíteni kell.</span></a>

@@ -1560,3 +1560,8 @@ html.burger .site-head .logo img{height:30px!important}
   .frow2 img,.frow2 figure:not(.w) img{height:38px}
   .t-bottles{flex-direction:column;align-items:center}.t-bottles .num{flex-direction:column;align-items:center;gap:2px}
 }
+/* „100%-os gyümölcsbor”: valódi, körbevágott gyümölcsfotók */
+.fphotos{position:absolute;inset:0}
+.fphotos img{position:absolute;height:auto;transform:rotate(var(--rot));filter:drop-shadow(0 14px 16px rgba(27,42,92,.18));animation:fbob 7s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.fphotos img{animation:none}}
+@media (max-width:860px){.claim-fruit{min-height:340px}}

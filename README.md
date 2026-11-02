@@ -30,6 +30,7 @@ python3 -m http.server    # helyi előnézet: http://localhost:8000
 
 ## Képforrások
 - `img/gyumolcs/*`: Unsplash (Unsplash License – kereskedelmi célra ingyenes, forrásmegjelölés nem kötelező).
+- `img/gyumolcs1/*`: egy-egy gyümölcs, körbevágva (Unsplash: alma, eper, meggy, őszibarack, sárgabarack, málna, narancs; Pexels: szilva, ribizli – mindkét licenc kereskedelmi célra ingyenes).
 - `img/uzem/*`: Sanyi által küldött üzemfotók (képernyőképből kivágva – eredeti fájlra cserélendő).
 - `img/cocktail/*`: a Kontyos Don Cherry anyagai (mralkohol.hu oldalról, Sanyi kérésére).
 - `img/deco/*`: a Graphasel PIRI Mama landing díszei és a régi forralt bor címke cinegéje (ideiglenes kivágás).
