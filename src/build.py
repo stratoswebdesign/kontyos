@@ -469,11 +469,6 @@ def packs_page():
     r = ''
     pg = head('Ajándék és borcsomagok | Kontyos', 'Páros és trió borcsomagok, Don Cherry csomagok és szezonális ajándékcsomagok a Kontyos Borháztól.', r, 'csomagok') + header(r, 'csomagok.html')
     seas = ['edes-unnepek', 'premium-advent', 'konnyu-karacsony', 'ujbor-valogatas']
-    camps = [('karacsonyi-ajandek-bor.html', 'Karácsonyi ajándék', 'Ünnepi borcsomagok és PIRI Mama a fa alá.', '#1F5A3C', '#F3E2BC'),
-             ('black-friday.html', 'Black Friday', 'Nov. 23–29. – két csomag, korlátozott darabszámban.', '#0B0B10', '#EF4E73'),
-             ('ujbor-valogatas.html', 'Újbor-válogatás', '6 klasszikus gyümölcsbor a 6 palackos áron.', '#F6E1E4', '#1B2A5C'),
-             ('termek/don-cherry.html', 'Don Cherry', 'A meggyvermut és a párja – kis és nagy csomag.', '#D9EEF0', '#C8282E')]
-    ctiles = ''.join(f'<a class="camp" href="{r}{h}" style="background:{bg};color:{fg}"><b>{e(t)}</b><span>{e(d)}</span><i>Megnézem →</i></a>' for h, t, d, bg, fg in camps)
     pg += f'''<main><section class="sec packs-hero"><div class="wrap" style="display:flex;flex-direction:column;gap:16px;max-width:900px">
 <p class="breadcrumb"><a href="index.html">Főoldal</a> / Ajándék és csomagok</p><p class="kicker">Ajándék és csomagok</p>
 <h1 class="h2">Csomagban jobban megéri</h1><p class="lead">Páros és trió válogatások egész évben, ünnepi és kampánycsomagok a szezonban – ajándékba vagy a saját polcodra.</p></div></section>
@@ -481,8 +476,7 @@ def packs_page():
 {cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r)}</div></section>
 {don_packs(r)}
 <section class="sec" style="padding-top:clamp(50px,6vw,80px)"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><h2 class="h2" style="font-size:clamp(26px,3vw,40px)">Szezonális csomagok</h2>
-<div class="packs-grid">{''.join(pack_card(SP[i], r) for i in seas)}</div></div></section>
-<section class="sec" style="padding-top:0"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><h2 class="h2" style="font-size:clamp(26px,3vw,40px)">Kampányok</h2><div class="camps">{ctiles}</div></div></section></main>''' + footer(r)
+<div class="packs-grid">{''.join(pack_card(SP[i], r) for i in seas)}</div></div></section></main>''' + footer(r)
     write('csomagok.html', pg)
 
 
