@@ -67,6 +67,27 @@ SEASON_PACKS = [
 ]
 SP = {s['id']: s for s in SEASON_PACKS}
 
+# ---- Termék-jelvények (Sanyi, 2026-11-02): ÚJ, LIMITÁLT, −x% / LEGJOBB ÉRTÉK ----
+NEW_IDS = {'friss-narancs', 'narancsos-piri-mama-forralt-bora', 'don-kis', 'don-nagy'}
+LIMITED_IDS = {'piri-mama-bogreje'}
+_pk = [x for x in CAT if x['line'] == 'csomag' and x.get('old')]
+BEST_VALUE = max(_pk, key=lambda x: x['old'] - x['price'])['id'] if _pk else None   # a legnagyobb forint-megtakarítás
+
+
+def badge(pid):
+    """Kis jelvény a termék képe fölé – kártyán, ajánlóban, termékoldalon ugyanaz."""
+    if pid in NEW_IDS:
+        return '<span class="pbadge new">ÚJ</span>'
+    if pid in LIMITED_IDS:
+        return '<span class="pbadge lim">LIMITÁLT</span>'
+    x = P.get(pid)
+    if x and x['line'] == 'csomag' and x.get('old'):
+        pct = round((1 - x['price'] / x['old']) * 100)
+        if pid == BEST_VALUE:
+            return f'<span class="pbadge gold">LEGJOBB ÉRTÉK · −{pct}%</span>'
+        return f'<span class="pbadge pct">−{pct}%</span>'
+    return ''
+
 
 def url(p):
     return f"termek/{p['id']}.html"
@@ -162,7 +183,7 @@ def card(p, r, tint=None):
     taste = 'szaraz' if p['name'].lower().startswith('szár') or 'száraz' in p['name'].lower() else 'edes'
     t = tint or (p['arch'] if p['line'] not in ('friss', 'piri', 'don') else '#F8F4EC')
     return f'''<div class="pcard{out}" data-taste="{taste}" data-card style="position:relative"><a href="{r}{url(p)}" style="text-decoration:none;display:flex;flex-direction:column;flex:1" class="in">
-<div class="ph" style="--tint:{t}"><img src="{r}{p['img']}" alt="{e(p['name'])}" loading="lazy" width="500" height="500"></div>
+<div class="ph" style="--tint:{t}">{badge(p['id'])}<img src="{r}{p['img']}" alt="{e(p['name'])}" loading="lazy" width="500" height="500"></div>
 <div class="tx"><span class="k">{LINE_LABEL[p['line']]}</span><span class="n">{e(p['name'])}</span>
 <div class="row"><span class="pr">{old}{pr}</span></div></div></a>
 <div style="position:absolute;right:16px;bottom:14px">{plus}</div></div>'''
@@ -174,7 +195,7 @@ def cards(ids, r, cls='cards'):
 
 def hb(p, r, h, ml=0, rot='0deg'):
     h = h.replace('vh', 'svh')  # iOS-en a vh a teljes (sáv nélküli) magasság – az svh a ténylegesen látható
-    return f'''<div class="hb" style="--h:{h};margin-left:{ml}px"><div class="hbi"><span class="hbr" style="transform:rotate({rot})"><img src="{r}{p['tight']}" alt="{e(p['name'])}">
+    return f'''<div class="hb" style="--h:{h};margin-left:{ml}px"><div class="hbi">{badge(p['id'])}<span class="hbr" style="transform:rotate({rot})"><img src="{r}{p['tight']}" alt="{e(p['name'])}">
 <a class="hbl" href="{r}{url(p)}" aria-label="{e(p['name'])} – termékoldal"></a></span>
 <div class="hw"><div class="in"><span class="n">{e(p['name'])}</span><span class="p">{ft(p['price'])}</span><button type="button" data-add="{p['id']}">Kosárba</button></div></div>
 <button class="hbp" type="button" data-add="{p['id']}" aria-label="{e(p['name'])} kosárba">+</button></div></div>'''
@@ -285,7 +306,7 @@ def don_packs(r, title='Don Cherry csomagban', sub='Ajándékba vagy a hétvég�
     for pid in ('don-kis', 'don-nagy'):
         sp = SP[pid]
         imgs = ''.join(f'<img src="{r}{P[i]["tight"]}" alt="{e(P[i]["name"])}" loading="lazy"{" class=jar" if i == "don-cherry-gyumolcse" else ""}>' for i in sp['items'])
-        cardsh += f'''<article class="dpk"><div class="ph">{imgs}</div><div class="tx"><p class="k">{sp['tag']}</p><h3>{e(sp['name'])}</h3>
+        cardsh += f'''<article class="dpk"><div class="ph">{badge(pid)}{imgs}</div><div class="tx"><p class="k">{sp['tag']}</p><h3>{e(sp['name'])}</h3>
 <p class="ct">{e(pack_contents(sp))}</p><div class="row"><b>{ft(sp['price'])}</b><button type="button" class="btn" style="background:#C8282E" data-add="{pid}">Kosárba</button></div></div></article>'''
     return f'''<section class="dpacks{' dark' if dark else ''}"><div class="wrap"><div class="hd"><p class="kicker" style="--accent:#C8282E">Don Cherry</p><h2 class="h2">{title}</h2><p class="lead">{sub}</p></div>
 <div class="grid">{cardsh}</div><p class="ph-note">Demó: az ár a palackárak összege, a tonik típusát és a végleges árat a Kontyos adja.</p></div></section>'''
@@ -766,7 +787,7 @@ def product(p):
         chips = '<nav class="chips" aria-label="Változatok">' + ''.join(
             f'<a class="chip" href="{x["id"]}.html"{" aria-current=page" if x["id"] == p["id"] else ""}><i style="background:{x["accent"] if x["accent"] not in ("#FFFFFF", "#FFF6EA") else x["arch"]}"></i>{e(x["name"].replace("Piri Mama ", "").replace("Klára ", ""))}</a>'
             for x in [y for y in CAT if y['line'] == L]) + '</nav>'
-    badge = '<div class="badge">Azonnal<br>fogyaszt-<br>ható</div>' if L == 'piri' else ''
+    sbadge = '<div class="badge">Azonnal<br>fogyaszt-<br>ható</div>' if L == 'piri' else ''
     rating = ''
     if p['rcount']:
         rating = f'<a class="stars" href="#ertekelesek"><span>{stars(p["rating"])}</span><span>{p["rating"]} · {p["rcount"]} értékelés</span></a>'
@@ -833,7 +854,7 @@ def product(p):
     crumb_cat = {'klasszikus': ('gyumolcsbor.html', 'Gyümölcsborok'), 'klara': ('gyumolcsbor.html#klara', 'Klára'), 'friss': ('friss.html', 'FRISS & Secco'),
                  'secco': ('friss.html', 'FRISS & Secco'), 'palinka': ('palinka.html', 'Pálinka'), 'csomag': ('karacsonyi-ajandek-bor.html', 'Csomagok')}.get(L, ('gyumolcsbor.html', 'Termékek'))
     pg += f'''<main><div class="wrap"><p class="breadcrumb" style="padding-top:4px;color:var(--ink)"><a href="{r}index.html" style="color:inherit">Főoldal</a> / <a href="{r}{crumb_cat[0]}" style="color:inherit">{crumb_cat[1]}</a> / {e(p['name'])}</p></div>
-<section class="wrap p-hero"><div class="p-media"><div class="arch"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{badge}</div>
+<section class="wrap p-hero"><div class="p-media">{badge(p['id']).replace('pbadge', 'pbadge big')}<div class="arch"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{sbadge}</div>
 <div class="p-buy"><span class="kicker">{LINE_LABEL[L]}</span><h1>{e(p['name'])}</h1>{rating}
 <p style="font-size:16px;line-height:1.6;opacity:.9">{e(p['short'])}</p>{f'<p style="font-size:13px;font-weight:700;opacity:.75">{e(meta)}</p>' if meta else ''}
 {chips}{packs}<div data-buy="{p['id']}" style="display:flex;flex-direction:column;gap:16px">{buy}</div>{ship}{pdp.upsell(p)}</div></section>
@@ -1011,7 +1032,7 @@ def info():
 
 def main():
     global VER
-    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, TXT=TXT)
+    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, TXT=TXT, badge=badge)
     write_catalog_js()
     import hashlib
     h = hashlib.sha1()

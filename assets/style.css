@@ -1573,3 +1573,20 @@ html.burger .site-head .logo img{height:30px!important}
 @keyframes frain{from{transform:translate3d(0,-130%,0) rotate(var(--r0))}to{transform:translate3d(var(--dx),clamp(520px,48vw,700px),0) rotate(var(--r1))}}
 @media (prefers-reduced-motion:reduce){.frain i{animation:none;transform:translateY(calc(var(--z) * 110px)) rotate(var(--r0))}}
 @media (max-width:860px){.claim-fruit{min-height:380px}@keyframes frain{from{transform:translate3d(0,-130%,0) rotate(var(--r0))}to{transform:translate3d(var(--dx),480px,0) rotate(var(--r1))}}}
+
+/* ===== Termék-jelvények: ÚJ · LIMITÁLT · −x% · LEGJOBB ÉRTÉK ===== */
+.pbadge{position:absolute;z-index:3;top:10px;left:10px;display:inline-flex;align-items:center;gap:4px;padding:5px 10px 4px;border-radius:999px;
+  font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.12em;line-height:1;white-space:nowrap;pointer-events:none;box-shadow:0 2px 8px rgba(27,42,92,.15)}
+.pbadge.new{background:#EF4E73;color:#fff}
+.pbadge.lim{background:#1B2A5C;color:#F3C66B}
+.pbadge.pct{background:#fff;color:#C8284E;box-shadow:inset 0 0 0 1.5px #C8284E}
+.pbadge.gold{background:linear-gradient(135deg,#F7DC8A,#D9A93A 55%,#F3C66B);color:#3A2A05;box-shadow:0 2px 10px rgba(185,135,30,.35)}
+.pcard .ph,.pd-mcard>span,.dpk .ph,.p-media{position:relative}
+.pbadge.big{top:16px;left:16px;padding:7px 14px 6px;font-size:13px}
+.pu-c .pbadge.big{top:0;left:50%;transform:translate(-50%,-115%)}
+@media (max-width:860px){.pu-c .pbadge.big{transform:translate(-50%,0)}}
+.pbadge.xs{top:-6px;left:-6px;padding:3px 6px 2px;font-size:8.5px;letter-spacing:.08em}
+.pd-ups .im{position:relative;overflow:visible}
+.hbi{position:relative}
+.hbi>.pbadge{top:auto;bottom:calc(var(--h) * .98);left:50%;transform:translateX(-50%)}
+@media (max-width:599px){.pcard .pbadge{top:6px;left:6px;font-size:9.5px;padding:4px 8px 3px}}

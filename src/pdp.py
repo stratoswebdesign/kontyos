@@ -167,7 +167,7 @@ def crumbs(items, style=''):
 
 def mini_card(x, ring, kicker=None, ink=None):
     r = '../'
-    return f'''<a class="pd-mcard" href="{r}{_('url')(x)}"><span style="border-color:{ring}"><img src="{r}{x['img']}" alt="{e(x['name'])}" loading="lazy"><span class="tx"><span class="k">{e(kicker or _('LINE_LABEL')[x['line']].upper())}</span><span class="n" style="color:{ink or '#1B2A5C'}">{e(x['name'])}</span><span class="p">{ft(x['price']) if x['avail'] else 'Elfogyott'}</span></span></span></a>'''
+    return f'''<a class="pd-mcard" href="{r}{_('url')(x)}"><span style="border-color:{ring}">{_('badge')(x['id'])}<img src="{r}{x['img']}" alt="{e(x['name'])}" loading="lazy"><span class="tx"><span class="k">{e(kicker or _('LINE_LABEL')[x['line']].upper())}</span><span class="n" style="color:{ink or '#1B2A5C'}">{e(x['name'])}</span><span class="p">{ft(x['price']) if x['avail'] else 'Elfogyott'}</span></span></span></a>'''
 
 
 def cross(ids, title, ring_of, h2style=''):
@@ -208,7 +208,7 @@ def upsell(p, kind=''):
     ids = [i for i in UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3]
     if not ids:
         return ''
-    items = ''.join(f'''<li><a href="{r}{_('url')(P[i])}" class="im"><img src="{r}{P[i]['img']}" alt="" loading="lazy"></a><a href="{r}{_('url')(P[i])}" class="nm">{e(P[i]['name'])}<small>{ft(P[i]['price'])}</small></a><button type="button" data-add="{i}" aria-label="{e(P[i]['name'])} kosárba">+</button></li>''' for i in ids)
+    items = ''.join(f'''<li><a href="{r}{_('url')(P[i])}" class="im">{_('badge')(i).replace('pbadge', 'pbadge xs')}<img src="{r}{P[i]['img']}" alt="" loading="lazy"></a><a href="{r}{_('url')(P[i])}" class="nm">{e(P[i]['name'])}<small>{ft(P[i]['price'])}</small></a><button type="button" data-add="{i}" aria-label="{e(P[i]['name'])} kosárba">+</button></li>''' for i in ids)
     return f'<div class="pd-ups {kind}"><p>Illik mellé</p><ul>{items}</ul></div>'
 
 
@@ -531,7 +531,7 @@ def u_hero(p):
 <dl class="pu-mini">{minis}</dl>
 <p class="pu-ingr"><strong>Összetevők:</strong> {e(ing)}{f' · <strong>{e(alg)}</strong>' if alg else ''}</p>
 </div>
-<div class="pu-c">{arrows}<img src="{r}{p['tight']}" alt="{e(p['name'])} {e(vol_h)}" class="pu-img{jar}">{u_badge(p)}</div>
+<div class="pu-c">{arrows}{_('badge')(p['id']).replace('pbadge', 'pbadge big') if p['line'] != 'friss' else ''}<img src="{r}{p['tight']}" alt="{e(p['name'])} {e(vol_h)}" class="pu-img{jar}">{u_badge(p)}</div>
 <div class="pu-r">
 {chips}
 {u_buy(p, u)}
