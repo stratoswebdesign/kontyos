@@ -1542,3 +1542,21 @@ html.burger .site-head .logo img{height:30px!important}
   .frow2 figure:not(.w) img{height:96px}.frow2 figure:not(.w) figcaption{font-size:11px}
   .t-plant .m2{align-items:flex-start}
 }
+/* hitelesítő blokk tömörítve: vékony gyümölcssávok, kisebb palacksor */
+.t-fruit .alma img{aspect-ratio:20/1}
+.frow2 img{height:clamp(38px,4.8vw,70px)}
+.t-fruit{gap:8px}
+.alma-cap span{font-size:15px}.alma-cap b{font-size:clamp(22px,2.2vw,30px)}
+.frow2 figcaption{font-size:13px}
+.frow2 figure{gap:6px}
+.t-bottles{padding:14px 0;gap:clamp(16px,2vw,28px)}
+.t-bottles .brow{flex:0 1 auto;justify-content:flex-start}
+.t-bottles .brow i{flex:none;width:clamp(10px,1.3vw,18px);max-width:none}
+.t-bottles{justify-content:center}
+.t-bottles .num{flex-direction:row;align-items:baseline;gap:14px}
+.t-bottles .num b{font-size:clamp(30px,3.2vw,44px)}
+@media (max-width:860px){
+  .t-fruit .alma img{aspect-ratio:8/1}
+  .frow2 img,.frow2 figure:not(.w) img{height:38px}
+  .t-bottles{flex-direction:column;align-items:center}.t-bottles .num{flex-direction:column;align-items:center;gap:2px}
+}
