@@ -540,7 +540,7 @@ def trust_block(r, h='h2'):
     small = [('eper', 'Eper', '50 t', 'w'), ('meggy', 'Meggy', '50 t', 'w'), ('oszi', 'Őszibarack', '', ''), ('sarga', 'Sárgabarack', '', ''),
              ('ribizli', 'Ribizli', '', ''), ('malna', 'Málna', '', ''), ('narancs', 'Narancs', '', '')]
     fr = ''.join(f'<figure class="{c}"><img src="{r}img/gyumolcs/{k}.webp" alt="{n}" loading="lazy"><figcaption>{n}{f" · {t}" if t else ""}</figcaption></figure>' for k, n, t, c in small)
-    uz = ''.join(f'<img src="{r}img/uzem/{k}.webp" alt="{a}" loading="lazy">' for k, a in (('tartaly', 'Erjesztőtartályok'), ('palack', 'Palackozósor'), ('palack2', 'Palackozás')))
+    uz = ''.join(f'<img src="{r}img/uzem/{k}.webp" alt="{a}" loading="lazy">' for k, a in (('tartaly', 'Rozsdamentes erjesztőtartályok a klárafalvi üzemben'), ('palack', 'Palackozás a klárafalvi üzemben'), ('palack2', 'Automata palackozósor a klárafalvi üzemben')))
     tiles = ''.join((f'<li><img class="rlogo" src="{r}img/logos/{f}" alt="{n}" loading="lazy">' if f else f'<li><span class="rlogo txt">{n.upper()}</span>') + '</li>' for n, f, a, b in RETAIL)
     return f'''<section class="trust2"><div class="wrap">
 <div class="t-hero"><p class="kicker">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
@@ -554,7 +554,7 @@ def trust_block(r, h='h2'):
 <div class="pics">{uz}</div>
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p></div>
 <div class="t-retail"><h3>Országszerte találkozhatsz velünk</h3><ul>{tiles}</ul><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
-<p class="ph-note">Az üzemfotók helykitöltők (Unsplash) – a klárafalvi fotózás képeire cseréljük.</p>
+
 </div></section>'''
 
 

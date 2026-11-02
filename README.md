@@ -29,6 +29,7 @@ python3 -m http.server    # helyi előnézet: http://localhost:8000
 ```
 
 ## Képforrások
-- `img/gyumolcs/*`, `img/uzem/*`: Unsplash (Unsplash License – kereskedelmi célra ingyenes, forrásmegjelölés nem kötelező). Az üzemfotók helykitöltők a klárafalvi fotózásig.
+- `img/gyumolcs/*`: Unsplash (Unsplash License – kereskedelmi célra ingyenes, forrásmegjelölés nem kötelező).
+- `img/uzem/*`: Sanyi által küldött üzemfotók (képernyőképből kivágva – eredeti fájlra cserélendő).
 - `img/cocktail/*`: a Kontyos Don Cherry anyagai (mralkohol.hu oldalról, Sanyi kérésére).
 - `img/deco/*`: a Graphasel PIRI Mama landing díszei és a régi forralt bor címke cinegéje (ideiglenes kivágás).
