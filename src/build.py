@@ -112,7 +112,7 @@ def write_catalog_js():
 
 # ---------- közös elemek ----------
 NAV = [('gyumolcsbor.html', 'Gyümölcsborok', ''), ('termek/piri-mama-forralt-bora.html', 'Forralt borok', ''),
-       ('termek/don-cherry.html', 'Don Cherry', ''), ('termek/berry-secco.html', 'Berry Secco', ''),
+       ('termek/don-cherry.html', 'Don Cherry', ''), ('berry-secco.html', 'Berry Secco', ''),
        ('palinka.html', 'Pálinkák', ''), ('csomagok.html', 'Ajándék és csomagok', 'sale')]
 
 
@@ -149,14 +149,14 @@ def header(r, cur='', theme='pill', back=None):
 <a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
 <div class="drawer" id="drawer"><nav aria-label="Mobil menü"><button class="close" type="button" data-menu-close aria-label="Bezárás">×</button>
-<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}friss.html">FRISS & Secco</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}kosar.html">Kosár</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
+<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}friss.html">FRISS</a><a href="{r}berry-secco.html">Berry Secco</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}kosar.html">Kosár</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
 '''
 
 
 def footer(r):
     return f'''<footer class="site-foot"><div class="wrap">
 <div class="brand"><span class="logo"><img class="lb" src="{r}img/logo-navy.svg" alt="Kontyos" width="210" height="52"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="210" height="52"></span><p style="margin-top:14px;max-width:340px;font-size:14px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól.</p></div>
-<div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}friss.html">FRISS & Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}palinka.html">Pálinka</a></div>
+<div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}friss.html">FRISS</a><a href="{r}berry-secco.html">Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}palinka.html">Pálinka</a></div>
 <div><h4>Kampányok</h4><a href="{r}ujbor-valogatas.html">Újbor-válogatás</a><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a></div>
 <div><h4>Infó</h4><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185 · Demó: Stratos Webdesign</p>
@@ -599,7 +599,7 @@ def trust_block(r, h='h2'):
 <div class="t-fhead"><b>500 t+</b><h3>Évente több száz tonna gyümölcsből</h3></div>
 <figure class="alma"><img src="{r}img/gyumolcs/alma.webp" alt="Alma" loading="lazy"></figure><div class="alma-cap"><span>Alma</span></div>
 <div class="frow2">{fr}</div></div>
-<div class="t-plant"><div class="hd"><div><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalvától az ország üzleteiig</h3></div><div class="m2"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
+<div class="t-plant"><div class="hd"><div><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalváról üzletekig országszerte</h3></div><div class="m2"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
 <div class="pics">{uz}</div>
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p></div>
 <div class="t-retail"><h3>Országszerte találkozhatsz velünk</h3><ul>{tiles}</ul><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
@@ -742,7 +742,7 @@ def category():
 <details><summary>Mennyi idő alatt érkezik meg?</summary><p>GLS-sel a visszaigazolástól számított 3–5, MPL PostaPontra vagy postára 1–3 munkanap.</p></details>
 <details><summary>Van mennyiségi kedvezmény?</summary><p>Igen: a legtöbb bornál 6 palacktól alacsonyabb darabár érvényes. Regisztrált vásárlóként 30 000 Ft összrendelés felett törzsvásárlói kedvezmény jár (5–15%) – részletek az <a href="info.html#torzsvasarlo">információs oldalon</a>.</p></details>
 </div><div style="display:flex;flex-direction:column;gap:12px;margin-top:10px"><h2 class="serif" style="font-size:30px">Miért a Kontyos?</h2><p class="lead">Magyarország legnagyobb különleges minőségű gyümölcsborászataként tradicionális és reduktív eljárásokat ötvözünk. Gyümölcsboraink 100%-ban magyar gyümölcsökből, szívvel-lélekkel készülnek – gazdag ízüknek és színüknek köszönhetően egész évben a nyár friss, üde hangulatát hordozzák.</p>
-<p>A <a href="#klasszikus">klasszikus gyümölcsborok</a> mellett a prémium <a href="#klara">Klára</a> sorozatot, a könnyű <a href="friss.html">FRISS és Berry Secco</a> borokat, a <a href="termek/piri-mama-forralt-bora.html">PIRI Mama forralt borokat</a>, a <a href="termek/don-cherry.html">Don Cherry meggyvermutot</a> és kisüsti <a href="palinka.html">pálinkáinkat</a> is megtalálod.</p></div></div></section>
+<p>A <a href="#klasszikus">klasszikus gyümölcsborok</a> mellett a prémium <a href="#klara">Klára</a> sorozatot, a könnyű <a href="friss.html">FRISS</a> és a habzó <a href="berry-secco.html">Berry Secco</a> borokat, a <a href="termek/piri-mama-forralt-bora.html">PIRI Mama forralt borokat</a>, a <a href="termek/don-cherry.html">Don Cherry meggyvermutot</a> és kisüsti <a href="palinka.html">pálinkáinkat</a> is megtalálod.</p></div></div></section>
 </main>''' + footer(r)
     write('gyumolcsbor.html', pg)
 
@@ -750,7 +750,7 @@ def category():
 def simple_list(path, title, desc, h1, lead, ids, bg, fg, kicker, photo=None, cur=''):
     r = ''
     pg = head(title, desc, r, path.split('.')[0]) + header(r, cur)
-    ph = f'<div><img src="{photo}" alt="" loading="lazy"></div>' if photo else ''
+    ph = (f'<div>{photo}</div>' if photo.startswith('<') else f'<div><img src="{photo}" alt="" loading="lazy"></div>') if photo else ''
     pg += f'''<main><section class="sec" style="background:{bg};color:{fg};padding-top:30px"><div class="wrap split"><div style="display:flex;flex-direction:column;gap:16px">
 <p class="breadcrumb" style="color:inherit"><a href="index.html" style="color:inherit">Főoldal</a> / {h1}</p><p class="kicker" style="--accent:{fg}">{kicker}</p>
 <h1 class="h2" style="font-size:clamp(30px,7.6vw,86px)">{h1}</h1><p class="lead">{lead}</p></div>{ph}</div></section>
@@ -798,7 +798,7 @@ STORY = {
 
 
 BACK = {'klasszikus': 'gyumolcsbor.html', 'klara': 'gyumolcsbor.html#klara', 'piri': 'index.html', 'don': 'gyumolcsbor.html',
-        'friss': 'friss.html', 'secco': 'friss.html', 'palinka': 'palinka.html'}
+        'friss': 'friss.html', 'secco': 'berry-secco.html', 'palinka': 'palinka.html'}
 
 
 def product_designed(p):
@@ -895,8 +895,8 @@ def product(p):
     style += f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
     pg = head(f"{p['name']} – {LINE_LABEL[L]} | Kontyos", desc, r, 'product', 'has-buybar' if p['avail'] else '', style)
     pg += header(r)
-    crumb_cat = {'klasszikus': ('gyumolcsbor.html', 'Gyümölcsborok'), 'klara': ('gyumolcsbor.html#klara', 'Klára'), 'friss': ('friss.html', 'FRISS & Secco'),
-                 'secco': ('friss.html', 'FRISS & Secco'), 'palinka': ('palinka.html', 'Pálinka'), 'csomag': ('csomagok.html', 'Csomagok')}.get(L, ('gyumolcsbor.html', 'Termékek'))
+    crumb_cat = {'klasszikus': ('gyumolcsbor.html', 'Gyümölcsborok'), 'klara': ('gyumolcsbor.html#klara', 'Klára'), 'friss': ('friss.html', 'FRISS'),
+                 'secco': ('berry-secco.html', 'Berry Secco'), 'palinka': ('palinka.html', 'Pálinka'), 'csomag': ('csomagok.html', 'Csomagok')}.get(L, ('gyumolcsbor.html', 'Termékek'))
     pg += f'''<main><div class="wrap"><p class="breadcrumb" style="padding-top:4px;color:var(--ink)"><a href="{r}index.html" style="color:inherit">Főoldal</a> / <a href="{r}{crumb_cat[0]}" style="color:inherit">{crumb_cat[1]}</a> / {e(p['name'])}</p></div>
 <section class="wrap p-hero"><div class="p-media">{badge(p['id']).replace('pbadge', 'pbadge big')}<div class="arch"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{sbadge}</div>
 <div class="p-buy"><span class="kicker">{LINE_LABEL[L]}</span><h1>{e(p['name'])}</h1>{rating}
@@ -1088,8 +1088,10 @@ def main():
     VER = h.hexdigest()[:10]
     index()
     category()
-    simple_list('friss.html', 'FRISS gyümölcsbor és Berry Secco | Kontyos', 'Könnyű, színes FRISS gyümölcsborok és Berry Secco 2190 Ft-tól.', 'FRISS & Berry Secco',
-                TXT['friss2'] + ' Mellettük a habzó Berry Secco.', [p['id'] for p in CAT if p['line'] in ('friss', 'secco')], '#F28C28', '#1B2A5C', 'Könnyű borok', 'img/photo/friss_flat.webp')
+    simple_list('friss.html', 'FRISS gyümölcsborok | Kontyos', 'FRISS: gyümölcsbor és almabor könnyed találkozása – narancs, eper, málna, meggy, mind 2190 Ft.', 'FRISS',
+                TXT['friss2'], [p['id'] for p in CAT if p['line'] == 'friss'], '#F28C28', '#1B2A5C', 'Könnyű gyümölcsborok', friss_cut(''), 'friss.html')
+    simple_list('berry-secco.html', 'Berry Secco – habzó gyümölcsbor | Kontyos', 'Berry Secco habzó, édes gyümölcsborok – natúr, tonikkal és yuzu–lime ízben.', 'Berry Secco',
+                'Habzó, édes gyümölcsbor a buborékok kedvelőinek – natúr, tonikkal vagy yuzu–lime ízben.', [p['id'] for p in CAT if p['line'] == 'secco'], '#EEEAF6', '#1B2A5C', 'Habzó gyümölcsbor', None, 'berry-secco.html')
     simple_list('palinka.html', 'Gyümölcspálinka | Kontyos', 'Szamóca-, meggy-, birs-, körte- és szilvapálinka a Kontyostól.', 'Pálinka',
                 'Gyümölcspálinkák a Kontyos Borháztól.', [p['id'] for p in CAT if p['line'] == 'palinka'], '#2A2118', '#E8D29A', 'Párlatok', None, 'palinka.html')
     for p in CAT:
