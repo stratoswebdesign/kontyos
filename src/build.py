@@ -399,7 +399,7 @@ def xmas_landing(r, phase, htag='h1', uid='x', full=True):
 <div class="tx"><p class="k">{sp['tag']}</p><h3>{e(sp['name'])}</h3><ul>{lis}</ul>
 <div class="pr"><s>{ft(sp['old'])}</s><b>{ft(sp['price'])}</b><em>{'Ingyenes szállítás' if sp['free'] else '+ szállítási díj'}</em></div>{btn}</div></article>'''
     out = f'''<section class="hero lp-xmas" style="--hbg:#123B2B;--hfg:#fff;--hword:#F3C66B;--haccent:#F3C66B;--hctafg:#123B2B">
-{falling(r, ("flake-gold", "flake-blue", "ornament-gold", "holly", "snow-dots", "flake-gold"), 26, 9)}<div class="firs">{FIRS}</div>
+{falling(r, ("flake-gold", "flake-blue", "ornament-gold", "holly", "snow-dots", "flake-gold"), 26, 9)}<div class="firs">{FIRS}</div><div class="animals" aria-hidden="true"><img class="an renszarvas" src="{r}img/deco/allat-renszarvas.png" alt=""></div>
 <p class="word" aria-hidden="true">KARÁCSONY</p>
 <div class="bottles">{b}</div>
 <div class="copy"><div class="wrap"><div class="txt" style="text-shadow:0 2px 18px rgba(10,30,20,.7)"><span class="eyebrow">{eyebrow}</span>
