@@ -602,7 +602,7 @@ def trust_block(r, h='h2'):
 <div class="t-plant"><div class="hd"><div><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalváról üzletekig országszerte</h3></div><div class="m2"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
 <div class="pics">{uz}</div>
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p></div>
-<div class="t-retail"><h3>Országszerte találkozhatsz velünk</h3><ul>{tiles}</ul><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
+<div class="t-retail"><h3>Országszerte találkozhatsz velünk</h3><div class="rl-vp"><ul>{tiles}{tiles.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
 
 </div></section>'''
 

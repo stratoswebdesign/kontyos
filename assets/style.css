@@ -1651,3 +1651,14 @@ main.fairs .ph-note{color:#9AA0B4}
 /* új cinege-kivágás: az ág teljes hosszában (a címkéről, a szöveg nélkül) */
 .an.cinege{width:clamp(100px,10vw,165px)}
 @media (max-width:860px){.an.cinege{width:88px}}
+/* üzletláncok: telefonon végtelenített logó-karusszel */
+.t-retail .rl-vp{width:100%}
+.t-retail li.dup{display:none}
+@media (max-width:860px){
+  .t-retail .rl-vp{overflow:hidden;margin:0 calc(-1*var(--gutter));-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .t-retail ul{display:flex;width:max-content;gap:12px;padding-right:12px;animation:rlmarq 18s linear infinite}
+  .t-retail li,.t-retail li.dup{display:flex;flex:none;width:150px;height:76px}
+  .t-retail .rl-vp:active ul{animation-play-state:paused}
+}
+@keyframes rlmarq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.t-retail ul{animation:none!important;overflow-x:auto}}
