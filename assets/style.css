@@ -1598,3 +1598,53 @@ html.burger .site-head .logo img{height:30px!important}
 .frain img{display:block;width:100%;height:auto;transform:none;filter:drop-shadow(0 6px 8px rgba(27,42,92,.16))}
 /* FRISS főoldali kép: háttér nélkül, csak a palackok és az árnyékuk */
 .friss-cut img{border-radius:0;display:block}
+/* hitelesítő: „500 t+” + cím egy sorban, balra az almasáv fölött; szilva csempe (Sanyi, 2026-11-02 este) */
+.t-fhead{display:flex;align-items:baseline;gap:clamp(12px,1.6vw,22px);text-align:left;flex-wrap:wrap}
+.t-fhead b{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,46px);line-height:1;color:#1B2A5C}
+.t-fhead h3{margin:0}
+.t-fruit>.kicker{text-align:left}
+.frow2{grid-template-columns:3fr 3fr repeat(6,1fr)}
+@media (max-width:860px){
+  .frow2{grid-template-columns:repeat(12,minmax(0,1fr))}.frow2 .w{grid-column:span 6}.frow2 figure:not(.w){grid-column:span 2}
+  .frow2 figure:not(.w) figcaption{font-size:10px}
+}
+/* körbevágott fektetett FRISS fotó: az árnyék multiply-jal ül rá bármilyen háttérre */
+.fcut{position:relative;width:100%}
+.fcut img{display:block;width:100%;height:auto;border-radius:0}
+.fcut .sh{mix-blend-mode:multiply}
+.fcut .bt{position:absolute;inset:0;height:100%}
+.pd-story .fcut.ph{height:auto;transform:none;box-shadow:none;border-radius:0;object-fit:initial;flex:1 1 440px;align-self:center;max-width:620px}
+.pd-story .bigw{top:clamp(44px,5vw,80px)}
+.friss-home .fcut{max-width:640px;margin:0 auto}
+/* forralt hero: a cinege lejjebb (Sanyi) */
+.an.cinege{top:39%;bottom:auto}
+@media (max-width:860px){.an.cinege{top:auto;bottom:34%}}
+/* Don: „Koktélként” ugyanaz a betű, mint az Aperitifként/Shotként; hangulatképek lekerekítve, a felső nem a keretnél kezdődik */
+.pd-cocktails .ck-h{font-family:var(--sans);font-weight:700;font-size:26px;line-height:1.2;text-transform:none;letter-spacing:normal;color:#2A1416;margin:0 0 26px;border-top:2px solid #5FB8B3;padding-top:22px}
+.pd-dphotos{padding-top:clamp(50px,6vw,90px)}
+.pd-dphotos img{border-radius:16px}
+/* adventi vásárok: 7 város (4+3, középre zárva), szöveg (Sanyi) */
+@media (min-width:861px){.fair-grid{display:flex;flex-wrap:wrap;justify-content:center}.fair-grid>.fair-card2{flex:0 0 25%;min-width:0}}
+@media (min-width:1500px){.fair-grid>.fair-card2{flex-basis:calc(100% / 7)}.fair-card2 .tx{padding:20px}}
+.fz-intro{max-width:760px;display:flex;flex-direction:column;gap:12px}
+.fz-txt{margin:0;font-family:var(--text);font-size:clamp(16px,1.3vw,18px);line-height:1.7}
+.follow2 .fz-txt{color:#E3CFA5}.follow2 .fz-txt b{color:#F3E2BC;font-weight:600}
+/* a vásárok oldal is a főoldali csík sötétkék–arany színeiben */
+main.fairs{background:#080D1B;color:#E3CFA5}
+main.fairs .breadcrumb,main.fairs .breadcrumb a{color:#CDBB93}
+main.fairs .h2{color:#DBB879}
+main.fairs .kicker{--accent:#DBB879;color:#DBB879}
+main.fairs .fz-txt{max-width:820px}main.fairs .fz-txt b{color:#F3E2BC;font-weight:600}
+main.fairs .legend{color:#E3CFA5}
+main.fairs .flist button{background:rgba(255,255,255,.05);color:#E3CFA5;border-color:rgba(219,184,121,.25)}
+main.fairs .flist b{color:#F3E2BC}
+main.fairs .fz-sub{background:#0F1A3A}
+main.fairs .ph-note{color:#9AA0B4}
+/* Ajándék és csomagok oldal */
+.camps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.camps .camp{display:flex;flex-direction:column;gap:10px;padding:26px 22px;border-radius:14px;text-decoration:none;min-height:180px}
+.camps .camp b{font-family:var(--serif);font-weight:400;text-transform:uppercase;font-size:clamp(20px,1.8vw,26px);line-height:1.1}
+.camps .camp span{font-family:var(--text);font-size:15px;line-height:1.5;opacity:.9}
+.camps .camp i{margin-top:auto;font-style:normal;font-weight:800;font-size:13px;letter-spacing:.08em}
+@media (max-width:860px){.camps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.camps{grid-template-columns:1fr}}

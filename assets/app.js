@@ -303,8 +303,10 @@
     var dfmt = function (d) { return HU[d.getMonth()] + ' ' + d.getDate() + '.'; };
     var day = function (iso) { var a = iso.split('-'); return new Date(+a[0], a[1] - 1, +a[2]); };
     var today = function () { var d = sim ? day(sim) : new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
-    var status = function (f) { var t = today(), a = day(f.start), b = day(f.end); return t < a ? 'up' : (t > b ? 'dn' : 'lv'); };
+    var status = function (f) { if (f.tbd) return 'up'; var t = today(), a = day(f.start), b = day(f.end); return t < a ? 'up' : (t > b ? 'dn' : 'lv'); };
+    var dtxt = function (f) { return f.tbd ? 'Időpont hamarosan' : dfmt(day(f.start)) + ' – ' + dfmt(day(f.end)); };
     var label = function (f) {
+      if (f.tbd) return 'Hamarosan';
       var st = status(f), t = today(), a = day(f.start);
       if (st === 'lv') { var iso = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2); return (f.closed || []).indexOf(iso) > -1 ? 'Ma zárva' : 'Most itt vagyunk'; }
       if (st === 'dn') return 'Véget ért';
@@ -316,21 +318,22 @@
         document.querySelectorAll('[data-fair="' + f.id + '"]').forEach(function (el) {
           el.setAttribute('data-st', status(f));
           var s1 = el.querySelector('[data-fair-status]'); if (s1) s1.textContent = label(f);
-          var s2 = el.querySelector('[data-fair-dates]'); if (s2) s2.textContent = dfmt(day(f.start)) + ' – ' + dfmt(day(f.end));
+          var s2 = el.querySelector('[data-fair-dates]'); if (s2) s2.textContent = dtxt(f);
+          if (f.tbd && s1 && s2 && s1.parentNode === s2.parentNode) s1.parentNode.textContent = 'Időpont hamarosan';
         });
       });
-      /* a sor: élők elöl, aztán a legközelebbi kezdés */
+      /* a sor: élők elöl, aztán a Kontyos fontossági sorrendje (Sanyi, 2026-11-02) */
       document.querySelectorAll('.fair-row, .flist').forEach(function (row) {
         var order = { lv: 0, up: 1, dn: 2 };
         Array.prototype.slice.call(row.children).sort(function (x, y) {
           var fx = FAIRS.filter(function (f) { return f.id === x.getAttribute('data-fair'); })[0], fy = FAIRS.filter(function (f) { return f.id === y.getAttribute('data-fair'); })[0];
-          return (order[status(fx)] - order[status(fy)]) || (day(fx.start) - day(fy.start));
+          return (order[status(fx)] - order[status(fy)]) || (FAIRS.indexOf(fx) - FAIRS.indexOf(fy));
         }).forEach(function (c) { row.appendChild(c); });
       });
       if (window.__fairMarkers) window.__fairMarkers.forEach(function (m) { m.setIcon(icon(status(m.fair))); m.setPopupContent(popup(m.fair)); });
     };
     var icon = function (st) { return window.L ? L.divIcon({ className: 'fmk ' + st, html: '<span></span>', iconSize: [26, 26], iconAnchor: [13, 13] }) : null; };
-    var popup = function (f) { return '<b>' + esc(f.city) + '</b><br>' + esc(f.place) + '<br>' + dfmt(day(f.start)) + ' – ' + dfmt(day(f.end)) + (f.note ? '<br><small>' + esc(f.note) + '</small>' : '') + '<br><em>' + label(f) + '</em><br><a href="https://www.google.com/maps/dir/?api=1&destination=' + f.lat + ',' + f.lng + '" target="_blank" rel="noopener">Útvonal →</a>'; };
+    var popup = function (f) { return '<b>' + esc(f.city) + '</b><br>' + esc(f.place) + '<br>' + dtxt(f) + (f.note ? '<br><small>' + esc(f.note) + '</small>' : '') + '<br><em>' + label(f) + '</em><br><a href="https://www.google.com/maps/dir/?api=1&destination=' + f.lat + ',' + f.lng + '" target="_blank" rel="noopener">Útvonal →</a>'; };
     var mapEl = document.getElementById('fmap');
     if (mapEl && window.L) {
       var map = L.map(mapEl, { scrollWheelZoom: false }).setView([47.15, 19.2], 7);

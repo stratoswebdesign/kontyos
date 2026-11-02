@@ -302,7 +302,7 @@ def t_piri(p):
     mug = P['piri-mama-bogreje']
     html = f'''{u_hero(p)}
 <div class="pd-pairband"><section class="pd-wrap pd-pair"><div class="mug"><img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
-<div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged (Dóm tér, Árkád) · Óbuda · Szombathely · Veszprém · Győr</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
+<div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
 {info(p, c)}
 {reviews(p, c)}
 <section class="pd-steps"><div class="pd-wrap"><div class="tx"><p class="pd-lab" style="color:#F3C66B">HÁROM LÉPÉS</p><ol><li><b>1</b><span>Nyisd ki a palackot.</span></li><li><b>2</b><span>Melegítsd fel, ne forrald.</span></li><li><b>3</b><span>Bögrébe vele – kész.</span></li></ol>
@@ -332,7 +332,7 @@ def t_don(p):
 <section class="pd-wrap pd-drink"><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">ÍGY IDD</p><p class="intro">Aperitifként, shotként és koktélként is működik – válaszd az alkalomhoz illőt!</p>
 <div><div><span class="k">8 CL · JÉG · NARANCS</span><b>Aperitifként</b><span>8 cl Don Cherry, jég és egy narancskarika. Frissítő, társasági ital, hosszan kitartó meggyes aromával.</span></div>
 <div><span class="k">4 CL · 1 MEGGYSZEM</span><b>Shotként</b><span>Egy 5 cl-es pohár aljára tegyél egy meggyszemet, önts rá 4 cl Don Cherryt, és idd meg két kortyban. Rövid, intenzív élmény, ideális buliindító.</span></div></div></section>
-<section class="pd-wrap pd-cocktails"><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">KOKTÉLKÉNT</p><div class="cgrid">
+<section class="pd-wrap pd-cocktails"><h2 class="ck-h">Koktélként</h2><div class="cgrid">
 <article><img src="{r}img/cocktail/negroni.webp" alt="Don Cherry Negroni" loading="lazy"><h3>Don Cherry Negroni</h3><p class="d">Karakteres, gyümölcsös, kissé kesernyés – mégis selymesen fűszeres.</p><ul><li>3 cl Don Cherry</li><li>3 cl gin</li><li>3 cl Campari</li><li>jég, narancshéj</li></ul><p>Önts minden hozzávalót jéggel teli keverőpohárba, keverd össze, majd szűrd egy jéggel teli whiskys pohárba. Narancshéjjal díszítsd.</p></article>
 <article><img src="{r}img/cocktail/americano.webp" alt="Don Cherry Americano" loading="lazy"><h3>Don Cherry Americano</h3><p class="d">Erőteljes, elegáns és modern. Nem harsány, de nem is marad észrevétlen.</p><ul><li>6 cl Don Cherry</li><li>3 cl Campari</li><li>jég, narancskarika vagy narancshéj-spirál</li></ul><p>Öntsd a Don Cherryt és a Camparit egy jéggel teli whiskys pohárba, és keverd össze óvatosan. Díszítsd narancshéjjal.</p></article>
 <article><img src="{r}img/cocktail/manhattan.webp" alt="Don Cherry Manhattan" loading="lazy"><h3>Don Cherry Manhattan</h3><p class="d">A Manhattan ikonikus eleganciája, meggyes karakterrel.</p><ul><li>6 cl rye whiskey vagy bourbon</li><li>3 cl Don Cherry</li><li>2–3 csepp Angostura</li><li>koktélmeggy vagy narancshéj</li></ul><p>Keverd össze jéggel, és szűrd coupe pohárba. Díszítsd koktélmeggyel. Füstös whiskeyvel még komolyabb élmény.</p></article>
@@ -389,7 +389,7 @@ def t_fsp(p):
     if L == 'friss':
         story = f'''<section class="pd-story f" style="background:{p['arch']};color:{fg}"><div class="pd-wrap"><p aria-hidden="true" class="bigw">{BIG.get(p['id'], '')}</p>
 <div class="tx"><h2>{_('TXT')['friss1']}</h2><p class="s">Reduktív eljárással, friss gyümölcsből – könnyű, kellemesen édes, pár szem jéggel is. Négy íz, mind {ft(p['price'])}.</p><div class="tiles">{tiles}</div></div>
-<img class="ph" src="{r}img/photo/friss_csalad.webp" alt="FRISS gyümölcsborok" loading="lazy"></div></section>'''
+{_('friss_cut')(r, 'ph')}</div></section>'''
     elif L == 'secco':
         dots = ''.join(f'<span aria-hidden="true" class="bub" style="left:{x}%;top:{y}%;width:{s}px;height:{s}px"></span>' for x, y, s in [(6, 20, 26), (12, 62, 14), (30, 14, 10), (48, 72, 22), (66, 18, 16), (84, 64, 12), (92, 24, 20)])
         alc = (param(p, 'Alkohol') or '').replace(' %vol', '%').replace('%vol', '%')
