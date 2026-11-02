@@ -1662,3 +1662,7 @@ main.fairs .ph-note{color:#9AA0B4}
 }
 @keyframes rlmarq{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.t-retail ul{animation:none!important;overflow-x:auto}}
+/* akciós csomagkártya: áthúzott ár az ár fölött, az ár nem törik */
+.pack-card .pr{flex-direction:column;align-items:flex-start;gap:2px;container-type:inline-size;width:100%}
+.pack-card .pr s{order:-1;font-size:15px;white-space:nowrap}
+.pack-card .pr b{white-space:nowrap;line-height:1.05;font-size:min(34px,15cqw)}
