@@ -149,7 +149,7 @@ def header(r, cur='', theme='pill', back=None):
 <a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
 <div class="drawer" id="drawer"><nav aria-label="Mobil menü"><button class="close" type="button" data-menu-close aria-label="Bezárás">×</button>
-<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}friss.html">FRISS</a><a href="{r}berry-secco.html">Berry Secco</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}kosar.html">Kosár</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
+<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}friss.html">FRISS</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
 '''
 
 
