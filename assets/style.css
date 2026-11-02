@@ -1592,3 +1592,9 @@ html.burger .site-head .logo img{height:30px!important}
 @media (max-width:599px){.pcard .pbadge{top:6px;left:6px;font-size:9.5px;padding:4px 8px 3px}}
 /* jelvény a hero palack felugró kártyáján (nem a palack fölött) */
 .pbadge.inl{position:static;align-self:center;box-shadow:none;font-size:10px;padding:4px 9px 3px;margin-bottom:2px}
+/* 100%-os blokk: statikus, sűrű gyümölcsszórás (2026-11-02) – felülírja az esést */
+.claim-fruit{-webkit-mask-image:none;mask-image:none}
+.frain i{position:absolute;display:block;animation:none!important;will-change:auto}
+.frain img{display:block;width:100%;height:auto;transform:none;filter:drop-shadow(0 6px 8px rgba(27,42,92,.16))}
+/* FRISS főoldali kép: háttér nélkül, csak a palackok és az árnyékuk */
+.friss-cut img{border-radius:0;display:block}

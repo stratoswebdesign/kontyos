@@ -583,17 +583,25 @@ def polaroids(r):
     return f'''<div class="polas" aria-hidden="true"><figure class="pola" style="--r:-7deg"><img src="{r}img/photo/don_polaroid.webp" alt="" loading="lazy"></figure><figure class="pola" style="--r:6deg"><img src="{r}img/photo/piri_nar_life.webp" alt="" loading="lazy"></figure></div>'''
 
 # A „100%-os gyümölcsbor” blokk: valódi, körbevágott gyümölcsfotók (Unsplash/Pexels) – szétszórva, sokszorozva, különböző szögekből potyognak
-def fruit_rain(r, n=34, seed=21):
-    import random
+def fruit_rain(r, n=58, seed=21):
+    """Statikus, sűrűn szétszórt gyümölcsök (több szögből, sokszorozva) – nem esnek."""
+    import random, math
     rnd = random.Random(seed)
     kinds = ['alma', 'eper', 'meggy', 'oszibarack', 'sargabarack', 'malna', 'narancs', 'szilva', 'ribizli']
-    rel = {'alma': 1.0, 'narancs': 1.0, 'oszibarack': 1.0, 'sargabarack': .8, 'eper': .8, 'szilva': .75, 'malna': .6, 'ribizli': .65, 'meggy': .6}
+    rel = {'alma': 1.0, 'narancs': 1.0, 'oszibarack': 1.05, 'sargabarack': .8, 'eper': .78, 'szilva': .72, 'malna': .62, 'ribizli': .7, 'meggy': .62}
+    pts = []
+    tries = 0
+    while len(pts) < n and tries < 20000:          # Poisson-disc: egyenletes, de nem rácsos szórás
+        tries += 1
+        x, y = rnd.uniform(-4, 104), rnd.uniform(-4, 104)
+        if all(math.hypot(x - a, y - b) > 10.5 for a, b in pts):
+            pts.append((x, y))
     out = ''
-    for i in range(n):
+    for i, (x, y) in enumerate(pts):
         k = kinds[i % len(kinds)]
-        w = rel[k] * rnd.uniform(11, 21)
-        out += (f'<i style="left:{rnd.uniform(-4, 92):.1f}%;width:{w:.1f}%;--dur:{rnd.uniform(9, 16):.1f}s;--delay:-{rnd.uniform(0, 16):.1f}s;'
-                f'--r0:{rnd.uniform(-60, 60):.0f}deg;--r1:{rnd.uniform(-200, 200):.0f}deg;--fx:{rnd.choice((1, -1))};--dx:{rnd.uniform(-40, 40):.0f}px;--z:{rnd.choice((1, 2, 3))}">'
+        w = rel[k] * rnd.uniform(14, 21)
+        out += (f'<i style="left:{x:.1f}%;top:{y:.1f}%;width:{w:.1f}%;z-index:{rnd.randint(1, 4)};'
+                f'transform:translate(-50%,-50%) rotate({rnd.uniform(-170, 170):.0f}deg) scaleX({rnd.choice((1, -1))})">'
                 f'<img src="{r}img/gyumolcs1/{k}.webp" alt="" loading="lazy"></i>')
     return f'<div class="frain" aria-hidden="true">{out}</div>'
 
@@ -640,7 +648,7 @@ def home_body(r='', h='h1'):
     pg += f'''<section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:28px"><p class="kicker">Válogatások</p><h2 class="h2">Csomagban jobban megéri</h2>
 {cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r)}</div></section>'''
     pg += f'''<section class="sec friss-home" style="background:#F28C28;color:#1B2A5C"><div class="wrap split">
-<div><img src="{r}img/photo/friss_flat.webp" alt="FRISS gyümölcsborok" loading="lazy"></div>
+<div class="friss-cut"><img src="{r}img/photo/friss_flat_cut.webp" alt="FRISS gyümölcsborok" loading="lazy"></div>
 <div style="display:flex;flex-direction:column;gap:18px"><p class="kicker" style="--accent:#1B2A5C">Új · FRISS</p><h2 class="h2">Könnyű, színes, hűtve az igazi.</h2>
 <p class="lead">{TXT['friss2']} Négy íz, mind {ft(2190)}.</p>
 {cards(['friss-narancs', 'friss-eper', 'friss-malna', 'friss-meggy'], r, 'cards grid2')}<a class="btn navy" href="{r}friss.html" style="align-self:flex-start">Mind a FRISS →</a></div></div></section>'''
