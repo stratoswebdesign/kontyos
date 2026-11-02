@@ -535,22 +535,26 @@ BOTTLE_ICON = '<svg viewBox="0 0 20 60" aria-hidden="true"><path d="M7 0h6v14c0 
 
 
 def trust_block(r, h='h2'):
-    """Hitelesítő blokk (Sanyi) a nagykereskedőknek szóló 2026-os kiajánló adataival és színeivel:
-    magyar főcím, gyümölcsök, palackszámok, feldolgozott gyümölcs, és hogy mely láncokban kapható."""
-    bottles = ''.join(f'<i style="opacity:{1 - k / 30:.2f}">{BOTTLE_ICON}</i>' for k in range(24))
-    stats = [('600–800 ezer', 'palack éves gyártókapacitás – bővülőben'), ('400 ezer', 'palackot adtunk el 2025-ben'), ('2', 'automata palackozósor – csendes és habzó')]
-    st = ''.join(f'<div><b>{a}</b><span>{b}</span></div>' for a, b in stats)
-    # csak a kiajánló adatai – a színek a webshop saját palettájából (gyümölcsönként a termékszínek)
-    fruit = [('alma', '400 t', 400, '#1B2A5C'), ('eper', '50 t', 50, '#EF4E73'), ('meggy', '50 t', 50, '#A3203A'), ('egyéb', '5–10 t', 14, '#F3C66B')]
-    fr = ''.join(f'<div style="flex:{g} 1 0"><span class="bar" style="background:{bg}"></span><b>{t}</b><span>{n}</span></div>' for n, t, g, bg in fruit)
-    tiles = ''.join((f'<li><img class="rlogo" src="{r}img/logos/{f}" alt="{n}" width="72" height="72" loading="lazy">' if f else f'<li><span class="rlogo txt">{n.upper()}</span>') + f'<b>{a}</b><span>{b}</span></li>' for n, f, a, b in RETAIL)
-    return f'''<section class="trust">{fruit_burst(r, 22, 7, cls='edge')}<div class="wrap">
-<p class="kicker" style="--accent:#1B2A5C">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
-<{h} class="h2">100% gyümölcsből erjesztett borra épülő, innovatív italokat fejlesztünk</{h}>
-<div class="tbox"><p class="tl">Palackban mérve</p><div class="brow">{bottles}</div><div class="stats">{st}</div>
-<p class="tl">Évente feldolgozott gyümölcs</p><div class="frow">{fr}</div></div>
-<div class="retail"><p class="tl">Országszerte a polcokon</p><ul>{tiles}</ul></div>
-<p class="ph-note">Adatok: a Kontyos 2026-os nagykereskedelmi kiajánlója; az alma 400 t a 2026. 11. 01-i egyeztetés szerint (a kiajánlóban még 300 t). A gyümölcsök helyére Bandi „szétrobbanó gyümölcs” képe kerül.</p>
+    """Hitelesítő blokk – Sanyi mintája (2026-11-02): fő állítás, eladott palackok, gyümölcsök valódi fotókkal, saját üzem, üzletláncok."""
+    bottles = ''.join(f'<i style="opacity:{1 - k * .055:.2f}">{BOTTLE_ICON}</i>' for k in range(17))
+    small = [('eper', 'Eper', '50 t', 'w'), ('meggy', 'Meggy', '50 t', 'w'), ('oszi', 'Őszibarack', '', ''), ('sarga', 'Sárgabarack', '', ''),
+             ('ribizli', 'Ribizli', '', ''), ('malna', 'Málna', '', ''), ('narancs', 'Narancs', '', '')]
+    fr = ''.join(f'<figure class="{c}"><img src="{r}img/gyumolcs/{k}.webp" alt="{n}" loading="lazy"><figcaption>{n}{f" · {t}" if t else ""}</figcaption></figure>' for k, n, t, c in small)
+    uz = ''.join(f'<img src="{r}img/uzem/{k}.webp" alt="{a}" loading="lazy">' for k, a in (('tartaly', 'Erjesztőtartályok'), ('palack', 'Palackozósor'), ('palack2', 'Palackozás')))
+    tiles = ''.join((f'<li><img class="rlogo" src="{r}img/logos/{f}" alt="{n}" loading="lazy">' if f else f'<li><span class="rlogo txt">{n.upper()}</span>') + '</li>' for n, f, a, b in RETAIL)
+    return f'''<section class="trust2"><div class="wrap">
+<div class="t-hero"><p class="kicker">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
+<{h} class="h2">100% gyümölcsbor.<br>Ezerféle élmény.</{h}>
+<p class="lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat. A klasszikus gyümölcsboroktól a modern különlegességekig.</p></div>
+<div class="t-bottles"><div class="brow">{bottles}</div><div class="num"><b>500 000+</b><span>eladott palack · 2026 várható</span></div></div>
+<div class="t-fruit"><p class="kicker">Gyümölcsökből születnek az italaink</p><h3>Évente több száz tonna gyümölcsből</h3>
+<figure class="alma"><img src="{r}img/gyumolcs/alma.webp" alt="Alma" loading="lazy"></figure><div class="alma-cap"><span>Alma</span><b>400 t</b></div>
+<div class="frow2">{fr}</div></div>
+<div class="t-plant"><div class="hd"><div><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalvától az ország üzleteiig</h3></div><div class="m2"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
+<div class="pics">{uz}</div>
+<p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p></div>
+<div class="t-retail"><h3>Országszerte találkozhatsz velünk</h3><ul>{tiles}</ul><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
+<p class="ph-note">Az üzemfotók helykitöltők (Unsplash) – a klárafalvi fotózás képeire cseréljük.</p>
 </div></section>'''
 
 

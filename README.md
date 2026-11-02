@@ -27,3 +27,8 @@ Statikus, szerver nélkül működő webshop-demó a **kontyos.hu** újratervez�
 python3 src/build.py      # src/catalog.json → *.html, termek/*.html, assets/catalog.js
 python3 -m http.server    # helyi előnézet: http://localhost:8000
 ```
+
+## Képforrások
+- `img/gyumolcs/*`, `img/uzem/*`: Unsplash (Unsplash License – kereskedelmi célra ingyenes, forrásmegjelölés nem kötelező). Az üzemfotók helykitöltők a klárafalvi fotózásig.
+- `img/cocktail/*`: a Kontyos Don Cherry anyagai (mralkohol.hu oldalról, Sanyi kérésére).
+- `img/deco/*`: a Graphasel PIRI Mama landing díszei és a régi forralt bor címke cinegéje (ideiglenes kivágás).

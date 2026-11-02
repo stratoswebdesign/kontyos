@@ -1487,3 +1487,58 @@ html.burger .site-head .logo img{height:30px!important}
 @keyframes anbob{from{transform:translateY(0)}to{transform:translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.an{animation:none}}
 @media (max-width:860px){.an.oz{top:auto;bottom:38%;width:70px}.an.cinege{top:auto;bottom:38%;width:70px}.an.mokus{left:auto;right:8px;bottom:auto;top:52%;width:70px}}
+
+/* ===== Hitelesítő blokk v2 – Sanyi mintája (2026-11-02) ===== */
+.trust2{background:#F7F2EA;color:#1B2A5C;padding:clamp(60px,8vw,110px) 0}
+.trust2 .wrap{display:flex;flex-direction:column;gap:clamp(30px,4vw,48px)}
+.trust2 .kicker{--accent:#1B2A5C;font-size:12px;letter-spacing:.16em}
+.trust2 h3{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.2vw,44px);line-height:1.15;letter-spacing:.01em}
+.t-hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.t-hero .h2{font-size:clamp(32px,5.2vw,72px);line-height:1.08;letter-spacing:.04em}
+.t-hero .lead{max-width:880px;font-size:clamp(16px,1.4vw,19px)}
+.t-bottles{display:flex;align-items:center;gap:clamp(20px,3vw,40px);padding:26px 0;border-top:1px solid rgba(27,42,92,.18);border-bottom:1px solid rgba(27,42,92,.18)}
+.t-bottles .brow{flex:1;display:flex;gap:clamp(4px,.8vw,12px);min-width:0;overflow:hidden}
+.t-bottles .brow i{flex:1;min-width:0;max-width:44px;display:block}
+.t-bottles .brow svg{width:100%;height:auto;aspect-ratio:20/60;display:block;fill:#1B2A5C}
+.t-bottles .num{display:flex;flex-direction:column;gap:6px;flex:none}
+.t-bottles .num b{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,68px);line-height:1}
+.t-bottles .num span{font-size:16px}
+.t-fruit{display:flex;flex-direction:column;gap:14px;text-align:center}
+.t-fruit h3{margin-bottom:10px}
+.t-fruit figure{margin:0}
+.t-fruit .alma img{width:100%;aspect-ratio:5/1;object-fit:cover;border-radius:10px;display:block}
+.alma-cap{display:flex;justify-content:space-between;align-items:baseline;text-align:left}
+.alma-cap span{font-size:18px}
+.alma-cap b{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,46px);line-height:1}
+.frow2{display:grid;grid-template-columns:3fr 3fr 1fr 1fr 1fr 1fr 1fr;gap:8px}
+.frow2 figure{display:flex;flex-direction:column;gap:10px;min-width:0}
+.frow2 img{width:100%;height:clamp(150px,19vw,280px);object-fit:cover;border-radius:10px;display:block}
+.frow2 figcaption{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t-plant{display:flex;flex-direction:column;gap:16px;padding-top:30px;border-top:1px solid rgba(27,42,92,.18)}
+.t-plant .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.t-plant .hd .kicker{margin-bottom:6px}
+.t-plant .m2{display:flex;flex-direction:column;align-items:flex-end}
+.t-plant .m2 b{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.8vw,52px);line-height:1}
+.t-plant .m2 span{font-size:14px;opacity:.75}
+.t-plant .pics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.t-plant .pics img{width:100%;aspect-ratio:8/3;object-fit:cover;border-radius:8px;display:block}
+.t-plant .lead{font-size:17px;max-width:1000px}
+.t-retail{display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:30px;border-top:1px solid rgba(27,42,92,.18);text-align:center}
+.t-retail ul{list-style:none;margin:0;padding:0;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.t-retail li{display:flex;align-items:center;justify-content:center;height:96px;background:#fff;border:1px solid #E2DACB;border-radius:12px}
+.t-retail .rlogo{width:auto;height:56px;max-width:70%;object-fit:contain}
+.t-retail .rlogo.txt{height:auto;font-family:var(--sans);font-weight:800;font-size:17px;letter-spacing:.14em;color:#1B2A5C}
+.t-retail p{font-size:16px}
+@media (max-width:860px){
+  .t-bottles{flex-direction:column;align-items:flex-start}.t-bottles .brow{width:100%}
+  .t-fruit .alma img{aspect-ratio:2.4/1}
+  .frow2{grid-template-columns:repeat(4,minmax(0,1fr))}.frow2 .w{grid-column:span 2}.frow2 img{height:130px}.frow2 figure:not(.w) img{height:110px}
+  .t-plant .pics{grid-template-columns:1fr 1fr}.t-plant .pics img:first-child{grid-column:1/-1}.t-plant .pics img{aspect-ratio:16/9}
+  .t-retail ul{grid-template-columns:repeat(2,minmax(0,1fr))}.t-retail li{height:80px}
+}
+@media (max-width:860px){
+  .t-hero .h2{font-size:clamp(24px,7.6vw,44px);hyphens:manual!important;-webkit-hyphens:manual!important}
+  .frow2{grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}.frow2 .w{grid-column:span 5}.frow2 figure:not(.w){grid-column:span 2}
+  .frow2 figure:not(.w) img{height:96px}.frow2 figure:not(.w) figcaption{font-size:11px}
+  .t-plant .m2{align-items:flex-start}
+}
