@@ -594,7 +594,7 @@ def trust_block(r, h='h2'):
 <div class="t-hero"><p class="kicker">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
 <{h} class="h2">100% gyümölcsbor.<br>Ezerféle élmény.</{h}>
 <p class="lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat. A klasszikus gyümölcsboroktól a modern különlegességekig.</p></div>
-<div class="t-bottles"><div class="brow">{bottles}</div><div class="num"><b>450 000+</b><span>eladott palack</span></div></div>
+<div class="t-bottles"><div class="brow">{bottles}</div><div class="num"><b>450 000+</b></div></div>
 <div class="t-fruit"><p class="kicker">Gyümölcsökből születnek az italaink</p>
 <div class="t-fhead"><b>500 t+</b><h3>Évente több száz tonna gyümölcsből</h3></div>
 <figure class="alma"><img src="{r}img/gyumolcs/alma.webp" alt="Alma" loading="lazy"></figure><div class="alma-cap"><span>Alma</span></div>
