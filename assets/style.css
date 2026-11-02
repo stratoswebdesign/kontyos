@@ -1565,3 +1565,11 @@ html.burger .site-head .logo img{height:30px!important}
 .fphotos img{position:absolute;height:auto;transform:rotate(var(--rot));filter:drop-shadow(0 14px 16px rgba(27,42,92,.18));animation:fbob 7s ease-in-out infinite alternate}
 @media (prefers-reduced-motion:reduce){.fphotos img{animation:none}}
 @media (max-width:860px){.claim-fruit{min-height:340px}}
+/* „100%-os gyümölcsbor”: szétszórt, sokszorozott, potyogó gyümölcsök */
+.claim-fruit{overflow:hidden;min-height:clamp(380px,40vw,560px);-webkit-mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.frain{position:absolute;inset:0}
+.frain i{position:absolute;top:0;display:block;z-index:var(--z);animation:frain var(--dur) linear infinite;animation-delay:var(--delay);will-change:transform}
+.frain img{display:block;width:100%;height:auto;transform:scaleX(var(--fx));filter:drop-shadow(0 12px 14px rgba(27,42,92,.18))}
+@keyframes frain{from{transform:translate3d(0,-130%,0) rotate(var(--r0))}to{transform:translate3d(var(--dx),clamp(520px,48vw,700px),0) rotate(var(--r1))}}
+@media (prefers-reduced-motion:reduce){.frain i{animation:none;transform:translateY(calc(var(--z) * 110px)) rotate(var(--r0))}}
+@media (max-width:860px){.claim-fruit{min-height:380px}@keyframes frain{from{transform:translate3d(0,-130%,0) rotate(var(--r0))}to{transform:translate3d(var(--dx),480px,0) rotate(var(--r1))}}}

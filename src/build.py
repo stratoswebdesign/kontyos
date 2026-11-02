@@ -561,8 +561,20 @@ def trust_block(r, h='h2'):
 def polaroids(r):
     return f'''<div class="polas" aria-hidden="true"><figure class="pola" style="--r:-7deg"><img src="{r}img/photo/don_polaroid.webp" alt="" loading="lazy"></figure><figure class="pola" style="--r:6deg"><img src="{r}img/photo/piri_nar_life.webp" alt="" loading="lazy"></figure></div>'''
 
-# A „100%-os gyümölcsbor” blokk: valódi gyümölcsfotók, mindegyik gyümölcsből egy (Unsplash/Pexels, körbevágva)
-FRUIT_PHOTOS = '<div class="fphotos" aria-hidden="true"><img src="{r}img/gyumolcs1/alma.webp" alt="" style="left:4%;top:8%;width:30%;--rot:-6deg;animation-delay:-0.0s" loading="lazy"><img src="{r}img/gyumolcs1/narancs.webp" alt="" style="left:38%;top:0%;width:30%;--rot:4deg;animation-delay:-0.7s" loading="lazy"><img src="{r}img/gyumolcs1/eper.webp" alt="" style="left:72%;top:4%;width:22%;--rot:8deg;animation-delay:-1.4s" loading="lazy"><img src="{r}img/gyumolcs1/meggy.webp" alt="" style="left:30%;top:36%;width:16%;--rot:-10deg;animation-delay:-2.1s" loading="lazy"><img src="{r}img/gyumolcs1/oszibarack.webp" alt="" style="left:52%;top:34%;width:28%;--rot:3deg;animation-delay:-2.8s" loading="lazy"><img src="{r}img/gyumolcs1/malna.webp" alt="" style="left:84%;top:40%;width:14%;--rot:12deg;animation-delay:-3.5s" loading="lazy"><img src="{r}img/gyumolcs1/szilva.webp" alt="" style="left:4%;top:46%;width:22%;--rot:-4deg;animation-delay:-4.2s" loading="lazy"><img src="{r}img/gyumolcs1/sargabarack.webp" alt="" style="left:22%;top:70%;width:24%;--rot:6deg;animation-delay:-4.9s" loading="lazy"><img src="{r}img/gyumolcs1/ribizli.webp" alt="" style="left:62%;top:68%;width:18%;--rot:-8deg;animation-delay:-5.6s" loading="lazy"></div>'
+# A „100%-os gyümölcsbor” blokk: valódi, körbevágott gyümölcsfotók (Unsplash/Pexels) – szétszórva, sokszorozva, különböző szögekből potyognak
+def fruit_rain(r, n=34, seed=21):
+    import random
+    rnd = random.Random(seed)
+    kinds = ['alma', 'eper', 'meggy', 'oszibarack', 'sargabarack', 'malna', 'narancs', 'szilva', 'ribizli']
+    rel = {'alma': 1.0, 'narancs': 1.0, 'oszibarack': 1.0, 'sargabarack': .8, 'eper': .8, 'szilva': .75, 'malna': .6, 'ribizli': .65, 'meggy': .6}
+    out = ''
+    for i in range(n):
+        k = kinds[i % len(kinds)]
+        w = rel[k] * rnd.uniform(11, 21)
+        out += (f'<i style="left:{rnd.uniform(-4, 92):.1f}%;width:{w:.1f}%;--dur:{rnd.uniform(9, 16):.1f}s;--delay:-{rnd.uniform(0, 16):.1f}s;'
+                f'--r0:{rnd.uniform(-60, 60):.0f}deg;--r1:{rnd.uniform(-200, 200):.0f}deg;--fx:{rnd.choice((1, -1))};--dx:{rnd.uniform(-40, 40):.0f}px;--z:{rnd.choice((1, 2, 3))}">'
+                f'<img src="{r}img/gyumolcs1/{k}.webp" alt="" loading="lazy"></i>')
+    return f'<div class="frain" aria-hidden="true">{out}</div>'
 
 
 def claim_block(r):
@@ -572,7 +584,7 @@ def claim_block(r):
 <p class="lead">Gyümölcsboraink 100%-ban magyar gyümölcsökből készülnek. Édesapánk közel két évtizede alkotta meg első gyümölcsborát: a család hölgy tagjai olyan italra vágytak, mely édes és zamatos, akár egy nyári gyümölcs.</p>
 <p style="line-height:1.7;opacity:.85">2006 óta alkotunk elsőrangú hazai gyümölcsökből gyümölcsbor-különlegességeket, hagyományos és reduktív eljárással. A 2019-ben épült modern üzemünk Szegedhez közel, Klárafalván működik.</p>
 <p class="ph-note">[A „mitől 100%-os” szöveget Sanyival közösen véglegesítjük – addig a kontyos.hu jelenlegi szövege áll itt.]</p></div>
-<div class="claim-fruit">{FRUIT_PHOTOS.format(r=r)}</div></div></section>
+<div class="claim-fruit">{fruit_rain(r)}</div></div></section>
 <section class="innov"><div class="wrap"><p class="kicker" style="--accent:#F3C66B">Innováció</p><h2 class="h2">Gyümölcsborból, újragondolva</h2>
 <div class="ilist"><a href="{r}friss.html"><b>FRISS</b><span>{TXT['friss1']}</span></a>
 <a href="{r}termek/piri-mama-forralt-bora.html"><b>PIRI Mama</b><span>Kész forralt bor gyümölcsborból – csak melegíteni kell.</span></a>
