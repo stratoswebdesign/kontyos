@@ -1590,3 +1590,5 @@ html.burger .site-head .logo img{height:30px!important}
 .hbi{position:relative}
 .hbi>.pbadge{top:auto;bottom:calc(var(--h) * .98);left:50%;transform:translateX(-50%)}
 @media (max-width:599px){.pcard .pbadge{top:6px;left:6px;font-size:9.5px;padding:4px 8px 3px}}
+/* jelvény a hero palack felugró kártyáján (nem a palack fölött) */
+.pbadge.inl{position:static;align-self:center;box-shadow:none;font-size:10px;padding:4px 9px 3px;margin-bottom:2px}
