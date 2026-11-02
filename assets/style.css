@@ -106,7 +106,7 @@ p{margin:0}
 
 /* Futószalag */
 .marquee{background:var(--navy);color:var(--paper);overflow:hidden;white-space:nowrap;padding:14px 0}
-.marquee>div{display:inline-flex;animation:kmarq 40s linear infinite}
+.marquee>div{display:inline-flex;animation:kmarq 70s linear infinite}
 .marquee span{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,30px);padding-right:40px}
 @keyframes kmarq{to{transform:translateX(-50%)}}
 @keyframes kspin{to{transform:rotate(360deg)}}

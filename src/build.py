@@ -616,7 +616,9 @@ def claim_block(r):
 
 def home_body(r='', h='h1'):
     """Főoldal (Sanyi sorrendje, 2026-11-01): hero → hitelesítő → termékek → vásárok → gyümölcsválasztó → képek, csomagok, könnyű → 100%-os gyümölcsbor + innováció."""
-    mq = ' · '.join(['100% gyümölcsből', 'Klárafalvi Kontyos Borház', 'Ingyenes szállítás 20 000 Ft felett', '6 palacktól mennyiségi ár'] * 2)
+    mq = ' · '.join(['Egy pohár nyár, bármelyik évszakban', 'Mintha most szedték volna a fáról', 'Koccintás, ami mosolyt hagy maga után',
+                     'Magyar gyümölcs minden kortyban', 'Édes, mint a nyár első epre', 'Hideg estékre meleg PIRI Mama',
+                     'Lassú délutánok, hosszú beszélgetések', 'Baráti asztalokra termett', 'Egy családi álomból lett mindenki kedvence'])
     pg = ''
     pg += f'<div class="marquee" aria-hidden="true"><div><span>{mq} · </span><span>{mq} · </span></div></div>'
     pg += trust_block(r, h)
