@@ -2305,8 +2305,8 @@
     "v": false
    }
   ],
-  "img": "img/p/meggy-paros.webp",
-  "tight": "img/t/meggy-paros.webp"
+  "img": "img/csomag/meggy-paros.webp",
+  "tight": "img/csomag/meggy-paros-t.webp"
  },
  {
   "id": "eper-paros",
@@ -2357,8 +2357,8 @@
     "v": true
    }
   ],
-  "img": "img/p/eper-paros.webp",
-  "tight": "img/t/eper-paros.webp"
+  "img": "img/csomag/eper-paros.webp",
+  "tight": "img/csomag/eper-paros-t.webp"
  },
  {
   "id": "konnyu-trio",
@@ -2395,8 +2395,8 @@
     "v": false
    }
   ],
-  "img": "img/p/konnyu-trio-483.webp",
-  "tight": "img/t/konnyu-trio-483.webp"
+  "img": "img/csomag/konnyu-trio.webp",
+  "tight": "img/csomag/konnyu-trio-t.webp"
  },
  {
   "id": "bubi-paros",
@@ -2439,8 +2439,8 @@
     "v": false
    }
   ],
-  "img": "img/p/bubi-paros-482.webp",
-  "tight": "img/t/bubi-paros-482.webp"
+  "img": "img/csomag/bubi-paros.webp",
+  "tight": "img/csomag/bubi-paros-t.webp"
  },
  {
   "id": "kontyos-borospohar",
