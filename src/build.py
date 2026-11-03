@@ -681,6 +681,25 @@ def friss_cut(r, cls=''):
             f'<img class="bt" src="{r}img/photo/friss_fekvo_palack.webp" alt="FRISS gyümölcsborok – málna, eper, narancs, meggy" loading="lazy"></div>')
 
 
+def new_world(r):
+    """„A gyümölcsbor új világa” (Sanyi mintája, 11-03): történet, mit jelent a 100%, csapat, és a gyümölcsbor új oldalai (FRISS, PIRI Mama, Don Cherry, Berry Secco, Easy Cider)."""
+    lines = [('FRISS', 'friss.html', 'Gyümölcsbor és almabor fele-fele arányban. Könnyed, frissítő harmóniában.'),
+             ('PIRI Mama', 'termek/piri-mama-forralt-bora.html', 'Saját klasszikus gyümölcsborainkból, valódi fűszerekkel készülő forralt borok, melyeket már csak meg kell melegíteni.'),
+             ('Don Cherry', 'termek/don-cherry.html', 'Prémium meggyvermut saját, 100%-os meggyborunkból, friss meggyen érlelve, válogatott fűszerekkel gazdagítva.'),
+             ('Berry Secco', 'termek/berry-secco.html', 'Többféle gyümölcsborból készült, pezsgően gyümölcsös ital. A prosecco buborékossága, egy gyümölcsös koktél izgalmával.'),
+             ('Easy Cider', '', 'Az almaborkészítésben szerzett tudásunk legjava egy modern ciderben: könnyed, frissítő és karakteresen almás.')]
+    cols = ''.join((f'<a class="nw-l" href="{r}{h}">' if h else '<div class="nw-l">') + f'<h4>{n}</h4><i></i><p>{d}</p>' + ('</a>' if h else '</div>') for n, h, d in lines)
+    return f'''<section class="nworld"><img class="nw-fruit" src="{r}img/photo/gyumolcs_vilag.webp" alt="Eper, málna, szilva, meggy, alma, sárgabarack, narancs és ribizli" loading="lazy">
+<div class="wrap">
+<div class="nw-top"><p class="nw-kick"><span>Modern borászat</span></p><h2 class="h2"><span style="white-space:nowrap">A gyümölcsbor</span><br>új világa</h2><i class="nw-bar"></i>
+<p class="nw-intro"><b>Történetünk édesapánkkal kezdődött,</b> aki közel két évtizede elkészítette első gyümölcsborát. Azóta sok minden változott, de a gyümölcsök iránti szeretetünk megmaradt.</p></div>
+<div class="nw-what"><h3>Mit jelent a <span style="white-space:nowrap">100%-os</span> gyümölcsbor?</h3><p>Klasszikus gyümölcsboraink 100%-ban az adott gyümölcsből készülnek. Az eperbor eperből, a meggybor meggyből, a kajszibor kajsziból – így minden borban az adott gyümölcs sajátos ízvilága érvényesül.</p></div>
+<div class="nw-team"><h3>A hagyományt ma egy elkötelezett csapat viszi tovább.</h3><p><b>Borászaink és munkatársaink</b> Klárafalván, modern környezetben készítik gyümölcsborainkat. Tapasztalatuk, szakértelmük és új ötleteik révén folyamatosan <b>fejlesztik italainkat</b>, és új módokat keresnek arra, hogyan mutathatják meg a gyümölcsbor sokszínűségét.</p></div>
+<div class="nw-sides"><h3><span>A gyümölcsbor új oldalai</span></h3><p class="nw-sub">Modern italaink alapját saját, 100%-os gyümölcsboraink és a gyümölcsök gazdag ízvilága adják, amelyeket új ötletekkel és izgalmas párosításokkal gondolunk tovább.</p>
+<div class="nw-lines">{cols}</div></div>
+</div></section>'''
+
+
 def claim_block(r):
     """A főoldal vége: „100%-os gyümölcsbor” állítás sok gyümölccsel, alatta az innováció."""
     return f'''<section class="claim"><div class="wrap split">
@@ -719,7 +738,7 @@ def home_body(r='', h='h1'):
 <ul class="usp"><li>100% gyümölcsből</li><li>Ingyenes szállítás 20 000 Ft felett</li><li>6 palacktól mennyiségi ár</li><li>Kiszállítás 1–5 munkanap</li><li>Törzsvásárlói kedvezmény akár 15%</li></ul>
 <div style="margin-top:20px">{cards(['edes-meggybor', 'edes-eperbor', 'klara-edes-malnabor', 'friss-malna', 'piri-mama-forralt-bora', 'don-cherry'], r, 'cards home-picks')}</div>
 </div></section>'''
-    pg += claim_block(r)
+    pg += new_world(r)
     pg += f'''<section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:28px"><p class="kicker">Válogatások</p><h2 class="h2">Csomagban jobban megéri</h2>
 {cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r)}</div></section>'''
     pg += choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')
