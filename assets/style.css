@@ -1947,3 +1947,11 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pk-forralt .pkx .pr,.pk-fblock .pkx .pr{color:#1B2A5C;border-top-color:rgba(27,42,92,.45)}
 .pk-forralt .pkx .pr s,.pk-fblock .pkx .pr s{color:#1B2A5C}
 .pk-forralt .pkx .pr em,.pk-fblock .pkx .pr em{color:#1B2A5C!important;opacity:.8}
+/* málna jobbra a cím mellett; polaroidok a kék szekcióban, a címmel egy vonalban jobbra */
+.nw-head .nw-malna{width:clamp(220px,24vw,380px);margin:0;filter:drop-shadow(0 18px 24px rgba(120,10,30,.25))}
+.nw-shead{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,60px);align-items:start}
+.nw-shead>div:first-child{display:flex;flex-direction:column;gap:14px}
+.nw-dark .nw-polas{padding-top:0}
+.nw-dark .nw-polas .tpola{width:clamp(140px,12vw,190px)}
+.nw-dark .nw-polas .tpola+.tpola{margin-left:-40px;margin-top:40px}
+@media (max-width:860px){.nw-head .nw-malna{width:60%;justify-self:center;order:-1}}

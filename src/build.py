@@ -694,14 +694,14 @@ def new_world(r):
     cols = ''.join((f'<a class="nw-l" href="{r}{h}">' if h else '<div class="nw-l">') + f'<h4>{n}</h4><i></i><p>{d}</p>' + ('</a>' if h else '</div>') for n, h, d in lines)
     return f'''<section class="nworld nw-light">
 <div class="wrap">
-<div class="nw-head"><div class="nw-top"><img class="nw-malna" src="{r}img/photo/malna_cut.webp" alt="Málna" loading="lazy"><p class="nw-kick"><span>Modern borászat</span></p><h2 class="h2"><span style="white-space:nowrap">A gyümölcsbor</span><br>új világa</h2><i class="nw-bar"></i>
+<div class="nw-head"><div class="nw-top"><p class="nw-kick"><span>Modern borászat</span></p><h2 class="h2"><span style="white-space:nowrap">A gyümölcsbor</span><br>új világa</h2><i class="nw-bar"></i>
 <p class="nw-intro"><b>Történetünk édesapánkkal kezdődött,</b> aki közel két évtizede elkészítette első gyümölcsborát. Azóta sok minden változott, de a gyümölcsök iránti szeretetünk megmaradt.</p></div>
-<div class="nw-polas" aria-label="Pillanatképek a Kontyostól"><figure class="tpola" style="--r:-5deg"><span class="ph">[Fotó 1 – a Kontyos küldi]</span></figure><figure class="tpola" style="--r:6deg"><span class="ph">[Fotó 2 – a Kontyos küldi]</span></figure></div></div>
+<img class="nw-malna" src="{r}img/photo/malna_cut.webp" alt="Málna" loading="lazy"></div>
 <div class="nw-what"><h3>Mit jelent a <span style="white-space:nowrap">100%-os</span> gyümölcsbor?</h3><p>Klasszikus gyümölcsboraink 100%-ban az adott gyümölcsből készülnek. Az eperbor eperből, a meggybor meggyből, a kajszibor kajsziból – így minden borban az adott gyümölcs sajátos ízvilága érvényesül.</p></div>
 <div class="nw-team"><h3>A hagyományt ma egy elkötelezett csapat viszi tovább.</h3><p><b>Borászaink és munkatársaink</b> Klárafalván, modern környezetben készítik gyümölcsborainkat. Tapasztalatuk, szakértelmük és új ötleteik révén folyamatosan <b>fejlesztik italainkat</b>, és új módokat keresnek arra, hogyan mutathatják meg a gyümölcsbor sokszínűségét.</p></div>
 </div></section>
 <section class="nworld nw-dark"><div class="wrap">
-<div class="nw-sides"><h3><span>A gyümölcsbor új oldalai</span></h3><p class="nw-sub">Modern italaink alapját saját, 100%-os gyümölcsboraink és a gyümölcsök gazdag ízvilága adják, amelyeket új ötletekkel és izgalmas párosításokkal gondolunk tovább.</p>
+<div class="nw-sides"><div class="nw-shead"><div><h3><span>A gyümölcsbor új oldalai</span></h3><p class="nw-sub">Modern italaink alapját saját, 100%-os gyümölcsboraink és a gyümölcsök gazdag ízvilága adják, amelyeket új ötletekkel és izgalmas párosításokkal gondolunk tovább.</p></div><div class="nw-polas" aria-label="Pillanatképek a Kontyostól"><figure class="tpola" style="--r:-5deg"><span class="ph">[Fotó 1 – a Kontyos küldi]</span></figure><figure class="tpola" style="--r:6deg"><span class="ph">[Fotó 2 – a Kontyos küldi]</span></figure></div></div>
 <div class="nw-lines">{cols}</div></div>
 </div></section>'''
 
