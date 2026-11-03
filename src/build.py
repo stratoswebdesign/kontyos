@@ -973,7 +973,7 @@ PK_TOP = {  # felső szín, szövegszín, gomb háttér, gomb szöveg – minden
     'bf-premium': ('#EF4E73', '#fff', '#EF4E73', '#fff'), 'bf-mini': ('#2A2A33', '#fff', '#fff', '#0B0B10'),
     'edes-unnepek': ('#7A1C2C', '#fff', '#B8324A', '#fff'), 'premium-advent': ('#123B2B', '#F3E2BC', '#DBB879', '#123B2B'),
     'konnyu-karacsony': ('#1F5A3C', '#fff', '#2E8C5A', '#fff'), 'forralt-6': ('#C9561A', '#fff', '#F08A3C', '#1B2A5C'),
-    'ujbor-valogatas': ('#D7263D', '#fff', '#D7263D', '#fff'), 'don-kis': ('#2E8C86', '#fff', '#5FB8B3', '#0B0B10'), 'don-nagy': ('#C8282E', '#fff', '#C8282E', '#fff')}
+    'ujbor-valogatas': ('#D7263D', '#fff', '#EF4E73', '#fff'), 'don-kis': ('#2E8C86', '#fff', '#5FB8B3', '#0B0B10'), 'don-nagy': ('#C8282E', '#fff', '#C8282E', '#fff')}
 
 
 def pack_box(sp, r, active=True, tag=None, primary=False, extra='', btn=None, stock=''):
