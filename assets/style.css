@@ -1877,3 +1877,8 @@ a.nw-l:hover h4{text-decoration:underline;text-underline-offset:4px}
 .nw-what{padding:clamp(18px,2vw,26px) clamp(20px,2.4vw,32px)!important;grid-template-columns:minmax(200px,.6fr) 2fr!important}
 .nw-team p,.nw-sub{max-width:none!important}
 @media (max-width:860px){.nw-top{max-width:none!important}.nw-what{grid-template-columns:1fr!important}}
+/* Kövess minket oldal: mindenhol csak a legsötétebb kék (#080D1B) – fejléc, demó sáv, értesítő, lábléc */
+body[data-page="fairs"],body[data-page="fairs"] .site-head,body[data-page="fairs"] main.fairs,body[data-page="fairs"] .fz-sub,body[data-page="fairs"] main.fairs .fz-sub,body[data-page="fairs"] .site-foot,body[data-page="fairs"] .demo-bar,body[data-page="fairs"] .demobar{background:#080D1B!important}
+body[data-page="fairs"] .site-head{border-bottom:1px solid rgba(219,184,121,.14)}
+body[data-page="fairs"] .site-foot{border-top:1px solid rgba(219,184,121,.14)}
+body[data-page="fairs"] .fz-sub{border-top:1px solid rgba(219,184,121,.14)}
