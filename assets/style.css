@@ -1833,3 +1833,4 @@ a.nw-l:hover h4{text-decoration:underline;text-underline-offset:4px}
   .tp-hero{width:120px;padding:6px 6px 22px}
 }
 @media (min-width:1101px){.t-hero{padding:0 clamp(160px,14vw,220px)}}
+@media (max-width:380px){.tp-polas .tpola{width:96px}.tp-polas .tpola+.tpola{margin-left:-24px}.tp2{gap:12px}.tp2 .tnum b{font-size:20px}}
