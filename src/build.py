@@ -418,7 +418,6 @@ def xmas_landing(r, phase, htag='h1', uid='x', full=True):
     out += '<p class="ph-note">Demó árak és összeállítás – a csomagok tartalmát a Kontyos véglegesíti (Gabival egyeztetve, forralt bor csomaggal is).</p></div></section>'
     if full:
         out += don_packs(r, 'Don Cherry ajándékcsomag', 'Kis és nagy csomag – a vermut és a párja karácsonyra.')
-        out += choose_tiles(r)
     return out
 
 
@@ -461,7 +460,7 @@ def ujbor_page():
 <button class="btn pink" type="button" data-add="ujbor-valogatas">Kosárba teszem a válogatást</button>
 <p class="ph-note">Demó összeállítás a klasszikus gyümölcsborokból, a 6 palackos mennyiségi áron – a végleges tartalmat a Kontyos adja.</p></div></div></section>
 <section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:24px"><h2 class="h2">Vagy válaszd palackonként</h2>{cards(sp['items'], r)}</div></section>'''
-    pg += choose_tiles(r, 'Nézz körül tovább', 'A klasszikusok mellett a Klára, a FRISS, a forralt borok és a Don Cherry.') + newsletter() + '</main>' + footer(r)
+    pg += newsletter() + '</main>' + footer(r)
     write('ujbor-valogatas.html', pg)
 
 
@@ -523,7 +522,8 @@ def packs_page():
 {forralt}
 <section class="sec pk-allando"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Állandó ajánlatok</p><h2 class="h2" {H2}>Egész évben</h2>
 {cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna'], r)}
-<p class="ph-note">A forralt csomag összetétele (javaslat: 4 narancsos + 1 klasszikus + 1 epres) és ára demó – a Kontyos véglegesíti.</p></div></section></main>''' + footer(r)
+<p class="ph-note">A forralt csomag összetétele (javaslat: 4 narancsos + 1 klasszikus + 1 epres) és ára demó – a Kontyos véglegesíti.</p></div></section>
+{choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')}</main>''' + footer(r)
     write('csomagok.html', pg)
 
 
@@ -741,7 +741,6 @@ def home_body(r='', h='h1'):
     pg += new_world(r)
     pg += f'''<section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:28px"><p class="kicker">Válogatások</p><h2 class="h2">Csomagban jobban megéri</h2>
 {cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r)}</div></section>'''
-    pg += choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')
     pg += newsletter()
     return pg
 
