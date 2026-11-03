@@ -1980,3 +1980,22 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .nw-team-d p{color:#F3EEE5!important}
 .nw-sides .nw-team-d h3{display:block!important;text-transform:none!important;letter-spacing:0!important;font-size:clamp(19px,1.7vw,24px)!important;line-height:1.25!important}
 .nw-sides .nw-team-d h3::after{display:none!important}
+/* PIRI Mama termékoldal, Három lépés: az első kép helyén a forralt csomag kártyája */
+.pd-steps-pk{flex:1;min-width:0;display:flex}
+.pd-steps-pk .pkx{width:100%;border-radius:8px}
+.pd-steps-pk .pkx h2{font-size:clamp(22px,2vw,32px)!important}
+.pd-steps-pk .pkx .ph{display:flex;height:clamp(150px,13vw,200px)}
+.pd-steps-pk .pkx .ph img{flex:none;height:92%;width:auto;margin:0 -4px;border-radius:0;object-fit:contain}
+.pd-steps-pk .pkx .pr b{font-size:clamp(30px,2.6vw,42px)}
+@media (max-width:860px){.pd-steps .ph{flex-direction:column}.pd-steps .ph img+img{margin-top:0}}
+.pd-steps .ph{flex:1.7 1 640px;align-items:center}
+.pd-steps .pd-steps-pk{flex:1.25 1 0}
+.pd-steps .pd-steps-pk .pkx .ph{display:flex;gap:2px;height:clamp(150px,12vw,190px)}
+.pd-steps .pd-steps-pk .pkx .ph img{flex:none!important;height:92%!important;width:auto!important;max-width:16%;margin:0 -2px!important;border-radius:0!important;object-fit:contain!important}
+.pd-steps .pd-steps-pk .pkx .ph img+img{margin-top:0!important}
+.pd-steps .pd-steps-pk+img{margin-top:0!important;height:auto!important;aspect-ratio:3/4;align-self:center}
+.pd-steps .pd-steps-pk .pkx .ct{font-size:13px}
+.pd-steps .pkx .ph{flex:none!important;flex-direction:row!important;align-items:flex-end!important;justify-content:center!important;gap:2px!important;height:clamp(150px,12vw,190px)!important;min-width:0}
+.pd-steps .pkx .top{flex:none!important}
+.pd-steps .pd-steps-pk .pkx{height:auto!important;align-self:center}
+@media (max-width:860px){.pd-steps .pkx .ph{height:150px!important}.pd-steps .pd-steps-pk+img{aspect-ratio:1/1}}

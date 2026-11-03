@@ -1150,7 +1150,7 @@ def info():
 
 def main():
     global VER
-    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, TXT=TXT, badge=badge, friss_cut=friss_cut)
+    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, TXT=TXT, badge=badge, friss_cut=friss_cut, pack_box=pack_box, SP=SP)
     write_catalog_js()
     import hashlib
     h = hashlib.sha1()
