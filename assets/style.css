@@ -2011,3 +2011,6 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pk-ujbor .pkx .top{background:#EF4E73!important;color:#fff!important}
 .pk-ujbor .pkx .top .ct,.pk-ujbor .pkx h2,.pk-ujbor .pkx .tagrow span:first-child{color:#fff!important}
 .pk-ujbor .pkx{border-color:#EF4E73!important}
+/* ÚJBOR hero: a felirat lejjebb, hogy az Ú ékezete ne bújjon a menü mögé */
+@media (min-width:861px){.hero[data-season="ujbor"]{--wt:clamp(160px,21svh,230px)}}
+@media (max-width:860px){.hero[data-season="ujbor"] .word{margin-top:34px!important}}

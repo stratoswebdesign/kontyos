@@ -350,7 +350,7 @@ LINECFG = {
     'secco': dict(page='#F7F7FB', kick='BERRY SECCO · ÉDES HABZÓ GYÜMÖLCSBOR · 0,75 L', kc='#E86A9A', h1w=900, rule='#E3E6F2', theme='pill',
                   crumb=('Berry Secco', 'termek/berry-secco.html'), cross=['bubi-paros', 'kontyos-borospohar', 'friss-narancs', 'friss-eper']),
     'palinka': dict(page='#F4EFE6', kick='KISÜSTI PÁLINKA · 46% · {vol}', kc='#A8823C', h1w=500, rule='#E3DACB', theme='pill',
-                    crumb=('Pálinka', 'palinka.html'), cross=['don-cherry', 'klara-szaraz-barrique-meggybor', 'meggymag-parna', 'klara-edes-malnabor']),
+                    crumb=('Pálinka', 'termek/szamocapalinka.html'), cross=['don-cherry', 'klara-szaraz-barrique-meggybor', 'meggymag-parna', 'klara-edes-malnabor']),
 }
 
 
@@ -420,7 +420,7 @@ UCFG = {
     'klara': dict(bg='#FFFFFF', ink='#1B2A5C', muted='#6A6F7E', line='#EEE8E1', panel='#FAF7F4', btn='#1B2A5C', btnfg='#fff', acc='#C0284A', crumb=('Klára prémium', 'gyumolcsbor.html#klara')),
     'friss': dict(bg='#F28C28', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'friss.html')),
     'secco': dict(bg='#EEEAF6', ink='#1B2A5C', muted='#5A6072', line='rgba(27,42,92,.14)', panel='rgba(255,255,255,.7)', btn='#1B2A5C', btnfg='#fff', acc='#C84E85', crumb=('Berry Secco', 'termek/berry-secco.html')),
-    'palinka': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Pálinkák', 'palinka.html')),
+    'palinka': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Pálinkák', 'termek/szamocapalinka.html')),
     'piri': dict(bg='#111833', ink='#E3CFA5', muted='rgba(227,207,165,.72)', line='rgba(219,184,121,.28)', panel='rgba(255,255,255,.05)', btn='#DBB879', btnfg='#111833', acc='#DBB879', crumb=('Forralt borok', 'termek/piri-mama-forralt-bora.html')),
     'don': dict(bg='#D9EEF0', ink='#2A1416', muted='#5B4A4C', line='rgba(42,20,22,.14)', panel='rgba(255,255,255,.6)', btn='#C8282E', btnfg='#fff', acc='#C8282E', crumb=('Don Cherry', 'termek/don-cherry.html')),
 }
