@@ -1976,3 +1976,7 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pkx .bot{display:flex;flex-direction:column;background:#0B0B10}
 @media (max-width:860px){.pk-ujbor .packs-grid,.pk-forralt .packs-grid,.pk-fblock .packs-grid{grid-template-columns:1fr!important}}
 .pk-ujbor .fburst img{opacity:.5}
+.nw-team-d h3{color:#F3EEE5!important;margin:4px 0 8px!important}
+.nw-team-d p{color:#F3EEE5!important}
+.nw-sides .nw-team-d h3{display:block!important;text-transform:none!important;letter-spacing:0!important;font-size:clamp(19px,1.7vw,24px)!important;line-height:1.25!important}
+.nw-sides .nw-team-d h3::after{display:none!important}
