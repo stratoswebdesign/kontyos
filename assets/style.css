@@ -2020,3 +2020,10 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
   .hero.has-fruit[data-season="ujbor"] .stamp{transform:translate(clamp(170px,17vw,215px),clamp(160px,22svh,198px))}
 }
 .news .kicker{margin-bottom:clamp(14px,1.6vw,22px)!important;display:block}
+/* újbor csomag-szekció jobb oldala: ugyanaz a szövegdoboz, mint az újbor heróban */
+.pk-side{display:flex;align-items:center}
+.pk-side .txt{display:flex;flex-direction:column;gap:18px;background:rgba(246,225,228,.9);padding:clamp(22px,2.6vw,34px);border-radius:8px;max-width:560px;color:#1B2A5C}
+.pk-side .eyebrow{font-family:var(--sans);font-weight:800;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#EF4E73}
+.pk-side .t{margin:0;font-family:var(--text);font-style:italic;font-weight:600;font-size:clamp(30px,3.2vw,48px);line-height:1.1;color:#1B2A5C}
+.pk-side .s{margin:0;font-family:var(--text);font-size:clamp(16px,1.3vw,19px);color:#1B2A5C}
+.pk-side .btn{align-self:flex-start;background:#EF4E73;color:#fff}

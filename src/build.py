@@ -485,14 +485,16 @@ def packs_page():
     segs = '<span class="seg" aria-label="Szezon váltó">' + ''.join(f'<button type="button" data-season-btn="{s["k"]}">{s["lbl"]}</button>' for s in SEASONS) + '</span>'
     pg = head('Ajándék és borcsomagok | Kontyos', 'Szezonális ajándékcsomagok, Don Cherry és PIRI Mama forralt csomagok, páros és trió borválogatások a Kontyos Borháztól.', r, 'csomagok', 'overlay-head', demo_extra=segs) + header(r, 'csomagok.html')
     H2 = 'style="font-size:clamp(26px,3vw,40px)"'
+    UJSIDE = (f'<div class="pk-side"><div class="txt"><span class="eyebrow">Ajándék és csomagok · Újbor · nov. 5–23.</span><p class="t">Csomagban jobban megéri</p>'
+              f'<p class="s">Hat klasszikus gyümölcsbor a 6 palackos áron.</p><a class="btn" href="#pk-allando">A csomagok →</a></div></div>')
 
     def season(k, cls, kicker, title, ids, link):
         return (f'<section data-season="{k}" class="pk-season {cls}" id="pk-{k}"><div class="wrap"><div class="hd"><p class="kicker">{kicker}</p><h2 class="h2" {H2}>{title}</h2></div>'
                 f'<div class="packs-grid">{"".join(pack_card(SP[i], r) for i in ids)}</div>{link}</div></section>')
     heroes = ''.join(pack_hero(k, r) for k in ('forralt', 'ujbor', 'bf', 'karacsony'))
     seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6'], '')
-                + f'<section data-season="forralt" class="pk-season pk-ujbor">{fruit_burst(r, 16, 7, cls='right')}<div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}</div></div></section>'
-                + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'').replace('<div class="wrap">', fruit_burst(r, 16, 7, cls='right') + '<div class="wrap">', 1)
+                + f'<section data-season="forralt" class="pk-season pk-ujbor">{fruit_burst(r, 16, 7, cls='right')}<div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}{UJSIDE}</div></div></section>'
+                + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'').replace('</div><a', '</div>', 0).replace(pack_card(SP['ujbor-valogatas'], r) + '</div>', pack_card(SP['ujbor-valogatas'], r) + UJSIDE + '</div>', 1).replace('<div class="wrap">', fruit_burst(r, 16, 7, cls='right') + '<div class="wrap">', 1)
                 + season('bf', 'pk-bf', 'Most aktuális · Black Friday · nov. 23–29.', 'Black Friday csomagok', ['bf-premium', 'bf-mini'], f'<a class="pk-more" href="{r}black-friday.html">A Black Friday oldal →</a>')
                 + season('karacsony', 'pk-xmas', 'Most aktuális · advent és karácsony', 'Karácsonyi ajándékcsomagok', ['edes-unnepek', 'premium-advent', 'konnyu-karacsony'], f'<a class="pk-more" href="{r}karacsonyi-ajandek-bor.html">A karácsonyi oldal →</a>'))
     forralt = (f'<section data-season="ujbor bf karacsony" class="sec pk-fblock"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" {H2}>Forralt csomag</h2>'
@@ -501,7 +503,7 @@ def packs_page():
 {seasonal}
 {don_packs(r)}
 {forralt}
-<section class="sec pk-allando"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Állandó ajánlatok</p><h2 class="h2" {H2}>Egész évben</h2>
+<section class="sec pk-allando" id="pk-allando"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Állandó ajánlatok</p><h2 class="h2" {H2}>Egész évben</h2>
 {cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna'], r)}
 <p class="ph-note">A forralt csomag összetétele (javaslat: 4 narancsos + 1 klasszikus + 1 epres) és ára demó – a Kontyos véglegesíti.</p></div></section>
 {choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')}</main>''' + footer(r)
