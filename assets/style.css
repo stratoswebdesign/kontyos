@@ -1910,3 +1910,5 @@ body[data-page="fairs"] .fz-sub{border-top:1px solid rgba(219,184,121,.14)}
 .fz-stack .fz-piri{grid-column:1/-1;order:2}
 @media (max-width:900px){.fz-stack{grid-template-columns:1fr}.fz-stack .fmap{position:relative!important;top:auto!important;height:340px!important}.fz-stack .flist{grid-template-columns:1fr 1fr!important}}
 @media (max-width:520px){.fz-stack .flist{grid-template-columns:1fr!important}}
+.nw-top{max-width:900px!important}
+@media (max-width:860px){.nworld{padding-top:clamp(50px,12vw,70px)!important}}

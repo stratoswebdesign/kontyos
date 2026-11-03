@@ -686,7 +686,7 @@ def new_world(r):
              ('Berry Secco', 'termek/berry-secco.html', 'Többféle gyümölcsborból készült, pezsgően gyümölcsös ital. A prosecco buborékossága, egy gyümölcsös koktél izgalmával.'),
              ('Easy Cider', '', 'Az almaborkészítésben szerzett tudásunk legjava egy modern ciderben: könnyed, frissítő és karakteresen almás.')]
     cols = ''.join((f'<a class="nw-l" href="{r}{h}">' if h else '<div class="nw-l">') + f'<h4>{n}</h4><i></i><p>{d}</p>' + ('</a>' if h else '</div>') for n, h, d in lines)
-    return f'''<section class="nworld"><img class="nw-fruit" src="{r}img/photo/gyumolcs_vilag.webp" alt="Eper, málna, szilva, meggy, alma, sárgabarack, narancs és ribizli" loading="lazy">
+    return f'''<section class="nworld">
 <div class="wrap">
 <div class="nw-top"><p class="nw-kick"><span>Modern borászat</span></p><h2 class="h2"><span style="white-space:nowrap">A gyümölcsbor</span><br>új világa</h2><i class="nw-bar"></i>
 <p class="nw-intro"><b>Történetünk édesapánkkal kezdődött,</b> aki közel két évtizede elkészítette első gyümölcsborát. Azóta sok minden változott, de a gyümölcsök iránti szeretetünk megmaradt.</p></div>
