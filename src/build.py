@@ -57,8 +57,6 @@ SEASON_PACKS = [
          items=['edes-eperbor', 'edes-meggybor', 'edes-oszibarackbor', 'edes-bodza-almabor', 'berry-secco', 'don-cherry'], tint='#FBE3E6', tag='FŐ AJÁNLAT'),
     dict(id='premium-advent', name='Prémium adventi borválogatás', price=28900, old=36040, free=True,
          items=['edes-eperbor', 'edes-ribizlibor', 'edes-kajszibor', 'edes-szilvabor', 'klara-edes-malnabor', 'don-cherry', 'don-cherry-gyumolcse', 'meggymag-parna'], tint='#EFE6D2', tag='PRÉMIUM AJÁNDÉK'),
-    dict(id='konnyu-karacsony', name='Könnyű Karácsonyi Borcsomag', price=10900, old=13140, free=False,
-         items=['friss-eper', 'friss-malna', 'friss-meggy', 'berry-secco-tonic', 'berry-secco-yuzu-lime', 'piri-mama-forralt-bora'], tint='#FFE8CF', tag='KISEBB KERETBŐL'),
     # Don Cherry csomagok (Sanyi: kicsi = 1 vermut + 1 meggy, nagy = 2 vermut + 1 meggy + 2 tonik) – ár: demó, a palackárak összege
     dict(id='don-kis', name='Don Cherry kis csomag', price=P['don-cherry']['price'] + P['don-cherry-gyumolcse']['price'], old=None, free=False,
          items=['don-cherry', 'don-cherry-gyumolcse'], tint='#D9EEF0', tag='KIS CSOMAG'),
@@ -395,7 +393,7 @@ def xmas_landing(r, phase, htag='h1', uid='x', full=True):
          + hb(P['don-cherry'], r, 'clamp(330px,64vh,590px)', 12, '3deg')
          + hb(P['narancsos-piri-mama-forralt-bora'], r, 'clamp(280px,52vh,470px)', 12, '11deg'))
     packs = ''
-    for pid in ('edes-unnepek', 'premium-advent', 'konnyu-karacsony'):
+    for pid in ('edes-unnepek', 'premium-advent'):
         sp = SP[pid]
         lis = ''.join(f'<li>{e(P[i]["name"])}</li>' for i in sp['items']) + (f'<li>{e(sp["extra"])}</li>' if sp.get('extra') else '')
         btn = (f'<a class="btn navy block" href="#xn-{uid}">Értesítést kérek dec. 1-jén</a>' if pre
@@ -465,7 +463,7 @@ MSEARCH = '''<section class="m-search"><form role="search" action="kereses.html"
 
 
 PK_HERO = {  # Ajándék és csomagok hero: mindig az aktuális szezon-landing heroját tükrözi, csak csomagokkal (Sanyi, 11-03)
-    'forralt': dict(bg='#F08A3C', fg='#1B2A5C', hword='#1B2A5C', acc='#1B2A5C', ctafg='#fff', word='FORRALT BOR', packs=['forralt-6', 'konnyu-karacsony'],
+    'forralt': dict(bg='#F08A3C', fg='#1B2A5C', hword='#1B2A5C', acc='#1B2A5C', ctafg='#fff', word='FORRALT BOR', packs=['forralt-6'],
                     eyebrow='Ajándék és csomagok · forralt szezon', s='PIRI Mama forralt borok csomagban – hideg estékre és ajándékba.'),
     'ujbor': dict(bg='#F6E1E4', fg='#1B2A5C', hword='#D7263D', acc='#EF4E73', ctafg='#fff', word='ÚJBOR', packs=['ujbor-valogatas'],
                   eyebrow='Ajándék és csomagok · újbor · nov. 5–23.', s='Hat klasszikus gyümölcsbor a 6 palackos áron.'),
@@ -511,11 +509,11 @@ def packs_page():
         return (f'<section data-season="{k}" class="pk-season {cls}" id="pk-{k}"><div class="wrap"><div class="hd"><p class="kicker">{kicker}</p><h2 class="h2" {H2}>{title}</h2></div>'
                 f'<div class="packs-grid">{"".join(pack_card(SP[i], r) for i in ids)}</div>{link}</div></section>')
     heroes = ''.join(pack_hero(k, r) for k in ('forralt', 'ujbor', 'bf', 'karacsony'))
-    seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6', 'konnyu-karacsony'], '')
+    seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6'], '')
                 + f'<section data-season="forralt" class="pk-season pk-ujbor"><div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}</div><a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a></div></section>'
                 + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'<a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a>')
                 + season('bf', 'pk-bf', 'Most aktuális · Black Friday · nov. 23–29.', 'Black Friday csomagok', ['bf-premium', 'bf-mini'], f'<a class="pk-more" href="{r}black-friday.html">A Black Friday oldal →</a>')
-                + season('karacsony', 'pk-xmas', 'Most aktuális · advent és karácsony', 'Karácsonyi ajándékcsomagok', ['edes-unnepek', 'premium-advent', 'konnyu-karacsony'], f'<a class="pk-more" href="{r}karacsonyi-ajandek-bor.html">A karácsonyi oldal →</a>'))
+                + season('karacsony', 'pk-xmas', 'Most aktuális · advent és karácsony', 'Karácsonyi ajándékcsomagok', ['edes-unnepek', 'premium-advent'], f'<a class="pk-more" href="{r}karacsonyi-ajandek-bor.html">A karácsonyi oldal →</a>'))
     forralt = (f'<section data-season="ujbor bf karacsony" class="sec pk-fblock"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" {H2}>Forralt csomag</h2>'
                f'<div class="packs-grid">{pack_card(SP["forralt-6"], r)}</div></div></section>')
     pg += f'''<main>{heroes}

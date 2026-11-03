@@ -1960,3 +1960,10 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pk-forralt .pkx .pr,.pk-fblock .pkx .pr{color:#fff!important;border-top-color:rgba(255,255,255,.45)!important}
 .pk-forralt .pkx .pr s,.pk-fblock .pkx .pr s{color:#fff!important}
 .pk-forralt .pkx .pr em,.pk-fblock .pkx .pr em{color:var(--pbtn)!important;opacity:1!important}
+/* minden csomagkártya: fekete alsó rész, körben a felső rész színével keretezve */
+.pkx{background:#0B0B10!important;border:3px solid var(--tint)!important}
+.pkx .pr{color:#fff!important;border-top-color:rgba(255,255,255,.45)!important}
+.pkx .pr s{color:#fff!important}
+.pkx .pr em{color:var(--pbtn)!important;opacity:1!important}
+.pk-forralt .pk-season .packs-grid,.pk-forralt .packs-grid{grid-template-columns:minmax(0,560px)!important}
+@media (min-width:641px){.xgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
