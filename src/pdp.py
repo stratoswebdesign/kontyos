@@ -23,7 +23,7 @@ SHIP = [('Várható kézbesítés', 'GLS 3–5, MPL 1–3 munkanap'),
         ('Fizetés', 'Bankkártya (SimplePay), átutalás, utánvét · regisztráció nélkül is')]
 
 SHORT = {'friss-narancs': 'Narancs', 'friss-eper': 'Eper', 'friss-malna': 'Málna', 'friss-meggy': 'Meggy',
-         'berry-secco': 'Berry', 'berry-secco-tonic': 'Tonic', 'berry-secco-yuzu-lime': 'Yuzu & Lime',
+         'berry-secco': 'Erdei gyümölcs', 'berry-secco-tonic': 'Eper és Tonik', 'berry-secco-yuzu-lime': 'Yuzu és Lime',
          'szamocapalinka': 'Szamóca', 'birspalinka': 'Birs', 'meggypalinka': 'Meggy', 'kortepalinka': 'Körte', 'szilvapalinka': 'Szilva',
          'piri-mama-forralt-bora': 'Klasszikus',
          'edes-meggybor': 'Meggy', 'edes-eperbor': 'Eper', 'edes-ribizlibor': 'Ribizli', 'edes-kajszibor': 'Kajszi', 'edes-oszibarackbor': 'Őszibarack',
@@ -31,7 +31,7 @@ SHORT = {'friss-narancs': 'Narancs', 'friss-eper': 'Eper', 'friss-malna': 'Máln
          'klara-edes-malnabor': 'Málna', 'klara-szaraz-roze-eperbor': 'Rozé eper', 'klara-szaraz-barrique-meggybor': 'Barrique meggy', 'klara-edes-afonyabor': 'Áfonya',
          'don-cherry': 'Vermut 0,75 l', 'don-cherry-gyumolcse': 'Vermut meggyel', 'narancsos-piri-mama-forralt-bora': 'Narancsos', 'epres-piri-mama-forralt-bora': 'Epres', 'piri-mama-forro-itala-0': '0% alkohol'}
 BIG = {'friss-narancs': 'NARANCS', 'friss-eper': 'EPER', 'friss-malna': 'MÁLNA', 'friss-meggy': 'MEGGY',
-       'berry-secco': 'BERRY', 'berry-secco-tonic': 'TONIC', 'berry-secco-yuzu-lime': 'YUZU'}
+       'berry-secco': 'ERDEI', 'berry-secco-tonic': 'TONIK', 'berry-secco-yuzu-lime': 'YUZU'}
 
 
 def e(s):

@@ -65,8 +65,8 @@ SEASON_PACKS = [
     dict(id='don-nagy', name='Don Cherry nagy csomag', price=2 * P['don-cherry']['price'] + P['don-cherry-gyumolcse']['price'], old=None, free=False,
          items=['don-cherry', 'don-cherry', 'don-cherry-gyumolcse'], extra='2 × tonik [a Kontyos választja]', tint='#D9EEF0', tag='NAGY CSOMAG'),
 ]
-# Forralt csomag (Sanyi, 11-03): 6 db forralt bor – javasolt összetétel: 4 narancsos + 1 klasszikus + 1 epres; ár: demó (palackárak összege), a Kontyos véglegesíti
-FORRALT6 = ['narancsos-piri-mama-forralt-bora'] * 4 + ['piri-mama-forralt-bora', 'epres-piri-mama-forralt-bora']
+# Forralt csomag (Sanyi, 11-04): 6 db forralt bor – 3 klasszikus + 2 epres + 1 narancsos; ár: a palackárak összege
+FORRALT6 = ['piri-mama-forralt-bora'] * 3 + ['epres-piri-mama-forralt-bora'] * 2 + ['narancsos-piri-mama-forralt-bora']
 SEASON_PACKS.append(dict(id='forralt-6', name='PIRI Mama forralt csomag – 6 palack', price=sum(P[i]['price'] for i in FORRALT6), old=None, free=True,
                          items=FORRALT6, tint='#FBE0CC', tag='FORRALT CSOMAG'))
 SP = {s['id']: s for s in SEASON_PACKS}
@@ -327,7 +327,10 @@ def pack_bottles(sp, r, h='88%'):
 
 
 def pack_contents(sp):
-    names = [P[i]['name'] for i in sp['items']]
+    cnt = {}
+    for i in sp['items']:
+        cnt[i] = cnt.get(i, 0) + 1
+    names = [(f"{n}× " if n > 1 else '') + P[i]['name'] for i, n in cnt.items()]   # ismétlődő tételek: „3× …”
     if sp.get('qty'):
         names = [f"{sp['qty']}× {n}" for n in names]
     if sp.get('extra'):

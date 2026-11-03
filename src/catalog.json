@@ -1422,7 +1422,7 @@
  {
   "id": "berry-secco",
   "src": "berry-secco-075-l",
-  "name": "Berry Secco",
+  "name": "Berry Secco Erdei gyümölcs",
   "line": "secco",
   "accent": "#1E3E9A",
   "arch": "#DCE3FA",
@@ -1504,7 +1504,7 @@
  {
   "id": "berry-secco-tonic",
   "src": "berry-secco-and-tonic-075-l",
-  "name": "Berry Secco & Tonic",
+  "name": "Berry Secco Eper és Tonik",
   "line": "secco",
   "accent": "#1B2A5C",
   "arch": "#FCEFB4",
@@ -1515,10 +1515,10 @@
    2081
   ],
   "avail": true,
-  "short": "Epres és tonic ízű, édes habzó gyümölcsbor, a buborékok kedvelőinek",
+  "short": "Eper és tonik ízű, édes habzó gyümölcsbor, a buborékok kedvelőinek",
   "long": [
-   "A Berry Secco & tonic egy szén-dioxiddal frissített különlegesség; a nyári italok kiváló választása, az epres gin-tonic ízvilágát idézve. Újdonságunk a friss, reduktív borászati eljárással készült almabor és a különleges eperbor házasítása, tonic és boróka ízesítéssel. Kinint tartalmaz.",
-   "Kóstold meg Te is az új Berry Secco & tonic -ot, és minden kortyában a nyári estéket pezsdítő emlékek íze fog megjelenni. Behűtve, egy karika lime-al és jéggel az élmény tovább fokozható!"
+   "A Berry Secco Eper és Tonik szén-dioxiddal frissített különlegesség, a nyári italok kiváló választása, az epres gin-tonic ízvilágát idézve. Friss, reduktív borászati eljárással készült almaborunk és különleges eperborunk házasítása, tonik és boróka ízesítéssel. Kinint tartalmaz.",
+   "Kóstold meg Te is, és minden kortyában a nyári esték pezsdítő emlékei köszönnek vissza. Behűtve, egy karika lime-mal és jéggel az élmény tovább fokozható!"
   ],
   "params": [
    [
@@ -1567,7 +1567,7 @@
  {
   "id": "berry-secco-yuzu-lime",
   "src": "berry-secco-yuzu-and-lime-075-l",
-  "name": "Berry Secco Yuzu & Lime",
+  "name": "Berry Secco Yuzu és Lime",
   "line": "secco",
   "accent": "#2E5A12",
   "arch": "#DDF0C4",
@@ -1578,10 +1578,10 @@
    2081
   ],
   "avail": true,
-  "short": "Yuzu és Lime ízű, édes habzó gyümölcsbor, a buborékok kedvelőinek.",
+  "short": "Yuzu és lime ízű, édes habzó gyümölcsbor, a buborékok kedvelőinek.",
   "long": [
-   "A Berry Secco Yuzu & Lime édes szén-dioxiddal dúsított almabor alapú ital, reduktív borászati eljárással készült különlegesség, ami magában hordozza a citrus és lime frisseségét. A ropogós almabor mind-mind hozzájárultak ehhez a fantasztikus, pezsgésétől friss habzó gyümölcsborunknak.",
-   "Kínáld vendégeidnek alaposan behűtve, lime-al és mentával, pár szem jégkockával és azonnal a kedvenc italukká válik."
+   "A Berry Secco Yuzu és Lime szén-dioxiddal dúsított, édes, almabor alapú különlegesség, reduktív borászati eljárással készítve. Ropogós almaborunkra épül, a yuzu és a lime citrusos frissessége pedig pezsgéstől friss, könnyed habzó gyümölcsborrá teszi.",
+   "Kínáld vendégeidnek alaposan behűtve, lime-mal és mentával, pár szem jégkockával, és azonnal a kedvenc italukká válik."
   ],
   "params": [
    [
@@ -2280,13 +2280,12 @@
   "old": 7980,
   "tier": null,
   "avail": true,
-  "short": "100% hajnalbordó meggyből készült, klasszikus édes és különleges, száraz boraink párosítása",
+  "short": "Klasszikus édes és különleges száraz meggyborunk párosa, 100% hajnalbordó meggyből",
   "long": [
-   "A",
-   "Meggy Páros tartalmazza borászatunk két kedvencét, a kizárólag friss, ropogós meggyből, hagyományos borászati eljárással készült gyümölcsboraink száraz és édes verzióját.",
-   "Száraz",
-   ": reduktívan készített, szárazra erjesztett cigánymeggy-bor",
-   "Édes: a gyümölcs mustjával visszaédesített klasszikus borkülönlegesség, nyáridéző emlékekkel"
+   "A Meggy Páros borászatunk két meggyes kedvencét hozza egy csomagban: kizárólag friss, ropogós cigánymeggyből készült gyümölcsborunk édes és száraz változatát, csomagban kedvezőbb áron.",
+   "Édes meggybor: a gyümölcs mustjával visszaédesített klasszikus, intenzív, karakteres meggyízzel – aperitifként vagy a hosszú beszélgetések mellé.",
+   "Száraz meggybor: reduktívan készített, szárazra erjesztett meggybor, a gyümölcs savaival és tiszta zamatával – vacsorához, sajtokhoz is bátran.",
+   "Kóstold egymás után a kettőt, és fedezd fel, hányféle arca van ugyanannak a meggynek."
   ],
   "params": [],
   "rating": "5.00",
@@ -2319,14 +2318,12 @@
   "old": 10980,
   "tier": null,
   "avail": true,
-  "short": "100% üde és illatos földieperből készült, különleges minőségű boraink édes és száraz fajtáinak párosítása",
+  "short": "Édes eperborunk és a Klára száraz rozé eperbor párosa, 100% üde, illatos földieperből",
   "long": [
-   "Az",
-   "Eper Páros tartalmazza borászatunk két büszkeségét, a kizárólag földieperből, hagyományos borászati eljárással készült gyümölcsboraink száraz és édes verzióját.",
-   "Száraz",
-   ": reduktívan készített, szárazra erjesztett eperbor, üde illatokkal és friss savakkal, rozékedvelők részére ajánlott",
-   "Édes",
-   ": a gyümölcs mustjával visszaédesített eszményi borkülönlegesség, abszolút közöségkedvenc a Kontyos táborában"
+   "Az Eper Páros borászatunk két epres büszkeségét hozza egy csomagban: kizárólag földieperből készült gyümölcsborunk édes és száraz változatát, csomagban kedvezőbb áron.",
+   "Édes eperbor: a gyümölcs mustjával visszaédesített, illatos különlegesség – abszolút közönségkedvenc a Kontyos táborában.",
+   "Klára száraz rozé eperbor: reduktívan készített, szárazra erjesztett eperbor üde illatokkal és friss savakkal – rozékedvelőknek ajánljuk.",
+   "Jól behűtve az igazi: nyári estékre, baráti asztalhoz, vagy ajándéknak annak, aki szereti az epret."
   ],
   "params": [],
   "rating": "5.00",
@@ -2371,12 +2368,13 @@
   "old": 6570,
   "tier": null,
   "avail": true,
-  "short": "Válogatás a nyáridéző, prémium gyümölcsboraink érdekházasságaiból",
+  "short": "Három FRISS kedvenc egy csomagban: eper, málna és meggy – könnyű, édes gyümölcsbor-házasítások",
   "long": [
-   "A csomag tartalma: Édes Alma-eperbor 0,75 l:",
-   "100% roppanós almából és eperből reduktív borászati eljárással készült frissítő különlegesség. Kellemesen édes, kirobbanóan epres, könnyed alkoltartalmú gyümölcsbor házasítás",
-   "Édes Alma-Meggybor 0,75 l: reduktív, könnyű almabor és az intenzív zamatú cigánymeggy házasításából, reduktív borászati eljárással készült, visszafogott alkohollal bíró, karakteres, meggyes frissítő",
-   "Édes Alma-Málnabor 0,75 l: a Málna Édes Gyümölcsbor a különleges minőségű málnaborunk, és a ropogós almaborunk házasítása annak érdekében, hogy egy könnyed, jól iható, de mégis karakteres bor jöjjön létre. A gazdag málna aromák és az édes íz egyedülálló élvezetet nyújt minden kortyban"
+   "A Könnyű Trió FRISS gyümölcsborainkból válogat: gyümölcsbor és almabor fele-fele arányban, könnyed, frissítő harmóniában – csomagban kedvezőbb áron.",
+   "Eper: kirobbanóan epres, kellemesen édes, könnyed házasítás ropogós almaborral.",
+   "Málna: illatos málnaborunk és almaborunk párosa – gazdag málnaaroma, jól iható könnyedség.",
+   "Meggy: az intenzív cigánymeggy és a friss almabor találkozása – karakteres, mégis üde.",
+   "Jól behűtve, pár szem jéggel a legjobb: baráti estékre, kerti partikra, vagy amikor csak egy könnyű pohárra vágysz."
   ],
   "params": [],
   "rating": "5.00",
@@ -2409,11 +2407,12 @@
   "old": 4380,
   "tier": null,
   "avail": true,
-  "short": "Erdei gyümölcsös, édes habzó gyümölcsboraink, borászatunk újdonságai a buborékok kedvelőinek",
+  "short": "Két habzó kedvenc egy csomagban: Berry Secco Erdei gyümölcs és Eper és Tonik, a buborékok kedvelőinek",
   "long": [
-   "A Berry Secco borcsalád ötleténél a gyümölcsösség, frissesség volt a fő kritérium. Az erdei gyümölcsös, édes szén-dioxiddal dúsított, reduktív borászati eljárással készült különlegesség magában hordozza az összetevők házasításából eredő előnyöket. A ropogós almabor, a különleges málnabor és az eperbor mind-mind hozzájárultak ezekhez a fantasztikus, pezsgéstől friss habzó gyümölcsborainkhoz.",
-   "A Berry Secco & Tonic a mai, fiatalok körében közkedvelt gin-tonicos ízvilágot követi, tompítva az édes ízeken.",
-   "Kínáld vendégeidnek alaposan behűtve, piros gyümölcsökkel, pár szem jégkockával és azonnal a kedvenc italukká válik."
+   "A Bubi Páros a buborékok kedvelőinek készült: két Berry Secco egy csomagban, csomagban kedvezőbb áron.",
+   "Berry Secco Erdei gyümölcs: ropogós almaborunk, különleges málnaborunk és eperborunk házasítása – gyümölcsös, édes, pezsgéstől friss.",
+   "Berry Secco Eper és Tonik: az epres gin-tonic ízvilágát idézi, tonikkal és borókával – könnyed, nyári frissítő, kicsit kevésbé édes.",
+   "Kínáld alaposan behűtve, piros gyümölcsökkel vagy egy karika lime-mal, pár szem jégkockával – egy koccintás, és indulhat a buli."
   ],
   "params": [
    [
@@ -2453,11 +2452,11 @@
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "KÉK és PIROS színben választható! A kecses, női kezekhez tervezett idomaival egy felejthetetlen élményt nyújt gyümölcsborainkhoz",
+  "short": "Kék és piros színben választható kristályüveg borospohár, kecses formával – gyümölcsborainkhoz tervezve",
   "long": [
-   "Anyaga kristályüveg",
-   "Űrmértéke",
-   "300 ml"
+   "Egy jó gyümölcsbor egy szép pohárban az igazi. A Kontyos borospohár kecses, kézbe simuló formája kiemeli gyümölcsboraink színét és illatát, hogy minden korty ünnep legyen.",
+   "Kék és piros színben választható – párban is remek ajándék, egy palack kedvenc borral együtt pedig kész is a meglepetés.",
+   "Anyaga: kristályüveg · Űrtartalma: 300 ml"
   ],
   "params": [],
   "rating": "5.00",
@@ -2490,8 +2489,12 @@
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "Hőálló üvegbögre a tökéletes forralt boros élményhez",
-  "long": [],
+  "short": "Hőálló üvegbögre a tökéletes forralt boros élményhez – 0,32 literes",
+  "long": [
+   "Az adventi vásárok hangulata otthon is: a PIRI Mama bögréje hőálló üvegből készült, így a forró PIRI Mama forralt bor szépen mutat benne, a kezedet pedig kellemesen melengeti.",
+   "Ideális egy hideg téli estére, a fenyő alá ajándéknak, vagy egy csomag PIRI Mama forralt bor mellé, hogy minden kéznél legyen.",
+   "Űrtartalma: 0,32 l"
+  ],
   "params": [],
   "rating": null,
   "rcount": 0,
@@ -2510,33 +2513,11 @@
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "A meggymag párna sokáig sugározza a gyógyító meleget, illetve fájdalomra enyhülést adó hideget.",
+  "short": "Melegíthető és hűthető meggymag párna – a hideg esték kellemes kísérője",
   "long": [
-   "Nem hiányozhat senki otthonából!",
-   "(A leírást a www.nyirfatornac.hu oldalon találtuk, ők mindent összeszedtek, amit tudni kell a párnáról. Köszönjük nekik.)",
-   "A nyári napsütés energiáját magába zárva az apró meggymagok természetes megoldást nyújtanak fájdalomra, stresszre.",
-   "Gyermekeknél, ha bármilyen fülpanasz jelentkezik, az orvosi kezelés mellett kitűnő segítőtárs természetes alapanyagokból.",
-   "A meggymag párna megnyugtathatja a lurkó pocakját, ennek köszönhetően a sírás is megszűnik.",
-   "Görcsoldásra, fájdalomcsillapításra is kiváló a népi megfigyelések szerint.",
-   "Hasi fájdalmak, mensruációs görcsök enyhítésére remek megoldás lehet.",
-   "Fül-és hasfájásra 1-2 percig melegíteni, majd a kívánt testrészre helyezni. Próbáld ki, oszd meg a tapasztalataidat!",
-   "Lehűtve kiváló zúzódásokra, hideg borogatásként, ficamokra, fejfájásra enyhülést hozhat.",
-   "Masszírozó jellegénél fogva nyugtató hatású, így alvászavarok esetén kiváló megoldás lehet. Masszírozd át, ill. masszíroztasd a hátad, végtagjaidat, válladat a meggymag párnával lefekvés előtt, érdemes kipróbálnod a hatását!",
-   "Ha a lábaid hidegek, fáznak, nem kell mást tenned, mint felmelegíted a meggymag párnát, a lábadhoz teszed a takaró alá.",
-   "A meggymag párna közérzet javító hatása népgyógyászati megfigyeléseken, tapasztalatokon alapul.",
-   "Melegítési javaslat: sütőben alufóliába tekerve (100˚C -on 15-20 perc)",
-   "Tűzveszély miatt melegítéskor ne hagyd a meggymag párnát felügyelet nélkül!",
-   "Használat előtt győződj meg róla, hogy ne legyen túlforrósodva a zsák! Ha túl forrónak bizonyul, tegyél egy réteget (valamilyen ruhaanyagot) a testrész és a párna közé.",
-   "Hűtési javaslat: hűtőben vagy fagyasztóban, műanyag zacskóba téve.",
-   "A meggymag párna tisztítása:",
-   "Kézzel vagy gépben (kíméletes programon) jól tisztítható. Ecetes vízben öblíthető. A fertőtlenítés megoldható kifőzéssel. A vászon strapabíró, nem feslik, nem rojtosodik, jól szellőzik.",
-   "Ami nagyon fontos!!!: Mosás után egyből meg kell szárítani a magokat akár napra vagy radiátorra téve. Lényeges, hogy hagyjunk megfelelő időt a magok száradásának, ami legalább 1-2 napig is eltarthat.",
-   "Tárolása száraz, hűvös helyen történjen.",
-   "A zsákocska mérete",
-   ": 170 x 140 mm",
-   "Könnyen elfér a fagyasztóban vagy a mikróban, a kicsi gyermeknek nem okoz terhet a meggymag párna súlya.",
-   "Saját termésű meggyünkből bort készítettünk, a magját átmostuk és napon szárítottuk, saját kezűleg tisztítottuk.",
-   "Így a meggymagpárna töltete garantáltan tiszta, antiallergén; a szövet anyaga pamutvászon."
+   "A meggymag párna sokáig megtartja a kellemes meleget: néhány perc melegítés után jólesően átmelegít egy hideg téli estén, nyáron hűtve pedig frissítő hideget ad.",
+   "Kedves, praktikus ajándék – egy palack gyümölcsbor mellé tökéletes kis figyelmesség.",
+   "Használat előtt olvasd el a mellékelt útmutatót, és mindig ellenőrizd, hogy a párna ne legyen túl forró."
   ],
   "params": [],
   "rating": null,
@@ -2556,8 +2537,11 @@
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "Hosszú fülű, női vászontáska; ideális és kényelmes a napi bevásárláshoz",
-  "long": [],
+  "short": "Hosszú fülű vászontáska, kényelmes a napi bevásárláshoz",
+  "long": [
+   "Strapabíró, hosszú fülű vászontáska, ami a vállon is kényelmes – a napi bevásárláshoz, a piacra vagy épp egy borkóstolóra.",
+   "Elfér benne egy-két palack kedvenc gyümölcsbor is, így a hazaút is stílusos. Ajándékcsomagok mellé is remek választás."
+  ],
   "params": [],
   "rating": null,
   "rcount": 0,

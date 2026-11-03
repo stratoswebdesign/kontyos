@@ -137,19 +137,29 @@
   }
 
   /* Demó-kapcsolók: szezon (főoldal), fázis (kampányoldalak) */
-  function toggle(attr, btnAttr, store) {
+  /* Szezon dátum alapján (Sanyi döntése, 11-04). A sávok hónap-nap formában; ami nem esik egyikbe sem, az a forralt szezon.
+     Élesben ugyanez a táblázat dönti el, melyik hero és csomagblokk látszik. Újbor: nov. 5–23. (megerősítve); BF és karácsony: egyeztetendő. */
+  var SEASON_DATES = [['ujbor', '11-05', '11-23'], ['bf', '11-24', '11-30'], ['karacsony', '12-01', '12-24']];
+  function seasonByDate(d) {
+    var md = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    for (var i = 0; i < SEASON_DATES.length; i++) if (md >= SEASON_DATES[i][1] && md <= SEASON_DATES[i][2]) return SEASON_DATES[i][0];
+    return 'forralt';
+  }
+  function toggle(attr, btnAttr, store, auto) {
     var btns = document.querySelectorAll('[' + btnAttr + ']'); if (!btns.length) return;
-    var set = function (v) {
+    var mem = auto ? sessionStorage : localStorage;   /* a dátum szerinti szezont csak az aktuális böngészési munkamenetre írja felül a demó-kapcsoló */
+    var set = function (v, keep) {
       document.querySelectorAll('[' + attr + ']').forEach(function (el) { el.hidden = el.getAttribute(attr).split(' ').indexOf(v) < 0; });
       btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute(btnAttr) === v)); });
-      try { localStorage.setItem(store, v); } catch (e) {}
+      if (keep) try { mem.setItem(store, v); } catch (e) {}
     };
-    btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute(btnAttr)); }); });
-    var init = btns[0].getAttribute(btnAttr);
-    try { init = new URLSearchParams(location.search).get(store.split('-').pop()) || localStorage.getItem(store) || init; } catch (e) {}
-    set(init);
+    btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute(btnAttr), true); }); });
+    var init = auto ? auto() : btns[0].getAttribute(btnAttr);
+    try { init = new URLSearchParams(location.search).get(store.split('-').pop()) || mem.getItem(store) || init; } catch (e) {}
+    set(init, false);
   }
-  toggle('data-season', 'data-season-btn', 'kontyos-demo-season');
+  try { localStorage.removeItem('kontyos-demo-season'); } catch (e) {}
+  toggle('data-season', 'data-season-btn', 'kontyos-demo-season', function () { return seasonByDate(new Date()); });
   toggle('data-phase', 'data-phase-btn', 'kontyos-demo-phase-' + (document.body.getAttribute('data-page') || ''));
 
   /* Kategória szűrő */
