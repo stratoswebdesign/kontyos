@@ -1862,3 +1862,18 @@ a.nw-l:hover h4{text-decoration:underline;text-underline-offset:4px}
 @media (max-width:860px){.nw-fruit{margin-top:-7%!important}}
 /* Don Cherry termékoldal: minden szekció a logóval egy vonalban (ugyanaz a szélesség és bal margó, mint a fejlécé) */
 .pdp-don main .pd-wrap,.pdp-don main .pd-dpair .pd-wrap,.pdp-don main .pd-wrap.pd-drink,.pdp-don main .pd-wrap.pd-dphotos,.pdp-don main .pd-wrap.pd-cocktails,.pdp-don main .pd-wrap.pd-reviews{max-width:var(--max)!important;margin-left:auto!important;margin-right:auto!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;box-sizing:border-box}
+/* logók fölötti vonal nélkül */
+.t-retail{border-top:0!important;padding-top:10px!important}
+.tp-shop{font-weight:600}
+/* „A gyümölcsbor új világa”: kisebb, rendezett tipográfia, egységes szövegszélesség */
+.nworld{--nwtx:clamp(15px,1.1vw,16.5px)}
+.nworld .wrap{gap:clamp(22px,2.6vw,34px)!important}
+.nw-top{max-width:min(720px,52vw)!important;gap:12px!important}
+.nw-top .h2{font-size:clamp(28px,3.1vw,48px)!important}
+.nw-intro,.nw-what p,.nw-team p,.nw-sub,.nw-l p{font-size:var(--nwtx)!important;line-height:1.65!important}
+.nw-what h3,.nw-team h3{font-size:clamp(19px,1.7vw,24px)!important;line-height:1.25!important}
+.nw-sides h3{font-size:clamp(22px,2.2vw,32px)!important}
+.nw-l h4{font-size:clamp(16px,1.35vw,20px)!important}
+.nw-what{padding:clamp(18px,2vw,26px) clamp(20px,2.4vw,32px)!important;grid-template-columns:minmax(200px,.6fr) 2fr!important}
+.nw-team p,.nw-sub{max-width:none!important}
+@media (max-width:860px){.nw-top{max-width:none!important}.nw-what{grid-template-columns:1fr!important}}
