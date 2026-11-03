@@ -486,7 +486,7 @@ def packs_page():
     pg = head('Ajándék és borcsomagok | Kontyos', 'Szezonális ajándékcsomagok, Don Cherry és PIRI Mama forralt csomagok, páros és trió borválogatások a Kontyos Borháztól.', r, 'csomagok', 'overlay-head', demo_extra=segs) + header(r, 'csomagok.html')
     H2 = 'style="font-size:clamp(26px,3vw,40px)"'
     UJSIDE = (f'<div class="pk-side"><div class="txt"><span class="eyebrow">Ajándék és csomagok · Újbor · nov. 5–23.</span><p class="t">Csomagban jobban megéri</p>'
-              f'<p class="s">Hat klasszikus gyümölcsbor a 6 palackos áron.</p><a class="btn" href="#pk-allando">A csomagok →</a></div></div>')
+              f'<p class="s"><b>Kóstoló csomag az idei év terméséből.</b><br>Hat klasszikus gyümölcsbor a 6 palackos áron.</p><a class="btn" href="#pk-allando">A csomagok →</a></div></div>')
 
     def season(k, cls, kicker, title, ids, link):
         return (f'<section data-season="{k}" class="pk-season {cls}" id="pk-{k}"><div class="wrap"><div class="hd"><p class="kicker">{kicker}</p><h2 class="h2" {H2}>{title}</h2></div>'
