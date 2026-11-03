@@ -469,24 +469,55 @@ MSEARCH = '''<section class="m-search"><form role="search" action="kereses.html"
 <nav aria-label="Gyors kategóriák"><a href="termek/piri-mama-forralt-bora.html" style="background:#1B2A5C;color:#fff">Forralt bor</a><a href="gyumolcsbor.html#klasszikus" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Klasszikus</a><a href="friss.html" style="background:#F28C28">FRISS</a><a href="gyumolcsbor.html#klara" style="box-shadow:inset 0 0 0 1.5px #C0284A;color:#C0284A">Klára</a><a href="termek/don-cherry.html" style="box-shadow:inset 0 0 0 1.5px #5FB8B3;color:#C8282E">Don Cherry</a><a href="csomagok.html" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Csomagok</a><a href="palinka.html" style="box-shadow:inset 0 0 0 1.5px #A8823C;color:#6B5414">Pálinka</a></nav></section>'''
 
 
+PK_HERO = {  # Ajándék és csomagok hero: mindig az aktuális szezon-landing heroját tükrözi, csak csomagokkal (Sanyi, 11-03)
+    'forralt': dict(bg='#F08A3C', fg='#1B2A5C', hword='#1B2A5C', acc='#1B2A5C', ctafg='#fff', word='FORRALT BOR', packs=['forralt-6', 'konnyu-karacsony'],
+                    eyebrow='Ajándék és csomagok · forralt szezon', s='PIRI Mama forralt borok csomagban – hideg estékre és ajándékba.'),
+    'ujbor': dict(bg='#F6E1E4', fg='#1B2A5C', hword='#EFC9CF', acc='#EF4E73', ctafg='#fff', word='ÚJBOR', packs=['ujbor-valogatas'],
+                  eyebrow='Ajándék és csomagok · újbor · nov. 5–23.', s='Hat klasszikus gyümölcsbor a 6 palackos áron.'),
+    'bf': dict(bg='#0B0B10', fg='#fff', hword='#EF4E73', acc='#EF4E73', ctafg='#fff', word='BLACK FRIDAY', packs=['bf-premium', 'bf-mini'],
+               eyebrow='Ajándék és csomagok · Black Friday · nov. 23–29.', s='Két csomag, mindkettőből legfeljebb 40.'),
+    'karacsony': dict(bg='#123B2B', fg='#fff', hword='#DBB879', acc='#DBB879', ctafg='#123B2B', word='KARÁCSONY', packs=['edes-unnepek', 'premium-advent'],
+                      eyebrow='Ajándék és csomagok · advent és karácsony', s='Összeállított ajándékcsomagok – becsomagolva, ajándéknak.'),
+}
+
+
+def pack_hero(k, r):
+    c = PK_HERO[k]
+    deco = {'forralt': falling(r, ('flake-blue', 'flake-gold', 'holly', 'snow-dots'), 22, 3) + ANIMALS.format(r=r),
+            'ujbor': fruit_burst(r, 18, 5),
+            'bf': '',
+            'karacsony': falling(r, ('flake-gold', 'flake-blue', 'ornament-gold', 'holly', 'snow-dots', 'flake-gold'), 26, 9)
+                         + f'<div class="firs">{FIRS}</div><div class="animals" aria-hidden="true"><img class="an renszarvas" src="{r}img/deco/allat-renszarvas.png" alt=""></div>'}[k]
+    stamp = {'forralt': STAMP.format(bg='#1B2A5C', fg='#F3C66B', txt='CSAK MEGMELEGÍTED ÉS KÉSZ · PIRI MAMA · ', uid='pk-f', center='100%'),
+             'bf': STAMP.format(bg='#EF4E73', fg='#0B0B10', txt='BLACK FRIDAY · NOV. 23–29. · DON CHERRY · ', uid='pk-bf', center='BF')}.get(k, '')
+    stage = ''.join(f'''<a class="pk-st" href="#pk-{k}"><span class="ph" style="--tint:{SP[i]['tint']}">{pack_bottles(SP[i], r)}</span><b>{e(SP[i]['name'])}</b><i>{ft(SP[i]['price'])}{f" <s>{ft(SP[i]['old'])}</s>" if SP[i].get('old') else ''}</i></a>''' for i in c['packs'])
+    cls = {'bf': ' lp-bf', 'karacsony': ' lp-xmas', 'ujbor': ' has-fruit'}.get(k, '')
+    return f'''<section class="hero pk-hero{cls}" data-season="{k}" style="--hbg:{c['bg']};--hfg:{c['fg']};--hword:{c['hword']};--haccent:{c['acc']};--hctafg:{c['ctafg']}">
+{deco}<p class="word" aria-hidden="true"{' style="--wfx:calc((100vw - 64px) / 7.9)"' if k == 'forralt' else ''}>{c['word']}</p>
+<div class="bottles pk-stage">{stage}</div>
+{stamp}
+<div class="copy"><div class="wrap"><div class="txt"><span class="eyebrow">{c['eyebrow']}</span><h1 class="t">Csomagban jobban megéri</h1><p class="s">{c['s']}</p><a class="btn" href="#pk-{k}">A csomagok →</a></div></div></div></section>'''
+
+
 def packs_page():
-    """Ajándék és csomagok (Sanyi, 11-03): az aktuális szezon ajánlatai a szezon színében → Don Cherry → Forralt → állandó ajánlatok (páros, trió, pohár, párna)."""
+    """Ajándék és csomagok (Sanyi, 11-03): a hero mindig az aktuális szezon-landing heroját tükrözi (szín, felirat, díszek), csak csomagokkal;
+    utána a szezon csomagjai → Don Cherry → Forralt → állandó ajánlatok (páros, trió, pohár, párna)."""
     r = ''
     segs = '<span class="seg" aria-label="Szezon váltó">' + ''.join(f'<button type="button" data-season-btn="{s["k"]}">{s["lbl"]}</button>' for s in SEASONS) + '</span>'
-    pg = head('Ajándék és borcsomagok | Kontyos', 'Szezonális ajándékcsomagok, Don Cherry és PIRI Mama forralt csomagok, páros és trió borválogatások a Kontyos Borháztól.', r, 'csomagok', demo_extra=segs) + header(r, 'csomagok.html')
+    pg = head('Ajándék és borcsomagok | Kontyos', 'Szezonális ajándékcsomagok, Don Cherry és PIRI Mama forralt csomagok, páros és trió borválogatások a Kontyos Borháztól.', r, 'csomagok', 'overlay-head', demo_extra=segs) + header(r, 'csomagok.html')
     H2 = 'style="font-size:clamp(26px,3vw,40px)"'
 
     def season(k, cls, kicker, title, ids, link):
-        return (f'<section data-season="{k}" class="pk-season {cls}"><div class="wrap"><div class="hd"><p class="kicker">{kicker}</p><h2 class="h2" {H2}>{title}</h2></div>'
+        return (f'<section data-season="{k}" class="pk-season {cls}" id="pk-{k}"><div class="wrap"><div class="hd"><p class="kicker">{kicker}</p><h2 class="h2" {H2}>{title}</h2></div>'
                 f'<div class="packs-grid">{"".join(pack_card(SP[i], r) for i in ids)}</div>{link}</div></section>')
+    heroes = ''.join(pack_hero(k, r) for k in ('forralt', 'ujbor', 'bf', 'karacsony'))
     seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6', 'konnyu-karacsony'], '')
                 + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'<a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a>')
                 + season('bf', 'pk-bf', 'Most aktuális · Black Friday · nov. 23–29.', 'Black Friday csomagok', ['bf-premium', 'bf-mini'], f'<a class="pk-more" href="{r}black-friday.html">A Black Friday oldal →</a>')
                 + season('karacsony', 'pk-xmas', 'Most aktuális · advent és karácsony', 'Karácsonyi ajándékcsomagok', ['edes-unnepek', 'premium-advent', 'konnyu-karacsony'], f'<a class="pk-more" href="{r}karacsonyi-ajandek-bor.html">A karácsonyi oldal →</a>'))
     forralt = (f'<section data-season="ujbor bf karacsony" class="sec pk-fblock"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" {H2}>Forralt csomag</h2>'
                f'<div class="packs-grid">{pack_card(SP["forralt-6"], r)}</div></div></section>')
-    pg += f'''<main><section class="packs-hero"><div class="wrap"><p class="breadcrumb"><a href="index.html">Főoldal</a> / Ajándék és csomagok</p><p class="kicker">Ajándék és csomagok</p>
-<h1 class="h2">Csomagban jobban megéri</h1></div></section>
+    pg += f'''<main>{heroes}
 {seasonal}
 {don_packs(r)}
 {forralt}
@@ -680,6 +711,7 @@ def home_body(r='', h='h1'):
 <div style="margin-top:20px">{cards(['edes-meggybor', 'edes-eperbor', 'klara-edes-malnabor', 'friss-malna', 'piri-mama-forralt-bora', 'don-cherry'], r, 'cards home-picks')}</div>
 </div></section>'''
     pg += fairs_strip(r)
+    pg += choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')
     # Képmátrix (Sanyi, 2026-11-02): a Klára-kép kettébontva, mellé klasszikus boros hangulatkép; minden kép a saját kategóriájára visz
     tiles = [('a', 'termek/piri-mama-forralt-bora.html', 'piri_nar_life.webp', 'Forralt borok', 'Narancsos PIRI Mama forralt bora'),
              ('', 'termek/don-cherry.html', 'don_life.webp', 'Don Cherry', 'Don Cherry meggyvermut'),

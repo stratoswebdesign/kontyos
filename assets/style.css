@@ -1747,3 +1747,29 @@ body[data-page="fairs"] .site-head .nav a:hover,body[data-page="fairs"] .site-he
 body[data-page="fairs"] .site-head .menu-btn{background:rgba(219,184,121,.14)}
 body[data-page="fairs"] .site-head .menu-btn path{stroke:#DBB879!important}
 body[data-page="fairs"] .site-head .menu-btn{background:rgba(219,184,121,.14)!important;border-color:rgba(219,184,121,.5)!important}
+/* Ajándék és csomagok hero: a szezon-landing hero tükre, palackok helyett csomagokkal */
+.pk-stage{display:flex;align-items:flex-end;gap:clamp(12px,1.6vw,22px);z-index:3}
+.pk-st{display:flex;flex-direction:column;gap:8px;width:clamp(200px,19vw,290px);text-decoration:none;color:var(--hfg)}
+.pk-st .ph{display:flex;justify-content:center;align-items:flex-end;height:clamp(220px,34svh,360px);background:var(--tint);border-radius:999px 999px 6px 6px;overflow:hidden;padding:18px 10px 0;box-shadow:0 24px 50px rgba(0,0,0,.22)}
+.pk-st .ph img{height:90%;width:auto;margin:0 -7px;filter:drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.pk-st .ph img.jar{height:52%}
+.pk-st b{font-family:var(--serif);font-weight:400;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(16px,1.3vw,20px);line-height:1.15}
+.pk-st i{font-style:normal;font-family:var(--serif);font-size:clamp(20px,1.8vw,26px)}
+.pk-st i s{font-family:var(--sans);font-size:13px;opacity:.6;margin-left:6px}
+.pk-st:nth-child(2){transform:translateY(-26px)}
+@media (min-width:861px){.pk-hero .pk-stage{align-self:end;margin-top:calc(150px - var(--pt))!important}}
+@media (max-width:860px){.pk-stage{justify-content:center;width:100%;padding:0 16px}.pk-st{width:46%}.pk-st:only-child{width:70%}.pk-st .ph{height:200px}.pk-st:nth-child(2){transform:none}}
+.pk-hero.lp-bf .word{font-size:min(clamp(64px,12vw,200px),calc((100vw - 28px) / 7.95))!important}
+.hero .pk-stage{gap:clamp(14px,1.8vw,26px)!important}
+.pk-st .ph img{height:80%;margin:0 -9px}
+/* A mi kedvenceink: telefonon vízszintesen húzható karusszel */
+@media (max-width:860px){
+  .cards.home-picks{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(-1*var(--gutter));padding:4px var(--gutter) 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cards.home-picks::-webkit-scrollbar{display:none}
+  .cards.home-picks>*{flex:0 0 64%;scroll-snap-align:start;min-width:0}
+}
+@media (min-width:600px) and (max-width:860px){.cards.home-picks>*{flex-basis:40%}}
+/* csomagok hero telefonon: a díszállatok ne takarják a csomagokat */
+@media (max-width:860px){.pk-hero .animals{display:none}}
+@media (max-width:860px){.ctiles a span{font-size:15px!important;letter-spacing:.02em!important;overflow-wrap:normal;word-break:keep-all}}
+@media (max-width:600px){.ctiles a:last-child:nth-child(odd){grid-column:1/-1;aspect-ratio:2/1}}
