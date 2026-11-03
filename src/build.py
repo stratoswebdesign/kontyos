@@ -512,8 +512,8 @@ def packs_page():
                 f'<div class="packs-grid">{"".join(pack_card(SP[i], r) for i in ids)}</div>{link}</div></section>')
     heroes = ''.join(pack_hero(k, r) for k in ('forralt', 'ujbor', 'bf', 'karacsony'))
     seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6', 'konnyu-karacsony'], '')
-                + f'<section data-season="forralt" class="pk-season pk-ujbor"><div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}</div><a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a></div></section>'
-                + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'<a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a>')
+                + f'<section data-season="forralt" class="pk-season pk-ujbor">{fruit_burst(r, 12, 7)}<div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}</div><a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a></div></section>'
+                + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'<a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a>').replace('<div class="wrap">', fruit_burst(r, 12, 7) + '<div class="wrap">', 1)
                 + season('bf', 'pk-bf', 'Most aktuális · Black Friday · nov. 23–29.', 'Black Friday csomagok', ['bf-premium', 'bf-mini'], f'<a class="pk-more" href="{r}black-friday.html">A Black Friday oldal →</a>')
                 + season('karacsony', 'pk-xmas', 'Most aktuális · advent és karácsony', 'Karácsonyi ajándékcsomagok', ['edes-unnepek', 'premium-advent', 'konnyu-karacsony'], f'<a class="pk-more" href="{r}karacsonyi-ajandek-bor.html">A karácsonyi oldal →</a>'))
     forralt = (f'<section data-season="ujbor bf karacsony" class="sec pk-fblock"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" {H2}>Forralt csomag</h2>'
@@ -701,7 +701,7 @@ def new_world(r):
 <div class="nw-team"><h3>A hagyományt ma egy elkötelezett csapat viszi tovább.</h3><p><b>Borászaink és munkatársaink</b> Klárafalván, modern környezetben készítik gyümölcsborainkat. Tapasztalatuk, szakértelmük és új ötleteik révén folyamatosan <b>fejlesztik italainkat</b>, és új módokat keresnek arra, hogyan mutathatják meg a gyümölcsbor sokszínűségét.</p></div>
 </div></section>
 <section class="nworld nw-dark"><div class="wrap">
-<div class="nw-sides"><div class="nw-shead"><div><h3><span>A gyümölcsbor új oldalai</span></h3><p class="nw-sub">Modern italaink alapját saját, 100%-os gyümölcsboraink és a gyümölcsök gazdag ízvilága adják, amelyeket új ötletekkel és izgalmas párosításokkal gondolunk tovább.</p></div><div class="nw-polas" aria-label="Pillanatképek a Kontyostól"><figure class="tpola" style="--r:-5deg"><span class="ph">[Fotó 1 – a Kontyos küldi]</span></figure><figure class="tpola" style="--r:6deg"><span class="ph">[Fotó 2 – a Kontyos küldi]</span></figure></div></div>
+<div class="nw-sides"><div class="nw-shead"><div><h3><span>Innováció</span></h3><p class="nw-sub">Modern italaink alapját saját, 100%-os gyümölcsboraink és a gyümölcsök gazdag ízvilága adják, amelyeket új ötletekkel és izgalmas párosításokkal gondolunk tovább.</p></div><div class="nw-polas" aria-label="Pillanatképek a Kontyostól"><figure class="tpola" style="--r:-5deg"><span class="ph">[Fotó 1 – a Kontyos küldi]</span></figure><figure class="tpola" style="--r:6deg"><span class="ph">[Fotó 2 – a Kontyos küldi]</span></figure></div></div>
 <div class="nw-lines">{cols}</div></div>
 </div></section>'''
 
@@ -987,7 +987,7 @@ def pack_box(sp, r, active=True, tag=None, primary=False, extra='', btn=None, st
     ship = ('INGYENES SZÁLLÍTÁS' if sp.get('free') else '+ szállítási díj') if active else ''
     return f'''<article class="bfx pkx" data-pk="{sp['id']}" style="--tint:{top};--tfg:{fg};--pbtn:{bb};--pbtnfg:{bf}"><div class="top"><div class="tagrow"><span>{e(tag)}</span>{pct}</div><h2>{e(sp['name'])}</h2>
 <div class="ph">{pack_bottles(sp, r)}</div><p class="ct">{e(pack_contents(sp))}</p>{extra}</div>
-<div class="pr">{price}<em>{ship}</em></div>{f'<p class="stock">{stock}</p>' if stock else ''}{btn}</article>'''
+<div class="bot"><div class="pr">{price}<em>{ship}</em></div>{f'<p class="stock">{stock}</p>' if stock else ''}{btn}</div></article>'''
 
 
 def pack_card(s, r, active=True):

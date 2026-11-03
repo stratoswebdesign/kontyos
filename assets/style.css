@@ -1965,3 +1965,14 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pkx .pr{color:#fff!important;border-top-color:rgba(255,255,255,.45)!important}
 .pkx .pr s{color:#fff!important}
 .pkx .pr em{color:var(--pbtn)!important;opacity:1!important}
+/* újbor csomag-szekció: a hero gyümölcsei folytatódnak, a kártya teteje átlátszó, piros keret, fekete alsó rész; szélesség mint a forralt kártyáé */
+.pk-ujbor{position:relative;overflow:hidden}
+.pk-ujbor .wrap{position:relative;z-index:1}
+.pk-ujbor .packs-grid,.pk-forralt .packs-grid,.pk-fblock .packs-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.pk-ujbor .pkx .top{background:transparent!important;color:#1B2A5C!important}
+.pk-ujbor .pkx .top .ct,.pk-ujbor .pkx h2{color:#1B2A5C!important}
+.pk-ujbor .pkx .tagrow span:first-child{color:#D7263D!important}
+.pk-ujbor .pkx{border-color:#D7263D!important;background:transparent!important}
+.pkx .bot{display:flex;flex-direction:column;background:#0B0B10}
+@media (max-width:860px){.pk-ujbor .packs-grid,.pk-forralt .packs-grid,.pk-fblock .packs-grid{grid-template-columns:1fr!important}}
+.pk-ujbor .fburst img{opacity:.5}
