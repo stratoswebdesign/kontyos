@@ -307,7 +307,12 @@ XMAS_BAR = '<div class="xbar">UTOLSÓ RENDELÉS KARÁCSONYRA: [DÁTUM – A KONT
 
 def don_packs(r, title='Don Cherry csomagban', sub='Ajándékba vagy a hétvégére – a vermut és a párja egy dobozban.', dark=False):
     """Kis és nagy Don Cherry csomag (Sanyi: kicsi = 1 vermut + 1 meggy, nagy = 2 vermut + 1 meggy + 2 tonik)."""
-    cardsh = ''.join(pack_box(SP[pid], r, primary=True) for pid in ('don-kis', 'don-nagy'))
+    cardsh = ''
+    for pid in ('don-kis', 'don-nagy'):
+        sp = SP[pid]
+        imgs = ''.join(f'<img src="{r}{P[i]["tight"]}" alt="{e(P[i]["name"])}" loading="lazy"{" class=jar" if i == "don-cherry-gyumolcse" else ""}>' for i in sp['items'])
+        cardsh += f'''<article class="dpk"><div class="ph">{badge(pid)}{imgs}</div><div class="tx"><p class="k">{sp['tag']}</p><h3>{e(sp['name'])}</h3>
+<p class="ct">{e(pack_contents(sp))}</p><div class="row"><b>{ft(sp['price'])}</b><button type="button" class="btn" style="background:#C8282E" data-add="{pid}">Kosárba</button></div></div></article>'''
     return f'''<section class="dpacks{' dark' if dark else ''}"><div class="wrap"><div class="hd"><p class="kicker" style="--accent:#C8282E">Don Cherry</p><h2 class="h2">{title}</h2><p class="lead">{sub}</p></div>
 <div class="grid">{cardsh}</div><p class="ph-note">Demó: az ár a palackárak összege, a tonik típusát és a végleges árat a Kontyos adja.</p></div></section>'''
 
