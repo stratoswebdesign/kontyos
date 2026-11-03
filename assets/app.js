@@ -319,7 +319,7 @@
           el.setAttribute('data-st', status(f));
           var s1 = el.querySelector('[data-fair-status]'); if (s1) s1.textContent = label(f);
           var s2 = el.querySelector('[data-fair-dates]'); if (s2) s2.textContent = dtxt(f);
-          if (f.tbd && s1 && s2 && s1.parentNode === s2.parentNode) s1.parentNode.textContent = 'Időpont hamarosan';
+          if (f.tbd && s1 && s2 && s1.parentNode === s2.parentNode && s1.parentNode.classList.contains('dt')) s1.parentNode.textContent = 'Időpont hamarosan';
         });
       });
       /* a sor: élők elöl, aztán a Kontyos fontossági sorrendje (Sanyi, 2026-11-02) */
@@ -350,6 +350,10 @@
       b.addEventListener('click', function () { sim = b.getAttribute('data-sim') || null; try { sim ? localStorage.setItem('kontyos-demo-sim', sim) : localStorage.removeItem('kontyos-demo-sim'); } catch (e) {} document.querySelectorAll('[data-sim]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); paint(); });
     });
     paint();
+    document.querySelectorAll('[data-fair-more]').forEach(function (b) {
+      var row = document.getElementById(b.getAttribute('aria-controls')); if (!row) return;
+      b.addEventListener('click', function () { var o = row.classList.toggle('open'); b.setAttribute('aria-expanded', String(o)); b.textContent = o ? 'Kevesebb vásár' : 'További vásárok (' + (row.children.length - 5) + ')'; });
+    });
     var ff = document.querySelector('[data-fair-form]');
     if (ff) {
       var all = ff.querySelector('[data-fair-all]');
