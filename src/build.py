@@ -466,7 +466,7 @@ def pack_hero(k, r):
              'bf': STAMP.format(bg='#EF4E73', fg='#0B0B10', txt='BLACK FRIDAY · NOV. 23–29. · DON CHERRY · ', uid='pk-bf', center='BF')}.get(k, '')
     B = {'forralt': [('narancsos-piri-mama-forralt-bora', 'clamp(380px,72vh,640px)', '-6deg'), ('narancsos-piri-mama-forralt-bora', 'clamp(380px,72vh,640px)', '7deg')],
          'ujbor': [(x, 'clamp(300px,58vh,540px)', f'{d}deg') for x, d in zip(UJBOR6, (-8, -3, 2, -2, 3, 8))],
-         'bf': [('don-cherry', 'clamp(360px,70vh,640px)', '-6deg'), ('epres-piri-mama-forralt-bora', 'clamp(330px,64vh,580px)', '8deg')],
+         'bf': [('don-cherry', 'clamp(360px,70vh,640px)', '-6deg'), ('don-cherry-gyumolcse', 'clamp(200px,38vh,340px)', '6deg'), ('epres-piri-mama-forralt-bora', 'clamp(330px,64vh,580px)', '8deg')],
          'karacsony': [('piri-mama-forralt-bora', 'clamp(290px,54vh,500px)', '-10deg'), ('don-cherry', 'clamp(330px,64vh,590px)', '3deg'),
                        ('narancsos-piri-mama-forralt-bora', 'clamp(290px,54vh,500px)', '6deg'), ('epres-piri-mama-forralt-bora', 'clamp(280px,52vh,470px)', '11deg')]}[k]
     stage = ''.join(hb(P[pid], r, h, 0 if n == 0 else (-26 if k == 'ujbor' else 12), rot) for n, (pid, h, rot) in enumerate(B))
