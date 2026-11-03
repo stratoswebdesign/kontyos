@@ -1912,3 +1912,8 @@ body[data-page="fairs"] .fz-sub{border-top:1px solid rgba(219,184,121,.14)}
 @media (max-width:520px){.fz-stack .flist{grid-template-columns:1fr!important}}
 .nw-top{max-width:900px!important}
 @media (max-width:860px){.nworld{padding-top:clamp(50px,12vw,70px)!important}}
+/* Ajándék és csomagok: a forralt csomag felső része a PIRI Mama landing hero-fotóján */
+body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:linear-gradient(180deg,rgba(8,13,27,.55),rgba(8,13,27,.35) 45%,rgba(8,13,27,.7)),url(../img/photo/piri_lovable_hero.webp) 60% 60%/cover no-repeat;color:#fff}
+/* minden oldal: a tartalom bal széle egy vonalban a logóval (ugyanaz a szélesség és margó, mint a fejlécé) */
+main .pd-wrap,main .pd-dpair .pd-wrap,main .pd-wrap.pd-drink,main .pd-wrap.pd-dphotos,main .pd-wrap.pd-cocktails,main .pd-wrap.pd-reviews,main .pd-wrap.pd-cross,main .pd-wrap.pd-klrow,main .pd-wrap.pd-pair,main .pd-info .pd-wrap,main .pu-legal .pd-wrap{max-width:var(--max)!important;margin-left:auto!important;margin-right:auto!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;box-sizing:border-box}
+.wrap.narrow>*{max-width:900px}

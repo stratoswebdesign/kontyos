@@ -241,7 +241,7 @@ def t_klasszikus(p):
     sibs = [x['id'] for x in CAT if x['line'] == 'klasszikus' and x['id'] != p['id']]
     cross_ids = (['szaraz-meggybor', 'klara-szaraz-barrique-meggybor', 'friss-meggy', 'don-cherry'] if 'meggy' in p['id'] else sibs[:2] + ['klara-edes-malnabor', 'friss-' + ('eper' if 'eper' in p['id'] else 'malna')])
     cross_ids = [i for i in cross_ids if i != p['id']][:4]
-    ring = {'klara': '#E8DCE0', 'friss': '#F28C28', 'don': '#5FB8B3'}
+    ring = {'klara': '#E8DCE0', 'friss': '#FCEE0A', 'don': '#5FB8B3'}
     buy = buy_core(p, c) if p['avail'] else sold_out(p)
     html = f'''{u_hero(p)}
 {info(p, c)}
@@ -419,7 +419,7 @@ def _dot(x):
 UCFG = {
     'klasszikus': dict(bg='#E6EEDF', ink='#1B2A5C', muted='#4F5868', line='rgba(27,42,92,.16)', panel='rgba(255,255,255,.6)', btn='#1B2A5C', btnfg='#fff', crumb=('Klasszikus', 'gyumolcsbor.html#klasszikus')),
     'klara': dict(bg='#FFFFFF', ink='#1B2A5C', muted='#6A6F7E', line='#EEE8E1', panel='#FAF7F4', btn='#1B2A5C', btnfg='#fff', acc='#C0284A', crumb=('Klára prémium', 'gyumolcsbor.html#klara')),
-    'friss': dict(bg='#F28C28', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'friss.html')),
+    'friss': dict(bg='#FCEE0A', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'friss.html')),
     'secco': dict(bg='#EEEAF6', ink='#1B2A5C', muted='#5A6072', line='rgba(27,42,92,.14)', panel='rgba(255,255,255,.7)', btn='#1B2A5C', btnfg='#fff', acc='#C84E85', crumb=('Berry Secco', 'termek/berry-secco.html')),
     'palinka': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Pálinkák', 'palinka.html')),
     'piri': dict(bg='#111833', ink='#E3CFA5', muted='rgba(227,207,165,.72)', line='rgba(219,184,121,.28)', panel='rgba(255,255,255,.05)', btn='#DBB879', btnfg='#111833', acc='#DBB879', crumb=('Forralt borok', 'termek/piri-mama-forralt-bora.html')),
