@@ -2112,3 +2112,5 @@ body.modal-open{overflow:hidden}
 .pd-illu.duo .kick{margin:0;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#EF4E73}
 .pd-illu.duo b{font-weight:700}
 @media (max-width:760px){.pd-illu.noimg.duo{grid-template-columns:1fr}}
+/* a két flekk mögött a hero halványzöldje, teljes szélességben */
+.pd-illu.noimg.duo{background:#E6EEDF;max-width:none;padding-left:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)));padding-right:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)))}
