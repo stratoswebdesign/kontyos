@@ -1924,3 +1924,26 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pk-forralt .kicker,.pk-fblock .kicker{--accent:#DBB879;color:#DBB879!important}
 .pk-fblock .ph-note{color:#B9BFD0}
 .pk-forralt,.pk-fblock{background-position:right center!important}
+/* „A gyümölcsbor új világa”: felső rész a fölötte lévő szekció hátterén (sötétkék szöveg), az „új oldalai”-tól sötétkék */
+.nworld.nw-light{background:var(--page,#F3EEE5)!important;color:#1B2A5C!important;padding-bottom:clamp(30px,4vw,60px)!important}
+.nw-light .h2,.nw-light h3,.nw-light p,.nw-light b,.nw-light .nw-kick{color:#1B2A5C!important}
+.nw-light .nw-what{background:#fff!important;box-shadow:0 10px 30px rgba(27,42,92,.07)!important}
+.nworld.nw-dark{background:#1B2A5C!important;padding-top:clamp(50px,6vw,90px)!important}
+.nw-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,70px);align-items:center}
+.nw-head .nw-top{max-width:720px!important}
+.nw-malna{display:block;width:clamp(150px,15vw,230px);height:auto;margin:0 0 6px -6px;filter:drop-shadow(0 14px 18px rgba(120,10,30,.22))}
+.nw-polas{display:flex;align-items:center;padding-right:10px}
+.nw-polas .tpola{width:clamp(160px,15vw,230px)}
+.nw-polas .tpola+.tpola{margin-left:-50px;margin-top:60px}
+@media (max-width:860px){
+  .nw-head{grid-template-columns:1fr}.nw-polas{justify-content:center}.nw-polas .tpola{width:44%}.nw-polas .tpola+.tpola{margin-left:-14%;margin-top:30px}
+  .nworld.nw-dark{display:none}
+}
+/* forralt csomag szekció: alacsonyabb; a kártya alsó (ár/gomb) része világoskék, mint a fotó búzavirágai */
+.pk-forralt,.pk-fblock{padding-top:clamp(34px,4vw,56px)!important;padding-bottom:clamp(34px,4vw,56px)!important}
+.pk-forralt .pkx .ph,.pk-fblock .pkx .ph{height:clamp(150px,13vw,190px)}
+.pk-forralt .pkx .top,.pk-fblock .pkx .top{gap:10px;padding-top:18px;padding-bottom:16px}
+.pk-forralt .pkx,.pk-fblock .pkx{background:#BFD3F2}
+.pk-forralt .pkx .pr,.pk-fblock .pkx .pr{color:#1B2A5C;border-top-color:rgba(27,42,92,.45)}
+.pk-forralt .pkx .pr s,.pk-fblock .pkx .pr s{color:#1B2A5C}
+.pk-forralt .pkx .pr em,.pk-fblock .pkx .pr em{color:#1B2A5C!important;opacity:.8}
