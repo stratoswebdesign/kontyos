@@ -305,9 +305,8 @@ def t_piri(p):
 <div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
 {info(p, c)}
 {reviews(p, c)}
-<section class="pd-steps"><div class="pd-wrap"><div class="tx"><p class="pd-lab" style="color:#F3C66B">HÁROM LÉPÉS</p><ol><li><b>1</b><span>Nyisd ki a palackot.</span></li><li><b>2</b><span>Melegítsd fel, ne forrald.</span></li><li><b>3</b><span>Bögrébe vele – kész.</span></li></ol>
-<p style="opacity:.8;font-size:14px;line-height:1.6">Felbontás után hűtőben tárolandó, 1 héten belül fogyasztandó.</p></div>
-<div class="ph"><div class="pd-steps-pk">{_('pack_box')(_('SP')['forralt-6'], r, primary=True)}</div><img src="{r}img/photo/piri_fahej.webp" alt="Narancsos PIRI Mama fahéjjal és narancsokkal" loading="lazy"></div></div></section>
+<section class="sec pk-fblock pd-fpack"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" style="font-size:clamp(26px,3vw,40px)">Forralt csomag</h2>
+<div class="packs-grid">{_('pack_box')(_('SP')['forralt-6'], r, primary=True)}</div></div></section>
 '''
     return dict(html=html + legal_strip(p), page='#111833', ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline='#DBB879')))
 
