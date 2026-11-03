@@ -1955,3 +1955,8 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .nw-dark .nw-polas .tpola{width:clamp(140px,12vw,190px)}
 .nw-dark .nw-polas .tpola+.tpola{margin-left:-40px;margin-top:40px}
 @media (max-width:860px){.nw-head .nw-malna{width:60%;justify-self:center;order:-1}}
+/* forralt csomag szekció: a kártyák alsó része fekete, körben a felső rész színével keretezve */
+.pk-forralt .pkx,.pk-fblock .pkx{background:#0B0B10!important;border:3px solid var(--tint)!important}
+.pk-forralt .pkx .pr,.pk-fblock .pkx .pr{color:#fff!important;border-top-color:rgba(255,255,255,.45)!important}
+.pk-forralt .pkx .pr s,.pk-fblock .pkx .pr s{color:#fff!important}
+.pk-forralt .pkx .pr em,.pk-fblock .pkx .pr em{color:var(--pbtn)!important;opacity:1!important}
