@@ -745,7 +745,7 @@ def index():
         else:
             heroes += season_hero(s_, r)
     pg = head('Kontyos – 100%-os gyümölcsborok a klárafalvi Kontyos Borháztól', 'Meggybor, eperbor, ribizlibor, forralt bor, Don Cherry és pálinka – 100%-os gyümölcsborok közvetlenül a klárafalvi Kontyos Borháztól.', r, 'home', 'overlay-head', demo_extra=segs, topbar=f'<div data-season="karacsony">{XMAS_BAR}</div>')
-    pg += header(r) + '<main>' + heroes + MSEARCH + home_body(r, 'h1')
+    pg += header(r) + '<main>' + heroes + home_body(r, 'h1')
     pg += '</main>' + footer(r)
     write('index.html', pg)
 
