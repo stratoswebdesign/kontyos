@@ -2007,3 +2007,7 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 /* forralt szezon: egy csomag, a többi csomagkártyával azonos szélességben */
 .pk-forralt .packs-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 @media (max-width:860px){.pk-forralt .packs-grid{grid-template-columns:1fr!important}}
+/* újbor csomag: egyszínű rózsaszín felső rész (a gomb színe), rózsaszín keret, fehér szöveg */
+.pk-ujbor .pkx .top{background:#EF4E73!important;color:#fff!important}
+.pk-ujbor .pkx .top .ct,.pk-ujbor .pkx h2,.pk-ujbor .pkx .tagrow span:first-child{color:#fff!important}
+.pk-ujbor .pkx{border-color:#EF4E73!important}
