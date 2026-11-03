@@ -19,6 +19,22 @@
     c.forEach(function (l) { var p = K.p[l.id]; if (!p) return; sub += unit(p, l.q) * l.q; items += l.q; if (p.free) free = true; });
     return { sub: sub, items: items, free: free || sub >= LIMIT, left: Math.max(0, LIMIT - sub), pct: Math.min(100, Math.round(sub / LIMIT * 100)) };
   }
+  /* Kupon (demó): a hírlevél-kupon −5% a termékek árából; élesben a Shoprenter kuponkezelése */
+  var COUPONS = { HIRLEVEL5: { pct: 5, label: 'Hírlevél-kupon −5%' } };
+  var CKEY = 'kontyos-demo-coupon';
+  function coupon() { var c = null; try { c = localStorage.getItem(CKEY); } catch (e) {} return c && COUPONS[c] ? c : null; }
+  function disc(sub) { var c = coupon(); return c ? Math.round(sub * COUPONS[c].pct / 100) : 0; }
+  function paintDisc(sub) {
+    var c = coupon(), d = disc(sub);
+    document.querySelectorAll('[data-disc]').forEach(function (el) { el.hidden = !d; });
+    document.querySelectorAll('[data-disc-l]').forEach(function (el) { el.textContent = c ? 'Kupon (' + c + ')' : 'Kupon'; });
+    document.querySelectorAll('[data-disc-v]').forEach(function (el) { el.textContent = '−' + fmt(d); });
+    document.querySelectorAll('[data-coupon-wrap]').forEach(function (w) {
+      var m = w.querySelector('[data-coupon-msg]');
+      if (c) { w.open = true; m.innerHTML = '<b style="color:#2E8C5A">✓ ' + esc(COUPONS[c].label) + ' beváltva.</b> <button type="button" class="linkbtn" data-coupon-rm>Eltávolítás</button>'; }
+    });
+    return d;
+  }
   function add(id, q) {
     q = Math.max(1, parseInt(q, 10) || 1);
     var c = load(), l = c.filter(function (x) { return x.id === id; })[0];
@@ -173,8 +189,9 @@
     cr.innerHTML = '<div class="box" style="display:flex;flex-direction:column;gap:12px"><p class="serif" style="font-size:24px">' + (t.free ? 'Ingyenes a szállítás. 🎉' : 'Még <b style="color:#C8284E">' + fmt(t.left) + '</b>, és ingyen visszük.') + '</p><div class="bar" style="height:10px"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div></div>' +
       '<div class="box">' + lines + '</div>';
     document.querySelectorAll('[data-sum]').forEach(function (el) { el.textContent = fmt(t.sub); });
+    var d = paintDisc(t.sub);
     document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = t.free ? 'Ingyenes' : '1 800 Ft-tól'; });
-    document.querySelectorAll('[data-grand]').forEach(function (el) { el.innerHTML = fmt(t.sub) + (t.free ? '' : '<small>+ szállítás (1 800 Ft-tól)</small>'); });
+    document.querySelectorAll('[data-grand]').forEach(function (el) { el.innerHTML = fmt(t.sub - d) + (t.free ? '' : '<small>+ szállítás (1 800 Ft-tól)</small>'); });
     var cu = document.getElementById('cart-ups');
     if (cu) {
       var inCart = c.map(function (l) { return l.id; }), pool = [];
@@ -195,9 +212,105 @@
   }
 
   /* Kupon (demó) */
+  var rerender = function () { if (cr) renderCart(); if (window.__coRecalc) window.__coRecalc(); };
   document.querySelectorAll('[data-coupon]').forEach(function (f) {
-    f.addEventListener('submit', function (e) { e.preventDefault(); var m = f.querySelector('[data-coupon-msg]'); m.textContent = 'Demó: élesben a kupont a Shoprenter ellenőrzi és vonja le.'; });
+    var w = f.closest('[data-coupon-wrap]'), m = w.querySelector('[data-coupon-msg]');
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var code = (f.querySelector('input').value || '').trim().toUpperCase().replace(/\s+/g, '');
+      if (!code) { m.innerHTML = '<span style="color:#C8284E">Írd be a kuponkódot.</span>'; return; }
+      if (!COUPONS[code]) { m.innerHTML = '<span style="color:#C8284E">Ez a kuponkód nem érvényes vagy lejárt.</span>'; return; }
+      try { localStorage.setItem(CKEY, code); } catch (err) {}
+      f.querySelector('input').value = ''; rerender();
+    });
+    w.addEventListener('click', function (e) {
+      if (!e.target.closest('[data-coupon-rm]')) return;
+      try { localStorage.removeItem(CKEY); } catch (err) {}
+      m.textContent = ''; document.querySelectorAll('[data-disc]').forEach(function (el) { el.hidden = true; }); rerender();
+    });
   });
+  /* Lépésjelző: üres kosárral ne lehessen előre lépni */
+  document.querySelectorAll('[data-need-cart]').forEach(function (a) {
+    a.addEventListener('click', function (e) { if (!load().length) e.preventDefault(); });
+  });
+
+  /* Csomagpont-választó (demó pontok; élesben a futár valós listája) */
+  var PP_CITIES = [['Budapest', 47.4979, 19.0402, ['1'], 6], ['Debrecen', 47.5316, 21.6273, ['40', '41'], 3], ['Szeged', 46.2530, 20.1414, ['67'], 3],
+    ['Miskolc', 48.1035, 20.7784, ['35'], 3], ['Pécs', 46.0727, 18.2323, ['76'], 3], ['Győr', 47.6875, 17.6504, ['90', '91'], 3],
+    ['Nyíregyháza', 47.9558, 21.7167, ['44'], 3], ['Kecskemét', 46.9062, 19.6913, ['60'], 3], ['Székesfehérvár', 47.1860, 18.4221, ['80'], 3],
+    ['Szombathely', 47.2307, 16.6218, ['97'], 3], ['Veszprém', 47.0933, 17.9115, ['82'], 3], ['Hódmezővásárhely', 46.4181, 20.3300, ['68'], 2], ['Makó', 46.2219, 20.4809, ['69'], 2]];
+  var PP_LABEL = { 'mpl-automata': 'MPL csomagautomata', 'mpl-postapont': 'MPL PostaPont', 'mpl-posta': 'Posta', 'gls-pont': 'GLS csomagpont' };
+  var PP_TITLE = { 'mpl-automata': 'Csomagautomata kiválasztása', 'mpl-postapont': 'PostaPont kiválasztása', 'mpl-posta': 'Posta kiválasztása', 'gls-pont': 'GLS csomagpont kiválasztása' };
+  var PP_AREA = ['belváros', 'északi városrész', 'déli városrész', 'keleti városrész', 'nyugati városrész', 'bevásárlóközpont'];
+  function ppPoints(key) {
+    var out = [], salt = { 'mpl-automata': 1, 'mpl-postapont': 2, 'mpl-posta': 3, 'gls-pont': 4 }[key];
+    PP_CITIES.forEach(function (c, ci) {
+      for (var k = 0; k < c[4]; k++) {
+        var a = (ci * 7 + k * 13 + salt * 5) % 360 * Math.PI / 180, r = k === 0 ? 0.004 : 0.012 + 0.006 * ((k + salt) % 3);
+        out.push({ id: key + '-' + ci + '-' + k, n: PP_LABEL[key] + ' – ' + c[0] + ', ' + PP_AREA[k % PP_AREA.length], city: c[0], zips: c[3], lat: c[1] + Math.sin(a) * r, lng: c[2] + Math.cos(a) * r * 1.4 });
+      }
+    });
+    return out;
+  }
+  function initPP(co) {
+    var modal = document.getElementById('pp-modal'); if (!modal) return;
+    co._pp = {};
+    var map = null, layer = null, curKey = null, pts = [];
+    var norm = function (t) { return (t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
+    var list = modal.querySelector('[data-pp-list]'), q = modal.querySelector('[data-pp-q]');
+    var pick = function (p) {
+      co._pp[curKey] = p;
+      var box = co.querySelector('[data-pp-box="' + curKey + '"]');
+      box.classList.remove('err'); box.classList.add('set');
+      box.querySelector('[data-pp-sel]').innerHTML = '<b>' + esc(p.n) + '</b><small>Demó átvételi pont</small>';
+      box.querySelector('[data-pp-open]').textContent = 'Módosítás';
+      close();
+    };
+    var draw = function () {
+      var v = norm(q.value.trim()), dig = /^\d+$/.test(v);
+      var hit = !v ? pts : pts.filter(function (p) { return dig ? p.zips.some(function (z) { return v.indexOf(z) === 0 || z.indexOf(v) === 0; }) : norm(p.city).indexOf(v) >= 0 || norm(p.n).indexOf(v) >= 0; });
+      list.innerHTML = hit.length ? hit.map(function (p, i) { return '<li><button type="button" data-pp-i="' + pts.indexOf(p) + '"><b>' + esc(p.n) + '</b><small>' + esc(p.city) + '</small></button></li>'; }).join('') : '<li class="none">Nincs találat ezen a néven. Próbáld a közeli nagyobb várost vagy az irányítószám első két számjegyét.</li>';
+      if (map && window.L) {
+        if (layer) layer.remove();
+        layer = L.layerGroup(hit.map(function (p) { return L.marker([p.lat, p.lng], { icon: L.divIcon({ className: 'ppm', html: '<span></span>', iconSize: [22, 22], iconAnchor: [11, 11] }) }).bindTooltip(p.n).on('click', function () { pick(p); }); })).addTo(map);
+        if (hit.length) map.fitBounds(hit.map(function (p) { return [p.lat, p.lng]; }), { padding: [30, 30], maxZoom: 13, animate: false });
+      }
+    };
+    var close = function () { modal.hidden = true; document.body.classList.remove('modal-open'); };
+    var open = function (key) {
+      curKey = key; pts = ppPoints(key);
+      modal.querySelector('#pp-title').textContent = PP_TITLE[key];
+      var zip = (co.querySelector('[name=zip]') || {}).value || '', city = (co.querySelector('[name=city]') || {}).value || '';
+      q.value = city || zip;
+      modal.hidden = false; document.body.classList.add('modal-open');
+      if (!map && window.L) {
+        map = L.map('pp-map', { scrollWheelZoom: true }).setView([47.15, 19.2], 7);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map);
+      }
+      setTimeout(function () { if (map) map.invalidateSize(); draw(); q.focus(); }, 30);
+    };
+    co.addEventListener('click', function (e) { var b = e.target.closest('[data-pp-open]'); if (b) { e.preventDefault(); open(b.getAttribute('data-pp-open')); } });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal || e.target.closest('[data-pp-close]')) { close(); return; }
+      var it = e.target.closest('[data-pp-i]'); if (it) pick(pts[+it.getAttribute('data-pp-i')]);
+    });
+    q.addEventListener('input', draw);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+  }
+
+  /* Pénztár lépésjelző: görgetés szerint vált 2 és 3 között, kattintható */
+  var cst = document.querySelector('[data-co-steps]');
+  if (cst && 'IntersectionObserver' in window) {
+    var fz = document.getElementById('fizetes');
+    if (fz) new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        var past = x.isIntersecting || x.boundingClientRect.top < 0;
+        cst.querySelector('[data-step="2"]').parentNode.classList.toggle('on', !past);
+        cst.querySelector('[data-step="2"]').parentNode.classList.toggle('done', past);
+        cst.querySelector('[data-step="3"]').parentNode.classList.toggle('on', past);
+      });
+    }, { rootMargin: '0px 0px -40% 0px' }).observe(fz);
+  }
 
   /* Pénztár */
   var co = document.getElementById('checkout');
@@ -219,11 +332,21 @@
         var codFee = py.getAttribute('data-key') === 'utanvet' ? 500 : 0;
         document.querySelectorAll('[data-codrow]').forEach(function (el) { el.hidden = !codFee; });
         document.querySelectorAll('[data-cod-note]').forEach(function (el) { el.hidden = codOk; });
+        /* ha ingyenes a szállítás, minden opciónál ezt mutatjuk: áthúzott díj + „Ingyenes” */
+        co.querySelectorAll('[name=ship]').forEach(function (inp) {
+          var f0 = +inp.getAttribute('data-fee'), fa = +inp.getAttribute('data-free'), pr = inp.closest('.opt').querySelector('[data-ship-price]');
+          var fr = f0 === 0 || packFree || (fa && t.sub >= fa);
+          pr.innerHTML = !f0 ? 'Ingyenes' : (fr ? '<s>' + fmt(f0) + '</s> <span class="free-tag">Ingyenes</span>' : fmt(f0));
+        });
+        co.querySelectorAll('[data-pp-box]').forEach(function (b) { b.hidden = b.getAttribute('data-pp-box') !== key; });
+        var d = paintDisc(t.sub);
         document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = shipFee ? fmt(shipFee) : 'Ingyenes'; });
-        document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub + shipFee + codFee); });
-        co._total = t.sub + shipFee + codFee;
+        document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub - d + shipFee + codFee); });
+        co._total = t.sub - d + shipFee + codFee; co._disc = d;
       };
+      window.__coRecalc = recalc;
       co.addEventListener('change', recalc); recalc();
+      initPP(co);
       document.querySelectorAll('[data-free-left]').forEach(function (el) { el.innerHTML = t.free ? 'Ingyenes a szállítás.' : 'Még <b style="color:#C8284E">' + fmt(t.left) + '</b>, és ingyen visszük.'; });
       document.querySelectorAll('[data-free-bar]').forEach(function (el) { el.style.width = (t.free ? 100 : t.pct) + '%'; });
     }
@@ -238,12 +361,31 @@
         if (f) f.classList.toggle('err', bad); if (bad) ok = false;
       });
       form.querySelectorAll('[data-req-check]').forEach(function (cb) { cb.closest('.check').classList.toggle('err', !cb.checked); if (!cb.checked) ok = false; });
+      var shk = (form.querySelector('[name=ship]:checked') || {}).getAttribute ? form.querySelector('[name=ship]:checked').getAttribute('data-key') : '';
+      var ppb = form.querySelector('[data-pp-box="' + shk + '"]');
+      if (ppb) { var miss = !(co._pp && co._pp[shk]); ppb.classList.toggle('err', miss); if (miss) ok = false; }
       var msg = document.getElementById('co-msg');
-      if (!ok) { msg.textContent = 'Kérjük, töltsd ki a pirossal jelölt mezőket, és fogadd el a 18 év feletti nyilatkozatot és az ÁSZF-et.'; var first = form.querySelector('.err'); if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
-      var order = { no: 'DEMO-' + String(Date.now()).slice(-6), lines: load(), sub: totals(load()).sub, total: co._total, free: totals(load()).free, name: form.querySelector('[name=name]').value, email: form.querySelector('[name=email]').value, ship: (form.querySelector('[name=ship]:checked') || {}).value, pay: (form.querySelector('[name=pay]:checked') || {}).value };
-      try { sessionStorage.setItem('kontyos-demo-order', JSON.stringify(order)); } catch (err) {}
-      track('purchase', order.no, 1);
-      save([]); location.href = ROOT + 'koszonjuk.html';
+      if (!ok) { msg.textContent = 'Kérjük, töltsd ki a pirossal jelölt mezőket' + (ppb && ppb.classList.contains('err') ? ', válassz átvételi pontot' : '') + ', és fogadd el a 18 év feletti nyilatkozatot és az ÁSZF-et.'; var first = form.querySelector('.err'); if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+      msg.textContent = '';
+      var payKey = form.querySelector('[name=pay]:checked').getAttribute('data-key');
+      var finish = function (paid) {
+        var order = { no: 'DEMO-' + String(Date.now()).slice(-6), lines: load(), sub: totals(load()).sub, disc: co._disc || 0, coupon: coupon(), total: co._total, free: totals(load()).free, name: form.querySelector('[name=name]').value, email: form.querySelector('[name=email]').value, ship: (form.querySelector('[name=ship]:checked') || {}).value, point: co._pp && co._pp[shk] ? co._pp[shk].n : '', pay: (form.querySelector('[name=pay]:checked') || {}).value, payKey: payKey, paid: !!paid };
+        try { sessionStorage.setItem('kontyos-demo-order', JSON.stringify(order)); localStorage.removeItem(CKEY); } catch (err) {}
+        track('purchase', order.no, 1);
+        save([]); location.href = ROOT + 'koszonjuk.html';
+      };
+      if (payKey !== 'kartya') { finish(false); return; }
+      var sp = document.getElementById('sp-modal');
+      sp.querySelector('[data-sp-total]').textContent = fmt(co._total);
+      sp.hidden = false; document.body.classList.add('modal-open');
+      sp.onclick = function (ev) {
+        var b = ev.target.closest('[data-sp]'), x = ev.target.closest('[data-sp-close]') || ev.target === sp;
+        if (b && b.getAttribute('data-sp') === 'ok') { finish(true); return; }
+        if (b || x) {
+          sp.hidden = true; document.body.classList.remove('modal-open');
+          if (b) { msg.textContent = 'A bankkártyás fizetés nem sikerült (a bank elutasította vagy megszakadt). A rendelésed nem jött létre, a kosarad megmaradt – próbáld újra, vagy válassz másik fizetési módot.'; msg.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        }
+      };
     });
   }
 
@@ -254,7 +396,12 @@
     if (o) {
       ty.querySelector('[data-o-no]').textContent = o.no;
       ty.querySelector('[data-o-mail]').textContent = o.email;
-      ty.querySelector('[data-o-lines]').innerHTML = o.lines.map(function (l) { var p = K.p[l.id]; return p ? '<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)"><span>' + esc(p.n) + ' × ' + l.q + '</span><b>' + fmt(unit(p, l.q) * l.q) + '</b></div>' : ''; }).join('') + '<div style="display:flex;justify-content:space-between;padding-top:10px"><b>Összesen (szállítással)</b><b>' + fmt(o.total || o.sub) + '</b></div>';
+      ty.querySelector('[data-o-lines]').innerHTML = o.lines.map(function (l) { var p = K.p[l.id]; return p ? '<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)"><span>' + esc(p.n) + ' × ' + l.q + '</span><b>' + fmt(unit(p, l.q) * l.q) + '</b></div>' : ''; }).join('') +
+        (o.disc ? '<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule)"><span>Kupon (' + esc(o.coupon || '') + ')</span><b>−' + fmt(o.disc) + '</b></div>' : '') +
+        '<div style="display:flex;justify-content:space-between;padding-top:10px"><b>Összesen (szállítással)</b><b>' + fmt(o.total || o.sub) + '</b></div>';
+      var pe = ty.querySelector('[data-o-pay]');
+      if (pe) pe.innerHTML = 'Szállítás: ' + esc(o.point || o.ship || '') + '<br>Fizetés: ' + esc(o.pay || '') +
+        (o.payKey === 'kartya' ? ' – <b style="color:#2E8C5A">sikeres</b> (SimplePay, demó)' : o.payKey === 'atutalas' ? ' – az utalási adatokat a visszaigazoló e-mailben küldjük' : o.payKey === 'utanvet' ? ' – fizetés átvételkor' : '');
     }
   }
 

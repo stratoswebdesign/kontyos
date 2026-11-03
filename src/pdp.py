@@ -276,8 +276,8 @@ def t_klara(p):
     html = f'''{u_hero(p)}
 {info(p, c)}
 <section class="pd-wrap pd-klstory"><img src="{r}img/photo/klara_pohar.webp" alt="Klára édes málnabor palack pezsgőspohárral és friss málnával" loading="lazy">
-<div><p class="pd-lab" style="color:#6A6F7E;letter-spacing:.3em">A SOR</p><p class="q">„A gyümölcskertek istennője.”</p>
-<p>Olyan borokról álmodtunk, melyek egyszerre fejezik ki a gyümölcsök iránti rajongásunkat, a borkészítés iránti szenvedélyünket és a borászatunk otthona, az idilli-zöld Klárafalva iránt érzett szeretetünket. Egyedülálló minőségű, értékes gyümölcsökből készült friss borainkat egy olyan tiszta szépség testesíti meg, melyet csak a természet adhat.</p></div></section>
+<div><p class="q">„A gyümölcskertek istennője.”</p>
+<p>A KLÁRA prémium sorozatunkat a gyümölcsök iránti rajongásunk, a borkészítés szenvedélye és Klárafalva szeretete ihlette. Borainkat válogatott gyümölcsökből, különös gondossággal készítjük, hogy minden palack egyedi élményt nyújtson.</p></div></section>
 {reviews(p, c)}
 <section class="pd-wrap pd-klrow"><p class="pd-lab" style="text-align:center;color:#6A6F7E;letter-spacing:.3em">A KLÁRA SOR TÖBBI TAGJA</p><div>{row}</div></section>'''
     cb = dict(c, btn='#1B2A5C', barline='#1B2A5C')
@@ -346,7 +346,7 @@ def t_don(p):
 # ---------------------------------------------------------------- FRISS / SECCO / PÁLINKA (TermekFriss/Secco/Palinka.dc)
 LINECFG = {
     'friss': dict(page='#FFF6EA', kick='FRISS · KÖNNYŰ GYÜMÖLCSBOR · 0,75 L', kc='#EF4E73', h1w=900, rule='#F1E2CF', theme='pill',
-                  crumb=('FRISS', 'friss.html'), cross=['konnyu-trio', 'berry-secco', 'bubi-paros', 'kontyos-borospohar']),
+                  crumb=('FRISS', 'termek/friss-malna.html'), cross=['konnyu-trio', 'berry-secco', 'bubi-paros', 'kontyos-borospohar']),
     'secco': dict(page='#F7F7FB', kick='BERRY SECCO · ÉDES HABZÓ GYÜMÖLCSBOR · 0,75 L', kc='#E86A9A', h1w=900, rule='#E3E6F2', theme='pill',
                   crumb=('Berry Secco', 'termek/berry-secco.html'), cross=['bubi-paros', 'kontyos-borospohar', 'friss-narancs', 'friss-eper']),
     'palinka': dict(page='#F4EFE6', kick='KISÜSTI PÁLINKA · 46% · {vol}', kc='#A8823C', h1w=500, rule='#E3DACB', theme='pill',
@@ -387,7 +387,7 @@ def t_fsp(p):
     tiles = ''.join(f'''<a href="{x['id']}.html" class="tile{' on' if x['id'] == p['id'] else ''}" style="background:{x['arch'] if L == 'friss' else ('rgba(255,255,255,.7)' if L == 'secco' else '#fff')}"><img src="{r}{x['tight']}" alt="" loading="lazy"><strong style="color:{x['accent'] if L == 'friss' else ('#1E1A1D' if L == 'palinka' else x['accent'])}">{SHORT.get(x['id'], '')}</strong></a>''' for x in vs)
     if L == 'friss':
         story = f'''<section class="pd-story f" style="background:{p['arch']};color:{fg}"><div class="pd-wrap"><p aria-hidden="true" class="bigw">{BIG.get(p['id'], '')}</p>
-<div class="tx"><h2>{_('TXT')['friss1']}</h2><p class="s">Reduktív eljárással, friss gyümölcsből – könnyű, kellemesen édes, pár szem jéggel is. Négy íz, mind {ft(p['price'])}.</p><div class="tiles">{tiles}</div></div>
+<div class="tx"><h2>{FRISS_H.get(p['id'], _('TXT')['friss1'])}</h2><p class="s">Reduktív eljárással, friss gyümölcsből – könnyű, kellemesen édes, pár szem jéggel is. Négy íz, mind {ft(p['price'])}.</p><div class="tiles">{tiles}</div></div>
 {_('friss_cut')(r, 'ph')}</div></section>'''
     elif L == 'secco':
         dots = ''.join(f'<span aria-hidden="true" class="bub" style="left:{x}%;top:{y}%;width:{s}px;height:{s}px"></span>' for x, y, s in [(6, 20, 26), (12, 62, 14), (30, 14, 10), (48, 72, 22), (66, 18, 16), (84, 64, 12), (92, 24, 20)])
@@ -395,8 +395,10 @@ def t_fsp(p):
         story = f'''<section class="pd-story s" style="background:{p['arch']};color:{fg}">{dots}<div class="pd-wrap"><div class="tx"><p class="pd-lab">ÍGY KÍNÁLD</p><h2>{e(serve_text(p))}</h2><p class="s">Habzó, édes, {alc} – a buborékok kedvelőinek.</p></div>
 <div class="tiles big">{tiles}</div></div></section>'''
     else:
-        facts = [('KISÜSTI', 'Hagyományos, kisüsti módon főzve, gyümölcsből cefrézve.'), ('46%', '46%-os alkoholra beállítva.'), ('PINCEHIDEGEN', 'A zamatok teljessége érdekében pincehidegen ajánlott.')]
-        story = f'''<section class="pd-story p"><div class="pd-wrap"><div class="tx"><h2>Kisüsti, gyümölcsből.</h2><div class="facts">{''.join(f'<div><strong>{a}</strong><span>{b}</span></div>' for a, b in facts)}</div></div>
+        facts = [(PAL_ICO['still'], 'HAGYOMÁNYOS KISÜSTI', 'Gyümölcsből cefrézve, hagyományos kisüsti eljárással főzve.'),
+                 (PAL_ICO['drop'], '46% ALKOHOL', 'Karakteres párlat, 46%-os alkoholtartalommal.'),
+                 (PAL_ICO['snow'], 'PINCEHIDEGEN', 'Enyhén behűtve ajánljuk, hogy a gyümölcsös aromák szépen érvényesüljenek.')]
+        story = f'''<section class="pd-story p"><div class="pd-wrap"><div class="tx"><h2>Kisüsti. Tisztán gyümölcsből.</h2><div class="facts ico">{''.join(f'<div>{i}<strong>{a}</strong><span>{b}</span></div>' for i, a, b in facts)}</div></div>
 <div class="tiles big">{tiles}</div></div></section>'''
     rating = stars_link(p, accent)
     html = f'''{u_hero(p)}
@@ -405,6 +407,17 @@ def t_fsp(p):
 {reviews(p, c)}
 {cross(cf['cross'], 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)')}'''
     return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline=p['arch'])) if p['avail'] else '')
+
+
+_ICO = 'class="pico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"'
+PAL_ICO = {  # pálinka termékoldal: vonalas arany ikonok (Sanyi mintája, 11-04)
+    'still': f'<svg {_ICO}><path d="M8 44a17 12 0 1 0 34 0a17 12 0 1 0-34 0z"/><path d="M8 44h34"/><path d="M15 59h20"/><path d="M19 56v3M31 56v3"/><path d="M17 33c0-7 4-11 8-11s8 4 8 11"/><path d="M25 22v-4"/><path d="M25 18c9-8 21-8 28 2l1 8"/><path d="M48 28h12v20H48z"/><path d="M51 34h6M51 40h6"/><path d="M54 48v8"/></svg>',
+    'drop': f'<svg {_ICO}><path d="M32 6C24 18 14 28 14 40a18 18 0 0 0 36 0C50 28 40 18 32 6z"/><text x="32" y="45" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="13" fill="currentColor" stroke="none">46%</text></svg>',
+    'snow': f'<svg {_ICO}><path d="M32 6v52M9.5 19l45 26M9.5 45l45-26"/><path d="M26 10l6 6 6-6M26 54l6-6 6 6"/><path d="M9 26l8-2-2-8M55 38l-8 2 2 8M9 38l8 2-2 8M55 26l-8-2 2-8"/></svg>',
+}
+
+FRISS_H = {'friss-narancs': 'Narancsbor és almabor. Frissítő harmóniában.', 'friss-eper': 'Eperbor és almabor. Frissítő harmóniában.',
+           'friss-malna': 'Málnabor és almabor. Frissítő harmóniában.', 'friss-meggy': 'Meggybor és almabor. Frissítő harmóniában.'}
 
 
 def _dot(x):
@@ -418,7 +431,7 @@ def _dot(x):
 UCFG = {
     'klasszikus': dict(bg='#E6EEDF', ink='#1B2A5C', muted='#4F5868', line='rgba(27,42,92,.16)', panel='rgba(255,255,255,.6)', btn='#1B2A5C', btnfg='#fff', crumb=('Klasszikus', 'gyumolcsbor.html#klasszikus')),
     'klara': dict(bg='#FFFFFF', ink='#1B2A5C', muted='#6A6F7E', line='#EEE8E1', panel='#FAF7F4', btn='#1B2A5C', btnfg='#fff', acc='#C0284A', crumb=('Klára prémium', 'gyumolcsbor.html#klara')),
-    'friss': dict(bg='#F28C28', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'friss.html')),
+    'friss': dict(bg='#F28C28', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'termek/friss-malna.html')),
     'secco': dict(bg='#EEEAF6', ink='#1B2A5C', muted='#5A6072', line='rgba(27,42,92,.14)', panel='rgba(255,255,255,.7)', btn='#1B2A5C', btnfg='#fff', acc='#C84E85', crumb=('Berry Secco', 'termek/berry-secco.html')),
     'palinka': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Pálinkák', 'termek/szamocapalinka.html')),
     'piri': dict(bg='#111833', ink='#E3CFA5', muted='rgba(227,207,165,.72)', line='rgba(219,184,121,.28)', panel='rgba(255,255,255,.05)', btn='#DBB879', btnfg='#111833', acc='#DBB879', crumb=('Forralt borok', 'termek/piri-mama-forralt-bora.html')),
