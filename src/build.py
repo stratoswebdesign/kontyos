@@ -224,7 +224,7 @@ SEASONS = [
          bottles=[('piri-mama-forralt-bora', 'clamp(280px,50vh,430px)', '-9deg'), ('narancsos-piri-mama-forralt-bora', 'clamp(330px,60vh,520px)', '4deg'), ('epres-piri-mama-forralt-bora', 'clamp(270px,49vh,420px)', '12deg')],
          ml=64, eyebrow='Új · Narancsos PIRI Mama', t='Csak megmelegíted, és kész.', s='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.',
          cta=('PIRI Mama forralt borok', 'termek/narancsos-piri-mama-forralt-bora.html'), price=None),
-    dict(k='ujbor', lbl='Újbor', bg='#F6E1E4', fg='#1B2A5C', word='ÚJBOR', hword='#D7263D', acc='#EF4E73', ctafg='#fff',
+    dict(k='ujbor', lbl='Újbor', bg='#F6E1E4', fg='#1B2A5C', word='ÚJBOR', hword='#EF4E73', acc='#EF4E73', ctafg='#fff',
          bottles=[(i, 'clamp(240px,46vh,440px)', f'{d}deg') for i, d in zip(UJBOR6, (-8, -3, 2, -2, 3, 8))], ml=-26, fruit=True,
          eyebrow='Limitált · nov. 5–23.', t='Kóstold meg az új borainkat!', s='Az idei gyümölcs, palackban – válogass a 100%-os klasszikus gyümölcsborainkból, vagy vidd mind a hatot.',
          cta=('Újbor-válogatás', 'ujbor-valogatas.html'), price=('ujbor-valogatas', '6 palack')),
@@ -467,7 +467,7 @@ MSEARCH = '''<section class="m-search"><form role="search" action="kereses.html"
 PK_HERO = {  # Ajándék és csomagok hero: mindig az aktuális szezon-landing heroját tükrözi, csak csomagokkal (Sanyi, 11-03)
     'forralt': dict(bg='#F08A3C', fg='#1B2A5C', hword='#1B2A5C', acc='#1B2A5C', ctafg='#fff', word='FORRALT BOR', packs=['forralt-6'],
                     eyebrow='Ajándék és csomagok · forralt szezon', s='PIRI Mama forralt borok csomagban – hideg estékre és ajándékba.'),
-    'ujbor': dict(bg='#F6E1E4', fg='#1B2A5C', hword='#D7263D', acc='#EF4E73', ctafg='#fff', word='ÚJBOR', packs=['ujbor-valogatas'],
+    'ujbor': dict(bg='#F6E1E4', fg='#1B2A5C', hword='#EF4E73', acc='#EF4E73', ctafg='#fff', word='ÚJBOR', packs=['ujbor-valogatas'],
                   eyebrow='Ajándék és csomagok · újbor · nov. 5–23.', s='Hat klasszikus gyümölcsbor a 6 palackos áron.'),
     'bf': dict(bg='#0B0B10', fg='#fff', hword='#EF4E73', acc='#EF4E73', ctafg='#fff', word='BLACK FRIDAY', packs=['bf-premium', 'bf-mini'],
                eyebrow='Ajándék és csomagok · Black Friday · nov. 23–29.', s='Két csomag, mindkettőből legfeljebb 40.'),
