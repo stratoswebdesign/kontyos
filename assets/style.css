@@ -2033,3 +2033,10 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 
 /* Telefon: vásárkártyák középre pattannak, két oldalt kilóg a szomszéd (11-03) */
 @media (max-width:760px){.fair-grid .fair-card2{scroll-snap-align:center}}
+
+/* Telefon: a karusszelek első kártyája ugyanannyira legyen behúzva, mint a szekció többi eleme (11-03) */
+@media (max-width:860px){.cards.home-picks{scroll-padding-inline:var(--gutter)}}
+
+/* Telefon: a csempe-feliratoknál a nyíl az utolsó szóval egy sorban maradjon (11-03) */
+@media (max-width:760px){.collage a:not(.a) span{font-size:clamp(12px,3.6vw,15px);letter-spacing:.02em;padding:36px 12px 12px;overflow-wrap:normal;word-break:normal}}
+@media (max-width:760px){.collage a.a span{padding-left:12px;padding-right:12px}}

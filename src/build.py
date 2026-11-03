@@ -720,7 +720,7 @@ def home_body(r='', h='h1'):
              ('', 'gyumolcsbor.html#klara', 'klara.webp', 'Klára prémium', 'Klára prémium gyümölcsbor'),
              ('', 'gyumolcsbor.html#klasszikus', 'klasszikus_hangulat.webp', '100%-os klasszikusok', 'Klasszikus gyümölcsborok – eper, meggy, ribizli')]
     pg += '<section class="sec"><div class="wrap"><div class="collage">' + ''.join(
-        f'<a class="{c}" href="{r}{h}"><img src="{r}img/photo/{im}" alt="{e(alt)}" loading="lazy"><span>{lab} →</span></a>' for c, h, im, lab, alt in tiles) + '</div></div></section>'
+        f'<a class="{c}" href="{r}{h}"><img src="{r}img/photo/{im}" alt="{e(alt)}" loading="lazy"><span>{lab}&nbsp;→</span></a>' for c, h, im, lab, alt in tiles) + '</div></div></section>'
     pg += trust_block(r, h)
     pg += f'''<section class="sec picks" style="padding-bottom:40px"><div class="wrap" style="display:flex;flex-direction:column;gap:22px;position:relative">
 <h2 class="h2" style="max-width:820px">A mi kedvenceink</h2>{polaroids(r)}
