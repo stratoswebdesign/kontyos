@@ -1853,3 +1853,10 @@ a.nw-l:hover h4{text-decoration:underline;text-underline-offset:4px}
 .nw-what p{grid-column:2!important}
 .nw-l{border-left-color:rgba(243,238,229,.22)!important}
 @media (max-width:860px){.nw-sides{display:none!important}.nw-what{grid-template-columns:1fr!important}.nw-what p{grid-column:1!important}}
+/* új gyümölcskép: felül és jobbról jobban levágva (kifut a szekcióból), mint Sanyi mintáján */
+@media (min-width:861px){.nw-fruit{width:min(60vw,1000px)!important;top:clamp(-150px,-8vw,-60px)!important;right:clamp(-170px,-9vw,-60px)!important}}
+@media (max-width:860px){.nw-fruit{width:135%!important;margin:-14% -30% 0 -5%!important;max-width:none}}
+/* Don Cherry: „Így idd” nagyobb */
+.pd-drink>.pd-lab{font-size:clamp(20px,2vw,28px)!important;letter-spacing:.22em!important;margin-bottom:14px}
+@media (min-width:861px){.nw-fruit{top:clamp(-90px,-4.6vw,-34px)!important;right:clamp(-120px,-6.5vw,-40px)!important;width:min(58vw,960px)!important}}
+@media (max-width:860px){.nw-fruit{margin-top:-7%!important}}
