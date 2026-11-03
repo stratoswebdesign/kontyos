@@ -1860,3 +1860,5 @@ a.nw-l:hover h4{text-decoration:underline;text-underline-offset:4px}
 .pd-drink>.pd-lab{font-size:clamp(20px,2vw,28px)!important;letter-spacing:.22em!important;margin-bottom:14px}
 @media (min-width:861px){.nw-fruit{top:clamp(-90px,-4.6vw,-34px)!important;right:clamp(-120px,-6.5vw,-40px)!important;width:min(58vw,960px)!important}}
 @media (max-width:860px){.nw-fruit{margin-top:-7%!important}}
+/* Don Cherry termékoldal: minden szekció a logóval egy vonalban (ugyanaz a szélesség és bal margó, mint a fejlécé) */
+.pdp-don main .pd-wrap,.pdp-don main .pd-dpair .pd-wrap,.pdp-don main .pd-wrap.pd-drink,.pdp-don main .pd-wrap.pd-dphotos,.pdp-don main .pd-wrap.pd-cocktails,.pdp-don main .pd-wrap.pd-reviews{max-width:var(--max)!important;margin-left:auto!important;margin-right:auto!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;box-sizing:border-box}
