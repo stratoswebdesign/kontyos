@@ -307,7 +307,7 @@ XMAS_BAR = '<div class="xbar">UTOLSÓ RENDELÉS KARÁCSONYRA: [DÁTUM – A KONT
 
 def don_packs(r, title='Don Cherry csomagban', sub='Ajándékba vagy a hétvégére – a vermut és a párja egy dobozban.', dark=False):
     """Kis és nagy Don Cherry csomag (Sanyi: kicsi = 1 vermut + 1 meggy, nagy = 2 vermut + 1 meggy + 2 tonik)."""
-    cardsh = ''.join(pack_box(SP[pid], r, primary=(pid == 'don-nagy')) for pid in ('don-kis', 'don-nagy'))
+    cardsh = ''.join(pack_box(SP[pid], r, primary=True) for pid in ('don-kis', 'don-nagy'))
     return f'''<section class="dpacks{' dark' if dark else ''}"><div class="wrap"><div class="hd"><p class="kicker" style="--accent:#C8282E">Don Cherry</p><h2 class="h2">{title}</h2><p class="lead">{sub}</p></div>
 <div class="grid">{cardsh}</div><p class="ph-note">Demó: az ár a palackárak összege, a tonik típusát és a végleges árat a Kontyos adja.</p></div></section>'''
 
@@ -447,7 +447,7 @@ def ujbor_page():
 <p class="lead">Az idei gyümölcs, palackban. Válogass a 100%-os klasszikus gyümölcsborainkból – vagy vidd mind a hatot egy dobozban.</p>
 <div class="btns"><a class="btn pink" href="#valogatas">6 palackos válogatás →</a><a class="btn ghost" href="{r}gyumolcsbor.html#klasszikus">100%-os gyümölcsborok</a></div></div>
 <div class="ubt">{bottles}</div></div></section>
-<section class="ujv" id="valogatas"><div class="wrap">{pack_box(sp, r, primary=True, tag='6 PALACK · 6 PALACKOS ÁRON', btn='<button class="btn pink block" type="button" data-add="ujbor-valogatas">Kosárba teszem a válogatást</button>')}
+<section class="ujv" id="valogatas"><div class="wrap">{pack_box(sp, r, primary=True, tag='6 PALACK · 6 PALACKOS ÁRON', btn='<button class="btn pink block" type="button" data-add="ujbor-valogatas" style="width:auto">Kosárba teszem a válogatást</button>')}
 <div class="tx"><p class="kicker">Újbor-válogatás</p><h2 class="h2">Mind a hat, egy dobozban</h2><ul>{lis}</ul>
 <p class="ph-note">Demó összeállítás a klasszikus gyümölcsborokból, a 6 palackos mennyiségi áron – a végleges tartalmat a Kontyos adja.</p></div></div></section>
 <section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:24px"><h2 class="h2">Vagy válaszd palackonként</h2>{cards(sp['items'], r)}</div></section>'''
@@ -955,13 +955,15 @@ def product(p):
 
 # ---------- kampányoldalak ----------
 # Egységes csomagkártya (Sanyi, 11-03): a Black Friday-doboz stílusa mindenhol – színes felső rész (felirat, cím, palackok ív nélkül, tartalom), szaggatott vonal, sötét ársáv, gomb
-PK_TOP = {'bf-premium': ('#EF4E73', '#fff'), 'bf-mini': ('#2A2A33', '#fff'), 'edes-unnepek': ('#7A1C2C', '#fff'), 'premium-advent': ('#123B2B', '#F3E2BC'),
-          'konnyu-karacsony': ('#1F5A3C', '#fff'), 'forralt-6': ('#C9561A', '#fff'), 'ujbor-valogatas': ('#D7263D', '#fff'),
-          'don-kis': ('#2E8C86', '#fff'), 'don-nagy': ('#C8282E', '#fff')}
+PK_TOP = {  # felső szín, szövegszín, gomb háttér, gomb szöveg – minden csomag a saját színeivel
+    'bf-premium': ('#EF4E73', '#fff', '#EF4E73', '#fff'), 'bf-mini': ('#2A2A33', '#fff', '#fff', '#0B0B10'),
+    'edes-unnepek': ('#7A1C2C', '#fff', '#B8324A', '#fff'), 'premium-advent': ('#123B2B', '#F3E2BC', '#DBB879', '#123B2B'),
+    'konnyu-karacsony': ('#1F5A3C', '#fff', '#2E8C5A', '#fff'), 'forralt-6': ('#C9561A', '#fff', '#F08A3C', '#1B2A5C'),
+    'ujbor-valogatas': ('#D7263D', '#fff', '#D7263D', '#fff'), 'don-kis': ('#2E8C86', '#fff', '#5FB8B3', '#0B0B10'), 'don-nagy': ('#C8282E', '#fff', '#C8282E', '#fff')}
 
 
 def pack_box(sp, r, active=True, tag=None, primary=False, extra='', btn=None, stock=''):
-    top, fg = PK_TOP.get(sp['id'], ('#1B2A5C', '#fff'))
+    top, fg, bb, bf = PK_TOP.get(sp['id'], ('#1B2A5C', '#fff', '#F3C66B', '#1B2A5C'))
     pct = f'<span>−{round((1 - sp["price"] / sp["old"]) * 100)}%</span>' if sp.get('old') and active else ''
     tag = tag if tag is not None else sp.get('tag', '')
     if btn is None:
@@ -969,7 +971,7 @@ def pack_box(sp, r, active=True, tag=None, primary=False, extra='', btn=None, st
                else '<button class="btn ghost block" type="button" data-waitlist>Szólj, ha indul</button>')
     price = (f'{f"<s>{ft(sp[chr(111)+chr(108)+chr(100)])}</s>" if sp.get("old") else ""}<b>{ft(sp["price"])}</b>' if active else '<b style="font-size:24px">Ár a kampány indulásakor</b>')
     ship = ('INGYENES SZÁLLÍTÁS' if sp.get('free') else '+ szállítási díj') if active else ''
-    return f'''<article class="bfx pkx" style="--tint:{top};--tfg:{fg}"><div class="top"><div class="tagrow"><span>{e(tag)}</span>{pct}</div><h2>{e(sp['name'])}</h2>
+    return f'''<article class="bfx pkx" style="--tint:{top};--tfg:{fg};--pbtn:{bb};--pbtnfg:{bf}"><div class="top"><div class="tagrow"><span>{e(tag)}</span>{pct}</div><h2>{e(sp['name'])}</h2>
 <div class="ph">{pack_bottles(sp, r)}</div><p class="ct">{e(pack_contents(sp))}</p>{extra}</div>
 <div class="pr">{price}<em>{ship}</em></div>{f'<p class="stock">{stock}</p>' if stock else ''}{btn}</article>'''
 

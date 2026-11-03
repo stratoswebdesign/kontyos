@@ -1899,3 +1899,14 @@ body[data-page="fairs"] .fz-sub{border-top:1px solid rgba(219,184,121,.14)}
 .pkx .tagrow span:first-child{background:none!important;padding:0!important;color:inherit!important;border-radius:0!important}
 .ujv .pkx .ph{background:none!important;border-radius:0!important;padding:0!important;min-height:0!important;position:static}
 .ujv .pkx .ph img{height:92%!important;margin:0 -6px!important}
+/* csomaggombok és szállítás-jelzés a csomag saját színében */
+.pkx .btn.pink,.pkx .btn:not(.ghost){background:var(--pbtn)!important;color:var(--pbtnfg)!important;box-shadow:none}
+.pkx .pr em{color:var(--pbtn)!important}
+.pkx .btn.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px var(--pbtn)}
+/* Kövess minket: kisebb térkép balra, mellette jobbra a városok */
+.fz-stack{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:start!important}
+.fz-stack .fmap{order:0;height:clamp(360px,34vw,480px)!important;position:sticky!important;top:20px!important}
+.fz-stack .flist{order:1;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px}
+.fz-stack .fz-piri{grid-column:1/-1;order:2}
+@media (max-width:900px){.fz-stack{grid-template-columns:1fr}.fz-stack .fmap{position:relative!important;top:auto!important;height:340px!important}.fz-stack .flist{grid-template-columns:1fr 1fr!important}}
+@media (max-width:520px){.fz-stack .flist{grid-template-columns:1fr!important}}
