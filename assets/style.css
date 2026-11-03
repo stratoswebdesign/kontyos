@@ -1844,3 +1844,12 @@ a.nw-l:hover h4{text-decoration:underline;text-underline-offset:4px}
 .t-retail li,.t-retail li.dup{display:flex!important;flex:none;width:clamp(150px,15vw,220px)!important;height:clamp(76px,7vw,96px)!important}
 .t-retail .rl-vp:hover ul{animation-play-state:paused}
 @media (min-width:1101px){.t-hero .h2{font-size:min(4.1vw,64px)}}
+/* „A gyümölcsbor új világa”: sötétkék háttér, egyszínű szövegek, aláhúzások nélkül; telefonon az „új oldalai” rész nélkül */
+.nworld{background:#1B2A5C!important;color:#F3EEE5}
+.nworld .h2,.nworld h3,.nworld h4,.nworld p,.nworld b,.nw-intro b,.nw-kick,.nw-what h3,.nw-team h3,.nw-l h4,.nw-sides h3{color:#F3EEE5!important}
+.nw-bar,.nw-l i,.nw-kick::before,.nw-kick::after,.nw-sides h3::after,.nw-what::before{display:none!important}
+.nw-kick{opacity:.8}
+.nw-what{background:rgba(255,255,255,.07)!important;box-shadow:none!important;grid-template-columns:minmax(220px,.75fr) 2fr!important}
+.nw-what p{grid-column:2!important}
+.nw-l{border-left-color:rgba(243,238,229,.22)!important}
+@media (max-width:860px){.nw-sides{display:none!important}.nw-what{grid-template-columns:1fr!important}.nw-what p{grid-column:1!important}}
