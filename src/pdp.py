@@ -245,7 +245,8 @@ def t_klasszikus(p):
     buy = buy_core(p, c) if p['avail'] else sold_out(p)
     html = f'''{u_hero(p)}
 {info(p, c)}
-<section class="pd-illu noimg"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>{_('TXT')['klassz2']}</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div></section>
+<section class="pd-illu noimg duo"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>{_('TXT')['klassz2']}</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div>
+<div class="box"><p class="kick">A kiszerelésről</p><h2>Mert a jóból több jár.</h2><p>Hiszünk abban, hogy <b>fél liter a kedvenc gyümölcsborodból nem elég.</b> Ezért gyümölcsborainkat és vermutjainkat a megszokott <b>0,75 literes palackban</b> kínáljuk.</p><p>Forralt borainkból <b>1 liter</b> jut a közös pillanatokra, EASY CIDER-ünk pedig praktikus <b>0,33 literes</b> kiszerelésben frissít fel.</p></div></section>
 {reviews(p, c)}
 {cross(cross_ids, 'Ha a meggyet szereted' if 'meggy' in p['id'] else 'Ha ezt szereted', lambda x: ring.get(x['line'], '#1B2A5C'), 'font-family:var(--serif);font-weight:700;font-size:clamp(36px,4vw,54px)')}'''
     return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, btn=ucfg(p)['btn'])) if p['avail'] else '')

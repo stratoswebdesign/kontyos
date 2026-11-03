@@ -2105,3 +2105,10 @@ body.modal-open{overflow:hidden}
 .sp-modal p{margin:0}
 .linkbtn{border:0;background:none;padding:0;color:var(--navy);text-decoration:underline;cursor:pointer;font:inherit}
 @media (max-width:760px){.pp-modal .body{grid-template-columns:1fr}.pp-map{min-height:34svh;order:-1}.pp-modal ul{max-height:28svh}.pp-box{padding-left:16px}}
+
+/* Gyümölcsbor termékoldal: két flekk egymás mellett (100% + kiszerelés) – Sanyi, 11-04 */
+.pd-illu.noimg.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px);max-width:calc(1320px + 2*var(--gutter));margin:0 auto;align-items:stretch}
+.pd-illu.noimg.duo .box{width:auto;margin:0;justify-content:center}
+.pd-illu.duo .kick{margin:0;font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#EF4E73}
+.pd-illu.duo b{font-weight:700}
+@media (max-width:760px){.pd-illu.noimg.duo{grid-template-columns:1fr}}
