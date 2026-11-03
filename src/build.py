@@ -643,7 +643,7 @@ def trust_block(r, h='h2'):
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p></div>
 <div class="tp-polas" aria-label="A Kontyos csapata"><figure class="tpola" style="--r:-6deg"><span class="ph">[Csapatfotó 1 – a Kontyos küldi]</span></figure><figure class="tpola" style="--r:5deg"><span class="ph">[Csapatfotó 2 – a Kontyos küldi]</span></figure></div>
 <div class="tnum"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
-<div class="t-retail"><h3>Országszerte találkozhatsz velünk</h3><div class="rl-vp"><ul>{tiles}{tiles.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
+<div class="t-retail"><div class="rl-vp"><ul>{tiles}{tiles.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
 
 </div></section>'''
 
