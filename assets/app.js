@@ -350,6 +350,15 @@
       b.addEventListener('click', function () { sim = b.getAttribute('data-sim') || null; try { sim ? localStorage.setItem('kontyos-demo-sim', sim) : localStorage.removeItem('kontyos-demo-sim'); } catch (e) {} document.querySelectorAll('[data-sim]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); paint(); });
     });
     paint();
+    /* Telefonon a vásár-karusszel alapállása: a középső (3.) kártya középen, mindkét oldalon kilóg a szomszéd (Artúr, 11-03) */
+    var centerFairs = function () {
+      if (!window.matchMedia('(max-width:760px)').matches) return;
+      var row = document.getElementById('fair-row'); if (!row) return;
+      var c = row.children[2]; if (!c) return;
+      var rr = row.getBoundingClientRect(), cr = c.getBoundingClientRect();
+      row.scrollLeft += (cr.left + cr.width / 2) - (rr.left + rr.width / 2);
+    };
+    centerFairs(); window.addEventListener('load', centerFairs);
     document.querySelectorAll('[data-fair-more]').forEach(function (b) {
       var row = document.getElementById(b.getAttribute('aria-controls')); if (!row) return;
       b.addEventListener('click', function () { var o = row.classList.toggle('open'); b.setAttribute('aria-expanded', String(o)); b.textContent = o ? 'Kevesebb vásár' : 'További vásárok (' + (row.children.length - 5) + ')'; });

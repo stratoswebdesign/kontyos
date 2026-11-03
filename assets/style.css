@@ -2030,3 +2030,6 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 
 /* Alma felirat középre, mint a többi gyümölcs (2026-11-03) */
 .t-fruit .alma-cap{justify-content:center;text-align:center}
+
+/* Telefon: vásárkártyák középre pattannak, két oldalt kilóg a szomszéd (11-03) */
+@media (max-width:760px){.fair-grid .fair-card2{scroll-snap-align:center}}
