@@ -2014,3 +2014,8 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 /* ÚJBOR hero: a felirat lejjebb, hogy az Ú ékezete ne bújjon a menü mögé */
 @media (min-width:861px){.hero[data-season="ujbor"]{--wt:clamp(160px,21svh,230px)}}
 @media (max-width:860px){.hero[data-season="ujbor"] .word{margin-top:34px!important}}
+/* főoldal újbor hero: felirat kicsit feljebb (a menü alatt marad), a pecsét lejjebb-jobbra, hogy ne takarja */
+@media (min-width:861px){
+  .hero.has-fruit[data-season="ujbor"]{--wt:clamp(140px,18.5svh,205px)}
+  .hero.has-fruit[data-season="ujbor"] .stamp{transform:translate(clamp(170px,17vw,215px),clamp(160px,22svh,198px))}
+}
