@@ -1735,3 +1735,15 @@ main.fairs .fz-piri{text-align:left;margin:0;max-width:820px}
 @media (max-width:1100px){.fz-stack .flist{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.fz-stack .flist{grid-template-columns:1fr}}
 .pk-fblock .packs-grid{grid-template-columns:minmax(0,520px)!important}
+/* üzletlánc-logók háttér és keret nélkül */
+.t-retail li,.t-retail li.dup{background:transparent!important;border:0!important;box-shadow:none!important}
+/* vásárok oldal: kék menüsáv, arany logó és arany menüpontok (Sanyi, 11-03) */
+body[data-page="fairs"] .site-head{background:#1B2A5C!important}
+.logo .lg{display:none}
+body[data-page="fairs"] .site-head .logo .lb,body[data-page="fairs"] .site-head .logo .lw{display:none!important}
+body[data-page="fairs"] .site-head .logo .lg{display:block!important}
+body[data-page="fairs"] .site-head .nav a,body[data-page="fairs"] .site-head .nav a.sale{color:#DBB879!important}
+body[data-page="fairs"] .site-head .nav a:hover,body[data-page="fairs"] .site-head .nav a[aria-current]{color:#F3E2BC!important}
+body[data-page="fairs"] .site-head .menu-btn{background:rgba(219,184,121,.14)}
+body[data-page="fairs"] .site-head .menu-btn path{stroke:#DBB879!important}
+body[data-page="fairs"] .site-head .menu-btn{background:rgba(219,184,121,.14)!important;border-color:rgba(219,184,121,.5)!important}
