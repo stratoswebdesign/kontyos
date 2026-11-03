@@ -465,7 +465,7 @@ MSEARCH = '''<section class="m-search"><form role="search" action="kereses.html"
 
 
 PK_HERO = {  # Ajándék és csomagok hero: mindig az aktuális szezon-landing heroját tükrözi, csak csomagokkal (Sanyi, 11-03)
-    'forralt': dict(bg='#F08A3C', fg='#1B2A5C', hword='#1B2A5C', acc='#1B2A5C', ctafg='#fff', word='FORRALT BOR', packs=['forralt-6', 'konnyu-karacsony'],
+    'forralt': dict(bg='#F08A3C', fg='#1B2A5C', hword='#1B2A5C', acc='#1B2A5C', ctafg='#fff', word='FORRALT BOR', packs=['forralt-6'],
                     eyebrow='Ajándék és csomagok · forralt szezon', s='PIRI Mama forralt borok csomagban – hideg estékre és ajándékba.'),
     'ujbor': dict(bg='#F6E1E4', fg='#1B2A5C', hword='#D7263D', acc='#EF4E73', ctafg='#fff', word='ÚJBOR', packs=['ujbor-valogatas'],
                   eyebrow='Ajándék és csomagok · újbor · nov. 5–23.', s='Hat klasszikus gyümölcsbor a 6 palackos áron.'),
@@ -511,7 +511,7 @@ def packs_page():
         return (f'<section data-season="{k}" class="pk-season {cls}" id="pk-{k}"><div class="wrap"><div class="hd"><p class="kicker">{kicker}</p><h2 class="h2" {H2}>{title}</h2></div>'
                 f'<div class="packs-grid">{"".join(pack_card(SP[i], r) for i in ids)}</div>{link}</div></section>')
     heroes = ''.join(pack_hero(k, r) for k in ('forralt', 'ujbor', 'bf', 'karacsony'))
-    seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6', 'konnyu-karacsony'], '')
+    seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6'], '')
                 + f'<section data-season="forralt" class="pk-season pk-ujbor">{fruit_burst(r, 12, 7)}<div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}</div><a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a></div></section>'
                 + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'<a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a>').replace('<div class="wrap">', fruit_burst(r, 12, 7) + '<div class="wrap">', 1)
                 + season('bf', 'pk-bf', 'Most aktuális · Black Friday · nov. 23–29.', 'Black Friday csomagok', ['bf-premium', 'bf-mini'], f'<a class="pk-more" href="{r}black-friday.html">A Black Friday oldal →</a>')

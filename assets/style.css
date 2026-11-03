@@ -2002,3 +2002,8 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .tpola>img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
 .nw-head .nw-photo{display:block;width:clamp(300px,34vw,520px);height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:20px;box-shadow:0 18px 40px rgba(27,42,92,.14)}
 @media (max-width:860px){.nw-head .nw-photo{width:100%;order:-1}}
+/* lábléc: az Innováció szekció kékje (a vásárok oldalon marad a legsötétebb kék) */
+.site-foot{background:#1B2A5C}
+/* forralt szezon: egy csomag, a többi csomagkártyával azonos szélességben */
+.pk-forralt .packs-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media (max-width:860px){.pk-forralt .packs-grid{grid-template-columns:1fr!important}}
