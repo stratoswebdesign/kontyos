@@ -512,8 +512,8 @@ def packs_page():
                 f'<div class="packs-grid">{"".join(pack_card(SP[i], r) for i in ids)}</div>{link}</div></section>')
     heroes = ''.join(pack_hero(k, r) for k in ('forralt', 'ujbor', 'bf', 'karacsony'))
     seasonal = (season('forralt', 'pk-forralt', 'Most aktuális · forralt szezon', 'Forralt borok csomagban', ['forralt-6'], '')
-                + f'<section data-season="forralt" class="pk-season pk-ujbor">{fruit_burst(r, 12, 7)}<div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}</div><a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a></div></section>'
-                + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'<a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a>').replace('<div class="wrap">', fruit_burst(r, 12, 7) + '<div class="wrap">', 1)
+                + f'<section data-season="forralt" class="pk-season pk-ujbor">{fruit_burst(r, 16, 7, cls='right')}<div class="wrap"><div class="hd"><p class="kicker">Újbor · nov. 5–23.</p><h2 class="h2" {H2}>Újbor-válogatás</h2></div><div class="packs-grid">{pack_card(SP["ujbor-valogatas"], r)}</div><a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a></div></section>'
+                + season('ujbor', 'pk-ujbor', 'Most aktuális · nov. 5–23.', 'Újbor-válogatás', ['ujbor-valogatas'], f'<a class="pk-more" href="{r}ujbor-valogatas.html">Az újbor-oldal →</a>').replace('<div class="wrap">', fruit_burst(r, 16, 7, cls='right') + '<div class="wrap">', 1)
                 + season('bf', 'pk-bf', 'Most aktuális · Black Friday · nov. 23–29.', 'Black Friday csomagok', ['bf-premium', 'bf-mini'], f'<a class="pk-more" href="{r}black-friday.html">A Black Friday oldal →</a>')
                 + season('karacsony', 'pk-xmas', 'Most aktuális · advent és karácsony', 'Karácsonyi ajándékcsomagok', ['edes-unnepek', 'premium-advent', 'konnyu-karacsony'], f'<a class="pk-more" href="{r}karacsonyi-ajandek-bor.html">A karácsonyi oldal →</a>'))
     forralt = (f'<section data-season="ujbor bf karacsony" class="sec pk-fblock"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" {H2}>Forralt csomag</h2>'
@@ -608,6 +608,8 @@ def fruit_burst(r, n=18, seed=1, fruits=None, cls=''):
         f = fr[i % len(fr)]
         if 'edge' in cls:  # csak a két szélén, hogy a szöveget ne takarja
             x = rnd.uniform(-5, 6) if i % 2 == 0 else rnd.uniform(84, 95)
+        elif 'right' in cls:  # a csomagkártya mellett, a jobb oldali üres részen
+            x = rnd.uniform(48, 94)
         else:
             x = rnd.uniform(-4, 92)
         y = rnd.uniform(-6, 94)
