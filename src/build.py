@@ -631,8 +631,7 @@ def trust_block(r, h='h2'):
     uz = ''.join(f'<img src="{r}img/uzem/{k}.webp" alt="{a}" loading="lazy">' for k, a in (('tartaly', 'Rozsdamentes erjesztőtartályok a klárafalvi üzemben'), ('palack', 'Palackozás a klárafalvi üzemben'), ('palack2', 'Automata palackozósor a klárafalvi üzemben')))
     tiles = ''.join((f'<li><img class="rlogo" src="{r}img/logos/{f}" alt="{n}" loading="lazy">' if f else f'<li><span class="rlogo txt">{n.upper()}</span>') + '</li>' for n, f, a, b in RETAIL)
     return f'''<section class="trust2"><div class="wrap">
-<div class="t-team" aria-label="A Kontyos csapata">{''.join(f'<figure class="tpola" style="--r:{d}deg"><span class="ph">[Csapatfotó {i} – a Kontyos küldi]</span></figure>' for i, d in ((1, -6), (2, 3), (3, -2)))}</div>
-<div class="t-hero"><p class="kicker">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
+<div class="t-hero"><figure class="tpola tp-hero" style="--r:5deg"><span class="ph">[Csapatfotó 3 – a Kontyos küldi]</span></figure><p class="kicker">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
 <{h} class="h2">100% gyümölcsbor.<br>Ezerféle élmény.</{h}>
 <p class="lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat. A klasszikus gyümölcsboroktól a modern különlegességekig.</p></div>
 <div class="t-bottles"><div class="brow">{bottles}</div><div class="tnum"><b>450 000+</b><span>palack</span></div></div>
@@ -640,9 +639,10 @@ def trust_block(r, h='h2'):
 <div class="t-fhead"><h3>Évente több száz tonna gyümölcsből</h3><div class="tnum"><b>500 tonna +</b><span>gyümölcs évente</span></div></div>
 <figure class="alma"><img src="{r}img/gyumolcs/alma.webp" alt="Alma" loading="lazy"></figure><div class="alma-cap"><span>Alma</span></div>
 <div class="frow2">{fr}</div></div>
-<div class="t-plant"><div class="hd"><div><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalváról az üzletekig</h3></div><div class="tnum"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
-<div class="pics">{uz}</div>
+<div class="t-plant tp2"><div class="tp-tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalváról az üzletekig</h3>
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p></div>
+<div class="tp-polas" aria-label="A Kontyos csapata"><figure class="tpola" style="--r:-6deg"><span class="ph">[Csapatfotó 1 – a Kontyos küldi]</span></figure><figure class="tpola" style="--r:5deg"><span class="ph">[Csapatfotó 2 – a Kontyos küldi]</span></figure></div>
+<div class="tnum"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
 <div class="t-retail"><h3>Országszerte találkozhatsz velünk</h3><div class="rl-vp"><ul>{tiles}{tiles.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div><p>Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
 
 </div></section>'''

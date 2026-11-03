@@ -1815,3 +1815,21 @@ a.nw-l:hover h4{text-decoration:underline;text-underline-offset:4px}
 @media (max-width:860px){.nw-top .h2{font-size:clamp(28px,8.4vw,44px)}}
 @media (min-width:861px){.nw-top{max-width:min(600px,44vw)}.nw-fruit{width:min(56vw,880px);right:-3%}}
 @media (min-width:861px){.nw-top .h2{font-size:clamp(30px,3.7vw,62px)}}
+/* Rólunk: üzemfotók helyett csapat-polaroidok (2 egymásra csúsztatva a gyártás-sorban, 1 a főcím mellett) */
+.t-hero{position:relative}
+.tp-hero{position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(var(--r));width:clamp(130px,12vw,190px);margin:0}
+.tp2{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:clamp(20px,3vw,48px)}
+.tp2 .tp-tx{display:flex;flex-direction:column;gap:10px;min-width:0}
+.tp2 .tp-tx .lead{margin-top:6px}
+.tp-polas{display:flex;align-items:center;padding:10px 0}
+.tp-polas .tpola{width:clamp(150px,13vw,210px)}
+.tp-polas .tpola+.tpola{margin-left:-48px;margin-top:40px}
+.tp2 .tnum{align-self:start}
+@media (max-width:1100px){.tp-hero{position:relative;top:auto;right:auto;transform:rotate(var(--r));order:-1;margin-bottom:12px}.t-hero{display:flex;flex-direction:column;align-items:center}}
+@media (max-width:860px){
+  .tp2{grid-template-columns:1fr auto;grid-template-areas:"tx tx" "po num"}
+  .tp2 .tp-tx{grid-area:tx}.tp-polas{grid-area:po}.tp2 .tnum{grid-area:num;align-self:end}
+  .tp-polas .tpola{width:120px;padding:6px 6px 22px}.tp-polas .tpola+.tpola{margin-left:-30px;margin-top:26px}
+  .tp-hero{width:120px;padding:6px 6px 22px}
+}
+@media (min-width:1101px){.t-hero{padding:0 clamp(160px,14vw,220px)}}
