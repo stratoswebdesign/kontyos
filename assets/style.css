@@ -1999,3 +1999,4 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pd-steps .pkx .top{flex:none!important}
 .pd-steps .pd-steps-pk .pkx{height:auto!important;align-self:center}
 @media (max-width:860px){.pd-steps .pkx .ph{height:150px!important}.pd-steps .pd-steps-pk+img{aspect-ratio:1/1}}
+.tpola>img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
