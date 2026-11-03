@@ -2027,3 +2027,6 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .pk-side .t{margin:0;font-family:var(--text);font-style:italic;font-weight:600;font-size:clamp(30px,3.2vw,48px);line-height:1.1;color:#1B2A5C}
 .pk-side .s{margin:0;font-family:var(--text);font-size:clamp(16px,1.3vw,19px);color:#1B2A5C}
 .pk-side .btn{align-self:flex-start;background:#EF4E73;color:#fff}
+
+/* Alma felirat középre, mint a többi gyümölcs (2026-11-03) */
+.t-fruit .alma-cap{justify-content:center;text-align:center}
