@@ -461,7 +461,7 @@ def ujbor_page():
 
 
 MSEARCH = '''<section class="m-search"><form role="search" action="kereses.html"><label class="sr" for="ms">Keresés</label><input id="ms" name="q" type="search" placeholder="Meggy, forralt bor, ajándék…"><button type="submit" aria-label="Keresés"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button></form>
-<nav aria-label="Gyors kategóriák"><a href="termek/piri-mama-forralt-bora.html" style="background:#1B2A5C;color:#fff">Forralt bor</a><a href="gyumolcsbor.html#klasszikus" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Klasszikus</a><a href="friss.html" style="background:#FCEE0A">FRISS</a><a href="gyumolcsbor.html#klara" style="box-shadow:inset 0 0 0 1.5px #C0284A;color:#C0284A">Klára</a><a href="termek/don-cherry.html" style="box-shadow:inset 0 0 0 1.5px #5FB8B3;color:#C8282E">Don Cherry</a><a href="csomagok.html" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Csomagok</a><a href="palinka.html" style="box-shadow:inset 0 0 0 1.5px #A8823C;color:#6B5414">Pálinka</a></nav></section>'''
+<nav aria-label="Gyors kategóriák"><a href="termek/piri-mama-forralt-bora.html" style="background:#1B2A5C;color:#fff">Forralt bor</a><a href="gyumolcsbor.html#klasszikus" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Klasszikus</a><a href="friss.html" style="background:#F28C28">FRISS</a><a href="gyumolcsbor.html#klara" style="box-shadow:inset 0 0 0 1.5px #C0284A;color:#C0284A">Klára</a><a href="termek/don-cherry.html" style="box-shadow:inset 0 0 0 1.5px #5FB8B3;color:#C8282E">Don Cherry</a><a href="csomagok.html" style="box-shadow:inset 0 0 0 1.5px #1B2A5C">Csomagok</a><a href="palinka.html" style="box-shadow:inset 0 0 0 1.5px #A8823C;color:#6B5414">Pálinka</a></nav></section>'''
 
 
 PK_HERO = {  # Ajándék és csomagok hero: mindig az aktuális szezon-landing heroját tükrözi, csak csomagokkal (Sanyi, 11-03)
@@ -788,7 +788,7 @@ def category():
 <div><img src="img/photo/klara.webp" alt="Klára prémium gyümölcsbor" loading="lazy"></div>
 <div style="display:flex;flex-direction:column;gap:18px"><p class="kicker" style="--accent:#C0284A">Prémium</p><h2 class="h2">Klára</h2><p class="lead">{TXT['klara1']}</p>
 {cards([p['id'] for p in CAT if p['line'] == 'klara'], r)}</div></div></section>
-<section id="friss" class="sec" style="background:#FCEE0A;color:#1B2A5C"><div class="wrap split">
+<section id="friss" class="sec" style="background:#F28C28;color:#1B2A5C"><div class="wrap split">
 <div style="display:flex;flex-direction:column;gap:18px"><p class="kicker" style="--accent:#1B2A5C">Új · könnyű</p><h2 class="h2">FRISS gyümölcsborok</h2><p class="lead">{TXT['friss1']}</p>
 {cards([p['id'] for p in CAT if p['line'] == 'friss'], r, 'cards grid2')}</div>
 <div>{friss_cut('')}</div></div></section>
@@ -1160,7 +1160,7 @@ def main():
     index()
     category()
     simple_list('friss.html', 'FRISS gyümölcsborok | Kontyos', 'FRISS: gyümölcsbor és almabor könnyed találkozása – narancs, eper, málna, meggy, mind 2190 Ft.', 'FRISS',
-                TXT['friss2'], [p['id'] for p in CAT if p['line'] == 'friss'], '#FCEE0A', '#1B2A5C', 'Könnyű gyümölcsborok', friss_cut(''), 'friss.html',
+                TXT['friss2'], [p['id'] for p in CAT if p['line'] == 'friss'], '#F28C28', '#1B2A5C', 'Könnyű gyümölcsborok', friss_cut(''), 'friss.html',
                 fruit_selector('', ['friss-narancs', 'friss-eper', 'friss-malna', 'friss-meggy']))
     simple_list('palinka.html', 'Gyümölcspálinka | Kontyos', 'Szamóca-, meggy-, birs-, körte- és szilvapálinka a Kontyostól.', 'Pálinka',
                 'Gyümölcspálinkák a Kontyos Borháztól.', [p['id'] for p in CAT if p['line'] == 'palinka'], '#2A2118', '#E8D29A', 'Párlatok', None, 'palinka.html')
