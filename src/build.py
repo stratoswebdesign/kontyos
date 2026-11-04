@@ -1193,13 +1193,15 @@ def about_page():
 <div class="ph"><figure class="tpola ab-worker" style="--r:-3deg"><img src="{r}img/photo/rolunk_tartaly.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure></div>
 </div></section>
 
-<section class="ab-nums"><div class="wrap">
-<div><b>2006</b><span>óta készítünk gyümölcsborokat</span></div>
+<section class="ab-nums"><div class="wrap"><div class="trk"><div><b>2006</b><span>óta készítünk gyümölcsborokat</span></div>
 <div><b>450 000+</b><span>palack</span></div>
 <div><b>500 tonna+</b><span>gyümölcs évente</span></div>
 <div><b>1 100 m²</b><span>gyártóüzem Klárafalván</span></div>
-<div><b>100%</b><span>magyar gyümölcs a borainkban</span></div>
-</div></section>
+<div><b>100%</b><span>magyar gyümölcs a borainkban</span></div><div class="dup" aria-hidden="true"><b>2006</b><span>óta készítünk gyümölcsborokat</span></div>
+<div class="dup" aria-hidden="true"><b>450 000+</b><span>palack</span></div>
+<div class="dup" aria-hidden="true"><b>500 tonna+</b><span>gyümölcs évente</span></div>
+<div class="dup" aria-hidden="true"><b>1 100 m²</b><span>gyártóüzem Klárafalván</span></div>
+<div class="dup" aria-hidden="true"><b>100%</b><span>magyar gyümölcs a borainkban</span></div></div></div></section>
 
 <section class="ab-torta"><div class="wrap">
 <div class="bt"><figure class="cake"><img src="{r}img/photo/biborfeher_torta.webp" alt="A Bíborfehér torta szelete – Magyarország Tortája 2026" loading="lazy"></figure><img class="btl" src="{r}img/t/edes-ribizlibor.webp" alt="Kontyos édes ribizlibor" loading="lazy"><span class="seal"><b>2026</b>Magyarország<br>Tortája</span></div>

@@ -2152,7 +2152,7 @@ body.modal-open{overflow:hidden}
 .ab-story .tpola{width:min(380px,100%)}
 .ab-nums{background:#1B2A5C;color:#fff;padding:clamp(36px,5vw,64px) 0}
 .ab-nums .wrap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
-.ab-nums .wrap>div{display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,255,255,.22);padding-left:18px}
+.ab-nums .trk>div{display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,255,255,.22);padding-left:18px}
 .ab-nums b{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,52px);line-height:1;color:#F3C66B}
 .ab-nums span{font-size:14px;line-height:1.4;color:rgba(255,255,255,.85)}
 .ab-time .tl{list-style:none;margin:clamp(24px,3vw,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;position:relative}
@@ -2256,13 +2256,13 @@ body.modal-open{overflow:hidden}
 .ab-torta .seal{top:-4%;right:auto;left:-3%;z-index:2}
 @media (max-width:860px){.ab-torta .bt{padding:0 16% 10% 0}.ab-torta .bt img.btl{height:70%}.ab-torta .seal{left:-2%;top:-6%}}
 @media (max-width:860px){.ab-torta .wrap{grid-template-columns:1fr}.ab-torta .bt{max-width:420px;margin-top:12px}}
-@media (max-width:400px){.ab-nums b{font-size:25px}.ab-nums .wrap>div{padding-left:12px}.ab-nums .wrap{gap:14px}}
+@media (max-width:400px){.ab-nums b{font-size:25px}.ab-nums .trk>div{padding-left:12px}.ab-nums .wrap{gap:14px}}
 /* Rólunk számok: telefonon vízszintes karusszel (11-04) */
 @media (max-width:860px){
   .ab-nums .wrap{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;padding-left:var(--gutter);padding-right:var(--gutter);scrollbar-width:none}
   .ab-nums .wrap::-webkit-scrollbar{display:none}
-  .ab-nums .wrap>div{flex:0 0 46%;scroll-snap-align:start;scroll-margin-inline-start:var(--gutter);padding:0 16px;border-left:1px solid rgba(255,255,255,.22)}
-  .ab-nums .wrap>div:first-child{border-left:0;padding-left:0}
+  .ab-nums .trk>div{flex:0 0 46%;scroll-snap-align:start;scroll-margin-inline-start:var(--gutter);padding:0 16px;border-left:1px solid rgba(255,255,255,.22)}
+  .ab-nums .trk>div:first-child{border-left:0;padding-left:0}
   .ab-nums b{font-size:clamp(28px,8vw,36px)}
 }
 @media (min-width:861px){.ab-nums b{font-size:clamp(28px,2.6vw,42px)}}
@@ -2307,3 +2307,14 @@ p,li{hyphens:manual;-webkit-hyphens:manual;text-wrap:pretty}
 body{overflow-wrap:normal}
 .pd-ups .im .pbadge{display:none}
 @media (max-width:760px){.pd-story .tiles.big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pd-story .tiles.big .tile img{height:130px}.pd-story .tiles.big .tile strong{font-size:14px}}
+/* Rólunk számok: telefonon magától forgó sáv, mint a logók (11-05) */
+.ab-nums .trk{display:contents}
+.ab-nums .trk>div.dup{display:none}
+@media (max-width:860px){
+  .ab-nums .wrap{display:block;overflow:hidden;padding:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+  .ab-nums .trk{display:flex;width:max-content;animation:rlmarq 22s linear infinite}
+  .ab-nums .trk>div,.ab-nums .trk>div.dup{display:flex;flex-direction:column;flex:none;width:200px;padding:0 18px;border-left:1px solid rgba(255,255,255,.22)}
+  .ab-nums .trk>div:first-child{border-left:1px solid rgba(255,255,255,.22);padding-left:18px}
+  .ab-nums .wrap:active .trk{animation-play-state:paused}
+}
+@media (prefers-reduced-motion:reduce){.ab-nums .trk{animation:none!important}}
