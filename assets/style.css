@@ -2119,3 +2119,12 @@ body.modal-open{overflow:hidden}
 
 /* Csomagok BF hero: a BLACK FRIDAY felirat ugyanakkora, mint a főoldali BF heróban (11-04) */
 @media (min-width:861px){.pk-hero.lp-bf .word{font-size:clamp(64px,11.5vw,190px)!important}}
+
+/* Rólunk polaroidok valódi fotókkal (11-04): a két csapatfotó fekvő (4:3) */
+.tp-polas .tpola>img{aspect-ratio:4/3}
+.tp-polas .tpola{width:clamp(190px,17vw,270px)}
+.tp-polas .tpola+.tpola{margin-left:-60px;margin-top:56px}
+@media (max-width:860px){.tp-polas .tpola{width:46%}.tp-polas .tpola+.tpola{margin-left:-8%;margin-top:30px}}
+
+/* Csomag- és kiegészítő-termékoldal: boltív nélkül, mint a sima termékek (11-04) */
+.p-media .arch.flat{background:none;border-radius:0;overflow:visible}

@@ -222,7 +222,7 @@ SEASONS = [
     dict(k='forralt', lbl='Forralt szezon', bg='#F08A3C', fg='#1B2A5C', word='FORRALT BOR', wf='calc((100vw - 64px) / 7.9)', deco=('flake-blue', 'flake-gold', 'holly', 'snow-dots'), hword='#1B2A5C', acc='#1B2A5C', ctafg='#FFFFFF',
          stampbg='#1B2A5C', stampfg='#F3C66B', stamp='CSAK MEGMELEGÍTED ÉS KÉSZ · PIRI MAMA · ',
          bottles=[('piri-mama-forralt-bora', 'clamp(360px,68vh,610px)', '-9deg'), ('narancsos-piri-mama-forralt-bora', 'clamp(360px,68vh,610px)', '4deg'), ('epres-piri-mama-forralt-bora', 'clamp(360px,68vh,610px)', '12deg')],
-         ml=64, eyebrow='Új · Narancsos PIRI Mama', t='Csak megmelegíted, és kész.', s='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.',
+         ml=64, eyebrow='Új · Narancsos PIRI Mama', t='Narancsos, fűszeres forralt gyümölcsbor egyliteres palackban – azonnal fogyasztható.', s='',
          cta=('PIRI Mama forralt borok', 'termek/narancsos-piri-mama-forralt-bora.html'), price=None),
     dict(k='ujbor', lbl='Újbor', bg='#F6E1E4', fg='#1B2A5C', word='ÚJBOR', hword='#EF4E73', acc='#EF4E73', ctafg='#fff',
          bottles=[(i, 'clamp(240px,46vh,440px)', f'{d}deg') for i, d in zip(UJBOR6, (-8, -3, 2, -2, 3, 8))], ml=-26, fruit=True,
@@ -272,7 +272,7 @@ def season_hero(s, r):
 {fruit_burst(r, 18, 5) if s.get('fruit') else ''}{falling(r, s['deco']) if s.get('deco') else ''}{ANIMALS.format(r=r) if s['k'] == 'forralt' else ''}<p class="word" aria-hidden="true"{f' style="--wfx:{s["wf"]}"' if s.get('wf') else ''}>{s['word']}</p>
 <div class="bottles">{b}</div>
 {STAMP.format(bg=s.get('stampbg', s['acc']), fg=s.get('stampfg', s['ctafg']), txt=s.get('stamp', '100% GYÜMÖLCSBŐL · KLÁRAFALVA · KONTYOS · '), uid=s['k'], center='100%')}
-<div class="copy"><div class="wrap"><div class="txt"><span class="eyebrow">{s['eyebrow']}</span><p class="t">{s['t']}</p><p class="s">{s['s']}</p><a class="btn" href="{r}{s['cta'][1]}">{s['cta'][0]} →</a></div>
+<div class="copy"><div class="wrap"><div class="txt"><span class="eyebrow">{s['eyebrow']}</span><p class="t">{s['t']}</p>{f'<p class="s">{s["s"]}</p>' if s['s'] else ''}<a class="btn" href="{r}{s['cta'][1]}">{s['cta'][0]} →</a></div>
 {price}</div></div>
 </section>'''
 
@@ -618,7 +618,7 @@ def trust_block(r, h='h2'):
     uz = ''.join(f'<img src="{r}img/uzem/{k}.webp" alt="{a}" loading="lazy">' for k, a in (('tartaly', 'Rozsdamentes erjesztőtartályok a klárafalvi üzemben'), ('palack', 'Palackozás a klárafalvi üzemben'), ('palack2', 'Automata palackozósor a klárafalvi üzemben')))
     tiles = ''.join((f'<li><img class="rlogo" src="{r}img/logos/{f}" alt="{n}" loading="lazy">' if f else f'<li><span class="rlogo txt">{n.upper()}</span>') + '</li>' for n, f, a, b in RETAIL)
     return f'''<section class="trust2"><div class="wrap">
-<div class="t-hero"><figure class="tpola tp-hero" style="--r:5deg"><span class="ph">[Csapatfotó 3 – a Kontyos küldi]</span></figure><p class="kicker">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
+<div class="t-hero"><figure class="tpola tp-hero" style="--r:5deg"><img src="{r}img/photo/pola_uzem.webp" alt="A Kontyos borászat épülete Klárafalván" loading="lazy"></figure><p class="kicker">Magyarország vezető gyümölcsbor-gyártója · Klárafalva</p>
 <{h} class="h2">100% gyümölcsbor.<br>Ezerféle élmény.</{h}>
 <p class="lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat. A klasszikus gyümölcsboroktól a modern különlegességekig.</p></div>
 <div class="t-bottles"><div class="brow">{bottles}</div><div class="tnum"><b>450 000+</b><span>palack</span></div></div>
@@ -629,7 +629,7 @@ def trust_block(r, h='h2'):
 <div class="t-plant tp2"><div class="tp-tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalváról az üzletekig</h3>
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p>
 <p class="lead tp-shop">Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
-<div class="tp-polas" aria-label="A Kontyos csapata"><figure class="tpola" style="--r:-6deg"><span class="ph">[Csapatfotó 1 – a Kontyos küldi]</span></figure><figure class="tpola" style="--r:5deg"><span class="ph">[Csapatfotó 2 – a Kontyos küldi]</span></figure></div>
+<div class="tp-polas" aria-label="A Kontyos csapata"><figure class="tpola" style="--r:-6deg"><img src="{r}img/photo/pola_csapat.webp" alt="A Kontyos csapata az erjesztőtartályok előtt" loading="lazy"></figure><figure class="tpola" style="--r:5deg"><img src="{r}img/photo/pola_stand.webp" alt="A Kontyos csapata a vásári standon" loading="lazy"></figure></div>
 <div class="tnum"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
 <div class="t-retail"><div class="rl-vp"><ul>{tiles}{tiles.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div></div>
 
@@ -816,6 +816,8 @@ def theme(p):
         return dict(page='#F4EDE0', ink='#2A2118', arch=p['arch'], accent=p['accent'], btn='#2A2118', hw=700)
     if L == 'piri':
         return dict(page='#F3EEE5', ink='#1B2A5C', arch=p['arch'], accent=p['accent'] if p['accent'] != p['arch'] else '#EF4E73', btn='#1B2A5C', hw=900)
+    if L in ('csomag', 'kiegeszito'):   # csomagok, kiegészítők: nincs boltíves háttér, a lap kapja a termék színét, mint a sima termékeknél (11-04)
+        return dict(page=p['arch'], ink='#1B2A5C', arch='transparent', accent=p['accent'], btn='#1B2A5C', hw=800)
     return dict(page='#F3EEE5', ink='#1B2A5C', arch=p['arch'], accent=p['accent'], btn='#1B2A5C', hw=800)
 
 
@@ -902,7 +904,7 @@ def product(p):
     else:
         buy = '<div class="buyrow"><div class="price"><b>Elfogyott</b><small>Hamarosan újra elérhető</small></div><button class="btn ghost" type="button" disabled>Értesítést kérek</button></div>'
         bar = ''
-    long = ''.join(f'<p>{e(x)}</p>' for x in p['long']) if p['id'] != 'meggymag-parna' else ''
+    long = ''.join(f'<p>{e(x)}</p>' for x in p['long'])
     params = ''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k, v in p['params'])
     legal = ''
     if L not in ('kiegeszito',):
@@ -943,7 +945,7 @@ def product(p):
     crumb_cat = {'klasszikus': ('gyumolcsbor.html', 'Gyümölcsborok'), 'klara': ('gyumolcsbor.html#klara', 'Klára'), 'friss': ('termek/friss-malna.html', 'FRISS'),
                  'secco': ('termek/berry-secco.html', 'Berry Secco'), 'palinka': ('termek/szamocapalinka.html', 'Pálinka'), 'csomag': ('csomagok.html', 'Csomagok')}.get(L, ('gyumolcsbor.html', 'Termékek'))
     pg += f'''<main><div class="wrap"><p class="breadcrumb" style="padding-top:4px;color:var(--ink)"><a href="{r}index.html" style="color:inherit">Főoldal</a> / <a href="{r}{crumb_cat[0]}" style="color:inherit">{crumb_cat[1]}</a> / {e(p['name'])}</p></div>
-<section class="wrap p-hero"><div class="p-media">{badge(p['id']).replace('pbadge', 'pbadge big')}<div class="arch"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{sbadge}</div>
+<section class="wrap p-hero"><div class="p-media">{badge(p['id']).replace('pbadge', 'pbadge big')}<div class="arch{' flat' if is_pack else ''}"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{sbadge}</div>
 <div class="p-buy"><span class="kicker">{LINE_LABEL[L]}</span><h1>{e(p['name'])}</h1>{rating}
 <p style="font-size:16px;line-height:1.6;opacity:.9">{e(p['short'])}</p>{f'<p style="font-size:13px;font-weight:700;opacity:.75">{e(meta)}</p>' if meta else ''}
 {chips}{packs}<div data-buy="{p['id']}" style="display:flex;flex-direction:column;gap:16px">{buy}</div>{ship}{pdp.upsell(p)}</div></section>
