@@ -1211,9 +1211,9 @@ def about_page():
 </ol><p class="ph-note">[A márkák bevezetésének évszámait és a díjakat Sanyival egészítjük ki.]</p></div></section>
 
 <section class="sec ab-plant"><div class="wrap">
-<div class="g"><figure class="big"><img src="{r}img/uzem/tartaly.webp" alt="Rozsdamentes erjesztőtartályok a klárafalvi üzemben" loading="lazy"></figure>
-<figure><img src="{r}img/uzem/palack2.webp" alt="Automata palackozósor" loading="lazy"></figure><figure><img src="{r}img/uzem/palack.webp" alt="Palackozás a klárafalvi üzemben" loading="lazy"></figure>
-<figure class="tall"><img src="{r}img/photo/rolunk_raktar.webp" alt="Raklapokon a Kontyos gyümölcsborok a raktárban" loading="lazy"></figure></div>
+<div class="g"><figure class="big"><img src="{r}img/photo/rolunk_kulso.webp" alt="A Kontyos borászat épülete Klárafalván" loading="lazy"></figure>
+<figure><img src="{r}img/photo/rolunk_udvar.webp" alt="Gyümölcsládák és palackok a borászat udvarán" loading="lazy"></figure><figure><img src="{r}img/photo/rolunk_raktar_w.webp" alt="Raklapokon a Kontyos gyümölcsborok a raktárban" loading="lazy"></figure>
+<figure class="tall"><img src="{r}img/photo/rolunk_tartaly.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure></div>
 <div class="tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h2 class="h2">Gyümölcstől a palackig, egy helyen</h2>
 <p>A 2019-ben épült modern üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük. Kizárólag idénygyümölcsökkel dolgozunk, és a borokat helyben palackozzuk.</p>
 <ul class="ab-ticks"><li><b>Hazai gyümölcs.</b> Nagy tételben vásárolunk hazai gazdáktól.</li><li><b>Tudatos édesítés.</b> Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</li><li><b>Tudatos fejlődés.</b> Együttműködünk a Szőlészeti és Borászati Intézettel.</li></ul></div>
