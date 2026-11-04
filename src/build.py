@@ -1201,12 +1201,21 @@ def about_page():
 <div><b>100%</b><span>magyar gyümölcs a borainkban</span></div>
 </div></section>
 
+<section class="ab-torta"><div class="wrap">
+<div class="bt"><figure class="cake"><img src="{r}img/photo/biborfeher_torta.webp" alt="A Bíborfehér torta szelete – Magyarország Tortája 2026" loading="lazy"></figure><img class="btl" src="{r}img/t/edes-ribizlibor.webp" alt="Kontyos édes ribizlibor" loading="lazy"><span class="seal"><b>2026</b>Magyarország<br>Tortája</span></div>
+<div class="tx"><p class="kicker">Idén ránk is esett egy szelet</p><h2 class="h2">Bekerültünk az Ország Tortájába</h2>
+<p class="lead">2026-ban a <b>Bíborfehér</b> lett Magyarország Tortája – a gyulai Kézműves Cukrászda cukrászmestereinek, Balogh Lászlónak, Balogh Zoltánnak és Kis Rolandnak az alkotása.</p>
+<p>Erdei bogyós gyümölcsök, pirított mandula, tejfölös mousse és rögös túró – és mindezt egy különleges összetevő teszi teljessé: az <b>édes feketeribizli-bor</b>, a mi Édes ribizliborunk. Büszkék vagyunk rá, hogy a klárafalvi gyümölcsbor ott van az ünnepi asztalokon, augusztus 20-tól az ország cukrászdáiban.</p>
+<div class="cta"><a class="btn" href="{r}termek/edes-ribizlibor.html">Kóstold meg a tortában szereplő bort →</a></div></div>
+</div></section>
+
 <section class="sec ab-time"><div class="wrap"><p class="kicker">Mérföldkövek</p><h2 class="h2">Klárafalváról az ország polcaira</h2>
 <ol class="tl">
 <li><b>2006</b><h3>Az első gyümölcsborok</h3><p>A családi recept gyümölcsborrá érik – elindul a Kontyos.</p></li>
 <li><b>2019</b><h3>Új, modern üzem Klárafalván</h3><p>Szegedhez közel, idilli természeti környezetben épül fel a mai borászat.</p></li>
 <li><b>2022</b><h3>A CBA polcain</h3><p>2022 januárja óta 4 állandó termékünk kapható a CBA üzleteiben.</p></li>
 <li><b>2023</b><h3>Lidl és Spar</h3><p>Januártól a Lidl-ben 2, júniustól a Sparban 5 állandó termékünk érhető el.</p></li>
+<li><b>2026</b><h3>Magyarország Tortája</h3><p>Az idei Ország Tortájában, a Bíborfehérben a mi Édes ribizliborunk szerepel.</p></li>
 <li><b>Ma</b><h3>Új márkák, új ízek</h3><p>KLÁRA prémium, FRISS, PIRI Mama, Don Cherry és Berry Secco – a klasszikus gyümölcsborokra építve fejlesztjük tovább italainkat.</p></li>
 </ol><p class="ph-note">[A márkák bevezetésének évszámait és a díjakat Sanyival egészítjük ki.]</p></div></section>
 
