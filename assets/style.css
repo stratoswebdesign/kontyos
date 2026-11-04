@@ -2318,3 +2318,14 @@ body{overflow-wrap:normal}
   .ab-nums .wrap:active .trk{animation-play-state:paused}
 }
 @media (prefers-reduced-motion:reduce){.ab-nums .trk{animation:none!important}}
+
+/* Adattáblák (termékadatok, kötelező termékinformáció): a címke-oszlop sosem keskenyebb a leghosszabb címkénél,
+   így nem csúszik egymásba a címke és az érték; keskeny telefonon egymás alá kerülnek (11-05) */
+.kv,.pd-kv{display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:24px}
+.kv>div,.pd-kv>div{grid-column:1/-1;display:grid;grid-template-columns:subgrid;gap:0 24px}
+.kv dt,.pd-kv dt{white-space:nowrap}
+@media (max-width:420px){
+  .kv,.pd-kv{display:block}
+  .kv>div,.pd-kv>div{display:flex;flex-direction:column;gap:4px}
+  .kv dt,.pd-kv dt{white-space:normal}
+}
