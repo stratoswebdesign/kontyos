@@ -2266,3 +2266,33 @@ body.modal-open{overflow:hidden}
   .ab-nums b{font-size:clamp(28px,8vw,36px)}
 }
 @media (min-width:861px){.ab-nums b{font-size:clamp(28px,2.6vw,42px)}}
+/* Rólunk 11-04 este: tartályos fotó a nagy polaroidban, a borok kis polaroidként a 2. bekezdés mellett */
+.ab-story .ab-worker{width:min(400px,100%)}
+.ab-story .ab-worker>img{aspect-ratio:3/4;object-position:50% 25%}
+.ab-story .p2{display:flow-root}
+.ab-story .p2 p{margin:0;font-size:17px;line-height:1.7}
+.ab-story .ab-mini{float:right;width:clamp(120px,12vw,170px);margin:4px 4px 10px 22px;padding:7px 7px 22px}
+.ab-story .ab-mini>img{aspect-ratio:1}
+/* üzem képrács: 3 kép (a tartályos fotó felköltözött) */
+.ab-plant .g{grid-template-columns:1fr 1fr}
+.ab-plant .g .big{grid-column:1/3}
+/* torta pecsét: kisebb felirat; gomb egy sorban */
+.ab-torta .seal{font-size:clamp(9px,.75vw,11px);letter-spacing:.02em;padding:0 8px}
+.ab-torta .seal b{font-size:clamp(24px,2.2vw,32px)}
+.ab-torta .btn{white-space:nowrap}
+@media (max-width:860px){
+  .ab-story .ab-worker{width:min(320px,86%)}
+  .ab-story .ab-mini{width:118px;margin-left:16px}
+  .ab-torta .seal{width:100px;font-size:9px}.ab-torta .seal b{font-size:24px}
+  .ab-torta .btn{font-size:clamp(11px,3.4vw,14px);padding-left:14px;padding-right:14px;letter-spacing:0}
+}
+.ab-story .tx{display:block}
+.ab-story .tx>*{margin:0 0 14px}
+.ab-story .tx .h2{margin-bottom:18px}
+.ab-story .p2{display:block;margin:0}
+.ab-story .p2 p{margin:0 0 14px}
+.ab-story .tx p:not(.kicker){margin:0 0 16px}
+/* Gépen: csak a nagy tartályos polaroid; telefonon a tartályos kicsiben a 2. bekezdés mellett (11-04) */
+.ab-story .ab-mini{display:none}
+.ab-story .ab-mini>img{aspect-ratio:3/4;object-position:50% 25%}
+@media (max-width:860px){.ab-story .ab-mini{display:block;width:124px}.ab-story .ph{display:none}}

@@ -1188,9 +1188,9 @@ def about_page():
 <section class="sec ab-story"><div class="wrap">
 <div class="tx"><p class="kicker">A történetünk</p><h2 class="h2">Édes és zamatos, akár egy nyári gyümölcs.</h2>
 <p>Édesapánk közel két évtizede alkotta meg első gyümölcsborát. Az ötlet egy karácsonyi összejövetelen született: a család hölgy tagjai olyan italra vágytak, mely édes és zamatos, akár egy nyári gyümölcs.</p>
-<p>Kitartó kísérletezéssel addig tökéletesítette a receptjét, míg megszületett az az eszményi különlegesség, mely igazán megfelel a gyümölcsös, friss ízeket kedvelők ízlésvilágának.</p>
+<div class="p2"><figure class="tpola ab-mini" style="--r:5deg"><img src="{r}img/photo/rolunk_tartaly.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure><p>Kitartó kísérletezéssel addig tökéletesítette a receptjét, míg megszületett az az eszményi különlegesség, mely igazán megfelel a gyümölcsös, friss ízeket kedvelők ízlésvilágának.</p></div>
 <p>Azóta a Kontyos tradicionális és kísérletező szellemiségű borászat lett: hagyományos és reduktív eljárással dolgozunk, és 2006 óta alkotunk elsőrangú hazai gyümölcsökből nyárillatú gyümölcsbor-különlegességeket. A családi hagyományt ma tapasztalt, elkötelezett csapat viszi tovább.</p></div>
-<div class="ph"><figure class="tpola" style="--r:-4deg"><img src="{r}img/photo/klasszikus_hangulat.webp" alt="Kontyos klasszikus gyümölcsborok: eperbor, meggybor, ribizlibor" loading="lazy"></figure></div>
+<div class="ph"><figure class="tpola ab-worker" style="--r:-3deg"><img src="{r}img/photo/rolunk_tartaly.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure></div>
 </div></section>
 
 <section class="ab-nums"><div class="wrap">
@@ -1221,8 +1221,7 @@ def about_page():
 
 <section class="sec ab-plant"><div class="wrap">
 <div class="g"><figure class="big"><img src="{r}img/photo/rolunk_kulso.webp" alt="A Kontyos borászat épülete Klárafalván" loading="lazy"></figure>
-<figure><img src="{r}img/photo/rolunk_udvar.webp" alt="Gyümölcsládák és palackok a borászat udvarán" loading="lazy"></figure><figure><img src="{r}img/photo/rolunk_raktar_w.webp" alt="Raklapokon a Kontyos gyümölcsborok a raktárban" loading="lazy"></figure>
-<figure class="tall"><img src="{r}img/photo/rolunk_tartaly.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure></div>
+<figure><img src="{r}img/photo/rolunk_udvar.webp" alt="Gyümölcsládák és palackok a borászat udvarán" loading="lazy"></figure><figure><img src="{r}img/photo/rolunk_raktar_w.webp" alt="Raklapokon a Kontyos gyümölcsborok a raktárban" loading="lazy"></figure></div>
 <div class="tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h2 class="h2">Gyümölcstől a palackig, egy helyen</h2>
 <p>A 2019-ben épült modern üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük. Kizárólag idénygyümölcsökkel dolgozunk, és a borokat helyben palackozzuk.</p>
 <ul class="ab-ticks"><li><b>Hazai gyümölcs.</b> Nagy tételben vásárolunk hazai gazdáktól.</li><li><b>Tudatos édesítés.</b> Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</li><li><b>Tudatos fejlődés.</b> Együttműködünk a Szőlészeti és Borászati Intézettel.</li></ul></div>
