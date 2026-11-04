@@ -153,7 +153,7 @@ def header(r, cur='', theme='pill', back=None):
 <a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
 <div class="drawer" id="drawer"><nav aria-label="Mobil menü"><button class="close" type="button" data-menu-close aria-label="Bezárás">×</button>
-<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
+<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
 '''
 
 
@@ -162,7 +162,7 @@ def footer(r):
 <div class="brand"><span class="logo"><img class="lb" src="{r}img/logo-navy.svg" alt="Kontyos" width="210" height="52"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="210" height="52"></span><p style="margin-top:14px;max-width:340px;font-size:14px">100%-os gyümölcsborok a klárafalvi Kontyos Borháztól.</p></div>
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}termek/berry-secco.html">Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}termek/szamocapalinka.html">Pálinka</a></div>
 <div><h4>Kampányok</h4><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a></div>
-<div><h4>Infó</h4><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
+<div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185 · Demó: Stratos Webdesign</p>
 </div></footer>
 {fairs_js()}<script src="{r}assets/catalog.js?v={VER}"></script>
@@ -628,7 +628,7 @@ def trust_block(r, h='h2'):
 <div class="frow2">{fr}</div></div>
 <div class="t-plant tp2"><div class="tp-tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalváról az üzletekig</h3>
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p>
-<p class="lead tp-shop">Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
+<p class="lead tp-shop">Keresd a KONTYOS italait az üzletekben és webshopunkban!</p><a class="tp-more" href="{r}rolunk.html">A teljes történetünk →</a></div>
 <div class="tp-polas" aria-label="A Kontyos csapata"><figure class="tpola" style="--r:-6deg"><img src="{r}img/photo/pola_csapat.webp" alt="A Kontyos csapata az erjesztőtartályok előtt" loading="lazy"></figure><figure class="tpola tp-under" style="--r:5deg"><img src="{r}img/photo/pola_raktar.webp" alt="Raklapokon a Kontyos gyümölcsborok a klárafalvi raktárban" loading="lazy"></figure></div>
 <div class="tnum"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
 <div class="t-retail"><div class="rl-vp"><ul>{tiles}{tiles.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div></div>
@@ -1160,6 +1160,86 @@ def info():
     write('info.html', pg)
 
 
+
+def about_page():
+    """Rólunk oldal (Artúr, 11-04): a teljes Kontyos-sztori, számok, csapat, üzem, márkák, üzletek, vásárok.
+    Csak a meglévő, ügyféltől származó tényekre épül (kontyos.hu Rólunk-szöveg, Sanyi számai, RETAIL dátumok);
+    ami még nincs meg, [szögletes] helykitöltő."""
+    r = ''
+    logos = ''.join((f'<li><img class="rlogo" src="{r}img/logos/{f}" alt="{n}" loading="lazy">' if f else f'<li><span class="rlogo txt">{n.upper()}</span>') + '</li>' for n, f, a, b in RETAIL)
+    partners = ''.join(f'<li><b>{n}</b><span>{a}</span><small>{b}</small></li>' for n, f, a, b in RETAIL)
+    lines = [('gyumolcsbor.html#klasszikus', 'edes-meggybor', 'Klasszikus gyümölcsborok', '100%-ban az adott gyümölcsből – eperbor eperből, meggybor meggyből.'),
+             ('gyumolcsbor.html#klara', 'klara-edes-malnabor', 'KLÁRA prémium', 'Válogatott gyümölcsökből, különös gondossággal – a gyümölcskertek istennője.'),
+             ('termek/friss-malna.html', 'friss-malna', 'FRISS', 'Gyümölcsbor és almabor fele-fele arányban, könnyed, frissítő harmóniában.'),
+             ('termek/piri-mama-forralt-bora.html', 'piri-mama-forralt-bora', 'PIRI Mama forralt bor', 'Egyliteres palackban, azonnal fogyasztható – az adventi vásárok kedvence.'),
+             ('termek/don-cherry.html', 'don-cherry', 'Don Cherry', 'Édes meggyvermut saját meggyborunkra építve – prémium, koktélba is.'),
+             ('termek/berry-secco.html', 'berry-secco', 'Berry Secco', 'Pezsgéstől friss, habzó gyümölcsborok a buborékok kedvelőinek.'),
+             ('termek/szamocapalinka.html', 'szamocapalinka', 'Pálinkák', 'Gyümölcsből cefrézve, hagyományos kisüsti eljárással főzve.')]
+    brand = ''.join(f'<a class="ab-line" href="{r}{h}"><span class="im"><img src="{r}{P[i]["tight"]}" alt="" loading="lazy"></span><b>{t}</b><small>{d}</small><em>Megnézem →</em></a>' for h, i, t, d in lines if i in P)
+    fair_cities = ' · '.join(dict.fromkeys(f['city'] for f in FAIRS))
+    pg = head('Rólunk – a Kontyos története | Kontyos', 'A Kontyos Borház története: 2006 óta készítünk 100%-os gyümölcsborokat Klárafalván. Számok, csapat, üzem, márkák, partnerek.', r, 'about')
+    pg += header(r)
+    pg += f'''<main class="about">
+<section class="ab-hero"><img class="bg" src="{r}img/photo/rolunk_uzem.webp" alt="A Kontyos borászat épülete Klárafalván" fetchpriority="high"><div class="wrap">
+<p class="crumb"><a href="{r}index.html">Főoldal</a> / Rólunk</p><p class="kicker">Rólunk · Klárafalva, 2006 óta</p>
+<h1>Egy karácsonyi asztalnál kezdődött.</h1>
+<p class="lead">Ma Magyarország vezető gyümölcsbor-gyártójaként Klárafalváról indulnak útnak italaink – az üzletek polcaira, a vásárok standjaira és hozzád.</p></div></section>
+
+<section class="sec ab-story"><div class="wrap">
+<div class="tx"><p class="kicker">A történetünk</p><h2 class="h2">Édes és zamatos, akár egy nyári gyümölcs.</h2>
+<p>Édesapánk közel két évtizede alkotta meg első gyümölcsborát. Az ötlet egy karácsonyi összejövetelen született: a család hölgy tagjai olyan italra vágytak, mely édes és zamatos, akár egy nyári gyümölcs.</p>
+<p>Kitartó kísérletezéssel addig tökéletesítette a receptjét, míg megszületett az az eszményi különlegesség, mely igazán megfelel a gyümölcsös, friss ízeket kedvelők ízlésvilágának.</p>
+<p>Azóta a Kontyos tradicionális és kísérletező szellemiségű borászat lett: hagyományos és reduktív eljárással dolgozunk, és 2006 óta alkotunk elsőrangú hazai gyümölcsökből nyárillatú gyümölcsbor-különlegességeket. A családi hagyományt ma tapasztalt, elkötelezett csapat viszi tovább.</p></div>
+<div class="ph"><figure class="tpola" style="--r:-4deg"><img src="{r}img/photo/klasszikus_hangulat.webp" alt="Kontyos klasszikus gyümölcsborok: eperbor, meggybor, ribizlibor" loading="lazy"></figure></div>
+</div></section>
+
+<section class="ab-nums"><div class="wrap">
+<div><b>2006</b><span>óta készítünk gyümölcsborokat</span></div>
+<div><b>450 000+</b><span>palack</span></div>
+<div><b>500 tonna+</b><span>gyümölcs évente</span></div>
+<div><b>1 100 m²</b><span>gyártóüzem Klárafalván</span></div>
+<div><b>100%</b><span>magyar gyümölcs a borainkban</span></div>
+</div></section>
+
+<section class="sec ab-time"><div class="wrap"><p class="kicker">Mérföldkövek</p><h2 class="h2">Klárafalváról az ország polcaira</h2>
+<ol class="tl">
+<li><b>2006</b><h3>Az első gyümölcsborok</h3><p>A családi recept gyümölcsborrá érik – elindul a Kontyos.</p></li>
+<li><b>2019</b><h3>Új, modern üzem Klárafalván</h3><p>Szegedhez közel, idilli természeti környezetben épül fel a mai borászat.</p></li>
+<li><b>2022</b><h3>A CBA polcain</h3><p>2022 januárja óta 4 állandó termékünk kapható a CBA üzleteiben.</p></li>
+<li><b>2023</b><h3>Lidl és Spar</h3><p>Januártól a Lidl-ben 2, júniustól a Sparban 5 állandó termékünk érhető el.</p></li>
+<li><b>Ma</b><h3>Új márkák, új ízek</h3><p>KLÁRA prémium, FRISS, PIRI Mama, Don Cherry és Berry Secco – a klasszikus gyümölcsborokra építve fejlesztjük tovább italainkat.</p></li>
+</ol><p class="ph-note">[A márkák bevezetésének évszámait és a díjakat Sanyival egészítjük ki.]</p></div></section>
+
+<section class="sec ab-plant"><div class="wrap">
+<div class="g"><figure class="big"><img src="{r}img/uzem/tartaly.webp" alt="Rozsdamentes erjesztőtartályok a klárafalvi üzemben" loading="lazy"></figure>
+<figure><img src="{r}img/uzem/palack2.webp" alt="Automata palackozósor" loading="lazy"></figure><figure><img src="{r}img/uzem/palack.webp" alt="Palackozás a klárafalvi üzemben" loading="lazy"></figure>
+<figure class="tall"><img src="{r}img/photo/rolunk_raktar.webp" alt="Raklapokon a Kontyos gyümölcsborok a raktárban" loading="lazy"></figure></div>
+<div class="tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h2 class="h2">Gyümölcstől a palackig, egy helyen</h2>
+<p>A 2019-ben épült modern üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük. Kizárólag idénygyümölcsökkel dolgozunk, és a borokat helyben palackozzuk.</p>
+<ul class="ab-ticks"><li><b>Hazai gyümölcs.</b> Nagy tételben vásárolunk hazai gazdáktól.</li><li><b>Tudatos édesítés.</b> Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</li><li><b>Tudatos fejlődés.</b> Együttműködünk a Szőlészeti és Borászati Intézettel.</li></ul></div>
+</div></section>
+
+<section class="ab-team"><img src="{r}img/photo/rolunk_csapat.webp" alt="A Kontyos csapata az erjesztőtartályok előtt" loading="lazy"><div class="wrap"><div class="card"><p class="kicker">A csapat</p><h2 class="h2">Akik minden palack mögött ott vannak</h2>
+<p>A hagyományt ma egy elkötelezett csapat viszi tovább. Borászaink és munkatársaink szakértelme és szenvedélye biztosítja, hogy minden palack a gyümölcs legjavát adja.</p></div></div></section>
+
+<section class="sec ab-brands"><div class="wrap"><p class="kicker">Márkáink</p><h2 class="h2">A klasszikustól az újig</h2>
+<p class="lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat.</p>
+<div class="ab-lines">{brand}</div></div></section>
+
+<section class="sec ab-where"><div class="wrap">
+<div class="tx"><p class="kicker">Ahol találkozhatsz velünk</p><h2 class="h2">Üzletekben, vásárokon, online</h2>
+<p>Italainkat országszerte megtalálod a nagy üzletláncok polcain, adventkor pedig a PIRI Mama forralt borral a legnagyobb karácsonyi vásárokon várunk: {e(fair_cities)}.</p>
+<ul class="ab-partners">{partners}</ul>
+<div class="cta"><a class="btn" href="{r}vasarok.html">Vásári standjaink →</a><a class="btn ghost" href="{r}gyumolcsbor.html">Irány a webshop</a></div></div>
+<figure class="tpola" style="--r:4deg"><img src="{r}img/photo/rolunk_stand.webp" alt="A Kontyos csapata a vásári standon" loading="lazy"></figure>
+</div><div class="t-retail"><div class="rl-vp"><ul>{logos}{logos.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div></div></section>
+
+<section class="sec ab-end"><div class="wrap"><p class="kicker">Kontyos · Klárafalva</p><h2 class="h2">A gyümölcs a főszereplő. Mindig.</h2>
+<p class="lead">A gyümölcsök gazdag ízvilágát közel két évtized borászati tapasztalatával ötvözzük, hogy a klasszikus gyümölcsboroktól az innovatív különlegességekig minden alkalomra új élményt kínáljunk.</p>
+<a class="btn" href="{r}gyumolcsbor.html">Fedezd fel a borainkat →</a></div></section>
+</main>''' + footer(r)
+    write('rolunk.html', pg)
+
 def main():
     global VER
     pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, TXT=TXT, badge=badge, friss_cut=friss_cut, pack_box=pack_box, SP=SP)
@@ -1182,6 +1262,7 @@ def main():
     search_page()
     packs_page()
     fairs_page()
+    about_page()
     checkout()
     thanks()
     info()
