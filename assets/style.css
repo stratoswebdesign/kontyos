@@ -2128,3 +2128,8 @@ body.modal-open{overflow:hidden}
 
 /* Csomag- és kiegészítő-termékoldal: boltív nélkül, mint a sima termékek (11-04) */
 .p-media .arch.flat{background:none;border-radius:0;overflow:visible}
+/* raktárfotó: álló polaroid, a mellette lévő csapatfotó takarja (11-04) */
+.tp-polas .tpola:first-child{position:relative;z-index:2}
+.tp-polas .tpola.tp-under{position:relative;z-index:1;width:clamp(150px,13vw,210px)}
+.tp-polas .tpola.tp-under>img{aspect-ratio:3/4}
+@media (max-width:860px){.tp-polas .tpola.tp-under{width:36%}}

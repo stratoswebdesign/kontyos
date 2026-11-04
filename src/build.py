@@ -629,7 +629,7 @@ def trust_block(r, h='h2'):
 <div class="t-plant tp2"><div class="tp-tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h3>Klárafalváról az üzletekig</h3>
 <p class="lead">2006 óta készítünk gyümölcsborokat. Saját üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük.</p>
 <p class="lead tp-shop">Keresd a KONTYOS italait az üzletekben és webshopunkban!</p></div>
-<div class="tp-polas" aria-label="A Kontyos csapata"><figure class="tpola" style="--r:-6deg"><img src="{r}img/photo/pola_csapat.webp" alt="A Kontyos csapata az erjesztőtartályok előtt" loading="lazy"></figure><figure class="tpola" style="--r:5deg"><img src="{r}img/photo/pola_stand.webp" alt="A Kontyos csapata a vásári standon" loading="lazy"></figure></div>
+<div class="tp-polas" aria-label="A Kontyos csapata"><figure class="tpola" style="--r:-6deg"><img src="{r}img/photo/pola_csapat.webp" alt="A Kontyos csapata az erjesztőtartályok előtt" loading="lazy"></figure><figure class="tpola tp-under" style="--r:5deg"><img src="{r}img/photo/pola_raktar.webp" alt="Raklapokon a Kontyos gyümölcsborok a klárafalvi raktárban" loading="lazy"></figure></div>
 <div class="tnum"><b>1 100 m²</b><span>gyártóüzem</span></div></div>
 <div class="t-retail"><div class="rl-vp"><ul>{tiles}{tiles.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div></div>
 
