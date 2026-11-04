@@ -2116,3 +2116,6 @@ body.modal-open{overflow:hidden}
 .pd-illu.noimg.duo{background:#E6EEDF;max-width:none;padding-left:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)));padding-right:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)))}
 .pd-illu.noimg.duo .box{background:#fff}
 .pd-illu.noimg.duo{gap:16px}.pd-illu.noimg.duo .box{border:1px solid #E2DACB;border-radius:4px}
+
+/* Csomagok BF hero: a BLACK FRIDAY felirat ugyanakkora, mint a főoldali BF heróban (11-04) */
+@media (min-width:861px){.pk-hero.lp-bf .word{font-size:clamp(64px,11.5vw,190px)!important}}

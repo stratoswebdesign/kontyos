@@ -145,8 +145,8 @@ def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra='', to
 def header(r, cur='', theme='pill', back=None):
     links = ''.join(f'<a href="{r}{h}" class="{c}"{" aria-current=page" if h == cur else ""}>{t}</a>' for h, t, c in NAV)
     dlinks = ''.join(f'<a href="{r}{h}">{t}</a>' for h, t, c in NAV)
-    backbtn = f'<a class="back-btn" href="{r}{back}" aria-label="Vissza">←</a>' if back else ''
-    return f'''<header class="site-head hd-{theme}{' has-back' if back else ''}"><div class="wrap">
+    backbtn = ''   # mobilon a termékoldalakon is a menügomb látszik, nem a vissza-nyíl (Artúr, 11-04)
+    return f'''<header class="site-head hd-{theme}"><div class="wrap">
 {backbtn}<button class="menu-btn" type="button" data-menu aria-label="Menü"><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 1h20M0 7h20M0 13h20" stroke="#1B2A5C" stroke-width="2"/></svg></button>
 <a class="logo" href="{r}index.html" aria-label="Kontyos – főoldal"><img class="lb" src="{r}img/logo-navy.svg" alt="Kontyos" width="154" height="38"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="154" height="38"><img class="lg" src="{r}img/logo-gold.svg" alt="" aria-hidden="true" width="154" height="38"></a>
 <nav class="nav" aria-label="Fő menü">{links}</nav>
