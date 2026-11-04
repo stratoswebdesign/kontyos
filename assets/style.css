@@ -2296,3 +2296,14 @@ body.modal-open{overflow:hidden}
 .ab-story .ab-mini{display:none}
 .ab-story .ab-mini>img{aspect-ratio:3/4;object-position:50% 25%}
 @media (max-width:860px){.ab-story .ab-mini{display:block;width:124px}.ab-story .ph{display:none}}
+/* Rólunk: partnerkártyák helyett logó-karusszel a szöveg alatt (11-04) */
+.ab-where .ab-logos{margin:4px 0 6px;min-width:0;max-width:100%;overflow:hidden}
+.ab-where .tx{min-width:0}.ab-where .ab-logos .rl-vp{width:100%;overflow:hidden}
+
+/* ===== Szótördelés szabálya (11-04): soha nincs elválasztás és szó közbeni törés; a sorok kiegyensúlyozva törnek ===== */
+h1,h2,h3,h4,h5,.h1,.h2,.h3,.pd-big,.word,.t,.kicker,.eyebrow,.n,.nm,b,strong,.btn,button,a{hyphens:manual!important;-webkit-hyphens:manual!important;word-break:normal!important;overflow-wrap:normal!important}
+h1,h2,h3,.h1,.h2,.h3,.pd-big{text-wrap:balance}
+p,li{hyphens:manual;-webkit-hyphens:manual;text-wrap:pretty}
+body{overflow-wrap:normal}
+.pd-ups .im .pbadge{display:none}
+@media (max-width:760px){.pd-story .tiles.big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pd-story .tiles.big .tile img{height:130px}.pd-story .tiles.big .tile strong{font-size:14px}}

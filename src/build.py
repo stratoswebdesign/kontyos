@@ -1237,10 +1237,10 @@ def about_page():
 <section class="sec ab-where"><div class="wrap">
 <div class="tx"><p class="kicker">Ahol találkozhatsz velünk</p><h2 class="h2">Üzletekben, vásárokon, online</h2>
 <p>Italainkat országszerte megtalálod a nagy üzletláncok polcain, adventkor pedig a PIRI Mama forralt borral a legnagyobb karácsonyi vásárokon várunk: {e(fair_cities)}.</p>
-<ul class="ab-partners">{partners}</ul>
+<div class="t-retail ab-logos"><div class="rl-vp"><ul>{logos}{logos.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div></div>
 <div class="cta"><a class="btn" href="{r}vasarok.html">Vásári standjaink →</a><a class="btn ghost" href="{r}gyumolcsbor.html">Irány a webshop</a></div></div>
 <figure class="tpola" style="--r:4deg"><img src="{r}img/photo/rolunk_stand.webp" alt="A Kontyos csapata a vásári standon" loading="lazy"></figure>
-</div><div class="t-retail"><div class="rl-vp"><ul>{logos}{logos.replace('<li>', '<li class="dup" aria-hidden="true">')}</ul></div></div></section>
+</div></section>
 
 <section class="sec ab-end"><div class="wrap"><p class="kicker">Kontyos · Klárafalva</p><h2 class="h2">A gyümölcs a főszereplő. Mindig.</h2>
 <p class="lead">A gyümölcsök gazdag ízvilágát közel két évtized borászati tapasztalatával ötvözzük, hogy a klasszikus gyümölcsboroktól az innovatív különlegességekig minden alkalomra új élményt kínáljunk.</p>

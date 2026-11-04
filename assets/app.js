@@ -591,4 +591,22 @@
   window.addEventListener('resize', logoToneSoon);
   window.addEventListener('scroll', logoToneSoon, { passive: true });
   document.addEventListener('click', function () { setTimeout(logoTone, 60); });
+
+  /* Szótördelés szabálya (11-04): szót soha nem vágunk ketté. Ha egy cím leghosszabb szava nem fér ki
+     a dobozába, a betűméretet arányosan csökkentjük (legfeljebb 55%-ig), amíg kifér. */
+  var FIT_SEL = '.ctiles a span,h1,h2,h3,h4,.h2,.pd-big,.word,.pd-mcard .n,.pd-mcard .k,.tiles .tile,.pd-xs strong,main strong,.pcard .n,.ab-line b,.tnum b,.ab-nums b';
+  function fitWords() {
+    document.querySelectorAll(FIT_SEL).forEach(function (el) {
+      if (el.closest('.rl-vp,.marquee,.mq')) return;
+      el.style.removeProperty('font-size');
+      if (!el.offsetParent || !el.clientWidth) return;
+      if (el.scrollWidth <= el.clientWidth + 1) return;
+      var base = parseFloat(getComputedStyle(el).fontSize), f = base, min = base * 0.55;
+      while (el.scrollWidth > el.clientWidth + 1 && f > min) { f -= Math.max(0.5, base * 0.03); el.style.setProperty('font-size', f + 'px', 'important'); }
+    });
+  }
+  var fitT; window.addEventListener('resize', function () { clearTimeout(fitT); fitT = setTimeout(fitWords, 120); });
+  window.addEventListener('load', fitWords);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWords);
+  document.addEventListener('click', function (e) { if (e.target.closest('[data-season-btn],[data-phase-btn],[data-fsel],[data-tab],button')) setTimeout(fitWords, 60); });
 })();
