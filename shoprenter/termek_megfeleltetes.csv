@@ -1,0 +1,91 @@
+﻿demo_id;demo_nev;demo_ar;shoprenter_cikkszam;shoprenter_nev;teendo
+edes-meggybor;Édes meggybor;3990;KONTY102X;ÉDES MEGGYBOR 0,75 L;frissít (név, ár, leírás, képek)
+edes-eperbor;Édes eperbor;4990;KONTY101X;ÉDES EPERBOR 0,75 L;frissít (név, ár, leírás, képek)
+edes-ribizlibor;Édes ribizlibor;5490;KONTY103X;ÉDES RIBIZLIBOR 0,75 L;frissít (név, ár, leírás, képek)
+edes-kajszibor;Édes kajszibor;5490;KONTY105X;ÉDES KAJSZIBOR 0,75 L;frissít (név, ár, leírás, képek)
+edes-oszibarackbor;Édes őszibarackbor;4990;KONTY104X;ÉDES ŐSZIBARACKBOR 0,75 L;frissít (név, ár, leírás, képek)
+edes-szilvabor;Édes szilvabor;3690;KONTY107X;ÉDES SZILVABOR 0,75 L;frissít (név, ár, leírás, képek)
+edes-bodza-almabor;Édes bodza-almabor;3690;KONTY106X;ÉDES BODZA-ALMABOR 0,75 L;frissít (név, ár, leírás, képek)
+szaraz-meggybor;Száraz meggybor;3990;KONTY112X;SZÁRAZ MEGGYBOR 0,75 L;frissít (név, ár, leírás, képek)
+klara-edes-malnabor;Klára édes málnabor;7990;KONTY109X;KLÁRA ÉDES MÁLNABOR 0,75 L;frissít (név, ár, leírás, képek)
+klara-szaraz-roze-eperbor;Klára száraz rozé eperbor;5990;KONTY111X;KLÁRA SZÁRAZ ROZÉ EPERBOR 0,75 L;frissít (név, ár, leírás, képek)
+klara-szaraz-barrique-meggybor;Klára száraz barrique meggybor;5990;KONTY110X;KLÁRA SZÁRAZ BARRIQUE MEGGYBOR 0,75 L;frissít (név, ár, leírás, képek)
+klara-edes-afonyabor;Klára édes áfonyabor;0;KONTY108X;KLÁRA ÉDES ÁFONYABOR 0,75L;frissít (név, ár, leírás, képek)
+friss-narancs;Narancs édes gyümölcsbor;2190;KONTY-narancs;NARANCS ÉDES GYÜMÖLCSBOR 0,75 L;frissít (név, ár, leírás, képek)
+friss-eper;Eper édes gyümölcsbor;2190;KONTY250X;EPER ÉDES GYÜMÖLCSBOR 0,75 L;frissít (név, ár, leírás, képek)
+friss-malna;Málna édes gyümölcsbor;2190;konty251X;MÁLNA ÉDES GYÜMÖLCSBOR 0,75 L;frissít (név, ár, leírás, képek)
+friss-meggy;Meggy édes gyümölcsbor;2190;KONTY550x;MEGGY ÉDES GYÜMÖLCSBOR 0,75 L;frissít (név, ár, leírás, képek)
+berry-secco;Berry Secco Erdei gyümölcs;2190;berry01;BERRY SECCO 0,75 L;frissít (név, ár, leírás, képek)
+berry-secco-tonic;Berry Secco Eper és Tonik;2190;berry02;BERRY SECCO & TONIC 0,75 L;frissít (név, ár, leírás, képek)
+berry-secco-yuzu-lime;Berry Secco Yuzu és Lime;2190;berry03;BERRY SECCO YUZU & LIME 0,75 L;frissít (név, ár, leírás, képek)
+piri-mama-forralt-bora;PIRI Mama forralt bora;2190;Forralt04X;PIRI MAMA FORRALT BORA 1L;frissít (név, ár, leírás, képek)
+epres-piri-mama-forralt-bora;Epres PIRI Mama forralt bora;2190;Forralt_epres;PIRI MAMA EPRES FORRALT BORA 1L;frissít (név, ár, leírás, képek)
+narancsos-piri-mama-forralt-bora;Narancsos PIRI Mama forralt bora;2190;Forralt05;PIRI MAMA NARANCSOS FORRALT BORA 1L;frissít (név, ár, leírás, képek)
+piri-mama-forro-itala-0;PIRI Mama forró itala 0%;2190;Forró_Itala;PIRI MAMA FORRÓ ITALA 0 % ALC.;frissít (név, ár, leírás, képek)
+don-cherry;Don Cherry édes meggyvermut;4990;vermut01;DON CHERRY ÉDES MEGGYVERMUT 0,75 L;frissít (név, ár, leírás, képek)
+don-cherry-gyumolcse;Don Cherry gyümölcse;2990;vermut02;DON CHERRY ÉDES MEGGYVERMUT 0,25 L & MEGGY 100 g;frissít (név, ár, leírás, képek)
+szamocapalinka;Szamócapálinka;19000;pal06X;Szamócapálinka;frissít (név, ár, leírás, képek)
+meggypalinka;Meggypálinka;13000;pal04X;Meggypálinka;frissít (név, ár, leírás, képek)
+birspalinka;Birspálinka;17000;pal02X;Birspálinka;frissít (név, ár, leírás, képek)
+kortepalinka;Körtepálinka;13000;pal07;Körtepálinka;frissít (név, ár, leírás, képek)
+szilvapalinka;Szilvapálinka;13000;pal05X;Szilvapálinka;frissít (név, ár, leírás, képek)
+meggy-paros;Meggy Páros;7581;PAROSMEGGY;Meggy Páros;frissít (név, ár, leírás, képek)
+eper-paros;Eper Páros;10431;PAROSEPER;Eper Páros;frissít (név, ár, leírás, képek)
+konnyu-trio;Könnyű Trió;6241;konnyutrio;Könnyű Trió;frissít (név, ár, leírás, képek)
+bubi-paros;Bubi Páros;4161;PAROSBERRY;Bubi Páros;frissít (név, ár, leírás, képek)
+kontyos-borospohar;Kontyos borospohár;1900;kekpohar;Kontyos borospohár;frissít (név, ár, leírás, képek)
+piri-mama-bogreje;PIRI Mama bögréje 0,32 l;2700;piribögre;Piri mama bögréje 0,32 L;frissít (név, ár, leírás, képek)
+meggymag-parna;Meggymag párna;1500;magparna;Meggymag párna;frissít (név, ár, leírás, képek)
+kontyos-szovettaska;Kontyos szövettáska;1200;szovettaska;Kontyos szövettáska;frissít (név, ár, leírás, képek)
+goldberg-tonic;Goldberg & Sons Tonic Water 0,2 l;550;;;ÚJ termék
+goldberg-ginger-ale;Goldberg & Sons Ginger Ale 0,2 l;550;;;ÚJ termék
+gunpowder-gin;Drumshanbo Gunpowder Irish Gin 0,7 l;13990;;;ÚJ termék
+buffalo-trace;Buffalo Trace Kentucky Straight Bourbon 0,7 l;13990;;;ÚJ termék
+campari;Campari 0,7 l;6800;;;ÚJ termék
+ujbor-valogatas;Újbor-válogatás – 6 palack;18900;ÚJbor2025;ÚJBOR VÁLOGATÁS 2025;frissít (név, ár, leírás, képek)
+bf-premium;Black Friday Prémium;24900;BF_prémium 2025;BLACK FRIDAY Prémium;frissít (név, ár, leírás, képek)
+bf-mini;Black Friday diszkontcsomag;12490;BF_diszkont 2025;BLACK FRIDAY Diszkont;frissít (név, ár, leírás, képek)
+edes-unnepek;Édes Ünnepek Borcsomag;19900;ÉDES Ünnepek 2025;ÉDES ÜNNEPEK Borcsomag;frissít (név, ár, leírás, képek)
+premium-advent;Prémium adventi borválogatás;28900;PRÉMIUM_Adventi_2025;PRÉMIUM Adventi Borválogatás;frissít (név, ár, leírás, képek)
+konnyu-karacsony;Könnyű Karácsonyi Borcsomag;12900;KÖNNYŰ-karácsonyi-2025;KÖNNYŰ Karácsonyi Borcsomag;frissít (név, ár, leírás, képek)
+don-kis;Don Cherry kis csomag;7400;;;ÚJ termék
+don-nagy;Don Cherry nagy csomag;11600;;;ÚJ termék
+forralt-6;PIRI Mama forraltbor csomag – 5 palack;8760;;;ÚJ termék
+koktel-negroni;Don Cherry Negroni csomag;22990;;;ÚJ termék
+koktel-americano;Don Cherry Americano csomag;16990;;;ÚJ termék
+koktel-tonic;Don Cherry & Tonic csomag;8990;;;ÚJ termék
+koktel-manhattan;Don Cherry Manhattan csomag;21970;;;ÚJ termék
+koktel-gt-eper;Epres gin-tonik csomag;21180;;;ÚJ termék
+koktel-gt-bodza;Bodzavirágos gin-tonik csomag;19880;;;ÚJ termék
+koktel-malna-ginger;Málnás ginger csomag;24180;;;ÚJ termék
+koktel-gt-narancs;Narancsos gin-tonik csomag;18380;;;ÚJ termék
+;;;534271006;;élesben van, a demóban nincs → döntés kell
+;;;AROMA01;;élesben van, a demóban nincs → döntés kell
+;;;AROMA02;;élesben van, a demóban nincs → döntés kell
+;;;DRS01;;élesben van, a demóban nincs → döntés kell
+;;;KONTY153;;élesben van, a demóban nincs → döntés kell
+;;;istenno;A Gyümölcsöskertek Istennőjétől;élesben van, a demóban nincs → döntés kell
+;;;napfeny;A Napfény Ízei;élesben van, a demóban nincs → döntés kell
+;;;kedvencek;A Négy Kedvenc;élesben van, a demóban nincs → döntés kell
+;;;KLARAK;A Négy Klára;élesben van, a demóban nincs → döntés kell
+;;;utalvany;Ajándékutalvány;élesben van, a demóban nincs → döntés kell
+;;;csakszaraz;Csak Szárazon;élesben van, a demóban nincs → döntés kell
+;;;TESZT01;Ez egy teszt termék;élesben van, a demóban nincs → döntés kell
+;;;farsang 2026;FARSANGI BORCSOMAG;élesben van, a demóban nincs → döntés kell
+;;;forreper;Forralt Eperbor Alap 0,75 L;élesben van, a demóban nincs → döntés kell
+;;;forrkorte;Forralt Körtebor Alap 0,75L;élesben van, a demóban nincs → döntés kell
+;;;forrmeggy;Forralt Meggybor Alap 0,75 L;élesben van, a demóban nincs → döntés kell
+;;;L471118SZ;Forralt, mandulás Szilvabor Alap;élesben van, a demóban nincs → döntés kell
+;;;forraltcsomag;Forraltbor Trió;élesben van, a demóban nincs → döntés kell
+;;;pal03X;Kajszipálinka;élesben van, a demóban nincs → döntés kell
+;;;best selection;Karácsonyi Borválogatás;élesben van, a demóban nincs → döntés kell
+;;;klaraajanl;Klára Ajánlásával;élesben van, a demóban nincs → döntés kell
+;;;almale;Natúr rostos almalé 5L / kevesebb rosttal /;élesben van, a demóban nincs → döntés kell
+;;;nőnap;NŐNAPI CSOMAG;élesben van, a demóban nincs → döntés kell
+;;;nyarON2026;NyárON Csomag;élesben van, a demóban nincs → döntés kell
+;;;pal08;Ribizlipálinka;élesben van, a demóban nincs → döntés kell
+;;;KONTY113X;SZÁRAZ BARRIQUE SZILVABOR 0,75 L;élesben van, a demóban nincs → döntés kell
+;;;parosszilva;Szilva Páros;élesben van, a demóban nincs → döntés kell
+;;;tavaszi-2026;TAVASZI BORCSOKOR;élesben van, a demóban nincs → döntés kell
+;;;tobbnyire;Többnyire Szárazon;élesben van, a demóban nincs → döntés kell
+;;;bogre;Üvegbögre 0,25 L;élesben van, a demóban nincs → döntés kell
