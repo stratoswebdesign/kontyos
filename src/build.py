@@ -1246,11 +1246,11 @@ def cocktail_pack_page(pid):
 <section class="sec cpp-recipe"><div class="wrap"><figure><img src="{r}{c['img']}" alt="{e(c['title'])}" loading="lazy"></figure>
 <div class="tx"><p class="kicker">A recept</p><h2 class="h2">{e(c['title'])}</h2><p class="d">{e(c['d'])}</p><ul>{''.join(f'<li>{ing_html(x, r)}</li>' for x in c['ing'])}</ul><p>{e(c['how'])}</p>
 <a class="btn" href="{more[0]}">{more[1]}</a></div></div></section>
-{partner_widgets(r, partners)}
 {ck_minis(r, pid)}
 <section class="p-info" style="--ink:#1B2A5C;--accent:#C8282E;color:#1B2A5C"><div class="wrap"><div class="desc"><h2 class="h2" style="font-size:36px">A csomagról</h2><p>{e(c['lead'])}</p>
 <p>{e(about2)}</p></div>
 <div class="side">{legal}</div></div></section>
+{partner_widgets(r, partners)}
 </main><div class="buybar"><div class="pb"><b data-line>{ft(sp['price'])}</b><small><span data-q>1</span> db</small></div><div class="qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q>1</span><button type="button" data-inc aria-label="Több">+</button></div><button class="btn" type="button" data-add="{pid}" data-qty-from="#q">Kosárba</button></div>""" + footer(r)
     write(f"termek/{pid}.html", pg)
 
