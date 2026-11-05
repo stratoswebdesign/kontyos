@@ -74,7 +74,7 @@ SEASON_PACKS = [
     dict(id='koktel-tonic', name='Don Cherry & Tonic csomag', price=8990, old=10180, free=False, cocktail='Don Cherry & Tonic',
          items=['don-cherry', 'don-cherry-gyumolcse', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic'], tint='#F3E1D6', tag='KOKTÉLCSOMAG'),
     dict(id='koktel-manhattan', name='Don Cherry Manhattan csomag', cocktail='Manhattan',
-         items=['don-cherry', 'bulleit-bourbon', 'don-cherry-gyumolcse'], tint='#F3E1D6', tag='KOKTÉLCSOMAG',
+         items=['don-cherry', 'buffalo-trace', 'don-cherry-gyumolcse'], tint='#F3E1D6', tag='KOKTÉLCSOMAG',
          note='A Don Cherry gyümölcse a koktélmeggy a díszítéshez. Az Angostura nem része a csomagnak.'),
     # Gyümölcsboros koktélcsomagok a „Dobd fel a gin-tonikodat!” receptjei alapján (Sanyi, 11-05). Ár: egyelőre a tételek összege – a csomagár egyeztetendő.
     dict(id='koktel-gt-eper', name='Epres gin-tonik csomag', cocktail='Epres-bazsalikomos G&T',
@@ -343,7 +343,7 @@ def don_packs(r, title='Don Cherry csomagban', sub='Ajándékba vagy a hétvég�
 <div class="grid">{cardsh}</div></div></section>'''
 
 
-CK_CLS = {'campari': 'i-campari', 'gunpowder-gin': 'i-gin', 'goldberg-tonic': 'i-tonic', 'goldberg-ginger-ale': 'i-tonic', 'bulleit-bourbon': 'i-gin', 'don-cherry-gyumolcse': 'i-jar', 'don-cherry': 'i-don',
+CK_CLS = {'campari': 'i-campari', 'gunpowder-gin': 'i-gin', 'goldberg-tonic': 'i-tonic', 'goldberg-ginger-ale': 'i-tonic', 'buffalo-trace': 'i-don', 'don-cherry-gyumolcse': 'i-jar', 'don-cherry': 'i-don',
           'edes-eperbor': 'i-wine', 'edes-bodza-almabor': 'i-wine', 'klara-edes-malnabor': 'i-wine', 'friss-narancs': 'i-wine'}
 
 
@@ -1057,7 +1057,7 @@ CK_PAGE = {
         ing=['1 dl Don Cherry', '1 dl tonic', 'jég, meggy és narancskarika'],
         how='Tölts meg egy longdrinkes poharat jéggel, öntsd rá a Don Cherryt, majd a tonicot. Óvatosan keverd át, és díszítsd meggyel és narancskarikával.'),
     'koktel-manhattan': dict(
-        lead='A Manhattan ikonikus eleganciája meggyes karakterrel: Don Cherry, Bulleit Bourbon és Don Cherry gyümölcse a koktélmeggyhez – egy csomagban, a recepttel.',
+        lead='A Manhattan ikonikus eleganciája meggyes karakterrel: Don Cherry, Buffalo Trace Kentucky bourbon és Don Cherry gyümölcse a koktélmeggyhez – egy csomagban, a recepttel.',
         img='img/cocktail/manhattan.webp', title='Don Cherry Manhattan', d='A Manhattan ikonikus eleganciája, meggyes karakterrel.',
         ing=['6 cl rye whiskey vagy bourbon', '3 cl Don Cherry', '2–3 csepp Angostura', 'koktélmeggy vagy narancshéj'],
         how='Keverd össze jéggel, és szűrd coupe pohárba. Díszítsd koktélmeggyel. Füstös whiskeyvel még komolyabb élmény.'),
@@ -1082,7 +1082,7 @@ CK_PAGE = {
         ing=['1 dl Kontyos Friss narancsbor', '4 cl gin', '2 dl tonic', 'jég, narancsszeletek, limekarika és 1–2 borókabogyó'],
         how='Tegyél jeget és narancsszeleteket egy longdrinkes pohárba. Öntsd rá a bort, a gint és a tonikot, finoman keverd át. Díszítsd lime-mal és borókával.'),
 }
-PARTNERS = ['gunpowder-gin', 'campari', 'bulleit-bourbon', 'goldberg-tonic', 'goldberg-ginger-ale']
+PARTNERS = ['gunpowder-gin', 'campari', 'buffalo-trace', 'goldberg-tonic', 'goldberg-ginger-ale']
 
 
 def ck_variants(pid, r):
@@ -1111,7 +1111,7 @@ def recipe_card(k, r, wine=True):
     base = next((i for i in sp['items'] if P[i]['line'] not in ('partner',)), None)
     wl = f'<a class="lnk" href="{r}termek/{base}.html">{e(P[base]["name"])} →</a>' if wine and base and k in FRUIT_PACKS else ''
     return (f'<article><img src="{r}{c["img"]}" alt="{e(c["title"])}" loading="lazy"><h3>{e(c["title"])}</h3><p class="d">{e(c["d"])}</p>'
-            f'<ul>{"".join(f"<li>{e(x)}</li>" for x in c["ing"])}</ul><p>{e(c["how"])}</p>{wl}{ck_mini(k, r, " in-card")}</article>')
+            f'<ul>{"".join(f"<li>{e(x)}</li>" for x in c["ing"])}</ul><p>{e(c["how"])}</p>{wl}<a class="lnk pkl" href="{r}termek/{k}.html">Koktélcsomag →</a></article>')
 
 
 def ck_minis(r, exclude):
@@ -1211,24 +1211,23 @@ def cocktails_page():
               'Don Cherry Negroni, Americano, Don Cherry & Tonic és gyümölcsboros gin-tonikok receptjei – minden hozzávaló koktélcsomagban, a klárafalvi Kontyos Borháztól.', r, 'cocktails')
     pg += header(r)
     pg += f"""<main class="ckl">
-<section class="ckl-hero"><div class="wrap"><div class="tx"><p class="crumb"><a href="{r}index.html">Főoldal</a> / Koktélok</p><p class="kicker">Kontyos koktélbár</p>
+<section class="ckl-hero" style="--pimg:url(../img/cocktail/americano.webp)"><div class="wrap"><div class="tx"><p class="crumb"><a href="{r}index.html">Főoldal</a> / Koktélok</p><p class="kicker">Kontyos koktélbár</p>
 <h1>Gyümölcs a pohár alján, jókedv a tetején</h1>
 <p class="lead">Két műfaj, egy borház: a fűszeres Don Cherry meggyvermut klasszikusai és gyümölcsboraink könnyed gin-tonikjai. Minden recepthez van csomag is – csak a jeget és a díszítést tedd hozzá.</p>
-<nav class="ckl-jump"><a href="#meggyvoros-estek">Don Cherry koktélok</a><a href="#gyumolcskert">Gyümölcsboros koktélok</a></nav></div>
-<div class="pics" aria-hidden="true"><img src="{r}img/cocktail/negroni.webp" alt=""><img src="{r}img/cocktail/gt-eper.webp" alt=""></div></div></section>
+<nav class="ckl-jump"><a href="#gyumolcskert">Gyümölcsboros koktélok</a><a href="#meggyvoros-estek">Don Cherry koktélok</a></nav></div></div></section>
 
-<section class="ckl-part don" id="meggyvoros-estek" style="--pimg:url(../img/cocktail/americano.webp)"><div class="wrap"><p class="kicker">1. rész · Don Cherry koktélok</p><h2>Meggyvörös esték</h2>
+<section class="ckl-part fruit" id="gyumolcskert" style="--pimg:url(../img/cocktail/gt-malna.webp)"><div class="wrap"><p class="kicker">1. rész · Gyümölcsboros koktélok</p><h2>Gyümölcskert a pohárban</h2>
+<p class="lead">Gyümölcsboraink koktélban is remekelnek! Fedezd fel Bús Attila mixer receptjeit – ezek a koktélok a Szegedi Gin és Rum Fesztiválon is nagy sikert arattak, a közönség kedvence a málnás volt.</p></div></section>
+<section class="sec ckl-rec gtk"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2></div>
+<div class="cgrid">{''.join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
+{cocktail_packs(r, 'Gin-tonik gyümölcsborral – csomagban', 'Bor, gin és tonik vagy ginger ale egy dobozban, a recepttel együtt.', 'Gyümölcsbor · gin · tonik', 'gyumolcs-csomagok', ids=FRUIT_PACKS)}
+
+<section class="ckl-part don" id="meggyvoros-estek" style="--pimg:url(../img/cocktail/manhattan.webp)"><div class="wrap"><p class="kicker">2. rész · Don Cherry koktélok</p><h2>Meggyvörös esték</h2>
 <p class="lead">Saját meggyborunkra épülő, fűszeres édes meggyvermut – jéggel tisztán, vagy a nagy klasszikusok meggyes csavarjaként.</p></div></section>
 <section class="sec ckl-rec gtk don-rec"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Négy klasszikus, egy meggyes csavar</h2></div>
 <div class="cgrid">{''.join(recipe_card(k, r) for k in DON_ALL)}</div>
 <div class="ckl-neat"><p class="kicker">Tisztán is</p><ul>{neath}</ul><a class="lnk" href="{r}termek/don-cherry.html">Don Cherry meggyvermut →</a></div></div></section>
 {cocktail_packs(r, 'A bárpult dobozban', 'Negroni, Americano, Don Cherry & Tonic vagy Manhattan – minden hozzávaló egy csomagban, a recepttel együtt.', 'Don Cherry · koktélcsomagok', 'don-csomagok', ids=DON_ALL)}
-
-<section class="ckl-part fruit" id="gyumolcskert" style="--pimg:url(../img/cocktail/gt-malna.webp)"><div class="wrap"><p class="kicker">2. rész · Gyümölcsboros koktélok</p><h2>Gyümölcskert a pohárban</h2>
-<p class="lead">Gyümölcsboraink koktélban is remekelnek! Fedezd fel Bús Attila mixer receptjeit – ezek a koktélok a Szegedi Gin és Rum Fesztiválon is nagy sikert arattak, a közönség kedvence a málnás volt.</p></div></section>
-<section class="sec ckl-rec gtk"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2></div>
-<div class="cgrid">{''.join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
-{cocktail_packs(r, 'Gin-tonik gyümölcsborral – csomagban', 'Bor, gin és tonik vagy ginger ale egy dobozban, a recepttel együtt.', 'Gyümölcsbor · gin · tonik', 'gyumolcs-csomagok', ids=FRUIT_PACKS)}
 </main>""" + footer(r)
     write('koktelok.html', pg)
 

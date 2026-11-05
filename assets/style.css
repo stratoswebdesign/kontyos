@@ -2753,3 +2753,12 @@ body{overflow-wrap:normal}
 .cpp-hero .cpp-media .ph img{filter:drop-shadow(0 16px 18px rgba(42,20,22,.22))}
 .cpp-hero .cpp-media .ph img{filter:drop-shadow(0 10px 8px rgba(42,20,22,.16))}
 .ckm-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}.ckm-ph{height:110px}@media (max-width:1100px){.ckm-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* Koktélok oldal: hero a Meggyvörös esték képével (11-05 21:28) */
+.ckl-hero{position:relative;isolation:isolate;min-height:clamp(520px,72vh,760px);display:flex;align-items:center;background:#2A1416}
+.ckl-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,8,10,.9) 0%,rgba(26,8,10,.6) 50%,rgba(26,8,10,.15) 100%),var(--pimg) center/cover no-repeat}
+.ckl-hero .wrap{display:block;width:100%}
+.ckl-hero .tx{max-width:680px}
+.ckl-hero .pics{display:none}
+.gtk .lnk.pkl{margin-top:2px;color:#C8282E}
+.gtk .lnk.pkl:first-of-type{margin-top:auto}
+@media (max-width:860px){.ckl-hero::before{background:linear-gradient(180deg,rgba(26,8,10,.55) 0%,rgba(26,8,10,.9) 70%),var(--pimg) center/cover no-repeat}}

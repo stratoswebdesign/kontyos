@@ -2699,38 +2699,38 @@
   "drs": 50
  },
  {
-  "id": "bulleit-bourbon",
-  "src": "bulleit-bourbon",
-  "name": "Bulleit Bourbon Frontier Whiskey 0,7 l",
+  "id": "buffalo-trace",
+  "src": "buffalo-trace",
+  "name": "Buffalo Trace Kentucky Straight Bourbon 0,7 l",
   "line": "partner",
-  "accent": "#B5651D",
-  "arch": "#F5E6D3",
-  "price": 11690,
+  "accent": "#C0561E",
+  "arch": "#F6E3D2",
+  "price": 11990,
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "Ikonikus kentuckyi bourbon magas rozstartalommal – fűszeres, tiszta, erőteljes, mégis kiegyensúlyozott. A Don Cherry Manhattan alapja.",
+  "short": "Klasszikus kentuckyi bourbon gazdag karamell- és vaníliajegyekkel – telt, kiegyensúlyozott, a Don Cherry Manhattan alapja.",
   "long": [
-   "A Bulleit Bourbon Kentuckyban készül, Augustus Bulleit 1800-as évekbeli receptje alapján: 68% kukorica, 28% rozs és 4% malátázott árpa. A magas rozstartalom fűszeres, karakteres ízt ad, ami a Don Cherry meggyes édességével klasszikus Manhattant alkot.",
-   "Illat: pirított tölgy, vanília és lágy fűszerek. Íz: méz, juharszirup, szerecsendió, pörkölt dió és rozs. Lecsengés: hosszú, száraz, selymes, enyhe karamellel.",
+   "A Buffalo Trace Kentucky Straight Bourbon a több mint kétszáz éves kentuckyi Buffalo Trace Distillery whiskeyje: gazdag karamell- és vaníliajegyek, telt, kiegyensúlyozott karakter – tisztán és klasszikus whiskeykoktélokban egyaránt remek, a Don Cherry meggyes édességével pedig elegáns Manhattant ad.",
+   "Illat: karamell, vanília és pirított tölgy. Íz: barna cukor, méz, fűszerek és tölgy. Lecsengés: közepesen hosszú, meleg, enyhén édes.",
    "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
   ],
   "params": [
    [
     "Alkoholtartalom",
-    "45 %vol"
+    "40 %vol"
    ],
    [
     "Űrmérték",
     "0,7 l"
    ],
    [
-    "Márka",
-    "Bulleit"
+    "Előállító",
+    "Buffalo Trace Distillery, Kentucky"
    ],
    [
     "Származási ország",
-    "USA (Kentucky)"
+    "USA"
    ],
    [
     "Csomagolás",
@@ -2738,14 +2738,14 @@
    ],
    [
     "Egységár",
-    "16 700 Ft/l"
+    "17 129 Ft/l"
    ]
   ],
   "rating": null,
   "rcount": 0,
   "reviews": [],
-  "img": "img/p/bulleit-bourbon.webp",
-  "tight": "img/t/bulleit-bourbon.webp",
+  "img": "img/p/buffalo-trace.webp",
+  "tight": "img/t/buffalo-trace.webp",
   "drs": 50
  },
  {
