@@ -2808,3 +2808,9 @@ body{overflow-wrap:normal}
 .ckl-hero::after{top:50%;bottom:auto;left:-38%;right:auto;width:145%;aspect-ratio:1536/1024;height:auto;max-width:none;
   background:var(--pimg) 0 0/100% 100% no-repeat;transform:translateY(-45%)}
 @media (max-width:860px){.ckl-hero::after{left:-160%;width:280%;transform:translateY(-45%)}}
+/* Koktélok hero: a pohár sokkal nagyobb, kb. 20%-a alul kilóg (11-05 21:52)
+   a képen a pohár: vízszintes közép 75,7%, teteje 24,2%, magassága 41,4% → a pohár ~1,1× a hero magassága */
+.ckl-hero::after{top:-53.4%;bottom:auto;height:268%;width:auto;aspect-ratio:1536/1024;left:70%;right:auto;max-width:none;
+  background:var(--pimg) 0 0/100% 100% no-repeat;transform:translateX(-75.7%)}
+@media (max-width:860px){.ckl-hero::after{left:62%}}
+@media (max-width:860px){.ckl-hero::after{top:3.1%;height:169%;left:68%}}
