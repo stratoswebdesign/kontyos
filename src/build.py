@@ -1136,7 +1136,7 @@ def recipe_card(k, r, wine=True):
     """Koktélrecept kártya – a hozzávalók linkelnek a termékekre (gyümölcsbor oldal, Koktélok oldal)."""
     c = CK_PAGE[k]
     return (f'<article><img src="{r}{c["img"]}" alt="{e(c["title"])}" loading="lazy"><h3>{e(c["title"])}</h3><p class="d">{e(c["d"])}</p>'
-            f'<ul>{"".join(f"<li>{ing_html(x, r)}</li>" for x in c["ing"])}</ul><p>{e(c["how"])}</p></article>')
+            f'<ul>{"".join(f"<li>{ing_html(x, r)}</li>" for x in c["ing"])}</ul><p>{e(c["how"])}</p><a class="lnk pkl" href="{r}termek/{k}.html">Koktélcsomag →</a></article>')
 
 def ck_minis(r, exclude):
     """A többi 6 koktélcsomag kis widgetekben."""
