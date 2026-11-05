@@ -345,7 +345,7 @@ def cocktail_packs(r, title='Készítsd el otthon is!', sub='Megtaláltad a kedv
         cards += f'''<article class="ckp"><a class="ph" href="{u}" aria-label="{e(sp['name'])} – részletek">{badge(pid)}{ck_visual(sp, r)}</a><div class="tx"><p class="k">{e(sp['tag'])} · {e(sp['cocktail'])}</p><h3><a href="{u}">{e(sp['name'])}</a></h3>
 <p class="ct">{e(pack_contents(sp))}</p>{note}<div class="row"><span class="pr"><s>{ft(sp['old'])}</s><b>{ft(sp['price'])}</b></span><button type="button" class="btn" data-add="{pid}">Kosárba</button></div></div></article>'''
     head = f'<div class="hd">{f"<p class=kicker>{kicker}</p>" if kicker else ""}<h2 class="h2">{title}</h2><p class="lead">{sub}</p></div>'
-    return f'''<section class="ckpacks" id="{sid}" style="--rez:url({r}img/photo/rez_hatter.webp)"><div class="wrap">{head}<div class="grid">{cards}</div></div></section>'''
+    return f'''<section class="ckpacks" id="{sid}"><div class="wrap">{head}<div class="grid">{cards}</div></div></section>'''
 
 
 def dotc(p):
@@ -1038,7 +1038,7 @@ def partner_widgets(r, in_pack=()):
         cards += f'''<article class="pw"><a class="pw-im" href="{r}termek/{i}.html">{tag}<img src="{r}{p['tight']}" alt="{e(p['name'])}" loading="lazy"></a>
 <div class="pw-tx"><h3><a href="{r}termek/{i}.html">{e(p['name'])}</a></h3><p>{e(p['short'])}</p>
 <div class="pw-row"><span class="pr"><b>{ft(p['price'])}</b>{f'<small>+{p["drs"]} Ft betétdíj</small>' if p.get('drs') else ''}</span><button type="button" class="btn" data-add="{i}">Kosárba</button></div></div></article>'''
-    return f'''<section class="ckpacks pwidgets" id="kulon" style="--rez:url({r}img/photo/rez_hatter.webp)"><div class="wrap"><div class="hd"><p class="kicker">Partnertermékek</p><h2 class="h2">Vedd meg külön is</h2>
+    return f'''<section class="ckpacks pwidgets" id="kulon"><div class="wrap"><div class="hd"><p class="kicker">Partnertermékek</p><h2 class="h2">Vedd meg külön is</h2>
 <p class="lead">A koktélcsomagok partnertermékeit egyenként is megrendelheted – ha csak egy palack hiányzik otthonról, vagy a kedvenc koktélodhoz kell utánpótlás.</p></div><div class="pwgrid">{cards}</div></div></section>'''
 
 
@@ -1068,7 +1068,7 @@ def cocktail_pack_page(pid):
     pg = head(f"{sp['name']} – Don Cherry koktélcsomag | Kontyos", desc, r, 'product', 'has-buybar ckpage', style)
     pg += header(r)
     pg += f'''<main>
-<section class="ckpacks cpp-hero" style="--rez:url({r}img/photo/rez_hatter.webp)"><div class="wrap">
+<section class="ckpacks cpp-hero"><div class="wrap">
 <p class="cpp-crumb"><a href="{r}index.html">Főoldal</a> / <a href="{r}termek/don-cherry.html">Don Cherry</a> / <a href="{r}termek/don-cherry.html#koktelcsomagok">Koktélcsomagok</a> / {e(sp['name'])}</p>
 <div class="cpp-grid"><div class="cpp-media ckp"><div class="ph">{badge(pid).replace('pbadge', 'pbadge big')}{ck_visual(sp, r)}</div></div>
 <div class="cpp-buy hd"><p class="kicker">{e(sp['tag'])} · {e(sp['cocktail'])}</p><h1>{e(sp['name'])}</h1><p class="lead">{e(c['lead'])}</p>
