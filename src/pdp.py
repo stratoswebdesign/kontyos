@@ -178,7 +178,7 @@ def cross(ids, title, ring_of, h2style='', meta=None):
     P = _('P')
     meta = meta or {}
     rnd = ' data-rand=4' if meta else ''
-    att = lambda i: f' data-own="{1 if meta[i][0] else 0}" data-ck="{" ".join(meta[i][1])}"' if i in meta else ''
+    att = lambda i: f' data-pr="{meta[i][0]}" data-ck="{" ".join(meta[i][1])}"' if i in meta else ''
     return f'<section class="pd-wrap pd-cross"{rnd}><h2 style="{h2style}">{title}</h2><div class="pd-cgrid">' + ''.join(mini_card(P[i], ring_of(P[i])).replace('<a class="pd-mcard"', '<a class="pd-mcard"' + att(i), 1) for i in ids if i in P) + '</div></section>'
 
 
@@ -218,9 +218,9 @@ def upsell(p, kind=''):
     if not ids:
         return ''
     meta = {i: (o, ks) for i, o, ks in partner_cands(p['id'])} if p['line'] == 'partner' else {}
-    attr = lambda i: f' data-own="{1 if meta[i][0] else 0}" data-ck="{" ".join(meta[i][1])}"' if i in meta else ''
+    attr = lambda i: f' data-pr="{meta[i][0]}" data-ck="{" ".join(meta[i][1])}"' if i in meta else ''
     items = ''.join(f'''<li{attr(i)}><a href="{r}{_('url')(P[i])}" class="im">{_('badge')(i).replace('pbadge', 'pbadge xs')}<img src="{r}{P[i]['img']}" alt="" loading="lazy"></a><a href="{r}{_('url')(P[i])}" class="nm">{e(P[i]['name'])}<small>{ft(P[i]['price'])}</small></a><button type="button" data-add="{i}" aria-label="{e(P[i]['name'])} kosárba">+</button></li>''' for i in ids)
-    return f'<div class="pd-ups {kind}"{" data-rand=3" if p["line"] == "partner" else ""}><p>Illik mellé</p><ul>{items}</ul></div>'
+    return f'<div class="pd-ups {kind}"{" data-rand=4" if p["line"] == "partner" else ""}><p>Illik mellé</p><ul>{items}</ul></div>'
 
 
 # ---------------------------------------------------------------- KLASSZIKUS (Termek.dc)
@@ -373,19 +373,24 @@ PARTNER_IDS = ['gunpowder-gin', 'campari', 'buffalo-trace', 'goldberg-tonic', 'g
 
 
 def partner_cands(pid):
-    """Partnertermék ajánlói (Sanyi, 11-05): a piához tartozó koktélok termékei – elsősorban SAJÁT termékek, minél több különböző koktélból.
-    Visszaad: [(id, saját-e, [koktél-azonosítók])]; a választást és a keverést a böngésző végzi (app.js pickDiverse)."""
+    """Partnertermék ajánlói (Sanyi, 11-05): mindig 4 termék. Elsősorban a pia saját koktéljainak SAJÁT termékei, minél több különböző koktélból;
+    ha ez kevés, más koktélok saját termékei, végül partnertermékek. Visszaad: [(id, prioritás 0..3, [koktélok])]; a választás a böngészőben (pickDiverse)."""
     SP, P = _('SP'), _('P')
     d = {}
     for k in _('ALL_CK'):
         items = SP[k]['items']
-        if pid in items:
-            for i in items:
-                if i != pid and i in P and P[i]['avail']:
-                    d.setdefault(i, [])
-                    if k not in d[i]:
-                        d[i].append(k)
-    return [(i, P[i]['line'] != 'partner', ks) for i, ks in d.items()]
+        rel = pid in items
+        for i in items:
+            if i == pid or i not in P or not P[i]['avail']:
+                continue
+            own = P[i]['line'] != 'partner'
+            pr = (0 if own else 2) if rel else (1 if own else 3)
+            if i not in d:
+                d[i] = [pr, []]
+            d[i][0] = min(d[i][0], pr)
+            if k not in d[i][1]:
+                d[i][1].append(k)
+    return [(i, v[0], v[1]) for i, v in d.items()]
 
 
 def partner_pool(pid):

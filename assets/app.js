@@ -52,40 +52,44 @@
   /* Partnertermék-ajánló (Sanyi, 11-05): elsősorban SAJÁT termékek, minél több különböző koktélból, véletlenszerűen; utána a többi saját, végül partnertermék.
      cands: [{v, own, ck:[koktélok]}] → n darab v */
   function pickDiverse(cands, n) {
-    var own = shuf(cands.filter(function (c) { return c.own; })), oth = shuf(cands.filter(function (c) { return !c.own; }));
-    var out = [], used = {}, covered = {};
-    var newCk = function (c) { return c.ck.some(function (k) { return !covered[k]; }); };
-    var take = function (c) { out.push(c); used[out.length - 1] = 1; c.ck.forEach(function (k) { covered[k] = 1; }); c.done = 1; };
-    var progress = true;
-    while (out.length < n && progress) {   /* körönként: minden még le nem fedett koktélból egy saját termék */
-      progress = false;
-      for (var i = 0; i < own.length && out.length < n; i++) if (!own[i].done && newCk(own[i])) { take(own[i]); progress = true; }
-      if (!progress) break;
-    }
-    own.concat(oth).forEach(function (c) { if (out.length < n && !c.done) take(c); });
+    /* prioritás: 0 = a pia koktéljainak saját terméke, 1 = más koktél saját terméke, 2–3 = partnertermék; prioritáson belül minél több különböző koktél */
+    var out = [], covered = {};
+    [0, 1, 2, 3].forEach(function (pr) {
+      var grp = shuf(cands.filter(function (c) { return c.pr === pr; }));
+      var go = true;
+      while (out.length < n && go) {
+        go = false;
+        for (var i = 0; i < grp.length && out.length < n; i++) {
+          var c = grp[i];
+          if (!c.done && c.ck.some(function (k) { return !covered[k]; })) { out.push(c); c.done = 1; c.ck.forEach(function (k) { covered[k] = 1; }); go = true; }
+        }
+      }
+      grp.forEach(function (c) { if (out.length < n && !c.done) { out.push(c); c.done = 1; c.ck.forEach(function (k) { covered[k] = 1; }); } });
+    });
     return out.map(function (c) { return c.v; });
   }
   document.querySelectorAll('[data-rand]').forEach(function (box) {
     var n = +box.getAttribute('data-rand'), list = box.querySelector('ul, .pd-cgrid'); if (!list) return;
     var kids = [].slice.call(list.children);
-    var keep = pickDiverse(kids.map(function (k) { return { v: k, own: k.getAttribute('data-own') === '1', ck: (k.getAttribute('data-ck') || '').split(' ').filter(Boolean) }; }), n);
+    var keep = pickDiverse(kids.map(function (k) { return { v: k, pr: +k.getAttribute('data-pr'), ck: (k.getAttribute('data-ck') || '').split(' ').filter(Boolean) }; }), n);
     kids.forEach(function (k) { if (keep.indexOf(k) < 0) k.remove(); });
     keep.forEach(function (k) { list.appendChild(k); });
   });
+  function upsLi(i) {
+    var x = K.p[i];
+    var bd = x.bd ? '<span class="pbadge xs ' + x.bd + '">' + (x.bd === 'lim' ? 'LIMITÁLT' : 'ÚJ') + '</span>' : '';
+    return '<li><a href="' + ROOT + x.url + '" class="im">' + bd + '<img src="' + ROOT + x.img + '" alt="" loading="lazy"></a><a href="' + ROOT + x.url + '" class="nm">' + esc(x.n) + '<small>' + fmt(x.price) + '</small></a><button type="button" data-add="' + i + '" aria-label="' + esc(x.n) + ' kosárba">+</button></li>';
+  }
   function upsHtml(ids, exclude, rnd) {
     ids = ids.filter(function (i) { return K.p[i] && exclude.indexOf(i) < 0; });
     if (rnd && rnd.length) {
       var ok = {}; ids.forEach(function (i) { ok[i] = 1; });
-      ids = pickDiverse(rnd.filter(function (c) { return ok[c[0]]; }).map(function (c) { return { v: c[0], own: !!c[1], ck: c[2] }; }), 3);
-    }
-    ids = ids.slice(0, 3);
+      ids = pickDiverse(rnd.filter(function (c) { return ok[c[0]]; }).map(function (c) { return { v: c[0], pr: c[1], ck: c[2] }; }), 4);
+    } else ids = ids.slice(0, 3);
     if (!ids.length) return '';
-    return '<div class="pd-ups mini-ups"><p>Illik mellé</p><ul>' + ids.map(function (i) {
-      var x = K.p[i];
-      var bd = x.bd ? '<span class="pbadge xs ' + x.bd + '">' + (x.bd === 'lim' ? 'LIMITÁLT' : 'ÚJ') + '</span>' : '';
-      return '<li><a href="' + ROOT + x.url + '" class="im">' + bd + '<img src="' + ROOT + x.img + '" alt="" loading="lazy"></a><a href="' + ROOT + x.url + '" class="nm">' + esc(x.n) + '<small>' + fmt(x.price) + '</small></a><button type="button" data-add="' + i + '" aria-label="' + esc(x.n) + ' kosárba">+</button></li>';
-    }).join('') + '</ul></div>';
+    return '<div class="pd-ups mini-ups"><p>Illik mellé</p><ul>' + ids.map(upsLi).join('') + '</ul></div>';
   }
+
 
   /* Mini-kosár */
   var miniEl;

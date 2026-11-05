@@ -128,7 +128,7 @@ def write_catalog_js():
     for p in CAT:
         out[p['id']] = dict(n=p['name'], price=p['price'], tier=p['tier'], img=p['img'], url=url(p), bd='lim' if p['id'] in LIMITED_IDS else 'new' if p['id'] in NEW_IDS else '',
                             sub=LINE_LABEL.get(p['line'], ''), tint=p['arch'] if p['line'] not in ('piri', 'friss', 'don') else '#F3EEE5',
-                            free=False, ups=(pdp.partner_pool(p['id']) if p['line'] == 'partner' else [i for i in pdp.UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3]), rnd=p['line'] == 'partner', upg=[[i, 1 if o else 0, ks] for i, o, ks in pdp.partner_cands(p['id'])] if p['line'] == 'partner' else None)
+                            free=False, ups=(pdp.partner_pool(p['id']) if p['line'] == 'partner' else [i for i in pdp.UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3]), rnd=p['line'] == 'partner', upg=[[i, o, ks] for i, o, ks in pdp.partner_cands(p['id'])] if p['line'] == 'partner' else None)
     for s in SEASON_PACKS:
         first = P[s['items'][0]]
         page = ('csomagok.html' if s['id'] == 'ujbor-valogatas' else 'black-friday.html' if s['id'].startswith('bf')
