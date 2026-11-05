@@ -29,7 +29,8 @@ SHORT = {'friss-narancs': 'Narancs', 'friss-eper': 'Eper', 'friss-malna': 'Máln
          'edes-meggybor': 'Meggy', 'edes-eperbor': 'Eper', 'edes-ribizlibor': 'Ribizli', 'edes-kajszibor': 'Kajszi', 'edes-oszibarackbor': 'Őszibarack',
          'edes-szilvabor': 'Szilva', 'edes-bodza-almabor': 'Bodza-alma', 'szaraz-meggybor': 'Száraz meggy',
          'klara-edes-malnabor': 'Málna', 'klara-szaraz-roze-eperbor': 'Rozé eper', 'klara-szaraz-barrique-meggybor': 'Barrique meggy', 'klara-edes-afonyabor': 'Áfonya',
-         'don-cherry': 'Vermut 0,75 l', 'don-cherry-gyumolcse': 'Vermut meggyel', 'narancsos-piri-mama-forralt-bora': 'Narancsos', 'epres-piri-mama-forralt-bora': 'Epres', 'piri-mama-forro-itala-0': '0% alkohol'}
+         'don-cherry': 'Vermut 0,75 l', 'don-cherry-gyumolcse': 'Vermut meggyel', 'narancsos-piri-mama-forralt-bora': 'Narancsos', 'epres-piri-mama-forralt-bora': 'Epres', 'piri-mama-forro-itala-0': '0% alkohol',
+         'gunpowder-gin': 'Gin', 'campari': 'Campari', 'buffalo-trace': 'Bourbon', 'goldberg-tonic': 'Tonic', 'goldberg-ginger-ale': 'Ginger ale'}
 BIG = {'friss-narancs': 'NARANCS', 'friss-eper': 'EPER', 'friss-malna': 'MÁLNA', 'friss-meggy': 'MEGGY',
        'berry-secco': 'ERDEI', 'berry-secco-tonic': 'TONIK', 'berry-secco-yuzu-lime': 'YUZU'}
 
@@ -100,11 +101,14 @@ def legal_rows(p):
             ('Névleges térfogat', (vol + ' ℮') if vol else None),
             ('Összetevők', ingr(p)),
             ('Allergén', allergens(p)),
-            ('Tételazonosító', 'a címkén')]
+            ('Tételazonosító', 'a címkén')] + ([('Származás', param(p, 'Származási ország')), ('Forgalmazó', 'Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183.'),
+                                               ('Betétdíj (DRS)', f'+{p["drs"]} Ft / palack, a termékár nem tartalmazza' if p.get('drs') else None)] if p['line'] == 'partner' else [])
 
 
 def legal_note(p):
     a = (param(p, 'Alkohol') or '').strip()
+    if p['line'] == 'partner':
+        return ('Partnertermék – az előállító adatai a címkén. ' + ('Alkoholtartalmú italt 18 éven aluli személy részére nem értékesítünk. Fogyaszd mértékkel!' if a else 'Alkoholmentes ital.'))
     if a.startswith('0'):
         return 'Alkoholmentes ital. A termékadatok a kontyos.hu alapján.'
     return 'Alkoholtartalmú italt 18 éven aluli személy részére nem értékesítünk. Fogyaszd mértékkel!'
@@ -197,6 +201,7 @@ UPSELL = {
     'secco': lambda p: [next(i for i in ('berry-secco-tonic', 'berry-secco-yuzu-lime', 'berry-secco') if i != p['id']), 'friss-eper', 'kontyos-borospohar'],
     'palinka': lambda p: [next(i for i in ('szamocapalinka', 'birspalinka', 'meggypalinka') if i != p['id']), 'meggymag-parna', 'don-cherry'],
     'csomag': lambda p: ['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry'],
+    'partner': lambda p: [i for i in PARTNER_IDS if i != p['id']][:3],
     'kiegeszito': lambda p: ['edes-meggybor', 'klara-edes-malnabor', 'piri-mama-forralt-bora'],
 }
 
@@ -355,7 +360,10 @@ LINECFG = {
                   crumb=('Berry Secco', 'termek/berry-secco.html'), cross=['bubi-paros', 'kontyos-borospohar', 'friss-narancs', 'friss-eper']),
     'palinka': dict(page='#F4EFE6', kick='KISÜSTI PÁLINKA · 46% · {vol}', kc='#A8823C', h1w=500, rule='#E3DACB', theme='pill',
                     crumb=('Pálinka', 'termek/szamocapalinka.html'), cross=['don-cherry', 'klara-szaraz-barrique-meggybor', 'meggymag-parna', 'klara-edes-malnabor']),
+    'partner': dict(page='#F4EFE6', kick='PARTNERTERMÉK · KOKTÉLHOZ · {vol}', kc='#A8823C', h1w=500, rule='#E3DACB', theme='pill',
+                    crumb=('Koktélcsomagok', 'termek/don-cherry.html#koktelcsomagok'), cross=[]),
 }
+PARTNER_IDS = ['gunpowder-gin', 'campari', 'buffalo-trace', 'goldberg-tonic', 'goldberg-ginger-ale']
 
 
 SERVE = {'berry-secco': 'Alaposan behűtve, piros gyümölcsökkel, pár szem jégkockával.', 'berry-secco-tonic': 'Behűtve, egy karika lime-mal és jéggel.',
@@ -388,7 +396,7 @@ def t_fsp(p):
         f'<a href="{x["id"]}.html"{" aria-current=page" if x["id"] == p["id"] else ""}><i style="background:{_dot(x)}"></i>{SHORT.get(x["id"], x["name"])}</a>' for x in vs) + '</div>'
     kick = cf['kick'].replace('{vol}', vol.replace('500 ml', '0,5 L').replace('ml', 'ML').upper())
     buy = buy_core(p, c) if p['avail'] else sold_out(p)
-    tiles = ''.join(f'''<a href="{x['id']}.html" class="tile{' on' if x['id'] == p['id'] else ''}" style="background:{x['arch'] if L == 'friss' else ('rgba(255,255,255,.7)' if L == 'secco' else '#fff')}"><img src="{r}{x['tight']}" alt="" loading="lazy"><strong style="color:{x['accent'] if L == 'friss' else ('#1E1A1D' if L == 'palinka' else x['accent'])}">{SHORT.get(x['id'], '')}</strong></a>''' for x in vs)
+    tiles = ''.join(f'''<a href="{x['id']}.html" class="tile{' on' if x['id'] == p['id'] else ''}" style="background:{x['arch'] if L == 'friss' else ('rgba(255,255,255,.7)' if L == 'secco' else '#fff')}"><img src="{r}{x['tight']}" alt="" loading="lazy"><strong style="color:{x['accent'] if L == 'friss' else ('#1E1A1D' if L in ('palinka', 'partner') else x['accent'])}">{SHORT.get(x['id'], '')}</strong></a>''' for x in vs)
     if L == 'friss':
         story = f'''<section class="pd-story f" style="background:{p['arch']};color:{fg}"><div class="pd-wrap"><p aria-hidden="true" class="bigw">{BIG.get(p['id'], '')}</p>
 <div class="tx"><h2>{FRISS_H.get(p['id'], _('TXT')['friss1'])}</h2><p class="s">Reduktív eljárással, friss gyümölcsből – könnyű, kellemesen édes, pár szem jéggel is. Négy íz, mind {ft(p['price'])}.</p><div class="tiles">{tiles}</div></div>
@@ -397,6 +405,14 @@ def t_fsp(p):
         dots = ''.join(f'<span aria-hidden="true" class="bub" style="left:{x}%;top:{y}%;width:{s}px;height:{s}px"></span>' for x, y, s in [(6, 20, 26), (12, 62, 14), (30, 14, 10), (48, 72, 22), (66, 18, 16), (84, 64, 12), (92, 24, 20)])
         alc = (param(p, 'Alkohol') or '').replace(' %vol', '%').replace('%vol', '%')
         story = f'''<section class="pd-story s" style="background:{p['arch']};color:{fg}">{dots}<div class="pd-wrap"><div class="tx"><p class="pd-lab">ÍGY KÍNÁLD</p><h2>{e(serve_text(p))}</h2><p class="s">Habzó, édes, {alc} – a buborékok kedvelőinek.</p></div>
+<div class="tiles big">{tiles}</div></div></section>'''
+    elif L == 'partner':
+        org = param(p, 'Származási ország') or ''
+        alc = (param(p, 'Alkohol') or '').replace(' %vol', '%')
+        facts = [('KOKTÉLCSOMAGBAN IS', 'Megtalálod a Kontyos koktélcsomagokban – a recepttel együtt.'),
+                 ((alc + ' ALKOHOL') if alc else 'ALKOHOLMENTES', 'Erős koktélalap.' if alc else 'Longdrinkekhez és gyümölcsboros gin-tonikokhoz.'),
+                 (('SZÁRMAZÁS: ' + org.upper()) if org else 'PRÉMIUM VÁLOGATÁS', 'Prémium partnertermék, egyenként is megrendelheted.')]
+        story = f'''<section class="pd-story p"><div class="pd-wrap"><div class="tx"><h2>Koktélhoz válogattuk.</h2><div class="facts">{''.join(f'<div><strong>{a}</strong><span>{b}</span></div>' for a, b in facts)}</div></div>
 <div class="tiles big">{tiles}</div></div></section>'''
     else:
         facts = [(PAL_ICO['still'], 'HAGYOMÁNYOS KISÜSTI', 'Gyümölcsből cefrézve, hagyományos kisüsti eljárással főzve.'),
@@ -409,7 +425,7 @@ def t_fsp(p):
 {story}
 {info(p, c)}
 {reviews(p, c)}
-{cross(cf['cross'], 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)')}'''
+{cross([i for i in PARTNER_IDS if i != p['id']] if L == 'partner' else cf['cross'], 'Ezt is szeretni fogod' if L == 'partner' else 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)')}'''
     return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline=p['arch'])) if p['avail'] else '')
 
 
@@ -438,11 +454,12 @@ UCFG = {
     'friss': dict(bg='#F28C28', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'termek/friss-malna.html')),
     'secco': dict(bg='#EEEAF6', ink='#1B2A5C', muted='#5A6072', line='rgba(27,42,92,.14)', panel='rgba(255,255,255,.7)', btn='#1B2A5C', btnfg='#fff', acc='#C84E85', crumb=('Berry Secco', 'termek/berry-secco.html')),
     'palinka': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Pálinkák', 'termek/szamocapalinka.html')),
+    'partner': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Koktélcsomagok', 'termek/don-cherry.html#koktelcsomagok')),
     'piri': dict(bg='#111833', ink='#E3CFA5', muted='rgba(227,207,165,.72)', line='rgba(219,184,121,.28)', panel='rgba(255,255,255,.05)', btn='#DBB879', btnfg='#111833', acc='#DBB879', crumb=('Forralt borok', 'termek/piri-mama-forralt-bora.html')),
     'don': dict(bg='#D9EEF0', ink='#2A1416', muted='#5B4A4C', line='rgba(42,20,22,.14)', panel='rgba(255,255,255,.6)', btn='#C8282E', btnfg='#fff', acc='#C8282E', crumb=('Don Cherry', 'termek/don-cherry.html')),
 }
 LINE_KICK = {'klasszikus': 'KLASSZIKUS · {taste} GYÜMÖLCSBOR', 'klara': 'KLÁRA PRÉMIUM · {taste}', 'friss': 'FRISS · KÖNNYŰ GYÜMÖLCSBOR',
-             'secco': 'BERRY SECCO · HABZÓ GYÜMÖLCSBOR', 'palinka': 'KISÜSTI PÁLINKA · 46%', 'piri': 'PIRI MAMA · FORRALT BOR · 1 L', 'don': 'DON CHERRY · ÉDES MEGGYVERMUT'}
+             'secco': 'BERRY SECCO · HABZÓ GYÜMÖLCSBOR', 'palinka': 'KISÜSTI PÁLINKA · 46%', 'partner': 'PARTNERTERMÉK · KOKTÉLHOZ', 'piri': 'PIRI MAMA · FORRALT BOR · 1 L', 'don': 'DON CHERRY · ÉDES MEGGYVERMUT'}
 # 100%-os gyümölcs jelvény a klasszikus gyümölcsborokon (csak ahol egyetlen gyümölcsből készül)
 PURE = {'edes-meggybor': 'MEGGY', 'szaraz-meggybor': 'MEGGY', 'edes-eperbor': 'EPER', 'edes-ribizlibor': 'RIBIZLI', 'edes-kajszibor': 'KAJSZIBARACK',
         'edes-oszibarackbor': 'ŐSZIBARACK', 'edes-szilvabor': 'SZILVA'}
@@ -464,7 +481,7 @@ def u_big(p):
         return 'DON CHERRY'
     if L in ('friss', 'secco'):
         return BIG.get(p['id'], SHORT.get(p['id'], '').upper())
-    if L == 'palinka':
+    if L in ('palinka', 'partner'):
         return SHORT.get(p['id'], p['name']).upper()
     return bigword(p)
 
@@ -497,7 +514,7 @@ def u_buy(p, u):
         return '<div class="pu-buy"><div class="pu-price"><b>Elfogyott</b></div><button class="pu-add" type="button" disabled>Értesítést kérek – élesben</button></div>'
     unit_l = param(p, 'Egységár') or ''
     return f'''<div class="pu-buy" data-buy="{p['id']}">{packs}
-<div class="pu-price"><b data-unit>{ft(p['price'])}</b><span>{e(unit_l)}</span></div>
+<div class="pu-price"><b data-unit>{ft(p['price'])}</b><span>{e(unit_l)}{f' · +{p["drs"]} Ft betétdíj' if p.get('drs') else ''}</span></div>
 <div class="pu-addrow"><div class="pu-qty" role="group" aria-label="Mennyiség"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q id="q" aria-live="polite">1</span><button type="button" data-inc aria-label="Több">+</button></div>
 <button type="button" class="pu-add" data-add="{p['id']}" data-qty-from="#q">Kosárba · <span data-line>{ft(p['price'])}</span></button></div>
 <div class="pu-free"><span data-free-text></span><div class="bar"><i data-free-bar></i></div></div></div>'''
@@ -521,6 +538,8 @@ def u_hero(p):
     mini = [('KISZERELÉS', vol_h), ('ALKOHOL', alc)]
     if taste and L in ('klasszikus', 'klara'):
         mini.append(('ÍZ', taste.capitalize()))
+    if L == 'partner' and param(p, 'Származási ország'):
+        mini.append(('SZÁRMAZÁS', param(p, 'Származási ország')))
     zar = param(p, 'Palackzárás')
     if zar and L == 'klara':
         mini.append(('ZÁRÁS', zar.replace('csavarzáras', 'csavarzár')))
@@ -529,7 +548,7 @@ def u_hero(p):
     alg = allergens(p)
     chips = ''
     if len(sibs) > 1:
-        chips = f'<p class="pu-lab">{"VÁLASZD KI" if L == "don" else "VÁLASSZ ÍZT"}</p><div class="pu-chips" role="group" aria-label="Változatok">' + ''.join(
+        chips = f'<p class="pu-lab">{"VÁLASZD KI" if L == "don" else "VÁLASSZ TERMÉKET" if L == "partner" else "VÁLASSZ ÍZT"}</p><div class="pu-chips" role="group" aria-label="Változatok">' + ''.join(
             f'<a href="{x["id"]}.html"{" aria-current=page" if x["id"] == p["id"] else ""}><i style="background:{_dot(x)}"></i>{SHORT.get(x["id"], x["name"])}</a>' for x in sibs) + '</div>'
     arrows = (f'<a class="pu-arr l" href="{prev["id"]}.html" aria-label="Előző: {e(prev["name"])}">‹</a>'
               f'<a class="pu-arr r" href="{nxt["id"]}.html" aria-label="Következő: {e(nxt["name"])}">›</a>') if len(sibs) > 1 else ''
@@ -540,7 +559,7 @@ def u_hero(p):
 {crumbs([('Főoldal', 'index.html'), u['crumb'], (e(SHORT.get(p['id'], p['name'])), '')], '')}
 <p class="pu-kick">{e(kick)}</p>
 <p aria-hidden="true" class="pu-big" style="font-size:{fit(big)}">{e(big)}</p>
-<h1 class="pu-h1">{e(p['name'])} <span>{e(vol_h)}</span></h1>
+<h1 class="pu-h1">{e(re.sub(r'\s*\d+,\d+\s*l$', '', p['name']) if L == 'partner' else p['name'])} <span>{e(vol_h)}</span></h1>
 {stars_link(p, u['acc'])}
 <span class="pu-rule" aria-hidden="true"></span>
 <p class="pu-lead">{e(short_desc(p))}</p>
@@ -562,4 +581,4 @@ def legal_strip(p):
     return '<section class="pu-legal"><div class="pd-wrap"><b>Kötelező adatok</b>' + ''.join(f'<span><i>{e(a)}:</i> {e(b)}</span>' for a, b in rows) + f'<span>{legal_note(p)}</span></div></section>'
 
 
-TEMPLATES = {'klasszikus': t_klasszikus, 'klara': t_klara, 'piri': t_piri, 'don': t_don, 'friss': t_fsp, 'secco': t_fsp, 'palinka': t_fsp}
+TEMPLATES = {'klasszikus': t_klasszikus, 'klara': t_klara, 'piri': t_piri, 'don': t_don, 'friss': t_fsp, 'secco': t_fsp, 'palinka': t_fsp, 'partner': t_fsp}

@@ -915,7 +915,7 @@ STORY = {
 
 
 BACK = {'klasszikus': 'gyumolcsbor.html', 'klara': 'gyumolcsbor.html#klara', 'piri': 'index.html', 'don': 'gyumolcsbor.html',
-        'friss': 'termek/friss-malna.html', 'secco': 'termek/berry-secco.html', 'palinka': 'termek/szamocapalinka.html'}
+        'friss': 'termek/friss-malna.html', 'secco': 'termek/berry-secco.html', 'palinka': 'termek/szamocapalinka.html', 'partner': 'termek/don-cherry.html'}
 
 
 def product_designed(p):
