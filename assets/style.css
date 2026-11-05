@@ -2798,3 +2798,6 @@ body{overflow-wrap:normal}
 /* Recept-linkek: világoskék aláhúzás (11-05 21:40) */
 .gtk ul a,.cpp-recipe ul a{text-decoration-color:#5FB8E8}
 .gtk ul a:hover,.cpp-recipe ul a:hover{color:#034EA2;text-decoration-color:#034EA2}
+/* Recept-linkek: vékonyabb aláhúzás a receptszöveg színével (11-05 21:42) */
+.gtk ul a,.cpp-recipe ul a{text-decoration-color:#3A4466;text-decoration-thickness:1px;text-underline-offset:3px}
+.gtk ul a:hover,.cpp-recipe ul a:hover{color:#3A4466;text-decoration-thickness:2px}
