@@ -303,7 +303,7 @@ def t_piri(p):
 <div class="pd-free"><span data-free-text></span><div class="bar"><i data-free-bar></i></div></div>'''
     mug = P['piri-mama-bogreje']
     html = f'''{u_hero(p)}
-<div class="pd-pairband"><section class="pd-wrap pd-pair"><div class="mug"><img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
+<div class="pd-pairband"><section class="pd-wrap pd-pair"><div class="mug"><span class="mugim">{_('badge')('piri-mama-bogreje').replace('pbadge', 'pbadge xs')}<img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"></span><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
 <div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
 {info(p, c)}
 <section class="pd-video" aria-label="PIRI Mama hangulatvideó"><video src="{r}img/video/piri_hangulat.mp4" poster="{r}img/video/piri_hangulat.webp" autoplay muted loop playsinline preload="metadata"></video></section>

@@ -53,7 +53,8 @@
     if (!ids.length) return '';
     return '<div class="pd-ups mini-ups"><p>Illik mellé</p><ul>' + ids.map(function (i) {
       var x = K.p[i];
-      return '<li><a href="' + ROOT + x.url + '" class="im"><img src="' + ROOT + x.img + '" alt="" loading="lazy"></a><a href="' + ROOT + x.url + '" class="nm">' + esc(x.n) + '<small>' + fmt(x.price) + '</small></a><button type="button" data-add="' + i + '" aria-label="' + esc(x.n) + ' kosárba">+</button></li>';
+      var bd = x.bd ? '<span class="pbadge xs ' + x.bd + '">' + (x.bd === 'lim' ? 'LIMITÁLT' : 'ÚJ') + '</span>' : '';
+      return '<li><a href="' + ROOT + x.url + '" class="im">' + bd + '<img src="' + ROOT + x.img + '" alt="" loading="lazy"></a><a href="' + ROOT + x.url + '" class="nm">' + esc(x.n) + '<small>' + fmt(x.price) + '</small></a><button type="button" data-add="' + i + '" aria-label="' + esc(x.n) + ' kosárba">+</button></li>';
     }).join('') + '</ul></div>';
   }
 
