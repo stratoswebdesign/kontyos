@@ -184,7 +184,7 @@ def footer(r):
     return f'''<footer class="site-foot"><div class="wrap">
 <div class="brand"><span class="logo"><img class="lb" src="{r}img/logo-navy.svg" alt="Kontyos" width="210" height="52"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="210" height="52"></span><p style="margin-top:14px;max-width:340px;font-size:14px">Gyümölcsborok és gyümölcsből készült különlegességek a klárafalvi Kontyos Borháztól.</p></div>
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}termek/berry-secco.html">Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}termek/szamocapalinka.html">Pálinka</a></div>
-<div><h4>Kampányok</h4><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a></div>
+<div><h4>Kampányok</h4><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}koktelok.html">Koktélok</a></div>
 <div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185 · Demó: Stratos Webdesign</p>
 </div></footer>
@@ -839,7 +839,7 @@ def category():
 <section class="gtk" id="koktelok"><div class="wrap"><div class="hd"><p class="kicker">Koktélok gyümölcsborral</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2>
 <p>Gyümölcsboraink koktélalapanyagként is remekelnek! A Szegedi Gin és Rum Fesztiválon nagy sikert arattak az epres-bazsalikomos, bodzavirágos, narancsos és málnás-gyömbéres változatok – a közönség legnagyobb kedvence a málnás volt.</p>
 <p>A vermut mellett gyümölcsborainkat is érdemes kipróbálni gin, tonic vagy gyömbér társaságában. Fedezd fel Bús Attila mixer alkotásait, és készítsd el otthon is a kedvencedet az alábbi receptek alapján!</p></div>
-<div class="cgrid"><article><img src="{r}img/cocktail/gt-eper.webp" alt="Epres-bazsalikomos gin & tonic" loading="lazy"><h3>Epres-bazsalikomos gin &amp; tonic</h3><p class="d">Üde, gyümölcsös és illatos – az eper édessége friss bazsalikommal és a tonic finom kesernyésségével.</p><ul><li>1 dl Kontyos Klasszik eperbor</li><li>4 cl gin</li><li>1,5 dl tonic</li><li>jég, friss bazsalikom</li></ul><p>Tölts meg egy nagy, talpas poharat jéggel, öntsd rá az eperbort és a gint, majd a tonikot. Óvatosan keverd át, és díszítsd néhány friss bazsalikomlevéllel és eperrel.</p><a class="lnk" href="{r}termek/edes-eperbor.html">Édes eperbor →</a><a class="lnk pk" href="{r}termek/koktel-gt-eper.html">Kérem csomagban →</a></article><article><img src="{r}img/cocktail/gt-bodza.webp" alt="Bodzavirágos gin & tonic" loading="lazy"><h3>Bodzavirágos gin &amp; tonic</h3><p class="d">Könnyed, virágos és elegáns – bodzás-almás gyümölcsösség, friss uborkás csavarral.</p><ul><li>1 dl Kontyos bodza-almabor</li><li>4 cl gin</li><li>1,5 dl tonic</li><li>jég, kígyóuborka</li></ul><p>Tölts meg egy nagy poharat jéggel, öntsd rá a bodza-almabort és a gint, majd a tonicot. Óvatosan keverd át, és díszítsd vékony uborkaszalaggal.</p><a class="lnk" href="{r}termek/edes-bodza-almabor.html">Bodza-almabor →</a><a class="lnk pk" href="{r}termek/koktel-gt-bodza.html">Kérem csomagban →</a></article><article><img src="{r}img/cocktail/gt-malna.webp" alt="Málna + ginger ale" loading="lazy"><h3>Málna + ginger ale</h3><p class="d">Málnás, lendületes, finoman fűszeres – a gyömbér élénkségével és friss citrusos lecsengéssel.</p><ul><li>1 dl Klára málna</li><li>4 cl gin</li><li>1,5 dl ginger ale</li><li>jég, citrom- vagy limekarika</li></ul><p>Tölts meg egy nagy, longdrinkes poharat jéggel, öntsd rá a Klára málnát és a gint, majd a gyömbér üdítőt. Óvatosan keverd át úgy, hogy az alján maradjon tiszta málnabor, majd díszítsd citrom- vagy limekarikával.</p><a class="lnk" href="{r}termek/klara-edes-malnabor.html">Klára málnabor →</a><a class="lnk pk" href="{r}termek/koktel-malna-ginger.html">Kérem csomagban →</a></article><article><img src="{r}img/cocktail/gt-narancs.webp" alt="Narancsos gin & tonic" loading="lazy"><h3>Narancsos gin &amp; tonic</h3><p class="d">Üde, citrusos, finoman kesernyés – a narancs gyümölcsösségével, friss lime-mal és fűszeres borókával.</p><ul><li>1 dl Kontyos Friss narancsbor</li><li>4 cl gin</li><li>2 dl tonic</li><li>jég, narancsszeletek, limekarika és 1–2 borókabogyó</li></ul><p>Tölts meg egy longdrinkes poharat jéggel, és helyezz a jég közé néhány vékony narancsszeletet. Öntsd rá a narancsbort és a gint, majd a tonicot. Óvatosan keverd át, és díszítsd limekarikával és borókabogyóval.</p><a class="lnk" href="{r}termek/friss-narancs.html">FRISS narancsbor →</a><a class="lnk pk" href="{r}termek/koktel-gt-narancs.html">Kérem csomagban →</a></article></div></div></section>
+<div class="cgrid">{"".join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
 {cocktail_packs(r, 'Koktélcsomagok gyümölcsborral', 'Minden hozzávaló egy csomagban, a recepttel együtt – csak a jeget és a díszítést tedd hozzá.', 'Gyümölcsbor · gin · tonik', 'koktelcsomagok', ids=FRUIT_PACKS)}
 </main>''' + footer(r)
     write('gyumolcsbor.html', pg)
@@ -1089,16 +1089,29 @@ def ck_variants(pid, r):
     return arrows, f'<div class="cpp-var"><p class="pu-lab">VÁLASSZ KOKTÉLCSOMAGOT</p><div class="pu-chips" role="group" aria-label="Koktélcsomagok">{chips}</div></div>'
 
 
+def ck_mini(k, r, cls=''):
+    sp = SP[k]
+    old = f'<s>{ft(sp["old"])}</s> ' if sp.get('old') else ''
+    return (f'<a class="ckm{cls}" href="{r}termek/{k}.html"><span class="ckm-ph">{ck_visual(sp, r)}</span><span class="ckm-tx"><small>{"Csomagban" if cls else e(sp["cocktail"])}</small>'
+            f'<b>{e(sp["name"])}</b><em>{old}{ft(sp["price"])}{" →" if cls else ""}</em></span></a>')
+
+
+def recipe_card(k, r, wine=True):
+    """Koktélrecept kártya, alatta a saját csomagja (gyümölcsbor oldal, Koktélok oldal)."""
+    c, sp = CK_PAGE[k], SP[k]
+    base = next((i for i in sp['items'] if P[i]['line'] not in ('partner',)), None)
+    wl = f'<a class="lnk" href="{r}termek/{base}.html">{e(P[base]["name"])} →</a>' if wine and base and k in FRUIT_PACKS else ''
+    return (f'<article><img src="{r}{c["img"]}" alt="{e(c["title"])}" loading="lazy"><h3>{e(c["title"])}</h3><p class="d">{e(c["d"])}</p>'
+            f'<ul>{"".join(f"<li>{e(x)}</li>" for x in c["ing"])}</ul><p>{e(c["how"])}</p>{wl}{ck_mini(k, r, " in-card")}</article>')
+
+
 def ck_minis(r, exclude):
     """A többi 6 koktélcsomag kis widgetekben."""
     out = ''
     for k in ALL_CK:
         if k == exclude:
             continue
-        sp = SP[k]
-        old = f'<s>{ft(sp["old"])}</s> ' if sp.get('old') else ''
-        out += (f'<a class="ckm" href="{r}termek/{k}.html"><span class="ckm-ph">{ck_visual(sp, r)}</span><span class="ckm-tx"><small>{e(sp["cocktail"])}</small>'
-                f'<b>{e(sp["name"])}</b><em>{old}{ft(sp["price"])}</em></span></a>')
+        out += ck_mini(k, r)
     return f'''<section class="ckpacks ckminis"><div class="wrap"><div class="hd"><p class="kicker">Koktélcsomagok</p><h2 class="h2">Válassz másik koktélt</h2>
 <p class="lead">Don Cherry-s klasszikusok és gyümölcsboros gin-tonikok – mindegyik a recepttel együtt.</p></div><div class="ckm-grid">{out}</div></div></section>'''
 
@@ -1178,6 +1191,38 @@ def cocktail_pack_page(pid):
 <div class="side">{legal}</div></div></section>
 </main><div class="buybar"><div class="pb"><b data-line>{ft(sp['price'])}</b><small><span data-q>1</span> db</small></div><div class="qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q>1</span><button type="button" data-inc aria-label="Több">+</button></div><button class="btn" type="button" data-add="{pid}" data-qty-from="#q">Kosárba</button></div>""" + footer(r)
     write(f"termek/{pid}.html", pg)
+
+# ---------- Koktélok oldal (csak a láblécből érhető el – Sanyi, 11-05) ----------
+def cocktails_page():
+    r = ''
+    neat = [('Don on the rocks', 'Tölts meg egy poharat jéggel, tegyél rá egy narancskarikát, és öntsd rá a 8 cl meggyvermutot.'),
+            ('Meggy shot', 'Egy 5 cl-es pohár aljára tegyél egy meggyszemet, önts rá 4 cl vermutot, és idd meg két kortyban.')]
+    neath = ''.join(f'<li><b>{e(t)}</b><span>{e(d)}</span></li>' for t, d in neat)
+    pg = head('Koktélok – Don Cherry és gyümölcsboros receptek, koktélcsomagok | Kontyos',
+              'Don Cherry Negroni, Americano, Don Cherry & Tonic és gyümölcsboros gin-tonikok receptjei – minden hozzávaló koktélcsomagban, a klárafalvi Kontyos Borháztól.', r, 'cocktails')
+    pg += header(r)
+    pg += f"""<main class="ckl">
+<section class="ckl-hero"><div class="wrap"><div class="tx"><p class="crumb"><a href="{r}index.html">Főoldal</a> / Koktélok</p><p class="kicker">Kontyos koktélbár</p>
+<h1>Gyümölcs a pohár alján, jókedv a tetején</h1>
+<p class="lead">Két műfaj, egy borház: a fűszeres Don Cherry meggyvermut klasszikusai és gyümölcsboraink könnyed gin-tonikjai. Minden recepthez van csomag is – csak a jeget és a díszítést tedd hozzá.</p>
+<nav class="ckl-jump"><a href="#meggyvoros-estek">Don Cherry koktélok</a><a href="#gyumolcskert">Gyümölcsboros koktélok</a></nav></div>
+<div class="pics" aria-hidden="true"><img src="{r}img/cocktail/negroni.webp" alt=""><img src="{r}img/cocktail/gt-eper.webp" alt=""></div></div></section>
+
+<section class="ckl-part don" id="meggyvoros-estek" style="--pimg:url(../img/cocktail/americano.webp)"><div class="wrap"><p class="kicker">1. rész · Don Cherry koktélok</p><h2>Meggyvörös esték</h2>
+<p class="lead">Saját meggyborunkra épülő, fűszeres édes meggyvermut – jéggel tisztán, vagy a nagy klasszikusok meggyes csavarjaként.</p></div></section>
+<section class="sec ckl-rec gtk don-rec"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Három klasszikus, egy meggyes csavar</h2></div>
+<div class="cgrid c3">{''.join(recipe_card(k, r) for k in COCKTAIL_PACKS)}</div>
+<div class="ckl-neat"><p class="kicker">Tisztán is</p><ul>{neath}</ul><a class="lnk" href="{r}termek/don-cherry.html">Don Cherry meggyvermut →</a></div></div></section>
+{cocktail_packs(r, 'A bárpult dobozban', 'Negroni, Americano vagy Don Cherry & Tonic – minden hozzávaló egy csomagban, a recepttel együtt.', 'Don Cherry · koktélcsomagok', 'don-csomagok')}
+
+<section class="ckl-part fruit" id="gyumolcskert" style="--pimg:url(../img/cocktail/gt-malna.webp)"><div class="wrap"><p class="kicker">2. rész · Gyümölcsboros koktélok</p><h2>Gyümölcskert a pohárban</h2>
+<p class="lead">A Szegedi Gin és Rum Fesztivál kedvencei: gyümölcsboraink gin, tonic és gyömbér társaságában – Bús Attila mixer receptjei alapján.</p></div></section>
+<section class="sec ckl-rec gtk"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2></div>
+<div class="cgrid">{''.join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
+{cocktail_packs(r, 'Gin-tonik gyümölcsborral – csomagban', 'Bor, gin és tonik egy dobozban, a recepttel – a málnásba a ginger ale-t tedd hozzá.', 'Gyümölcsbor · gin · tonik', 'gyumolcs-csomagok', ids=FRUIT_PACKS)}
+</main>""" + footer(r)
+    write('koktelok.html', pg)
+
 
 # ---------- kampányoldalak ----------
 # Egységes csomagkártya (Sanyi, 11-03): a Black Friday-doboz stílusa mindenhol – színes felső rész (felirat, cím, palackok ív nélkül, tartalom), szaggatott vonal, sötét ársáv, gomb
@@ -1511,6 +1556,7 @@ def main():
     about_page()
     for pid in ALL_CK:
         cocktail_pack_page(pid)
+    cocktails_page()
     checkout()
     thanks()
     info()
