@@ -2556,3 +2556,34 @@ body{overflow-wrap:normal}
 .pw-tag{z-index:2}
 .pw-im img{position:relative;z-index:1}
 .ckpage .buybar .btn{background:#C8282E;color:#fff}
+/* ===== Üveg widgetek: átlátszóbb üveg, fekete szövegek; a címwidget a 2. kártya jobb pereméig (11-05) ===== */
+.ckpacks{--ckgap:clamp(14px,1.8vw,24px)}
+.ckpacks .grid,.pwgrid{gap:var(--ckgap)}
+.ckpacks .hd,.ckp,.pw{
+  background:linear-gradient(135deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,.07) 55%,rgba(255,255,255,.13) 100%);
+  -webkit-backdrop-filter:blur(26px) saturate(130%) brightness(1.18);backdrop-filter:blur(26px) saturate(130%) brightness(1.18);
+  border-color:rgba(255,255,255,.45)}
+.ckp .ph,.pw-im{background:linear-gradient(160deg,rgba(255,255,255,.30),rgba(255,255,255,.08))}
+.ckpacks .hd{max-width:none;width:calc((200% - var(--ckgap)) / 3)}
+.ckpacks .hd .kicker,.ckpacks .h2,.ckpacks .lead,.ckp .k,.ckp h3,.ckp h3 a,.ckp .ct,.ckp .pr b,
+.pw-tx,.pw-tx h3 a,.pw-tx p,.pw-row .pr b,
+.cpp-buy h1,.cpp-list a,.cpp-price b,.cpp-ship,.cpp-box .free{color:#111;text-shadow:none}
+.ckpacks .hd .kicker{--accent:#111}
+.ckpacks .lead,.ckp .ct,.pw-tx p,.cpp-ship,.cpp-box .free{color:rgba(0,0,0,.78)}
+.ckp .nt,.cpp-note{color:#5A3A00;text-shadow:none}
+.ckp .pr s,.cpp-price s{color:rgba(0,0,0,.5)}
+.pw-row .pr small,.cpp-price small,.cpp-list em{color:rgba(0,0,0,.62)}
+.ckp .btn,.pw-row .btn,.cpp-actions .btn{color:#111}
+.cpp-list a{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4)}
+.cpp-box{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.4)}
+.cpp-actions .qty{border-color:rgba(0,0,0,.7);color:#111}
+.cpp-actions .qty button{color:#111}
+.cpp-box .free .bar{background:rgba(0,0,0,.14)}
+.cpp-box .free .bar i{background:#111}
+.ckpacks .cpp-buy.hd{width:auto}
+@media (max-width:980px){.ckpacks .hd{width:auto}}
+.cpp-grid{align-items:start}
+.cpp-media{position:sticky;top:96px}
+.cpp-media .ph{flex:none;height:clamp(340px,38vw,560px);min-height:0}
+@media (max-width:980px){.cpp-media{position:static}.cpp-media .ph{height:300px}}
+.cpp-media{position:relative;top:auto}
