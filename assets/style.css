@@ -2721,3 +2721,13 @@ body{overflow-wrap:normal}
 @media (max-width:980px){.ckl-hero .wrap{grid-template-columns:1fr}.ckl-hero .pics{height:300px;max-width:420px}.ckl .gtk .cgrid.c3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.ckl .gtk .cgrid.c3{display:flex}.ckl-neat ul{grid-template-columns:1fr}.ckl-part h2{font-size:clamp(40px,12vw,64px)}}
 @media (max-width:640px){.ckl-part h2{max-width:none;font-size:clamp(34px,10.5vw,56px)}}
+/* Palackarányok (11-05 21:14): bor > Campari, a gin picit kisebb */
+.ckp .ph img.i-wine,.ckm-ph img.i-wine{height:100%}
+.ckp .ph img.i-campari,.ckm-ph img.i-campari{height:94%}
+.ckp .ph img.i-don,.ckm-ph img.i-don{height:76%}
+.ckp .ph img.i-gin,.ckm-ph img.i-gin{height:68%}
+.ckp .ph img.i-jar,.ckp .ph img.i-tonic,.ckm-ph img.i-jar,.ckm-ph img.i-tonic{height:42%}
+/* Koktél oldalak: a menü háttér nélkül, a hero alá csúszik, mint a többi oldalon (11-05 21:15) */
+.ckpage .cpp-hero{margin-top:-84px;padding-top:calc(84px + clamp(14px,2vw,26px))}
+.ckl-hero{margin-top:-84px;padding-top:calc(84px + clamp(20px,3vw,44px))}
+@media (max-width:860px){.ckpage .cpp-hero{margin-top:-70px;padding-top:calc(70px + 14px)}.ckl-hero{margin-top:-70px;padding-top:calc(70px + 20px)}}

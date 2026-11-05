@@ -2599,6 +2599,55 @@
   "drs": 50
  },
  {
+  "id": "goldberg-ginger-ale",
+  "src": "goldberg-ginger-ale",
+  "name": "Goldberg & Sons Ginger Ale 0,2 l",
+  "line": "partner",
+  "accent": "#1F8A80",
+  "arch": "#DDF1EE",
+  "price": 550,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Német prémium ginger ale természetes összetevőkből – enyhe gyömbér, citromfüves jegyek, kiegyensúlyozott édesség. A Málna + ginger ale koktél társa.",
+  "long": [
+   "A Goldberg & Sons Ginger Ale természetes összetevőkből készülő német ginger ale: tiszta, enyhén gyömbéres ízű, citromfüves illattal és kiegyensúlyozott édességgel. Longdrinkekben és koktélokban remekel – a Klára málnaborral készülő Málna + ginger ale koktél társa.",
+   "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
+  ],
+  "params": [
+   [
+    "Űrmérték",
+    "0,2 l"
+   ],
+   [
+    "Típus",
+    "Ginger ale (alkoholmentes)"
+   ],
+   [
+    "Márka",
+    "Goldberg & Sons"
+   ],
+   [
+    "Származási ország",
+    "Németország"
+   ],
+   [
+    "Csomagolás",
+    "Üveg, DRS-betétdíjas (+50 Ft)"
+   ],
+   [
+    "Egységár",
+    "2 750 Ft/l"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/goldberg-ginger-ale.webp",
+  "tight": "img/t/goldberg-ginger-ale.webp",
+  "drs": 50
+ },
+ {
   "id": "gunpowder-gin",
   "src": "gunpowder-gin",
   "name": "Drumshanbo Gunpowder Irish Gin 0,7 l",

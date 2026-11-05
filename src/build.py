@@ -79,8 +79,7 @@ SEASON_PACKS = [
     dict(id='koktel-gt-bodza', name='Bodzavirágos gin-tonik csomag', cocktail='Bodzavirágos G&T',
          items=['edes-bodza-almabor', 'gunpowder-gin', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic'], tint='#EEF0D2', tag='KOKTÉLCSOMAG'),
     dict(id='koktel-malna-ginger', name='Málnás ginger csomag', cocktail='Málna + ginger ale',
-         items=['klara-edes-malnabor', 'gunpowder-gin'], tint='#F7F1F2', tag='KOKTÉLCSOMAG',
-         note='A ginger ale nem része a csomagnak. [Egyeztetendő: felkerüljön-e partnertermékként?]'),
+         items=['klara-edes-malnabor', 'gunpowder-gin', 'goldberg-ginger-ale', 'goldberg-ginger-ale', 'goldberg-ginger-ale', 'goldberg-ginger-ale'], tint='#F7F1F2', tag='KOKTÉLCSOMAG'),
     dict(id='koktel-gt-narancs', name='Narancsos gin-tonik csomag', cocktail='Narancsos G&T',
          items=['friss-narancs', 'gunpowder-gin', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic'], tint='#FDE3C8', tag='KOKTÉLCSOMAG'),
 ]
@@ -340,7 +339,8 @@ def don_packs(r, title='Don Cherry csomagban', sub='Ajándékba vagy a hétvég�
 <div class="grid">{cardsh}</div></div></section>'''
 
 
-CK_CLS = {'campari': 'i-campari', 'gunpowder-gin': 'i-gin', 'goldberg-tonic': 'i-tonic', 'don-cherry-gyumolcse': 'i-jar', 'don-cherry': 'i-don'}
+CK_CLS = {'campari': 'i-campari', 'gunpowder-gin': 'i-gin', 'goldberg-tonic': 'i-tonic', 'goldberg-ginger-ale': 'i-tonic', 'don-cherry-gyumolcse': 'i-jar', 'don-cherry': 'i-don',
+          'edes-eperbor': 'i-wine', 'edes-bodza-almabor': 'i-wine', 'klara-edes-malnabor': 'i-wine', 'friss-narancs': 'i-wine'}
 
 
 def ck_visual(sp, r):
@@ -837,8 +837,8 @@ def category():
 <a class="w-more" href="{r}rolunk.html">További információ – a Kontyos története →</a>
 </div></section>
 <section class="gtk" id="koktelok"><div class="wrap"><div class="hd"><p class="kicker">Koktélok gyümölcsborral</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2>
-<p>Gyümölcsboraink koktélalapanyagként is remekelnek! A Szegedi Gin és Rum Fesztiválon nagy sikert arattak az epres-bazsalikomos, bodzavirágos, narancsos és málnás-gyömbéres változatok – a közönség legnagyobb kedvence a málnás volt.</p>
-<p>A vermut mellett gyümölcsborainkat is érdemes kipróbálni gin, tonic vagy gyömbér társaságában. Fedezd fel Bús Attila mixer alkotásait, és készítsd el otthon is a kedvencedet az alábbi receptek alapján!</p></div>
+<p>Gyümölcsboraink koktélban is remekelnek! Fedezd fel Bús Attila mixer receptjeit, és készítsd el otthon a kedvencedet ginnel, tonikkal vagy gyömbérrel.</p>
+<p>Ezek a koktélok a Szegedi Gin és Rum Fesztiválon is nagy sikert arattak. A közönség kedvence a málnás volt!</p></div>
 <div class="cgrid">{"".join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
 {cocktail_packs(r, 'Koktélcsomagok gyümölcsborral', 'Minden hozzávaló egy csomagban, a recepttel együtt – csak a jeget és a díszítést tedd hozzá.', 'Gyümölcsbor · gin · tonik', 'koktelcsomagok', ids=FRUIT_PACKS)}
 </main>''' + footer(r)
@@ -1054,26 +1054,26 @@ CK_PAGE = {
         how='Tölts meg egy longdrinkes poharat jéggel, öntsd rá a Don Cherryt, majd a tonicot. Óvatosan keverd át, és díszítsd meggyel és narancskarikával.'),
     'koktel-gt-eper': dict(
         lead='Az epres-bazsalikomos gin-tonik hozzávalói egy csomagban: Kontyos Édes eperbor, Drumshanbo Gunpowder Irish Gin és négy Goldberg & Sons Tonic Water.',
-        img='img/cocktail/gt-eper.webp', title='Epres-bazsalikomos gin & tonic', d='Üde, gyümölcsös és illatos – az eper édessége friss bazsalikommal és a tonic finom kesernyésségével.',
+        img='img/cocktail/gt-eper.webp', title='Epres-bazsalikomos gin & tonic', d='Üde eper, friss bazsalikom, finoman kesernyés tonik.',
         ing=['1 dl Kontyos Klasszik eperbor', '4 cl gin', '1,5 dl tonic', 'jég, friss bazsalikom'],
-        how='Tölts meg egy nagy, talpas poharat jéggel, öntsd rá az eperbort és a gint, majd a tonikot. Óvatosan keverd át, és díszítsd néhány friss bazsalikomlevéllel és eperrel.'),
+        how='Öntsd a borra és a ginre a tonikot egy jéggel teli talpas pohárban. Finoman keverd át, díszítsd bazsalikommal és eperrel.'),
     'koktel-gt-bodza': dict(
         lead='A bodzavirágos gin-tonik hozzávalói egy csomagban: Kontyos Édes bodza-almabor, Drumshanbo Gunpowder Irish Gin és négy Goldberg & Sons Tonic Water.',
-        img='img/cocktail/gt-bodza.webp', title='Bodzavirágos gin & tonic', d='Könnyed, virágos és elegáns – bodzás-almás gyümölcsösség, friss uborkás csavarral.',
+        img='img/cocktail/gt-bodza.webp', title='Bodzavirágos gin & tonic', d='Könnyed, virágos ízek, friss uborkás csavarral.',
         ing=['1 dl Kontyos bodza-almabor', '4 cl gin', '1,5 dl tonic', 'jég, kígyóuborka'],
-        how='Tölts meg egy nagy poharat jéggel, öntsd rá a bodza-almabort és a gint, majd a tonicot. Óvatosan keverd át, és díszítsd vékony uborkaszalaggal.'),
+        how='Öntsd a borra és a ginre a tonikot egy jéggel teli pohárban. Finoman keverd át, díszítsd uborkaszalaggal.'),
     'koktel-malna-ginger': dict(
-        lead='A Szegedi Gin és Rum Fesztivál közönségkedvence: Klára édes málnabor és Drumshanbo Gunpowder Irish Gin – a ginger ale-lel együtt egy lendületes, málnás longdrink.',
-        img='img/cocktail/gt-malna.webp', title='Málna + ginger ale', d='Málnás, lendületes, finoman fűszeres – a gyömbér élénkségével és friss citrusos lecsengéssel.',
+        lead='A Szegedi Gin és Rum Fesztivál közönségkedvence egy csomagban: Klára édes málnabor, Drumshanbo Gunpowder Irish Gin és négy Goldberg & Sons Ginger Ale.',
+        img='img/cocktail/gt-malna.webp', title='Málna + ginger ale', d='Zamatos málna, fűszeres gyömbér, friss citrusok.',
         ing=['1 dl Klára málna', '4 cl gin', '1,5 dl ginger ale', 'jég, citrom- vagy limekarika'],
-        how='Tölts meg egy nagy, longdrinkes poharat jéggel, öntsd rá a Klára málnát és a gint, majd a gyömbér üdítőt. Óvatosan keverd át úgy, hogy az alján maradjon tiszta málnabor, majd díszítsd citrom- vagy limekarikával.'),
+        how='Jégre öntsd a málnabort, a gint, majd a gyömbérüdítőt. Csak finoman keverd meg, hogy alul málnásabb maradjon. Díszítsd citrom- vagy limekarikával.'),
     'koktel-gt-narancs': dict(
         lead='A narancsos gin-tonik hozzávalói egy csomagban: FRISS narancsbor, Drumshanbo Gunpowder Irish Gin és négy Goldberg & Sons Tonic Water.',
-        img='img/cocktail/gt-narancs.webp', title='Narancsos gin & tonic', d='Üde, citrusos, finoman kesernyés – a narancs gyümölcsösségével, friss lime-mal és fűszeres borókával.',
+        img='img/cocktail/gt-narancs.webp', title='Narancsos gin & tonic', d='Friss narancs, üde lime és fűszeres boróka.',
         ing=['1 dl Kontyos Friss narancsbor', '4 cl gin', '2 dl tonic', 'jég, narancsszeletek, limekarika és 1–2 borókabogyó'],
-        how='Tölts meg egy longdrinkes poharat jéggel, és helyezz a jég közé néhány vékony narancsszeletet. Öntsd rá a narancsbort és a gint, majd a tonicot. Óvatosan keverd át, és díszítsd limekarikával és borókabogyóval.'),
+        how='Tegyél jeget és narancsszeleteket egy longdrinkes pohárba. Öntsd rá a bort, a gint és a tonikot, finoman keverd át. Díszítsd lime-mal és borókával.'),
 }
-PARTNERS = ['gunpowder-gin', 'campari', 'goldberg-tonic']
+PARTNERS = ['gunpowder-gin', 'campari', 'goldberg-tonic', 'goldberg-ginger-ale']
 
 
 def ck_variants(pid, r):
@@ -1216,10 +1216,10 @@ def cocktails_page():
 {cocktail_packs(r, 'A bárpult dobozban', 'Negroni, Americano vagy Don Cherry & Tonic – minden hozzávaló egy csomagban, a recepttel együtt.', 'Don Cherry · koktélcsomagok', 'don-csomagok')}
 
 <section class="ckl-part fruit" id="gyumolcskert" style="--pimg:url(../img/cocktail/gt-malna.webp)"><div class="wrap"><p class="kicker">2. rész · Gyümölcsboros koktélok</p><h2>Gyümölcskert a pohárban</h2>
-<p class="lead">A Szegedi Gin és Rum Fesztivál kedvencei: gyümölcsboraink gin, tonic és gyömbér társaságában – Bús Attila mixer receptjei alapján.</p></div></section>
+<p class="lead">Gyümölcsboraink koktélban is remekelnek! Fedezd fel Bús Attila mixer receptjeit – ezek a koktélok a Szegedi Gin és Rum Fesztiválon is nagy sikert arattak, a közönség kedvence a málnás volt.</p></div></section>
 <section class="sec ckl-rec gtk"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2></div>
 <div class="cgrid">{''.join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
-{cocktail_packs(r, 'Gin-tonik gyümölcsborral – csomagban', 'Bor, gin és tonik egy dobozban, a recepttel – a málnásba a ginger ale-t tedd hozzá.', 'Gyümölcsbor · gin · tonik', 'gyumolcs-csomagok', ids=FRUIT_PACKS)}
+{cocktail_packs(r, 'Gin-tonik gyümölcsborral – csomagban', 'Bor, gin és tonik vagy ginger ale egy dobozban, a recepttel együtt.', 'Gyümölcsbor · gin · tonik', 'gyumolcs-csomagok', ids=FRUIT_PACKS)}
 </main>""" + footer(r)
     write('koktelok.html', pg)
 
