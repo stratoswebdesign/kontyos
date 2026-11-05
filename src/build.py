@@ -72,7 +72,7 @@ SEASON_PACKS = [
     dict(id='koktel-americano', name='Don Cherry Americano csomag', price=16990, old=19770, free=False, cocktail='Americano',
          items=['don-cherry', 'don-cherry', 'campari', 'don-cherry-gyumolcse'], tint='#F3E1D6', tag='KOKTÉLCSOMAG'),
     dict(id='koktel-tonic', name='Don Cherry & Tonic csomag', price=8990, old=10180, free=False, cocktail='Don Cherry & Tonic',
-         items=['don-cherry', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic', 'don-cherry-gyumolcse'], tint='#F3E1D6', tag='KOKTÉLCSOMAG'),
+         items=['don-cherry', 'don-cherry-gyumolcse', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic', 'goldberg-tonic'], tint='#F3E1D6', tag='KOKTÉLCSOMAG'),
 ]
 COCKTAIL_PACKS = ['koktel-negroni', 'koktel-americano', 'koktel-tonic']
 SP = {s['id']: s for s in SEASON_PACKS}
@@ -1020,7 +1020,7 @@ CK_PAGE = {
         ing=['6 cl Don Cherry', '3 cl Campari', 'jég, narancskarika vagy narancshéj-spirál'],
         how='Öntsd a Don Cherryt és a Camparit egy jéggel teli whiskys pohárba, és keverd össze óvatosan. Díszítsd narancshéjjal.'),
     'koktel-tonic': dict(
-        lead='Don Cherry, négy Goldberg & Sons Tonic Water és Don Cherry gyümölcse – a legegyszerűbb út a frissítő Don Cherry & Tonichoz.',
+        lead='Don Cherry, Don Cherry gyümölcse és négy Goldberg & Sons Tonic Water – a legegyszerűbb út a frissítő Don Cherry & Tonichoz.',
         img='img/cocktail/don-tonic.webp', title='Don Cherry & Tonic', d='Frissítő, meggyes, finoman kesernyés – üde narancsos csavarral.',
         ing=['1 dl Don Cherry', '1 dl tonic', 'jég, meggy és narancskarika'],
         how='Tölts meg egy longdrinkes poharat jéggel, öntsd rá a Don Cherryt, majd a tonicot. Óvatosan keverd át, és díszítsd meggyel és narancskarikával.'),

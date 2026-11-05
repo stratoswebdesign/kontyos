@@ -2587,3 +2587,4 @@ body{overflow-wrap:normal}
 .cpp-media .ph{flex:none;height:clamp(340px,38vw,560px);min-height:0}
 @media (max-width:980px){.cpp-media{position:static}.cpp-media .ph{height:300px}}
 .cpp-media{position:relative;top:auto}
+.ckp .ph img.i-jar+img.i-tonic{margin-left:6px}
