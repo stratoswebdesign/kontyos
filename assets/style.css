@@ -2425,3 +2425,8 @@ body{overflow-wrap:normal}
 .ab-video .vbtn img{opacity:.8}
 .ab-video .ph-cover{right:auto;max-width:72%}
 @media (max-width:860px){.ab-story .wrap{grid-template-columns:1fr}.ab-video{width:100%}.ab-video .play{width:54px;height:54px;left:14px;bottom:14px}.ab-video .ph-cover{max-width:none;right:14px;font-size:11px}}
+/* Easy Cider: kép jobbra, szöveg balra; a Red Dot jelvény a szöveg felőli sarokban (11-05) */
+@media (min-width:861px){
+  .ab-easy .bt{order:2;padding:0 0 6% 8%}
+  .ab-torta.ab-easy .bt img.rdot{right:auto;left:0}
+}
