@@ -2814,3 +2814,8 @@ body{overflow-wrap:normal}
   background:var(--pimg) 0 0/100% 100% no-repeat;transform:translateX(-75.7%)}
 @media (max-width:860px){.ckl-hero::after{left:62%}}
 @media (max-width:860px){.ckl-hero::after{top:3.1%;height:169%;left:68%}}
+/* Koktélok hero: új, eleve sötét bal oldalú kép – teljes kitöltés, jobbra igazítva (11-05 21:59) */
+.ckl-hero::after{top:0;bottom:0;left:0;right:0;height:auto;width:auto;aspect-ratio:auto;max-width:none;transform:none;
+  background:var(--pimg) 100% 50%/cover no-repeat;-webkit-mask-image:none;mask-image:none;opacity:1}
+.ckl-hero::before{background:none}
+@media (max-width:860px){.ckl-hero::after{top:0;left:0;height:auto;background-position:78% 50%}.ckl-hero::before{background:linear-gradient(180deg,rgba(18,14,12,.35) 0%,rgba(18,14,12,.75) 100%)}}
