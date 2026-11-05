@@ -2752,3 +2752,4 @@ body{overflow-wrap:normal}
 .cpp-hero .cpp-media .ph{background:transparent;border:0;box-shadow:none;margin:0;padding:10px 0 0}
 .cpp-hero .cpp-media .ph img{filter:drop-shadow(0 16px 18px rgba(42,20,22,.22))}
 .cpp-hero .cpp-media .ph img{filter:drop-shadow(0 10px 8px rgba(42,20,22,.16))}
+.ckm-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}.ckm-ph{height:110px}@media (max-width:1100px){.ckm-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
