@@ -1266,13 +1266,6 @@ def about_page():
 
 {torta_block(r)}
 
-<section class="ab-torta ab-easy"><div class="wrap">
-<div class="bt"><figure class="cake"><img src="{r}img/photo/easy_cider.webp" alt="Easy Cider palackok a Red Dot díjas címkével" loading="lazy"></figure><img class="rdot" src="{r}img/logos/red-dot.png" alt="Red Dot díj" loading="lazy"></div>
-<div class="tx"><p class="kicker">Nemzetközi designelismerés</p><h2 class="h2">Easy Cider – Red Dot díjas megjelenés</h2>
-<p class="lead">Az Easy Cider nemcsak az ízével, a megjelenésével is kitűnik: csomagolása elnyerte a <b>Red Dot díjat</b>.</p>
-<p>A Graphasel Design Studio által tervezett címkén az alma és a köré fonódó kígyó idézi meg a csábítás történetét. Friss, karakteres megjelenés egy könnyed, pezsgő gyümölcsélményhez.</p>
-<div class="cta"><a class="btn" href="#easy-cider">Fedezd fel az Easy Cidert →</a></div></div>
-</div></section>
 
 <section class="sec ab-time"><div class="wrap"><p class="kicker">Mérföldkövek</p><h2 class="h2">Klárafalváról az ország polcaira</h2>
 <ol class="tl">{tlh}</ol></div></section>
@@ -1292,6 +1285,13 @@ def about_page():
 <p class="lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat.</p>
 <div class="ab-lines">{brand}</div></div></section>
 
+<section class="ab-torta ab-easy"><div class="wrap">
+<div class="bt"><figure class="cake"><img src="{r}img/photo/easy_cider.webp" alt="Easy Cider palackok a Red Dot díjas címkével" loading="lazy"></figure><img class="rdot" src="{r}img/logos/red-dot.png" alt="Red Dot díj" loading="lazy"></div>
+<div class="tx"><p class="kicker">Nemzetközi designelismerés</p><h2 class="h2">Easy Cider – Red Dot díjas megjelenés</h2>
+<p class="lead">Az Easy Cider nemcsak az ízével, a megjelenésével is kitűnik: csomagolása elnyerte a <b>Red Dot díjat</b>.</p>
+<p>A Graphasel Design Studio által tervezett címkén az alma és a köré fonódó kígyó idézi meg a csábítás történetét. Friss, karakteres megjelenés egy könnyed, pezsgő gyümölcsélményhez.</p>
+<div class="cta"><a class="btn" href="#easy-cider">Fedezd fel az Easy Cidert →</a></div></div>
+</div></section>
 <section class="sec ab-where"><div class="wrap">
 <div class="tx"><p class="kicker">Ahol találkozhatsz velünk</p><h2 class="h2">Üzletekben, fesztiválokon, vásárokon és online</h2>
 <p>Italainkat országszerte megtalálod a nagy üzletláncok polcain, fesztiválokon személyesen is találkozhatunk, adventkor pedig a Piri Mama forralt borral a legnagyobb karácsonyi vásárokon várunk: {e(fair_cities)}.</p>
