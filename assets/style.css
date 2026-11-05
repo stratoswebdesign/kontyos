@@ -2790,3 +2790,8 @@ body{overflow-wrap:normal}
   .ckl-hero::after{left:0;right:0;max-width:none;aspect-ratio:auto;background-position:60% 30%;opacity:.55;
     -webkit-mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.6) 55%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.6) 55%,transparent 100%)}
 }
+/* Koktélok hero: balra megtoldott, széles kép (11-05 21:38) */
+.ckl-hero::after{left:0;right:0;max-width:none;aspect-ratio:auto;background:var(--pimg) 100% 50%/cover no-repeat;-webkit-mask-image:none;mask-image:none;opacity:1}
+.ckl-hero::before{z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(29,26,28,.55) 0%,rgba(29,26,28,.25) 45%,rgba(29,26,28,0) 65%)}
+.ckl-hero .wrap{position:relative;z-index:1}
+@media (max-width:860px){.ckl-hero::after{background-position:82% 50%;opacity:1}.ckl-hero::before{background:linear-gradient(180deg,rgba(29,26,28,.45) 0%,rgba(29,26,28,.8) 100%)}}
