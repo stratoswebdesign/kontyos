@@ -2777,3 +2777,6 @@ body{overflow-wrap:normal}
 /* Recept-hozzávalók: kattintható termékek (11-05 21:34) */
 .gtk ul a,.cpp-recipe ul a{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:rgba(200,40,46,.45);text-underline-offset:3px;text-decoration-thickness:1.5px}
 .gtk ul a:hover,.cpp-recipe ul a:hover{color:#C8282E;text-decoration-color:#C8282E}
+/* Csomagképek: a palackok alja egy vonalban (11-05 21:36) – összenyomott kép esetén is az aljához igazít */
+.ckp .ph,.ckm-ph,.pw-im,.cpp-media .ph{align-items:flex-end}
+.ckp .ph img,.ckm-ph img,.pw-im img,.cpp-media .ph img{object-position:50% 100%;align-self:flex-end;margin-bottom:0;vertical-align:bottom}
