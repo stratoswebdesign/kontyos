@@ -113,7 +113,7 @@ def write_catalog_js():
     for s in SEASON_PACKS:
         first = P[s['items'][0]]
         page = ('csomagok.html' if s['id'] == 'ujbor-valogatas' else 'black-friday.html' if s['id'].startswith('bf')
-                else 'termek/don-cherry.html' if s['id'].startswith('don-') else 'termek/don-cherry.html#koktelcsomagok' if s['id'].startswith('koktel-')
+                else 'termek/don-cherry.html' if s['id'].startswith('don-') else f"termek/{s['id']}.html" if s['id'].startswith('koktel-')
                 else 'csomagok.html' if s['id'] == 'forralt-6' else 'karacsonyi-ajandek-bor.html')
         out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=first['img'], url=page,
                             sub=f"{len(s['items'])} tétel · {'koktélcsomag' if s.get('cocktail') else 'szezonális csomag'}", tint=s['tint'], free=s['free'], ups=['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry-gyumolcse'])
@@ -324,20 +324,25 @@ def don_packs(r, title='Don Cherry csomagban', sub='Ajándékba vagy a hétvég�
 <div class="grid">{cardsh}</div></div></section>'''
 
 
-def cocktail_packs(r, title='Készítsd el otthon is!', sub='Megtaláltad a kedvencedet? Válassz hozzá Don Cherry csomagot, és készítsd el a saját koktélestédet – vagy lepj meg vele valakit, akivel szívesen koccintanál.', kicker='', sid='koktelcsomagok'):
+CK_CLS = {'campari': 'i-campari', 'gunpowder-gin': 'i-gin', 'goldberg-tonic': 'i-tonic', 'don-cherry-gyumolcse': 'i-jar', 'don-cherry': 'i-don'}
+
+
+def ck_visual(sp, r):
+    """Koktélcsomag palackjai valós arányban (Sanyi, 11-05): a Campari a legmagasabb, a gin és a Don egymagas, a tonik akkora, mint a befőtt."""
+    return ''.join(f'<img src="{r}{P[i]["tight"]}" alt="{e(P[i]["name"])}" loading="lazy" class="{CK_CLS.get(i, "")}">' for i in sp['items'])
+
+
+def cocktail_packs(r, title='Készítsd el otthon is!', sub='Megtaláltad a kedvencedet? Válassz hozzá Don Cherry csomagot, és készítsd el a saját koktélestédet – vagy lepj meg vele valakit, akivel szívesen koccintanál.', kicker='', sid='koktelcsomagok', exclude=None):
     """Koktélcsomagok (Negroni, Americano, Don Cherry & Tonic) – a Don kis/nagy csomag kártyáihoz hasonló, álló kártyák rézháttéren (Sanyi, 11-05).
     A Gunpowder gin ajándékpoharát a képen nem tüntetjük fel."""
     cards = ''
     for pid in COCKTAIL_PACKS:
+        if pid == exclude:
+            continue
         sp = SP[pid]
-        seen, imgs = set(), ''
-        for i in sp['items']:          # ismétlődő tétel (pl. 4 tonik) a képen legfeljebb kétszer
-            seen.add(i) if i not in seen else None
-            if sp['items'][:sp['items'].index(i) + 1].count(i) > 2:
-                continue
-            imgs += f'<img src="{r}{P[i]["tight"]}" alt="{e(P[i]["name"])}" loading="lazy" class="{'jar' if i == 'don-cherry-gyumolcse' else 'sm' if i == 'goldberg-tonic' else ''}">'
+        u = f'{r}termek/{pid}.html'
         note = f'<p class="nt">{e(sp["note"])}</p>' if sp.get('note') else ''
-        cards += f'''<article class="ckp"><div class="ph">{badge(pid)}{imgs}</div><div class="tx"><p class="k">{e(sp['tag'])} · {e(sp['cocktail'])}</p><h3>{e(sp['name'])}</h3>
+        cards += f'''<article class="ckp"><a class="ph" href="{u}" aria-label="{e(sp['name'])} – részletek">{badge(pid)}{ck_visual(sp, r)}</a><div class="tx"><p class="k">{e(sp['tag'])} · {e(sp['cocktail'])}</p><h3><a href="{u}">{e(sp['name'])}</a></h3>
 <p class="ct">{e(pack_contents(sp))}</p>{note}<div class="row"><span class="pr"><s>{ft(sp['old'])}</s><b>{ft(sp['price'])}</b></span><button type="button" class="btn" data-add="{pid}">Kosárba</button></div></div></article>'''
     head = f'<div class="hd">{f"<p class=kicker>{kicker}</p>" if kicker else ""}<h2 class="h2">{title}</h2><p class="lead">{sub}</p></div>'
     return f'''<section class="ckpacks" id="{sid}" style="--rez:url({r}img/photo/rez_hatter.webp)"><div class="wrap">{head}<div class="grid">{cards}</div></div></section>'''
@@ -1002,6 +1007,90 @@ def product(p):
     write(f"termek/{p['id']}.html", pg)
 
 
+# ---------- koktélcsomag termékoldalak (Sanyi, 11-05) ----------
+CK_PAGE = {
+    'koktel-negroni': dict(
+        lead='Minden, ami egy otthoni Don Cherry Negronihoz kell: Don Cherry édes meggyvermut, Campari és Drumshanbo Gunpowder Irish Gin – egy dobozban, a recepttel.',
+        img='img/cocktail/negroni.webp', title='Don Cherry Negroni', d='Karakteres, gyümölcsös, kissé kesernyés – mégis selymesen fűszeres.',
+        ing=['3 cl Don Cherry', '3 cl gin', '3 cl Campari', 'jég, narancshéj'],
+        how='Önts minden hozzávalót jéggel teli keverőpohárba, keverd össze, majd szűrd egy jéggel teli whiskys pohárba. Narancshéjjal díszítsd.'),
+    'koktel-americano': dict(
+        lead='Két palack Don Cherry, egy Campari és egy üveg Don Cherry gyümölcse – egy egész estényi Don Cherry Americanóhoz.',
+        img='img/cocktail/americano.webp', title='Don Cherry Americano', d='Erőteljes, elegáns és modern. Nem harsány, de nem is marad észrevétlen.',
+        ing=['6 cl Don Cherry', '3 cl Campari', 'jég, narancskarika vagy narancshéj-spirál'],
+        how='Öntsd a Don Cherryt és a Camparit egy jéggel teli whiskys pohárba, és keverd össze óvatosan. Díszítsd narancshéjjal.'),
+    'koktel-tonic': dict(
+        lead='Don Cherry, négy Goldberg & Sons Tonic Water és Don Cherry gyümölcse – a legegyszerűbb út a frissítő Don Cherry & Tonichoz.',
+        img='img/cocktail/don-tonic.webp', title='Don Cherry & Tonic', d='Frissítő, meggyes, finoman kesernyés – üde narancsos csavarral.',
+        ing=['1 dl Don Cherry', '1 dl tonic', 'jég, meggy és narancskarika'],
+        how='Tölts meg egy longdrinkes poharat jéggel, öntsd rá a Don Cherryt, majd a tonicot. Óvatosan keverd át, és díszítsd meggyel és narancskarikával.'),
+}
+PARTNERS = ['gunpowder-gin', 'campari', 'goldberg-tonic']
+
+
+def partner_widgets(r, in_pack=()):
+    """Vedd meg külön is – a csomagban lévő partnertermékek (és a többi) egy szekcióban, üveges widgeteken."""
+    order = [i for i in PARTNERS if i in in_pack] + [i for i in PARTNERS if i not in in_pack]
+    cards = ''
+    for i in order:
+        p = P[i]
+        tag = '<span class="pw-tag">Ebben a csomagban</span>' if i in in_pack else ''
+        cards += f'''<article class="pw"><a class="pw-im" href="{r}termek/{i}.html">{tag}<img src="{r}{p['tight']}" alt="{e(p['name'])}" loading="lazy"></a>
+<div class="pw-tx"><h3><a href="{r}termek/{i}.html">{e(p['name'])}</a></h3><p>{e(p['short'])}</p>
+<div class="pw-row"><span class="pr"><b>{ft(p['price'])}</b>{f'<small>+{p["drs"]} Ft betétdíj</small>' if p.get('drs') else ''}</span><button type="button" class="btn" data-add="{i}">Kosárba</button></div></div></article>'''
+    return f'''<section class="ckpacks pwidgets" id="kulon" style="--rez:url({r}img/photo/rez_hatter.webp)"><div class="wrap"><div class="hd"><p class="kicker">Partnertermékek</p><h2 class="h2">Vedd meg külön is</h2>
+<p class="lead">A koktélcsomagok partnertermékeit egyenként is megrendelheted – ha csak egy palack hiányzik otthonról, vagy a kedvenc koktélodhoz kell utánpótlás.</p></div><div class="pwgrid">{cards}</div></div></section>'''
+
+
+def cocktail_pack_page(pid):
+    r = '../'
+    sp, c = SP[pid], CK_PAGE[pid]
+    cnt = {}
+    for i in sp['items']:
+        cnt[i] = cnt.get(i, 0) + 1
+    lis = ''.join(f'<li><a href="{r}termek/{i}.html"><img src="{r}{P[i]["tight"]}" alt="" loading="lazy"><span><b>{n}×</b> {e(P[i]["name"])}</span><em>{ft(P[i]["price"] * n)}</em></a></li>' for i, n in cnt.items())
+    save = sp['old'] - sp['price']
+    pct = round(save / sp['old'] * 100)
+    drs = sum(n for i, n in cnt.items() if P[i].get('drs'))
+    note = f'<p class="cpp-note">{e(sp["note"])}</p>' if sp.get('note') else ''
+    partners = [i for i in cnt if P[i]['line'] == 'partner']
+    legal = f'''<div class="legalbox"><div class="in"><p class="kicker" style="margin-bottom:8px">Kötelező termékinformáció</p><dl class="kv">
+<div><dt>Megnevezés</dt><dd>{e(sp['name'])}</dd></div><div><dt>Tartalom</dt><dd>{e(pack_contents(sp))}</dd></div>
+<div><dt>Előállító</dt><dd>Don Cherry termékek: Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183.</dd></div>
+<div><dt>Partnertermékek</dt><dd>Forgalmazó: Kontyos Borház Kft. · az előállítói adatok a címkén és a termékoldalakon ({', '.join(e(P[i]['name']) for i in partners)})</dd></div>
+{f'<div><dt>Betétdíj (DRS)</dt><dd>{drs} × 50 Ft a partnertermékek üvegeire, a csomagár nem tartalmazza</dd></div>' if drs else ''}
+<div><dt>Figyelmeztetés</dt><dd>18 éven aluliak részére alkoholtartalmú termék nem értékesíthető.</dd></div></dl></div></div>'''
+    desc = c['lead'][:155]
+    ld = {"@context": "https://schema.org", "@type": "Product", "name": sp['name'], "image": P[sp['items'][0]]['img'], "description": c['lead'],
+          "brand": {"@type": "Brand", "name": "Kontyos"},
+          "offers": {"@type": "Offer", "priceCurrency": "HUF", "price": sp['price'], "availability": "https://schema.org/InStock"}}
+    style = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
+    pg = head(f"{sp['name']} – Don Cherry koktélcsomag | Kontyos", desc, r, 'product', 'has-buybar ckpage', style)
+    pg += header(r)
+    pg += f'''<main>
+<section class="ckpacks cpp-hero" style="--rez:url({r}img/photo/rez_hatter.webp)"><div class="wrap">
+<p class="cpp-crumb"><a href="{r}index.html">Főoldal</a> / <a href="{r}termek/don-cherry.html">Don Cherry</a> / <a href="{r}termek/don-cherry.html#koktelcsomagok">Koktélcsomagok</a> / {e(sp['name'])}</p>
+<div class="cpp-grid"><div class="cpp-media ckp"><div class="ph">{badge(pid).replace('pbadge', 'pbadge big')}{ck_visual(sp, r)}</div></div>
+<div class="cpp-buy hd"><p class="kicker">{e(sp['tag'])} · {e(sp['cocktail'])}</p><h1>{e(sp['name'])}</h1><p class="lead">{e(c['lead'])}</p>
+<ul class="cpp-list">{lis}</ul>{note}
+<div data-buy="{pid}" class="cpp-box"><div class="cpp-price"><s>{ft(sp['old'])}</s><b data-line>{ft(sp['price'])}</b><span class="cpp-save">−{pct}% · {ft(save)} megtakarítás</span>{f'<small>+{drs * 50} Ft betétdíj (DRS)</small>' if drs else ''}</div>
+<div class="cpp-actions"><div class="qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q id="q">1</span><button type="button" data-inc aria-label="Több">+</button></div>
+<button class="btn" type="button" data-add="{pid}" data-qty-from="#q">Kosárba</button></div>
+<div class="free"><span data-free-text></span><div class="bar"><i data-free-bar style="width:0"></i></div></div></div>
+<p class="cpp-ship">GLS futár / csomagpont, MPL automata / PostaPont · 1–5 munkanap · ingyenes szállítás 25 000 Ft felett</p></div></div>
+</div></section>
+<section class="sec cpp-recipe"><div class="wrap"><figure><img src="{r}{c['img']}" alt="{e(c['title'])}" loading="lazy"></figure>
+<div class="tx"><p class="kicker">A recept</p><h2 class="h2">{e(c['title'])}</h2><p class="d">{e(c['d'])}</p><ul>{''.join(f'<li>{e(x)}</li>' for x in c['ing'])}</ul><p>{e(c['how'])}</p>
+<a class="btn" href="{r}termek/don-cherry.html#koktelok">Még több Don Cherry koktél →</a></div></div></section>
+{partner_widgets(r, partners)}
+<section class="p-info" style="--ink:#1B2A5C;--accent:#C8282E;color:#1B2A5C"><div class="wrap"><div class="desc"><h2 class="h2" style="font-size:36px">A csomagról</h2><p>{e(c['lead'])}</p>
+<p>A csomag ára {pct}%-kal kedvezőbb, mintha a tételeket külön vásárolnád meg. A Don Cherry saját meggyborunkra épülő, fűszeres édes meggyvermut – önálló italként és koktélalapként is.</p></div>
+<div class="side">{legal}</div></div></section>
+{cocktail_packs(r, 'Másik koktélcsomag', 'Készítsd el mindhármat – vagy lepj meg vele valakit, akivel szívesen koccintanál.', 'Don Cherry · koktélcsomagok', 'tobbi', exclude=pid)}
+</main><div class="buybar"><div class="pb"><b data-line>{ft(sp['price'])}</b><small><span data-q>1</span> db</small></div><div class="qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q>1</span><button type="button" data-inc aria-label="Több">+</button></div><button class="btn" type="button" data-add="{pid}" data-qty-from="#q">Kosárba</button></div>''' + footer(r)
+    write(f"termek/{pid}.html", pg)
+
+
 # ---------- kampányoldalak ----------
 # Egységes csomagkártya (Sanyi, 11-03): a Black Friday-doboz stílusa mindenhol – színes felső rész (felirat, cím, palackok ív nélkül, tartalom), szaggatott vonal, sötét ársáv, gomb
 PK_TOP = {  # felső szín, szövegszín, gomb háttér, gomb szöveg – minden csomag a saját színeivel
@@ -1257,9 +1346,10 @@ def about_page():
 <section class="sec ab-story"><div class="wrap">
 <div class="tx"><p class="kicker">A történetünk</p><h2 class="h2">Édes és zamatos, akár egy nyári gyümölcs.</h2>
 <p>Édesapánk húsz éve alkotta meg első gyümölcsborát. Az ötlet egy karácsonyi összejövetelen született: a család hölgytagjai olyan italra vágytak, mely édes és zamatos, akár egy nyári gyümölcs.</p>
-<p>Kitartó kísérletezéssel addig tökéletesítette a receptjét, míg megszületett az az eszményi különlegesség, mely igazán megfelel a gyümölcsös, friss ízeket kedvelők ízlésvilágának.</p>
-<p>Azóta a Kontyos tradicionális és kísérletező szellemiségű borászat lett: hagyományos és reduktív eljárással dolgozunk, és 2006 óta alkotunk valódi gyümölcsökből nyárillatú gyümölcsbor-különlegességeket. A családi hagyományt ma tapasztalt, elkötelezett csapat viszi tovább.</p></div>
-{vid}
+<div class="p2"><figure class="tpola ab-mini" style="--r:5deg"><img src="{r}img/photo/rolunk_tartaly.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure><p>Kitartó kísérletezéssel addig tökéletesítette a receptjét, míg megszületett az az eszményi különlegesség, mely igazán megfelel a gyümölcsös, friss ízeket kedvelők ízlésvilágának.</p></div>
+<p>Azóta a Kontyos tradicionális és kísérletező szellemiségű borászat lett: hagyományos és reduktív eljárással dolgozunk, és 2006 óta alkotunk valódi gyümölcsökből nyárillatú gyümölcsbor-különlegességeket. A családi hagyományt ma tapasztalt, elkötelezett csapat viszi tovább.</p>
+{vid}</div>
+<div class="ph"><figure class="tpola ab-worker" style="--r:-3deg"><img src="{r}img/photo/rolunk_tartaly.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure></div>
 </div></section>
 
 <section class="ab-nums"><div class="wrap"><div class="trk">{numh}</div></div></section>
@@ -1331,6 +1421,8 @@ def main():
     packs_page()
     fairs_page()
     about_page()
+    for pid in COCKTAIL_PACKS:
+        cocktail_pack_page(pid)
     checkout()
     thanks()
     info()

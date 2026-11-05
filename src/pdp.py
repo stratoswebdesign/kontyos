@@ -307,7 +307,6 @@ def t_piri(p):
 <div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
 {info(p, c)}
 <section class="pd-video" aria-label="PIRI Mama hangulatvideó"><video src="{r}img/video/piri_hangulat.mp4" poster="{r}img/video/piri_hangulat.webp" autoplay muted loop playsinline preload="metadata"></video></section>
-<section class="pd-yt"><div class="pd-wrap"><p class="pd-lab">KÉSZÜLŐDÉS · A VÁSÁROK HANGULATA</p><div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/QoHFsUrISzw?rel=0" title="Karácsonyi készülődés – PIRI Mama" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div></section>
 {reviews(p, c)}
 <section class="sec pk-fblock pd-fpack"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" style="font-size:clamp(26px,3vw,40px)">Forralt csomag</h2>
 <div class="packs-grid">{_('pack_box')(_('SP')['forralt-6'], r, primary=True)}</div></div></section>
