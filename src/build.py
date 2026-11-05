@@ -66,7 +66,7 @@ SEASON_PACKS = [
     dict(id='forralt-6', name='PIRI Mama forraltbor csomag – 5 palack', price=8760, old=10950, free=False,
          items=FORRALT6, tint='#FBE0CC', tag='FORRALT CSOMAG'),
     # Koktélcsomagok (Don Cherry oldal „Készítsd el otthon is!”, Csomagok – karácsony és Black Friday)
-    dict(id='koktel-negroni', name='Don Cherry Negroni csomag', price=22990, old=25790, free=False, cocktail='Negroni',
+    dict(id='koktel-negroni', name='Don Cherry Negroni csomag', price=22990, old=25780, free=False, cocktail='Negroni',
          items=['don-cherry', 'campari', 'gunpowder-gin'], tint='#F3E1D6', tag='KOKTÉLCSOMAG',
          note='A gin a készlet erejéig díszdobozban, ajándék pohárral érkezik.'),
     dict(id='koktel-americano', name='Don Cherry Americano csomag', price=16990, old=19770, free=False, cocktail='Americano',
