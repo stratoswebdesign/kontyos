@@ -1105,14 +1105,38 @@ def ck_mini(k, r, cls=''):
             f'<b>{e(sp["name"])}</b><em>{old}{ft(sp["price"])}{" →" if cls else ""}</em></span></a>')
 
 
-def recipe_card(k, r, wine=True):
-    """Koktélrecept kártya, alatta a saját csomagja (gyümölcsbor oldal, Koktélok oldal)."""
-    c, sp = CK_PAGE[k], SP[k]
-    base = next((i for i in sp['items'] if P[i]['line'] not in ('partner',)), None)
-    wl = f'<a class="lnk" href="{r}termek/{base}.html">{e(P[base]["name"])} →</a>' if wine and base and k in FRUIT_PACKS else ''
-    return (f'<article><img src="{r}{c["img"]}" alt="{e(c["title"])}" loading="lazy"><h3>{e(c["title"])}</h3><p class="d">{e(c["d"])}</p>'
-            f'<ul>{"".join(f"<li>{e(x)}</li>" for x in c["ing"])}</ul><p>{e(c["how"])}</p>{wl}<a class="lnk pkl" href="{r}termek/{k}.html">Koktélcsomag →</a></article>')
+ING_LINK = [('Don Cherry', 'don-cherry'), ('Campari', 'campari'), ('gin', 'gunpowder-gin'), ('ginger ale', 'goldberg-ginger-ale'), ('tonic', 'goldberg-tonic'),
+            ('bourbon', 'buffalo-trace'), ('koktélmeggy', 'don-cherry-gyumolcse'), ('eperbor', 'edes-eperbor'), ('bodza-almabor', 'edes-bodza-almabor'),
+            ('Klára málna', 'klara-edes-malnabor'), ('narancsbor', 'friss-narancs')]
 
+
+def ing_html(x, r):
+    """A recept hozzávalói közül a nálunk kapható termékek kattinthatók (Sanyi, 11-05)."""
+    for kw, pid in ING_LINK:
+        i = x.find(kw)
+        if i < 0 or pid not in P:
+            continue
+        if kw == 'gin' and ('ginger' in x or x[i + 3:i + 4].isalpha()):
+            continue
+        if kw == 'tonic' and 'ginger' in x:
+            continue
+        # a teljes terméknév-részletet linkeljük: a mennyiség utáni szöveg a vesszőig
+        a = len(x) - len(x.lstrip('0123456789,–- clmdg'))
+        if kw in ('koktélmeggy',):
+            a, b = i, i + len(kw)
+        else:
+            b = x.find(',', i)
+            b = len(x) if b < 0 else b
+            a = min(a, i)
+        return f'{e(x[:a])}<a href="{r}termek/{pid}.html">{e(x[a:b])}</a>{e(x[b:])}'
+    return e(x)
+
+
+def recipe_card(k, r, wine=True):
+    """Koktélrecept kártya – a hozzávalók linkelnek a termékekre (gyümölcsbor oldal, Koktélok oldal)."""
+    c = CK_PAGE[k]
+    return (f'<article><img src="{r}{c["img"]}" alt="{e(c["title"])}" loading="lazy"><h3>{e(c["title"])}</h3><p class="d">{e(c["d"])}</p>'
+            f'<ul>{"".join(f"<li>{ing_html(x, r)}</li>" for x in c["ing"])}</ul><p>{e(c["how"])}</p></article>')
 
 def ck_minis(r, exclude):
     """A többi 6 koktélcsomag kis widgetekben."""
@@ -1191,7 +1215,7 @@ def cocktail_pack_page(pid):
 <p class="cpp-ship">GLS futár / csomagpont, MPL automata / PostaPont · 1–5 munkanap · ingyenes szállítás 25 000 Ft felett</p></div></div>
 </div></section>
 <section class="sec cpp-recipe"><div class="wrap"><figure><img src="{r}{c['img']}" alt="{e(c['title'])}" loading="lazy"></figure>
-<div class="tx"><p class="kicker">A recept</p><h2 class="h2">{e(c['title'])}</h2><p class="d">{e(c['d'])}</p><ul>{''.join(f'<li>{e(x)}</li>' for x in c['ing'])}</ul><p>{e(c['how'])}</p>
+<div class="tx"><p class="kicker">A recept</p><h2 class="h2">{e(c['title'])}</h2><p class="d">{e(c['d'])}</p><ul>{''.join(f'<li>{ing_html(x, r)}</li>' for x in c['ing'])}</ul><p>{e(c['how'])}</p>
 <a class="btn" href="{more[0]}">{more[1]}</a></div></div></section>
 {partner_widgets(r, partners)}
 {ck_minis(r, pid)}
