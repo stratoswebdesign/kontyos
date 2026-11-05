@@ -2827,3 +2827,11 @@ body{overflow-wrap:normal}
 @media (min-width:861px){.ckl-hero::after{background-size:auto 118%;background-position:96% 55%}}
 @media (min-width:1700px){.ckl-hero::after{background-size:118% auto}}
 @media (max-width:860px){.ckl-hero::after{background-size:auto 115%;background-position:88% 55%}}
+/* Partnertermékek: rézhátteres „Koktélhoz válogattuk” szekció (11-05 22:23) */
+.pd-story.p.pt{background:#7A3A1C url(../img/photo/rez_hatter2.webp) center/cover no-repeat;color:#fff}
+.pd-story.p.pt h2{font-family:var(--serif);font-style:normal;font-weight:400;text-transform:uppercase;letter-spacing:.02em;color:#fff;text-shadow:0 2px 18px rgba(40,12,0,.35)}
+.pd-story.p.pt .tiles.big .tile{align-items:center}
+.pd-story.p.pt .tiles.big .tile img{height:195px}
+.pd-story.p.pt .tiles.big .tile strong{color:#1E1A1D}
+.pdp-partner .pd-story.p.pt .tile.on{box-shadow:0 0 0 3px #fff}
+@media (max-width:760px){.pd-story.p.pt .tiles.big .tile img{height:98px}}

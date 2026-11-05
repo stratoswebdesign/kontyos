@@ -412,7 +412,7 @@ def t_fsp(p):
         facts = [('KOKTÉLCSOMAGBAN IS', 'Megtalálod a Kontyos koktélcsomagokban – a recepttel együtt.'),
                  ((alc + ' ALKOHOL') if alc else 'ALKOHOLMENTES', 'Erős koktélalap.' if alc else 'Longdrinkekhez és gyümölcsboros gin-tonikokhoz.'),
                  (('SZÁRMAZÁS: ' + org.upper()) if org else 'PRÉMIUM VÁLOGATÁS', 'Prémium partnertermék, egyenként is megrendelheted.')]
-        story = f'''<section class="pd-story p"><div class="pd-wrap"><div class="tx"><h2>Koktélhoz válogattuk, partnereink ajánlották.</h2></div>
+        story = f'''<section class="pd-story p pt"><div class="pd-wrap"><div class="tx"><h2>Koktélhoz válogattuk, partnereink ajánlották.</h2></div>
 <div class="tiles big">{tiles}</div></div></section>'''
     else:
         facts = [(PAL_ICO['still'], 'HAGYOMÁNYOS KISÜSTI', 'Gyümölcsből cefrézve, hagyományos kisüsti eljárással főzve.'),
