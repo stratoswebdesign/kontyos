@@ -10,6 +10,30 @@ import pdp
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAT = json.load(open(os.path.join(ROOT, 'src', 'catalog.json'), encoding='utf-8'))
 P = {p['id']: p for p in CAT}
+# Egységár egységesen a bruttó árból és az űrtartalomból (a régi webshopból átvett szövegek vegyesek voltak, pl. „6,653,3 Ft/l”)
+def _liters(p):
+    for k, v in p['params']:
+        if k.lower().startswith(('űrmérték', 'kiszerelés')):
+            m = re.search(r'([\d.,]+)\s*(ml|l)\b', v.replace('\u00a0', ' ').lower())
+            if m:
+                x = float(m.group(1).replace(',', '.'))
+                return x / 1000 if m.group(2) == 'ml' else x
+    return None
+for _p in CAT:
+    _l = _liters(_p)
+    if _l and _p['price'] and _p['line'] not in ('csomag', 'kiegeszito') and _p['id'] != 'don-cherry-gyumolcse':
+        _u = f"{round(_p['price'] / _l):,}".replace(',', '\u00a0') + ' Ft/l'
+        _p['params'] = [[k, _u if k == 'Egységár' else v] for k, v in _p['params']]
+    elif not _p['price']:
+        _p['params'] = [[k, v] for k, v in _p['params'] if k != 'Egységár']
+# DRS-betétdíj (Sanyi, 11-05): minden Kontyos italon 50 Ft / palack, kivéve a pálinkákat (a Don Cherry gyümölcsén is van); partnertermékek: a saját adatukból
+DRS_LINES = ('klasszikus', 'klara', 'friss', 'piri', 'secco', 'don')
+PACK_BOTTLES = {'meggy-paros': 2, 'eper-paros': 2, 'bubi-paros': 2, 'konnyu-trio': 3}
+for _p in CAT:
+    if _p['line'] in DRS_LINES:
+        _p['drs'] = 50
+    elif _p['id'] in PACK_BOTTLES:
+        _p['drs'] = 50 * PACK_BOTTLES[_p['id']]
 
 # ---- Sanyi szövegei (2026-11-02) ----
 TXT = dict(
@@ -126,7 +150,7 @@ def url(p):
 def write_catalog_js():
     out = {}
     for p in CAT:
-        out[p['id']] = dict(n=p['name'], price=p['price'], tier=p['tier'], img=p['img'], url=url(p), bd='lim' if p['id'] in LIMITED_IDS else 'new' if p['id'] in NEW_IDS else '',
+        out[p['id']] = dict(n=p['name'], price=p['price'], tier=p['tier'], img=p['img'], url=url(p), drs=p.get('drs', 0), bd='lim' if p['id'] in LIMITED_IDS else 'new' if p['id'] in NEW_IDS else '',
                             sub=LINE_LABEL.get(p['line'], ''), tint=p['arch'] if p['line'] not in ('piri', 'friss', 'don') else '#F3EEE5',
                             free=False, ups=(pdp.partner_pool(p['id']) if p['line'] == 'partner' else [i for i in pdp.UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3]), rnd=p['line'] == 'partner', upg=[[i, o, ks] for i, o, ks in pdp.partner_cands(p['id'])] if p['line'] == 'partner' else None)
     for s in SEASON_PACKS:
@@ -134,7 +158,7 @@ def write_catalog_js():
         page = ('csomagok.html' if s['id'] == 'ujbor-valogatas' else 'black-friday.html' if s['id'].startswith('bf')
                 else 'termek/don-cherry.html' if s['id'].startswith('don-') else f"termek/{s['id']}.html" if s['id'].startswith('koktel-')
                 else 'csomagok.html' if s['id'] == 'forralt-6' else 'karacsonyi-ajandek-bor.html')
-        out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=first['img'], url=page,
+        out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=first['img'], url=page, drs=pack_drs(s),
                             sub=f"{len(s['items'])} tétel · {'koktélcsomag' if s.get('cocktail') else 'szezonális csomag'}", tint=s['tint'], free=s['free'], ups=['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry-gyumolcse'])
     js = '/* generálva: src/build.py */\nwindow.KONTYOS={p:' + json.dumps(out, ensure_ascii=False) + '};\n'
     open(os.path.join(ROOT, 'assets', 'catalog.js'), 'w', encoding='utf-8').write(js)
@@ -377,6 +401,11 @@ def dotc(p):
 
 def pack_bottles(sp, r, h='88%'):
     return ''.join(f'<img src="{r}{P[i]["tight"]}" alt="{e(P[i]["name"])}" loading="lazy"{" class=jar" if i in ("don-cherry-gyumolcse",) else ""}{" class=pil" if i == "meggymag-parna" else ""}>' for i in sp['items'] if i != 'meggymag-parna')
+
+
+def pack_drs(sp):
+    """A csomag palackjainak betétdíja összesen."""
+    return sum(P[i].get('drs', 0) for i in sp['items']) * (sp.get('qty') or 1)
 
 
 def pack_contents(sp):
@@ -1182,7 +1211,7 @@ def cocktail_pack_page(pid):
 <div><dt>Megnevezés</dt><dd>{e(sp['name'])}</dd></div><div><dt>Tartalom</dt><dd>{e(pack_contents(sp))}</dd></div>
 <div><dt>Előállító</dt><dd>{', '.join(e(P[i]['name']) for i in own)}: Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183.</dd></div>
 <div><dt>Partnertermékek</dt><dd>Forgalmazó: Kontyos Borház Kft. · az előállítói adatok a címkén és a termékoldalakon ({', '.join(e(P[i]['name']) for i in partners)})</dd></div>
-{f'<div><dt>Betétdíj (DRS)</dt><dd>{drs} × 50 Ft a partnertermékek üvegeire, a csomagár nem tartalmazza</dd></div>' if drs else ''}
+{f'<div><dt>Betétdíj (DRS)</dt><dd>{drs} palack × 50 Ft = {ft(drs * 50)}, a csomagár nem tartalmazza</dd></div>' if drs else ''}
 <div><dt>Figyelmeztetés</dt><dd>18 éven aluliak részére alkoholtartalmú termék nem értékesíthető.</dd></div></dl></div></div>"""
     desc = c['lead'][:155]
     ld = {"@context": "https://schema.org", "@type": "Product", "name": sp['name'], "image": P[sp['items'][0]]['img'], "description": c['lead'],
@@ -1315,7 +1344,7 @@ def cart():
 <div class="cart-grid"><div class="cart-main"><div id="cart-root"></div>
 <div style="display:flex;flex-direction:column;gap:14px"><h2 class="serif" style="font-size:26px">Tedd mellé</h2>{cards(['friss-malna', 'berry-secco', 'kontyos-borospohar', 'don-cherry-gyumolcse'], r, 'cards cards-4')}</div></div>
 <aside class="cart-side" id="cart-side"><div class="box" style="display:flex;flex-direction:column;gap:14px"><h2 class="serif" style="font-size:24px">Összesítő</h2>
-<div class="tot"><div><span>Részösszeg</span><b data-sum>0 Ft</b></div><div data-disc hidden><span data-disc-l>Kupon</span><b data-disc-v></b></div><div><span>Szállítás</span><span data-shipfee>–</span></div><div class="grand"><span>Fizetendő</span><b data-grand>0 Ft</b></div></div>
+<div class="tot"><div><span>Részösszeg</span><b data-sum>0 Ft</b></div><div data-drsrow hidden><span>Betétdíj (DRS)</span><span data-drs></span></div><div data-disc hidden><span data-disc-l>Kupon</span><b data-disc-v></b></div><div><span>Szállítás</span><span data-shipfee>–</span></div><div class="grand"><span>Fizetendő</span><b data-grand>0 Ft</b></div></div>
 {COUPON_HTML}
 <a class="btn pink block" href="penztar.html">Tovább a pénztárhoz →</a><div id="cart-ups" class="pd-ups"></div>
 <p class="muted" style="font-size:12px;text-align:center">Biztonságos bankkártyás fizetés: SimplePay · 18+ termékek</p></div></aside></div></div></main>''' + footer(r)
@@ -1370,7 +1399,7 @@ def checkout():
 <aside class="cart-side" id="co-summary"><div class="box" style="display:flex;flex-direction:column;gap:14px"><h2 class="serif" style="font-size:24px">Rendelésed</h2>
 <div data-co-lines style="display:flex;flex-direction:column;gap:10px"></div>
 <div class="free"><span data-free-left></span><div class="bar"><i data-free-bar></i></div></div>
-<div class="tot"><div><span>Részösszeg</span><b data-sum></b></div><div data-disc hidden><span data-disc-l>Kupon</span><b data-disc-v></b></div><div><span>Szállítás</span><span data-shipfee></span></div><div data-codrow hidden><span>Utánvét díja</span><span>500 Ft</span></div><div class="grand"><span>Fizetendő</span><b data-grand></b></div></div>
+<div class="tot"><div><span>Részösszeg</span><b data-sum></b></div><div data-drsrow hidden><span>Betétdíj (DRS)</span><span data-drs></span></div><div data-disc hidden><span data-disc-l>Kupon</span><b data-disc-v></b></div><div><span>Szállítás</span><span data-shipfee></span></div><div data-codrow hidden><span>Utánvét díja</span><span>500 Ft</span></div><div class="grand"><span>Fizetendő</span><b data-grand></b></div></div>
 {COUPON_HTML}<a href="kosar.html" style="font-size:13px">← Vissza a kosárhoz</a></div></aside></div></div>
 <div class="pp-modal" id="pp-modal" hidden><div class="in" role="dialog" aria-modal="true" aria-labelledby="pp-title"><div class="hd"><h3 id="pp-title" class="serif">Átvételi pont</h3><button type="button" class="x" data-pp-close aria-label="Bezárás">×</button></div>
 <div class="srch"><input data-pp-q type="search" placeholder="Irányítószám vagy település, pl. 6720 vagy Szeged" aria-label="Keresés"></div>

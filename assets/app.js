@@ -16,8 +16,11 @@
   function unit(p, q) { return p.tier && q >= p.tier[0] ? p.tier[1] : p.price; }
   function totals(c) {
     var sub = 0, items = 0, free = false;
-    c.forEach(function (l) { var p = K.p[l.id]; if (!p) return; sub += unit(p, l.q) * l.q; items += l.q; if (p.free) free = true; });
-    return { sub: sub, items: items, free: free || sub >= LIMIT, left: Math.max(0, LIMIT - sub), pct: Math.min(100, Math.round(sub / LIMIT * 100)) };
+    var drs = 0;
+    c.forEach(function (l) { var p = K.p[l.id]; if (!p) return; sub += unit(p, l.q) * l.q; items += l.q; drs += (p.drs || 0) * l.q; if (p.free) free = true; });
+    document.querySelectorAll('[data-drsrow]').forEach(function (el) { el.hidden = !drs; });
+    document.querySelectorAll('[data-drs]').forEach(function (el) { el.textContent = fmt(drs); });
+    return { drs: drs, sub: sub, items: items, free: free || sub >= LIMIT, left: Math.max(0, LIMIT - sub), pct: Math.min(100, Math.round(sub / LIMIT * 100)) };
   }
   /* Kupon (demó): a hírlevél-kupon −5% a termékek árából; élesben a Shoprenter kuponkezelése */
   var COUPONS = { HIRLEVEL5: { pct: 5, label: 'Hírlevél-kupon −5%' } };
@@ -235,7 +238,7 @@
     document.querySelectorAll('[data-sum]').forEach(function (el) { el.textContent = fmt(t.sub); });
     var d = paintDisc(t.sub);
     document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = t.free ? 'Ingyenes' : '1 800 Ft-tól'; });
-    document.querySelectorAll('[data-grand]').forEach(function (el) { el.innerHTML = fmt(t.sub - d) + (t.free ? '' : '<small>+ szállítás (1 800 Ft-tól)</small>'); });
+    document.querySelectorAll('[data-grand]').forEach(function (el) { el.innerHTML = fmt(t.sub - d + t.drs) + (t.free ? '' : '<small>+ szállítás (1 800 Ft-tól)</small>'); });
     var cu = document.getElementById('cart-ups');
     if (cu) {
       var inCart = c.map(function (l) { return l.id; }), pool = [];
@@ -385,8 +388,8 @@
         co.querySelectorAll('[data-pp-box]').forEach(function (b) { b.hidden = b.getAttribute('data-pp-box') !== key; });
         var d = paintDisc(t.sub);
         document.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = shipFee ? fmt(shipFee) : 'Ingyenes'; });
-        document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub - d + shipFee + codFee); });
-        co._total = t.sub - d + shipFee + codFee; co._disc = d;
+        document.querySelectorAll('[data-grand]').forEach(function (el) { el.textContent = fmt(t.sub - d + t.drs + shipFee + codFee); });
+        co._total = t.sub - d + t.drs + shipFee + codFee; co._disc = d;
       };
       window.__coRecalc = recalc;
       co.addEventListener('change', recalc); recalc();

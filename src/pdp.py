@@ -149,7 +149,7 @@ def buy_core(p, c, qty=True):
             f'<button type="button" data-pack="{n}" aria-pressed="{"true" if n == 1 else "false"}"><strong>{n} palack</strong><span>{ft(tier[1] if n >= tier[0] else p["price"])}/db</span>{f"<em>−{pct}%</em>" if n >= tier[0] else ""}</button>' for n in (1, 3, 6)) + '</div>'
     q = '''<div class="pd-qty" role="group" aria-label="Mennyiség"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q id="q" aria-live="polite">1</span><button type="button" data-inc aria-label="Több">+</button></div>''' if qty else '<span data-q id="q" hidden>1</span>'
     return f'''<div data-buy="{p['id']}" class="pd-buy">
-<div class="pd-price"><b data-unit style="{c.get('pricefont', '')}">{ft(p['price'])}</b><span>{e(unit_l)}</span></div>
+<div class="pd-price"><b data-unit style="{c.get('pricefont', '')}">{ft(p['price'])}</b><span>{e(unit_l)}{f' · +{p["drs"]} Ft betétdíj' if p.get('drs') else ''}</span></div>
 {packs}
 <div class="pd-addrow">{q}<button type="button" class="pd-add" style="background:{c['btn']}" data-add="{p['id']}" data-qty-from="#q">{c.get('addlabel', 'Kosárba')} · <span data-line>{ft(p['price'])}</span></button></div>
 <div class="pd-free"><span data-free-text></span><div class="bar"><i data-free-bar></i></div></div></div>'''
