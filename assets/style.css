@@ -2801,3 +2801,6 @@ body{overflow-wrap:normal}
 /* Recept-linkek: vékonyabb aláhúzás a receptszöveg színével (11-05 21:42) */
 .gtk ul a,.cpp-recipe ul a{text-decoration-color:#3A4466;text-decoration-thickness:1px;text-underline-offset:3px}
 .gtk ul a:hover,.cpp-recipe ul a:hover{color:#3A4466;text-decoration-thickness:2px}
+/* Koktélok hero: kicsit nagyítva (11-05 21:48) */
+@media (min-width:861px){.ckl-hero::after{background-size:118% auto;background-position:100% 45%}}
+@media (max-width:860px){.ckl-hero::after{background-size:auto 118%;background-position:80% 50%}}
