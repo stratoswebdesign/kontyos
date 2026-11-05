@@ -613,7 +613,7 @@
   /* Rólunk: a Facebook-videó csak kattintásra töltődik be */
   document.querySelectorAll('[data-fbvideo]').forEach(function (b) {
     b.addEventListener('click', function () {
-      var u = 'https://www.facebook.com/plugins/video.php?height=476&show_text=false&autoplay=true&href=' + encodeURIComponent(b.getAttribute('data-fbvideo'));
+      var u = 'https://www.facebook.com/plugins/video.php?width=1280&height=720&show_text=false&autoplay=true&href=' + encodeURIComponent(b.getAttribute('data-fbvideo'));
       b.innerHTML = '<iframe src="' + u + '" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen title="A Kontyos története"></iframe>';
     }, { once: true });
   });

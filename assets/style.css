@@ -2418,3 +2418,10 @@ body{overflow-wrap:normal}
 .ab-torta.ab-easy .bt img.rdot{position:absolute;right:0;bottom:0;height:auto;width:clamp(96px,11vw,150px);background:#fff;border-radius:50%;padding:12px;filter:none;box-shadow:0 10px 24px rgba(0,0,0,.35)}
 @media (max-width:860px){.ab-torta.ab-easy .bt img.rdot{width:96px;height:auto}}
 @media (max-width:860px){.ab-story .wrap{grid-template-columns:1fr}.ab-video{width:min(320px,86%)}}
+/* Rólunk videó: fekvő (16:9) – 11-05 */
+.ab-story .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.ab-video{width:100%;justify-self:stretch}
+.ab-video .vbtn{aspect-ratio:16/9}
+.ab-video .vbtn img{opacity:.8}
+.ab-video .ph-cover{right:auto;max-width:72%}
+@media (max-width:860px){.ab-story .wrap{grid-template-columns:1fr}.ab-video{width:100%}.ab-video .play{width:54px;height:54px;left:14px;bottom:14px}.ab-video .ph-cover{max-width:none;right:14px;font-size:11px}}
