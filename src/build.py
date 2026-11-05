@@ -1172,7 +1172,7 @@ def cocktail_pack_page(pid):
     pg += f"""<main>
 <section class="ckpacks cpp-hero"><div class="wrap">
 <p class="cpp-crumb"><a href="{r}index.html">Főoldal</a> / <a href="{crumb[0][0]}">{crumb[0][1]}</a> / <a href="{crumb[1][0]}">{crumb[1][1]}</a> / {e(sp['name'])}</p>
-<div class="cpp-grid"><div class="cpp-left"><div class="cpp-media ckp">{arrows}<div class="ph">{badge(pid).replace('pbadge', 'pbadge big')}{ck_visual(sp, r)}</div></div>{variants}</div>
+<div class="cpp-grid"><div class="cpp-left"><div class="cpp-mw">{arrows}<div class="cpp-media ckp"><div class="ph">{badge(pid).replace('pbadge', 'pbadge big')}{ck_visual(sp, r)}</div></div></div>{variants}</div>
 <div class="cpp-buy hd"><p class="kicker">{e(sp['tag'])} · {e(sp['cocktail'])}</p><h1>{e(sp['name'])}</h1><p class="lead">{e(c['lead'])}</p>
 <ul class="cpp-list">{lis}</ul>{note}
 <div data-buy="{pid}" class="cpp-box"><div class="cpp-price">{pricebox}</div>

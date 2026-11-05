@@ -2731,3 +2731,9 @@ body{overflow-wrap:normal}
 .ckpage .cpp-hero{margin-top:-84px;padding-top:calc(84px + clamp(14px,2vw,26px))}
 .ckl-hero{margin-top:-84px;padding-top:calc(84px + clamp(20px,3vw,44px))}
 @media (max-width:860px){.ckpage .cpp-hero{margin-top:-70px;padding-top:calc(70px + 14px)}.ckl-hero{margin-top:-70px;padding-top:calc(70px + 20px)}}
+/* Csomagoldal: a lapozó nyilak a fotó mellett, nem rajta (11-05 21:18) */
+.cpp-mw{position:relative;padding:0 62px}
+.cpp-mw .pu-arr{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);color:#2A1416;font-size:26px;text-decoration:none;box-shadow:0 6px 16px rgba(40,14,4,.25);z-index:2}
+.cpp-mw .pu-arr:hover{background:#fff}
+.cpp-mw .pu-arr.l{left:0}.cpp-mw .pu-arr.r{right:0}
+@media (max-width:640px){.cpp-mw{padding:0 44px}.cpp-mw .pu-arr{width:36px;height:36px;font-size:22px}.cpp-mw .pu-arr.l{left:0}.cpp-mw .pu-arr.r{right:0}}
