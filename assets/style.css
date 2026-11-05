@@ -2590,3 +2590,27 @@ body{overflow-wrap:normal}
 .ckp .ph img.i-jar+img.i-tonic{margin-left:6px}
 .ckpacks{--rez:url(../img/photo/rez_hatter.webp)}
 .ckp .ph img.i-campari{height:99%}
+/* ===== Üveg widgetek visszavonva (11-05 20:52): tömör, világos kártyák a rézháttéren, mint eredetileg ===== */
+.ckpacks::before{display:none}
+.ckpacks .hd,.ckp,.pw{background:#F2FAF9;-webkit-backdrop-filter:none;backdrop-filter:none;border:0;border-radius:12px;box-shadow:0 14px 34px rgba(40,14,4,.35)}
+.ckpacks .hd{background:rgba(255,248,240,.96);border-radius:14px}
+.ckp::after{display:none}
+.ckp .ph,.pw-im{background:#D9EEF0;border:0;border-radius:8px;box-shadow:none}
+.ckpacks .hd .kicker,.ckp .k{color:#C8282E;--accent:#C8282E}
+.ckpacks .h2,.ckp h3,.ckp h3 a,.ckp .pr b,.pw-tx,.pw-tx h3 a,.pw-row .pr b,.cpp-buy h1,.cpp-price b{color:#2A1416;text-shadow:none}
+.ckpacks .lead{color:#2A1416}
+.ckp .ct,.pw-tx p,.cpp-ship,.cpp-box .free,.cpp-list a{color:#5B4A4C;text-shadow:none}
+.ckp .nt,.cpp-note{color:#8A6A2E}
+.ckp .pr s,.cpp-price s{color:#8B7B7D}
+.pw-row .pr small,.cpp-price small,.cpp-list em{color:#8B7B7D}
+.ckp .btn,.pw-row .btn,.cpp-actions .btn{background:#C8282E;color:#fff;border:0;box-shadow:none;font-weight:800}
+.ckp .btn:hover,.pw-row .btn:hover{background:#A91F25}
+.pw-tag,.cpp-save{background:#C8282E;color:#fff}
+.cpp-list a{background:#fff;border:1px solid #EADFD6}
+.cpp-list a:hover{background:#FBF5EE}
+.cpp-box{background:#fff;border:1px solid #EADFD6}
+.cpp-actions .qty{border-color:#2A1416;color:#2A1416}
+.cpp-actions .qty button{color:#2A1416}
+.cpp-box .free .bar{background:#EADFD6}
+.cpp-box .free .bar i{background:#C8282E}
+.cpp-media{background:#F2FAF9}
