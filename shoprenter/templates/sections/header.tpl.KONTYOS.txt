@@ -1,0 +1,10 @@
+{# ===== KONTYOS – sections/header.tpl =====
+   A fájl ALJÁN lévő {% schema %} … {% endschema %} blokk VÁLTOZATLANUL marad.
+   A {% if section.settings.status %} … {% endif %} közötti Párizs-markup helyére: #}
+{{ language('common/header') }}
+{% if section.settings.status %}
+    {% include 'snippets/ky-header.tpl' %}
+    {# a Shoprenter kosármodulja rejtve – a kontyos.js innen olvassa a darabszámot és innen nyitja a kosarat #}
+    <div class="ky-sr-cart" hidden>{{ viewHelper.loadModule('module/cart') }}</div>
+    {% if(page.getRoute() != "checkout") %}{{ render(controller('module/mobile_menu2')) }}{% endif %}
+{% endif %}

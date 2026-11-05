@@ -1,0 +1,2 @@
+{# ===== KONTYOS – common/footer.tpl: a Párizs-lábléc markupja helyére ===== #}
+{% include 'snippets/ky-footer.tpl' %}

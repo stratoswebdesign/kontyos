@@ -1,0 +1,348 @@
+{
+ "ky-page-rolunk": {
+  "demo": "rolunk.html",
+  "url": "/rolunk",
+  "body_class": ""
+ },
+ "ky-page-koktelok": {
+  "demo": "koktelok.html",
+  "url": "/koktelok",
+  "body_class": ""
+ },
+ "ky-page-vasarok": {
+  "demo": "vasarok.html",
+  "url": "/vasarok",
+  "body_class": ""
+ },
+ "ky-page-csomagok": {
+  "demo": "csomagok.html",
+  "url": "/kedvezmenyek/csomagajanlatok",
+  "body_class": "overlay-head"
+ },
+ "ky-page-black-friday": {
+  "demo": "black-friday.html",
+  "url": "/black-friday",
+  "body_class": "overlay-head"
+ },
+ "ky-page-karacsony": {
+  "demo": "karacsonyi-ajandek-bor.html",
+  "url": "/karacsonyi-ajandek-bor",
+  "body_class": "overlay-head"
+ },
+ "ky-page-gyumolcsbor": {
+  "demo": "gyumolcsbor.html",
+  "url": "/gyumolcsbor",
+  "body_class": ""
+ },
+ "ky-page-info": {
+  "demo": "info.html",
+  "url": "/kiszallitas",
+  "body_class": ""
+ },
+ "ky-p-berry-secco-tonic": {
+  "demo": "termek/berry-secco-tonic.html",
+  "url": "/berry-secco-and-tonic-075-l",
+  "sku": "berry02",
+  "body_class": "pdp pdp-secco has-buybar"
+ },
+ "ky-p-berry-secco-yuzu-lime": {
+  "demo": "termek/berry-secco-yuzu-lime.html",
+  "url": "/berry-secco-yuzu-and-lime-075-l",
+  "sku": "berry03",
+  "body_class": "pdp pdp-secco has-buybar"
+ },
+ "ky-p-berry-secco": {
+  "demo": "termek/berry-secco.html",
+  "url": "/berry-secco-075-l",
+  "sku": "berry01",
+  "body_class": "pdp pdp-secco has-buybar"
+ },
+ "ky-p-birspalinka": {
+  "demo": "termek/birspalinka.html",
+  "url": "/birspalinka",
+  "sku": "pal02X",
+  "body_class": "pdp pdp-palinka has-buybar"
+ },
+ "ky-p-bubi-paros": {
+  "demo": "termek/bubi-paros.html",
+  "url": "/bubi-paros-482",
+  "sku": "PAROSBERRY",
+  "body_class": "has-buybar"
+ },
+ "ky-p-buffalo-trace": {
+  "demo": "termek/buffalo-trace.html",
+  "url": "/buffalo-trace",
+  "sku": "KY-BUFFALO-TRACE",
+  "body_class": "pdp pdp-partner has-buybar"
+ },
+ "ky-p-campari": {
+  "demo": "termek/campari.html",
+  "url": "/campari",
+  "sku": "KY-CAMPARI",
+  "body_class": "pdp pdp-partner has-buybar"
+ },
+ "ky-p-don-cherry-gyumolcse": {
+  "demo": "termek/don-cherry-gyumolcse.html",
+  "url": "/don-cherry-edes-meggyvermut-025-l-and-meggy-100-g",
+  "sku": "vermut02",
+  "body_class": "pdp pdp-don has-buybar"
+ },
+ "ky-p-don-cherry": {
+  "demo": "termek/don-cherry.html",
+  "url": "/don-cherry-edes-meggyvermut-075-l",
+  "sku": "vermut01",
+  "body_class": "pdp pdp-don has-buybar"
+ },
+ "ky-p-edes-bodza-almabor": {
+  "demo": "termek/edes-bodza-almabor.html",
+  "url": "/edes-bodza-almabor",
+  "sku": "KONTY106X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-edes-eperbor": {
+  "demo": "termek/edes-eperbor.html",
+  "url": "/edes-eperbor",
+  "sku": "KONTY101X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-edes-kajszibor": {
+  "demo": "termek/edes-kajszibor.html",
+  "url": "/edes-kajszibor",
+  "sku": "KONTY105X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-edes-meggybor": {
+  "demo": "termek/edes-meggybor.html",
+  "url": "/edes-meggybor",
+  "sku": "KONTY102X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-edes-oszibarackbor": {
+  "demo": "termek/edes-oszibarackbor.html",
+  "url": "/edes-oszibarackbor",
+  "sku": "KONTY104X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-edes-ribizlibor": {
+  "demo": "termek/edes-ribizlibor.html",
+  "url": "/edes-ribizlibor",
+  "sku": "KONTY103X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-edes-szilvabor": {
+  "demo": "termek/edes-szilvabor.html",
+  "url": "/edes-szilvabor",
+  "sku": "KONTY107X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-eper-paros": {
+  "demo": "termek/eper-paros.html",
+  "url": "/eper-paros",
+  "sku": "PAROSEPER",
+  "body_class": "has-buybar"
+ },
+ "ky-p-epres-piri-mama-forralt-bora": {
+  "demo": "termek/epres-piri-mama-forralt-bora.html",
+  "url": "/piri-mama-epres-forralt-bora-1l",
+  "sku": "Forralt_epres",
+  "body_class": "pdp pdp-piri has-buybar"
+ },
+ "ky-p-friss-eper": {
+  "demo": "termek/friss-eper.html",
+  "url": "/eper-edes-gyumolcsbor-075-l",
+  "sku": "KONTY250X",
+  "body_class": "pdp pdp-friss has-buybar"
+ },
+ "ky-p-friss-malna": {
+  "demo": "termek/friss-malna.html",
+  "url": "/malna-edes-gyumolcsbor-075-l",
+  "sku": "konty251X",
+  "body_class": "pdp pdp-friss has-buybar"
+ },
+ "ky-p-friss-meggy": {
+  "demo": "termek/friss-meggy.html",
+  "url": "/meggy-edes-gyumolcsbor-075-l",
+  "sku": "KONTY550x",
+  "body_class": "pdp pdp-friss has-buybar"
+ },
+ "ky-p-friss-narancs": {
+  "demo": "termek/friss-narancs.html",
+  "url": "/narancs-edes-gyumolcsbor-075-l",
+  "sku": "KONTY-narancs",
+  "body_class": "pdp pdp-friss has-buybar"
+ },
+ "ky-p-goldberg-ginger-ale": {
+  "demo": "termek/goldberg-ginger-ale.html",
+  "url": "/goldberg-ginger-ale",
+  "sku": "KY-GOLDBERG-GINGER",
+  "body_class": "pdp pdp-partner has-buybar"
+ },
+ "ky-p-goldberg-tonic": {
+  "demo": "termek/goldberg-tonic.html",
+  "url": "/goldberg-tonic",
+  "sku": "KY-GOLDBERG-TONIC",
+  "body_class": "pdp pdp-partner has-buybar"
+ },
+ "ky-p-gunpowder-gin": {
+  "demo": "termek/gunpowder-gin.html",
+  "url": "/gunpowder-gin",
+  "sku": "KY-GUNPOWDER-GIN",
+  "body_class": "pdp pdp-partner has-buybar"
+ },
+ "ky-p-klara-edes-afonyabor": {
+  "demo": "termek/klara-edes-afonyabor.html",
+  "url": "/klara-edes-afonyabor-075l",
+  "sku": "KONTY108X",
+  "body_class": "pdp pdp-klara"
+ },
+ "ky-p-klara-edes-malnabor": {
+  "demo": "termek/klara-edes-malnabor.html",
+  "url": "/klara-edes-malnabor",
+  "sku": "KONTY109X",
+  "body_class": "pdp pdp-klara has-buybar"
+ },
+ "ky-p-klara-szaraz-barrique-meggybor": {
+  "demo": "termek/klara-szaraz-barrique-meggybor.html",
+  "url": "/klara-szaraz-barrique-meggybor",
+  "sku": "KONTY110X",
+  "body_class": "pdp pdp-klara has-buybar"
+ },
+ "ky-p-klara-szaraz-roze-eperbor": {
+  "demo": "termek/klara-szaraz-roze-eperbor.html",
+  "url": "/klara-szaraz-roze-eperbor",
+  "sku": "KONTY111X",
+  "body_class": "pdp pdp-klara has-buybar"
+ },
+ "ky-p-koktel-americano": {
+  "demo": "termek/koktel-americano.html",
+  "url": "/koktel-americano",
+  "sku": "KY-KOKTEL-AMERICANO",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-koktel-gt-bodza": {
+  "demo": "termek/koktel-gt-bodza.html",
+  "url": "/koktel-gt-bodza",
+  "sku": "KY-KOKTEL-BODZA",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-koktel-gt-eper": {
+  "demo": "termek/koktel-gt-eper.html",
+  "url": "/koktel-gt-eper",
+  "sku": "KY-KOKTEL-EPER",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-koktel-gt-narancs": {
+  "demo": "termek/koktel-gt-narancs.html",
+  "url": "/koktel-gt-narancs",
+  "sku": "KY-KOKTEL-NARANCS",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-koktel-malna-ginger": {
+  "demo": "termek/koktel-malna-ginger.html",
+  "url": "/koktel-malna-ginger",
+  "sku": "KY-KOKTEL-MALNA",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-koktel-manhattan": {
+  "demo": "termek/koktel-manhattan.html",
+  "url": "/koktel-manhattan",
+  "sku": "KY-KOKTEL-MANHATTAN",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-koktel-negroni": {
+  "demo": "termek/koktel-negroni.html",
+  "url": "/koktel-negroni",
+  "sku": "KY-KOKTEL-NEGRONI",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-koktel-tonic": {
+  "demo": "termek/koktel-tonic.html",
+  "url": "/koktel-tonic",
+  "sku": "KY-KOKTEL-TONIC",
+  "body_class": "has-buybar ckpage"
+ },
+ "ky-p-konnyu-trio": {
+  "demo": "termek/konnyu-trio.html",
+  "url": "/konnyu-trio-483",
+  "sku": "konnyutrio",
+  "body_class": "has-buybar"
+ },
+ "ky-p-kontyos-borospohar": {
+  "demo": "termek/kontyos-borospohar.html",
+  "url": "/kontyos-borospohar-388",
+  "sku": "kekpohar",
+  "body_class": "has-buybar"
+ },
+ "ky-p-kontyos-szovettaska": {
+  "demo": "termek/kontyos-szovettaska.html",
+  "url": "/kontyos-szovettaska-392",
+  "sku": "szovettaska",
+  "body_class": "has-buybar"
+ },
+ "ky-p-kortepalinka": {
+  "demo": "termek/kortepalinka.html",
+  "url": "/kortepalinka",
+  "sku": "pal07",
+  "body_class": "pdp pdp-palinka has-buybar"
+ },
+ "ky-p-meggy-paros": {
+  "demo": "termek/meggy-paros.html",
+  "url": "/meggy-paros",
+  "sku": "PAROSMEGGY",
+  "body_class": "has-buybar"
+ },
+ "ky-p-meggymag-parna": {
+  "demo": "termek/meggymag-parna.html",
+  "url": "/meggymag-parna",
+  "sku": "magparna",
+  "body_class": "has-buybar"
+ },
+ "ky-p-meggypalinka": {
+  "demo": "termek/meggypalinka.html",
+  "url": "/meggypalinka",
+  "sku": "pal04X",
+  "body_class": "pdp pdp-palinka has-buybar"
+ },
+ "ky-p-narancsos-piri-mama-forralt-bora": {
+  "demo": "termek/narancsos-piri-mama-forralt-bora.html",
+  "url": "/piri-mama-narancsos-forralt-bora-1l",
+  "sku": "Forralt05",
+  "body_class": "pdp pdp-piri has-buybar"
+ },
+ "ky-p-piri-mama-bogreje": {
+  "demo": "termek/piri-mama-bogreje.html",
+  "url": "/piri-mama-bogreje-032-l",
+  "sku": "piribögre",
+  "body_class": "has-buybar"
+ },
+ "ky-p-piri-mama-forralt-bora": {
+  "demo": "termek/piri-mama-forralt-bora.html",
+  "url": "/piri-mama-forralt-bora-1l",
+  "sku": "Forralt04X",
+  "body_class": "pdp pdp-piri has-buybar"
+ },
+ "ky-p-piri-mama-forro-itala-0": {
+  "demo": "termek/piri-mama-forro-itala-0.html",
+  "url": "/piri-mama-forro-itala-0-alc",
+  "sku": "Forró_Itala",
+  "body_class": "pdp pdp-piri has-buybar"
+ },
+ "ky-p-szamocapalinka": {
+  "demo": "termek/szamocapalinka.html",
+  "url": "/szamocapalinka",
+  "sku": "pal06X",
+  "body_class": "pdp pdp-palinka has-buybar"
+ },
+ "ky-p-szaraz-meggybor": {
+  "demo": "termek/szaraz-meggybor.html",
+  "url": "/szaraz-meggybor",
+  "sku": "KONTY112X",
+  "body_class": "pdp pdp-klasszikus has-buybar"
+ },
+ "ky-p-szilvapalinka": {
+  "demo": "termek/szilvapalinka.html",
+  "url": "/szilvapalinka",
+  "sku": "pal05X",
+  "body_class": "pdp pdp-palinka has-buybar"
+ }
+}

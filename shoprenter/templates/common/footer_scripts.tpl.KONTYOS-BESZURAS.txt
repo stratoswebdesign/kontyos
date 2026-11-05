@@ -1,0 +1,4 @@
+{# ===== KONTYOS – a footer_scripts.tpl VÉGÉRE ===== #}
+<script>window.KY_SHOPRENTER = true; window.KY_ROOT = '/';</script>
+{# A kontyos.js-t a fájlkezelőbe töltjük fel (ha az assets mappa .js-t nem enged): #}
+<script src="{{ asset_image_url('kontyos/kontyos.js') }}" defer></script>

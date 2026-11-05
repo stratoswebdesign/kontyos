@@ -1,0 +1,8 @@
+{# ===== KONTYOS – a pagehead.tpl-ben a </head> ELÉ szúrandó (a {{ content_for_header }} maradjon!) ===== #}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400..800&display=swap" rel="stylesheet">
+{{ 'kontyos.css' | asset_url | stylesheet_tag }}
+<style>
+/* A Párizs-téma saját fejlécének/láblécének elrejtése a Kontyos-fejléc mellett */
+body .ky-head ~ header:not(.site-head), body .ky-foot ~ footer:not(.site-foot){display:none!important}
+</style>
