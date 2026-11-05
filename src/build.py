@@ -441,6 +441,7 @@ def xmas_landing(r, phase, htag='h1', uid='x', full=True):
     if pre:
         out += f'''<div class="lp-wait" id="xn-{uid}" style="background:#7A1C2C;border-radius:6px"><div style="padding:30px;display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center"><h2>Dec. 1-jén szólunk.</h2>
 <form data-newsletter><label class="sr" for="xm-{uid}">E-mail-cím</label><input id="xm-{uid}" type="email" required placeholder="E-mail-címed"><button class="btn" style="background:#F3C66B;color:#4A0F19" type="submit">Értesítést kérek</button></form></div></div>'''
+    out += '</div></section>'
     if full:
         out += don_packs(r, 'Don Cherry ajándékcsomag', 'Kis és nagy csomag – a vermut és a párja karácsonyra.')
     return out
@@ -856,6 +857,19 @@ def param(p, key):
     return None
 
 
+def partner_legal(p):
+    """Partnertermékek kötelező adatai – Sanyi linkjei (mralkohol.hu) alapján, 11-05."""
+    out = ''
+    mk = param(p, 'Előállító') or param(p, 'Márka')
+    org = param(p, 'Származási ország')
+    if mk or org:
+        out += f'<div><dt>{"Előállító" if param(p, "Előállító") else "Márka"} / származás</dt><dd>{e(" · ".join(x for x in (mk, org) if x))}</dd></div>'
+    out += '<div><dt>Forgalmazó</dt><dd>Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183. · a további előállítói adatok a címkén</dd></div>'
+    if p.get('drs'):
+        out += f'<div><dt>Betétdíj (DRS)</dt><dd>+{p["drs"]} Ft / palack, a termékár nem tartalmazza</dd></div>'
+    return out
+
+
 def ingredients(p):
     m = re.search(r'Összetevők?:?\s*(.+)$', p['short'])
     return m.group(1).strip() if m else 'lásd a termék címkéjén'
@@ -924,7 +938,7 @@ def product(p):
 <button type="button" data-pack="6" aria-pressed="false">{em}<strong>6 palack</strong><span>{ft(p['tier'][1] if p['tier'] else p['price'])}/db</span></button></div>'''
     old = f'<s style="opacity:.55;font-size:15px">{ft(p["old"])}</s>' if p.get('old') else ''
     if p['avail']:
-        buy = f'''<div class="buyrow"><div class="price">{old}<b data-line>{ft(p['price'])}</b><small><span data-unit>{ft(p['price'])}</span>/db · bruttó{' · ' + param(p, 'Egységár') if param(p, 'Egységár') else ''}</small></div>
+        buy = f'''<div class="buyrow"><div class="price">{old}<b data-line>{ft(p['price'])}</b><small><span data-unit>{ft(p['price'])}</span>/db · bruttó{' · ' + param(p, 'Egységár') if param(p, 'Egységár') else ''}{f' · +{p["drs"]} Ft betétdíj' if p.get('drs') else ''}</small></div>
 <div class="qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q id="q">1</span><button type="button" data-inc aria-label="Több">+</button></div>
 <button class="btn add" type="button" data-add="{p['id']}" data-qty-from="#q">Kosárba</button></div>
 <div class="free"><span data-free-text></span><div class="bar"><i data-free-bar style="width:0"></i></div></div>'''
@@ -940,8 +954,8 @@ def product(p):
 <div><dt>Megnevezés</dt><dd>{e(p['name'])}</dd></div>
 {f'<div><dt>Alkoholtartalom</dt><dd>{e(alc)}</dd></div>' if alc else ''}{f'<div><dt>Névleges térfogat</dt><dd>{e(vol)}</dd></div>' if vol else ''}
 <div><dt>Összetevők, allergének</dt><dd>{e(ingredients(p))}</dd></div>
-{'<div><dt>Forgalmazó</dt><dd>Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183. · az előállító adatai a címkén</dd></div>' if L == 'partner' else '<div><dt>Előállító</dt><dd>Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183.</dd></div>'}
-<div><dt>Figyelmeztetés</dt><dd>18 éven aluliak részére alkoholtartalmú termék nem értékesíthető.</dd></div></dl></div></div>'''
+{partner_legal(p) if L == 'partner' else '<div><dt>Előállító</dt><dd>Kontyos Borház Kft., 6773 Klárafalva, Kossuth u. 183.</dd></div>'}
+{'<div><dt>Figyelmeztetés</dt><dd>18 éven aluliak részére alkoholtartalmú termék nem értékesíthető.</dd></div>' if (alc or L != 'partner') else ''}</dl></div></div>'''
     reviews = ''.join(f'<div class="review"><span class="s">★★★★★</span><p>„{e(x["t"])}”</p><small>{e(x["n"])} · {e(x["d"])}</small></div>' for x in p['reviews'])
     if not reviews:
         reviews = '<p class="muted">Még nincs értékelés – légy te az első! (Élesben: értékelés a vásárlás után e-mailben.)</p>'

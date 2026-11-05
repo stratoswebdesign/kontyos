@@ -2560,19 +2560,31 @@
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "Prémium tonic water a Don Cherry & Tonichoz és gyümölcsboros gin-tonikokhoz.",
+  "short": "Prémium német tonic water természetes kininnel, friss citrusos karakterrel és élénk szénsavassággal – a Don Cherry & Tonic és a gyümölcsboros gin-tonikok társa.",
   "long": [
-   "A Goldberg & Sons Tonic Water kiegyensúlyozott, finoman kesernyés tonik – a Don Cherry & Tonic és a gyümölcsboros gin-tonikok tökéletes társa.",
+   "A Goldberg & Sons Tonic Water prémium tonik friss, citrusos karakterrel, természetes kininnel és élénk szénsavassággal. Klasszikus gin-tonik alapnak készült, de longdrinkekben és koktélokban is remekel – a Don Cherry & Tonicban és a gyümölcsboros gin-tonikokban egyaránt.",
    "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
   ],
   "params": [
    [
-    "Kiszerelés",
-    "0,2 l üveg"
+    "Űrmérték",
+    "0,2 l"
    ],
    [
     "Típus",
     "Tonic water (alkoholmentes)"
+   ],
+   [
+    "Márka",
+    "Goldberg & Sons"
+   ],
+   [
+    "Származási ország",
+    "Németország"
+   ],
+   [
+    "Csomagolás",
+    "Üveg, DRS-betétdíjas (+50 Ft)"
    ],
    [
     "Egységár",
@@ -2583,7 +2595,8 @@
   "rcount": 0,
   "reviews": [],
   "img": "img/p/goldberg-tonic.webp",
-  "tight": "img/t/goldberg-tonic.webp"
+  "tight": "img/t/goldberg-tonic.webp",
+  "drs": 50
  },
  {
   "id": "gunpowder-gin",
@@ -2596,20 +2609,33 @@
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "Ír prémium gin keleti botanikumokkal és gunpowder teával – a Don Cherry Negroni alapja.",
+  "short": "Ír prémium gin 12 botanikummal, köztük kínai gunpowder zöld teával – fűszeres, citrusos, a Don Cherry Negroni alapja.",
   "long": [
-   "A Drumshanbo Gunpowder Irish Gin keleti botanikumokkal és gunpowder zöld teával készül: friss, citrusos, finoman fűszeres – a Don Cherry Negroni ideális alapja.",
-   "A készlet erejéig díszdobozban, ajándék pohárral érkezik.",
+   "A Drumshanbo Gunpowder Irish Gin a The Shed Distillery-ben, az írországi Drumshanbóban készül, 12 botanikummal – köztük kínai gunpowder zöld teával, macedón borókával, kínai citrommal, indiai köménymaggal és román korianderrel. Egyedi, fűszeres ízvilág, ami a Don Cherry meggyes karakteréhez is tökéletesen illik.",
+   "Illat: kardamom, citrusok, édes karamell és ánizs. Íz: citrusok, zöld teás jegyek és fűszerek. Lecsengés: hosszú, fűszeres és frissítő.",
+   "A készlet erejéig kék díszdobozban, ajándék pohárral érkezik.",
    "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
   ],
   "params": [
    [
-    "Kiszerelés",
+    "Alkoholtartalom",
+    "43 %vol"
+   ],
+   [
+    "Űrmérték",
     "0,7 l"
    ],
    [
-    "Alkoholtartalom",
-    "43 %"
+    "Előállító",
+    "The Shed Distillery, Drumshanbo"
+   ],
+   [
+    "Származási ország",
+    "Írország"
+   ],
+   [
+    "Csomagolás",
+    "Üveg, DRS-betétdíjas (+50 Ft)"
    ],
    [
     "Egységár",
@@ -2620,7 +2646,8 @@
   "rcount": 0,
   "reviews": [],
   "img": "img/p/gunpowder-gin.webp",
-  "tight": "img/t/gunpowder-gin.webp"
+  "tight": "img/t/gunpowder-gin.webp",
+  "drs": 50
  },
  {
   "id": "campari",
@@ -2633,19 +2660,31 @@
   "old": null,
   "tier": null,
   "avail": true,
-  "short": "A klasszikus olasz bitter – a Don Cherry Negroni és Americano kihagyhatatlan hozzávalója.",
+  "short": "A klasszikus olasz aperitif narancsos, kesernyés ízvilággal és mélyvörös színnel – a Don Cherry Negroni és Americano kihagyhatatlan hozzávalója.",
   "long": [
-   "A Campari élénkpiros, keserédes olasz likőr, a Negroni és az Americano klasszikus alapja. Don Cherryvel meggyes, gyümölcsös karaktert kap.",
+   "A Campari a klasszikus olasz aperitif: narancsos, kesernyés ízvilág és jellegzetes mélyvörös szín. A Negroni és az Americano alapja – Don Cherryvel meggyes, gyümölcsös karaktert kap.",
    "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
   ],
   "params": [
    [
-    "Kiszerelés",
+    "Alkoholtartalom",
+    "25 %vol"
+   ],
+   [
+    "Űrmérték",
     "0,7 l"
    ],
    [
-    "Alkoholtartalom",
-    "25 %"
+    "Márka",
+    "Campari"
+   ],
+   [
+    "Származási ország",
+    "Olaszország"
+   ],
+   [
+    "Csomagolás",
+    "Üveg, DRS-betétdíjas (+50 Ft)"
    ],
    [
     "Egységár",
@@ -2656,6 +2695,7 @@
   "rcount": 0,
   "reviews": [],
   "img": "img/p/campari.webp",
-  "tight": "img/t/campari.webp"
+  "tight": "img/t/campari.webp",
+  "drs": 50
  }
 ]
