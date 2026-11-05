@@ -2795,3 +2795,6 @@ body{overflow-wrap:normal}
 .ckl-hero::before{z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(29,26,28,.55) 0%,rgba(29,26,28,.25) 45%,rgba(29,26,28,0) 65%)}
 .ckl-hero .wrap{position:relative;z-index:1}
 @media (max-width:860px){.ckl-hero::after{background-position:82% 50%;opacity:1}.ckl-hero::before{background:linear-gradient(180deg,rgba(29,26,28,.45) 0%,rgba(29,26,28,.8) 100%)}}
+/* Recept-linkek: világoskék aláhúzás (11-05 21:40) */
+.gtk ul a,.cpp-recipe ul a{text-decoration-color:#5FB8E8}
+.gtk ul a:hover,.cpp-recipe ul a:hover{color:#034EA2;text-decoration-color:#034EA2}
