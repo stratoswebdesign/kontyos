@@ -1235,7 +1235,7 @@ def cocktails_page():
               'Don Cherry Negroni, Americano, Don Cherry & Tonic és gyümölcsboros gin-tonikok receptjei – minden hozzávaló koktélcsomagban, a klárafalvi Kontyos Borháztól.', r, 'cocktails')
     pg += header(r)
     pg += f"""<main class="ckl">
-<section class="ckl-hero" style="--pimg:url(../img/cocktail/americano_wide.webp)"><div class="wrap"><div class="tx"><p class="crumb"><a href="{r}index.html">Főoldal</a> / Koktélok</p><p class="kicker">Kontyos koktélbár</p>
+<section class="ckl-hero" style="--pimg:url(../img/cocktail/koktelok_hero.webp)"><div class="wrap"><div class="tx"><p class="crumb"><a href="{r}index.html">Főoldal</a> / Koktélok</p><p class="kicker">Kontyos koktélbár</p>
 <h1>Gyümölcs a pohár alján, jókedv a tetején</h1>
 <p class="lead">Két műfaj, egy borház: a fűszeres Don Cherry meggyvermut klasszikusai és gyümölcsboraink könnyed gin-tonikjai. Minden recepthez van csomag is – csak a jeget és a díszítést tedd hozzá.</p>
 <nav class="ckl-jump"><a href="#gyumolcskert">Gyümölcsboros koktélok</a><a href="#meggyvoros-estek">Don Cherry koktélok</a></nav></div></div></section>
