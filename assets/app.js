@@ -48,8 +48,16 @@
   function track(ev, id, q) { try { (window.dataLayer = window.dataLayer || []).push({ event: ev, item_id: id, quantity: q }); } catch (e) {} }
 
   /* „Illik mellé” ajánló (mini-kosár, kosár) */
-  function upsHtml(ids, exclude) {
-    ids = ids.filter(function (i) { return K.p[i] && exclude.indexOf(i) < 0; }).slice(0, 3);
+  function shuf(arr) { arr = arr.slice(); for (var i = arr.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = arr[i]; arr[i] = arr[j]; arr[j] = t; } return arr; }
+  /* Véletlen ajánló (partnertermékek): a jelölt listákból véletlenszerűen N elem marad */
+  document.querySelectorAll('[data-rand]').forEach(function (box) {
+    var n = +box.getAttribute('data-rand'), list = box.querySelector('ul, .pd-cgrid'); if (!list) return;
+    var kids = shuf([].slice.call(list.children)); kids.forEach(function (k, i) { if (i < n) list.appendChild(k); else k.remove(); });
+  });
+  function upsHtml(ids, exclude, rnd) {
+    ids = ids.filter(function (i) { return K.p[i] && exclude.indexOf(i) < 0; });
+    if (rnd) ids = shuf(ids);
+    ids = ids.slice(0, 3);
     if (!ids.length) return '';
     return '<div class="pd-ups mini-ups"><p>Illik mellé</p><ul>' + ids.map(function (i) {
       var x = K.p[i];
@@ -72,7 +80,7 @@
       '<span style="font-size:13px">' + (t.free ? 'Ingyenes a szállítás!' : 'Még <b>' + fmt(t.left) + '</b> az ingyenes szállításig.') + '</span>' +
       '<div class="bar"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div>' +
       '<div class="acts"><a class="btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
-      upsHtml(p.ups || [], load().map(function (l) { return l.id; })) + '</div>';
+      upsHtml(p.ups || [], load().map(function (l) { return l.id; }), p.rnd) + '</div>';
     miniEl.classList.add('open');
     clearTimeout(miniEl._t); miniEl._t = setTimeout(function () { miniEl.classList.remove('open'); }, 6000);
   }

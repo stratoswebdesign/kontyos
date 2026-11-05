@@ -128,7 +128,7 @@ def write_catalog_js():
     for p in CAT:
         out[p['id']] = dict(n=p['name'], price=p['price'], tier=p['tier'], img=p['img'], url=url(p), bd='lim' if p['id'] in LIMITED_IDS else 'new' if p['id'] in NEW_IDS else '',
                             sub=LINE_LABEL.get(p['line'], ''), tint=p['arch'] if p['line'] not in ('piri', 'friss', 'don') else '#F3EEE5',
-                            free=False, ups=[i for i in pdp.UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3])
+                            free=False, ups=(pdp.partner_pool(p['id']) if p['line'] == 'partner' else [i for i in pdp.UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3]), rnd=p['line'] == 'partner')
     for s in SEASON_PACKS:
         first = P[s['items'][0]]
         page = ('csomagok.html' if s['id'] == 'ujbor-valogatas' else 'black-friday.html' if s['id'].startswith('bf')
@@ -1558,7 +1558,7 @@ def about_page():
 
 def main():
     global VER
-    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, cocktail_packs=cocktail_packs, torta_block=torta_block, TXT=TXT, badge=badge, friss_cut=friss_cut, pack_box=pack_box, SP=SP)
+    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, cocktail_packs=cocktail_packs, torta_block=torta_block, TXT=TXT, badge=badge, friss_cut=friss_cut, pack_box=pack_box, SP=SP, ALL_CK=ALL_CK)
     write_catalog_js()
     import hashlib
     h = hashlib.sha1()

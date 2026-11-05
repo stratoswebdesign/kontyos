@@ -176,7 +176,8 @@ def mini_card(x, ring, kicker=None, ink=None):
 
 def cross(ids, title, ring_of, h2style=''):
     P = _('P')
-    return f'<section class="pd-wrap pd-cross"><h2 style="{h2style}">{title}</h2><div class="pd-cgrid">' + ''.join(mini_card(P[i], ring_of(P[i])) for i in ids if i in P) + '</div></section>'
+    rnd = ' data-rand=4' if len([i for i in ids if i in P]) > 4 else ''
+    return f'<section class="pd-wrap pd-cross"{rnd}><h2 style="{h2style}">{title}</h2><div class="pd-cgrid">' + ''.join(mini_card(P[i], ring_of(P[i])) for i in ids if i in P) + '</div></section>'
 
 
 def prem_buy(p, kind):
@@ -201,7 +202,7 @@ UPSELL = {
     'secco': lambda p: [next(i for i in ('berry-secco-tonic', 'berry-secco-yuzu-lime', 'berry-secco') if i != p['id']), 'friss-eper', 'kontyos-borospohar'],
     'palinka': lambda p: [next(i for i in ('szamocapalinka', 'birspalinka', 'meggypalinka') if i != p['id']), 'meggymag-parna', 'don-cherry'],
     'csomag': lambda p: ['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry'],
-    'partner': lambda p: [i for i in PARTNER_IDS if i != p['id']][:3],
+    'partner': lambda p: partner_pool(p['id']),
     'kiegeszito': lambda p: ['edes-meggybor', 'klara-edes-malnabor', 'piri-mama-forralt-bora'],
 }
 
@@ -210,11 +211,12 @@ def upsell(p, kind=''):
     """Kis „illik mellé” csík a vásárlási blokk alatt – összeillő termékek egy kattintásos kosárba tétellel."""
     r = '../'
     P = _('P')
-    ids = [i for i in UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']][:3]
+    ids = [i for i in UPSELL.get(p['line'], lambda p: [])(p) if i in P and P[i]['avail'] and i != p['id']]
+    ids = ids if p['line'] == 'partner' else ids[:3]
     if not ids:
         return ''
     items = ''.join(f'''<li><a href="{r}{_('url')(P[i])}" class="im">{_('badge')(i).replace('pbadge', 'pbadge xs')}<img src="{r}{P[i]['img']}" alt="" loading="lazy"></a><a href="{r}{_('url')(P[i])}" class="nm">{e(P[i]['name'])}<small>{ft(P[i]['price'])}</small></a><button type="button" data-add="{i}" aria-label="{e(P[i]['name'])} kosárba">+</button></li>''' for i in ids)
-    return f'<div class="pd-ups {kind}"><p>Illik mellé</p><ul>{items}</ul></div>'
+    return f'<div class="pd-ups {kind}"{" data-rand=3" if p["line"] == "partner" else ""}><p>Illik mellé</p><ul>{items}</ul></div>'
 
 
 # ---------------------------------------------------------------- KLASSZIKUS (Termek.dc)
@@ -366,6 +368,17 @@ LINECFG = {
 PARTNER_IDS = ['gunpowder-gin', 'campari', 'buffalo-trace', 'goldberg-tonic', 'goldberg-ginger-ale']
 
 
+def partner_pool(pid):
+    """Partnertermék ajánlói: azoknak a koktéloknak a többi terméke, amelyekben ez a pia szerepel (Sanyi, 11-05) – a sorrendet a böngésző keveri."""
+    SP, P = _('SP'), _('P')
+    out = []
+    for k in _('ALL_CK'):
+        items = SP[k]['items']
+        if pid in items:
+            out += [i for i in items if i != pid and i not in out and i in P and P[i]['avail']]
+    return out
+
+
 SERVE = {'berry-secco': 'Alaposan behűtve, piros gyümölcsökkel, pár szem jégkockával.', 'berry-secco-tonic': 'Behűtve, egy karika lime-mal és jéggel.',
          'berry-secco-yuzu-lime': 'Alaposan behűtve, lime-mal és mentával, pár szem jégkockával.'}
 
@@ -425,7 +438,7 @@ def t_fsp(p):
 {story}
 {info(p, c)}
 {reviews(p, c)}
-{cross([i for i in PARTNER_IDS if i != p['id']] if L == 'partner' else cf['cross'], 'Ezt is szeretni fogod' if L == 'partner' else 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)')}'''
+{cross(partner_pool(p['id']) if L == 'partner' else cf['cross'], 'Ezt is szeretni fogod' if L == 'partner' else 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)')}'''
     return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline=p['arch'])) if p['avail'] else '')
 
 
