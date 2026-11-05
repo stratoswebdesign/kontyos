@@ -49,14 +49,35 @@
 
   /* „Illik mellé” ajánló (mini-kosár, kosár) */
   function shuf(arr) { arr = arr.slice(); for (var i = arr.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = arr[i]; arr[i] = arr[j]; arr[j] = t; } return arr; }
-  /* Véletlen ajánló (partnertermékek): a jelölt listákból véletlenszerűen N elem marad */
+  /* Partnertermék-ajánló (Sanyi, 11-05): elsősorban SAJÁT termékek, minél több különböző koktélból, véletlenszerűen; utána a többi saját, végül partnertermék.
+     cands: [{v, own, ck:[koktélok]}] → n darab v */
+  function pickDiverse(cands, n) {
+    var own = shuf(cands.filter(function (c) { return c.own; })), oth = shuf(cands.filter(function (c) { return !c.own; }));
+    var out = [], used = {}, covered = {};
+    var newCk = function (c) { return c.ck.some(function (k) { return !covered[k]; }); };
+    var take = function (c) { out.push(c); used[out.length - 1] = 1; c.ck.forEach(function (k) { covered[k] = 1; }); c.done = 1; };
+    var progress = true;
+    while (out.length < n && progress) {   /* körönként: minden még le nem fedett koktélból egy saját termék */
+      progress = false;
+      for (var i = 0; i < own.length && out.length < n; i++) if (!own[i].done && newCk(own[i])) { take(own[i]); progress = true; }
+      if (!progress) break;
+    }
+    own.concat(oth).forEach(function (c) { if (out.length < n && !c.done) take(c); });
+    return out.map(function (c) { return c.v; });
+  }
   document.querySelectorAll('[data-rand]').forEach(function (box) {
     var n = +box.getAttribute('data-rand'), list = box.querySelector('ul, .pd-cgrid'); if (!list) return;
-    var kids = shuf([].slice.call(list.children)); kids.forEach(function (k, i) { if (i < n) list.appendChild(k); else k.remove(); });
+    var kids = [].slice.call(list.children);
+    var keep = pickDiverse(kids.map(function (k) { return { v: k, own: k.getAttribute('data-own') === '1', ck: (k.getAttribute('data-ck') || '').split(' ').filter(Boolean) }; }), n);
+    kids.forEach(function (k) { if (keep.indexOf(k) < 0) k.remove(); });
+    keep.forEach(function (k) { list.appendChild(k); });
   });
   function upsHtml(ids, exclude, rnd) {
     ids = ids.filter(function (i) { return K.p[i] && exclude.indexOf(i) < 0; });
-    if (rnd) ids = shuf(ids);
+    if (rnd && rnd.length) {
+      var ok = {}; ids.forEach(function (i) { ok[i] = 1; });
+      ids = pickDiverse(rnd.filter(function (c) { return ok[c[0]]; }).map(function (c) { return { v: c[0], own: !!c[1], ck: c[2] }; }), 3);
+    }
     ids = ids.slice(0, 3);
     if (!ids.length) return '';
     return '<div class="pd-ups mini-ups"><p>Illik mellé</p><ul>' + ids.map(function (i) {
@@ -80,7 +101,7 @@
       '<span style="font-size:13px">' + (t.free ? 'Ingyenes a szállítás!' : 'Még <b>' + fmt(t.left) + '</b> az ingyenes szállításig.') + '</span>' +
       '<div class="bar"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div>' +
       '<div class="acts"><a class="btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
-      upsHtml(p.ups || [], load().map(function (l) { return l.id; }), p.rnd) + '</div>';
+      upsHtml(p.ups || [], load().map(function (l) { return l.id; }), p.upg) + '</div>';
     miniEl.classList.add('open');
     clearTimeout(miniEl._t); miniEl._t = setTimeout(function () { miniEl.classList.remove('open'); }, 6000);
   }

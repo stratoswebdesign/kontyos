@@ -174,10 +174,12 @@ def mini_card(x, ring, kicker=None, ink=None):
     return f'''<a class="pd-mcard" href="{r}{_('url')(x)}"><span style="border-color:{ring}">{_('badge')(x['id'])}<img src="{r}{x['img']}" alt="{e(x['name'])}" loading="lazy"><span class="tx"><span class="k">{e(kicker or _('LINE_LABEL')[x['line']].upper())}</span><span class="n" style="color:{ink or '#1B2A5C'}">{e(x['name'])}</span><span class="p">{ft(x['price']) if x['avail'] else 'Elfogyott'}</span></span></span></a>'''
 
 
-def cross(ids, title, ring_of, h2style=''):
+def cross(ids, title, ring_of, h2style='', meta=None):
     P = _('P')
-    rnd = ' data-rand=4' if len([i for i in ids if i in P]) > 4 else ''
-    return f'<section class="pd-wrap pd-cross"{rnd}><h2 style="{h2style}">{title}</h2><div class="pd-cgrid">' + ''.join(mini_card(P[i], ring_of(P[i])) for i in ids if i in P) + '</div></section>'
+    meta = meta or {}
+    rnd = ' data-rand=4' if meta else ''
+    att = lambda i: f' data-own="{1 if meta[i][0] else 0}" data-ck="{" ".join(meta[i][1])}"' if i in meta else ''
+    return f'<section class="pd-wrap pd-cross"{rnd}><h2 style="{h2style}">{title}</h2><div class="pd-cgrid">' + ''.join(mini_card(P[i], ring_of(P[i])).replace('<a class="pd-mcard"', '<a class="pd-mcard"' + att(i), 1) for i in ids if i in P) + '</div></section>'
 
 
 def prem_buy(p, kind):
@@ -215,7 +217,9 @@ def upsell(p, kind=''):
     ids = ids if p['line'] == 'partner' else ids[:3]
     if not ids:
         return ''
-    items = ''.join(f'''<li><a href="{r}{_('url')(P[i])}" class="im">{_('badge')(i).replace('pbadge', 'pbadge xs')}<img src="{r}{P[i]['img']}" alt="" loading="lazy"></a><a href="{r}{_('url')(P[i])}" class="nm">{e(P[i]['name'])}<small>{ft(P[i]['price'])}</small></a><button type="button" data-add="{i}" aria-label="{e(P[i]['name'])} kosárba">+</button></li>''' for i in ids)
+    meta = {i: (o, ks) for i, o, ks in partner_cands(p['id'])} if p['line'] == 'partner' else {}
+    attr = lambda i: f' data-own="{1 if meta[i][0] else 0}" data-ck="{" ".join(meta[i][1])}"' if i in meta else ''
+    items = ''.join(f'''<li{attr(i)}><a href="{r}{_('url')(P[i])}" class="im">{_('badge')(i).replace('pbadge', 'pbadge xs')}<img src="{r}{P[i]['img']}" alt="" loading="lazy"></a><a href="{r}{_('url')(P[i])}" class="nm">{e(P[i]['name'])}<small>{ft(P[i]['price'])}</small></a><button type="button" data-add="{i}" aria-label="{e(P[i]['name'])} kosárba">+</button></li>''' for i in ids)
     return f'<div class="pd-ups {kind}"{" data-rand=3" if p["line"] == "partner" else ""}><p>Illik mellé</p><ul>{items}</ul></div>'
 
 
@@ -368,15 +372,24 @@ LINECFG = {
 PARTNER_IDS = ['gunpowder-gin', 'campari', 'buffalo-trace', 'goldberg-tonic', 'goldberg-ginger-ale']
 
 
-def partner_pool(pid):
-    """Partnertermék ajánlói: azoknak a koktéloknak a többi terméke, amelyekben ez a pia szerepel (Sanyi, 11-05) – a sorrendet a böngésző keveri."""
+def partner_cands(pid):
+    """Partnertermék ajánlói (Sanyi, 11-05): a piához tartozó koktélok termékei – elsősorban SAJÁT termékek, minél több különböző koktélból.
+    Visszaad: [(id, saját-e, [koktél-azonosítók])]; a választást és a keverést a böngésző végzi (app.js pickDiverse)."""
     SP, P = _('SP'), _('P')
-    out = []
+    d = {}
     for k in _('ALL_CK'):
         items = SP[k]['items']
         if pid in items:
-            out += [i for i in items if i != pid and i not in out and i in P and P[i]['avail']]
-    return out
+            for i in items:
+                if i != pid and i in P and P[i]['avail']:
+                    d.setdefault(i, [])
+                    if k not in d[i]:
+                        d[i].append(k)
+    return [(i, P[i]['line'] != 'partner', ks) for i, ks in d.items()]
+
+
+def partner_pool(pid):
+    return [i for i, _o, _k in partner_cands(pid)]
 
 
 SERVE = {'berry-secco': 'Alaposan behűtve, piros gyümölcsökkel, pár szem jégkockával.', 'berry-secco-tonic': 'Behűtve, egy karika lime-mal és jéggel.',
@@ -438,7 +451,7 @@ def t_fsp(p):
 {story}
 {info(p, c)}
 {reviews(p, c)}
-{cross(partner_pool(p['id']) if L == 'partner' else cf['cross'], 'Ezt is szeretni fogod' if L == 'partner' else 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)')}'''
+{cross(partner_pool(p['id']) if L == 'partner' else cf['cross'], 'Ezt is szeretni fogod' if L == 'partner' else 'Mellé ajánljuk', lambda x: cf['rule'], 'font-family:var(--serif);font-weight:700;font-size:clamp(34px,3.6vw,48px)', {i: (o, k) for i, o, k in partner_cands(p['id'])} if L == 'partner' else None)}'''
     return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, barline=p['arch'])) if p['avail'] else '')
 
 
