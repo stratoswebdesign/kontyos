@@ -116,7 +116,7 @@ DON_ALL = COCKTAIL_PACKS + ['koktel-manhattan']   # a Manhattan csak a Koktélok
 ALL_CK = DON_ALL + FRUIT_PACKS
 for _s in SEASON_PACKS:
     if _s['id'] in FRUIT_PACKS + ['koktel-manhattan']:
-        _s.update(price=sum(P[i]['price'] for i in _s['items']), old=None, free=False, pricenote='[A csomagár egyeztetés alatt – most a tételek összege.]')
+        _s.update(price=sum(P[i]['price'] for i in _s['items']), old=None, free=False)
 WINE_CK = {'edes-eperbor': 'koktel-gt-eper', 'edes-bodza-almabor': 'koktel-gt-bodza', 'klara-edes-malnabor': 'koktel-malna-ginger', 'friss-narancs': 'koktel-gt-narancs'}
 SP = {s['id']: s for s in SEASON_PACKS}
 
@@ -187,7 +187,7 @@ def head(title, desc, r, page='', body_cls='', extra_style='', demo_extra='', to
 {extra_style}
 </head>
 <body data-page="{page}" class="{body_cls}">
-<div class="demo-bar"><span><b>DEMO</b> · Stratos Webdesign – nem valódi rendelés, a [szögletes] részek helykitöltők</span>{demo_extra}</div>
+
 {topbar}
 '''
 
@@ -213,7 +213,7 @@ def footer(r):
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}termek/berry-secco.html">Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}termek/szamocapalinka.html">Pálinka</a></div>
 <div><h4>Kampányok</h4><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}koktelok.html">Koktélok</a></div>
 <div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
-<p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185 · Demó: Stratos Webdesign</p>
+<p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185</p>
 </div></footer>
 {fairs_js()}<script src="{r}assets/catalog.js?v={VER}"></script>
 <script src="{r}assets/app.js?v={VER}"></script>
@@ -284,7 +284,7 @@ SEASONS = [
          cta=('Black Friday ajánlatok', 'black-friday.html'), price=('bf-premium', 'prémium csomag')),
     dict(k='karacsony', lbl='Karácsony', bg='#7A1C2C', fg='#F3EEE5', word='ÜNNEP', hword='#8A2A3A', acc='#F3C66B', ctafg='#1B2A5C',
          bottles=[('edes-ribizlibor', 'clamp(300px,58vh,560px)'), ('klara-edes-malnabor', 'clamp(330px,64vh,610px)'), ('szamocapalinka', 'clamp(290px,56vh,540px)')],
-         eyebrow='Karácsonyi ajándék bor', t='Ajándék, amit tényleg kibontanak.', s='Összeállított ajándékcsomagok dec. 1–22. között – utolsó rendelési nap: [DÁTUM].',
+         eyebrow='Karácsonyi ajándék bor', t='Ajándék, amit tényleg kibontanak.', s='Összeállított ajándékcsomagok dec. 1–22. között.',
          cta=('Ajándékcsomagok', 'karacsonyi-ajandek-bor.html'), price=('premium-advent', 'ajándékcsomag')),
 ]
 
@@ -352,7 +352,7 @@ def fruit_selector(r, ids=None):
 
 
 # ---------- kampány-landingek a design (BlackFriday.dc / Karacsony.dc) alapján ----------
-XMAS_BAR = '<div class="xbar">UTOLSÓ RENDELÉS KARÁCSONYRA: [DÁTUM – A KONTYOS ADJA]</div>'
+XMAS_BAR = '<div class="xbar">KARÁCSONYI AJÁNDÉKCSOMAGOK DEC. 1–22.</div>'
 
 
 def don_packs(r, title='Don Cherry csomagban', sub='Ajándékba vagy a hétvégére – a vermut és a párja egy dobozban.', dark=False):
@@ -655,7 +655,7 @@ def fairs_page():
 <fieldset><legend>Melyik vásárról kérsz értesítést?</legend>{checks}<label class="check all"><input type="checkbox" data-fair-all> <span><b>Mindegyikről</b></span></label></fieldset>
 <label class="check"><input type="checkbox" required> <span>Hozzájárulok, hogy a Kontyos Borház Kft. a megadott vásárokról e-mailben értesítsen. Bármikor leiratkozhatok.</span></label>
 <button class="btn" type="submit" style="background:#F3C66B;color:#1B2A5C">Értesítést kérek</button><p class="fz-ok" data-fair-ok role="status"></p></form></div></section>
-<section class="wrap" style="padding-top:20px;padding-bottom:80px"><p class="ph-note">A „Szimuláció” gombbal megnézheted, hogyan néz ki az oldal advent közepén, amikor több stand élőben fut.</p></section></main>
+</main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>''' + footer(r)
     write('vasarok.html', pg)
 
@@ -1024,7 +1024,7 @@ def product(p):
 {'<div><dt>Figyelmeztetés</dt><dd>18 éven aluliak részére alkoholtartalmú termék nem értékesíthető.</dd></div>' if (alc or L != 'partner') else ''}</dl></div></div>'''
     reviews = ''.join(f'<div class="review"><span class="s">★★★★★</span><p>„{e(x["t"])}”</p><small>{e(x["n"])} · {e(x["d"])}</small></div>' for x in p['reviews'])
     if not reviews:
-        reviews = '<p class="muted">Még nincs értékelés – légy te az első! (Élesben: értékelés a vásárlás után e-mailben.)</p>'
+        reviews = '<p class="muted">Még nincs értékelés – légy te az első!</p>'
     st = STORY.get(L)
     story = ''
     if st:
@@ -1307,7 +1307,7 @@ def pack_card(s, r, active=True):
     return pack_box(s, r, active, tag=tag, primary=True, stock=f"Elérhető: max. {s.get('limit', 40)} csomag" if bf else '')
 
 
-def campaign(path, title, desc, h1, eyebrow, lead, bg, fg, acc, packs, bottles, phases=None, extra='', start='[DÁTUM]'):
+def campaign(path, title, desc, h1, eyebrow, lead, bg, fg, acc, packs, bottles, phases=None, extra='', start=''):
     r = ''
     demo = ''
     if phases:
@@ -1333,7 +1333,7 @@ def campaign(path, title, desc, h1, eyebrow, lead, bg, fg, acc, packs, bottles, 
 # ---------- kosár, pénztár, köszönő, info ----------
 COUPON_HTML = ('<details class="coupon" data-coupon-wrap><summary>Van kuponkódod?</summary><form data-coupon style="display:flex;gap:8px;margin-top:6px">'
                '<div class="field" style="flex:1"><input aria-label="Kuponkód" placeholder="KUPONKÓD" autocomplete="off"></div><button class="btn navy" type="submit">Beváltom</button></form>'
-               '<p data-coupon-msg class="muted" style="font-size:13px"></p><p class="note" style="font-size:12px">Demó kód: HIRLEVEL5 (−5%, a hírlevél-feliratkozás kuponja)</p></details>')
+               '<p data-coupon-msg class="muted" style="font-size:13px"></p></details>')
 
 
 def cart():
@@ -1395,7 +1395,7 @@ def checkout():
 <label class="check"><input type="checkbox"> <span>Kérek hírlevelet (−5% a következő rendelésemből). Hozzájárulok, hogy a Kontyos Borház Kft. a nevemet és e-mail címemet hírlevelezési céllal kezelje, és gazdasági reklámot is tartalmazó hírleveleket küldjön.</span></label>
 <p id="co-msg" role="alert" style="color:#C8284E;font-weight:700;font-size:14px"></p>
 <button class="btn pink block" type="submit" style="min-height:60px;font-size:17px">Megrendelés elküldése (fizetési kötelezettséggel)</button>
-<p class="note">Demó: a gomb nem indít valódi rendelést, csak a köszönőoldalt mutatja.</p></div></form></div>
+</div></form></div>
 <aside class="cart-side" id="co-summary"><div class="box" style="display:flex;flex-direction:column;gap:14px"><h2 class="serif" style="font-size:24px">Rendelésed</h2>
 <div data-co-lines style="display:flex;flex-direction:column;gap:10px"></div>
 <div class="free"><span data-free-left></span><div class="bar"><i data-free-bar></i></div></div>
@@ -1404,11 +1404,11 @@ def checkout():
 <div class="pp-modal" id="pp-modal" hidden><div class="in" role="dialog" aria-modal="true" aria-labelledby="pp-title"><div class="hd"><h3 id="pp-title" class="serif">Átvételi pont</h3><button type="button" class="x" data-pp-close aria-label="Bezárás">×</button></div>
 <div class="srch"><input data-pp-q type="search" placeholder="Irányítószám vagy település, pl. 6720 vagy Szeged" aria-label="Keresés"></div>
 <div class="body"><ul data-pp-list></ul><div id="pp-map" class="pp-map"></div></div>
-<p class="note">Demó pontok. Élesben a futárszolgálat (MPL, GLS) valós átvételipont-listája és térképe töltődik be a Shoprenter szállítási moduljából.</p></div></div>
+</div></div>
 <div class="pp-modal sp-modal" id="sp-modal" hidden><div class="in" role="dialog" aria-modal="true" aria-labelledby="sp-title"><div class="hd"><h3 id="sp-title" class="serif">Bankkártyás fizetés</h3><button type="button" class="x" data-sp-close aria-label="Bezárás">×</button></div>
-<p>Fizetendő: <b data-sp-total></b></p><p class="muted" style="font-size:14px">Élesben itt átirányítunk a SimplePay biztonságos fizetőoldalára. A kártyaadatokat a webshop nem látja és nem tárolja; a fizetés eredményéről a SimplePay értesíti a boltot, a vásárló pedig visszakerül a köszönőoldalra.</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn pink" data-sp="ok">Sikeres fizetés (demó)</button><button type="button" class="btn ghost" data-sp="fail">Sikertelen fizetés (demó)</button></div>
-<p class="note">Demó: a gombokkal a SimplePay visszatérő ágait lehet kipróbálni.</p></div></div></main>
+<p>Fizetendő: <b data-sp-total></b></p><p class="muted" style="font-size:14px">Itt átirányítunk a SimplePay biztonságos fizetőoldalára. A kártyaadatokat a webshop nem látja és nem tárolja; a fizetés eredményéről a SimplePay értesíti a boltot, a vásárló pedig visszakerül a köszönőoldalra.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn pink" data-sp="ok">Sikeres fizetés</button><button type="button" class="btn ghost" data-sp="fail">Sikertelen fizetés</button></div>
+</div></div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>''' + footer(r)
     write('penztar.html', pg)
 
@@ -1417,8 +1417,8 @@ def thanks():
     r = ''
     pg = head('Köszönjük a rendelést! | Kontyos', 'Köszönjük', r, 'thanks') + header(r)
     pg += '''<main><div class="wrap narrow" style="padding-top:30px;padding-bottom:90px" id="thanks"><div class="label tag"><div class="in" style="display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center">
-<p class="kicker">Rendelés: <span data-o-no>DEMO</span></p><h1 class="h2">Köszönjük a rendelést!</h1>
-<p class="lead">A visszaigazolást elküldtük ide: <b data-o-mail>–</b>. (Demó – valójában nem ment ki levél.)</p>
+<p class="kicker">Rendelés: <span data-o-no>–</span></p><h1 class="h2">Köszönjük a rendelést!</h1>
+<p class="lead">A visszaigazolást elküldtük ide: <b data-o-mail>–</b>.</p>
 <div data-o-lines style="width:100%;text-align:left"></div><p data-o-pay class="muted" style="font-size:14px"></p>
 <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a class="btn blue" href="index.html">Vissza a főoldalra</a><a class="btn ghost" href="gyumolcsbor.html">Gyümölcsborok</a></div></div></div></div></main>''' + footer(r)
     write('koszonjuk.html', pg)

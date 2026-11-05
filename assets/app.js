@@ -183,7 +183,8 @@
     return 'forralt';
   }
   function toggle(attr, btnAttr, store, auto) {
-    var btns = document.querySelectorAll('[' + btnAttr + ']'); if (!btns.length) return;
+    var btns = document.querySelectorAll('[' + btnAttr + ']');
+    var els = document.querySelectorAll('[' + attr + ']'); if (!els.length) return;
     var mem = auto ? sessionStorage : localStorage;   /* a dátum szerinti szezont csak az aktuális böngészési munkamenetre írja felül a demó-kapcsoló */
     var set = function (v, keep) {
       document.querySelectorAll('[' + attr + ']').forEach(function (el) { el.hidden = el.getAttribute(attr).split(' ').indexOf(v) < 0; });
@@ -191,13 +192,18 @@
       if (keep) try { mem.setItem(store, v); } catch (e) {}
     };
     btns.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute(btnAttr), true); }); });
-    var init = auto ? auto() : btns[0].getAttribute(btnAttr);
+    var init = auto ? auto() : (btns.length ? btns[0].getAttribute(btnAttr) : els[0].getAttribute(attr).split(' ')[0]);
     try { init = new URLSearchParams(location.search).get(store.split('-').pop()) || mem.getItem(store) || init; } catch (e) {}
     set(init, false);
   }
   try { localStorage.removeItem('kontyos-demo-season'); } catch (e) {}
   toggle('data-season', 'data-season-btn', 'kontyos-demo-season', function () { return seasonByDate(new Date()); });
-  toggle('data-phase', 'data-phase-btn', 'kontyos-demo-phase-' + (document.body.getAttribute('data-page') || ''));
+  var PHASE_FROM = { 'black-friday': ['11-24', 'aktiv', 'varolista'], 'karacsony': ['12-01', 'aktiv', 'elozetes'] };
+  var pg = document.body.getAttribute('data-page') || '', pf = PHASE_FROM[pg];
+  toggle('data-phase', 'data-phase-btn', 'kontyos-demo-phase-' + pg, pf ? function () {
+    var d = new Date(), md = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    return md >= pf[0] ? pf[1] : pf[2];
+  } : null);
 
   /* Kategória szűrő */
   document.querySelectorAll('[data-filter-group]').forEach(function (g) {
@@ -213,7 +219,7 @@
 
   /* Hírlevél (demó) */
   document.querySelectorAll('form[data-newsletter]').forEach(function (f) {
-    f.addEventListener('submit', function (e) { e.preventDefault(); f.innerHTML = '<p style="font-weight:800">Köszönjük! Az 5%-os kuponkódot e-mailben küldjük. (Demó – élesben itt indul a feliratkozás és a kuponlevél.)</p>'; });
+    f.addEventListener('submit', function (e) { e.preventDefault(); f.innerHTML = '<p style="font-weight:800">Köszönjük! Az 5%-os kuponkódot e-mailben küldjük.</p>'; });
   });
 
   /* Kosár oldal */
@@ -309,7 +315,7 @@
       co._pp[curKey] = p;
       var box = co.querySelector('[data-pp-box="' + curKey + '"]');
       box.classList.remove('err'); box.classList.add('set');
-      box.querySelector('[data-pp-sel]').innerHTML = '<b>' + esc(p.n) + '</b><small>Demó átvételi pont</small>';
+      box.querySelector('[data-pp-sel]').innerHTML = '<b>' + esc(p.n) + '</b><small>Átvételi pont</small>';
       box.querySelector('[data-pp-open]').textContent = 'Módosítás';
       close();
     };
@@ -416,7 +422,7 @@
       msg.textContent = '';
       var payKey = form.querySelector('[name=pay]:checked').getAttribute('data-key');
       var finish = function (paid) {
-        var order = { no: 'DEMO-' + String(Date.now()).slice(-6), lines: load(), sub: totals(load()).sub, disc: co._disc || 0, coupon: coupon(), total: co._total, free: totals(load()).free, name: form.querySelector('[name=name]').value, email: form.querySelector('[name=email]').value, ship: (form.querySelector('[name=ship]:checked') || {}).value, point: co._pp && co._pp[shk] ? co._pp[shk].n : '', pay: (form.querySelector('[name=pay]:checked') || {}).value, payKey: payKey, paid: !!paid };
+        var order = { no: 'KB-' + String(Date.now()).slice(-6), lines: load(), sub: totals(load()).sub, disc: co._disc || 0, coupon: coupon(), total: co._total, free: totals(load()).free, name: form.querySelector('[name=name]').value, email: form.querySelector('[name=email]').value, ship: (form.querySelector('[name=ship]:checked') || {}).value, point: co._pp && co._pp[shk] ? co._pp[shk].n : '', pay: (form.querySelector('[name=pay]:checked') || {}).value, payKey: payKey, paid: !!paid };
         try { sessionStorage.setItem('kontyos-demo-order', JSON.stringify(order)); localStorage.removeItem(CKEY); } catch (err) {}
         track('purchase', order.no, 1);
         save([]); location.href = ROOT + 'koszonjuk.html';
@@ -448,7 +454,7 @@
         '<div style="display:flex;justify-content:space-between;padding-top:10px"><b>Összesen (szállítással)</b><b>' + fmt(o.total || o.sub) + '</b></div>';
       var pe = ty.querySelector('[data-o-pay]');
       if (pe) pe.innerHTML = 'Szállítás: ' + esc(o.point || o.ship || '') + '<br>Fizetés: ' + esc(o.pay || '') +
-        (o.payKey === 'kartya' ? ' – <b style="color:#2E8C5A">sikeres</b> (SimplePay, demó)' : o.payKey === 'atutalas' ? ' – az utalási adatokat a visszaigazoló e-mailben küldjük' : o.payKey === 'utanvet' ? ' – fizetés átvételkor' : '');
+        (o.payKey === 'kartya' ? ' – <b style="color:#2E8C5A">sikeres</b> (SimplePay)' : o.payKey === 'atutalas' ? ' – az utalási adatokat a visszaigazoló e-mailben küldjük' : o.payKey === 'utanvet' ? ' – fizetés átvételkor' : '');
     }
   }
 
@@ -570,7 +576,7 @@
         if (!ok) return;
         if (!picked.length) { msg.textContent = 'Jelölj be legalább egy vásárt.'; return; }
         try { localStorage.setItem('kontyos-demo-fairsub', JSON.stringify({ email: mail.value, fairs: picked.map(function (f) { return f.id; }) })); } catch (e2) {}
-        msg.innerHTML = '✓ Feliratkoztál: <b>' + picked.map(function (f) { return esc(f.city); }).join(', ') + '</b>. Ütemezett e-mailek: ' + picked.map(function (f) { var a = day(f.start), b = new Date(a); b.setDate(a.getDate() - 3); return esc(f.city) + ' – ' + dfmt(b) + ' és ' + dfmt(a); }).join('; ') + ' <small>(Demó – élesben a levelezőrendszer küldi.)</small>';
+        msg.innerHTML = '✓ Feliratkoztál: <b>' + picked.map(function (f) { return esc(f.city); }).join(', ') + '</b>. Ütemezett e-mailek: ' + picked.map(function (f) { var a = day(f.start), b = new Date(a); b.setDate(a.getDate() - 3); return esc(f.city) + ' – ' + dfmt(b) + ' és ' + dfmt(a); }).join('; ') + '';
       });
     }
   }

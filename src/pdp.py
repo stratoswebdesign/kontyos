@@ -134,7 +134,7 @@ def reviews(p, c):
         head = f'<div class="pd-rhead"><div><p class="pd-lab" style="color:{c["accent"]}">VÁSÁRLÓI VÉLEMÉNYEK</p><div class="pd-rnum"><b style="{c.get("numfont", "")}">{str(p["rating"]).replace(".", ",")}</b><span>{p["rcount"]} vélemény alapján · a webshop értékelései</span></div></div></div>'
         return f'<section id="ertekelesek" class="pd-wrap pd-reviews">{head}<div class="pd-rlist">{arts}</div></section>'
     return f'''<section id="ertekelesek" class="pd-wrap pd-reviews"><p class="pd-lab" style="color:{c["accent"]}">VÁSÁRLÓI VÉLEMÉNYEK</p>
-<div class="pd-noreview" style="border-color:{c['ink']}"><span>Erről a termékről még nincs értékelés.</span><b>Kóstoltad? Élesben itt írhatod meg elsőként.</b></div></section>'''
+<div class="pd-noreview" style="border-color:{c['ink']}"><span>Erről a termékről még nincs értékelés.</span><b>Kóstoltad? Írd meg elsőként!</b></div></section>'''
 
 
 def buy_core(p, c, qty=True):
@@ -542,7 +542,7 @@ def u_buy(p, u):
         packs = '<div class="pu-packs" role="group" aria-label="Kiszerelés">' + ''.join(
             f'<button type="button" data-pack="{n}" aria-pressed="{"true" if n == 1 else "false"}"><strong>{n} palack</strong><span>{ft(tier[1] if n >= tier[0] else p["price"])}/db</span>{f"<em>−{pct}%</em>" if n >= tier[0] else ""}</button>' for n in (1, 3, 6)) + '</div>'
     if not p['avail']:
-        return '<div class="pu-buy"><div class="pu-price"><b>Elfogyott</b></div><button class="pu-add" type="button" disabled>Értesítést kérek – élesben</button></div>'
+        return '<div class="pu-buy"><div class="pu-price"><b>Elfogyott</b></div><button class="pu-add" type="button" disabled>Értesítést kérek</button></div>'
     unit_l = param(p, 'Egységár') or ''
     return f'''<div class="pu-buy" data-buy="{p['id']}">{packs}
 <div class="pu-price"><b data-unit>{ft(p['price'])}</b><span>{e(unit_l)}{f' · +{p["drs"]} Ft betétdíj' if p.get('drs') else ''}</span></div>
