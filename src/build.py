@@ -1216,18 +1216,11 @@ def cocktails_page():
 <p class="lead">Két műfaj, egy borház: a fűszeres Don Cherry meggyvermut klasszikusai és gyümölcsboraink könnyed gin-tonikjai. Minden recepthez van csomag is – csak a jeget és a díszítést tedd hozzá.</p>
 <nav class="ckl-jump"><a href="#gyumolcskert">Gyümölcsboros koktélok</a><a href="#meggyvoros-estek">Don Cherry koktélok</a></nav></div></div></section>
 
-<section class="ckl-part fruit" id="gyumolcskert" style="--pimg:url(../img/cocktail/gt-malna.webp)"><div class="wrap"><p class="kicker">1. rész · Gyümölcsboros koktélok</p><h2>Gyümölcskert a pohárban</h2>
-<p class="lead">Gyümölcsboraink koktélban is remekelnek! Fedezd fel Bús Attila mixer receptjeit – ezek a koktélok a Szegedi Gin és Rum Fesztiválon is nagy sikert arattak, a közönség kedvence a málnás volt.</p></div></section>
-<section class="sec ckl-rec gtk"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2></div>
+<section class="sec ckl-rec gtk" id="gyumolcskert"><div class="wrap"><div class="hd"><p class="kicker">Gyümölcsboros koktélok</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2></div>
 <div class="cgrid">{''.join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
-{cocktail_packs(r, 'Gin-tonik gyümölcsborral – csomagban', 'Bor, gin és tonik vagy ginger ale egy dobozban, a recepttel együtt.', 'Gyümölcsbor · gin · tonik', 'gyumolcs-csomagok', ids=FRUIT_PACKS)}
 
-<section class="ckl-part don" id="meggyvoros-estek" style="--pimg:url(../img/cocktail/manhattan.webp)"><div class="wrap"><p class="kicker">2. rész · Don Cherry koktélok</p><h2>Meggyvörös esték</h2>
-<p class="lead">Saját meggyborunkra épülő, fűszeres édes meggyvermut – jéggel tisztán, vagy a nagy klasszikusok meggyes csavarjaként.</p></div></section>
-<section class="sec ckl-rec gtk don-rec"><div class="wrap"><div class="hd"><p class="kicker">Receptek</p><h2 class="h2">Négy klasszikus, egy meggyes csavar</h2></div>
-<div class="cgrid">{''.join(recipe_card(k, r) for k in DON_ALL)}</div>
-<div class="ckl-neat"><p class="kicker">Tisztán is</p><ul>{neath}</ul><a class="lnk" href="{r}termek/don-cherry.html">Don Cherry meggyvermut →</a></div></div></section>
-{cocktail_packs(r, 'A bárpult dobozban', 'Negroni, Americano, Don Cherry & Tonic vagy Manhattan – minden hozzávaló egy csomagban, a recepttel együtt.', 'Don Cherry · koktélcsomagok', 'don-csomagok', ids=DON_ALL)}
+<section class="sec ckl-rec gtk don-rec" id="meggyvoros-estek"><div class="wrap"><div class="hd"><p class="kicker">Don Cherry koktélok</p><h2 class="h2">Négy klasszikus, egy meggyes csavar</h2></div>
+<div class="cgrid">{''.join(recipe_card(k, r) for k in DON_ALL)}</div></div></section>
 </main>""" + footer(r)
     write('koktelok.html', pg)
 

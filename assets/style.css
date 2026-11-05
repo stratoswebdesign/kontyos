@@ -2773,3 +2773,4 @@ body{overflow-wrap:normal}
 .pw-row .btn{min-height:38px;padding:0 14px;font-size:13px}
 .pw-tag{font-size:9px;padding:4px 8px}
 @media (max-width:1100px){.pwgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ckl .don-rec{padding-top:0}.ckl .don-rec .wrap{border-top:1px solid #E2DACB;padding-top:clamp(48px,6vw,80px)}
