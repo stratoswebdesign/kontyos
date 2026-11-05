@@ -2819,3 +2819,7 @@ body{overflow-wrap:normal}
   background:var(--pimg) 100% 50%/cover no-repeat;-webkit-mask-image:none;mask-image:none;opacity:1}
 .ckl-hero::before{background:none}
 @media (max-width:860px){.ckl-hero::after{top:0;left:0;height:auto;background-position:78% 50%}.ckl-hero::before{background:linear-gradient(180deg,rgba(18,14,12,.35) 0%,rgba(18,14,12,.75) 100%)}}
+/* Koktélok hero: rézhátteres bárkellékes kép (11-05 22:04) – enyhe sötétítés a szöveg mögött */
+.ckl-hero{background:#5A220E}
+.ckl-hero::before{background:linear-gradient(90deg,rgba(40,14,4,.45) 0%,rgba(40,14,4,.2) 45%,rgba(40,14,4,0) 62%)}
+@media (max-width:860px){.ckl-hero::after{background-position:85% 50%}.ckl-hero::before{background:linear-gradient(180deg,rgba(40,14,4,.25) 0%,rgba(40,14,4,.6) 100%)}}
