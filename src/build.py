@@ -1243,7 +1243,7 @@ def about_page():
           ('2026', 'Red Dot díj és Magyarország Tortája', 'Az Easy Cider csomagolása Red Dot díjat kap, édes feketeribizliborunk pedig a Bíborfehér, Magyarország Tortája egyik alapanyaga.')]
     tlh = ''.join(f'<li><b>{y}</b><h3>{t}</h3><p>{d}</p></li>' for y, t, d in tl)
     vid = (f'<figure class="ab-video"><button type="button" class="vbtn" data-fbvideo="{ABOUT_VIDEO}" aria-label="A Kontyos története – videó lejátszása">'
-           f'<img src="{r}img/photo/klasszikus_hangulat.webp" alt="" loading="lazy"><span class="ph-cover">[Borítókép: a videó egy képkockája, amelyen édesapátok a palackok előtt látható]</span>'
+           f'<img src="{r}img/photo/rolunk_video_poster.webp" alt="A Kontyos alapítója a borászat hordói előtt – kockakép a videóból" loading="lazy">'
            f'<span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button>'
            f'<figcaption>A Kontyos története – nézd meg videón!</figcaption></figure>')
     pg = head('Rólunk – a Kontyos története | Kontyos', 'A Kontyos Borház története: 2006 óta készítünk gyümölcsborokat Klárafalván. Számok, csapat, üzem, márkák, díjak, partnerek.', r, 'about')

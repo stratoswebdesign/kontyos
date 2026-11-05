@@ -2430,3 +2430,8 @@ body{overflow-wrap:normal}
   .ab-easy .bt{order:2;padding:0 0 6% 8%}
   .ab-torta.ab-easy .bt img.rdot{right:auto;left:0}
 }
+/* Rólunk videó borító: valódi kockakép, a lejátszás gomb a hordó felett, jobbra lent (11-05) */
+.ab-video .vbtn img{opacity:1}
+.ab-video .vbtn::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,24,56,.35),rgba(15,24,56,0) 45%);pointer-events:none}
+.ab-video .play{left:auto;right:18px;bottom:18px;z-index:1}
+@media (max-width:860px){.ab-video .play{left:auto;right:14px;bottom:14px}}
