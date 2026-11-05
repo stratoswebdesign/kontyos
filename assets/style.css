@@ -2329,3 +2329,92 @@ body{overflow-wrap:normal}
   .kv>div,.pd-kv>div{display:flex;flex-direction:column;gap:4px}
   .kv dt,.pd-kv dt{white-space:normal}
 }
+
+/* ===== Koktélcsomagok rézháttéren (Don Cherry oldal, Csomagok – karácsony/BF) – 11-05 ===== */
+.ckpacks{background:#7A3A1C var(--rez) center/cover no-repeat;padding:clamp(48px,6vw,88px) 0;color:#2A1416}
+.ckpacks .hd{background:rgba(255,248,240,.94);border-radius:14px;padding:clamp(20px,2.4vw,30px);margin-bottom:clamp(18px,2.4vw,28px);display:flex;flex-direction:column;gap:10px;max-width:880px}
+.ckpacks .hd .kicker{color:#C8282E;--accent:#C8282E;margin:0}
+.ckpacks .h2{margin:0;color:#2A1416;text-transform:none;letter-spacing:0;font-family:var(--serif)}
+.ckpacks .lead{margin:0;max-width:760px}
+.ckpacks .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,24px)}
+.ckp{display:flex;flex-direction:column;background:#F2FAF9;border-radius:12px;overflow:hidden;box-shadow:0 14px 34px rgba(40,14,4,.35)}
+.ckp .ph{position:relative;height:clamp(190px,17vw,250px);margin:12px 12px 0;border-radius:8px;background:#D9EEF0;display:flex;align-items:flex-end;justify-content:center;gap:2px;padding:14px 10px 0;overflow:hidden}
+.ckp .ph img{height:90%;width:auto;max-width:34%;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(0,0,0,.2))}
+.ckp .ph img.jar{height:50%}
+.ckp .ph img.sm{height:52%;max-width:16%;margin-left:-4px}
+.ckp .ph .pbadge{position:absolute;top:10px;left:10px;z-index:2}
+.ckp .tx{display:flex;flex-direction:column;gap:8px;padding:16px 18px 18px;flex:1}
+.ckp .k{margin:0;font-size:11px;font-weight:800;letter-spacing:.18em;color:#C8282E;text-transform:uppercase}
+.ckp h3{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(20px,1.7vw,24px);line-height:1.15;text-transform:uppercase;letter-spacing:.03em}
+.ckp .ct{margin:0;font-size:13px;line-height:1.5;color:#5B4A4C}
+.ckp .nt{margin:0;font-size:12px;line-height:1.45;color:#8A6A2E}
+.ckp .row{margin-top:auto;padding-top:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ckp .pr{display:flex;flex-direction:column;line-height:1.05}
+.ckp .pr s{font-size:14px;color:#8B7B7D}
+.ckp .pr b{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.2vw,32px);white-space:nowrap}
+.ckp .btn{background:#C8282E;color:#fff;min-height:44px;padding:0 22px}
+.dpk .row .pr{display:flex;flex-direction:column;line-height:1.05}.dpk .row .pr s{font-size:14px;color:#8B7B7D}
+@media (max-width:980px){.ckpacks .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*var(--gutter));padding:4px var(--gutter) 14px;scrollbar-width:none}.ckpacks .grid::-webkit-scrollbar{display:none}.ckp{flex:0 0 min(78%,340px);scroll-snap-align:start;scroll-margin-inline-start:var(--gutter)}}
+
+/* ===== Gyümölcsboros koktélok (Gyümölcsborok oldal alja) ===== */
+.gtk{background:#FBF7F1;padding:clamp(56px,7vw,100px) 0;color:#1B2A5C}
+.gtk .hd{display:flex;flex-direction:column;gap:12px;max-width:860px;margin-bottom:clamp(24px,3vw,40px)}
+.gtk .hd .kicker{color:#EF4E73;--accent:#EF4E73;margin:0}
+.gtk .hd p:not(.kicker){margin:0;font-size:17px;line-height:1.7}
+.gtk .cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.8vw,24px)}
+.gtk article{display:flex;flex-direction:column;gap:10px}
+.gtk article img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
+.gtk h3{margin:6px 0 0;font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.6vw,22px);line-height:1.15;text-transform:uppercase;letter-spacing:.03em;color:#C8284E}
+.gtk .d{margin:0;font-family:var(--text);font-style:italic;font-size:15px;line-height:1.5}
+.gtk ul{margin:0;padding-left:18px;font-size:14px;line-height:1.7}
+.gtk article>p:not(.d){margin:0;font-size:14px;line-height:1.6;color:#3A4466}
+.gtk .lnk{margin-top:auto;font-family:var(--sans);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#EF4E73;text-decoration:none;padding-top:4px}
+@media (max-width:1100px){.gtk .cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.gtk .cgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*var(--gutter));padding:4px var(--gutter) 14px;scrollbar-width:none}.gtk .cgrid::-webkit-scrollbar{display:none}.gtk article{flex:0 0 80%;scroll-snap-align:start;scroll-margin-inline-start:var(--gutter)}}
+/* Forralt hero: „A tél fűszereivel” kézírás (11-05) */
+.hero .hscript{display:block;width:clamp(200px,22vw,320px);height:auto;margin:0 0 4px -8px;transform:rotate(-4deg)}
+@media (max-width:860px){.hero .hscript{width:min(62vw,240px)}}
+/* Pálinka ikonos tények középre */
+.pd-story.p .facts.ico>div{align-items:center;text-align:center}
+.pd-story.p .facts.ico .pico{margin-left:auto;margin-right:auto}
+/* PIRI oldal: hangulatvideó a vélemények fölött (később a reklámfilmre cseréljük) */
+.pd-video{position:relative;width:100%;height:min(80svh,720px);overflow:hidden;background:#111833}
+.pd-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.pd-video{height:62svh}}
+.flist .fl-web{display:inline-block;margin:6px 0 0 18px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#DBB879;text-decoration:none}.flist .fl-web:hover{text-decoration:underline}
+.pd-yt{background:#111833;padding:clamp(40px,5vw,72px) 0;color:#DBB879}
+.pd-yt .pd-lab{letter-spacing:.3em;margin:0 0 14px;color:#DBB879}
+.pd-yt .yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000;max-width:1100px}
+.pd-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Rólunk 11-05: videó, Easy Cider blokk, csapatkép nem takart, „hamarosan” márkakártya */
+.ab-story .wrap{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.ab-video{margin:0;display:flex;flex-direction:column;gap:10px;justify-self:center;width:min(380px,100%)}
+.ab-video .vbtn{position:relative;display:block;width:100%;aspect-ratio:9/16;border:0;padding:0;border-radius:14px;overflow:hidden;background:#1B2A5C;cursor:pointer;box-shadow:0 18px 40px rgba(27,42,92,.22)}
+.ab-video .vbtn img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
+.ab-video .ph-cover{position:absolute;left:14px;right:14px;top:14px;font-size:12px;line-height:1.4;color:#fff;background:rgba(15,24,56,.6);padding:8px 10px;border-radius:8px;text-align:left}
+.ab-video .play{position:absolute;left:18px;bottom:18px;width:64px;height:64px;border-radius:50%;background:#EF4E73;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.35);padding-left:4px}
+.ab-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ab-video figcaption{font-family:var(--serif);font-size:18px;text-align:center}
+.ab-easy{background:linear-gradient(135deg,#2A1E46 0%,#3E2C66 55%,#4F3A7E 100%)}
+.ab-easy .bt{padding:0 8% 6% 0}
+.ab-easy .cake{aspect-ratio:3/4}
+.ab-easy .rdot{position:absolute;right:0;bottom:0;width:clamp(96px,10vw,140px);height:auto;background:#fff;border-radius:50%;padding:12px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.ab-easy .btn{background:#F3C66B;color:#2A1E46}
+.ab-team{min-height:0;display:block;overflow:visible;background:#F6F1E8}
+.ab-team figure{margin:0}
+.ab-team figure img{position:static;display:block;width:100%;height:auto;max-height:none}
+.ab-team .wrap{padding-bottom:clamp(36px,5vw,64px)}
+.ab-team .card{margin-top:clamp(-70px,-5vw,-40px);position:relative;max-width:760px}
+.ab-line.soon{background:#2A1E46;color:#fff;border-color:#2A1E46;cursor:default}
+.ab-line.soon:hover{transform:none;box-shadow:none}
+.ab-line.soon .im{background:#3E2C66;position:relative}
+.ab-line.soon small{color:rgba(255,255,255,.8)}
+.ab-line.soon em{color:#F3C66B}
+.ab-line .soon-tag{position:absolute;top:10px;left:10px;background:#F3C66B;color:#2A1E46;font-family:var(--sans);font-weight:800;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.why2 .w-more{display:inline-block;margin-top:14px;font-family:var(--sans);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#EF4E73;text-decoration:none}
+@media (max-width:860px){.ab-video{width:min(300px,80%)}.ab-team .card{margin-top:-24px}}
+/* Red Dot badge – felülírja az .ab-torta .bt img szabályt */
+.ab-torta.ab-easy .bt img.rdot{position:absolute;right:0;bottom:0;height:auto;width:clamp(96px,11vw,150px);background:#fff;border-radius:50%;padding:12px;filter:none;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+@media (max-width:860px){.ab-torta.ab-easy .bt img.rdot{width:96px;height:auto}}
+@media (max-width:860px){.ab-story .wrap{grid-template-columns:1fr}.ab-video{width:min(320px,86%)}}

@@ -1984,7 +1984,7 @@
   "line": "don",
   "accent": "#C8282E",
   "arch": "#5FB8B3",
-  "price": 1990,
+  "price": 2990,
   "old": null,
   "tier": null,
   "avail": true,
@@ -1993,11 +1993,11 @@
   "params": [
    [
     "Egységár",
-    "7960Ft/l"
+    "14 950 Ft/l"
    ],
    [
     "Űrmérték",
-    "250ml Gyümölcs (meggy) 100 g ( 20-25 db )"
+    "200 ml vermut + 110 g gyümölcs (meggy)"
    ],
    [
     "Alkoholtartalom",
@@ -2448,7 +2448,7 @@
   "line": "kiegeszito",
   "accent": "#034EA2",
   "arch": "#E3ECF8",
-  "price": 1800,
+  "price": 1900,
   "old": null,
   "tier": null,
   "avail": true,
@@ -2485,7 +2485,7 @@
   "line": "kiegeszito",
   "accent": "#C25E14",
   "arch": "#FBE7D6",
-  "price": 1500,
+  "price": 2700,
   "old": null,
   "tier": null,
   "avail": true,
@@ -2548,5 +2548,114 @@
   "reviews": [],
   "img": "img/p/kontyos-szovettaska-392.webp",
   "tight": "img/t/kontyos-szovettaska-392.webp"
+ },
+ {
+  "id": "goldberg-tonic",
+  "src": "goldberg-tonic",
+  "name": "Goldberg & Sons Tonic Water 0,2 l",
+  "line": "partner",
+  "accent": "#B8860B",
+  "arch": "#FBF3D6",
+  "price": 550,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Prémium tonic water a Don Cherry & Tonichoz és gyümölcsboros gin-tonikokhoz.",
+  "long": [
+   "A Goldberg & Sons Tonic Water kiegyensúlyozott, finoman kesernyés tonik – a Don Cherry & Tonic és a gyümölcsboros gin-tonikok tökéletes társa.",
+   "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
+  ],
+  "params": [
+   [
+    "Kiszerelés",
+    "0,2 l üveg"
+   ],
+   [
+    "Típus",
+    "Tonic water (alkoholmentes)"
+   ],
+   [
+    "Egységár",
+    "2 750 Ft/l"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/goldberg-tonic.webp",
+  "tight": "img/t/goldberg-tonic.webp"
+ },
+ {
+  "id": "gunpowder-gin",
+  "src": "gunpowder-gin",
+  "name": "Drumshanbo Gunpowder Irish Gin 0,7 l",
+  "line": "partner",
+  "accent": "#2E6E9E",
+  "arch": "#E3EEF6",
+  "price": 14000,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "Ír prémium gin keleti botanikumokkal és gunpowder teával – a Don Cherry Negroni alapja.",
+  "long": [
+   "A Drumshanbo Gunpowder Irish Gin keleti botanikumokkal és gunpowder zöld teával készül: friss, citrusos, finoman fűszeres – a Don Cherry Negroni ideális alapja.",
+   "A készlet erejéig díszdobozban, ajándék pohárral érkezik.",
+   "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
+  ],
+  "params": [
+   [
+    "Kiszerelés",
+    "0,7 l"
+   ],
+   [
+    "Alkoholtartalom",
+    "43 %"
+   ],
+   [
+    "Egységár",
+    "20 000 Ft/l"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/gunpowder-gin.webp",
+  "tight": "img/t/gunpowder-gin.webp"
+ },
+ {
+  "id": "campari",
+  "src": "campari",
+  "name": "Campari 0,7 l",
+  "line": "partner",
+  "accent": "#C8282E",
+  "arch": "#FBE3E2",
+  "price": 6800,
+  "old": null,
+  "tier": null,
+  "avail": true,
+  "short": "A klasszikus olasz bitter – a Don Cherry Negroni és Americano kihagyhatatlan hozzávalója.",
+  "long": [
+   "A Campari élénkpiros, keserédes olasz likőr, a Negroni és az Americano klasszikus alapja. Don Cherryvel meggyes, gyümölcsös karaktert kap.",
+   "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
+  ],
+  "params": [
+   [
+    "Kiszerelés",
+    "0,7 l"
+   ],
+   [
+    "Alkoholtartalom",
+    "25 %"
+   ],
+   [
+    "Egységár",
+    "9 714 Ft/l"
+   ]
+  ],
+  "rating": null,
+  "rcount": 0,
+  "reviews": [],
+  "img": "img/p/campari.webp",
+  "tight": "img/t/campari.webp"
  }
 ]

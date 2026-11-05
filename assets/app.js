@@ -3,7 +3,7 @@
   'use strict';
   var K = window.KONTYOS || { p: {} };
   var ROOT = document.documentElement.getAttribute('data-root') || '';
-  var LIMIT = 20000;
+  var LIMIT = 25000;
   var KEY = 'kontyos-demo-cart';
 
   function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' Ft'; }
@@ -609,4 +609,12 @@
   window.addEventListener('load', fitWords);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWords);
   document.addEventListener('click', function (e) { if (e.target.closest('[data-season-btn],[data-phase-btn],[data-fsel],[data-tab],button')) setTimeout(fitWords, 60); });
+
+  /* Rólunk: a Facebook-videó csak kattintásra töltődik be */
+  document.querySelectorAll('[data-fbvideo]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var u = 'https://www.facebook.com/plugins/video.php?height=476&show_text=false&autoplay=true&href=' + encodeURIComponent(b.getAttribute('data-fbvideo'));
+      b.innerHTML = '<iframe src="' + u + '" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen title="A Kontyos története"></iframe>';
+    }, { once: true });
+  });
 })();

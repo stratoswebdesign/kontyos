@@ -19,7 +19,7 @@ def _(name):
 
 
 SHIP = [('Várható kézbesítés', 'GLS 3–5, MPL 1–3 munkanap'),
-        ('Szállítás', '1 800 Ft-tól · 20 000 Ft felett ingyenes'),
+        ('Szállítás', '1 800 Ft-tól · 25 000 Ft felett ingyenes'),
         ('Fizetés', 'Bankkártya (SimplePay), átutalás, utánvét · regisztráció nélkül is')]
 
 SHORT = {'friss-narancs': 'Narancs', 'friss-eper': 'Eper', 'friss-malna': 'Málna', 'friss-meggy': 'Meggy',
@@ -79,7 +79,7 @@ def allergens(p):
     return ' · '.join(out)
 
 
-SHIP_SHORT = [('Kézbesítés', '1–5 munkanap'), ('Szállítás', '1 800 Ft-tól · 20 000 Ft felett ingyen'), ('Fizetés', 'Kártya, átutalás, utánvét')]
+SHIP_SHORT = [('Kézbesítés', '1–5 munkanap'), ('Szállítás', '1 800 Ft-tól · 25 000 Ft felett ingyen'), ('Fizetés', 'Kártya, átutalás, utánvét')]
 
 
 def ship_dl(rule, dd, fs=13, short=False):
@@ -119,7 +119,7 @@ def info(p, c):
 <div class="pd-desc"><p class="pd-lab" {lab}>LEÍRÁS</p><h2 style="{c['h2']}">{e(p['name'])}</h2>{long}</div>
 <div class="pd-side"><div><p class="pd-lab" {lab}>PARAMÉTEREK</p><div style="border-top:1px solid {c['ink']}">{params}</div></div></div></div></section>'''
     acc = lambda t, body, op='': f'<details class="pd-acc" style="border-color:{c["ink"]}"{op}><summary style="{c.get("accfont", "")}">{t}<span aria-hidden="true">+</span></summary><div>{body}</div></details>'
-    ship_txt = '<p>MPL csomagautomata / PostaPont / posta: 1 800 Ft, GLS csomagpont: 2 100 Ft – 20 000 Ft felett ingyenes. GLS házhoz: 2 400 Ft, 25 000 Ft felett ingyenes. Személyes átvétel Klárafalván. Regisztráció nélkül is rendelhetsz.</p>'
+    ship_txt = '<p>MPL csomagautomata / PostaPont / posta: 1 800 Ft, GLS csomagpont: 2 100 Ft – 25 000 Ft felett ingyenes. GLS házhoz: 2 400 Ft, 25 000 Ft felett ingyenes. Személyes átvétel Klárafalván. Regisztráció nélkül is rendelhetsz.</p>'
     mob = f'''<section class="pd-info only-m"><div class="pd-wrap">{acc('Leírás', long, ' open')}{acc('Paraméterek', params)}{acc('Összetevők, allergének', f'<p>{e(ingr(p))}</p>' + (f'<p><b>{e(allergens(p))}</b></p>' if allergens(p) else ''))}{acc('Szállítás', ship_txt)}</div></section>'''
     return desk + mob
 
@@ -245,8 +245,9 @@ def t_klasszikus(p):
     buy = buy_core(p, c) if p['avail'] else sold_out(p)
     html = f'''{u_hero(p)}
 {info(p, c)}
-<section class="pd-illu noimg duo"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>{_('TXT')['klassz2']}</p><a href="{r}info.html#rolunk">Így készülnek a boraink →</a></div>
+<section class="pd-illu noimg duo"><div class="box"><h2>Mitől 100%-os a gyümölcsbor?</h2><p>{_('TXT')['klassz2']}</p><a href="{r}rolunk.html">Így készülnek a boraink →</a></div>
 <div class="box"><p class="kick">A kiszerelésről</p><h2>Mert a jóból több jár.</h2><p>Hiszünk abban, hogy <b>fél liter a kedvenc gyümölcsborodból nem elég.</b> Ezért gyümölcsborainkat és vermutjainkat a megszokott <b>0,75 literes palackban</b> kínáljuk.</p><p>Forralt borainkból <b>1 liter</b> jut a közös pillanatokra, EASY CIDER-ünk pedig praktikus <b>0,33 literes</b> kiszerelésben frissít fel.</p></div></section>
+{_('torta_block')(r, True) if p['id'] == 'edes-ribizlibor' else ''}
 {reviews(p, c)}
 {cross(cross_ids, 'Ha a meggyet szereted' if 'meggy' in p['id'] else 'Ha ezt szereted', lambda x: ring.get(x['line'], '#1B2A5C'), 'font-family:var(--serif);font-weight:700;font-size:clamp(36px,4vw,54px)')}'''
     return dict(html=html + legal_strip(p), page=ucfg(p)['bg'], ink='#1B2A5C', theme='pill', bar=buybar(p, dict(c, btn=ucfg(p)['btn'])) if p['avail'] else '')
@@ -305,6 +306,8 @@ def t_piri(p):
 <div class="pd-pairband"><section class="pd-wrap pd-pair"><div class="mug"><img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
 <div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
 {info(p, c)}
+<section class="pd-video" aria-label="PIRI Mama hangulatvideó"><video src="{r}img/video/piri_hangulat.mp4" poster="{r}img/video/piri_hangulat.webp" autoplay muted loop playsinline preload="metadata"></video></section>
+<section class="pd-yt"><div class="pd-wrap"><p class="pd-lab">KÉSZÜLŐDÉS · A VÁSÁROK HANGULATA</p><div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/QoHFsUrISzw?rel=0" title="Karácsonyi készülődés – PIRI Mama" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div></div></section>
 {reviews(p, c)}
 <section class="sec pk-fblock pd-fpack"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" style="font-size:clamp(26px,3vw,40px)">Forralt csomag</h2>
 <div class="packs-grid">{_('pack_box')(_('SP')['forralt-6'], r, primary=True)}</div></div></section>
@@ -321,9 +324,9 @@ def t_don(p):
     alc = (param(p, 'Alkohol') or '').replace(' %', '% vol').replace('%vol', '% vol')
     c = dict(accent='#2E8C86', accent2='#C8282E', ink='#2A1416', rule='#EAF3F2', legalbg='#F2FAF9', btn='#C8282E', rborder='#D6ECEA',
              h2="font-family:var(--sans);font-weight:800;font-size:clamp(30px,3vw,42px);line-height:1.05", numfont='font-family:var(--sans)', accfont='font-family:var(--serif)')
-    sub = 'ÉDES MEGGYVERMUT · 0,75 L' if not jar else 'MEGGYVERMUT ÉS MEGGY · 0,25 L + 100 G'
+    sub = 'ÉDES MEGGYVERMUT · 0,75 L' if not jar else 'MEGGYVERMUT ÉS MEGGY · 200 ML + 110 G'
     pair = P['don-cherry-gyumolcse'] if not jar else P['don-cherry']
-    pair_desc = '0,25 l édes meggyvermut és 100 g magozott meggy egy üvegben.' if not jar else 'Prémium minőségű édes meggyvermut 0,75 l-es palackban – friss meggy ágyon érlelt meggybor, dió pálinka, fűszerek.'
+    pair_desc = '200 ml édes meggyvermut és 110 g magozott meggy egy üvegben.' if not jar else 'Prémium minőségű édes meggyvermut 0,75 l-es palackban – friss meggy ágyon érlelt meggybor, dió pálinka, fűszerek.'
     contains = ', '.join(x.replace(' tartalmaz', '') for x in allergens(p).split(' · ') if x)
     html = f'''{u_hero(p)}
 {_('don_packs')('../')}
@@ -335,8 +338,9 @@ def t_don(p):
 <section class="pd-wrap pd-cocktails"><h2 class="ck-h">Koktélként</h2><div class="cgrid">
 <article><img src="{r}img/cocktail/negroni.webp" alt="Don Cherry Negroni" loading="lazy"><h3>Don Cherry Negroni</h3><p class="d">Karakteres, gyümölcsös, kissé kesernyés – mégis selymesen fűszeres.</p><ul><li>3 cl Don Cherry</li><li>3 cl gin</li><li>3 cl Campari</li><li>jég, narancshéj</li></ul><p>Önts minden hozzávalót jéggel teli keverőpohárba, keverd össze, majd szűrd egy jéggel teli whiskys pohárba. Narancshéjjal díszítsd.</p></article>
 <article><img src="{r}img/cocktail/americano.webp" alt="Don Cherry Americano" loading="lazy"><h3>Don Cherry Americano</h3><p class="d">Erőteljes, elegáns és modern. Nem harsány, de nem is marad észrevétlen.</p><ul><li>6 cl Don Cherry</li><li>3 cl Campari</li><li>jég, narancskarika vagy narancshéj-spirál</li></ul><p>Öntsd a Don Cherryt és a Camparit egy jéggel teli whiskys pohárba, és keverd össze óvatosan. Díszítsd narancshéjjal.</p></article>
-<article><img src="{r}img/cocktail/manhattan.webp" alt="Don Cherry Manhattan" loading="lazy"><h3>Don Cherry Manhattan</h3><p class="d">A Manhattan ikonikus eleganciája, meggyes karakterrel.</p><ul><li>6 cl rye whiskey vagy bourbon</li><li>3 cl Don Cherry</li><li>2–3 csepp Angostura</li><li>koktélmeggy vagy narancshéj</li></ul><p>Keverd össze jéggel, és szűrd coupe pohárba. Díszítsd koktélmeggyel. Füstös whiskeyvel még komolyabb élmény.</p></article>
+<article><img src="{r}img/cocktail/don-tonic.webp" alt="Don Cherry & Tonic" loading="lazy"><h3>Don Cherry &amp; Tonic</h3><p class="d">Frissítő, meggyes, finoman kesernyés – üde narancsos csavarral.</p><ul><li>1 dl Don Cherry</li><li>1 dl tonic</li><li>jég, meggy és narancskarika</li></ul><p>Tölts meg egy longdrinkes poharat jéggel, öntsd rá a Don Cherryt, majd a tonicot. Óvatosan keverd át, és díszítsd meggyel és narancskarikával.</p></article>
 </div></section>
+{_('cocktail_packs')(r)}
 {reviews(p, c)}
 <section class="pd-dpair"><div class="pd-wrap"><img src="{r}{pair['tight']}" alt="{e(pair['name'])}" loading="lazy" class="{'jar' if not jar else ''}">
 <div><p class="pd-lab" style="color:#2E8C86;letter-spacing:.3em">A PÁRJA</p><h2>{e(pair['name'])}</h2><p>{pair_desc}</p>
