@@ -59,33 +59,33 @@ koktel-gt-eper;Epres gin-tonik csomag;21180;;;ÚJ termék
 koktel-gt-bodza;Bodzavirágos gin-tonik csomag;19880;;;ÚJ termék
 koktel-malna-ginger;Málnás ginger csomag;24180;;;ÚJ termék
 koktel-gt-narancs;Narancsos gin-tonik csomag;18380;;;ÚJ termék
-;;;534271006;;élesben van, a demóban nincs → döntés kell
-;;;AROMA01;;élesben van, a demóban nincs → döntés kell
-;;;AROMA02;;élesben van, a demóban nincs → döntés kell
-;;;DRS01;;élesben van, a demóban nincs → döntés kell
-;;;KONTY153;;élesben van, a demóban nincs → döntés kell
-;;;istenno;A Gyümölcsöskertek Istennőjétől;élesben van, a demóban nincs → döntés kell
-;;;napfeny;A Napfény Ízei;élesben van, a demóban nincs → döntés kell
-;;;kedvencek;A Négy Kedvenc;élesben van, a demóban nincs → döntés kell
-;;;KLARAK;A Négy Klára;élesben van, a demóban nincs → döntés kell
-;;;utalvany;Ajándékutalvány;élesben van, a demóban nincs → döntés kell
-;;;csakszaraz;Csak Szárazon;élesben van, a demóban nincs → döntés kell
-;;;TESZT01;Ez egy teszt termék;élesben van, a demóban nincs → döntés kell
-;;;farsang 2026;FARSANGI BORCSOMAG;élesben van, a demóban nincs → döntés kell
-;;;forreper;Forralt Eperbor Alap 0,75 L;élesben van, a demóban nincs → döntés kell
-;;;forrkorte;Forralt Körtebor Alap 0,75L;élesben van, a demóban nincs → döntés kell
-;;;forrmeggy;Forralt Meggybor Alap 0,75 L;élesben van, a demóban nincs → döntés kell
-;;;L471118SZ;Forralt, mandulás Szilvabor Alap;élesben van, a demóban nincs → döntés kell
-;;;forraltcsomag;Forraltbor Trió;élesben van, a demóban nincs → döntés kell
-;;;pal03X;Kajszipálinka;élesben van, a demóban nincs → döntés kell
-;;;best selection;Karácsonyi Borválogatás;élesben van, a demóban nincs → döntés kell
-;;;klaraajanl;Klára Ajánlásával;élesben van, a demóban nincs → döntés kell
-;;;almale;Natúr rostos almalé 5L / kevesebb rosttal /;élesben van, a demóban nincs → döntés kell
-;;;nőnap;NŐNAPI CSOMAG;élesben van, a demóban nincs → döntés kell
-;;;nyarON2026;NyárON Csomag;élesben van, a demóban nincs → döntés kell
-;;;pal08;Ribizlipálinka;élesben van, a demóban nincs → döntés kell
-;;;KONTY113X;SZÁRAZ BARRIQUE SZILVABOR 0,75 L;élesben van, a demóban nincs → döntés kell
-;;;parosszilva;Szilva Páros;élesben van, a demóban nincs → döntés kell
-;;;tavaszi-2026;TAVASZI BORCSOKOR;élesben van, a demóban nincs → döntés kell
-;;;tobbnyire;Többnyire Szárazon;élesben van, a demóban nincs → döntés kell
-;;;bogre;Üvegbögre 0,25 L;élesben van, a demóban nincs → döntés kell
+;;;534271006;;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;AROMA01;;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;AROMA02;;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;DRS01;;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;KONTY153;;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;istenno;A Gyümölcsöskertek Istennőjétől;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;napfeny;A Napfény Ízei;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;kedvencek;A Négy Kedvenc;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;KLARAK;A Négy Klára;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;utalvany;Ajándékutalvány;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;csakszaraz;Csak Szárazon;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;TESZT01;Ez egy teszt termék;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;farsang 2026;FARSANGI BORCSOMAG;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;forreper;Forralt Eperbor Alap 0,75 L;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;forrkorte;Forralt Körtebor Alap 0,75L;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;forrmeggy;Forralt Meggybor Alap 0,75 L;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;L471118SZ;Forralt, mandulás Szilvabor Alap;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;forraltcsomag;Forraltbor Trió;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;pal03X;Kajszipálinka;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;best selection;Karácsonyi Borválogatás;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;klaraajanl;Klára Ajánlásával;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;almale;Natúr rostos almalé 5L / kevesebb rosttal /;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;nőnap;NŐNAPI CSOMAG;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;nyarON2026;NyárON Csomag;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;pal08;Ribizlipálinka;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;KONTY113X;SZÁRAZ BARRIQUE SZILVABOR 0,75 L;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;parosszilva;Szilva Páros;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;tavaszi-2026;TAVASZI BORCSOKOR;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;tobbnyire;Többnyire Szárazon;régi termék → kikapcsolni (Letiltott), NEM törölni
+;;;bogre;Üvegbögre 0,25 L;régi termék → kikapcsolni (Letiltott), NEM törölni
