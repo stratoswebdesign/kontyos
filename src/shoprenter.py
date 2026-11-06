@@ -86,6 +86,7 @@ def rewrite(htm):
     htm = re.sub(r'url\((?!["\']?(?:https?:|data:))["\']?([^)"\']+)["\']?\)', lambda m: f'url({page_url(m.group(1))})', htm)
     htm = re.sub(r'data-add="([^"]+)"', lambda m: f'data-add="{m.group(1)}" data-sku="{html.escape(SKU.get(m.group(1), NEW_SKU.get(m.group(1), "")))}"', htm)
     htm = re.sub(r'\?v=[0-9a-f]{10}', '', htm)
+    htm = re.sub(r'"image": "(img/[^"]+)"', lambda m: f'"image": "{IMG_BASE}{m.group(1)}"', htm)  # JSON-LD
     if '{{' in htm or '{%' in htm or '{#' in htm:
         htm = '{% verbatim %}' + htm + '{% endverbatim %}'
     return htm
