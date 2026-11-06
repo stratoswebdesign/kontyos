@@ -28,6 +28,9 @@
 - 44 meglévő: név, ár, leírás, képek frissítése (a cikkszám marad).
 - 16 új: létrehozás a javasolt cikkszámmal (KY-…) és SEO-URL-lel (a demó termék-id-je), **Letiltott** állapotban, amíg nincs kész.
 - 30 régi: **Letiltott** (nem törlés).
+- 6 kampánycsomag (2026-11-06, sandbox 511–516): KY-UJBOR-6, KY-BF-PREMIUM, KY-BF-DISZKONT, KY-EDES-UNNEPEK, KY-PREMIUM-ADVENT,
+  KY-KONNYU-KARACSONY – a párosok mintájára: alapár = listaár, akció (Mindenki, korlát nélkül) = Sanyi csomagára, kategória Kedvezmények > Csomagajánlatok,
+  készlet 1000, készletcsökkentés nélkül, betétdíj-kiegészítő a palackszám szerint (8 = 6+2 db, 7 = 4+3 db), ingyenes szállítás a táblázat szerint.
 - DRS: 50 Ft / palack a Kontyos italokon (pálinka kivételével), partnertermékeken is.
 - A sandboxból kimentjük a cikkszám → product_id párokat, és beírjuk a `window.KY_PID` térképbe (kosár-adapter).
 
