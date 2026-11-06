@@ -127,8 +127,11 @@ def body_parts(path):
     # oldalspecifikus külső stíluslap a <head>-ből (pl. Leaflet-térkép a vásárok oldalon)
     styles = ''.join(m for m in re.findall(r'<link rel="stylesheet" href="https?://[^"]+"[^>]*>', s[:s.find('<body')]) if 'fonts.googleapis' not in m) + styles
     after_main = inner[main.end():footer.start()] if (main and footer) else ''
+    pre = inner[:inner.find('<header class="site-head')].strip() if '<header class="site-head' in inner else ''
+    # fejléc fölötti sáv (pl. karácsonyi .xbar) – a kontyos.js a fejléc elé teszi
+    pre_html = f'<div class="ky-pre">{pre}</div>' if pre else ''
     return dict(cls=cls.group(1) if cls else '', page=page.group(1) if page else '', main=main.group(0) if main else '',
-                header=header.group(0) if header else '', footer=footer.group(0) if footer else '', styles=styles, extra=after_main)
+                header=header.group(0) if header else '', footer=footer.group(0) if footer else '', styles=styles, extra=after_main, pre=pre_html)
 
 
 # ---------------- CSS: minden szabály a .ky gyökér alá ----------------
@@ -142,6 +145,8 @@ REVERT_CSS = '.ky,.ky :where(:not(svg,svg *,img,video,canvas,iframe,picture,sour
 
 # A Shoprenter-keret (Párizs) igazítása: ezek a szabályok szándékosan NEM a .ky alatt vannak.
 SHELL_CSS = '''
+.ky > .ky-pre{display:none}
+.ky-pre-wrap{position:relative;z-index:61}
 /* --- Shoprenter-keret (Párizs) igazítása a Kontyos-oldalakhoz --- */
 #section-banner_slider_paris,#section-announcement_bar_paris{display:none!important}
 body:has(.ky-head) main.has-sticky{padding-top:0!important}
@@ -154,9 +159,12 @@ main .container:has(.ky) > :is(nav,.breadcrumb):not(:has(.ky)){display:none!impo
 body:has(.ky-head),body:has(.ky-head) .page-wrap{background:var(--page)!important}
 body:has(.ky-head) main.has-sticky{padding-bottom:0!important;margin-bottom:0!important;background:transparent!important}
 body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-position,body:has(.ky-head) .mobile-scroll-top-button{display:none!important}
-.ky-legal-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:18px 16px;background:#F3EEE5;border-top:1px solid #E2DACB}
-.ky-legal-logos img{width:auto!important;max-width:100%!important;height:auto!important;max-height:64px}
+.ky-legal-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:18px 16px;background:#1B2A5C}
+.ky-legal-logos img{width:auto!important;max-width:100%!important;height:auto!important;max-height:40px}
 .ky-legal-logos .simple-footer,.ky-legal-logos .szechenyi{margin:0;padding:0;background:none}
+/* a kötelező fizetési logó (SimplePay) a sötét lábléc aljába kerül, nem külön sávba */
+.ky-foot .site-foot .ky-legal-logos{grid-column:1/-1;justify-content:flex-start;gap:16px;padding:0;margin:-10px 0 0;background:none;border:0}
+.ky-foot .site-foot .ky-legal-logos img{height:auto!important;max-height:32px}
 '''
 def scope_selector(sel):
     out = []
@@ -269,7 +277,7 @@ def main():
     home = body_parts('index.html')
     snippet('ky-header', '<div class="ky ky-head">' + home['header'] + '</div>', 'fejléc (menü, logó, kosár) – a sections/header.tpl schema-blokkja megmarad')
     snippet('ky-footer', '<div class="ky ky-foot">' + home['footer'] + '</div>', 'lábléc')
-    snippet('ky-home', home['styles'] + f'<div class="ky {home["cls"]}" data-page="home">' + home['main'] + home['extra'] + '</div>', 'főoldal – szezonális herók dátum szerint')
+    snippet('ky-home', home['styles'] + f'<div class="ky {home["cls"]}" data-page="home">' + home['pre'] + home['main'] + home['extra'] + '</div>', 'főoldal – szezonális herók dátum szerint')
     # termék-URL → snippet térkép a product.tpl-hez
     slugmap = {PROD.get(pid, pid): f'ky-p-{pid}' for pid in [os.path.basename(x)[:-5] for x in __import__('glob').glob(os.path.join(ROOT, 'termek', '*.html'))]}
     write('snippets/ky-pmap.tpl', '{# Kontyos – termék SEO-URL → termékoldal-snippet. Generálva. #}\n{% set ky_pmap = ' + json.dumps(slugmap, ensure_ascii=False) + ' %}\n')
@@ -283,7 +291,7 @@ def main():
         if not os.path.exists(os.path.join(ROOT, f)):
             continue
         b = body_parts(f)
-        snippet(name, b['styles'] + f'<div class="ky {b["cls"]}" data-page="{b["page"]}">' + b['main'] + b['extra'] + '</div>', f'aloldal: {f} → {page_url(f)}')
+        snippet(name, b['styles'] + f'<div class="ky {b["cls"]}" data-page="{b["page"]}">' + b['pre'] + b['main'] + b['extra'] + '</div>', f'aloldal: {f} → {page_url(f)}')
         manifest[name] = dict(demo=f, url=page_url(f), body_class=b['cls'])
 
     # termékoldalak: termékenként egy snippet (a Shoprenter product.tpl a cikkszám alapján tölti be)

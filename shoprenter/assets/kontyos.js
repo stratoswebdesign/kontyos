@@ -19,6 +19,19 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
       main.classList.forEach(function (c) { if (c !== 'ky') el.classList.add(c); });
       if (main.dataset.page) el.dataset.page = main.dataset.page;
     });
+    // a Shoprenter kötelező fizetési logói a lábléc aljára (a demóban nincs külön sáv)
+    var lg = document.querySelector('.ky-legal-logos'), fw = document.querySelector('.ky-foot footer .wrap');
+    if (lg && fw && !fw.contains(lg)) fw.appendChild(lg);
+    // a demóban a fejléc fölött álló sáv (pl. karácsonyi .xbar) a fejléc elé kerül
+    var pre = main.querySelector(':scope > .ky-pre'), head = document.querySelector('.ky-head');
+    if (pre && head && head.parentNode) {
+      var w = document.createElement('div');
+      w.className = main.className + ' ky-pre-wrap';
+      if (main.dataset.page) w.dataset.page = main.dataset.page;
+      while (pre.firstChild) w.appendChild(pre.firstChild);
+      pre.remove();
+      head.parentNode.insertBefore(w, head);
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncShell); else syncShell();
   function srForm() { return document.querySelector('form[action*="cart"], form#product, .ky-sr-form form'); }
