@@ -168,6 +168,23 @@ body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-posi
 .ky-foot .site-foot .ky-legal-logos{grid-column:1/-1;justify-content:flex-start;gap:16px;padding:0;margin:-10px 0 0;background:none;border:0}
 .ky-foot .site-foot .ky-legal-logos img{height:auto!important;max-height:32px}
 @media (max-width:760px){.ky-foot .site-foot .ky-legal-logos{gap:10px;margin-top:-12px}.ky-foot .site-foot .ky-legal-logos img{max-height:22px}}
+
+/* --- Shoprenter-pénztár (egyoldalas pénztár): Kontyos-színek, betűk, gombok --- */
+body:has(.checkout-app-container){background:#F3EEE5!important}
+.checkout-app-container .checkout-app-left{background:#F3EEE5!important}
+.checkout-app-container .checkout-app-right{background:#fff!important;border-left:1px solid #E2DACB}
+.checkout-app-container,.checkout-app-container input,.checkout-app-container button,.checkout-app-container select,.checkout-app-container label,.checkout-app-container p,.checkout-app-container span,.checkout-app-container div{font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif}
+.checkout-app-container{color:#1B2A5C}
+.checkout-app-container h1,.checkout-app-container h2,.checkout-app-container h3,.checkout-app-container h4{font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;letter-spacing:.01em}
+.checkout-app-container h1{font-size:28px!important}
+.checkout-app-container .btn-primary{background:#EF4E73!important;border-color:#EF4E73!important;color:#fff!important;border-radius:999px!important;font-weight:800!important;min-height:48px;box-shadow:none!important}
+.checkout-app-container .btn-primary:hover,.checkout-app-container .btn-primary:focus{background:#D93A60!important;border-color:#D93A60!important}
+.checkout-app-container .btn-link,.checkout-app-container a{color:#1B2A5C!important}
+.checkout-app-container .form-control{border:1.5px solid #1B2A5C!important;border-radius:4px!important;min-height:46px;box-shadow:none!important;background:#fff!important}
+.checkout-app-container .form-control:focus{border-color:#EF4E73!important;box-shadow:0 0 0 3px rgba(239,78,115,.18)!important}
+.checkout-app-container .progress-indicator-item-current .progress-indicator-label,.checkout-app-container .progress-indicator-item-done .progress-indicator-label{color:#1B2A5C!important;border-color:#1B2A5C!important;font-weight:800}
+.checkout-app-container .progress-indicator-item-current .progress-indicator-line,.checkout-app-container .progress-indicator-item-done .progress-indicator-line{background:#1B2A5C!important}
+.checkout-app-container .logo img{content:url(https://stratoswebdesign.github.io/kontyos/img/logo-navy.svg);max-height:52px;width:auto}
 '''
 def scope_selector(sel):
     out = []
