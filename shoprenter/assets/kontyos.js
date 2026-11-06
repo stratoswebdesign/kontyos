@@ -145,7 +145,7 @@ window.KY_CART_HTML = "<main><div class=\"wrap\" style=\"display:flex;flex-direc
       if (!r) return;
       e.preventDefault();
       var up = q && q.getAttribute('data-d') === '1';
-      var t = up ? r.tr.querySelector('.ac-quantity-up') : (q && r.q > 1) ? r.tr.querySelector('.ac-quantity-down button, .ac-quantity-down') : r.tr.querySelector('.ac-prod-delete');
+      var t = up ? r.tr.querySelector('.ac-quantity-up') : (q && r.q > 1) ? (r.tr.querySelector('.ac-quantity-down button') || r.tr.querySelector('.ac-quantity-down')) : r.tr.querySelector('.ac-prod-delete');
       if (t) t.click();
     });
     var tm;
