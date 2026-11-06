@@ -59,6 +59,15 @@ Karácsonyi ajándék bor (`/karacsonyi-ajandek-bor`). A tartalmat az `informati
 - **Vásár-adatok:** a `window.KONTYOS_FAIRS` a `kontyos.js` elején van; a vásárok oldal Leaflet-stíluslapja a snippetben.
 - **Téma-szerkesztő:** a Mentés gombot valódi kattintással kell megnyomni; egy meglévő fájl oldalbetöltésenként egyszer szerkeszthető
   (közben újratöltés); a sandboxban a CSS/JS a GitHub Pages-ről jön 10 perces gyorsítótár-kulccsal (`?v=ÉÉÉÉHHNNÓÓP`).
+- **Hírlevél (2026-11-06):** a demó `form[data-newsletter]` űrlapjait a `kontyos.js` a Shoprenter hírlevél-moduljába küldi
+  (`/index.php?route=module/newsletter_subscribe/subscribe`: `subscriber_email`, `subscriber_policy=1`, `status=1`, `language_id=1`);
+  a feliratkozók: Marketing › Hírlevél. Minden űrlap alatt adatkezelési tájékoztató (link: `/adatkezelesi-tajekoztato`).
+  Köszönő e-mail az 5%-os **HIRLEVEL5** kuponnal: Hírlevél-beállítások › automatikus köszönő levél; kupon: Marketing › Kuponok.
+- **Vásár-értesítő:** Shoprenter-űrlap „Vásár-értesítő (Kontyos)” (Tartalom › Űrlapok; mezők: Keresztnév, E-mail cím, vásárok csekklista,
+  adatkezelési hozzájárulás; értesítés: webshop@kontyos.hu). Az űrlap a rejtett, noindex `/vasar-ertesito` aloldalon van (információs oldal, menükben nincs);
+  a `kontyos.js` onnan veszi a friss tokeneket, és a mezőket **típus szerint** tölti ki (a `formFieldId-N` azonosító az űrlap mentésekor újraszámozódik).
+  A beküldések: Űrlapok › kitöltések száma (exportálható). Az emlékeztető e-maileket (3 nappal előtte + nyitás napján) a feliratkozók listájából kell kiküldeni.
+- **Párizs-oldalak skinje:** a `SHELL_CSS` „Párizs-oldalak” blokkja (keresés, belépés/regisztráció, fiók, kapcsolat, elállás, 404, süti-sáv).
 - **Ellenőrzés:** `shoprenter/ky_compare.js` → `kyCmp('/útvonal', 'demo.html', 1440|390)` a sandbox-oldalon futtatva elemenként összeveti
   a számított stílusokat és a fejléc/logó/lábléc helyét a demóval.
 
