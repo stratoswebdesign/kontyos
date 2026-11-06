@@ -46,6 +46,9 @@ Karácsonyi ajándék bor (`/karacsonyi-ajandek-bor`). A tartalmat az `informati
   `src/shoprenter.py`-ben – CSS, snippetek és JS egyszerre), és a `kontyos.css` elején `all:revert` nullázza a `.ky` alatti elemeket.
 - **Fejléc fölötti sáv** (pl. karácsonyi `.xbar`): a snippetben `.ky-pre`, a `kontyos.js` teszi a fejléc elé.
 - **Fizetési logók (SimplePay – kötelező):** a Shoprenter `.ky-legal-logos` blokkját a `kontyos.js` a sötét lábléc aljára teszi, nincs külön világos sáv.
+- **Kosároldal:** a Shoprenter Vue-kosara rejtve dolgozik; a `kontyos.js` fölé rajzolja a demó kosarát (`KY_CART_HTML`), a +/−/Törlés
+  a rejtett Shoprenter-gombokat nyomja, a „Tovább a pénztárhoz” a Shoprenter pénztárába visz. Kupon: a Shoprenter pénztárában.
+- **Pénztár (egyoldalas):** csak CSS-skin (színek, betűk, gombok, logó) – a felépítése a Shoprenteré.
 - **Vásár-adatok:** a `window.KONTYOS_FAIRS` a `kontyos.js` elején van; a vásárok oldal Leaflet-stíluslapja a snippetben.
 - **Téma-szerkesztő:** a Mentés gombot valódi kattintással kell megnyomni; egy meglévő fájl oldalbetöltésenként egyszer szerkeszthető
   (közben újratöltés); a sandboxban a CSS/JS a GitHub Pages-ről jön 10 perces gyorsítótár-kulccsal (`?v=ÉÉÉÉHHNNÓÓP`).
