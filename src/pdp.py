@@ -336,7 +336,7 @@ def t_don(p):
              h2="font-family:var(--sans);font-weight:800;font-size:clamp(30px,3vw,42px);line-height:1.05", numfont='font-family:var(--sans)', accfont='font-family:var(--serif)')
     sub = 'ÉDES MEGGYVERMUT · 0,75 L' if not jar else 'MEGGYVERMUT ÉS MEGGY · 200 ML + 110 G'
     pair = P['don-cherry-gyumolcse'] if not jar else P['don-cherry']
-    pair_desc = '200 ml édes meggyvermut és 110 g magozott meggy egy üvegben.' if not jar else 'Prémium minőségű édes meggyvermut 0,75 l-es palackban – friss meggy ágyon érlelt meggybor, dió pálinka, fűszerek.'
+    pair_desc = '0,25 l édes meggyvermut és 100 g magozott meggy.' if not jar else 'Prémium minőségű édes meggyvermut 0,75 l-es palackban – friss meggy ágyon érlelt meggybor, dió pálinka, fűszerek.'
     contains = ', '.join(x.replace(' tartalmaz', '') for x in allergens(p).split(' · ') if x)
     html = f'''{u_hero(p)}
 {_('don_packs')('../')}

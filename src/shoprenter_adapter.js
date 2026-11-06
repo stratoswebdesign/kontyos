@@ -158,6 +158,70 @@
     render();
     window.addEventListener('load', render);
   })();
+
+  /* Hírlevél + vásár-értesítő → Shoprenter
+     - hírlevél: a Shoprenter hírlevél-modulja (module/newsletter_subscribe) – a feliratkozó a Marketing > Hírlevél listába kerül,
+       a köszönő e-mail (5%-os HIRLEVEL5 kuponnal) a hírlevél-beállításokból megy ki;
+     - vásár-értesítő: a „Vásár-értesítő (Kontyos)” Shoprenter-űrlap (Tartalom > Űrlapok), amely a rejtett /vasar-ertesito
+       aloldalon van – innen vesszük a friss tokeneket, a mezőket típus szerint töltjük ki (a mezőazonosító mentéskor változhat). */
+  var FAIR_ORDER = ['szeged', 'obuda', 'gyor', 'szombathely', 'veszprem', 'pecs', 'nyiregyhaza'];
+  function kyMsg(f, html) { var p = document.createElement('p'); p.style.fontWeight = '800'; p.innerHTML = html; f.innerHTML = ''; f.appendChild(p); }
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (f.matches && f.matches('form[data-newsletter]')) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      var em = f.querySelector('input[type=email]'), mail = em ? em.value.trim() : '';
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { if (em) em.focus(); return; }
+      var btn = f.querySelector('button'); if (btn) btn.disabled = true;
+      var b = new URLSearchParams(); b.append('subscriber_email', mail); b.append('subscriber_firstname', ''); b.append('subscriber_lastname', '');
+      b.append('subscriber_policy', '1'); b.append('status', '1'); b.append('language_id', '1'); b.append('re-email', '');
+      fetch('/index.php?route=module/newsletter_subscribe/subscribe', { method: 'POST', body: b, credentials: 'same-origin', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(function (r) { return r.text().then(function (t) { return { ok: r.ok, t: t }; }); })
+        .then(function (r) {
+          var j = null; try { j = JSON.parse(r.t); } catch (x) {}
+          var err = !r.ok || (j && (j.error || j.success === false || j.status === 'error'));
+          if (err) { if (btn) btn.disabled = false; var m = (j && (j.error || j.message)) || 'Most nem sikerült, kérjük, próbáld újra.'; var n = f.querySelector('.nl-err') || f.appendChild(Object.assign(document.createElement('p'), { className: 'nl-note nl-err' })); n.textContent = typeof m === 'string' ? m : 'Most nem sikerült, kérjük, próbáld újra.'; return; }
+          kyMsg(f, 'Köszönjük! Az 5%-os kuponkódot e-mailben küldjük.');
+        })
+        .catch(function () { if (btn) btn.disabled = false; });
+      return;
+    }
+    if (f.matches && f.matches('[data-fair-form]')) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      var mailEl = f.querySelector('[name=email]'), ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mailEl.value.trim());
+      var fld = mailEl.closest('.field'); if (fld) fld.classList.toggle('err', !ok);
+      var msg = f.querySelector('[data-fair-ok]');
+      var picked = [].slice.call(f.querySelectorAll('[name=fair]:checked')).map(function (c) { return c.value; });
+      if (!ok) return;
+      if (!picked.length) { msg.textContent = 'Jelölj be legalább egy vásárt.'; return; }
+      var sb = f.querySelector('button[type=submit]'); if (sb) sb.disabled = true;
+      msg.textContent = 'Küldés…';
+      fetch('/vasar-ertesito?_=' + Date.now(), { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (h) {
+        var d = new DOMParser().parseFromString(h, 'text/html'), sf = d.querySelector('form[id^="contact_form"]');
+        if (!sf) throw new Error('nincs űrlap');
+        var fd = new FormData(sf), tx = sf.querySelector('input[type=text][name^="formFieldId"]'), em2 = sf.querySelector('input[type=email]'),
+          cbs = [].slice.call(sf.querySelectorAll('input[type=checkbox][name^="formFieldId"]')), pol = sf.querySelector('input[name^="policy"]');
+        var nm = f.querySelector('[name=name]');
+        if (tx) fd.set(tx.name, nm ? nm.value.trim() : '');
+        fd.set(em2.name, mailEl.value.trim());
+        if (cbs.length) fd.delete(cbs[0].name);
+        picked.forEach(function (id) { var c = cbs[FAIR_ORDER.indexOf(id)]; if (c) fd.append(c.name, c.value); });
+        if (pol) { fd.delete(pol.name); fd.append(pol.name, pol.value); }
+        var sbt = sf.querySelector('[name=submit_button]'); if (sbt) fd.set('submit_button', sbt.value || 'Küldés');
+        return fetch(sf.getAttribute('action'), { method: 'POST', body: new URLSearchParams(fd), credentials: 'same-origin' });
+      }).then(function () {
+        // a Shoprenter a sikert a következő űrlap-oldal betöltésekor jelzi (common/contact/success) – ezzel ellenőrzünk és ürítjük
+        return fetch('/vasar-ertesito?_=' + Date.now(), { credentials: 'same-origin' });
+      }).then(function (r) {
+        if (!/contact\/success/.test(r.url)) throw new Error('nem sikerült');
+        var names = picked.map(function (id) { var x = (window.KONTYOS_FAIRS || []).filter(function (q) { return q.id === id; })[0]; return x ? x.city : id; });
+        msg.innerHTML = '✓ Feliratkoztál: <b>' + names.join(', ') + '</b>. A vásár előtt 3 nappal és a nyitás napján e-mailben jelentkezünk.';
+        f.querySelectorAll('input').forEach(function (i) { if (i.type === 'checkbox') i.checked = false; else if (i.name !== 'email') i.value = ''; });
+      }).catch(function () {
+        msg.textContent = 'Most nem sikerült elküldeni, kérjük, próbáld újra pár perc múlva.';
+      }).then(function () { if (sb) sb.disabled = false; });
+    }
+  }, true);
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-add]'); if (!a) return;
     var id = a.getAttribute('data-add'), sku = a.getAttribute('data-sku') || ((window.KONTYOS.p[id] || {}).sku) || '';

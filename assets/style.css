@@ -2887,3 +2887,8 @@ a.extl:hover{text-decoration-thickness:2px}
  .lg .lg-t thead{display:none}.lg .lg-t,.lg .lg-t tbody,.lg .lg-t tr,.lg .lg-t td{display:block;width:100%}
  .lg .lg-t tr{border-bottom:2px solid var(--rule);padding:8px 0}.lg .lg-t td{border:0;padding:4px 12px}
  .lg .lg-t td::before{content:attr(data-l);display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6A6F7E}}
+
+/* hírlevél – adatkezelési tájékoztatás az űrlap alatt */
+form[data-newsletter]{flex-wrap:wrap}
+form[data-newsletter] .nl-note{flex:1 1 100%;width:100%;margin:6px 0 0;font-size:12px;line-height:1.5;opacity:.85}
+form[data-newsletter] .nl-note a{color:inherit;text-decoration:underline;text-underline-offset:2px}

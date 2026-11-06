@@ -260,7 +260,13 @@ STAMP = '''<div class="stamp" aria-hidden="true"><svg viewBox="0 0 200 200" widt
 <circle cx="100" cy="100" r="98" fill="{bg}"/><text font-family="Montserrat" font-weight="800" font-size="14" fill="{fg}"><textPath href="#sc-{uid}" textLength="489" lengthAdjust="spacing">{txt}</textPath></text></svg><b style="color:{fg}">{center}</b></div>'''
 
 
+NL_NOTE = ('<p class="nl-note">A feliratkozással hozzájárulsz, hogy a Kontyos Borház Kft. hírlevelet és ajánlatokat küldjön e-mailben. '
+           'Bármikor leiratkozhatsz. <a href="{r}adatkezeles.html">Adatkezelési tájékoztató</a></p>')
+
+
 def write(path, s):
+    # hírlevél-űrlapok: adatkezelési tájékoztatás (GDPR – hozzájárulás) minden feliratkozó űrlap alján
+    s = re.sub(r'(<form data-newsletter[^>]*>)(.*?)(</form>)', lambda m: m.group(1) + m.group(2) + NL_NOTE.replace('{r}', '../' if '/' in path else '') + m.group(3), s, flags=re.S)
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     if path.endswith('.html'):
