@@ -98,10 +98,11 @@ main .container:has(.ky) > :is(nav,.breadcrumb):not(:has(.ky)){display:none!impo
 .ky.ky-head{position:relative;z-index:60;background:transparent}
 body:has(.ky-head),body:has(.ky-head) .page-wrap{background:var(--page)!important}
 body:has(.ky-head) main.has-sticky{padding-bottom:0!important;margin-bottom:0!important;background:transparent!important}
-body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-position,body:has(.ky-head) .mobile-scroll-top-button{display:none!important}
+body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-position,body:has(.ky-head) .mobile-scroll-top-button,body:has(.ky-head) .scroll-top-button{display:none!important}
 .ky-legal-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:18px 16px;background:#1B2A5C}
 .ky-legal-logos img{width:auto!important;max-width:100%!important;height:auto!important;max-height:40px}
 .ky-legal-logos .simple-footer,.ky-legal-logos .szechenyi{margin:0;padding:0;background:none}
 /* a kötelező fizetési logó (SimplePay) a sötét lábléc aljába kerül, nem külön sávba */
 .ky-foot .site-foot .ky-legal-logos{grid-column:1/-1;justify-content:flex-start;gap:16px;padding:0;margin:-10px 0 0;background:none;border:0}
 .ky-foot .site-foot .ky-legal-logos img{height:auto!important;max-height:32px}
+@media (max-width:760px){.ky-foot .site-foot .ky-legal-logos{gap:10px;margin-top:-12px}.ky-foot .site-foot .ky-legal-logos img{max-height:22px}}
