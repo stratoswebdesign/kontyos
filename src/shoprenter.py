@@ -148,8 +148,7 @@ main .container:has(.ky) :is(.row,.col,[class*="col-"],.one-column-content,.page
 main .container:has(.ky) :is(.breadcrumb,.page-head,.page-title,.content-title):not(.ky *){display:none!important}
 main .container:has(.ky) .row:has(.ky) > :is(aside,nav,.column-left,.column-right):not(:has(.ky)){display:none!important}
 main .container:has(.ky) > :is(nav,.breadcrumb):not(:has(.ky)){display:none!important}
-.ky.ky-head{position:relative;z-index:60;background:var(--page)}
-.ky.ky-head.overlay-head{background:transparent}
+.ky.ky-head{position:relative;z-index:60;background:transparent}
 body:has(.ky-head),body:has(.ky-head) .page-wrap{background:var(--page)!important}
 body:has(.ky-head) main.has-sticky{padding-bottom:0!important;margin-bottom:0!important;background:transparent!important}
 body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-position,body:has(.ky-head) .mobile-scroll-top-button{display:none!important}
@@ -254,6 +253,7 @@ def main():
     cat2 = 'window.KONTYOS={p:' + json.dumps(K, ensure_ascii=False) + '};\n'
     js2 = js.replace("var ROOT = document.documentElement.getAttribute('data-root') || '';", "var ROOT = '';")
     js2 = js2.replace("ROOT + 'kosar.html'", "'/index.php?route=checkout/cart'").replace("ROOT + 'gyumolcsbor.html'", "'/gyumolcsbor'")
+    js2 = js2.replace("document.body.getAttribute('data-page')", "(document.querySelector('main .ky[data-page]') || document.body).getAttribute('data-page')")
     js2 = ren_js(js2)
     adapter = open(os.path.join(ROOT, 'src', 'shoprenter_adapter.js'), encoding='utf-8').read()
     pidmap = json.load(open(os.path.join(OUT, 'sandbox_pid.json'), encoding='utf-8')) if os.path.exists(os.path.join(OUT, 'sandbox_pid.json')) else {}

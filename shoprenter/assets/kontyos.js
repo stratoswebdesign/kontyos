@@ -273,7 +273,7 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
   try { localStorage.removeItem('kontyos-demo-season'); } catch (e) {}
   toggle('data-season', 'data-season-btn', 'kontyos-demo-season', function () { return seasonByDate(new Date()); });
   var PHASE_FROM = { 'black-friday': ['11-24', 'aktiv', 'varolista'], 'karacsony': ['12-01', 'aktiv', 'elozetes'] };
-  var pg = document.body.getAttribute('data-page') || '', pf = PHASE_FROM[pg];
+  var pg = (document.querySelector('main .ky[data-page]') || document.body).getAttribute('data-page') || '', pf = PHASE_FROM[pg];
   toggle('data-phase', 'data-phase-btn', 'kontyos-demo-phase-' + pg, pf ? function () {
     var d = new Date(), md = ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
     return md >= pf[0] ? pf[1] : pf[2];
