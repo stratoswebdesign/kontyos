@@ -31,9 +31,7 @@ SKU = {'edes-meggybor': 'KONTY102X', 'edes-eperbor': 'KONTY101X', 'edes-ribizlib
        'piri-mama-forro-itala-0': 'Forró_Itala', 'don-cherry': 'vermut01', 'don-cherry-gyumolcse': 'vermut02', 'szamocapalinka': 'pal06X',
        'birspalinka': 'pal02X', 'meggypalinka': 'pal04X', 'kortepalinka': 'pal07', 'szilvapalinka': 'pal05X', 'meggy-paros': 'PAROSMEGGY',
        'eper-paros': 'PAROSEPER', 'konnyu-trio': 'konnyutrio', 'bubi-paros': 'PAROSBERRY', 'kontyos-borospohar': 'kekpohar',
-       'piri-mama-bogreje': 'piribögre', 'meggymag-parna': 'magparna', 'kontyos-szovettaska': 'szovettaska',
-       'ujbor-valogatas': 'ÚJbor2025', 'bf-premium': 'BF_prémium 2025', 'bf-mini': 'BF_diszkont 2025', 'edes-unnepek': 'ÉDES Ünnepek 2025',
-       'premium-advent': 'PRÉMIUM_Adventi_2025', 'konnyu-karacsony': 'KÖNNYŰ-karácsonyi-2025'}
+       'piri-mama-bogreje': 'piribögre', 'meggymag-parna': 'magparna', 'kontyos-szovettaska': 'szovettaska',}
 # új termékek javasolt cikkszáma
 NEW_SKU = {'goldberg-tonic': 'KY-GOLDBERG-TONIC', 'goldberg-ginger-ale': 'KY-GOLDBERG-GINGER', 'gunpowder-gin': 'KY-GUNPOWDER-GIN',
            'buffalo-trace': 'KY-BUFFALO-TRACE', 'campari': 'KY-CAMPARI', 'don-kis': 'KY-DON-KIS', 'don-nagy': 'KY-DON-NAGY',
