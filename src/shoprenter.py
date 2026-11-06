@@ -119,6 +119,8 @@ body:has(.ky-head) main.has-sticky{padding-top:0!important}
 main .container:has(.ky){max-width:none!important;width:100%!important;padding:0!important;margin:0!important}
 main .container:has(.ky) :is(.row,.col,[class*="col-"],.one-column-content,.page-body):has(.ky){max-width:none!important;width:100%!important;flex:0 0 100%!important;padding:0!important;margin:0!important}
 main .container:has(.ky) :is(.breadcrumb,.page-head,.page-title,.content-title):not(.ky *){display:none!important}
+main .container:has(.ky) .row:has(.ky) > :is(aside,nav,.column-left,.column-right):not(:has(.ky)){display:none!important}
+main .container:has(.ky) > :is(nav,.breadcrumb):not(:has(.ky)){display:none!important}
 .ky.ky-head{position:relative;z-index:60}
 .ky-legal-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:18px 16px;background:#F3EEE5;border-top:1px solid #E2DACB}
 .ky-legal-logos img{width:auto!important;max-width:100%!important;height:auto!important;max-height:64px}
