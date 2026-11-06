@@ -175,6 +175,13 @@ body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-posi
        Kontyos-arculat – papír háttér, navy szöveg, Prata címek, Montserrat szöveg, rózsaszín fő gomb --- */
 body:has(.ky-head) main:not(:has(.ky)){font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;color:#1B2A5C;padding:clamp(24px,4vw,56px) 0 clamp(48px,6vw,88px)!important}
 body:has(.ky-head) main:not(:has(.ky)) > .container,body:has(.ky-head) main:not(:has(.ky)) .container{max-width:1360px!important;padding-left:clamp(16px,3vw,40px)!important;padding-right:clamp(16px,3vw,40px)!important}
+/* a Párizs px-ben számolja az oszlopszélességet a konténerből – a keskenyebb konténerhez %-os oszlopok */
+@media (min-width:768px){body:has(.ky-head) main:not(:has(.ky)) .row > .column-left,body:has(.ky-head) main:not(:has(.ky)) .row > .column-right{flex:0 0 25%!important;max-width:25%!important;width:25%!important}
+body:has(.ky-head) main:not(:has(.ky)) .row > .two-column-content{flex:0 0 75%!important;max-width:75%!important;width:75%!important}
+body:has(.ky-head) main:not(:has(.ky)) .row > .three-column-content{flex:0 0 50%!important;max-width:50%!important;width:50%!important}
+body:has(.ky-head) main:not(:has(.ky)) .row > .one-column-content{flex:0 0 100%!important;max-width:100%!important;width:100%!important}}
+/* a régi webshop oldalsáv-tartalmai (régi bannerek, régi szállítási infó, régi hírlevél-doboz) nem kellenek – a szűrő marad */
+body:has(.ky-head) main :is(.column-left,.column-right) > [id^="module_customcontent"]{display:none!important}
 body:has(.ky-head) main:not(:has(.ky)) :is(p,li,td,th,label,dd,dt,span,small,div){font-family:inherit}
 body:has(.ky-head) main:not(:has(.ky)) :is(h1,.h1,.page-head h1,.page-title,h1.title){font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;font-size:clamp(28px,3.4vw,44px)!important;line-height:1.1!important;letter-spacing:.01em;margin:0 0 .6em!important}
 body:has(.ky-head) main:not(:has(.ky)) :is(h2,h3,h4,.h2,.h3,.h4,.module-head-title,.box-title,legend){font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;letter-spacing:.01em}
