@@ -2835,3 +2835,15 @@ body{overflow-wrap:normal}
 .pd-story.p.pt .tiles.big .tile strong{color:#1E1A1D}
 .pdp-partner .pd-story.p.pt .tile.on{box-shadow:0 0 0 3px #fff}
 @media (max-width:760px){.pd-story.p.pt .tiles.big .tile img{height:98px}}
+
+/* ===== Sanyi, 11-06: nagyobb csomag-kártyák, Don Cherry receptek linkjei, koktélcsomag-recept képe mobilon teljes ===== */
+.cards.cards-big{gap:clamp(12px,1.6vw,22px)}
+.cards.cards-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:900px){.cards.cards-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cards.cards-big .card .ph,.cards.cards-big .card .img{aspect-ratio:1/1}
+.pd-cocktails ul a{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:#3A4466;text-decoration-thickness:1px;text-underline-offset:3px}
+.pd-cocktails ul a:hover{color:#C8282E;text-decoration-thickness:2px}
+.pd-cocktails .lnk.pkl{color:#C8282E;font-weight:700;font-size:14px;margin-top:auto}
+@media (min-width:1100px){.pd-cocktails .cgrid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:861px) and (max-width:1099px){.pd-cocktails .cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.cpp-recipe figure{aspect-ratio:auto}.cpp-recipe figure img{height:auto;display:block}}

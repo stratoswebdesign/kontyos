@@ -44,7 +44,7 @@ NEW_SKU = {'goldberg-tonic': 'KY-GOLDBERG-TONIC', 'goldberg-ginger-ale': 'KY-GOL
 # ---- demó oldal → kontyos.hu URL (meglévő SEO-URL-ek a sitemap.xml-ből; * = új, javasolt) ----
 PAGE = {'index.html': '/', 'gyumolcsbor.html': '/gyumolcsbor', 'rolunk.html': '/rolunk', 'csomagok.html': '/kedvezmenyek/csomagajanlatok',
         'kosar.html': '/index.php?route=checkout/cart', 'info.html': '/kiszallitas', 'kereses.html': '/index.php?route=product/list',
-        'koktelok.html': '/koktelok', 'vasarok.html': '/vasarok', 'black-friday.html': '/black-friday', 'karacsonyi-ajandek-bor.html': '/karacsonyi-ajandek-bor',
+        'koktelok.html': '/koktelok', 'vasarok.html': '/vasarok', 'black-friday.html': '/black-friday', 'karacsonyi-ajandek-bor.html': '/karacsonyi-ajandek-bor', 'forralt-bor.html': '/forralt-bor',
         'ujbor-valogatas.html': '/ujbor-valogatas', 'penztar.html': '/index.php?route=checkout/cart', 'koszonjuk.html': '/'}
 PROD = {'edes-eperbor': 'edes-eperbor', 'edes-szilvabor': 'edes-szilvabor', 'edes-kajszibor': 'edes-kajszibor', 'edes-meggybor': 'edes-meggybor',
         'klara-edes-malnabor': 'klara-edes-malnabor', 'edes-bodza-almabor': 'edes-bodza-almabor', 'klara-szaraz-roze-eperbor': 'klara-szaraz-roze-eperbor',
@@ -234,7 +234,7 @@ def main():
 
     # aloldalak
     pages = {'rolunk.html': 'ky-page-rolunk', 'koktelok.html': 'ky-page-koktelok', 'vasarok.html': 'ky-page-vasarok', 'csomagok.html': 'ky-page-csomagok',
-             'black-friday.html': 'ky-page-black-friday', 'karacsonyi-ajandek-bor.html': 'ky-page-karacsony', 'gyumolcsbor.html': 'ky-page-gyumolcsbor',
+             'black-friday.html': 'ky-page-black-friday', 'karacsonyi-ajandek-bor.html': 'ky-page-karacsony', 'forralt-bor.html': 'ky-page-forralt', 'gyumolcsbor.html': 'ky-page-gyumolcsbor',
              'info.html': 'ky-page-info'}
     manifest = {}
     for f, name in pages.items():

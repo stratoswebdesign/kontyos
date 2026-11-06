@@ -346,9 +346,7 @@ def t_don(p):
 <div><div><span class="k">8 CL · JÉG · NARANCS</span><b>Aperitifként</b><span>8 cl Don Cherry, jég és egy narancskarika. Frissítő, társasági ital, hosszan kitartó meggyes aromával.</span></div>
 <div><span class="k">4 CL · 1 MEGGYSZEM</span><b>Shotként</b><span>Egy 5 cl-es pohár aljára tegyél egy meggyszemet, önts rá 4 cl Don Cherryt, és idd meg két kortyban. Rövid, intenzív élmény, ideális buliindító.</span></div></div></section>
 <section class="pd-wrap pd-cocktails"><h2 class="ck-h">Koktélként</h2><div class="cgrid">
-<article><img src="{r}img/cocktail/negroni.webp" alt="Don Cherry Negroni" loading="lazy"><h3>Don Cherry Negroni</h3><p class="d">Karakteres, gyümölcsös, kissé kesernyés – mégis selymesen fűszeres.</p><ul><li>3 cl Don Cherry</li><li>3 cl gin</li><li>3 cl Campari</li><li>jég, narancshéj</li></ul><p>Önts minden hozzávalót jéggel teli keverőpohárba, keverd össze, majd szűrd egy jéggel teli whiskys pohárba. Narancshéjjal díszítsd.</p></article>
-<article><img src="{r}img/cocktail/americano.webp" alt="Don Cherry Americano" loading="lazy"><h3>Don Cherry Americano</h3><p class="d">Erőteljes, elegáns és modern. Nem harsány, de nem is marad észrevétlen.</p><ul><li>6 cl Don Cherry</li><li>3 cl Campari</li><li>jég, narancskarika vagy narancshéj-spirál</li></ul><p>Öntsd a Don Cherryt és a Camparit egy jéggel teli whiskys pohárba, és keverd össze óvatosan. Díszítsd narancshéjjal.</p></article>
-<article><img src="{r}img/cocktail/don-tonic.webp" alt="Don Cherry & Tonic" loading="lazy"><h3>Don Cherry &amp; Tonic</h3><p class="d">Frissítő, meggyes, finoman kesernyés – üde narancsos csavarral.</p><ul><li>1 dl Don Cherry</li><li>1 dl tonic</li><li>jég, meggy és narancskarika</li></ul><p>Tölts meg egy longdrinkes poharat jéggel, öntsd rá a Don Cherryt, majd a tonicot. Óvatosan keverd át, és díszítsd meggyel és narancskarikával.</p></article>
+{"".join(_('recipe_card')(k, r) for k in _('DON_ALL'))}
 </div></section>
 {_('cocktail_packs')(r)}
 {reviews(p, c)}
@@ -367,7 +365,7 @@ LINECFG = {
     'palinka': dict(page='#F4EFE6', kick='KISÜSTI PÁLINKA · 46% · {vol}', kc='#A8823C', h1w=500, rule='#E3DACB', theme='pill',
                     crumb=('Pálinka', 'termek/szamocapalinka.html'), cross=['don-cherry', 'klara-szaraz-barrique-meggybor', 'meggymag-parna', 'klara-edes-malnabor']),
     'partner': dict(page='#F4EFE6', kick='PARTNERTERMÉK · KOKTÉLHOZ · {vol}', kc='#A8823C', h1w=500, rule='#E3DACB', theme='pill',
-                    crumb=('Koktélcsomagok', 'termek/don-cherry.html#koktelcsomagok'), cross=[]),
+                    crumb=('Koktélok', 'koktelok.html'), cross=[]),
 }
 PARTNER_IDS = ['gunpowder-gin', 'campari', 'buffalo-trace', 'goldberg-tonic', 'goldberg-ginger-ale']
 
@@ -485,7 +483,7 @@ UCFG = {
     'friss': dict(bg='#F28C28', ink='#1B2A5C', muted='rgba(27,42,92,.8)', line='rgba(27,42,92,.22)', panel='rgba(255,255,255,.28)', btn='#1B2A5C', btnfg='#fff', acc='#1B2A5C', crumb=('FRISS', 'termek/friss-malna.html')),
     'secco': dict(bg='#EEEAF6', ink='#1B2A5C', muted='#5A6072', line='rgba(27,42,92,.14)', panel='rgba(255,255,255,.7)', btn='#1B2A5C', btnfg='#fff', acc='#C84E85', crumb=('Berry Secco', 'termek/berry-secco.html')),
     'palinka': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Pálinkák', 'termek/szamocapalinka.html')),
-    'partner': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Koktélcsomagok', 'termek/don-cherry.html#koktelcsomagok')),
+    'partner': dict(bg='#F4EFE6', ink='#2A2118', muted='#6B5E4C', line='rgba(42,33,24,.16)', panel='rgba(255,255,255,.6)', btn='#2A2118', btnfg='#fff', acc='#A8823C', crumb=('Koktélok', 'koktelok.html')),
     'piri': dict(bg='#111833', ink='#E3CFA5', muted='rgba(227,207,165,.72)', line='rgba(219,184,121,.28)', panel='rgba(255,255,255,.05)', btn='#DBB879', btnfg='#111833', acc='#DBB879', crumb=('Forralt borok', 'termek/piri-mama-forralt-bora.html')),
     'don': dict(bg='#D9EEF0', ink='#2A1416', muted='#5B4A4C', line='rgba(42,20,22,.14)', panel='rgba(255,255,255,.6)', btn='#C8282E', btnfg='#fff', acc='#C8282E', crumb=('Don Cherry', 'termek/don-cherry.html')),
 }

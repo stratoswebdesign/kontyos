@@ -211,7 +211,7 @@ def footer(r):
     return f'''<footer class="site-foot"><div class="wrap">
 <div class="brand"><span class="logo"><img class="lb" src="{r}img/logo-navy.svg" alt="Kontyos" width="210" height="52"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="210" height="52"></span><p style="margin-top:14px;max-width:340px;font-size:14px">Gyümölcsborok és gyümölcsből készült különlegességek a klárafalvi Kontyos Borháztól.</p></div>
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}termek/berry-secco.html">Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}termek/szamocapalinka.html">Pálinka</a></div>
-<div><h4>Kampányok</h4><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}koktelok.html">Koktélok</a></div>
+<div><h4>Kampányok</h4><a href="{r}forralt-bor.html">Forralt bor – PIRI Mama</a><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}koktelok.html">Koktélok</a></div>
 <div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185</p>
 </div></footer>
@@ -513,6 +513,24 @@ def bf_page():
     write('black-friday.html', pg)
 
 
+def forralt_page():
+    """Forralt bor kampányoldal (Sanyi, 11-06): a főoldal forralt herója önálló oldalon, a Kampányok közül is elérhető."""
+    r = ''
+    s_ = dict(SEASONS[0], cta=('PIRI Mama forralt borok', 'forralt-bor.html#piri'))
+    pg = head('Forralt bor – PIRI Mama forralt gyümölcsborok | Kontyos',
+              'PIRI Mama forralt gyümölcsborai egyliteres palackban: klasszikus, narancsos és epres forralt bor, alkoholmentes forró ital és forraltbor-csomag a klárafalvi Kontyos Borháztól.',
+              r, 'forralt', 'overlay-head')
+    pg += header(r, 'forralt-bor.html') + '<main>' + season_hero(s_, r).replace('data-season="forralt"', 'data-season="forralt" data-keep', 1)
+    pg += f'''<section class="sec" id="piri"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2">Forralt borok</h2>
+{cards(['piri-mama-forralt-bora', 'narancsos-piri-mama-forralt-bora', 'epres-piri-mama-forralt-bora', 'piri-mama-forro-itala-0'], r, 'cards cards-4 cards-big')}</div></section>
+<section class="sec pk-fblock"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Csomagban</p><h2 class="h2">Forraltbor-csomag</h2>
+<div class="packs-grid">{pack_card(SP["forralt-6"], r)}</div></div></section>
+<section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Hozzá</p><h2 class="h2">PIRI Mama bögréje</h2>
+{cards(['piri-mama-bogreje'], r, 'cards cards-4 cards-big')}</div></section>'''
+    pg += fairs_strip(r) + newsletter() + '</main>' + footer(r)
+    write('forralt-bor.html', pg)
+
+
 def xmas_page():
     r = ''
     segs = '<span class="seg">' + ''.join(f'<button type="button" data-phase-btn="{k}">{l}</button>' for k, l in [('aktiv', 'Aktív'), ('elozetes', 'Előzetes')]) + '</span>'
@@ -589,7 +607,7 @@ def packs_page():
 <div data-season="bf karacsony">{cocktail_packs(r, 'Koktélcsomagok ajándékba', 'Don Cherry Negroni, Americano vagy Don Cherry & Tonic – minden hozzávaló egy csomagban, a recepttel együtt. Ajándéknak is kész koktélest.', 'Don Cherry · koktélcsomagok', 'pk-koktel')}</div>
 {forralt}
 <section class="sec pk-allando" id="pk-allando"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Állandó ajánlatok</p><h2 class="h2" {H2}>Egész évben</h2>
-{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna'], r)}</div></section>
+{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna'], r, 'cards cards-3 cards-big')}</div></section>
 {choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')}</main>''' + footer(r)
     write('csomagok.html', pg)
 
@@ -811,7 +829,7 @@ def home_body(r='', h='h1'):
 </div></section>'''
     pg += new_world(r)
     pg += f'''<section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:28px"><p class="kicker">Válogatások</p><h2 class="h2">Csomagban jobban megéri</h2>
-{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r)}</div></section>'''
+{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r, 'cards cards-4 cards-big')}</div></section>'''
     pg += newsletter()
     return pg
 
@@ -1051,7 +1069,7 @@ def product(p):
     pg = head(f"{p['name']} – {LINE_LABEL[L]} | Kontyos", desc, r, 'product', 'has-buybar' if p['avail'] else '', style)
     pg += header(r)
     crumb_cat = {'klasszikus': ('gyumolcsbor.html', 'Gyümölcsborok'), 'klara': ('gyumolcsbor.html#klara', 'Klára'), 'friss': ('termek/friss-malna.html', 'FRISS'),
-                 'secco': ('termek/berry-secco.html', 'Berry Secco'), 'palinka': ('termek/szamocapalinka.html', 'Pálinka'), 'csomag': ('csomagok.html', 'Csomagok'), 'partner': ('termek/don-cherry.html#koktelcsomagok', 'Koktélcsomagok')}.get(L, ('gyumolcsbor.html', 'Termékek'))
+                 'secco': ('termek/berry-secco.html', 'Berry Secco'), 'palinka': ('termek/szamocapalinka.html', 'Pálinka'), 'csomag': ('csomagok.html', 'Csomagok'), 'partner': ('koktelok.html', 'Koktélok')}.get(L, ('gyumolcsbor.html', 'Termékek'))
     pg += f'''<main><div class="wrap"><p class="breadcrumb" style="padding-top:4px;color:var(--ink)"><a href="{r}index.html" style="color:inherit">Főoldal</a> / <a href="{r}{crumb_cat[0]}" style="color:inherit">{crumb_cat[1]}</a> / {e(p['name'])}</p></div>
 <section class="wrap p-hero"><div class="p-media">{badge(p['id']).replace('pbadge', 'pbadge big')}<div class="arch{' flat' if is_pack else ''}"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{sbadge}</div>
 <div class="p-buy"><span class="kicker">{LINE_LABEL[L]}</span><h1>{e(p['name'])}</h1>{rating}
@@ -1218,9 +1236,10 @@ def cocktail_pack_page(pid):
           "brand": {"@type": "Brand", "name": "Kontyos"},
           "offers": {"@type": "Offer", "priceCurrency": "HUF", "price": sp['price'], "availability": "https://schema.org/InStock"}}
     style = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
-    crumb = ((f'{r}termek/don-cherry.html', 'Don Cherry'), (f'{r}termek/don-cherry.html#koktelcsomagok', 'Koktélcsomagok')) if is_don else \
-            ((f'{r}gyumolcsbor.html', 'Gyümölcsborok'), (f'{r}gyumolcsbor.html#koktelcsomagok', 'Koktélcsomagok'))
-    more = (f'{r}termek/don-cherry.html#koktelok', 'Még több Don Cherry koktél →') if is_don else (f'{r}gyumolcsbor.html#koktelok', 'Még több gyümölcsboros koktél →')
+    # minden koktél-link a Koktélok oldalra visz (Sanyi, 11-06)
+    crumb = ((f'{r}termek/don-cherry.html', 'Don Cherry'), (f'{r}koktelok.html#meggyvoros-estek', 'Koktélok')) if is_don else \
+            ((f'{r}gyumolcsbor.html', 'Gyümölcsborok'), (f'{r}koktelok.html#gyumolcskert', 'Koktélok'))
+    more = (f'{r}koktelok.html#meggyvoros-estek', 'Még több Don Cherry koktél →') if is_don else (f'{r}koktelok.html#gyumolcskert', 'Még több gyümölcsboros koktél →')
     base = P[own[0]]
     about2 = (f'A csomag ára {pct}%-kal kedvezőbb, mintha a tételeket külön vásárolnád meg. ' if old else '') + (
         'A Don Cherry saját meggyborunkra épülő, fűszeres édes meggyvermut – önálló italként és koktélalapként is.' if is_don
@@ -1587,7 +1606,7 @@ def about_page():
 
 def main():
     global VER
-    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, cocktail_packs=cocktail_packs, torta_block=torta_block, TXT=TXT, badge=badge, friss_cut=friss_cut, pack_box=pack_box, SP=SP, ALL_CK=ALL_CK)
+    pdp.bind(e=e, ft=ft, param=param, ingredients=ingredients, P=P, CAT=CAT, url=url, LINE_LABEL=LINE_LABEL, don_packs=don_packs, cocktail_packs=cocktail_packs, torta_block=torta_block, TXT=TXT, badge=badge, friss_cut=friss_cut, pack_box=pack_box, SP=SP, ALL_CK=ALL_CK, DON_ALL=DON_ALL, recipe_card=recipe_card)
     write_catalog_js()
     import hashlib
     h = hashlib.sha1()
@@ -1603,6 +1622,7 @@ def main():
         product(p)
     bf_page()
     xmas_page()
+    forralt_page()
     cart()
     search_page()
     packs_page()

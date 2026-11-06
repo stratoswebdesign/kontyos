@@ -1,7 +1,7 @@
 {# Kontyos – termékoldal: buffalo-trace (KY-BUFFALO-TRACE) → /buffalo-trace. Generálva: src/shoprenter.py – kézzel ne szerkeszd, a demóból újragenerálható. #}
 <style>:root{--page:#F4EFE6;--ink:#1B2A5C}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Buffalo Trace Kentucky Straight Bourbon 0,7 l", "image": "https://stratoswebdesign.github.io/kontyos/img/p/buffalo-trace.webp", "description": "Klasszikus kentuckyi bourbon gazdag karamell- és vaníliajegyekkel – telt, kiegyensúlyozott, a Don Cherry Manhattan alapja.", "brand": {"@type": "Brand", "name": "Kontyos"}, "offers": {"@type": "Offer", "priceCurrency": "HUF", "price": 13990, "availability": "https://schema.org/InStock"}}</script><div class="ky pdp pdp-partner has-buybar" data-page="product" data-sku="KY-BUFFALO-TRACE"><main><section class="pu-hero" style="--pu-bg:#F4EFE6;--pu-ink:#2A2118;--pu-muted:#6B5E4C;--pu-line:rgba(42,33,24,.16);--pu-panel:rgba(255,255,255,.6);--pu-btn:#2A2118;--pu-btnfg:#fff;--pu-acc:#A8823C"><div class="pd-wrap pu-grid">
 <div class="pu-l">
-<nav class="pd-crumb" aria-label="Morzsamenü" style=""><a href="/">Főoldal</a> / <a href="/don-cherry-edes-meggyvermut-075-l#koktelcsomagok">Koktélcsomagok</a> / Bourbon</nav>
+<nav class="pd-crumb" aria-label="Morzsamenü" style=""><a href="/">Főoldal</a> / <a href="/koktelok">Koktélok</a> / Bourbon</nav>
 <p class="pu-kick">PARTNERTERMÉK · KOKTÉLHOZ</p>
 <p aria-hidden="true" class="pu-big" style="font-size:min(88px, calc(100cqw / 5.74))">BOURBON</p>
 <h1 class="pu-h1">Buffalo Trace Kentucky Straight Bourbon <span>0,7 l</span></h1>

@@ -29,6 +29,11 @@
   "url": "/karacsonyi-ajandek-bor",
   "body_class": "overlay-head"
  },
+ "ky-page-forralt": {
+  "demo": "forralt-bor.html",
+  "url": "/forralt-bor",
+  "body_class": "overlay-head"
+ },
  "ky-page-gyumolcsbor": {
   "demo": "gyumolcsbor.html",
   "url": "/gyumolcsbor",

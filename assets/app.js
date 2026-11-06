@@ -187,7 +187,7 @@
     var els = document.querySelectorAll('[' + attr + ']'); if (!els.length) return;
     var mem = auto ? sessionStorage : localStorage;   /* a dátum szerinti szezont csak az aktuális böngészési munkamenetre írja felül a demó-kapcsoló */
     var set = function (v, keep) {
-      document.querySelectorAll('[' + attr + ']').forEach(function (el) { el.hidden = el.getAttribute(attr).split(' ').indexOf(v) < 0; });
+      document.querySelectorAll('[' + attr + ']:not([data-keep])').forEach(function (el) { el.hidden = el.getAttribute(attr).split(' ').indexOf(v) < 0; });
       btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute(btnAttr) === v)); });
       if (keep) try { mem.setItem(store, v); } catch (e) {}
     };
