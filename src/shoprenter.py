@@ -176,7 +176,7 @@ body:has(.checkout-app-container){background:#F3EEE5!important}
 .checkout-app-container,.checkout-app-container input,.checkout-app-container button,.checkout-app-container select,.checkout-app-container label,.checkout-app-container p,.checkout-app-container span,.checkout-app-container div{font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif}
 .checkout-app-container{color:#1B2A5C}
 .checkout-app-container h1,.checkout-app-container h2,.checkout-app-container h3,.checkout-app-container h4{font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;letter-spacing:.01em}
-.checkout-app-container h1{font-size:28px!important}
+.checkout-app-container h1{font-size:24px!important;line-height:1.2!important}
 .checkout-app-container .btn-primary{background:#EF4E73!important;border-color:#EF4E73!important;color:#fff!important;border-radius:999px!important;font-weight:800!important;min-height:48px;box-shadow:none!important}
 .checkout-app-container .btn-primary:hover,.checkout-app-container .btn-primary:focus{background:#D93A60!important;border-color:#D93A60!important}
 .checkout-app-container .btn-link,.checkout-app-container a{color:#1B2A5C!important}
@@ -184,7 +184,7 @@ body:has(.checkout-app-container){background:#F3EEE5!important}
 .checkout-app-container .form-control:focus{border-color:#EF4E73!important;box-shadow:0 0 0 3px rgba(239,78,115,.18)!important}
 .checkout-app-container .progress-indicator-item-current .progress-indicator-label,.checkout-app-container .progress-indicator-item-done .progress-indicator-label{color:#1B2A5C!important;border-color:#1B2A5C!important;font-weight:800}
 .checkout-app-container .progress-indicator-item-current .progress-indicator-line,.checkout-app-container .progress-indicator-item-done .progress-indicator-line{background:#1B2A5C!important}
-.checkout-app-container .logo img{content:url(https://stratoswebdesign.github.io/kontyos/img/logo-navy.svg);max-height:52px;width:auto}
+.checkout-app-container .logo img{content:url(https://stratoswebdesign.github.io/kontyos/img/logo-navy.svg);width:210px!important;height:52px!important;max-height:none!important;object-fit:contain;object-position:left center}
 '''
 def scope_selector(sel):
     out = []
