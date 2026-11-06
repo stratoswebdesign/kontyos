@@ -1,5 +1,5 @@
 {# Kontyos – aloldal: vasarok.html → /vasarok. Generálva: src/shoprenter.py – kézzel ne szerkeszd, a demóból újragenerálható. #}
-<div class="ky " data-page="fairs"><main class="fairs"><section class="wrap fz-head"><p class="k-breadcrumb"><a href="/">Főoldal</a> / Kövess minket</p>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""><div class="ky " data-page="fairs"><main class="fairs"><section class="wrap fz-head"><p class="k-breadcrumb"><a href="/">Főoldal</a> / Kövess minket</p>
 <p class="kicker">Adventi vásárok · Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</p><h1 class="k-h2">Találkozzunk az adventi vásárokon!</h1>
 <p class="fz-txt">Adventi vásárainkban <b>frissen elkészített, forrón kínált PIRI Mama forralt borokkal és a klasszikus eper forralt borunkkal</b> várunk.</p>
 </section>

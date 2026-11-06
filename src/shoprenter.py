@@ -124,6 +124,8 @@ def body_parts(path):
     header = re.search(r'<header class="site-head.*?</header>\s*<div class="drawer".*?</div>\s*', inner, re.S)
     footer = re.search(r'<footer.*?</footer>', inner, re.S)
     styles = ''.join(re.findall(r'<style>.*?</style>|<script type="application/ld\+json">.*?</script>', s, re.S))
+    # oldalspecifikus külső stíluslap a <head>-ből (pl. Leaflet-térkép a vásárok oldalon)
+    styles = ''.join(m for m in re.findall(r'<link rel="stylesheet" href="https?://[^"]+"[^>]*>', s[:s.find('<body')]) if 'fonts.googleapis' not in m) + styles
     after_main = inner[main.end():footer.start()] if (main and footer) else ''
     return dict(cls=cls.group(1) if cls else '', page=page.group(1) if page else '', main=main.group(0) if main else '',
                 header=header.group(0) if header else '', footer=footer.group(0) if footer else '', styles=styles, extra=after_main)
@@ -251,6 +253,9 @@ def main():
         x['url'] = page_url(x['url']); x['img'] = IMG_BASE + x['img']
         x['sku'] = SKU.get(pid) or NEW_SKU.get(pid) or ''
     cat2 = 'window.KONTYOS={p:' + json.dumps(K, ensure_ascii=False) + '};\n'
+    idx = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
+    fairs = re.search(r'<script>(window\.KONTYOS_FAIRS=.*?)</script>', idx, re.S).group(1)  # vásár-adatok (státusz, térkép)
+    cat2 = fairs + '\n' + cat2
     js2 = js.replace("var ROOT = document.documentElement.getAttribute('data-root') || '';", "var ROOT = '';")
     js2 = js2.replace("ROOT + 'kosar.html'", "'/index.php?route=checkout/cart'").replace("ROOT + 'gyumolcsbor.html'", "'/gyumolcsbor'")
     js2 = js2.replace("document.body.getAttribute('data-page')", "(document.querySelector('main .ky[data-page]') || document.body).getAttribute('data-page')")
