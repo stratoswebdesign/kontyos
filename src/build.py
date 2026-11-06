@@ -213,7 +213,7 @@ def footer(r):
 <div class="brand"><span class="logo"><img class="lb" src="{r}img/logo-navy.svg" alt="Kontyos" width="210" height="52"><img class="lw" src="{r}img/logo-white.svg" alt="" aria-hidden="true" width="210" height="52"></span><p style="margin-top:14px;max-width:340px;font-size:14px">Gyümölcsborok és gyümölcsből készült különlegességek a klárafalvi Kontyos Borháztól.</p></div>
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}termek/berry-secco.html">Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}termek/szamocapalinka.html">Pálinka</a></div>
 <div><h4>Kampányok</h4><a href="{r}forralt-bor.html">Forralt bor – PIRI Mama</a><a href="{r}black-friday.html">Black Friday</a><a href="{r}karacsonyi-ajandek-bor.html">Karácsonyi ajándék</a><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}koktelok.html">Koktélok</a></div>
-<div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás</a><a href="{r}info.html#aszf">ÁSZF</a><a href="{r}info.html#adatkezeles">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a></div>
+<div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás és fizetés</a><a href="{r}aszf.html">ÁSZF</a><a href="{r}adatkezeles.html">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a><a href="{r}elallas.html">Elállás a szerződéstől</a><a href="#show-cookie-settings">Sütibeállítások</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185</p>
 </div></footer>
 {fairs_js()}<script src="{r}assets/catalog.js?v={VER}"></script>
@@ -1491,11 +1491,42 @@ def info():
         ('Cégnév', 'Kontyos Borház Kft.'), ('Székhely', '6773 Klárafalva, Kossuth u. 183.'), ('Telefon', '<a href="tel:+36203492185">+36-20/349-2185</a>'),
         ('E-mail', '<a href="mailto:info@kontyos.hu">info@kontyos.hu</a> · webshop: <a href="mailto:webshop@kontyos.hu">webshop@kontyos.hu</a>'),
         ('Adószám', '23503016-2-06'), ('Cégjegyzékszám', '06-09-017653'), ('NÉBIH eng. szám', '330-07-KüE-1263'), ('Tárhelyszolgáltató', 'ShopRenter.hu Kft.')]) + '</dl>')
-    pg += sec('aszf', 'Általános Szerződési Feltételek', '<p class="muted" style="margin-bottom:12px">A kontyos.hu-n jelenleg érvényes ÁSZF szövege.</p><details class="faq"><summary>Teljes ÁSZF megnyitása</summary><div style="padding:6px 0 10px">' + legal_html(aszf) + '</div></details>')
-    pg += sec('adatkezeles', 'Adatkezelési tájékoztató', '<details class="faq"><summary>Teljes adatkezelési tájékoztató megnyitása</summary><div style="padding:6px 0 10px">' + legal_html(adat) + '</div></details>')
+    pg += sec('aszf', 'Jogi tudnivalók', '<div class="lg-cards"><a class="lg-card" href="aszf.html"><b>Általános Szerződési Feltételek</b><span>Rendelés, fizetés, szállítás, elállás, szavatosság, panaszkezelés</span></a>'
+              '<a class="lg-card" href="adatkezeles.html"><b>Adatkezelési tájékoztató</b><span>Milyen adatot, mire és meddig kezelünk – és milyen jogaid vannak</span></a>'
+              '<a class="lg-card" href="elallas.html"><b>Elállás a szerződéstől</b><span>14 napon belül, online – a rendelésszámmal</span></a></div>')
     pg += '</div></main>' + footer(r)
     write('info.html', pg)
 
+
+
+def legal_page(fname, title, h1, desc, blocks, extra=''):
+    import legal
+    r = ''
+    pg = head(title, desc, r, 'info') + header(r)
+    pg += (f'<main><div class="wrap narrow lg" style="padding-bottom:80px"><p class="breadcrumb"><a href="index.html">Főoldal</a> / <a href="info.html">Információk</a> / {h1}</p>'
+           f'<h1 class="h2" style="margin-top:10px">{h1}</h1>' + legal.toc(blocks) + extra
+           + legal.render(blocks, {'withdraw': 'elallas.html', 'privacy': 'adatkezeles.html'}) + '</div></main>' + footer(r))
+    write(fname, pg)
+
+
+def legal_pages():
+    import legal
+    legal_page('aszf.html', 'Általános Szerződési Feltételek | Kontyos', 'Általános Szerződési Feltételek',
+               'A kontyos.hu webáruház ÁSZF-je: rendelés, fizetés, szállítás, elállás, szavatosság és panaszkezelés.', legal.ASZF)
+    legal_page('adatkezeles.html', 'Adatkezelési tájékoztató | Kontyos', 'Adatkezelési tájékoztató',
+               'Milyen személyes adatokat kezel a Kontyos Borház Kft. a webáruházban, mire, meddig, és milyen jogaid vannak.', legal.ADAT)
+    # elállási funkció – a Shoprenterben a beépített /withdrawal oldal; a demóban ugyanazokkal a mezőkkel
+    r = ''
+    pg = head('Elállás a szerződéstől | Kontyos', 'Elállás a vásárlástól online, 14 napon belül.', r, 'info') + header(r)
+    pg += ('<main><div class="wrap narrow lg" style="padding-bottom:80px"><p class="breadcrumb"><a href="index.html">Főoldal</a> / Elállás a szerződéstől</p>'
+           '<h1 class="h2" style="margin-top:10px">Elállás a szerződéstől</h1><p class="lg-p">A termék átvételétől számított 14 napon belül indoklás nélkül elállhatsz a vásárlástól. '
+           'Add meg a rendelésszámot és a rendeléskor használt e-mail címet – az elállást e-mailben visszaigazoljuk. Részletek: <a href="aszf.html#elallas">ÁSZF, 8. pont</a>.</p>'
+           '<form class="box lg-form" data-withdraw><div class="g2"><label>Vezetéknév *<input required></label><label>Keresztnév *<input required></label></div>'
+           '<label>Rendelésszám *<input required></label><label>E-mail cím *<input type="email" required></label>'
+           '<fieldset><legend>Mire vonatkozik az elállás? *</legend><label class="ck"><input type="radio" name="w" checked><span>Teljes rendelés</span></label><label class="ck"><input type="radio" name="w"><span>Csak bizonyos termékek</span></label></fieldset>'
+           '<label class="ck"><input type="checkbox" required><span>El kívánok állni a fenti rendeléstől, és kijelentem, hogy az <a href="adatkezeles.html">adatkezelési tájékoztatót</a> elolvastam.</span></label>'
+           '<button class="btn pink" type="submit">Elállás megerősítése</button></form></div></main>' + footer(r))
+    write('elallas.html', pg)
 
 
 def torta_block(r, on_pdp=False):
@@ -1635,6 +1666,7 @@ def main():
     checkout()
     thanks()
     info()
+    legal_pages()
     print('OK', len(CAT), 'termék')
 
 

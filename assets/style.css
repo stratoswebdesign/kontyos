@@ -2855,3 +2855,35 @@ a.extl:hover{text-decoration-thickness:2px}
 
 /* Sanyi, 11-06: a páros/trió termékoldalon a csomagkép akkora, mint az egy palackos boroké */
 .p-media .arch img.pack{width:100%;max-width:100%;height:96%;object-fit:cover;object-position:center bottom;margin-bottom:0}
+
+/* ---- Jogi oldalak (ÁSZF, adatkezelés, elállás) ---- */
+.lg .lg-toc{margin:18px 0 8px;flex-wrap:wrap}
+.lg .lg-h2{font-size:30px;margin:44px 0 14px;scroll-margin-top:90px}
+.lg .lg-h3{font-family:'Montserrat',system-ui,sans-serif;font-size:16px;font-weight:800;letter-spacing:.02em;margin:22px 0 8px;color:var(--navy)}
+.lg .lg-p{font-size:15px;line-height:1.75;margin:0 0 12px}
+.lg .lg-ul{font-size:15px;line-height:1.75;padding-left:20px;margin:0 0 14px}
+.lg .lg-ul li{margin-bottom:6px}
+.lg .lg-kv{margin:6px 0 14px}
+.lg .lg-tw{overflow-x:auto;margin:6px 0 16px}
+.lg .lg-t{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:6px}
+.lg .lg-t th{text-align:left;padding:12px;border-bottom:2px solid var(--navy);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.lg .lg-t td{padding:12px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.55}
+.lg a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.lg .chip{text-decoration:none}
+.lg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.lg-card{display:flex;flex-direction:column;gap:6px;padding:20px;background:#fff;border-radius:8px;border:1px solid var(--rule);text-decoration:none;color:var(--navy)}
+.lg-card b{font-family:'Prata HU',Georgia,serif;font-weight:400;font-size:20px;text-transform:uppercase;line-height:1.2}
+.lg-card span{font-size:13px;color:#6A6F7E;line-height:1.5}
+.lg-card:hover{border-color:var(--navy)}
+.lg-form{display:flex;flex-direction:column;gap:14px;padding:24px;margin-top:18px}
+.lg-form label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700}
+.lg-form input:not([type=radio]):not([type=checkbox]){height:46px;border:1.5px solid var(--navy);border-radius:4px;padding:0 12px;font:inherit;font-weight:400}
+.lg-form .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lg-form fieldset{border:0;padding:0;margin:0;display:flex;gap:18px;flex-wrap:wrap}
+.lg-form legend{font-size:13px;font-weight:700;margin-bottom:8px}
+.lg-form .ck{flex-direction:row;align-items:flex-start;gap:8px;font-weight:400;font-size:14px}
+.lg-form .btn{align-self:flex-start}
+@media (max-width:760px){.lg-cards{grid-template-columns:1fr}.lg .lg-h2{font-size:24px}.lg-form .g2{grid-template-columns:1fr}
+ .lg .lg-t thead{display:none}.lg .lg-t,.lg .lg-t tbody,.lg .lg-t tr,.lg .lg-t td{display:block;width:100%}
+ .lg .lg-t tr{border-bottom:2px solid var(--rule);padding:8px 0}.lg .lg-t td{border:0;padding:4px 12px}
+ .lg .lg-t td::before{content:attr(data-l);display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#6A6F7E}}
