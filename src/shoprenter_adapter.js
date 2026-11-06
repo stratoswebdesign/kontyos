@@ -86,7 +86,8 @@
     var rows = [];
     function read() {
       rows = [];
-      sr.querySelectorAll('.sr-cart-table tbody tr').forEach(function (tr) {
+      // termékenként egy <tbody> (keskeny kijelzőn a mennyiség/ár egy külön mobil-sorban van)
+      sr.querySelectorAll('.sr-cart-table tbody').forEach(function (tr) {
         var a = tr.querySelector('.ac-prod-name'), nm = a ? a.textContent.trim() : '';
         if (!nm) return;
         var href = a.getAttribute('href') || '', id = byUrl[path(href)] || null, qi = tr.querySelector('.ac-quantity'), im = tr.querySelector('.ac-prod-image');
@@ -140,7 +141,7 @@
       if (!r) return;
       e.preventDefault();
       var up = q && q.getAttribute('data-d') === '1';
-      var t = up ? r.tr.querySelector('.ac-quantity-up') : (q && r.q > 1) ? (r.tr.querySelector('.ac-quantity-down button') || r.tr.querySelector('.ac-quantity-down')) : r.tr.querySelector('.ac-prod-delete');
+      var t = up ? (r.tr.querySelector('.ac-quantity-up') || r.tr.querySelector('.input-group-btn-plus button')) : (q && r.q > 1) ? (r.tr.querySelector('.ac-quantity-down button') || r.tr.querySelector('.ac-quantity-down')) : r.tr.querySelector('.ac-prod-delete');
       if (t) t.click();
     });
     var tm;
