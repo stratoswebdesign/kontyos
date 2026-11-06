@@ -2849,3 +2849,6 @@ body{overflow-wrap:normal}
 @media (max-width:860px){.cpp-recipe figure{aspect-ratio:auto}.cpp-recipe figure img{height:auto;display:block}}
 /* Sanyi, 11-06: koktélcsomag-fejléc mobilon teljes szélességű (a 4 oszlopos változat se legyen fél szélességű) */
 @media (max-width:980px){.ckpacks .hd,.ckpacks:has(.grid[style*="--cols:4"]) .hd,.ckpacks:has(.grid[style*="--cols: 4"]) .hd{width:auto;max-width:none}}
+/* külső hivatkozások a szövegben (Gin és Rum Fesztivál, Graphasel) */
+a.extl{color:inherit;font-weight:700;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.extl:hover{text-decoration-thickness:2px}

@@ -889,7 +889,7 @@ def category():
 </div></section>
 <section class="gtk" id="koktelok"><div class="wrap"><div class="hd"><p class="kicker">Koktélok gyümölcsborral</p><h2 class="h2">Dobd fel a gin&#8209;tonikodat!</h2>
 <p>Gyümölcsboraink koktélban is remekelnek! Fedezd fel Bús Attila mixer receptjeit, és készítsd el otthon a kedvencedet ginnel, tonikkal vagy gyömbérrel.</p>
-<p>Ezek a koktélok a Szegedi Gin és Rum Fesztiválon is nagy sikert arattak. A közönség kedvence a málnás volt!</p></div>
+<p>Ezek a koktélok a <a class="extl" href="https://www.ginesrumfeszt.hu" target="_blank" rel="noopener">Szegedi Gin és Rum Fesztiválon</a> is nagy sikert arattak. A közönség kedvence a málnás volt!</p></div>
 <div class="cgrid">{"".join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
 {cocktail_packs(r, 'Koktélcsomagok gyümölcsborral', 'Minden hozzávaló egy csomagban, a recepttel együtt – csak a jeget és a díszítést tedd hozzá.', 'Gyümölcsbor · gin · tonik', 'koktelcsomagok', ids=FRUIT_PACKS)}
 </main>''' + footer(r)
@@ -1585,7 +1585,7 @@ def about_page():
 <div class="bt"><figure class="cake"><img src="{r}img/photo/easy_cider.webp" alt="Easy Cider palackok a Red Dot díjas címkével" loading="lazy"></figure><img class="rdot" src="{r}img/logos/red-dot.png" alt="Red Dot díj" loading="lazy"></div>
 <div class="tx"><p class="kicker">Nemzetközi designelismerés</p><h2 class="h2">Easy Cider – Red Dot díjas megjelenés</h2>
 <p class="lead">Az Easy Cider nemcsak az ízével, a megjelenésével is kitűnik: csomagolása elnyerte a <b>Red Dot díjat</b>.</p>
-<p>A Graphasel Design Studio által tervezett címkén az alma és a köré fonódó kígyó idézi meg a csábítás történetét. Friss, karakteres megjelenés egy könnyed, pezsgő gyümölcsélményhez.</p>
+<p>A <a class="extl" href="https://graphasel.hu" target="_blank" rel="noopener">Graphasel Design Studio</a> által tervezett címkén az alma és a köré fonódó kígyó idézi meg a csábítás történetét. Friss, karakteres megjelenés egy könnyed, pezsgő gyümölcsélményhez.</p>
 <div class="cta"><a class="btn" href="#easy-cider">Fedezd fel az Easy Cidert →</a></div></div>
 </div></section>
 <section class="sec ab-where"><div class="wrap">

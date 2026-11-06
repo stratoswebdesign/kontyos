@@ -47,7 +47,7 @@
 <div class="bt"><figure class="cake"><img src="https://stratoswebdesign.github.io/kontyos/img/photo/easy_cider.webp" alt="Easy Cider palackok a Red Dot díjas címkével" loading="lazy"></figure><img class="rdot" src="https://stratoswebdesign.github.io/kontyos/img/logos/red-dot.png" alt="Red Dot díj" loading="lazy"></div>
 <div class="tx"><p class="kicker">Nemzetközi designelismerés</p><h2 class="h2">Easy Cider – Red Dot díjas megjelenés</h2>
 <p class="lead">Az Easy Cider nemcsak az ízével, a megjelenésével is kitűnik: csomagolása elnyerte a <b>Red Dot díjat</b>.</p>
-<p>A Graphasel Design Studio által tervezett címkén az alma és a köré fonódó kígyó idézi meg a csábítás történetét. Friss, karakteres megjelenés egy könnyed, pezsgő gyümölcsélményhez.</p>
+<p>A <a class="extl" href="https://graphasel.hu" target="_blank" rel="noopener">Graphasel Design Studio</a> által tervezett címkén az alma és a köré fonódó kígyó idézi meg a csábítás történetét. Friss, karakteres megjelenés egy könnyed, pezsgő gyümölcsélményhez.</p>
 <div class="cta"><a class="btn" href="#easy-cider">Fedezd fel az Easy Cidert →</a></div></div>
 </div></section>
 <section class="sec ab-where"><div class="wrap">
