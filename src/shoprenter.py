@@ -146,6 +146,7 @@ REVERT_CSS = '.ky,.ky :where(:not(svg,svg *,img,video,canvas,iframe,picture,sour
 
 # A Shoprenter-keret (Párizs) igazítása: ezek a szabályok szándékosan NEM a .ky alatt vannak.
 SHELL_CSS = '''
+body.product-page-body:not(:has(main .ky)) main{visibility:hidden}
 .ky-cart-on .sr-cart-page-content{position:absolute!important;left:-99999px!important;top:0!important;width:1100px!important;visibility:hidden}
 .ky-cart-on .page-head,.ky-cart-on .breadcrumb{display:none!important}
 .ky > .ky-pre{display:none}

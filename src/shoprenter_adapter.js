@@ -65,6 +65,15 @@
     srCount();
     if (window.MutationObserver) new MutationObserver(function () { clearTimeout(watch.t); watch.t = setTimeout(srCount, 80); }).observe(box, { childList: true, subtree: true });
   })();
+  // Régi (Párizs) termékoldal soha ne látszódjon: ha nincs hozzá demó-oldal, a termék új oldalára / a kínálatra visz
+  (function noOldProductPage() {
+    if (!/\bproduct-page-body\b/.test(document.body.className) || document.querySelector('main .ky')) return;
+    var inp = document.querySelector('input[name="product_id"]'), id = inp && String(inp.value), K = (window.KONTYOS || {}).p || {}, M = window.KY_PID || {};
+    var sku = id && Object.keys(M).filter(function (s) { return String(M[s]) === id; })[0];
+    var pid = sku && Object.keys(K).filter(function (k) { return K[k].sku === sku; })[0];
+    location.replace(pid && K[pid].url ? K[pid].url : '/gyumolcsbor');
+  })();
+
   // Kosároldal: a Shoprenter (Vue) kosara rejtve tovább dolgozik, fölötte a demó kosara jelenik meg az ő adataival
   (function srCart() {
     var sr = document.querySelector('.sr-cart-page-content');

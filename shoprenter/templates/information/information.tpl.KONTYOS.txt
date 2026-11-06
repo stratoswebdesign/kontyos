@@ -1,6 +1,6 @@
 {# ===== KONTYOS – egyedi aloldalak (Rólunk, Koktélok, Vásárok, Black Friday, Karácsony, Csomagok)
    A tartalom helyett a demó oldalát töltjük be az oldal SEO-URL-je alapján. A {% block content %} elejére: #}
-{% set ky_imap = {"rolunk": "ky-page-rolunk", "koktelok": "ky-page-koktelok", "vasarok": "ky-page-vasarok", "black-friday": "ky-page-black-friday", "karacsonyi-ajandek-bor": "ky-page-karacsony", "forralt-bor": "ky-page-forralt"} %}
+{% set ky_imap = {"rolunk": "ky-page-rolunk", "koktelok": "ky-page-koktelok", "vasarok": "ky-page-vasarok", "black-friday": "ky-page-black-friday", "karacsonyi-ajandek-bor": "ky-page-karacsony", "forralt-bor": "ky-page-forralt", "kiszallitas": "ky-page-info", "aszf": "ky-page-aszf", "adatkezelesi-tajekoztato": "ky-page-adatkezeles"} %}
 {% set ky_slug = page.getUrl()|split('?')|first|trim('/')|split('/')|last %}
 {% if ky_imap[ky_slug] is defined %}
     {% include 'snippets/' ~ ky_imap[ky_slug] ~ '.tpl' %}
