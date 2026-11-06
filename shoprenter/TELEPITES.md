@@ -24,6 +24,7 @@
 | `information/information.tpl` | egyedi aloldalak → ky-page-* | `templates/information/information.tpl.KONTYOS.txt` |
 
 ## 2. Termékek (`termek_megfeleltetes.csv`)
+- **Árforrás:** Sanyi Google-táblázata („KONTYOS_Webshop_2026_frissitett” – Termékárak / Akciók összefoglaló). Ez mindig felülír minden más forrást (demó, régi webshop).
 - 44 meglévő: név, ár, leírás, képek frissítése (a cikkszám marad).
 - 16 új: létrehozás a javasolt cikkszámmal (KY-…) és SEO-URL-lel (a demó termék-id-je), **Letiltott** állapotban, amíg nincs kész.
 - 30 régi: **Letiltott** (nem törlés).
