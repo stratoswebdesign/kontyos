@@ -114,7 +114,7 @@ BODY_CLASSES = {'has-buybar', 'pdp', 'pdp-klasszikus', 'ckpage', 'pdp-partner', 
 # A Párizs-téma (Bootstrap) alapstílusai (.row, .btn, .h2, .lead, h1–h4/p/ul margók, link-szín, gombok…) NE hassanak a Kontyos-elemekre:
 # minden .ky alatti elem a böngésző alapértékeire áll vissza, és csak a Kontyos-stíluslap szabályai érvényesek – pont mint a demóban.
 # Specifikussága (0,1,0), és a stíluslap ELEJÉN van, így minden Kontyos-szabály felülírja; az SVG-k és képek kimaradnak (attribútumaik miatt).
-REVERT_CSS = '.ky,.ky :where(:not(svg,svg *,img,video,canvas,iframe,picture,source)){all:revert}\n'
+REVERT_CSS = '.ky,.ky :where(:not(svg,svg *,img,video,canvas,iframe,picture,source)){all:revert}\n.ky :where(img,video,canvas,svg){vertical-align:baseline}\n'
 
 # A Shoprenter-keret (Párizs) igazítása: ezek a szabályok szándékosan NEM a .ky alatt vannak.
 SHELL_CSS = '''

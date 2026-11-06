@@ -1,5 +1,6 @@
 /* Kontyos – a .ky gyökérosztály alá zárt stíluslap (Shoprenter). Generálva: src/shoprenter.py */
 .ky,.ky :where(:not(svg,svg *,img,video,canvas,iframe,picture,source)){all:revert}
+.ky :where(img,video,canvas,svg){vertical-align:baseline}
 .ky{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 @font-face{font-family:'Prata HU';src:url(https://stratoswebdesign.github.io/kontyos/assets/fonts/PrataHU-Regular.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}:root{
   --paper:#F3EEE5;--navy:#1B2A5C;--blue:#034EA2;--pink:#EF4E73;--rule:#E2DACB;--muted:#5A6072;
