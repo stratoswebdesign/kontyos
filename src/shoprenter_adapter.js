@@ -25,11 +25,33 @@
     if (page && f && page.getAttribute('data-sku') === sku) { var i = f.querySelector('[name=product_id]'); if (i) return i.value; }
     return null;
   }
+  // A Shoprenter kosármodulja (rejtve, .ky-sr-cart) – a darabszám a betétdíj-sorok nélkül, palackban
   function srCount() {
-    var el = document.querySelector('.ky-sr-cart [class*="count"], .ky-sr-cart .cart-count, .ky-sr-cart [data-cart-count]');
-    var n = el ? parseInt(el.textContent, 10) : NaN;
-    if (!isNaN(n)) document.querySelectorAll('[data-cart-count]').forEach(function (b) { b.textContent = n; });
+    var box = document.querySelector('.ky-sr-cart'); if (!box) return;
+    var n = 0, rows = box.querySelectorAll('.cart-quantity');
+    rows.forEach(function (q) {
+      var p = q.parentElement;
+      while (p && p !== box && !p.querySelector('.cart-product-name-link')) p = p.parentElement;
+      var a = p && p.querySelector('.cart-product-name-link');
+      if (a && /^\s*Betétdíj/i.test(a.textContent)) return;
+      var m = q.textContent.match(/\d+/); n += m ? parseInt(m[0], 10) : 1;
+    });
+    if (!rows.length) { var c = box.querySelector('.cart-product-count'); n = c ? parseInt(c.textContent, 10) || 0 : 0; }
+    document.querySelectorAll('[data-cart-count]').forEach(function (b) { b.textContent = n; });
   }
+  function srRefresh() {
+    var hx = document.querySelector('.ky-sr-cart hx\\:include, .ky-sr-cart [src*="_fragment"]');
+    var src = hx && hx.getAttribute('src');
+    if (!src) { srCount(); return; }
+    fetch(src, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (t) { hx.innerHTML = t; srCount(); });
+  }
+  window.KY_SR_REFRESH = srRefresh;
+  (function watch() {
+    var box = document.querySelector('.ky-sr-cart');
+    if (!box) { document.addEventListener('DOMContentLoaded', watch); return; }
+    srCount();
+    if (window.MutationObserver) new MutationObserver(function () { clearTimeout(watch.t); watch.t = setTimeout(srCount, 80); }).observe(box, { childList: true, subtree: true });
+  })();
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-add]'); if (!a) return;
     var id = a.getAttribute('data-add'), sku = a.getAttribute('data-sku') || ((window.KONTYOS.p[id] || {}).sku) || '';
@@ -42,9 +64,7 @@
     var body = new FormData(); body.append('product_id', pid); body.append('quantity', q);
     fetch(action, { method: 'POST', body: body, credentials: 'same-origin' }).then(function () {
       a.classList.add('ky-added'); setTimeout(function () { a.classList.remove('ky-added'); }, 1500);
-      try { if (window.ShopRenter && ShopRenter.cart && ShopRenter.cart.refresh) ShopRenter.cart.refresh(); } catch (er) {}
-      setTimeout(srCount, 600);
+      srRefresh();
     });
   }, true);
-  document.addEventListener('DOMContentLoaded', srCount);
 })();
