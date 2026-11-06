@@ -111,6 +111,11 @@ def body_parts(path):
 BODY_CLASSES = {'has-buybar', 'pdp', 'pdp-klasszikus', 'ckpage', 'pdp-partner', 'pdp-palinka', 'pdp-piri', 'pdp-klara',
                 'pdp-friss', 'overlay-head', 'pdp-secco', 'pdp-don'}
 
+# A Párizs-téma (Bootstrap) alapstílusai (.row, .btn, .h2, .lead, h1–h4/p/ul margók, link-szín, gombok…) NE hassanak a Kontyos-elemekre:
+# minden .ky alatti elem a böngésző alapértékeire áll vissza, és csak a Kontyos-stíluslap szabályai érvényesek – pont mint a demóban.
+# Specifikussága (0,1,0), és a stíluslap ELEJÉN van, így minden Kontyos-szabály felülírja; az SVG-k és képek kimaradnak (attribútumaik miatt).
+REVERT_CSS = '.ky,.ky :where(:not(svg,svg *,img,video,canvas,iframe,picture,source)){all:revert}\n'
+
 # A Shoprenter-keret (Párizs) igazítása: ezek a szabályok szándékosan NEM a .ky alatt vannak.
 SHELL_CSS = '''
 /* --- Shoprenter-keret (Párizs) igazítása a Kontyos-oldalakhoz --- */
@@ -211,6 +216,7 @@ def main():
     css = css.replace('url(fonts/', f'url({IMG_BASE}assets/fonts/').replace('url(../img/', f'url({IMG_BASE}img/').replace('url(img/', f'url({IMG_BASE}img/')
     scoped = scope_css(css)
     write('assets/kontyos.css', '/* Kontyos – a .ky gyökérosztály alá zárt stíluslap (Shoprenter). Generálva: src/shoprenter.py */\n'
+          + REVERT_CSS +
           '.ky{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}\n' + scoped + SHELL_CSS)
     js = open(os.path.join(ROOT, 'assets', 'app.js'), encoding='utf-8').read()
     cat = open(os.path.join(ROOT, 'assets', 'catalog.js'), encoding='utf-8').read()
