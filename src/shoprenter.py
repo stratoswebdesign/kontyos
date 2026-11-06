@@ -223,7 +223,9 @@ def main():
     js2 = js.replace("var ROOT = document.documentElement.getAttribute('data-root') || '';", "var ROOT = '';")
     js2 = js2.replace("ROOT + 'kosar.html'", "'/index.php?route=checkout/cart'").replace("ROOT + 'gyumolcsbor.html'", "'/gyumolcsbor'")
     adapter = open(os.path.join(ROOT, 'src', 'shoprenter_adapter.js'), encoding='utf-8').read()
-    write('assets/kontyos.js', '/* Kontyos – katalógus + oldallogika (Shoprenter). Generálva: src/shoprenter.py */\n' + cat2 + adapter + '\n' + js2)
+    pidmap = json.load(open(os.path.join(OUT, 'sandbox_pid.json'), encoding='utf-8')) if os.path.exists(os.path.join(OUT, 'sandbox_pid.json')) else {}
+    pidjs = 'window.KY_PID = Object.assign(' + json.dumps(pidmap, ensure_ascii=False) + ', window.KY_PID || {});\n'  # cikkszám → product_id (sandboxból kimentve)
+    write('assets/kontyos.js', '/* Kontyos – katalógus + oldallogika (Shoprenter). Generálva: src/shoprenter.py */\n' + pidjs + cat2 + adapter + '\n' + js2)
 
     # fejléc + lábléc (a főoldalról)
     home = body_parts('index.html')
