@@ -80,12 +80,34 @@ def page_url(href):
     return url + (('#' + frag) if frag else '')
 
 
+# A Párizs/Bootstrap osztálynevekkel ütköző demó-osztályok átnevezése (k- előtag) a CSS-ben, a snippetekben és a JS-ben
+COLLIDE = ['badge', 'btn', 'card', 'close', 'col', 'h1', 'h2', 'h3', 'head', 'lead', 'left', 'nav', 'price', 'right', 'row', 'small', 'tall', 'breadcrumb']
+_CL = '|'.join(COLLIDE)
+
+
+def ren_classattr(htm):
+    return re.sub(r'class="([^"]*)"', lambda m: 'class="' + ' '.join(('k-' + c) if c in COLLIDE else c for c in m.group(1).split(' ')) + '"', htm)
+
+
+def ren_css(css):
+    parts = re.split(r'(url\([^)]*\))', css)
+    return ''.join(x if x.startswith('url(') else re.sub(r'\.(' + _CL + r')(?![\w-])', r'.k-\1', x) for x in parts)
+
+
+def ren_js(js):
+    js = re.sub(r'class="([^"]*)"', lambda m: 'class="' + ' '.join(('k-' + c) if c in COLLIDE else c for c in m.group(1).split(' ')) + '"', js)
+    js = re.sub(r"(?<=['\" ,>(+~])\.(" + _CL + r")(?![\w-])", r'.k-\1', js)
+    js = re.sub(r"(classList\.(?:add|remove|toggle|contains)\(\s*')(" + _CL + r")'", r"\1k-\2'", js)
+    return js
+
+
 def rewrite(htm):
     """Linkek, képek, srcset-ek átírása; a Twig-szintaxissal ütköző karakterek semlegesítése."""
     htm = re.sub(r'(href|src|poster|data-src|data-img)="([^"]+)"', lambda m: f'{m.group(1)}="{page_url(m.group(2))}"', htm)
     htm = re.sub(r'url\((?!["\']?(?:https?:|data:))["\']?([^)"\']+)["\']?\)', lambda m: f'url({page_url(m.group(1))})', htm)
     htm = re.sub(r'data-add="([^"]+)"', lambda m: f'data-add="{m.group(1)}" data-sku="{html.escape(SKU.get(m.group(1), NEW_SKU.get(m.group(1), "")))}"', htm)
     htm = re.sub(r'\?v=[0-9a-f]{10}', '', htm)
+    htm = ren_classattr(htm)
     htm = re.sub(r'"image": "(img/[^"]+)"', lambda m: f'"image": "{IMG_BASE}{m.group(1)}"', htm)  # JSON-LD
     if '{{' in htm or '{%' in htm or '{#' in htm:
         htm = '{% verbatim %}' + htm + '{% endverbatim %}'
@@ -218,7 +240,7 @@ def main():
     # CSS + fontok
     css = open(os.path.join(ROOT, 'assets', 'style.css'), encoding='utf-8').read()
     css = css.replace('url(fonts/', f'url({IMG_BASE}assets/fonts/').replace('url(../img/', f'url({IMG_BASE}img/').replace('url(img/', f'url({IMG_BASE}img/')
-    scoped = scope_css(css)
+    scoped = ren_css(scope_css(css))
     write('assets/kontyos.css', '/* Kontyos – a .ky gyökérosztály alá zárt stíluslap (Shoprenter). Generálva: src/shoprenter.py */\n'
           + REVERT_CSS +
           '.ky{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}\n' + scoped + SHELL_CSS)
@@ -232,6 +254,7 @@ def main():
     cat2 = 'window.KONTYOS={p:' + json.dumps(K, ensure_ascii=False) + '};\n'
     js2 = js.replace("var ROOT = document.documentElement.getAttribute('data-root') || '';", "var ROOT = '';")
     js2 = js2.replace("ROOT + 'kosar.html'", "'/index.php?route=checkout/cart'").replace("ROOT + 'gyumolcsbor.html'", "'/gyumolcsbor'")
+    js2 = ren_js(js2)
     adapter = open(os.path.join(ROOT, 'src', 'shoprenter_adapter.js'), encoding='utf-8').read()
     pidmap = json.load(open(os.path.join(OUT, 'sandbox_pid.json'), encoding='utf-8')) if os.path.exists(os.path.join(OUT, 'sandbox_pid.json')) else {}
     pidjs = 'window.KY_PID = Object.assign(' + json.dumps(pidmap, ensure_ascii=False) + ', window.KY_PID || {});\n'  # cikkszám → product_id (sandboxból kimentve)

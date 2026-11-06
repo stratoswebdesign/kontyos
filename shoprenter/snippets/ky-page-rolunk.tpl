@@ -3,10 +3,10 @@
 <section class="ab-hero"><img class="bg" src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_uzem.webp" alt="A Kontyos borászat épülete Klárafalván" fetchpriority="high"><div class="wrap">
 <p class="crumb"><a href="/">Főoldal</a> / Rólunk</p><p class="kicker">Rólunk · Klárafalva, 2006 óta</p>
 <h1>Egy karácsonyi asztalnál kezdődött.</h1>
-<p class="lead">Ma Magyarország vezető gyümölcsbor-gyártójaként Klárafalváról indulnak útnak italaink – az üzletek polcaira, a fesztiválokra, a vásárok standjaira és hozzád.</p></div></section>
+<p class="k-lead">Ma Magyarország vezető gyümölcsbor-gyártójaként Klárafalváról indulnak útnak italaink – az üzletek polcaira, a fesztiválokra, a vásárok standjaira és hozzád.</p></div></section>
 
 <section class="sec ab-story"><div class="wrap">
-<div class="tx"><p class="kicker">A történetünk</p><h2 class="h2">Édes és zamatos, akár egy nyári gyümölcs.</h2>
+<div class="tx"><p class="kicker">A történetünk</p><h2 class="k-h2">Édes és zamatos, akár egy nyári gyümölcs.</h2>
 <p>Édesapánk húsz éve alkotta meg első gyümölcsborát. Az ötlet egy karácsonyi összejövetelen született: a család hölgytagjai olyan italra vágytak, mely édes és zamatos, akár egy nyári gyümölcs.</p>
 <div class="p2"><figure class="tpola ab-mini" style="--r:5deg"><img src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_tartaly_zoom.webp" alt="Munka az erjesztőtartályoknál a klárafalvi üzemben" loading="lazy"></figure><p>Kitartó kísérletezéssel addig tökéletesítette a receptjét, míg megszületett az az eszményi különlegesség, mely igazán megfelel a gyümölcsös, friss ízeket kedvelők ízlésvilágának.</p></div>
 <p>Azóta a Kontyos tradicionális és kísérletező szellemiségű borászat lett: hagyományos és reduktív eljárással dolgozunk, és 2006 óta alkotunk valódi gyümölcsökből nyárillatú gyümölcsbor-különlegességeket. A családi hagyományt ma tapasztalt, elkötelezett csapat viszi tovább.</p>
@@ -18,48 +18,48 @@
 
 <section class="ab-torta"><div class="wrap">
 <div class="bt"><figure class="cake"><img src="https://stratoswebdesign.github.io/kontyos/img/photo/biborfeher_torta.webp" alt="A Bíborfehér torta szelete – Magyarország Tortája 2026" loading="lazy"></figure><img class="btl" src="https://stratoswebdesign.github.io/kontyos/img/t/edes-ribizlibor.webp" alt="Kontyos édes ribizlibor" loading="lazy"><span class="seal"><b>2026</b>Magyarország<br>Tortája</span></div>
-<div class="tx"><p class="kicker">Egy szelet büszkeség</p><h2 class="h2">Gyümölcsborunk Magyarország Tortájában</h2>
-<p class="lead">2026-ban a <b>Bíborfehér</b> lett Magyarország Tortája – a gyulai Kézműves Cukrászda cukrászmestereinek, Balogh Lászlónak, Balogh Zoltánnak és Kis Rolandnak az alkotása.</p>
+<div class="tx"><p class="kicker">Egy szelet büszkeség</p><h2 class="k-h2">Gyümölcsborunk Magyarország Tortájában</h2>
+<p class="k-lead">2026-ban a <b>Bíborfehér</b> lett Magyarország Tortája – a gyulai Kézműves Cukrászda cukrászmestereinek, Balogh Lászlónak, Balogh Zoltánnak és Kis Rolandnak az alkotása.</p>
 <p>Erdei bogyós gyümölcsök, pirított mandula, tejfölös mousse és rögös túró – és mindezt egy különleges összetevő teszi teljessé: az <b>édes feketeribizlibor</b>, a mi Édes ribizliborunk. Büszkék vagyunk rá, hogy a klárafalvi gyümölcsbor a cukrászatban is új szerepet kapott.</p>
-<div class="cta"><a class="btn" href="/edes-ribizlibor">Kóstold meg a tortában szereplő bort →</a></div></div>
+<div class="cta"><a class="k-btn" href="/edes-ribizlibor">Kóstold meg a tortában szereplő bort →</a></div></div>
 </div></section>
 
 
-<section class="sec ab-time"><div class="wrap"><p class="kicker">Mérföldkövek</p><h2 class="h2">Klárafalváról az ország polcaira</h2>
+<section class="sec ab-time"><div class="wrap"><p class="kicker">Mérföldkövek</p><h2 class="k-h2">Klárafalváról az ország polcaira</h2>
 <ol class="tl"><li><b>2006</b><h3>Az első gyümölcsborok</h3><p>A családi recept gyümölcsborrá érik – elindul a Kontyos.</p></li><li><b>2019</b><h3>Modern borászat Klárafalván</h3><p>Felépül új üzemünk, ahol a családi tapasztalat korszerű technológiával találkozik.</p></li><li><b>2021</b><h3>Áttérés a 0,75 literes palackra</h3><p>Gyümölcsboraink a korábbi fél liter helyett 0,75 literes palackba kerülnek, megújult arculattal.</p></li><li><b>2023</b><h3>Megérkezik Piri Mama forralt bora</h3><p>Gyümölcsös ízekkel és valódi fűszerekkel zárjuk palackba a téli vásárok meghitt hangulatát.</p></li><li><b>2025</b><h3>Bemutatkozik a Don Cherry meggyvermut</h3><p>Év végén megérkezik saját meggyborunkra épülő, fűszeres vermutunk – önálló italként és koktélalapként is.</p></li><li><b>2026</b><h3>Red Dot díj és Magyarország Tortája</h3><p>Az Easy Cider csomagolása Red Dot díjat kap, édes feketeribizliborunk pedig a Bíborfehér, Magyarország Tortája egyik alapanyaga.</p></li></ol></div></section>
 
 <section class="sec ab-plant"><div class="wrap">
 <div class="g"><figure class="big"><img src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_kulso.webp" alt="A Kontyos borászat épülete Klárafalván" loading="lazy"></figure>
 <figure><img src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_udvar.webp" alt="Gyümölcsládák és palackok a borászat udvarán" loading="lazy"></figure><figure><img src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_raktar_w.webp" alt="Raklapokon a Kontyos gyümölcsborok a raktárban" loading="lazy"></figure></div>
-<div class="tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h2 class="h2">Gyümölcstől a palackig, egy helyen</h2>
+<div class="tx"><p class="kicker">Saját gyártás · folyamatos fejlesztés</p><h2 class="k-h2">Gyümölcstől a palackig, egy helyen</h2>
 <p>A 2019-ben épült modern üzemünkben a borászati tapasztalatot korszerű technológiával és folyamatos termékfejlesztéssel ötvözzük. Valódi gyümölcsökkel dolgozunk, és a borokat helyben palackozzuk.</p>
 <ul class="ab-ticks"><li><b>Gondosan választott gyümölcsök.</b> Alapanyagainkat a gyümölcsök minőségét és érettségét szem előtt tartva szerezzük be.</li><li><b>Tudatos édesítés.</b> Édes borainkat az adott gyümölcs saját, 100%-os levével édesítjük, és csak annyi cukrot adunk hozzá, amennyi életre hívja a gyümölcs valódi karakterét.</li><li><b>Folyamatos fejlődés.</b> Együttműködünk a Szőlészeti és Borászati Intézettel.</li></ul></div>
 </div></section>
 
-<section class="ab-team"><figure><img src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_csapat.webp" alt="A Kontyos csapata az erjesztőtartályok előtt" loading="lazy"></figure><div class="wrap"><div class="card"><p class="kicker">A csapat</p><h2 class="h2">Akik minden palack mögött ott vannak</h2>
+<section class="ab-team"><figure><img src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_csapat.webp" alt="A Kontyos csapata az erjesztőtartályok előtt" loading="lazy"></figure><div class="wrap"><div class="k-card"><p class="kicker">A csapat</p><h2 class="k-h2">Akik minden palack mögött ott vannak</h2>
 <p>A hagyományt ma egy elkötelezett csapat viszi tovább. Borászaink és munkatársaink szakértelme és szenvedélye biztosítja, hogy minden palack a gyümölcs legjavát adja.</p></div></div></section>
 
-<section class="sec ab-brands" id="markaink"><div class="wrap"><p class="kicker">Márkáink</p><h2 class="h2">A klasszikustól az újig</h2>
-<p class="lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat.</p>
+<section class="sec ab-brands" id="markaink"><div class="wrap"><p class="kicker">Márkáink</p><h2 class="k-h2">A klasszikustól az újig</h2>
+<p class="k-lead">Saját gyümölcsborokat készítünk, és ezekre építve fejlesztünk új, izgalmas italokat.</p>
 <div class="ab-lines"><a class="ab-line" href="/gyumolcsbor#klasszikus"><span class="im"><img src="https://stratoswebdesign.github.io/kontyos/img/t/edes-meggybor.webp" alt="" loading="lazy"></span><b>Klasszikus gyümölcsborok</b><small>100%-ban az adott gyümölcsből – eperbor eperből, meggybor meggyből.</small><em>Megnézem →</em></a><a class="ab-line" href="/gyumolcsbor#klara"><span class="im"><img src="https://stratoswebdesign.github.io/kontyos/img/t/klara-edes-malnabor.webp" alt="" loading="lazy"></span><b>KLÁRA prémium</b><small>Válogatott gyümölcsökből, különös gondossággal – a gyümölcskertek istennője.</small><em>Megnézem →</em></a><a class="ab-line" href="/malna-edes-gyumolcsbor-075-l"><span class="im"><img src="https://stratoswebdesign.github.io/kontyos/img/t/malna-edes-gyumolcsbor-075-l.webp" alt="" loading="lazy"></span><b>FRISS</b><small>Gyümölcsbor és almabor fele-fele arányban, könnyed, frissítő harmóniában.</small><em>Megnézem →</em></a><a class="ab-line" href="/piri-mama-forralt-bora-1l"><span class="im"><img src="https://stratoswebdesign.github.io/kontyos/img/t/piri-mama-forralt-bora-1l.webp" alt="" loading="lazy"></span><b>Piri Mama forralt bor</b><small>Egyliteres palackban, csak melegíteni kell – az adventi vásárok kedvence.</small><em>Megnézem →</em></a><a class="ab-line" href="/don-cherry-edes-meggyvermut-075-l"><span class="im"><img src="https://stratoswebdesign.github.io/kontyos/img/t/don-cherry-edes-meggyvermut-075-l.webp" alt="" loading="lazy"></span><b>Don Cherry</b><small>Édes meggyvermut saját meggyborunkra építve – jéggel és koktélban is.</small><em>Megnézem →</em></a><a class="ab-line" href="/berry-secco-075-l"><span class="im"><img src="https://stratoswebdesign.github.io/kontyos/img/t/berry-secco-075-l.webp" alt="" loading="lazy"></span><b>Berry Secco</b><small>Habzó gyümölcsborok a buborékok kedvelőinek.</small><em>Megnézem →</em></a><a class="ab-line" href="/szamocapalinka"><span class="im"><img src="https://stratoswebdesign.github.io/kontyos/img/t/szamocapalinka.webp" alt="" loading="lazy"></span><b>Pálinkák</b><small>Gyümölcsből cefrézve, hagyományos kisüsti eljárással főzve.</small><em>Megnézem →</em></a><div class="ab-line soon" id="easy-cider" aria-label="Easy Cider – hamarosan"><span class="im"><span class="soon-tag">Hamarosan</span><img src="https://stratoswebdesign.github.io/kontyos/img/t/easy-cider.webp" alt="" loading="lazy"></span><b>Easy Cider</b><small>Könnyed, pezsgő cider, Red Dot díjas csomagolásban.</small><em>Hamarosan a webshopban</em></div></div></div></section>
 
 <section class="ab-torta ab-easy"><div class="wrap">
 <div class="bt"><figure class="cake"><img src="https://stratoswebdesign.github.io/kontyos/img/photo/easy_cider.webp" alt="Easy Cider palackok a Red Dot díjas címkével" loading="lazy"></figure><img class="rdot" src="https://stratoswebdesign.github.io/kontyos/img/logos/red-dot.png" alt="Red Dot díj" loading="lazy"></div>
-<div class="tx"><p class="kicker">Nemzetközi designelismerés</p><h2 class="h2">Easy Cider – Red Dot díjas megjelenés</h2>
-<p class="lead">Az Easy Cider nemcsak az ízével, a megjelenésével is kitűnik: csomagolása elnyerte a <b>Red Dot díjat</b>.</p>
+<div class="tx"><p class="kicker">Nemzetközi designelismerés</p><h2 class="k-h2">Easy Cider – Red Dot díjas megjelenés</h2>
+<p class="k-lead">Az Easy Cider nemcsak az ízével, a megjelenésével is kitűnik: csomagolása elnyerte a <b>Red Dot díjat</b>.</p>
 <p>A <a class="extl" href="https://graphasel.hu" target="_blank" rel="noopener">Graphasel Design Studio</a> által tervezett címkén az alma és a köré fonódó kígyó idézi meg a csábítás történetét. Friss, karakteres megjelenés egy könnyed, pezsgő gyümölcsélményhez.</p>
-<div class="cta"><a class="btn" href="#easy-cider">Fedezd fel az Easy Cidert →</a></div></div>
+<div class="cta"><a class="k-btn" href="#easy-cider">Fedezd fel az Easy Cidert →</a></div></div>
 </div></section>
 <section class="sec ab-where"><div class="wrap">
-<div class="tx"><p class="kicker">Ahol találkozhatsz velünk</p><h2 class="h2">Üzletekben, fesztiválokon, vásárokon és online</h2>
+<div class="tx"><p class="kicker">Ahol találkozhatsz velünk</p><h2 class="k-h2">Üzletekben, fesztiválokon, vásárokon és online</h2>
 <p>Italainkat országszerte megtalálod a nagy üzletláncok polcain, fesztiválokon személyesen is találkozhatunk, adventkor pedig a Piri Mama forralt borral a legnagyobb karácsonyi vásárokon várunk: Szeged · Budapest – Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza.</p>
 <p>Kedvenceidet egész évben megrendelheted webshopunkból is.</p>
 <div class="t-retail ab-logos"><div class="rl-vp"><ul><li><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-lidl.svg" alt="Lidl" loading="lazy"></li><li><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-spar.svg" alt="Spar" loading="lazy"></li><li><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-cba.svg" alt="CBA" loading="lazy"></li><li><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-eco-family.svg" alt="Ecofamily" loading="lazy"></li><li><span class="rlogo txt">JANKER</span></li><li class="dup" aria-hidden="true"><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-lidl.svg" alt="Lidl" loading="lazy"></li><li class="dup" aria-hidden="true"><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-spar.svg" alt="Spar" loading="lazy"></li><li class="dup" aria-hidden="true"><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-cba.svg" alt="CBA" loading="lazy"></li><li class="dup" aria-hidden="true"><img class="rlogo" src="https://stratoswebdesign.github.io/kontyos/img/logos/uzletlogo-eco-family.svg" alt="Ecofamily" loading="lazy"></li><li class="dup" aria-hidden="true"><span class="rlogo txt">JANKER</span></li></ul></div></div>
-<div class="cta"><a class="btn" href="/vasarok">Fesztiválok és vásárok →</a><a class="btn ghost" href="/gyumolcsbor">Irány a webshop →</a></div></div>
+<div class="cta"><a class="k-btn" href="/vasarok">Fesztiválok és vásárok →</a><a class="k-btn ghost" href="/gyumolcsbor">Irány a webshop →</a></div></div>
 <figure class="tpola" style="--r:4deg"><img src="https://stratoswebdesign.github.io/kontyos/img/photo/rolunk_stand.webp" alt="A Kontyos csapata a vásári standon" loading="lazy"></figure>
 </div></section>
 
-<section class="sec ab-end"><div class="wrap"><p class="kicker">Kontyos · Klárafalva</p><h2 class="h2">A gyümölcs a főszereplő. Mindig.</h2>
-<p class="lead">A gyümölcsök gazdag ízvilágát húsz év borászati tapasztalatával ötvözzük, hogy a klasszikus gyümölcsboroktól az innovatív különlegességekig minden alkalomra új élményt kínáljunk.</p>
-<a class="btn" href="/gyumolcsbor">Fedezd fel a borainkat →</a></div></section>
+<section class="sec ab-end"><div class="wrap"><p class="kicker">Kontyos · Klárafalva</p><h2 class="k-h2">A gyümölcs a főszereplő. Mindig.</h2>
+<p class="k-lead">A gyümölcsök gazdag ízvilágát húsz év borászati tapasztalatával ötvözzük, hogy a klasszikus gyümölcsboroktól az innovatív különlegességekig minden alkalomra új élményt kínáljunk.</p>
+<a class="k-btn" href="/gyumolcsbor">Fedezd fel a borainkat →</a></div></section>
 </main></div>

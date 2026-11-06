@@ -181,7 +181,7 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
       '<div class="item">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="">' : '') + '<div><b>' + esc(p.n) + '</b><span>' + fmt(p.price) + '</span></div></div>' +
       '<span style="font-size:13px">' + (t.free ? 'Ingyenes a szállítás!' : 'Még <b>' + fmt(t.left) + '</b> az ingyenes szállításig.') + '</span>' +
       '<div class="bar"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div>' +
-      '<div class="acts"><a class="btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
+      '<div class="acts"><a class="k-btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="k-btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
       upsHtml(p.ups || [], load().map(function (l) { return l.id; }), p.upg) + '</div>';
     miniEl.classList.add('open');
     clearTimeout(miniEl._t); miniEl._t = setTimeout(function () { miniEl.classList.remove('open'); }, 6000);
@@ -301,7 +301,7 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
   function renderCart() {
     var c = load(), t = totals(c);
     if (!c.length) {
-      cr.innerHTML = '<div class="box" style="text-align:center;padding:48px 22px"><p class="h2" style="font-size:34px">A kosarad üres.</p><p class="muted" style="margin:10px 0 22px">Nézz körül a 100%-os gyümölcsborok között.</p><a class="btn blue" href="' + ROOT + 'gyumolcsbor.html">Gyümölcsborok</a></div>';
+      cr.innerHTML = '<div class="box" style="text-align:center;padding:48px 22px"><p class="k-h2" style="font-size:34px">A kosarad üres.</p><p class="muted" style="margin:10px 0 22px">Nézz körül a 100%-os gyümölcsborok között.</p><a class="k-btn blue" href="' + ROOT + 'gyumolcsbor.html">Gyümölcsborok</a></div>';
       document.getElementById('cart-side').hidden = true; return;
     }
     document.getElementById('cart-side').hidden = false;
@@ -444,7 +444,7 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
   if (co) {
     var c = load(), t = totals(c);
     var sumEl = document.getElementById('co-summary');
-    if (!c.length) { co.innerHTML = '<div class="box" style="text-align:center;padding:40px"><p class="serif" style="font-size:28px">A kosarad üres.</p><a class="btn blue" style="margin-top:18px" href="' + ROOT + 'index.html">Vissza a boltba</a></div>'; if (sumEl) sumEl.hidden = true; }
+    if (!c.length) { co.innerHTML = '<div class="box" style="text-align:center;padding:40px"><p class="serif" style="font-size:28px">A kosarad üres.</p><a class="k-btn blue" style="margin-top:18px" href="' + ROOT + 'index.html">Vissza a boltba</a></div>'; if (sumEl) sumEl.hidden = true; }
     else {
       sumEl.querySelector('[data-co-lines]').innerHTML = c.map(function (l) { var p = K.p[l.id]; if (!p) return ''; return '<div style="display:flex;align-items:center;gap:12px">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="" style="width:52px;height:52px;object-fit:contain;background:var(--paper);border-radius:4px">' : '') + '<span style="flex:1;font-size:14px;line-height:1.3"><b>' + esc(p.n) + '</b><br><span class="muted">' + l.q + ' db</span></span><b style="font-size:14px">' + fmt(unit(p, l.q) * l.q) + '</b></div>'; }).join('');
       document.querySelectorAll('[data-sum]').forEach(function (el) { el.textContent = fmt(t.sub); });
@@ -533,7 +533,7 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
   }
 
   /* Menü: ha egy sorba nem fér ki, hamburgerre vált (soha nem tör két sorba) */
-  var head = document.querySelector('.site-head'), nav = head && head.querySelector('.nav');
+  var head = document.querySelector('.site-head'), nav = head && head.querySelector('.k-nav');
   function fit() {
     if (!nav) return;
     var root = document.documentElement;
@@ -555,7 +555,7 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
     var words = norm(q).split(/\s+/).filter(Boolean);
     var hits = Object.keys(K.p).filter(function (id) { var p = K.p[id], h = norm(p.n + ' ' + p.sub + ' ' + id); return words.length && words.every(function (w) { return h.indexOf(w) >= 0; }); });
     document.getElementById('search-sum').textContent = q ? (hits.length + ' találat: „' + q + '”') : 'Írd be, mit keresel.';
-    sres.innerHTML = hits.map(function (id) { var p = K.p[id]; return '<div class="pcard" style="position:relative"><a class="in" href="' + ROOT + p.url + '" style="text-decoration:none;display:flex;flex-direction:column;flex:1"><div class="ph" style="--tint:' + p.tint + '">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="" loading="lazy">' : '') + '</div><div class="tx"><span class="k">' + esc(p.sub) + '</span><span class="n">' + esc(p.n) + '</span><div class="row"><span class="pr">' + (p.price ? fmt(p.price) : 'Elfogyott') + '</span></div></div></a><div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="' + id + '" aria-label="Kosárba">+</button></div></div>'; }).join('');
+    sres.innerHTML = hits.map(function (id) { var p = K.p[id]; return '<div class="pcard" style="position:relative"><a class="in" href="' + ROOT + p.url + '" style="text-decoration:none;display:flex;flex-direction:column;flex:1"><div class="ph" style="--tint:' + p.tint + '">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="" loading="lazy">' : '') + '</div><div class="tx"><span class="k">' + esc(p.sub) + '</span><span class="n">' + esc(p.n) + '</span><div class="k-row"><span class="pr">' + (p.price ? fmt(p.price) : 'Elfogyott') + '</span></div></div></a><div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="' + id + '" aria-label="Kosárba">+</button></div></div>'; }).join('');
   }
 
   /* Termékgaléria (íves ablak + bélyegképek) */
@@ -711,7 +711,7 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
 
   /* Szótördelés szabálya (11-04): szót soha nem vágunk ketté. Ha egy cím leghosszabb szava nem fér ki
      a dobozába, a betűméretet arányosan csökkentjük (legfeljebb 55%-ig), amíg kifér. */
-  var FIT_SEL = '.ctiles a span,h1,h2,h3,h4,.h2,.pd-big,.word,.pd-mcard .n,.pd-mcard .k,.tiles .tile,.pd-xs strong,main strong,.pcard .n,.ab-line b,.tnum b,.ab-nums b';
+  var FIT_SEL = '.ctiles a span,h1,h2,h3,h4,.k-h2,.pd-big,.word,.pd-mcard .n,.pd-mcard .k,.tiles .tile,.pd-xs strong,main strong,.pcard .n,.ab-line b,.tnum b,.ab-nums b';
   function fitWords() {
     document.querySelectorAll(FIT_SEL).forEach(function (el) {
       if (el.closest('.rl-vp,.marquee,.mq')) return;
