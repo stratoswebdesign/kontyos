@@ -9,6 +9,16 @@ window.KONTYOS={p:{"edes-meggybor": {"n": "Édes meggybor", "price": 3990, "tier
 (function () {
   if (!window.KY_SHOPRENTER) return;
   window.KY_PID = window.KY_PID || {};
+  // A demóban body-szintű osztályok (overlay-head, pdp-…) és data-page a fejléc/lábléc .ky-elemére is
+  function syncShell() {
+    var main = document.querySelector('main .ky');
+    if (!main) return;
+    document.querySelectorAll('.ky-head, .ky-foot').forEach(function (el) {
+      main.classList.forEach(function (c) { if (c !== 'ky') el.classList.add(c); });
+      if (main.dataset.page) el.dataset.page = main.dataset.page;
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncShell); else syncShell();
   function srForm() { return document.querySelector('form[action*="cart"], form#product, .ky-sr-form form'); }
   function pidFor(sku) {
     if (window.KY_PID[sku]) return window.KY_PID[sku];

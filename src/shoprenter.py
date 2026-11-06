@@ -108,6 +108,22 @@ def body_parts(path):
 
 
 # ---------------- CSS: minden szabály a .ky gyökér alá ----------------
+BODY_CLASSES = {'has-buybar', 'pdp', 'pdp-klasszikus', 'ckpage', 'pdp-partner', 'pdp-palinka', 'pdp-piri', 'pdp-klara',
+                'pdp-friss', 'overlay-head', 'pdp-secco', 'pdp-don'}
+
+# A Shoprenter-keret (Párizs) igazítása: ezek a szabályok szándékosan NEM a .ky alatt vannak.
+SHELL_CSS = '''
+/* --- Shoprenter-keret (Párizs) igazítása a Kontyos-oldalakhoz --- */
+#section-banner_slider_paris,#section-announcement_bar_paris{display:none!important}
+body:has(.ky-head) main.has-sticky{padding-top:0!important}
+main .container:has(.ky){max-width:none!important;width:100%!important;padding:0!important;margin:0!important}
+main .container:has(.ky) :is(.row,.col,[class*="col-"],.one-column-content,.page-body):has(.ky){max-width:none!important;width:100%!important;flex:0 0 100%!important;padding:0!important;margin:0!important}
+main .container:has(.ky) :is(.breadcrumb,.page-head,.page-title,.content-title):not(.ky *){display:none!important}
+.ky.ky-head{position:relative;z-index:60}
+.ky-legal-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:18px 16px;background:#F3EEE5;border-top:1px solid #E2DACB}
+.ky-legal-logos img{width:auto!important;max-width:100%!important;height:auto!important;max-height:64px}
+.ky-legal-logos .simple-footer,.ky-legal-logos .szechenyi{margin:0;padding:0;background:none}
+'''
 def scope_selector(sel):
     out = []
     for part in sel.split(','):
@@ -117,8 +133,11 @@ def scope_selector(sel):
         if p.startswith((':root', 'from', 'to')) or re.match(r'^\d+%$', p):
             out.append(p); continue
         p2 = re.sub(r'^html\s*', '', p)
+        m = re.match(r'^\.([\w-]+)', p2)
         if p2.startswith('body'):
             out.append('.ky' + p2[4:])           # body.pdp → .ky.pdp, body → .ky
+        elif m and m.group(1) in BODY_CLASSES:
+            out.append('.ky' + p2)               # .pdp-don .x → .ky.pdp-don .x (a demóban body-osztály)
         elif p2 in ('*', '*::before', '*::after'):
             out.append('.ky ' + p2)
         else:
@@ -190,7 +209,7 @@ def main():
     css = css.replace('url(fonts/', f'url({IMG_BASE}assets/fonts/').replace('url(../img/', f'url({IMG_BASE}img/').replace('url(img/', f'url({IMG_BASE}img/')
     scoped = scope_css(css)
     write('assets/kontyos.css', '/* Kontyos – a .ky gyökérosztály alá zárt stíluslap (Shoprenter). Generálva: src/shoprenter.py */\n'
-          '.ky{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}\n' + scoped)
+          '.ky{background:var(--page);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}\n' + scoped + SHELL_CSS)
     js = open(os.path.join(ROOT, 'assets', 'app.js'), encoding='utf-8').read()
     cat = open(os.path.join(ROOT, 'assets', 'catalog.js'), encoding='utf-8').read()
     # katalógus: URL-ek a kontyos.hu útvonalaira, képek a képtárra; cikkszám hozzáadva
