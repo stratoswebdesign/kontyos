@@ -607,7 +607,7 @@ def packs_page():
 <div data-season="bf karacsony">{cocktail_packs(r, 'Koktélcsomagok ajándékba', 'Don Cherry Negroni, Americano vagy Don Cherry & Tonic – minden hozzávaló egy csomagban, a recepttel együtt. Ajándéknak is kész koktélest.', 'Don Cherry · koktélcsomagok', 'pk-koktel')}</div>
 {forralt}
 <section class="sec pk-allando" id="pk-allando"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Állandó ajánlatok</p><h2 class="h2" {H2}>Egész évben</h2>
-{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna'], r, 'cards cards-3 cards-big')}</div></section>
+{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna'], r)}</div></section>
 {choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')}</main>''' + footer(r)
     write('csomagok.html', pg)
 
@@ -829,7 +829,7 @@ def home_body(r='', h='h1'):
 </div></section>'''
     pg += new_world(r)
     pg += f'''<section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:28px"><p class="kicker">Válogatások</p><h2 class="h2">Csomagban jobban megéri</h2>
-{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r, 'cards cards-4 cards-big')}</div></section>'''
+{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros'], r)}</div></section>'''
     pg += newsletter()
     return pg
 
