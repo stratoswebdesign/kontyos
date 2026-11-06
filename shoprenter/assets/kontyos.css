@@ -92,7 +92,11 @@ main .container:has(.ky) :is(.row,.col,[class*="col-"],.one-column-content,.page
 main .container:has(.ky) :is(.breadcrumb,.page-head,.page-title,.content-title):not(.ky *){display:none!important}
 main .container:has(.ky) .row:has(.ky) > :is(aside,nav,.column-left,.column-right):not(:has(.ky)){display:none!important}
 main .container:has(.ky) > :is(nav,.breadcrumb):not(:has(.ky)){display:none!important}
-.ky.ky-head{position:relative;z-index:60}
+.ky.ky-head{position:relative;z-index:60;background:var(--page)}
+.ky.ky-head.overlay-head{background:transparent}
+body:has(.ky-head),body:has(.ky-head) .page-wrap{background:var(--page)!important}
+body:has(.ky-head) main.has-sticky{padding-bottom:0!important;margin-bottom:0!important;background:transparent!important}
+body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-position,body:has(.ky-head) .mobile-scroll-top-button{display:none!important}
 .ky-legal-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px;padding:18px 16px;background:#F3EEE5;border-top:1px solid #E2DACB}
 .ky-legal-logos img{width:auto!important;max-width:100%!important;height:auto!important;max-height:64px}
 .ky-legal-logos .simple-footer,.ky-legal-logos .szechenyi{margin:0;padding:0;background:none}
