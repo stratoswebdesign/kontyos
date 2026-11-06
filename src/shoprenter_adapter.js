@@ -65,6 +65,89 @@
     srCount();
     if (window.MutationObserver) new MutationObserver(function () { clearTimeout(watch.t); watch.t = setTimeout(srCount, 80); }).observe(box, { childList: true, subtree: true });
   })();
+  // Kosároldal: a Shoprenter (Vue) kosara rejtve tovább dolgozik, fölötte a demó kosara jelenik meg az ő adataival
+  (function srCart() {
+    var sr = document.querySelector('.sr-cart-page-content');
+    if (!sr || !window.KY_CART_HTML) return;
+    window.KY_SR_CART = true;
+    document.documentElement.classList.add('ky-cart-on');
+    var box = document.createElement('div');
+    box.className = 'ky ky-cart'; box.setAttribute('data-page', 'cart');
+    box.innerHTML = window.KY_CART_HTML;
+    sr.parentNode.insertBefore(box, sr);
+    box.querySelectorAll('[data-need-cart]').forEach(function (x) { x.removeAttribute('data-need-cart'); });
+    box.querySelectorAll('[data-coupon-wrap]').forEach(function (x) { x.hidden = true; });  // kupon: a Shoprenter pénztárában
+    var K = window.KONTYOS.p, LIMIT = 25000, byUrl = {};
+    Object.keys(K).forEach(function (id) { if (K[id].url) byUrl[K[id].url.split('#')[0]] = id; });
+    var fmt = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' Ft'; };
+    var esc = function (x) { return String(x).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var ft = function (el) { var m = el && el.textContent.replace(/ /g, ' ').match(/(\d[\d. ]*)\s*Ft/); return m ? parseInt(m[1].replace(/\D/g, ''), 10) : 0; };
+    var path = function (h) { try { return new URL(h, location.href).pathname; } catch (e) { return h; } };
+    var rows = [];
+    function read() {
+      rows = [];
+      sr.querySelectorAll('.sr-cart-table tbody tr').forEach(function (tr) {
+        var a = tr.querySelector('.ac-prod-name'), nm = a ? a.textContent.trim() : '';
+        if (!nm) return;
+        var href = a.getAttribute('href') || '', id = byUrl[path(href)] || null, qi = tr.querySelector('.ac-quantity'), im = tr.querySelector('.ac-prod-image');
+        rows.push({ tr: tr, name: nm, href: href, id: id, q: parseInt(qi && qi.value, 10) || 1, amt: ft(tr.querySelector('.ac-prod-current-price')),
+          img: im && im.getAttribute('src'), drs: /^\s*Betétdíj/i.test(nm) });
+      });
+    }
+    function next() { var b = sr.querySelector('.ac-next-to-checkout'); return (b && b.getAttribute('href')) || '/checkout'; }
+    function render() {
+      read();
+      var root = box.querySelector('#cart-root'), side = box.querySelector('#cart-side'), items = rows.filter(function (r) { return !r.drs; });
+      if (!root) return;
+      if (!items.length) {
+        root.innerHTML = '<div class="box" style="text-align:center;padding:48px 22px"><p class="k-h2" style="font-size:34px">A kosarad üres.</p><p class="muted" style="margin:10px 0 22px">Nézz körül a 100%-os gyümölcsborok között.</p><a class="k-btn blue" href="/gyumolcsbor">Gyümölcsborok</a></div>';
+        if (side) side.hidden = true; return;
+      }
+      if (side) side.hidden = false;
+      var sub = 0, drs = 0;
+      rows.forEach(function (r) { if (r.drs) drs += r.amt; else sub += r.amt; });
+      var free = sub >= LIMIT, left = Math.max(0, LIMIT - sub), pct = Math.min(100, Math.round(sub / LIMIT * 100));
+      var lines = rows.map(function (r, i) {
+        if (r.drs) return '';
+        var p = r.id && K[r.id], img = (p && p.img) || r.img, tint = (p && p.tint) || '#F8F4EC';
+        return '<div class="line"><a class="im" style="--tint:' + tint + '" href="' + esc(r.href) + '">' + (img ? '<img src="' + esc(img) + '" alt="">' : '') + '</a>' +
+          '<div class="nm"><a href="' + esc(r.href) + '">' + esc(p ? p.n : r.name) + '</a><small>' + esc(p && p.sub || '') + '</small><button class="rm" type="button" data-sr-rm="' + i + '">Törlés</button></div>' +
+          '<div class="q"><button type="button" aria-label="Kevesebb" data-sr-q="' + i + '" data-d="-1">−</button><span>' + r.q + '</span><button type="button" aria-label="Több" data-sr-q="' + i + '" data-d="1">+</button></div>' +
+          '<div class="sum">' + fmt(r.amt) + '</div></div>';
+      }).join('');
+      root.innerHTML = '<div class="box" style="display:flex;flex-direction:column;gap:12px"><p class="serif" style="font-size:24px">' + (free ? 'Ingyenes a szállítás. 🎉' : 'Még <b style="color:#C8284E">' + fmt(left) + '</b>, és ingyen visszük.') + '</p><div class="bar" style="height:10px"><i style="width:' + (free ? 100 : pct) + '%"></i></div></div>' +
+        '<div class="box">' + lines + '</div>';
+      var grand = ft(sr.querySelector('.ac-gross-sum')) || (sub + drs);
+      box.querySelectorAll('[data-sum]').forEach(function (el) { el.textContent = fmt(sub); });
+      box.querySelectorAll('[data-drsrow]').forEach(function (el) { el.hidden = !drs; });
+      box.querySelectorAll('[data-drs]').forEach(function (el) { el.textContent = fmt(drs); });
+      box.querySelectorAll('[data-disc]').forEach(function (el) { el.hidden = true; });
+      box.querySelectorAll('[data-shipfee]').forEach(function (el) { el.textContent = free ? 'Ingyenes' : '1 800 Ft-tól'; });
+      box.querySelectorAll('[data-grand]').forEach(function (el) { el.innerHTML = fmt(grand) + (free ? '' : '<small>+ szállítás (1 800 Ft-tól)</small>'); });
+      var to = next();
+      box.querySelectorAll('a[href*="checkout/cart"]').forEach(function (x) { if (!x.closest('.steps li.on')) x.setAttribute('href', to); });
+      var cu = box.querySelector('#cart-ups');
+      if (cu && window.kyUps) {
+        var inCart = items.map(function (r) { return r.id; }).filter(Boolean), pool = [];
+        inCart.forEach(function (id) { (K[id].ups || []).forEach(function (i) { if (pool.indexOf(i) < 0) pool.push(i); }); });
+        ['kontyos-borospohar', 'don-cherry-gyumolcse', 'friss-eper', 'piri-mama-bogreje'].forEach(function (i) { if (pool.indexOf(i) < 0) pool.push(i); });
+        cu.innerHTML = window.kyUps(pool, inCart);
+      }
+    }
+    box.addEventListener('click', function (e) {
+      var q = e.target.closest('[data-sr-q]'), rm = e.target.closest('[data-sr-rm]');
+      var r = q ? rows[+q.getAttribute('data-sr-q')] : rm ? rows[+rm.getAttribute('data-sr-rm')] : null;
+      if (!r) return;
+      e.preventDefault();
+      var up = q && q.getAttribute('data-d') === '1';
+      var t = up ? r.tr.querySelector('.ac-quantity-up') : (q && r.q > 1) ? r.tr.querySelector('.ac-quantity-down button, .ac-quantity-down') : r.tr.querySelector('.ac-prod-delete');
+      if (t) t.click();
+    });
+    var tm;
+    if (window.MutationObserver) new MutationObserver(function () { clearTimeout(tm); tm = setTimeout(render, 60); }).observe(sr, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['value'] });
+    render();
+    window.addEventListener('load', render);
+  })();
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-add]'); if (!a) return;
     var id = a.getAttribute('data-add'), sku = a.getAttribute('data-sku') || ((window.KONTYOS.p[id] || {}).sku) || '';
@@ -77,6 +160,7 @@
     var body = new FormData(); body.append('product_id', pid); body.append('quantity', q);
     fetch(action, { method: 'POST', body: body, credentials: 'same-origin' }).then(function () {
       a.classList.add('ky-added'); setTimeout(function () { a.classList.remove('ky-added'); }, 1500);
+      if (window.KY_SR_CART) { location.reload(); return; }
       srRefresh();
     });
   }, true);

@@ -145,6 +145,8 @@ REVERT_CSS = '.ky,.ky :where(:not(svg,svg *,img,video,canvas,iframe,picture,sour
 
 # A Shoprenter-keret (Párizs) igazítása: ezek a szabályok szándékosan NEM a .ky alatt vannak.
 SHELL_CSS = '''
+.ky-cart-on .sr-cart-page-content{position:absolute!important;left:-99999px!important;top:0!important;width:1100px!important;visibility:hidden}
+.ky-cart-on .page-head,.ky-cart-on .breadcrumb{display:none!important}
 .ky > .ky-pre{display:none}
 .ky-pre-wrap{position:relative;z-index:61}
 /* --- Shoprenter-keret (Párizs) igazítása a Kontyos-oldalakhoz --- */
@@ -268,7 +270,13 @@ def main():
     js2 = js.replace("var ROOT = document.documentElement.getAttribute('data-root') || '';", "var ROOT = '';")
     js2 = js2.replace("ROOT + 'kosar.html'", "'/index.php?route=checkout/cart'").replace("ROOT + 'gyumolcsbor.html'", "'/gyumolcsbor'")
     js2 = js2.replace("document.body.getAttribute('data-page')", "(document.querySelector('main .ky[data-page]') || document.body).getAttribute('data-page')")
+    # a Shoprenter-kosároldalon a kosarat a shoprenter_adapter.js rajzolja (a rejtett Vue-kosár adataiból)
+    js2 = js2.replace("var cr = document.getElementById('cart-root');", "var cr = window.KY_SR_CART ? null : document.getElementById('cart-root');")
+    js2 = js2[:js2.rstrip().rindex('})();')] + '  window.kyUps = upsHtml; window.kyFmt = fmt;\n})();\n'
     js2 = ren_js(js2)
+    kb = body_parts('kosar.html')
+    cart_html = rewrite(kb['main']).replace('{% verbatim %}', '').replace('{% endverbatim %}', '')
+    cat2 += 'window.KY_CART_HTML = ' + json.dumps(cart_html, ensure_ascii=False) + ';\n'
     adapter = open(os.path.join(ROOT, 'src', 'shoprenter_adapter.js'), encoding='utf-8').read()
     pidmap = json.load(open(os.path.join(OUT, 'sandbox_pid.json'), encoding='utf-8')) if os.path.exists(os.path.join(OUT, 'sandbox_pid.json')) else {}
     pidjs = 'window.KY_PID = Object.assign(' + json.dumps(pidmap, ensure_ascii=False) + ', window.KY_PID || {});\n'  # cikkszám → product_id (sandboxból kimentve)
