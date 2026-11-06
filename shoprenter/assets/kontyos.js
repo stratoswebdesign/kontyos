@@ -181,11 +181,9 @@ window.KY_CART_HTML = "<main><div class=\"wrap\" style=\"display:flex;flex-direc
       var b = new URLSearchParams(); b.append('subscriber_email', mail); b.append('subscriber_firstname', ''); b.append('subscriber_lastname', '');
       b.append('subscriber_policy', '1'); b.append('status', '1'); b.append('language_id', '1'); b.append('re-email', '');
       fetch('/index.php?route=module/newsletter_subscribe/subscribe', { method: 'POST', body: b, credentials: 'same-origin', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
-        .then(function (r) { return r.text().then(function (t) { return { ok: r.ok, t: t }; }); })
         .then(function (r) {
-          var j = null; try { j = JSON.parse(r.t); } catch (x) {}
-          var err = !r.ok || (j && (j.error || j.success === false || j.status === 'error'));
-          if (err) { if (btn) btn.disabled = false; var m = (j && (j.error || j.message)) || 'Most nem sikerült, kérjük, próbáld újra.'; var n = f.querySelector('.nl-err') || f.appendChild(Object.assign(document.createElement('p'), { className: 'nl-note nl-err' })); n.textContent = typeof m === 'string' ? m : 'Most nem sikerült, kérjük, próbáld újra.'; return; }
+          // siker: a Shoprenter a köszönő oldalra irányít (module/newsletter_subscribe/thankyou_page)
+          if (!/newsletter_subscribe\/thankyou/.test(r.url)) { if (btn) btn.disabled = false; var n = f.querySelector('.nl-err') || f.appendChild(Object.assign(document.createElement('p'), { className: 'nl-note nl-err' })); n.textContent = 'Most nem sikerült, kérjük, ellenőrizd az e-mail címet, és próbáld újra.'; return; }
           kyMsg(f, 'Köszönjük! Az 5%-os kuponkódot e-mailben küldjük.');
         })
         .catch(function () { if (btn) btn.disabled = false; });
