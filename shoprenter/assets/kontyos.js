@@ -391,6 +391,10 @@ window.KY_CART_HTML = "<main><div class=\"wrap\" style=\"display:flex;flex-direc
     });
   });
 
+  /* Elállási nyilatkozat (demó – a Shoprenterben a beépített elállási funkció működik) */
+  document.querySelectorAll('form[data-withdraw]').forEach(function (f) {
+    f.addEventListener('submit', function (e) { e.preventDefault(); f.innerHTML = '<p style="font-weight:800">Köszönjük, az elállást rögzítettük. A visszaigazolást e-mailben küldjük.</p>'; });
+  });
   /* Hírlevél (demó) */
   document.querySelectorAll('form[data-newsletter]').forEach(function (f) {
     f.addEventListener('submit', function (e) { e.preventDefault(); f.innerHTML = '<p style="font-weight:800">Köszönjük! Az 5%-os kuponkódot e-mailben küldjük.</p>'; });

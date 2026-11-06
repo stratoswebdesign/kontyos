@@ -44,6 +44,16 @@
   "url": "/kiszallitas",
   "body_class": ""
  },
+ "ky-page-aszf": {
+  "demo": "aszf.html",
+  "url": "/aszf",
+  "body_class": ""
+ },
+ "ky-page-adatkezeles": {
+  "demo": "adatkezeles.html",
+  "url": "/adatkezelesi-tajekoztato",
+  "body_class": ""
+ },
  "ky-p-berry-secco-tonic": {
   "demo": "termek/berry-secco-tonic.html",
   "url": "/berry-secco-and-tonic-075-l",
