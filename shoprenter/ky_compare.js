@@ -26,8 +26,8 @@ window.kyCmp = async function (srPath, demoPath, width, opts) {
     const seen = new Set(); let n = 0;
     for (let j = 0; j < Math.min(A.length, B.length) && n < (opts.max || 25); j++) {
       if (A[j].t.split('.')[0] !== B[j].t.split('.')[0]) { out.push(nm + ' STRUCT@' + j + ' ' + A[j].t + ' | ' + B[j].t); break; }
-      const d = P.map((k, q) => A[j].p[q] !== B[j].p[q] ? k + ':' + A[j].p[q] + '→' + B[j].p[q] : null).filter(Boolean)
-        .filter(x => !/^(backgroundImage|fontFamily):/.test(x) || !/url\(|"/.test(x) || x.replace(/https?:[^)"]*/g, '').split('→')[0].split(':').slice(1).join(':') !== x.replace(/https?:[^)"]*/g, '').split('→')[1]);
+      const nv = v => String(v).replace(/\?v=[0-9a-f]+/g, '');
+      const d = P.map((k, q) => nv(A[j].p[q]) !== nv(B[j].p[q]) ? k + ':' + A[j].p[q] + '→' + B[j].p[q] : null).filter(Boolean);
       const dw = Math.abs(A[j].w - B[j].w) > 2 ? 'w' + A[j].w + '→' + B[j].w : '', dh = Math.abs(A[j].h - B[j].h) > 2 ? 'h' + A[j].h + '→' + B[j].h : '';
       if (d.length || (opts.size && (dw || dh))) { const key = A[j].t + d.join(); if (seen.has(key)) continue; seen.add(key); out.push(nm + '#' + j + ' ' + A[j].t.slice(0, 50) + ' :: ' + d.join(' ; ').slice(0, 260) + (opts.size ? ' ' + dw + ' ' + dh : '')); n++; }
     }
