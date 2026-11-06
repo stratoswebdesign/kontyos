@@ -49,6 +49,9 @@ Karácsonyi ajándék bor (`/karacsonyi-ajandek-bor`). A tartalmat az `informati
 - **Kosároldal:** a Shoprenter Vue-kosara rejtve dolgozik; a `kontyos.js` fölé rajzolja a demó kosarát (`KY_CART_HTML`), a +/−/Törlés
   a rejtett Shoprenter-gombokat nyomja, a „Tovább a pénztárhoz” a Shoprenter pénztárába visz. Kupon: a Shoprenter pénztárában.
 - **Pénztár (egyoldalas):** csak CSS-skin (színek, betűk, gombok, logó) – a felépítése a Shoprenteré.
+- **Termékképek (2026-11-06):** az 54 aktív termék főképe a demó képe, JPG-ként (fehér háttér, max. 1200 px) a fájlkezelő
+  `product/Kontyos2026/kontyos-<demó-id>.jpg` útvonalán; feltöltés: `/admin/fileconnector?mode=upload&path=/product/Kontyos2026/`
+  (`uploads[0]` mező), beállítás: termék szerkesztése → rejtett `#image` mező → Mentés. Élesítéskor ugyanígy (a sandbox és az éles tárhely külön van).
 - **Vásár-adatok:** a `window.KONTYOS_FAIRS` a `kontyos.js` elején van; a vásárok oldal Leaflet-stíluslapja a snippetben.
 - **Téma-szerkesztő:** a Mentés gombot valódi kattintással kell megnyomni; egy meglévő fájl oldalbetöltésenként egyszer szerkeszthető
   (közben újratöltés); a sandboxban a CSS/JS a GitHub Pages-ről jön 10 perces gyorsítótár-kulccsal (`?v=ÉÉÉÉHHNNÓÓP`).
