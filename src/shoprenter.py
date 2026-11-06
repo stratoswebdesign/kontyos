@@ -39,7 +39,9 @@ NEW_SKU = {'goldberg-tonic': 'KY-GOLDBERG-TONIC', 'goldberg-ginger-ale': 'KY-GOL
            'buffalo-trace': 'KY-BUFFALO-TRACE', 'campari': 'KY-CAMPARI', 'don-kis': 'KY-DON-KIS', 'don-nagy': 'KY-DON-NAGY',
            'forralt-6': 'KY-PIRI-5', 'koktel-negroni': 'KY-KOKTEL-NEGRONI', 'koktel-americano': 'KY-KOKTEL-AMERICANO',
            'koktel-tonic': 'KY-KOKTEL-TONIC', 'koktel-manhattan': 'KY-KOKTEL-MANHATTAN', 'koktel-gt-eper': 'KY-KOKTEL-EPER',
-           'koktel-gt-bodza': 'KY-KOKTEL-BODZA', 'koktel-malna-ginger': 'KY-KOKTEL-MALNA', 'koktel-gt-narancs': 'KY-KOKTEL-NARANCS'}
+           'koktel-gt-bodza': 'KY-KOKTEL-BODZA', 'koktel-malna-ginger': 'KY-KOKTEL-MALNA', 'koktel-gt-narancs': 'KY-KOKTEL-NARANCS',
+           'ujbor-valogatas': 'KY-UJBOR-6', 'bf-premium': 'KY-BF-PREMIUM', 'bf-mini': 'KY-BF-DISZKONT', 'edes-unnepek': 'KY-EDES-UNNEPEK',
+           'premium-advent': 'KY-PREMIUM-ADVENT', 'konnyu-karacsony': 'KY-KONNYU-KARACSONY'}
 
 # ---- demó oldal → kontyos.hu URL (meglévő SEO-URL-ek a sitemap.xml-ből; * = új, javasolt) ----
 PAGE = {'index.html': '/', 'gyumolcsbor.html': '/gyumolcsbor', 'rolunk.html': '/rolunk', 'csomagok.html': '/kedvezmenyek/csomagajanlatok',
