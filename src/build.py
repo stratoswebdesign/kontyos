@@ -67,7 +67,8 @@ LINE_LABEL = {'klasszikus': 'Klasszikus gyümölcsbor', 'klara': 'Klára prémiu
               'secco': 'Berry Secco', 'piri': 'PIRI Mama forralt bor', 'don': 'Don Cherry', 'palinka': 'Pálinka',
               'csomag': 'Válogatás', 'kiegeszito': 'Kiegészítő', 'szezon': 'Szezonális csomag', 'partner': 'Partnertermék · koktélhoz'}
 
-# Szezonális és koktélcsomagok – a végleges tartalom, ár és szállítás a „KONTYOS_Webshop_2026_frissitett.xlsx” szerint (2026-11-05)
+# ÁRFORRÁS: Sanyi Google-táblázata („KONTYOS_Webshop_2026_frissitett”: Termékárak, Csomagösszetétel, Akciók összefoglaló) – ez mindig erősebb
+# minden más forrásnál (Artúr, 2026-11-06). Szezonális és koktélcsomagok: tartalom, ár és szállítás a táblázat szerint.
 # old = listaár (a tételek egyedi árainak összege), price = végleges csomagár, free = ingyenes szállítás
 UJBOR6 = ['edes-eperbor', 'edes-oszibarackbor', 'edes-bodza-almabor', 'szaraz-meggybor', 'friss-narancs', 'berry-secco-tonic']
 FORRALT6 = ['piri-mama-forralt-bora'] * 3 + ['epres-piri-mama-forralt-bora', 'narancsos-piri-mama-forralt-bora']
@@ -90,7 +91,7 @@ SEASON_PACKS = [
     dict(id='forralt-6', name='PIRI Mama forraltbor csomag – 5 palack', price=8760, old=10950, free=False,
          items=FORRALT6, tint='#FBE0CC', tag='FORRALT CSOMAG'),
     # Koktélcsomagok (Don Cherry oldal „Készítsd el otthon is!”, Csomagok – karácsony és Black Friday)
-    dict(id='koktel-negroni', name='Don Cherry Negroni csomag', price=22990, old=25780, free=False, cocktail='Negroni',
+    dict(id='koktel-negroni', name='Don Cherry Negroni csomag', price=22990, old=25790, free=False, cocktail='Negroni',
          items=['don-cherry', 'campari', 'gunpowder-gin'], tint='#F3E1D6', tag='KOKTÉLCSOMAG',
          note='A gin a készlet erejéig díszdobozban, ajándék pohárral érkezik.'),
     dict(id='koktel-americano', name='Don Cherry Americano csomag', price=16990, old=19770, free=False, cocktail='Americano',

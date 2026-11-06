@@ -486,11 +486,11 @@
   "line": "klasszikus",
   "accent": "#5B3A7A",
   "arch": "#E9DFF0",
-  "price": 3690,
+  "price": 3990,
   "old": null,
   "tier": [
    6,
-   3505
+   3791
   ],
   "avail": true,
   "short": "100% hamvas-kék szilvából reduktív borászati eljárással készült eszményi különlegesség. Friss szilvaíze estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: szilva, cukor, víz szulfitot tartalmaz",
@@ -582,11 +582,11 @@
   "line": "klasszikus",
   "accent": "#7C7A2A",
   "arch": "#EEF0D2",
-  "price": 3690,
+  "price": 3990,
   "old": null,
   "tier": [
    6,
-   3505
+   3791
   ],
   "avail": true,
   "short": "100% roppanós almából reduktív borászati eljárással készült eszményi különlegesség. Bodzavirágtól nyárillatú szelíd almaíze szódával estét pezsdítő; aperitifként a mély beszélgetésekhez simul. Összetevők: alma, almasűrítmény, bodzavirág kivonat, cukor, víz, szulfitot tartalmaz",
@@ -2485,7 +2485,7 @@
   "line": "kiegeszito",
   "accent": "#C25E14",
   "arch": "#FBE7D6",
-  "price": 2700,
+  "price": 2490,
   "old": null,
   "tier": null,
   "avail": true,
@@ -2654,7 +2654,7 @@
   "line": "partner",
   "accent": "#2E6E9E",
   "arch": "#E3EEF6",
-  "price": 13990,
+  "price": 14000,
   "old": null,
   "tier": null,
   "avail": true,
@@ -2688,7 +2688,7 @@
    ],
    [
     "Egységár",
-    "19 986 Ft/l"
+    "20 000 Ft/l"
    ]
   ],
   "rating": null,
