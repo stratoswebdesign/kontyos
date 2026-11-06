@@ -40,5 +40,18 @@ Karácsonyi ajándék bor (`/karacsonyi-ajandek-bor`). A tartalmat az `informati
 - pénztár és fiókoldalak (ezek a Párizs stílusát tartják) – csak színek/betűk igazítása;
 - képek: sandboxban a GitHub Pages-ről (IMG_BASE), élesítéskor a fájlkezelőből.
 
-## 5. Élesítés (csak jóváhagyás után)
+## 5. Tapasztalatok a sandboxból (2026-11-05/06)
+- **Párizs/Bootstrap ütközések:** a demó `.row`, `.col`, `.btn`, `.card`, `.price`, `.h1` … osztályai a Párizs CSS-ével ütköztek
+  (negatív margó, középre zárt lábléc, fehér sáv). Megoldás: a generátor `k-` előtagot ad ezeknek (`COLLIDE` lista a
+  `src/shoprenter.py`-ben – CSS, snippetek és JS egyszerre), és a `kontyos.css` elején `all:revert` nullázza a `.ky` alatti elemeket.
+- **Fejléc fölötti sáv** (pl. karácsonyi `.xbar`): a snippetben `.ky-pre`, a `kontyos.js` teszi a fejléc elé.
+- **Fizetési logók (SimplePay – kötelező):** a Shoprenter `.ky-legal-logos` blokkját a `kontyos.js` a sötét lábléc aljára teszi, nincs külön világos sáv.
+- **Vásár-adatok:** a `window.KONTYOS_FAIRS` a `kontyos.js` elején van; a vásárok oldal Leaflet-stíluslapja a snippetben.
+- **Téma-szerkesztő:** a Mentés gombot valódi kattintással kell megnyomni; egy meglévő fájl oldalbetöltésenként egyszer szerkeszthető
+  (közben újratöltés); a sandboxban a CSS/JS a GitHub Pages-ről jön 10 perces gyorsítótár-kulccsal (`?v=ÉÉÉÉHHNNÓÓP`).
+- **Ellenőrzés:** `shoprenter/ky_compare.js` → `kyCmp('/útvonal', 'demo.html', 1440|390)` a sandbox-oldalon futtatva elemenként összeveti
+  a számított stílusokat és a fejléc/logó/lábléc helyét a demóval.
+
+## 6. Élesítés (csak jóváhagyás után)
 Ugyanezek a lépések a kontyos.hu adminban, a témacsere éjszaka, előtte mentés az eredeti fájlokról.
+A CSS/JS élesben a téma `assets/` mappájából / fájlkezelőből töltődjön (ne a GitHub Pages-ről), a képek szintén.
