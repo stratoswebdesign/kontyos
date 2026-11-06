@@ -15,6 +15,7 @@ window.kyCmp = async function (srPath, demoPath, width, opts) {
   await sleep(800);
   [a, b].forEach(f => { const d = f.contentDocument; d.querySelectorAll('.demo-bar').forEach(e => e.remove()); });
   const P = ['display', 'position', 'float', 'fontSize', 'fontFamily', 'fontWeight', 'fontStyle', 'lineHeight', 'letterSpacing', 'textTransform', 'marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight', 'color', 'backgroundColor', 'backgroundImage', 'borderTopWidth', 'borderTopStyle', 'borderTopColor', 'borderRadius', 'boxShadow', 'flexDirection', 'flexWrap', 'justifyContent', 'alignItems', 'gap', 'gridTemplateColumns', 'opacity', 'transform', 'textDecorationLine', 'listStyleType', 'verticalAlign', 'boxSizing', 'overflow', 'zIndex', 'objectFit', 'whiteSpace', 'cursor', 'visibility'];
+  if (opts.skip) opts.skip.forEach(k => { const i = P.indexOf(k); if (i > -1) P.splice(i, 1); });
   const sig = (doc, root) => [...root.querySelectorAll('*')].filter(e => !/^(SCRIPT|STYLE|svg|path|g|circle|rect|line|polyline|polygon|use|defs|symbol|ellipse|text|tspan|clipPath|mask|linearGradient|stop)$/i.test(e.tagName)).map(e => { const c = doc.defaultView.getComputedStyle(e); return { t: e.tagName + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/).slice(0, 3).join('.') : ''), p: P.map(k => c[k]), w: Math.round(e.getBoundingClientRect().width), h: Math.round(e.getBoundingClientRect().height) }; });
   const rootsA = [a.contentDocument.querySelector('.site-head'), a.contentDocument.querySelector('body > main'), a.contentDocument.querySelector('footer')];
   const rootsB = [b.contentDocument.querySelector('.ky-head .site-head'), b.contentDocument.querySelector('.ky > main'), b.contentDocument.querySelector('.ky-foot footer')];
@@ -32,6 +33,15 @@ window.kyCmp = async function (srPath, demoPath, width, opts) {
       if (d.length || (opts.size && (dw || dh))) { const key = A[j].t + d.join(); if (seen.has(key)) continue; seen.add(key); out.push(nm + '#' + j + ' ' + A[j].t.slice(0, 50) + ' :: ' + d.join(' ; ').slice(0, 260) + (opts.size ? ' ' + dw + ' ' + dh : '')); n++; }
     }
   });
+  // keret: dokumentum-magasság, fejléc/logó/lábléc helye (a .ky-n kívüli Shoprenter-sávok kiszűrésére)
+  const R = (doc, sel) => { const e = doc.querySelector(sel); if (!e) return 'none'; const r = e.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.top + doc.defaultView.scrollY), Math.round(r.width), Math.round(r.height)].join(','); };
+  const da = a.contentDocument, db = b.contentDocument;
+  const fr = [['doc', 'html', 'html'], ['head', '.site-head', '.ky-head .site-head'], ['logo', '.site-head .logo', '.ky-head .site-head .logo'], ['main', 'body > main', '.ky > main'], ['foot', 'footer', '.ky-foot footer']];
+  const ha = da.documentElement.scrollHeight, hb = db.documentElement.scrollHeight;
+  if (Math.abs(ha - hb) > 2) out.unshift('DOC height ' + ha + '→' + hb);
+  fr.slice(1).forEach(([n, sa, sb]) => { const x = R(da, sa), y = R(db, sb); if (x !== y) out.unshift('RECT ' + n + ' ' + x + '→' + y); });
+  // a lábléc alatt / fejléc fölött maradó idegen sáv
+  const fb = db.querySelector('.ky-foot footer'); if (fb) { const gap = hb - (fb.getBoundingClientRect().bottom + db.defaultView.scrollY); if (gap > 1) out.unshift('BELOW-FOOTER gap ' + Math.round(gap)); }
   window.kyLast = { a, b };
   a.remove(); b.remove();
   return out;
