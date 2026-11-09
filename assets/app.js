@@ -1,6 +1,47 @@
 /* Kontyos webshop demo – kosár, mini-kosár, termékoldal, pénztár (localStorage alapú, szerver nélkül) */
 (function () {
   'use strict';
+  /* 18+ kapu (alkoholos webáruház). A választ 30 napig tároljuk a böngészőben; ha nincs localStorage, minden oldalbetöltésnél megjelenik. */
+  (function ageGate() {
+    var KEY = 'kontyos-age-ok', DAYS = 30;
+    try { var v = JSON.parse(localStorage.getItem(KEY) || 'null'); if (v && v.t && Date.now() - v.t < DAYS * 864e5) return; } catch (e) {}
+    var st = document.createElement('style');
+    st.textContent = '#kage{position:fixed;inset:0;z-index:2147483000;background:rgba(27,42,92,.94);display:flex;align-items:center;justify-content:center;padding:20px;font-family:Montserrat,system-ui,-apple-system,"Segoe UI",sans-serif;color:#1B2A5C;box-sizing:border-box}' +
+      '#kage *{box-sizing:border-box}' +
+      '#kage .kage-box{background:#F3EEE5;max-width:460px;width:100%;border-radius:8px;padding:36px 28px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)}' +
+      '#kage h2{font-family:"Prata HU",Georgia,serif;font-weight:400;text-transform:uppercase;font-size:28px;line-height:1.15;margin:0 0 14px;letter-spacing:.01em;color:#1B2A5C}' +
+      '#kage p{font-size:15px;line-height:1.55;margin:0 0 22px;color:#1B2A5C}' +
+      '#kage .kage-btns{display:flex;flex-direction:column;gap:12px}' +
+      '#kage button{font:800 15px/1.2 Montserrat,system-ui,sans-serif;border-radius:999px;min-height:50px;padding:14px 22px;cursor:pointer;border:1.5px solid #1B2A5C;background:transparent;color:#1B2A5C;width:100%}' +
+      '#kage button.kage-yes{background:#EF4E73;border-color:#EF4E73;color:#fff}' +
+      '#kage button:focus-visible{outline:3px solid #F3C66B;outline-offset:2px}' +
+      '#kage .kage-msg{font-weight:700;margin:4px 0 0;color:#EF4E73}' +
+      '@media (max-width:480px){#kage h2{font-size:24px}#kage .kage-box{padding:28px 20px}}';
+    document.head.appendChild(st);
+    var wrap = document.createElement('div');
+    wrap.id = 'kage';
+    wrap.setAttribute('role', 'dialog');
+    wrap.setAttribute('aria-modal', 'true');
+    wrap.setAttribute('aria-labelledby', 'kage-title');
+    wrap.innerHTML = '<div class="kage-box"><h2 id="kage-title">Elmúltál 18 éves?</h2>' +
+      '<p>Webáruházunk alkoholtartalmú termékeket kínál, ezért csak 18 év feletti látogatóknak érhető el.</p>' +
+      '<div class="kage-btns"><button type="button" class="kage-yes">Igen, elmúltam 18 éves</button>' +
+      '<button type="button" class="kage-no">Nem vagyok 18 éves</button></div>' +
+      '<p class="kage-msg" hidden></p></div>';
+    document.body.appendChild(wrap);
+    document.documentElement.style.overflow = 'hidden';
+    wrap.querySelector('.kage-yes').addEventListener('click', function () {
+      try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now() })); } catch (e) {}
+      wrap.remove(); st.remove(); document.documentElement.style.overflow = '';
+    });
+    wrap.querySelector('.kage-no').addEventListener('click', function () {
+      wrap.querySelector('.kage-btns').remove();
+      var m = wrap.querySelector('.kage-msg'); m.hidden = false;
+      m.textContent = 'Sajnáljuk, webáruházunk csak 18 év feletti vásárlók számára érhető el.';
+    });
+    setTimeout(function () { var b = wrap.querySelector('.kage-yes'); if (b) b.focus(); }, 0);
+  })();
+
   var K = window.KONTYOS || { p: {} };
   var ROOT = document.documentElement.getAttribute('data-root') || '';
   var LIMIT = 25000;

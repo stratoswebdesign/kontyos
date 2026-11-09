@@ -159,7 +159,7 @@ def write_catalog_js():
         page = ('csomagok.html' if s['id'] == 'ujbor-valogatas' else 'black-friday.html' if s['id'].startswith('bf')
                 else 'termek/don-cherry.html' if s['id'].startswith('don-') else f"termek/{s['id']}.html" if s['id'].startswith('koktel-')
                 else 'csomagok.html' if s['id'] == 'forralt-6' else 'karacsonyi-ajandek-bor.html')
-        out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=first['img'], url=page, drs=pack_drs(s),
+        out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=(CK_PAGE.get(s['id'], {}).get('img') or first['img']), url=page, drs=pack_drs(s),
                             sub=f"{len(s['items'])} tétel · {'koktélcsomag' if s.get('cocktail') else 'szezonális csomag'}", tint=s['tint'], free=s['free'], ups=['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry-gyumolcse'])
     js = '/* generálva: src/build.py */\nwindow.KONTYOS={p:' + json.dumps(out, ensure_ascii=False) + '};\n'
     open(os.path.join(ROOT, 'assets', 'catalog.js'), 'w', encoding='utf-8').write(js)
