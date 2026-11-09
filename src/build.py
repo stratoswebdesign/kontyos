@@ -147,6 +147,25 @@ def url(p):
     return f"termek/{p['id']}.html"
 
 
+def pack_composite(sp):
+    """A kosár/lista képe: a csomag palackjai egymás mellett (mint a termékoldalon), átlátszó háttérrel. Fájl: img/csomag/pack-<id>.webp"""
+    from PIL import Image
+    rel = f"img/csomag/pack-{sp['id']}.webp"
+    items = [i for i in sp['items'] if i != 'meggymag-parna']
+    ims = [Image.open(os.path.join(ROOT, P[i]['tight'])).convert('RGBA') for i in items]
+    CANVAS, MAXW, MAXH = 1000, 940, 900
+    h = MAXH
+    widths = [round(im.width * h / im.height) for im in ims]
+    if sum(widths) > MAXW:
+        f = MAXW / sum(widths); h = int(h * f); widths = [round(im.width * h / im.height) for im in ims]
+    canvas = Image.new('RGBA', (CANVAS, CANVAS), (0, 0, 0, 0))
+    x = (CANVAS - sum(widths)) // 2
+    for im, w in zip(ims, widths):
+        canvas.alpha_composite(im.resize((w, h), Image.LANCZOS), (x, CANVAS - 50 - h)); x += w
+    canvas.save(os.path.join(ROOT, rel), 'WEBP', quality=90, method=6)
+    return rel
+
+
 # ---------- catalog.js ----------
 def write_catalog_js():
     out = {}
@@ -159,7 +178,7 @@ def write_catalog_js():
         page = ('csomagok.html' if s['id'] == 'ujbor-valogatas' else 'black-friday.html' if s['id'].startswith('bf')
                 else 'termek/don-cherry.html' if s['id'].startswith('don-') else f"termek/{s['id']}.html" if s['id'].startswith('koktel-')
                 else 'csomagok.html' if s['id'] == 'forralt-6' else 'karacsonyi-ajandek-bor.html')
-        out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=(CK_PAGE.get(s['id'], {}).get('img') or first['img']), url=page, drs=pack_drs(s),
+        out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=pack_composite(s), url=page, drs=pack_drs(s),
                             sub=f"{len(s['items'])} tétel · {'koktélcsomag' if s.get('cocktail') else 'szezonális csomag'}", tint=s['tint'], free=s['free'], ups=['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry-gyumolcse'])
     js = '/* generálva: src/build.py */\nwindow.KONTYOS={p:' + json.dumps(out, ensure_ascii=False) + '};\n'
     open(os.path.join(ROOT, 'assets', 'catalog.js'), 'w', encoding='utf-8').write(js)
