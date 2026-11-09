@@ -165,7 +165,11 @@ body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1 *{color:#fff!importa
 body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1 a:hover{color:#F6E1E4!important}
 body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-2{background:#fff!important}
 /* 404: középre zárva */
-body:has(.ky-head) main:not(:has(.ky)):has(.not-found-page,[class*="error-page"],.page-not-found) .container{text-align:center}
+body.not_found_body:has(.ky-head) main .container{text-align:center}
+body.not_found_body:has(.ky-head) main .breadcrumb{justify-content:center}
+/* regisztráció/fiók űrlapok: a Párizs 30 px-es sorközei és az üres sorok helyett egyenletes 16 px */
+body:has(.ky-head) main:not(:has(.ky)) .checkout-input-row{margin-top:0!important}
+body:has(.ky-head) main:not(:has(.ky)) .checkout-input-row:empty{display:none!important}
 /* süti-sáv (nanobar) */
 .nanobar,#nanobar{font-family:'Montserrat',system-ui,sans-serif!important;color:#1B2A5C!important;background:#F3EEE5!important;border-top:1px solid #E2DACB!important}
 :is(.nanobar,#nanobar) :is(.btn,button){border-radius:999px!important;font-weight:800!important;box-shadow:none!important}
