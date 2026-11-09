@@ -71,6 +71,12 @@ Karácsonyi ajándék bor (`/karacsonyi-ajandek-bor`). A tartalmat az `informati
 - **Ellenőrzés:** `shoprenter/ky_compare.js` → `kyCmp('/útvonal', 'demo.html', 1440|390)` a sandbox-oldalon futtatva elemenként összeveti
   a számított stílusokat és a fejléc/logó/lábléc helyét a demóval.
 
+- **2026-11-09:** Don Cherry kis/nagy csomag (500/501) a párosok mintájára: listaár + akció (7 980 → 7 400, 12 970 → 11 600), készlet 1000,
+  készletcsökkentés nélkül, betétdíj 2 db / 3 db, SEO-URL `/don-kis`, `/don-nagy`, snippetek `ky-p-don-kis`, `ky-p-don-nagy`, a `product.tpl` térképében is.
+  A 17 csomag főképe az új, egymás melletti palackos kép: `product/Kontyos2026/kontyos-<id>-v2.jpg` (forrás: `shoprenter/upload/`).
+- **Tesztrendelés (2026-11-09):** #116936 (GLS házhoz, banki átutalás) – a sandboxban maradt, mert a rendelés nem törölhető; élesbe nem kerül át.
+  A vásár-értesítő 2 teszt-kitöltése sem törölhető egyenként; élesben új űrlap lesz.
+
 ## 6. Élesítés (csak jóváhagyás után)
 Ugyanezek a lépések a kontyos.hu adminban, a témacsere éjszaka, előtte mentés az eredeti fájlokról.
 A CSS/JS élesben a téma `assets/` mappájából / fájlkezelőből töltődjön (ne a GitHub Pages-ről), a képek szintén.
