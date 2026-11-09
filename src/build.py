@@ -156,7 +156,13 @@ def pack_composite(sp):
     items = [i for i in sp['items'] if i != 'meggymag-parna']
     ims = [Image.open(os.path.join(ROOT, P[i]['tight'])).convert('RGBA') for i in items]
     CANVAS, MAXW, BASE = 1000, 940, 900
-    hs = [int(BASE * 0.48) if i == 'don-cherry-gyumolcse' else BASE for i in items]
+    # koktélcsomag: ugyanaz a palackarány, mint a koktél termékoldalon (style.css 2726–2729: Campari 94%, Don 76%, gin 68%, jar/tonik 42%)
+    # egyéb csomag (páros, trió, Don kis/nagy): normál palack 88% (BASE), a Don gyümölcse fele
+    KCK = {'campari': 0.94, 'don-cherry': 0.76, 'buffalo-trace': 0.76, 'gunpowder-gin': 0.68, 'goldberg-tonic': 0.42, 'goldberg-ginger-ale': 0.42, 'don-cherry-gyumolcse': 0.42}
+    if sp['id'].startswith('koktel-'):
+        hs = [int(BASE * KCK.get(i, 0.94)) for i in items]
+    else:
+        hs = [int(BASE * 0.48) if i == 'don-cherry-gyumolcse' else BASE for i in items]
     widths = [round(im.width * h / im.height) for im, h in zip(ims, hs)]
     if sum(widths) > MAXW:
         f = MAXW / sum(widths)
