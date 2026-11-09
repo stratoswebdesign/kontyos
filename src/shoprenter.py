@@ -231,6 +231,9 @@ body.not_found_body:has(.ky-head) main .breadcrumb{justify-content:center}
 /* regisztráció/fiók űrlapok: a Párizs 30 px-es sorközei és az üres sorok helyett egyenletes 16 px */
 body:has(.ky-head) main:not(:has(.ky)) .checkout-input-row{margin-top:0!important}
 body:has(.ky-head) main:not(:has(.ky)) .checkout-input-row:empty{display:none!important}
+/* köszönőoldal (checkout/success): kisebb, középre zárt cím; a regisztrációs ajánló normál betűs */
+body.checkout_success_body:has(.ky-head) main .page-head-title{font-size:clamp(28px,3.4vw,44px)!important;text-align:center}
+body.checkout_success_body:has(.ky-head) main .success-page-registration h4{font-family:'Montserrat',system-ui,sans-serif!important;text-transform:none!important;font-size:16px!important;font-weight:700!important;line-height:1.5}
 /* süti-sáv (nanobar) */
 .nanobar,#nanobar{font-family:'Montserrat',system-ui,sans-serif!important;color:#1B2A5C!important;background:#F3EEE5!important;border-top:1px solid #E2DACB!important}
 :is(.nanobar,#nanobar) :is(.btn,button){border-radius:999px!important;font-weight:800!important;box-shadow:none!important}
