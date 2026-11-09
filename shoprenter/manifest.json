@@ -108,6 +108,18 @@
   "sku": "vermut01",
   "body_class": "pdp pdp-don has-buybar"
  },
+ "ky-p-don-kis": {
+  "demo": "termek/don-kis.html",
+  "url": "/don-kis",
+  "sku": "KY-DON-KIS",
+  "body_class": "has-buybar"
+ },
+ "ky-p-don-nagy": {
+  "demo": "termek/don-nagy.html",
+  "url": "/don-nagy",
+  "sku": "KY-DON-NAGY",
+  "body_class": "has-buybar"
+ },
  "ky-p-edes-bodza-almabor": {
   "demo": "termek/edes-bodza-almabor.html",
   "url": "/edes-bodza-almabor",

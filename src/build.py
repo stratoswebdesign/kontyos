@@ -180,7 +180,7 @@ def write_catalog_js():
     for s in SEASON_PACKS:
         first = P[s['items'][0]]
         page = ('csomagok.html' if s['id'] == 'ujbor-valogatas' else 'black-friday.html' if s['id'].startswith('bf')
-                else 'termek/don-cherry.html' if s['id'].startswith('don-') else f"termek/{s['id']}.html" if s['id'].startswith('koktel-')
+                else f"termek/{s['id']}.html" if s['id'] in ('don-kis', 'don-nagy') else 'termek/don-cherry.html' if s['id'].startswith('don-') else f"termek/{s['id']}.html" if s['id'].startswith('koktel-')
                 else 'csomagok.html' if s['id'] == 'forralt-6' else 'karacsonyi-ajandek-bor.html')
         out[s['id']] = dict(n=s['name'], price=s['price'], tier=None, img=pack_composite(s), url=page, drs=pack_drs(s),
                             sub=f"{len(s['items'])} tétel · {'koktélcsomag' if s.get('cocktail') else 'szezonális csomag'}", tint=s['tint'], free=s['free'], ups=['kontyos-borospohar', 'kontyos-szovettaska', 'don-cherry-gyumolcse'])

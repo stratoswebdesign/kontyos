@@ -21,16 +21,16 @@
 <div class="tx"><span class="k">Válogatás</span><span class="n">Meggy Páros</span>
 <div class="k-row"><span class="pr"><span class="old">7 980 Ft</span>7 581 Ft</span></div></div></a>
 <div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="meggy-paros" data-sku="PAROSMEGGY" aria-label="Meggy Páros kosárba">+</button></div></div><div class="pcard" data-taste="edes" data-card style="position:relative"><a href="/eper-paros" style="text-decoration:none;display:flex;flex-direction:column;flex:1" class="in">
-<div class="ph" style="--tint:#FBE3E6"><span class="pbadge gold">LEGJOBB ÉRTÉK · −5%</span><img src="https://stratoswebdesign.github.io/kontyos/img/csomag/eper-paros.webp" alt="Eper Páros" loading="lazy" width="500" height="500"></div>
+<div class="ph" style="--tint:#FBE3E6"><span class="pbadge pct">−5%</span><img src="https://stratoswebdesign.github.io/kontyos/img/csomag/eper-paros.webp" alt="Eper Páros" loading="lazy" width="500" height="500"></div>
 <div class="tx"><span class="k">Válogatás</span><span class="n">Eper Páros</span>
 <div class="k-row"><span class="pr"><span class="old">10 980 Ft</span>10 431 Ft</span></div></div></a>
 <div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="eper-paros" data-sku="PAROSEPER" aria-label="Eper Páros kosárba">+</button></div></div><div class="pcard" data-taste="edes" data-card style="position:relative"><a href="/konnyu-trio-483" style="text-decoration:none;display:flex;flex-direction:column;flex:1" class="in">
 <div class="ph" style="--tint:#FCE3EC"><span class="pbadge pct">−5%</span><img src="https://stratoswebdesign.github.io/kontyos/img/csomag/konnyu-trio.webp" alt="Könnyű Trió" loading="lazy" width="500" height="500"></div>
 <div class="tx"><span class="k">Válogatás</span><span class="n">Könnyű Trió</span>
 <div class="k-row"><span class="pr"><span class="old">6 570 Ft</span>6 241 Ft</span></div></div></a>
-<div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="konnyu-trio" data-sku="konnyutrio" aria-label="Könnyű Trió kosárba">+</button></div></div><div class="pcard" data-taste="edes" data-card style="position:relative"><a href="/edes-meggybor" style="text-decoration:none;display:flex;flex-direction:column;flex:1" class="in">
-<div class="ph" style="--tint:#F6E1E4"><img src="https://stratoswebdesign.github.io/kontyos/img/p/edes-meggybor.webp" alt="Édes meggybor" loading="lazy" width="500" height="500"></div>
-<div class="tx"><span class="k">Klasszikus gyümölcsbor</span><span class="n">Édes meggybor</span>
-<div class="k-row"><span class="pr">3 990 Ft</span></div></div></a>
-<div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="edes-meggybor" data-sku="KONTY102X" aria-label="Édes meggybor kosárba">+</button></div></div></div></div></section>
+<div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="konnyu-trio" data-sku="konnyutrio" aria-label="Könnyű Trió kosárba">+</button></div></div><div class="pcard" data-taste="edes" data-card style="position:relative"><a href="/don-kis" style="text-decoration:none;display:flex;flex-direction:column;flex:1" class="in">
+<div class="ph" style="--tint:#D9EEF0"><span class="pbadge new">ÚJ</span><img src="https://stratoswebdesign.github.io/kontyos/img/csomag/pack-don-kis.webp" alt="Don Cherry kis csomag" loading="lazy" width="500" height="500"></div>
+<div class="tx"><span class="k">Válogatás</span><span class="n">Don Cherry kis csomag</span>
+<div class="k-row"><span class="pr"><span class="old">7 980 Ft</span>7 400 Ft</span></div></div></a>
+<div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="don-kis" data-sku="KY-DON-KIS" aria-label="Don Cherry kis csomag kosárba">+</button></div></div></div></div></section>
 </main><div class="buybar"><div class="pb"><b data-line>4 161 Ft</b><small><span data-q>1</span> db</small></div><div class="qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q>1</span><button type="button" data-inc aria-label="Több">+</button></div><button class="k-btn" type="button" data-add="bubi-paros" data-sku="PAROSBERRY" data-qty-from="#q">Kosárba</button></div></div>

@@ -161,7 +161,7 @@
 <div class="tx"><span class="k">Válogatás</span><span class="n">Meggy Páros</span>
 <div class="k-row"><span class="pr"><span class="old">7 980 Ft</span>7 581 Ft</span></div></div></a>
 <div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="meggy-paros" data-sku="PAROSMEGGY" aria-label="Meggy Páros kosárba">+</button></div></div><div class="pcard" data-taste="edes" data-card style="position:relative"><a href="/eper-paros" style="text-decoration:none;display:flex;flex-direction:column;flex:1" class="in">
-<div class="ph" style="--tint:#FBE3E6"><span class="pbadge gold">LEGJOBB ÉRTÉK · −5%</span><img src="https://stratoswebdesign.github.io/kontyos/img/csomag/eper-paros.webp" alt="Eper Páros" loading="lazy" width="500" height="500"></div>
+<div class="ph" style="--tint:#FBE3E6"><span class="pbadge pct">−5%</span><img src="https://stratoswebdesign.github.io/kontyos/img/csomag/eper-paros.webp" alt="Eper Páros" loading="lazy" width="500" height="500"></div>
 <div class="tx"><span class="k">Válogatás</span><span class="n">Eper Páros</span>
 <div class="k-row"><span class="pr"><span class="old">10 980 Ft</span>10 431 Ft</span></div></div></a>
 <div style="position:absolute;right:16px;bottom:14px"><button class="plus" type="button" data-add="eper-paros" data-sku="PAROSEPER" aria-label="Eper Páros kosárba">+</button></div></div><div class="pcard" data-taste="edes" data-card style="position:relative"><a href="/konnyu-trio-483" style="text-decoration:none;display:flex;flex-direction:column;flex:1" class="in">
