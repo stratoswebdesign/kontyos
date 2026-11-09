@@ -61,7 +61,7 @@
     c.forEach(function (l) { var p = K.p[l.id]; if (!p) return; sub += unit(p, l.q) * l.q; items += l.q; drs += (p.drs || 0) * l.q; if (p.free) free = true; });
     document.querySelectorAll('[data-drsrow]').forEach(function (el) { el.hidden = !drs; });
     document.querySelectorAll('[data-drs]').forEach(function (el) { el.textContent = fmt(drs); });
-    return { drs: drs, sub: sub, items: items, free: free || sub >= LIMIT, left: Math.max(0, LIMIT - sub), pct: Math.min(100, Math.round(sub / LIMIT * 100)) };
+    return { drs: drs, sub: sub, items: items, free: free || sub + drs >= LIMIT, left: Math.max(0, LIMIT - sub - drs), pct: Math.min(100, Math.round((sub + drs) / LIMIT * 100)) };  // a Shoprenter a betétdíjjal együtt számolja a határt
   }
   /* Kupon (demó): a hírlevél-kupon −5% a termékek árából; élesben a Shoprenter kuponkezelése */
   var COUPONS = { HIRLEVEL5: { pct: 5, label: 'Hírlevél-kupon −5%' } };
@@ -180,10 +180,11 @@
       var u = unit(p, q);
       document.querySelectorAll('[data-unit]').forEach(function (el) { el.textContent = fmt(u); });
       document.querySelectorAll('[data-line]').forEach(function (el) { el.textContent = fmt(u * q); });
-      var t = totals(load()), after = t.sub + u * q, left = Math.max(0, LIMIT - after);
+      var t = totals(load()), base = window.KY_SR_TOTAL != null ? window.KY_SR_TOTAL : t.sub + t.drs, after = base + (u + (p.drs || 0)) * q, left = Math.max(0, LIMIT - after);  // Shoprenterben a valódi kosár végösszege (betétdíjjal)
       document.querySelectorAll('[data-free-text]').forEach(function (el) { el.textContent = (p.free || left === 0) ? 'Ezzel ingyenes a szállítás.' : (el.hasAttribute('data-free-short') ? 'Még ' + fmt(left) + ' az ingyenes szállításig' : 'Kosarad ezzel ' + fmt(after) + ' – még ' + fmt(left) + ' az ingyenes szállításig.'); });
       document.querySelectorAll('[data-free-bar]').forEach(function (el) { el.style.width = (p.free ? 100 : Math.min(100, Math.round(after / LIMIT * 100))) + '%'; });
     };
+    window.KY_PDP_REFRESH = function () { setQ(q); };
     document.addEventListener('click', function (e) {
       if (e.target.closest('[data-inc]')) setQ(q + 1);
       if (e.target.closest('[data-dec]')) setQ(q - 1);

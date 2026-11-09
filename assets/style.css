@@ -2071,6 +2071,7 @@ body[data-page="csomagok"] .pkx[data-pk="forralt-6"] .top{background:var(--tint)
 .steps li{padding:0}
 .steps li a{display:block;padding:9px 16px;border-radius:999px;color:inherit;text-decoration:none}
 .steps li:not(.on) a:hover{background:#F3EEE5}
+.steps li.on a{color:#fff}  /* Shoprenterben a link színe felülírta (sötétkék a sötétkéken) */
 .co-back{align-self:flex-start;font-size:14px;font-weight:700;color:var(--navy)}
 .line .im{border-radius:8px;align-items:center}
 .line .im img{height:88%}

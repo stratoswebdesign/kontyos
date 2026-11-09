@@ -51,6 +51,10 @@
     });
     if (!rows.length) { var c = box.querySelector('.cart-product-count'); n = c ? parseInt(c.textContent, 10) || 0 : 0; }
     document.querySelectorAll('[data-cart-count]').forEach(function (b) { b.textContent = n; });
+    // a kosár bruttó végösszege (betétdíjjal) – a termékoldali „még X Ft az ingyenes szállításig” ebből számol
+    var tp = box.querySelector('.cart-total-price');
+    window.KY_SR_TOTAL = tp ? (parseInt(tp.textContent.replace(/\D/g, ''), 10) || 0) : 0;
+    if (window.KY_PDP_REFRESH) window.KY_PDP_REFRESH();
   }
   function srRefresh() {
     var hx = document.querySelector('.ky-sr-cart hx\\:include, .ky-sr-cart [src*="_fragment"]');
@@ -116,7 +120,7 @@
       if (side) side.hidden = false;
       var sub = 0, drs = 0;
       rows.forEach(function (r) { if (r.drs) drs += r.amt; else sub += r.amt; });
-      var free = sub >= LIMIT, left = Math.max(0, LIMIT - sub), pct = Math.min(100, Math.round(sub / LIMIT * 100));
+      var base = sub + drs, free = base >= LIMIT, left = Math.max(0, LIMIT - base), pct = Math.min(100, Math.round(base / LIMIT * 100));  // mint a Shoprenter nanobarja: betétdíjjal együtt
       var lines = rows.map(function (r, i) {
         if (r.drs) return '';
         var p = r.id && K[r.id], img = (p && p.img) || r.img, tint = (p && p.tint) || '#F8F4EC';
