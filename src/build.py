@@ -677,7 +677,7 @@ def fairs_js():
 def fairs_strip(r=''):
     """Vásárok – a PIRI Mama landing „Hol kapható?” kártyáival azonos design (Sanyi, 2026-11-02).
     A képek a landing jelenlegi képei; a véglegesítettekre cseréljük, amikor a PIRI landingen is kicserélik."""
-    cards = ''.join(f'''<a class="fair-card2" href="{r}vasarok.html#{f['id']}" data-fair="{f['id']}"><span class="im"><img src="{r}img/fair/vasar-{i % 4 + 1}.webp" alt="Adventi vásár – {e(f['city'])}" loading="lazy"></span>
+    cards = ''.join(f'''<a class="fair-card2" href="{r}vasarok.html#{f['id']}" data-fair="{f['id']}"><span class="im"><img src="{r}img/fair/{f['id']}.webp" alt="Adventi vásár – {e(f['city'])}" loading="lazy"></span>
 <span class="tx"><span class="dt"><span data-fair-dates></span> · <span data-fair-status>Hamarosan</span></span><b>{e(f['city'])} – {e(f['place'].split(' – ')[0])}</b><span class="pl">{e(f['note'])}</span></span></a>''' for i, f in enumerate(FAIRS))
     return f'''<section class="follow2">{falling(r, ("flake-gold", "snow-dots", "flake-gold"), 12, 4)}<div class="wrap hd"><h2 class="lp-title">Találkozzunk az adventi vásárokon!</h2><p class="lp-sub">Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</p>
 <div class="fz-intro"><p class="fz-txt">Adventi vásárainkban <b>frissen elkészített, forrón kínált PIRI Mama forralt borokkal és a klasszikus eper forralt borunkkal</b> várunk.</p>
