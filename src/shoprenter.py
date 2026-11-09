@@ -211,6 +211,22 @@ body:has(.ky-head) main:not(:has(.ky)) :is(.product-card,.product-snapshot,.snap
 body:has(.ky-head) main:not(:has(.ky)) :is(.product-card__name,.snapshot-list-item-name,.product-card-title) a{font-family:'Prata HU',Georgia,serif;text-transform:uppercase;text-decoration:none!important;color:#1B2A5C!important}
 body:has(.ky-head) main:not(:has(.ky)) :is(.pagination .active > *,.page-item.active .page-link){background:#1B2A5C!important;border-color:#1B2A5C!important;color:#fff!important}
 body:has(.ky-head) main:not(:has(.ky)) :is(input[type=checkbox],input[type=radio]){accent-color:#EF4E73}
+/* keresési találatok: a régi termékleírásokban beégetett kék betűszín helyett navy */
+body:has(.ky-head) main:not(:has(.ky)) .product-card-description *{color:inherit!important}
+body:has(.ky-head) main:not(:has(.ky)) .product-card-description{color:#5A6072!important}
+/* közösségi belépés gomb: fehér felirat a Facebook-kéken */
+body:has(.ky-head) main:not(:has(.ky)) a.social-login-link,body:has(.ky-head) main:not(:has(.ky)) a.social-login-link *{color:#fff!important;text-decoration:none!important}
+body:has(.ky-head) main:not(:has(.ky)) a.social-login-link{border-radius:999px!important;padding:10px 22px!important}
+/* telefonszám-mező (országválasztós) teljes szélességben, mint a többi mező */
+body:has(.ky-head) main:not(:has(.ky)) .iti{width:100%!important;display:block!important}
+/* kapcsolat oldal: a régi kék blokkok a Kontyos-színekben */
+body:has(.ky-head) main:not(:has(.ky)) .contact-name{color:#1B2A5C!important;font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;font-size:clamp(22px,2.2vw,28px)!important}
+body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1{background:#1B2A5C!important;color:#fff!important}
+body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1 *{color:#fff!important}
+body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1 a:hover{color:#F6E1E4!important}
+body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-2{background:#fff!important}
+/* 404: középre zárva */
+body:has(.ky-head) main:not(:has(.ky)):has(.not-found-page,[class*="error-page"],.page-not-found) .container{text-align:center}
 /* süti-sáv (nanobar) */
 .nanobar,#nanobar{font-family:'Montserrat',system-ui,sans-serif!important;color:#1B2A5C!important;background:#F3EEE5!important;border-top:1px solid #E2DACB!important}
 :is(.nanobar,#nanobar) :is(.btn,button){border-radius:999px!important;font-weight:800!important;box-shadow:none!important}
