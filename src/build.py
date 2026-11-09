@@ -148,19 +148,23 @@ def url(p):
 
 
 def pack_composite(sp):
-    """A kosár/lista képe: a csomag palackjai egymás mellett (mint a termékoldalon), átlátszó háttérrel. Fájl: img/csomag/pack-<id>.webp"""
+    """A kosár/lista képe: a csomag palackjai egymás mellett, a termékoldal arányaival
+    (normál palack: azonos magasság = .lp-box .ph img 88%; a jar (Don Cherry gyümölcse): 42%/88% ≈ fele), átlátszó háttérrel.
+    Fájl: img/csomag/pack-<id>.webp"""
     from PIL import Image
     rel = f"img/csomag/pack-{sp['id']}.webp"
     items = [i for i in sp['items'] if i != 'meggymag-parna']
     ims = [Image.open(os.path.join(ROOT, P[i]['tight'])).convert('RGBA') for i in items]
-    CANVAS, MAXW, MAXH = 1000, 940, 900
-    h = MAXH
-    widths = [round(im.width * h / im.height) for im in ims]
+    CANVAS, MAXW, BASE = 1000, 940, 900
+    hs = [int(BASE * 0.48) if i == 'don-cherry-gyumolcse' else BASE for i in items]
+    widths = [round(im.width * h / im.height) for im, h in zip(ims, hs)]
     if sum(widths) > MAXW:
-        f = MAXW / sum(widths); h = int(h * f); widths = [round(im.width * h / im.height) for im in ims]
+        f = MAXW / sum(widths)
+        hs = [int(h * f) for h in hs]
+        widths = [round(im.width * h / im.height) for im, h in zip(ims, hs)]
     canvas = Image.new('RGBA', (CANVAS, CANVAS), (0, 0, 0, 0))
     x = (CANVAS - sum(widths)) // 2
-    for im, w in zip(ims, widths):
+    for im, h, w in zip(ims, hs, widths):
         canvas.alpha_composite(im.resize((w, h), Image.LANCZOS), (x, CANVAS - 50 - h)); x += w
     canvas.save(os.path.join(ROOT, rel), 'WEBP', quality=90, method=6)
     return rel
