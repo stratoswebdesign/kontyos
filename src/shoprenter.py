@@ -173,64 +173,64 @@ body:has(.ky-head) .footer-top-position,body:has(.ky-head) .footer-bottom-2-posi
 
 /* --- Párizs-oldalak (amik nincsenek a demóban: keresés, belépés, regisztráció, fiók, kapcsolat, elállás, 404, blog/info):
        Kontyos-arculat – papír háttér, navy szöveg, Prata címek, Montserrat szöveg, rózsaszín fő gomb --- */
-body:has(.ky-head) main:not(:has(.ky)){font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;color:#1B2A5C;padding:clamp(24px,4vw,56px) 0 clamp(48px,6vw,88px)!important}
-body:has(.ky-head) main:not(:has(.ky)) > .container,body:has(.ky-head) main:not(:has(.ky)) .container{max-width:1360px!important;padding-left:clamp(16px,3vw,40px)!important;padding-right:clamp(16px,3vw,40px)!important}
+body:has(.ky-head):not(:has(.ky main)) main{font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;color:#1B2A5C;padding:clamp(24px,4vw,56px) 0 clamp(48px,6vw,88px)!important}
+body:has(.ky-head):not(:has(.ky main)) main > .container,body:has(.ky-head):not(:has(.ky main)) main .container{max-width:1360px!important;padding-left:clamp(16px,3vw,40px)!important;padding-right:clamp(16px,3vw,40px)!important}
 /* a Párizs px-ben számolja az oszlopszélességet a konténerből – a keskenyebb konténerhez %-os oszlopok */
-@media (min-width:768px){body:has(.ky-head) main:not(:has(.ky)) .row > .column-left,body:has(.ky-head) main:not(:has(.ky)) .row > .column-right{flex:0 0 25%!important;max-width:25%!important;width:25%!important}
-body:has(.ky-head) main:not(:has(.ky)) .row > .two-column-content{flex:0 0 75%!important;max-width:75%!important;width:75%!important}
-body:has(.ky-head) main:not(:has(.ky)) .row > .three-column-content{flex:0 0 50%!important;max-width:50%!important;width:50%!important}
-body:has(.ky-head) main:not(:has(.ky)) .row > .one-column-content{flex:0 0 100%!important;max-width:100%!important;width:100%!important}}
+@media (min-width:768px){body:has(.ky-head):not(:has(.ky main)) main .row > .column-left,body:has(.ky-head):not(:has(.ky main)) main .row > .column-right{flex:0 0 25%!important;max-width:25%!important;width:25%!important}
+body:has(.ky-head):not(:has(.ky main)) main .row > .two-column-content{flex:0 0 75%!important;max-width:75%!important;width:75%!important}
+body:has(.ky-head):not(:has(.ky main)) main .row > .three-column-content{flex:0 0 50%!important;max-width:50%!important;width:50%!important}
+body:has(.ky-head):not(:has(.ky main)) main .row > .one-column-content{flex:0 0 100%!important;max-width:100%!important;width:100%!important}}
 /* a régi webshop oldalsáv-tartalmai (régi bannerek, régi szállítási infó, régi hírlevél-doboz) nem kellenek – a szűrő marad */
 body:has(.ky-head) main :is(.column-left,.column-right) > [id^="module_customcontent"]{display:none!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(p,li,td,th,label,dd,dt,span,small,div){font-family:inherit}
-body:has(.ky-head) main:not(:has(.ky)) :is(h1,.h1,.page-head h1,.page-title,h1.title){font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;font-size:clamp(28px,3.4vw,44px)!important;line-height:1.1!important;letter-spacing:.01em;margin:0 0 .6em!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(h2,h3,h4,.h2,.h3,.h4,.module-head-title,.box-title,legend){font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;letter-spacing:.01em}
-body:has(.ky-head) main:not(:has(.ky)) :is(h2,.h2,.module-head-title){font-size:clamp(22px,2.2vw,28px)!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(h3,h4,.h3,.h4,legend){font-size:clamp(18px,1.6vw,21px)!important}
-body:has(.ky-head) main:not(:has(.ky)) a:not(.btn):not(.button){color:#1B2A5C;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-body:has(.ky-head) main:not(:has(.ky)) a:not(.btn):not(.button):hover{color:#EF4E73}
-body:has(.ky-head) main:not(:has(.ky)) .breadcrumb{background:none!important;padding:0!important;margin:0 0 18px!important;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5A6072}
-body:has(.ky-head) main:not(:has(.ky)) .breadcrumb a{color:#5A6072!important;text-decoration:none!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.btn-primary,.button-primary,button[type=submit].btn,input[type=submit],.btn-success,#button-login,#button-register){background:#EF4E73!important;border:0!important;color:#fff!important;border-radius:999px!important;font-family:'Montserrat',sans-serif!important;font-weight:800!important;font-size:15px!important;letter-spacing:.02em;text-transform:none!important;min-height:48px;padding:12px 28px!important;box-shadow:none!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.btn-primary,.button-primary,button[type=submit].btn,input[type=submit],.btn-success):hover{background:#D93A60!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.btn-secondary,.btn-default,.btn-outline-primary,.btn-outline-secondary,.button-secondary){background:transparent!important;border:1.5px solid #1B2A5C!important;color:#1B2A5C!important;border-radius:999px!important;font-weight:800!important;min-height:48px;padding:12px 26px!important;box-shadow:none!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.btn-secondary,.btn-default,.btn-outline-primary,.btn-outline-secondary,.button-secondary):hover{background:#1B2A5C!important;color:#fff!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.form-control,input[type=text],input[type=email],input[type=password],input[type=tel],input[type=search],input[type=number],select,textarea){border:1.5px solid #1B2A5C!important;border-radius:4px!important;background:#fff!important;color:#1B2A5C!important;font-family:'Montserrat',sans-serif!important;font-size:16px!important;min-height:46px;box-shadow:none!important}
-body:has(.ky-head) main:not(:has(.ky)) textarea{min-height:120px}
-body:has(.ky-head) main:not(:has(.ky)) :is(.form-control,input,select,textarea):focus{border-color:#EF4E73!important;box-shadow:0 0 0 3px rgba(239,78,115,.18)!important;outline:0}
-body:has(.ky-head) main:not(:has(.ky)) :is(label,.control-label,.form-label){font-weight:700;font-size:14px;color:#1B2A5C}
-body:has(.ky-head) main:not(:has(.ky)) :is(.card,.box,.panel,.well,.content-box,.account-box,.login-box,.register-box){background:#fff!important;border:1px solid #E2DACB!important;border-radius:6px!important;box-shadow:none!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.card-header,.panel-heading,.box-heading){background:none!important;border-bottom:1px solid #E2DACB!important}
-body:has(.ky-head) main:not(:has(.ky)) table{border-color:#E2DACB!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(th,thead td){background:#F6E1E4!important;color:#1B2A5C!important;font-weight:800}
-body:has(.ky-head) main:not(:has(.ky)) :is(.alert-success,.success){background:#E7F2E7!important;border-color:#B9D9B9!important;color:#1B2A5C!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.alert-danger,.alert-warning,.warning,.error){border-radius:4px!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.price,.product-price,.product-card__price,.price-new){color:#1B2A5C!important;font-weight:800!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.price-old,.product-price--old){color:#5A6072!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.product-card,.product-snapshot,.snapshot-list-item){background:#fff;border:1px solid #E2DACB;border-radius:6px}
-body:has(.ky-head) main:not(:has(.ky)) :is(.product-card__name,.snapshot-list-item-name,.product-card-title) a{font-family:'Prata HU',Georgia,serif;text-transform:uppercase;text-decoration:none!important;color:#1B2A5C!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(.pagination .active > *,.page-item.active .page-link){background:#1B2A5C!important;border-color:#1B2A5C!important;color:#fff!important}
-body:has(.ky-head) main:not(:has(.ky)) :is(input[type=checkbox],input[type=radio]){accent-color:#EF4E73}
+body:has(.ky-head):not(:has(.ky main)) main :is(p,li,td,th,label,dd,dt,span,small,div){font-family:inherit}
+body:has(.ky-head):not(:has(.ky main)) main :is(h1,.h1,.page-head h1,.page-title,h1.title){font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;font-size:clamp(28px,3.4vw,44px)!important;line-height:1.1!important;letter-spacing:.01em;margin:0 0 .6em!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(h2,h3,h4,.h2,.h3,.h4,.module-head-title,.box-title,legend){font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;color:#1B2A5C!important;letter-spacing:.01em}
+body:has(.ky-head):not(:has(.ky main)) main :is(h2,.h2,.module-head-title){font-size:clamp(22px,2.2vw,28px)!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(h3,h4,.h3,.h4,legend){font-size:clamp(18px,1.6vw,21px)!important}
+body:has(.ky-head):not(:has(.ky main)) main a:not(.btn):not(.button){color:#1B2A5C;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+body:has(.ky-head):not(:has(.ky main)) main a:not(.btn):not(.button):hover{color:#EF4E73}
+body:has(.ky-head):not(:has(.ky main)) main .breadcrumb{background:none!important;padding:0!important;margin:0 0 18px!important;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5A6072}
+body:has(.ky-head):not(:has(.ky main)) main .breadcrumb a{color:#5A6072!important;text-decoration:none!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.btn-primary,.button-primary,button[type=submit].btn,input[type=submit],.btn-success,#button-login,#button-register){background:#EF4E73!important;border:0!important;color:#fff!important;border-radius:999px!important;font-family:'Montserrat',sans-serif!important;font-weight:800!important;font-size:15px!important;letter-spacing:.02em;text-transform:none!important;min-height:48px;padding:12px 28px!important;box-shadow:none!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.btn-primary,.button-primary,button[type=submit].btn,input[type=submit],.btn-success):hover{background:#D93A60!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.btn-secondary,.btn-default,.btn-outline-primary,.btn-outline-secondary,.button-secondary){background:transparent!important;border:1.5px solid #1B2A5C!important;color:#1B2A5C!important;border-radius:999px!important;font-weight:800!important;min-height:48px;padding:12px 26px!important;box-shadow:none!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.btn-secondary,.btn-default,.btn-outline-primary,.btn-outline-secondary,.button-secondary):hover{background:#1B2A5C!important;color:#fff!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.form-control,input[type=text],input[type=email],input[type=password],input[type=tel],input[type=search],input[type=number],select,textarea){border:1.5px solid #1B2A5C!important;border-radius:4px!important;background:#fff!important;color:#1B2A5C!important;font-family:'Montserrat',sans-serif!important;font-size:16px!important;min-height:46px;box-shadow:none!important}
+body:has(.ky-head):not(:has(.ky main)) main textarea{min-height:120px}
+body:has(.ky-head):not(:has(.ky main)) main :is(.form-control,input,select,textarea):focus{border-color:#EF4E73!important;box-shadow:0 0 0 3px rgba(239,78,115,.18)!important;outline:0}
+body:has(.ky-head):not(:has(.ky main)) main :is(label,.control-label,.form-label){font-weight:700;font-size:14px;color:#1B2A5C}
+body:has(.ky-head):not(:has(.ky main)) main :is(.card,.box,.panel,.well,.content-box,.account-box,.login-box,.register-box){background:#fff!important;border:1px solid #E2DACB!important;border-radius:6px!important;box-shadow:none!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.card-header,.panel-heading,.box-heading){background:none!important;border-bottom:1px solid #E2DACB!important}
+body:has(.ky-head):not(:has(.ky main)) main table{border-color:#E2DACB!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(th,thead td){background:#F6E1E4!important;color:#1B2A5C!important;font-weight:800}
+body:has(.ky-head):not(:has(.ky main)) main :is(.alert-success,.success){background:#E7F2E7!important;border-color:#B9D9B9!important;color:#1B2A5C!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.alert-danger,.alert-warning,.warning,.error){border-radius:4px!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.price,.product-price,.product-card__price,.price-new){color:#1B2A5C!important;font-weight:800!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.price-old,.product-price--old){color:#5A6072!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.product-card,.product-snapshot,.snapshot-list-item){background:#fff;border:1px solid #E2DACB;border-radius:6px}
+body:has(.ky-head):not(:has(.ky main)) main :is(.product-card__name,.snapshot-list-item-name,.product-card-title) a{font-family:'Prata HU',Georgia,serif;text-transform:uppercase;text-decoration:none!important;color:#1B2A5C!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(.pagination .active > *,.page-item.active .page-link){background:#1B2A5C!important;border-color:#1B2A5C!important;color:#fff!important}
+body:has(.ky-head):not(:has(.ky main)) main :is(input[type=checkbox],input[type=radio]){accent-color:#EF4E73}
 /* keresési találatok: a régi termékleírásokban beégetett kék betűszín helyett navy */
-body:has(.ky-head) main:not(:has(.ky)) .product-card-description *{color:inherit!important}
-body:has(.ky-head) main:not(:has(.ky)) .product-card-description{color:#5A6072!important}
+body:has(.ky-head):not(:has(.ky main)) main .product-card-description *{color:inherit!important}
+body:has(.ky-head):not(:has(.ky main)) main .product-card-description{color:#5A6072!important}
 /* közösségi belépés gomb: fehér felirat a Facebook-kéken */
-body:has(.ky-head) main:not(:has(.ky)) a.social-login-link,body:has(.ky-head) main:not(:has(.ky)) a.social-login-link *{color:#fff!important;text-decoration:none!important}
-body:has(.ky-head) main:not(:has(.ky)) a.social-login-link{border-radius:999px!important;padding:10px 22px!important}
+body:has(.ky-head):not(:has(.ky main)) main a.social-login-link,body:has(.ky-head):not(:has(.ky main)) main a.social-login-link *{color:#fff!important;text-decoration:none!important}
+body:has(.ky-head):not(:has(.ky main)) main a.social-login-link{border-radius:999px!important;padding:10px 22px!important}
 /* telefonszám-mező (országválasztós) teljes szélességben, mint a többi mező */
-body:has(.ky-head) main:not(:has(.ky)) .iti{width:100%!important;display:block!important}
+body:has(.ky-head):not(:has(.ky main)) main .iti{width:100%!important;display:block!important}
 /* kapcsolat oldal: a régi kék blokkok a Kontyos-színekben */
-body:has(.ky-head) main:not(:has(.ky)) .contact-name{color:#1B2A5C!important;font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;font-size:clamp(22px,2.2vw,28px)!important}
-body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1{background:#1B2A5C!important;color:#fff!important}
-body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1 *{color:#fff!important}
-body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-1 a:hover{color:#F6E1E4!important}
-body:has(.ky-head) main:not(:has(.ky)) .contact-wallpaper-2{background:#fff!important}
+body:has(.ky-head):not(:has(.ky main)) main .contact-name{color:#1B2A5C!important;font-family:'Prata HU',Georgia,serif!important;font-weight:400!important;text-transform:uppercase;font-size:clamp(22px,2.2vw,28px)!important}
+body:has(.ky-head):not(:has(.ky main)) main .contact-wallpaper-1{background:#1B2A5C!important;color:#fff!important}
+body:has(.ky-head):not(:has(.ky main)) main .contact-wallpaper-1 *{color:#fff!important}
+body:has(.ky-head):not(:has(.ky main)) main .contact-wallpaper-1 a:hover{color:#F6E1E4!important}
+body:has(.ky-head):not(:has(.ky main)) main .contact-wallpaper-2{background:#fff!important}
 /* 404: középre zárva */
 body.not_found_body:has(.ky-head) main .container{text-align:center}
 body.not_found_body:has(.ky-head) main .breadcrumb{justify-content:center}
 /* regisztráció/fiók űrlapok: a Párizs 30 px-es sorközei és az üres sorok helyett egyenletes 16 px */
-body:has(.ky-head) main:not(:has(.ky)) .checkout-input-row{margin-top:0!important}
-body:has(.ky-head) main:not(:has(.ky)) .checkout-input-row:empty{display:none!important}
+body:has(.ky-head):not(:has(.ky main)) main .checkout-input-row{margin-top:0!important}
+body:has(.ky-head):not(:has(.ky main)) main .checkout-input-row:empty{display:none!important}
 /* köszönőoldal (checkout/success): kisebb, középre zárt cím; a regisztrációs ajánló normál betűs */
 body.checkout_success_body:has(.ky-head) main .page-head-title{font-size:clamp(28px,3.4vw,44px)!important;text-align:center}
 body.checkout_success_body:has(.ky-head) main .success-page-registration h4{font-family:'Montserrat',system-ui,sans-serif!important;text-transform:none!important;font-size:16px!important;font-weight:700!important;line-height:1.5}
