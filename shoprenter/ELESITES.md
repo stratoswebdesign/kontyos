@@ -5,11 +5,23 @@
 - 22 új termék **Engedélyezett**, 29 régi **Letiltott** (a natúr almalé marad Engedélyezett – Sanyi dönt róla).
   A régi kampánycsomagok (382, 384, 389, 414, 427, 454) Kifutott maradtak, mint a sandboxban; az URL-átvétel elmaradt,
   az új szezonális csomagok URL-je `…-<id>` (pl. `/edes-unnepek-borcsomag-522`).
-- 7 sablon a sandbox szerint (footer_scripts: `kontyos.live.js`, jsDelivr @219c1df) – bájtra ellenőrizve.
+- 8 sablon a sandbox szerint (a `product_list.tpl` utólag, 22:29) (footer_scripts: `kontyos.live.js`, jsDelivr @219c1df) – bájtra ellenőrizve.
 - Tartalmi oldalak 67, 70, 72, 73, 76, 78 Engedélyezett; ÁSZF (5) → `/aszf`, Adatkezelés (49) → `/adatkezelesi-tajekoztato` a sandbox szövegével.
 - HIRLEVEL5 Engedélyezett; hírlevél köszönőoldal + automatikus köszönő levél = sandbox.
 - 301: a lenti lista 25 sora (a `nonapi-csomag` régi, `oszi-borcsomag`-ra mutató sora átírva) + a két régi jogi URL.
 - Karbantartási mód KI. Kosár → pénztár (utolsó lépés előtt) élesben kipróbálva, a tesztkosár kiürítve.
+
+**Utóélet, 2026-11-10 22:00–22:52 – vegyes régi/új dizájn → témaváltás:**
+- Nyitás után a nem bejelentkezett látogatók kéréseinek ~25–33%-a a módosítás előtti Párizs-sablonnal renderelődött
+  (friss adatokkal) – a Shoprenter egyes kiszolgálóinak elavult sablon-gyorsítótára. Admin nézetben nem jött elő.
+  A Labor › Cache törlés (2×) és a sablonok újramentése nem segített; közben a bolt karbantartásban volt.
+- Megoldás: **Téma másolása** (Párizs → „Kontyos”, belső név `paris_1`) és aktiválása – új néven nincs elavult gyorsítótár.
+  A sablonok bájtra egyeznek a `paris_global`-lal. Előtte a sandboxban kipróbálva (ott is `paris_1` az aktív).
+  Elveszett: a kategória/kereső oldalsáv régi Párizs-dobozai (customcontent 5/10/11 + oldalsáv-hírlevél) – az új oldalakon nem kellenek.
+- Mérés nyitás után: ~400 anonim lekérés (69 oldal, asztali + iPhone UA) – 0 régi, 0 borító; 22:50-től élesben.
+- **Ezentúl minden sablonmódosítás a `paris_1` témában!** (Téma fájl szerkesztő URL: `/admin/themeEditor/theme/paris_1`)
+- Közben javítva: `product/product_list.tpl` (Gyümölcsborok, Csomagajánlatok kategóriaoldal) – kimaradt az élesítésből;
+  Széchenyi 2020 infoblokk fix, jobb alsó sarokban (200×140, mobilon 120×84) – a `pagehead.tpl` Kontyos-blokkjában.
 
 **Tanulság (termékmentés POST-tal):** a keresőbarát URL (`keywords[1][keyword]`) és a bruttó árak (`gross_price`,
 `product_special[n][gross_price]`) a Vue-űrlapban élnek, a HTML-ből nem olvashatók ki. Ha kimaradnak, a Shoprenter
