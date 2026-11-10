@@ -1,0 +1,30 @@
+regi_url;uj_url;tipus;megjegyzes
+/a-gyumolcsoskertek-istennojetol;/kedvezmenyek/csomagajanlatok;301;régi csomag (Kifutott)
+/a-napfeny-izei;/kedvezmenyek/csomagajanlatok;301;régi csomag (Kifutott)
+/a-negy-kedvenc;/kedvezmenyek/csomagajanlatok;301;régi csomag (Kifutott)
+/a-negy-klara;/kedvezmenyek/csomagajanlatok;301;régi csomag (Kifutott)
+/csak-szarazon;/kedvezmenyek/csomagajanlatok;301;régi csomag (Kifutott)
+/tobbnyire-szarazon-386;/kedvezmenyek/csomagajanlatok;301;régi csomag (Kifutott)
+/klara-ajanlasaval;/kedvezmenyek/csomagajanlatok;301;régi csomag (Kifutott)
+/farsangi-borcsomag;/kedvezmenyek/csomagajanlatok;301;régi szezonális csomag
+/nonapi-csomag;/kedvezmenyek/csomagajanlatok;301;régi szezonális csomag
+/nyar-on-csomag;/kedvezmenyek/csomagajanlatok;301;régi szezonális csomag
+/tavaszi-borcsokor;/kedvezmenyek/csomagajanlatok;301;régi szezonális csomag
+/karacsonyi-borvalogatas;/karacsonyi-ajandek-bor;301;régi karácsonyi csomag
+/szilva-paros;/kedvezmenyek/csomagajanlatok;301;régi páros
+/ujbor-valogatas-2025;/kedvezmenyek/csomagajanlatok;301;a 2026-os Újbor-válogatás a csomagoldalon
+/black-friday-diszkont;/black-friday;301;2025-ös BF-csomag
+/black-friday-premium;/black-friday;301;2025-ös BF-csomag
+/edes-unnepek-borcsomag;(URL-átvétel);–;élesítéskor a régi termék SEO-URL-je kap -2025 végződést, az új (522) megkapja a tiszta URL-t – nem kell átirányítás
+/konnyu-karacsonyi-borcsomag;(URL-átvétel);–;ugyanígy: régi 454 → -2025, új 531 → tiszta URL
+/premium-adventi-borvalogatas;(URL-átvétel);–;ugyanígy: régi 427 → -2025, új 536 → tiszta URL
+/forralt-eperbor-alap;/forralt-bor;301;régi forralt alap
+/forralt-kortebor-alap-075l;/forralt-bor;301;régi forralt alap
+/forralt-meggybor-alap;/forralt-bor;301;régi forralt alap
+/forralt-mandulas-szilvabor-alap;/forralt-bor;301;már letiltott, a régi linkek miatt
+/forraltbor-trio;/forralt-bor;301;régi forralt csomag
+/kajszipalinka;/szamocapalinka;301;kifutott pálinka – a menü „Pálinkák” pontja is ide visz
+/ribizlipalinka;/szamocapalinka;301;kifutott pálinka – a menü „Pálinkák” pontja is ide visz
+/szaraz-barrique-szilvabor;/gyumolcsbor;301;kifutott bor
+/uvegbogre-025-l;/piri-mama-bogreje-032-l;301;utódtermék: PIRI Mama bögréje
+/natur-rostos-almale-5l-kevesebb-rosttal-;/gyumolcsbor;301;NYITOTT: jelenleg Engedélyezett és árulják – csak akkor kapcsoljuk ki, ha Sanyi is így akarja

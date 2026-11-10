@@ -9,30 +9,33 @@ Javasolt időpont: késő este, alacsony forgalomnál. Becsült idő: 30–45 pe
 | 22 új termék (csomagok, koktélcsomagok, partnertermékek) | **Letiltott**, SEO-URL beállítva | letiltott termék nem jelenik meg |
 | 68 `ky-*` snippet a `paris_global` témában | új fájlok, bájtra egyeznek a repóval | egyetlen sablon sem hivatkozik rájuk |
 | Koktélok (67), Vásárok (70), Black Friday (72), Karácsonyi ajándék bor (73), Forralt bor (76) | **Letiltott**, menü/lábléc/modul nélkül | látogatóként a főoldalra irányít |
-| Vásár-értesítő űrlap | létrehozva (ellenőrizni!) | nincs oldalra kitéve |
+| Vásár-értesítő űrlap (form 3) + oldal (78, `/vasar-ertesito`, noindex) | űrlap kész, oldal **Letiltott** | az oldal letiltott |
+| HIRLEVEL5 kupon (5%, vevőnként 1×) | **Letiltott** | letiltott kupon nem váltható be |
+| Sablon-mentések: `ky-backup-pagehead`, `-footer-scripts`, `-footer`, `-home`, `-header`, `-product`, `-information` | snippetként a témában | nincs használatban |
 
 Az éles termékazonosítók: `shoprenter/live_pid.json`; az éles kosárkód: `shoprenter/assets/kontyos.live.js`
 (a sandboxos `kontyos.js` a sandbox azonosítóival dolgozik – élesben **nem** az töltődik be).
 
 ## 1. Előtte (bármikor, láthatatlan)
-- [ ] Biztonsági mentés az élő sablonokról a repóba (`shoprenter/live-backup/`): `common/pagehead.tpl`, `common/footer_scripts.tpl`,
-      `sections/header.tpl`, `common/footer.tpl`, `common/home.tpl`, `product/product.tpl`, `information/information.tpl`.
-- [ ] A 74 meglévő cikkszám éles product_id-jét összevetni a `live_pid.json`-nal (a sandbox az élesről készült, de ellenőrizni kell).
+- [x] Biztonsági mentés az élő sablonokról: a témában `snippets/ky-backup-*.tpl` (7 db, 2026-11-10) + a Shoprenter „Korábbi verziók”.
+- [x] A 74 meglévő cikkszám éles product_id-je egyezik a `live_pid.json`-nal (2026-11-10; a „farsang 2026” élesben két szóközzel szerepel, kifutott termék).
 - [ ] A CSS/JS/képek helye élesben: fájlkezelő (`/custom/kontyos/…`) vagy GitHub Pages – döntés.
-- [ ] 301-es átirányítási lista (régi termék- és oldal-URL-ek → új) elkészítve, felvitel csak élesítéskor.
+- [x] 301-es átirányítási lista: `shoprenter/atiranyitasok.csv` (felvitel csak élesítéskor). Nyitott: a natúr almalé kikapcsolása (most is árulják).
 
 ## 2. Élesítés sorrendje
 1. **Termékek**
    - 44 meglévő termék frissítése (ár, akció, leírás, kép, betétdíj-kiegészítő) Sanyi táblázata szerint;
    - 22 új termék → **Engedélyezett**;
-   - 30 régi termék → **Letiltott** (nem törlés).
-2. **Tartalmi oldalak** – a 5 rejtett oldal → **Engedélyezett** (menü/lábléc pipák nélkül, a menüt a ky-header adja);
+   - 30 régi termék → **Letiltott** (nem törlés);
+   - URL-átvétel: a régi Édes Ünnepek (384), Könnyű karácsonyi (454), Prémium adventi (427) SEO-URL-je kap `-2025` végződést,
+     az új 522/531/536 megkapja a tiszta URL-t (`edes-unnepek-borcsomag`, `konnyu-karacsonyi-borcsomag`, `premium-adventi-borvalogatas`).
+2. **Tartalmi oldalak** – az 5 rejtett oldal és a Vásár-értesítő (78) → **Engedélyezett** (menü/lábléc pipák nélkül, a menüt a ky-header adja);
    Vásár-értesítő oldal létrehozása (`/vasar-ertesito`, noindex, nofollow) az űrlap objektummal;
    Rólunk / ÁSZF / Adatkezelési tájékoztató / Kiszállítás: SEO-URL egyeztetése az `information.tpl` térképével
    (`rolunk`, `aszf`, `adatkezelesi-tajekoztato`, `kiszallitas`).
 3. **Sablonok** (a `TELEPITES.md` táblázata szerint, mindegyik után Mentés + ellenőrzés):
    `pagehead` (CSS) → `footer_scripts` (**kontyos.live.js**) → `header` → `footer` → `home` → `product` → `information`.
-4. **Hírlevél** – automatikus köszönő levél a HIRLEVEL5 kóddal, köszönőoldal; HIRLEVEL5 kupon (5%, első rendelés).
+4. **Hírlevél** – HIRLEVEL5 kupon → **Engedélyezett**; automatikus köszönő levél a kóddal, köszönőoldal.
 5. **301 átirányítások** felvitele.
 6. **18+ korhatár-kapu** – a `kontyos.live.js` része, a sablonokkal együtt él.
 
@@ -43,5 +46,5 @@ Az éles termékazonosítók: `shoprenter/live_pid.json`; az éles kosárkód: `
 - GA4 / Meta pixel / Google Ads események (kosárba tétel, vásárlás) a GTM előnézetben.
 
 ## 4. Visszaállítás
-A `shoprenter/live-backup/` sablonjait visszamásolni a téma fájlszerkesztőjében (7 fájl). A termék- és oldalállapotokat
+A `ky-backup-*` snippetek tartalmát (az első megjegyzéssor nélkül) visszamásolni a téma fájlszerkesztőjében (7 fájl). A termék- és oldalállapotokat
 a fenti listák alapján vissza lehet kapcsolni; a snippetek maradhatnak, mert hivatkozás nélkül nem látszanak.
