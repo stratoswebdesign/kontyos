@@ -11,6 +11,8 @@ Javasolt időpont: késő este, alacsony forgalomnál. Becsült idő: 30–45 pe
 | Koktélok (67), Vásárok (70), Black Friday (72), Karácsonyi ajándék bor (73), Forralt bor (76) | **Letiltott**, menü/lábléc/modul nélkül | látogatóként a főoldalra irányít |
 | Vásár-értesítő űrlap (form 3) + oldal (78, `/vasar-ertesito`, noindex) | űrlap kész, oldal **Letiltott** | az oldal letiltott |
 | HIRLEVEL5 kupon (5%, vevőnként 1×) | **Letiltott** | letiltott kupon nem váltható be |
+| Lezáró borító: `common/maintenance.tpl` (forrás: `karbantartas.html`), az eredeti `ky-backup-maintenance` néven | kész | csak karbantartási módban jelenik meg |
+| 38 meglévő termék új főképe `product/Kontyos2026/kontyos-<id>.jpg` | feltöltve, termékhez még nincs kötve | nincs hivatkozás rá |
 | Sablon-mentések: `ky-backup-pagehead`, `-footer-scripts`, `-footer`, `-home`, `-header`, `-product`, `-information` | snippetként a témában | nincs használatban |
 
 Az éles termékazonosítók: `shoprenter/live_pid.json`; az éles kosárkód: `shoprenter/assets/kontyos.live.js`
@@ -19,10 +21,11 @@ Az éles termékazonosítók: `shoprenter/live_pid.json`; az éles kosárkód: `
 ## 1. Előtte (bármikor, láthatatlan)
 - [x] Biztonsági mentés az élő sablonokról: a témában `snippets/ky-backup-*.tpl` (7 db, 2026-11-10) + a Shoprenter „Korábbi verziók”.
 - [x] A 74 meglévő cikkszám éles product_id-je egyezik a `live_pid.json`-nal (2026-11-10; a „farsang 2026” élesben két szóközzel szerepel, kifutott termék).
-- [ ] A CSS/JS/képek helye élesben: fájlkezelő (`/custom/kontyos/…`) vagy GitHub Pages – döntés.
+- [ ] A CSS/JS helye élesben – a Shoprenter fájlkezelője **nem fogad** .css/.js fájlt (2026-11-10 kipróbálva). Lehetőségek: GitHub Pages (mint a sandboxban) vagy jsDelivr rögzített commit-hash-sel; a sablonba ágyazás (inline) 240 KB-os CSS-sel minden oldalt lassítana.
 - [x] 301-es átirányítási lista: `shoprenter/atiranyitasok.csv` (felvitel csak élesítéskor). Nyitott: a natúr almalé kikapcsolása (most is árulják).
 
 ## 2. Élesítés sorrendje
+0. **Hirdetések szüneteltetése** (Google Ads, Meta), majd **karbantartási mód BE** – a látogatók a lezáró borítót látják, adminként a bolt tovább tesztelhető.
 1. **Termékek**
    - 44 meglévő termék frissítése (ár, akció, leírás, kép, betétdíj-kiegészítő) Sanyi táblázata szerint;
    - 22 új termék → **Engedélyezett**;
@@ -37,6 +40,8 @@ Az éles termékazonosítók: `shoprenter/live_pid.json`; az éles kosárkód: `
 4. **Hírlevél** – HIRLEVEL5 kupon → **Engedélyezett**; automatikus köszönő levél a kóddal, köszönőoldal.
 5. **301 átirányítások** felvitele.
 6. **18+ korhatár-kapu** – a `kontyos.live.js` része, a sablonokkal együtt él.
+
+7. **Karbantartási mód KI**, hirdetések vissza.
 
 ## 3. Ellenőrzés közvetlenül utána
 - főoldal, 3 termékoldal (bor, csomag, koktélcsomag), Rólunk, Koktélok, Vásárok – asztali és mobil;
