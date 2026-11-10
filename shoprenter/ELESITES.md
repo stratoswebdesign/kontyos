@@ -19,7 +19,15 @@
   A sablonok bájtra egyeznek a `paris_global`-lal. Előtte a sandboxban kipróbálva (ott is `paris_1` az aktív).
   Elveszett: a kategória/kereső oldalsáv régi Párizs-dobozai (customcontent 5/10/11 + oldalsáv-hírlevél) – az új oldalakon nem kellenek.
 - Mérés nyitás után: ~400 anonim lekérés (69 oldal, asztali + iPhone UA) – 0 régi, 0 borító; 22:50-től élesben.
-- **Ezentúl minden sablonmódosítás a `paris_1` témában!** (Téma fájl szerkesztő URL: `/admin/themeEditor/theme/paris_1`)
+- **23:35-től az aktív téma: „Kontyos 2” (`paris_2`).** A `paris_1`-ben mentett utólagos módosítások is csak a kiszolgálók egy részén
+  jelentek meg (a jelenség minden már lefordított témánál fennáll), ezért a **módosítások élesítése = témamásolás**:
+  1. a módosítást a még soha nem aktív témapéldányba (vagy egy friss másolatba) írjuk – inaktív témában nincs gyorsítótár;
+  2. a másolatot aktiváljuk (Téma kiválasztás › Műveletek › Aktivál);
+  3. kívülről mérünk (`/tmp`-s chk4-szkript mintájára: kontyos.live.js, Kampányok, készítő-sor, Széchenyi-arány, korhatár-ablak, testvér-linkek).
+  A korábbi témák (`paris_global`, `paris_1`) inaktív tartalékok.
+- 23:35-ös kiadás: termékoldali testvér-linkek (17 snippet, 404 volt), lábléc (Kampányok: csak Vásárok + Koktélok; „Weboldalt készítette
+  és karbantartja: Stratos Webdesign” a fizetési logók sorában), Széchenyi-badge arány (200×140, mobilon 140×98), a Shoprenter beépített
+  korhatár-ablaka elrejtve (a Kontyos-kapu marad). Mérés: 269/269 lekérés hibátlan, 0 db 404 a renderelt linkek között.
 - Közben javítva: `product/product_list.tpl` (Gyümölcsborok, Csomagajánlatok kategóriaoldal) – kimaradt az élesítésből;
   Széchenyi 2020 infoblokk fix, jobb alsó sarokban (200×140, mobilon 120×84) – a `pagehead.tpl` Kontyos-blokkjában.
 
