@@ -369,6 +369,11 @@ def main():
     pidmap = json.load(open(os.path.join(OUT, 'sandbox_pid.json'), encoding='utf-8')) if os.path.exists(os.path.join(OUT, 'sandbox_pid.json')) else {}
     pidjs = 'window.KY_PID = Object.assign(' + json.dumps(pidmap, ensure_ascii=False) + ', window.KY_PID || {});\n'  # cikkszám → product_id (sandboxból kimentve)
     write('assets/kontyos.js', '/* Kontyos – katalógus + oldallogika (Shoprenter). Generálva: src/shoprenter.py */\n' + pidjs + cat2 + adapter + '\n' + js2)
+    # éles változat: ugyanaz, csak a kontyos.hu termékazonosítóival (live_pid.json) – élesítéskor ezt kell betölteni
+    lp = os.path.join(OUT, 'live_pid.json')
+    if os.path.exists(lp):
+        livejs = 'window.KY_PID = Object.assign(' + json.dumps(json.load(open(lp, encoding='utf-8')), ensure_ascii=False) + ', window.KY_PID || {});\n'
+        write('assets/kontyos.live.js', '/* Kontyos – ÉLES (kontyos.hu) változat. Generálva: src/shoprenter.py */\n' + livejs + cat2 + adapter + '\n' + js2)
 
     # fejléc + lábléc (a főoldalról)
     home = body_parts('index.html')
