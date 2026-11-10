@@ -1,5 +1,21 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ÉLESÍTVE – 2026-11-10 este
+- 44 meglévő termék = sandbox (főkép, ár, akció; cikkszám/gyártói cikkszám érintetlen) – ellenőrizve mezőnként.
+- 22 új termék **Engedélyezett**, 29 régi **Letiltott** (a natúr almalé marad Engedélyezett – Sanyi dönt róla).
+  A régi kampánycsomagok (382, 384, 389, 414, 427, 454) Kifutott maradtak, mint a sandboxban; az URL-átvétel elmaradt,
+  az új szezonális csomagok URL-je `…-<id>` (pl. `/edes-unnepek-borcsomag-522`).
+- 7 sablon a sandbox szerint (footer_scripts: `kontyos.live.js`, jsDelivr @219c1df) – bájtra ellenőrizve.
+- Tartalmi oldalak 67, 70, 72, 73, 76, 78 Engedélyezett; ÁSZF (5) → `/aszf`, Adatkezelés (49) → `/adatkezelesi-tajekoztato` a sandbox szövegével.
+- HIRLEVEL5 Engedélyezett; hírlevél köszönőoldal + automatikus köszönő levél = sandbox.
+- 301: a lenti lista 25 sora (a `nonapi-csomag` régi, `oszi-borcsomag`-ra mutató sora átírva) + a két régi jogi URL.
+- Karbantartási mód KI. Kosár → pénztár (utolsó lépés előtt) élesben kipróbálva, a tesztkosár kiürítve.
+
+**Tanulság (termékmentés POST-tal):** a keresőbarát URL (`keywords[1][keyword]`) és a bruttó árak (`gross_price`,
+`product_special[n][gross_price]`) a Vue-űrlapban élnek, a HTML-ből nem olvashatók ki. Ha kimaradnak, a Shoprenter
+`név-id` URL-t generál, illetve akciós terméknél elutasítja a mentést („Az akciós ár mező nem lehet üres”).
+Mindhármat ki kell tölteni (URL: `document.ShopRenter.data.keywords`; bruttó = nettó × 1,27).
+
 Csak Artúr jóváhagyása után, és miután Gabiék minden terméknél beírták a gyártói cikkszámot (SAP).
 Javasolt időpont: késő este, alacsony forgalomnál. Becsült idő: 30–45 perc + ellenőrzés.
 
