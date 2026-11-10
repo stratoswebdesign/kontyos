@@ -30,7 +30,6 @@ Az éles termékazonosítók: `shoprenter/live_pid.json`; az éles kosárkód: `
    - URL-átvétel: a régi Édes Ünnepek (384), Könnyű karácsonyi (454), Prémium adventi (427) SEO-URL-je kap `-2025` végződést,
      az új 522/531/536 megkapja a tiszta URL-t (`edes-unnepek-borcsomag`, `konnyu-karacsonyi-borcsomag`, `premium-adventi-borvalogatas`).
 2. **Tartalmi oldalak** – az 5 rejtett oldal és a Vásár-értesítő (78) → **Engedélyezett** (menü/lábléc pipák nélkül, a menüt a ky-header adja);
-   Vásár-értesítő oldal létrehozása (`/vasar-ertesito`, noindex, nofollow) az űrlap objektummal;
    Rólunk / ÁSZF / Adatkezelési tájékoztató / Kiszállítás: SEO-URL egyeztetése az `information.tpl` térképével
    (`rolunk`, `aszf`, `adatkezelesi-tajekoztato`, `kiszallitas`).
 3. **Sablonok** (a `TELEPITES.md` táblázata szerint, mindegyik után Mentés + ellenőrzés):
