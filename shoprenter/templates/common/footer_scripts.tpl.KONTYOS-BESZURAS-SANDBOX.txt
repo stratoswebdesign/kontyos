@@ -1,0 +1,4 @@
+{# ===== KONTYOS – a footer_scripts.tpl VÉGÉRE ===== #}
+<script>window.KY_SHOPRENTER = true; window.KY_ROOT = '/';</script>
+{# oldallogika + kosár: jsDelivr CDN, rögzített commit (219c1df) – frissítés: shoprenter/cdn_pin.py #}
+<script src="https://cdn.jsdelivr.net/gh/stratoswebdesign/kontyos@219c1df4f4c9e5901bddccbbd5dfebf64fce4c5f/shoprenter/assets/kontyos.js" defer></script>

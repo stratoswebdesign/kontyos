@@ -21,7 +21,7 @@ Az éles termékazonosítók: `shoprenter/live_pid.json`; az éles kosárkód: `
 ## 1. Előtte (bármikor, láthatatlan)
 - [x] Biztonsági mentés az élő sablonokról: a témában `snippets/ky-backup-*.tpl` (7 db, 2026-11-10) + a Shoprenter „Korábbi verziók”.
 - [x] A 74 meglévő cikkszám éles product_id-je egyezik a `live_pid.json`-nal (2026-11-10; a „farsang 2026” élesben két szóközzel szerepel, kifutott termék).
-- [ ] A CSS/JS helye élesben – a Shoprenter fájlkezelője **nem fogad** .css/.js fájlt (2026-11-10 kipróbálva). Lehetőségek: GitHub Pages (mint a sandboxban) vagy jsDelivr rögzített commit-hash-sel; a sablonba ágyazás (inline) 240 KB-os CSS-sel minden oldalt lassítana.
+- [x] A CSS/JS helye élesben: **jsDelivr CDN, rögzített commitra** (jóváhagyva 2026-11-10). A sandbox már így tölt és működik. Élesítés előtt: `python3 shoprenter/cdn_pin.py` (a legutolsó commitra rögzít), majd a `pagehead` / `footer_scripts` beszúrandó része a `templates/common/*.KONTYOS-BESZURAS.txt`-ből (élesben `kontyos.live.js`!).
 - [x] 301-es átirányítási lista: `shoprenter/atiranyitasok.csv` (felvitel csak élesítéskor). Nyitott: a natúr almalé kikapcsolása (most is árulják).
 
 ## 2. Élesítés sorrendje

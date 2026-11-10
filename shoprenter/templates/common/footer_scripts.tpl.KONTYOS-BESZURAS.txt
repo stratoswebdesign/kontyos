@@ -1,4 +1,4 @@
 {# ===== KONTYOS – a footer_scripts.tpl VÉGÉRE ===== #}
 <script>window.KY_SHOPRENTER = true; window.KY_ROOT = '/';</script>
-{# A kontyos.js-t a fájlkezelőbe töltjük fel (ha az assets mappa .js-t nem enged): #}
-<script src="{{ asset_image_url('kontyos/kontyos.js') }}" defer></script>
+{# oldallogika + kosár: jsDelivr CDN, rögzített commit (219c1df) – frissítés: shoprenter/cdn_pin.py #}
+<script src="https://cdn.jsdelivr.net/gh/stratoswebdesign/kontyos@219c1df4f4c9e5901bddccbbd5dfebf64fce4c5f/shoprenter/assets/kontyos.live.js" defer></script>
