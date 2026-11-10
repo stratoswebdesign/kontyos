@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Holnap nyitunk – Kontyos gyümölcsbor</title>
+<link rel="icon" href="https://stratoswebdesign.github.io/kontyos/img/kontyos-ikon-48.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400..800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Prata HU';src:url(https://stratoswebdesign.github.io/kontyos/assets/fonts/PrataHU-Regular.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+:root{--navy:#1B2A5C;--pink:#EF4E73;--blush:#F6E1E4;--cream:#F3EEE5}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--blush);color:var(--navy);font-family:'Lora',Georgia,serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.ky-mt{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:clamp(22px,4vw,44px) 16px 0;overflow:hidden;isolation:isolate}
+.ky-mt .logo{position:relative;z-index:3;display:block;width:clamp(150px,16vw,210px)}
+.ky-mt .logo img{display:block;width:100%;height:auto}
+/* gyümölcs-zápor */
+.ky-mt .fruits{position:absolute;inset:0;z-index:0;pointer-events:none}
+.ky-mt .fruits img{position:absolute;opacity:.5;transform:rotate(var(--r));animation:kyfloat 9s ease-in-out infinite alternate}
+@keyframes kyfloat{from{transform:translateY(0) rotate(var(--r))}to{transform:translateY(-18px) rotate(calc(var(--r) + 8deg))}}
+/* szöveg */
+.ky-mt .copy{position:relative;z-index:3;text-align:center;max-width:1100px;width:100%;margin:clamp(10px,3vh,40px) auto 0}
+.ky-mt .eyebrow{font-family:'Montserrat',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)}
+.ky-mt .word{font-family:'Prata HU',Georgia,serif;color:var(--pink);font-size:clamp(72px,12.5vw,196px);white-space:nowrap;line-height:.86;letter-spacing:.01em;margin:.12em 0 .08em;text-transform:uppercase}
+.ky-mt h1{text-wrap:balance;max-width:760px;margin:0 auto;font-family:'Prata HU',Georgia,serif;font-weight:400;font-size:clamp(26px,3.6vw,44px);line-height:1.12;text-transform:uppercase;letter-spacing:.02em}
+.ky-mt .lead{text-wrap:balance;font-size:clamp(16px,1.5vw,19px);line-height:1.6;margin:16px auto 0;max-width:600px}
+.ky-mt .lead b{font-weight:700}
+.ky-mt .pill{display:inline-block;margin-top:22px;background:var(--pink);color:#fff;font-family:'Montserrat',system-ui,sans-serif;font-weight:800;font-size:15px;letter-spacing:.02em;padding:15px 30px;border-radius:999px;box-shadow:0 10px 28px rgba(239,78,115,.32)}
+.ky-mt .contact{font-family:'Montserrat',system-ui,sans-serif;font-size:13px;margin-top:16px;opacity:.85}
+.ky-mt .contact a{color:var(--navy);font-weight:700}
+/* titokzatos palacksor: sziluettek, alulról kikandikálva */
+.ky-mt .shelf{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:center;gap:clamp(4px,1.2vw,14px);margin-top:clamp(24px,5vh,56px);height:clamp(170px,30svh,300px);width:100%;max-width:880px}
+.ky-mt .shelf img{height:100%;width:auto;filter:brightness(0) saturate(100%) invert(13%) sepia(24%) saturate(3570%) hue-rotate(212deg) brightness(93%) contrast(92%);opacity:.95;transform:translateY(22%) rotate(var(--r));transition:transform .5s cubic-bezier(.2,.8,.2,1),filter .5s}
+.ky-mt .shelf img:nth-child(odd){height:92%}
+.ky-mt .shelf img:hover{transform:translateY(8%) rotate(var(--r))}
+.ky-mt .tag{position:absolute;z-index:4;left:50%;bottom:clamp(110px,19svh,190px);transform:translateX(-50%) rotate(-4deg);background:var(--navy);color:#fff;font-family:'Montserrat',system-ui,sans-serif;font-weight:800;font-size:clamp(12px,1.1vw,14px);letter-spacing:.16em;text-transform:uppercase;padding:10px 18px;border-radius:6px;white-space:nowrap}
+@media (max-width:600px){
+  .ky-mt .shelf img:nth-child(n+5){display:none}
+  .ky-mt .fruits img{opacity:.38}
+}
+@media (prefers-reduced-motion:reduce){.ky-mt .fruits img{animation:none}}
+</style>
+</head>
+<body>
+<main class="ky-mt">
+  <div class="fruits" aria-hidden="true">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/szilva.svg" alt="" style="left:6%;top:4%;width:clamp(70px,11vw,160px);--r:-20deg">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/eper.svg" alt="" style="left:-2%;top:40%;width:clamp(70px,10vw,150px);--r:-30deg;animation-delay:-3s">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/ribizli.svg" alt="" style="left:12%;top:66%;width:clamp(60px,9vw,130px);--r:28deg;animation-delay:-5s">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/malna.svg" alt="" style="left:38%;top:-3%;width:clamp(50px,7vw,100px);--r:-14deg;animation-delay:-2s">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/narancs.svg" alt="" style="left:68%;top:8%;width:clamp(80px,12vw,170px);--r:12deg;animation-delay:-6s">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/eper.svg" alt="" style="left:86%;top:-2%;width:clamp(60px,9vw,130px);--r:30deg;animation-delay:-1s">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/alma.svg" alt="" style="left:88%;top:34%;width:clamp(70px,10vw,150px);--r:-16deg;animation-delay:-4s">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/meggy.svg" alt="" style="left:78%;top:62%;width:clamp(60px,9vw,130px);--r:24deg;animation-delay:-7s">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/fruit/kajszi.svg" alt="" style="left:24%;top:30%;width:clamp(50px,7vw,110px);--r:-24deg;animation-delay:-2.5s">
+  </div>
+
+  <a class="logo" href="/" aria-label="Kontyos gyümölcsbor"><img src="https://stratoswebdesign.github.io/kontyos/img/logo-navy.svg" alt="Kontyos gyümölcsbor" width="210" height="52"></a>
+
+  <div class="copy">
+    <p class="eyebrow">Új Kontyos webshop</p>
+    <p class="word" aria-hidden="true">Holnap</p>
+    <h1>Valami új érik nálunk</h1>
+    <p class="lead">Új köntöst kap a Kontyos webshop. Pár órára bezártunk, hogy minden a helyére kerüljön – <b>holnaptól itt vár az új bolt</b>: gyümölcsborok, új csomagok, koktélreceptek és PIRI Mama forralt borai.</p>
+    <span class="pill">Nézz vissza holnap!</span>
+    <p class="contact">Kérdésed van addig is? Írj nekünk: <a href="mailto:webshop@kontyos.hu">webshop@kontyos.hu</a></p>
+  </div>
+
+  <div class="shelf" aria-hidden="true">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/t/edes-eperbor.webp" alt="" style="--r:-6deg">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/t/edes-meggybor.webp" alt="" style="--r:-2deg">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/t/don-cherry-edes-meggyvermut-075-l.webp" alt="" style="--r:1deg">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/t/piri-mama-forralt-bora-1l.webp" alt="" style="--r:-1deg">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/t/edes-oszibarackbor.webp" alt="" style="--r:3deg">
+    <img src="https://stratoswebdesign.github.io/kontyos/img/t/berry-secco-075-l.webp" alt="" style="--r:6deg">
+  </div>
+  <span class="tag" aria-hidden="true">Holnaptól polcon</span>
+</main>
+</body>
+</html>
