@@ -24,6 +24,15 @@ head = f"""{{# ===== KONTYOS – a pagehead.tpl-ben a </head> ELÉ szúrandó (a
 /* A Párizs-téma saját fejlécének/láblécének elrejtése a Kontyos-fejléc mellett */
 body .ky-head ~ header:not(.site-head), body .ky-foot ~ footer:not(.site-foot){{display:none!important}}
 </style>
+{{# KONTYOS – Széchenyi 2020 infoblokk: fix, jobb alsó sarok, mint a régi oldalon (kötelező uniós tájékoztatás) #}}
+<style>
+.ky-legal-logos .szechenyi{{position:fixed!important;right:0;bottom:0;z-index:900;margin:0;padding:0;line-height:0;background:none}}
+body .ky-foot .site-foot .ky-legal-logos .szechenyi img,body .ky-legal-logos .szechenyi img{{display:block;width:200px!important;height:auto!important;max-width:none!important;max-height:none!important;aspect-ratio:10/7;object-fit:contain}}
+@media (max-width:600px){{body .ky-foot .site-foot .ky-legal-logos .szechenyi img,body .ky-legal-logos .szechenyi img{{width:140px!important}}}}
+/* a Shoprenter beépített korhatár-ablaka helyett a Kontyos-kapu (kontyos.live.js) */
+#auroraOverlay{{display:none!important}}
+body{{visibility:visible!important}}
+</style>
 """
 
 def foot(js):

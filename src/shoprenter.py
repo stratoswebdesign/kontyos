@@ -69,6 +69,8 @@ def page_url(href):
     path, _, frag = href.partition('#')
     path = path.split('?')[0]
     path = re.sub(r'^(\.\./)+', '', path).lstrip('./')
+    if not path.startswith('termek/') and path.endswith('.html') and os.path.exists(os.path.join(ROOT, 'termek', path)):
+        path = 'termek/' + path                    # termékoldalon belüli testvér-link (pl. berry-secco-tonic.html)
     if path.startswith('termek/'):
         pid = path[len('termek/'):-len('.html')]
         url = '/' + PROD.get(pid, pid)            # új termék: a demó-id lesz a javasolt SEO-URL

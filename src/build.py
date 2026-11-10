@@ -244,6 +244,8 @@ def footer(r):
 <div><h4>Kampányok</h4><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}koktelok.html">Koktélok</a></div>
 <div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás és fizetés</a><a href="{r}aszf.html">ÁSZF</a><a href="{r}adatkezeles.html">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a><a href="{r}elallas.html">Elállás a szerződéstől</a><a href="#show-cookie-settings">Sütibeállítások</a></div>
 <p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185</p>
+<p class="credit" style="grid-column:1/-1;order:99;margin:0;font-size:12px;opacity:.7">Weboldalt készítette és karbantartja: <a href="https://stratosweb.hu" target="_blank" rel="noopener" style="display:inline;font:inherit;color:inherit;text-decoration:underline;padding:0;margin:0">Stratos Webdesign</a></p>
+<script>/* ky-credit-move: a készítő-sor a fizetési logók sorába */document.addEventListener("DOMContentLoaded",function(){{setTimeout(function(){{var l=document.querySelector(".site-foot .ky-legal-logos"),c=document.querySelector(".site-foot .credit");if(l&&c){{l.appendChild(c);c.style.cssText="margin:0;font-size:12px;opacity:.75;line-height:1.4;white-space:nowrap;flex:0 0 auto;max-width:none"}}}},0)}});</script>
 </div></footer>
 {fairs_js()}<script src="{r}assets/catalog.js?v={VER}"></script>
 <script src="{r}assets/app.js?v={VER}"></script>
