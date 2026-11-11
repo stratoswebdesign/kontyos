@@ -28,6 +28,11 @@
 - 23:35-ös kiadás: termékoldali testvér-linkek (17 snippet, 404 volt), lábléc (Kampányok: csak Vásárok + Koktélok; „Weboldalt készítette
   és karbantartja: Stratos Webdesign” a fizetési logók sorában), Széchenyi-badge arány (200×140, mobilon 140×98), a Shoprenter beépített
   korhatár-ablaka elrejtve (a Kontyos-kapu marad). Mérés: 269/269 lekérés hibátlan, 0 db 404 a renderelt linkek között.
+- **2026-11-11 09:35-től az aktív téma: „Kontyos 3” (`paris_3`).** Kiadás: mobilon (≤760 px) a Széchenyi-badge termék-
+  és aloldalakon a láblécbe kerül (static, 180×126), így nem takarja a ragadós „Kosárba” sávot; a főoldalon marad fix
+  jobb lent 120×84; asztalin változatlan 200×140, a jogi sor jobbról 210 px-et hagy neki. Mérés: 276 lekérés (69 oldal ×
+  asztali/iPhone × 2) hibátlan (az első, párhuzamos körben 15 időtúllépés a téma első fordítása miatt, egyenként újra: mind OK);
+  Playwright iPhone 13: „Kosárba” látható, nincs vízszintes görgetés.
 - Közben javítva: `product/product_list.tpl` (Gyümölcsborok, Csomagajánlatok kategóriaoldal) – kimaradt az élesítésből;
   Széchenyi 2020 infoblokk fix, jobb alsó sarokban (200×140, mobilon 120×84) – a `pagehead.tpl` Kontyos-blokkjában.
 
