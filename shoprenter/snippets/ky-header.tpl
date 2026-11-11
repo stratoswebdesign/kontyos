@@ -6,5 +6,5 @@
 <a class="cart-btn" href="/index.php?route=checkout/cart" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
 <div class="drawer" id="drawer"><nav aria-label="Mobil menü"><button class="k-close" type="button" data-menu-close aria-label="Bezárás">×</button>
-<a href="/">Főoldal</a><a href="/gyumolcsbor">Gyümölcsborok</a><a href="/piri-mama-forralt-bora-1l">Forralt borok</a><a href="/don-cherry-edes-meggyvermut-075-l">Don Cherry</a><a href="/berry-secco-075-l">Berry Secco</a><a href="/szamocapalinka">Pálinkák</a><a href="/kedvezmenyek/csomagajanlatok">Ajándék és csomagok</a><a href="/malna-edes-gyumolcsbor-075-l">FRISS</a><a href="/rolunk">Rólunk</a><a href="/kiszallitas">Szállítás & ÁSZF</a></nav></div>
+<a href="/">Főoldal</a><a href="/gyumolcsbor">Gyümölcsborok</a><a href="/piri-mama-forralt-bora-1l">Forralt borok</a><a href="/don-cherry-edes-meggyvermut-075-l">Don Cherry</a><a href="/berry-secco-075-l">Berry Secco</a><a href="/szamocapalinka">Pálinkák</a><a href="/kedvezmenyek/csomagajanlatok">Ajándék és csomagok</a><a href="/rolunk">Rólunk</a><a href="/kiszallitas">Szállítás & ÁSZF</a></nav></div>
 </div>

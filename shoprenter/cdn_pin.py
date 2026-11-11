@@ -28,12 +28,12 @@ body .ky-head ~ header:not(.site-head), body .ky-foot ~ footer:not(.site-foot){{
 <style>
 .ky-legal-logos .szechenyi{{position:fixed!important;right:0;bottom:0;z-index:900;margin:0;padding:0;line-height:0;background:none}}
 body .ky-foot .site-foot .ky-legal-logos .szechenyi img,body .ky-legal-logos .szechenyi img{{display:block;width:200px!important;height:auto!important;max-width:none!important;max-height:none!important;aspect-ratio:10/7;object-fit:contain}}
-/* telefonon: a belső oldalakon a láblécben (ne takarja a ragadós Kosárba-sávot), a főoldalon lebegve, kisebben */
+/* telefonon: termékoldalon a láblécben (ne takarja a ragadós Kosárba-sávot), minden más oldalon lebegve jobb lent, kisebben */
 @media (max-width:760px){{
-body:not(.home-body) .ky-legal-logos{{flex-wrap:wrap}}
-body:not(.home-body) .ky-legal-logos .szechenyi{{position:static!important;order:5;flex:0 0 100%;margin:14px 0 0;line-height:0}}
-body:not(.home-body) .ky-foot .site-foot .ky-legal-logos .szechenyi img,body:not(.home-body) .ky-legal-logos .szechenyi img{{width:180px!important}}
-body.home-body .ky-foot .site-foot .ky-legal-logos .szechenyi img,body.home-body .ky-legal-logos .szechenyi img{{width:120px!important}}
+body.product-page-body .ky-legal-logos{{flex-wrap:wrap}}
+body.product-page-body .ky-legal-logos .szechenyi{{position:static!important;order:5;flex:0 0 100%;margin:14px 0 0;line-height:0}}
+body.product-page-body .ky-foot .site-foot .ky-legal-logos .szechenyi img,body.product-page-body .ky-legal-logos .szechenyi img{{width:180px!important}}
+body:not(.product-page-body) .ky-foot .site-foot .ky-legal-logos .szechenyi img,body:not(.product-page-body) .ky-legal-logos .szechenyi img{{width:120px!important}}
 }}
 @media (min-width:761px){{.ky-foot .site-foot .legal{{padding-right:210px}}}}
 /* a Shoprenter beépített korhatár-ablaka helyett a Kontyos-kapu (kontyos.live.js) */

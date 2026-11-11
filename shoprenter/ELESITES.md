@@ -33,6 +33,20 @@
   jobb lent 120×84; asztalin változatlan 200×140, a jogi sor jobbról 210 px-et hagy neki. Mérés: 276 lekérés (69 oldal ×
   asztali/iPhone × 2) hibátlan (az első, párhuzamos körben 15 időtúllépés a téma első fordítása miatt, egyenként újra: mind OK);
   Playwright iPhone 13: „Kosárba” látható, nincs vízszintes görgetés.
+- **2026-11-11 10:05-től az aktív téma: „Kontyos 4” (`paris_4`).** (A másoláskor egy második „Kontyos 4” is létrejött,
+  `paris_5` – soha nem volt aktív, ez a következő kiadás tiszta alapja.) Kiadás:
+  - telefonszám mindenhol **+36 30 094 5042** (`tel:+36300945042`): ky-footer, ky-page-aszf/-info/-adatkezeles; adatbázisban:
+    Kapcsolat oldal (egyedi tartalom HU/EN, Siket Gábor sora is), tartalmi oldalak 5, 43, 48, 49, 64; `llms.txt`.
+    A bolt `config_telephone` már az új szám volt; a rendelési levelekben (26 állapot) nem szerepelt szám.
+  - mobilmenüből (drawer) kikerült a FRISS;
+  - Széchenyi-badge telefonon: csak a termékoldalon (`body.product-page-body`) a láblécben, minden más oldalon fix jobb lent 120×84;
+  - `sections/contact_paris.tpl` kikapcsolva (`{% if false and … %}`) – a rejtett régi Párizs-menüben Shoprenter-mintaadatok
+    voltak (Debrecen, info@shoprenter.hu, +36-1/234-5012).
+  - Aktiválás után a főoldal ~13%-a még `paris_2`-t adott (teljes oldalas gyorsítótár) → Labor › Cache törlés → 60/60 `paris_4`.
+  - `llms.txt`: a fájlkezelő nem ír felül (törlés + feltöltés kell: `fileconnector?mode=delete&path=/llms.txt`), és a
+    `/custom/…` statikus fájlokat a szerver 30 napig cache-eli → a 301 célja `custom/kontyos/image/data/llms.txt?v=2`
+    (következő frissítéskor `v=3`).
+  - Mérés: 150/150 lekérés (asztali + iPhone) hibátlan; Playwright iPhone 13: Kosárba látható, menü FRISS nélkül.
 - Közben javítva: `product/product_list.tpl` (Gyümölcsborok, Csomagajánlatok kategóriaoldal) – kimaradt az élesítésből;
   Széchenyi 2020 infoblokk fix, jobb alsó sarokban (200×140, mobilon 120×84) – a `pagehead.tpl` Kontyos-blokkjában.
 

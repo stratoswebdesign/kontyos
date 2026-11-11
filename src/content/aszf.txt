@@ -10,7 +10,7 @@ adószáma: 23503016-2-06
 műk.eng.száma: 398/2012.
 NÉBIH eng.száma: 330-07-KüE-1263
 Számlaszáma: OTP Bank 11735074 - 20517986
-Telefon: +36-20/349-2185
+Telefon: +36 30 094 5042
 Email: info@kontyos.hu
 b. A ShopRenter.hu Kft. adatai:
  székhelye: 4028 Debrecen, Kassai út 129.
@@ -26,7 +26,7 @@ A szerződés nyelve magyar.
 Az árak forintban értendők és a 27%-os ÁFÁ-t tartalmazzák.
 Panaszügyintézés, jogérvényesítés:
 Bárminemű panaszt (ami a termékeinkkel, ügyintézéssel vagy a munkatársainkkal kapcsolatos), az alábbi elérhetőségeken jelezheted:
-Telefonon: +36-30/094-5042
+Telefonon: +36 30 094 5042
 kontyos.hu Kapcsolat fül alatti elérhetőségek
 Email: webshop@kontyos.hu
 Célunk, hogy mindennemű panaszt a lehető leggyorsabban, akár azonnal orvosoljunk, javítsunk. Amennyiben ez nem jár eredménnyel, akkor az ügy kivizsgálására jegyzőkönyv felvétele szükséges a történtekről, melyre borászatunk 15 napon belül írásban reagál (igazolható módon megválaszol, álláspontját indokolja és intézkedik annak közléséről).
@@ -207,7 +207,7 @@ Adatkezelő adatai:
 Név: Kontyos Borház Kft.
 Címe: 6773 Klárafalva, Kossuth u. 183.
 Email: info@kontyos.hu
-Telefon: +36-20/349-2185
+Telefon: +36 30 094 5042
 Honlap: www.kontyos.hu
 Tárhely-szolgáltató:
 Név: ShopRenter.hu Kft.

@@ -233,7 +233,7 @@ def header(r, cur='', theme='pill', back=None):
 <a class="cart-btn" href="{r}kosar.html" aria-label="Kosár"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 7h14l-1.5 12h-11z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="lbl">Kosár</span> <span data-cart-count>0</span></a>
 </div></header>
 <div class="drawer" id="drawer"><nav aria-label="Mobil menü"><button class="close" type="button" data-menu-close aria-label="Bezárás">×</button>
-<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
+<a href="{r}index.html">Főoldal</a>{dlinks}<a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html">Szállítás & ÁSZF</a></nav></div>
 '''
 
 
@@ -243,7 +243,7 @@ def footer(r):
 <div><h4>Termékek</h4><a href="{r}gyumolcsbor.html">Gyümölcsborok</a><a href="{r}termek/friss-malna.html">FRISS</a><a href="{r}termek/berry-secco.html">Berry Secco</a><a href="{r}termek/piri-mama-forralt-bora.html">PIRI Mama forralt bor</a><a href="{r}termek/don-cherry.html">Don Cherry</a><a href="{r}termek/szamocapalinka.html">Pálinka</a></div>
 <div><h4>Kampányok</h4><a href="{r}vasarok.html">Kövess minket – standok</a><a href="{r}koktelok.html">Koktélok</a></div>
 <div><h4>Infó</h4><a href="{r}rolunk.html">Rólunk</a><a href="{r}info.html#szallitas">Szállítás és fizetés</a><a href="{r}aszf.html">ÁSZF</a><a href="{r}adatkezeles.html">Adatkezelés</a><a href="{r}info.html#kapcsolat">Kapcsolat</a><a href="{r}elallas.html">Elállás a szerződéstől</a><a href="#show-cookie-settings">Sütibeállítások</a></div>
-<p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36-20/349-2185</p>
+<p class="legal">Alkoholtartalmú termékeinket kizárólag 18. életévét betöltött személyek vásárolhatják meg. Fogyassz felelősségteljesen! · © Kontyos Borház Kft. · 6773 Klárafalva, Kossuth u. 183. · info@kontyos.hu · +36 30 094 5042</p>
 <p class="credit" style="grid-column:1/-1;order:99;margin:0;font-size:12px;opacity:.7">Weboldalt készítette és karbantartja: <a href="https://stratosweb.hu" target="_blank" rel="noopener" style="display:inline;font:inherit;color:inherit;text-decoration:underline;padding:0;margin:0">Stratos Webdesign</a></p>
 <script>/* ky-credit-move: a készítő-sor a fizetési logók sorába */document.addEventListener("DOMContentLoaded",function(){{setTimeout(function(){{var l=document.querySelector(".site-foot .ky-legal-logos"),c=document.querySelector(".site-foot .credit");if(l&&c){{l.appendChild(c);c.style.cssText="margin:0;font-size:12px;opacity:.75;line-height:1.4;white-space:nowrap;flex:0 0 auto;max-width:none"}}}},0)}});</script>
 </div></footer>
@@ -1525,7 +1525,7 @@ def info():
               + '<ul style="line-height:1.9;padding-left:20px;font-size:16px"><li><b>Bronz</b> – 30 000 Ft-tól: 5%</li><li><b>Silver</b> – 60 000 Ft-tól: 10%</li><li><b>Gold</b> – 100 000 Ft-tól: 15%</li><li><b>Kontyos VIP</b> – 300 000 Ft-tól: különleges, személyes élmény</li></ul>'
               + P_('A csomagkedvezmények, a mennyiségi árkedvezmény és a kuponos akciók mellette is érvényesek.'))
     pg += sec('kapcsolat', 'Kapcsolat és céginformációk', '<dl class="kv">' + ''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in [
-        ('Cégnév', 'Kontyos Borház Kft.'), ('Székhely', '6773 Klárafalva, Kossuth u. 183.'), ('Telefon', '<a href="tel:+36203492185">+36-20/349-2185</a>'),
+        ('Cégnév', 'Kontyos Borház Kft.'), ('Székhely', '6773 Klárafalva, Kossuth u. 183.'), ('Telefon', '<a href="tel:+36300945042">+36 30 094 5042</a>'),
         ('E-mail', '<a href="mailto:info@kontyos.hu">info@kontyos.hu</a> · webshop: <a href="mailto:webshop@kontyos.hu">webshop@kontyos.hu</a>'),
         ('Adószám', '23503016-2-06'), ('Cégjegyzékszám', '06-09-017653'), ('NÉBIH eng. szám', '330-07-KüE-1263'), ('Tárhelyszolgáltató', 'ShopRenter.hu Kft.')]) + '</dl>')
     pg += sec('aszf', 'Jogi tudnivalók', '<div class="lg-cards"><a class="lg-card" href="aszf.html"><b>Általános Szerződési Feltételek</b><span>Rendelés, fizetés, szállítás, elállás, szavatosság, panaszkezelés</span></a>'

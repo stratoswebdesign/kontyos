@@ -13,7 +13,7 @@ EFFECTIVE = '2026. november – az új webáruház indulásának napjától'
 CO = [('Cégnév', 'Kontyos Borház Kft.'), ('Székhely', '6773 Klárafalva, Kossuth u. 183.'),
       ('Cégjegyzékszám', '06-09-017653 (Szegedi Törvényszék Cégbírósága)'), ('Adószám', '23503016-2-06'),
       ('Működési engedély száma', '398/2012.'), ('NÉBIH engedélyszám', '330-07-KüE-1263'),
-      ('Bankszámla', 'OTP Bank 11735074-20517986'), ('Telefon', '<a href="tel:+36203492185">+36-20/349-2185</a>'),
+      ('Bankszámla', 'OTP Bank 11735074-20517986'), ('Telefon', '<a href="tel:+36300945042">+36 30 094 5042</a>'),
       ('E-mail', '<a href="mailto:info@kontyos.hu">info@kontyos.hu</a> · webshop: <a href="mailto:webshop@kontyos.hu">webshop@kontyos.hu</a>')]
 
 HOST = [('Tárhelyszolgáltató', 'ShopRenter.hu Kft.'), ('Székhely', '4028 Debrecen, Kassai út 129.'), ('Cégjegyzékszám', '09-09-020636'),
@@ -124,7 +124,7 @@ ASZF = [
     ('h3', 'Jótállás'),
     ('p', 'Az értékesített termékekre jogszabály kötelező jótállást nem ír elő, és az Eladó önkéntes jótállást nem vállal.'),
     ('h2', '10. Panaszkezelés és jogérvényesítés', 'panasz'),
-    ('ul', ['Panaszodat e-mailben (webshop@kontyos.hu), telefonon (+36-20/349-2185) vagy levélben (6773 Klárafalva, Kossuth u. 183.) teheted meg. '
+    ('ul', ['Panaszodat e-mailben (webshop@kontyos.hu), telefonon (+36 30 094 5042) vagy levélben (6773 Klárafalva, Kossuth u. 183.) teheted meg. '
             'Az írásbeli panaszra 30 napon belül írásban, érdemben válaszolunk; a panaszról felvett jegyzőkönyvet és a válasz másolatát 3 évig megőrizzük.',
             'Ha a panaszt elutasítjuk, vagy a válasszal nem értesz egyet, az alábbi szervekhez fordulhatsz:',
             '<b>Békéltető testület</b> (a vállalkozás székhelye szerint illetékes, ingyenes, peren kívüli eljárás): ' + BEKELTETO + '. Az Eladót a békéltető testületi eljárásban együttműködési kötelezettség terheli.',
@@ -142,7 +142,7 @@ ADAT = [
           'és milyen jogaid vannak. A tájékoztató az Európai Unió általános adatvédelmi rendelete (GDPR, 2016/679/EU rendelet) és az információs önrendelkezési jogról '
           'szóló 2011. évi CXII. törvény (Infotv.) alapján készült.'),
     ('h2', '1. Az adatkezelő', 'adatkezelo'),
-    ('dl', [CO[0], CO[1], CO[2], CO[3], ('Adatvédelmi kérdések', '<a href="mailto:info@kontyos.hu">info@kontyos.hu</a> · +36-20/349-2185 · levélben a székhely címén')]),
+    ('dl', [CO[0], CO[1], CO[2], CO[3], ('Adatvédelmi kérdések', '<a href="mailto:info@kontyos.hu">info@kontyos.hu</a> · +36 30 094 5042 · levélben a székhely címén')]),
     ('p', 'Adatvédelmi tisztviselő kijelölésére a Kontyos Borház Kft. nem köteles, ilyet nem jelölt ki.'),
     ('h2', '2. Milyen adatokat, mire és meddig kezelünk?', 'celok'),
     ('table', ['Cél', 'Kezelt adatok', 'Jogalap', 'Időtartam'], [
