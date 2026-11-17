@@ -8,7 +8,7 @@ Statikus, szerver nélkül működő webshop-demó a **kontyos.hu** újratervez�
 - Főoldal 4 szezonális heróval (forralt / újbor / Black Friday / karácsony – a felső DEMO sávban váltható), hover-widget a palackokon, gyümölcsválasztó
 - Kategória (édes/száraz szűrő), FRISS & Secco, Pálinka lista
 - 38 termékoldal a kontyos.hu valós adataival (leírás, paraméterek, értékelések), soronként saját arculattal, 1/3/6 palackos kiszereléssel és mennyiségi árral
-- Kampányoldalak: Újbor-válogatás, Black Friday (várólista/aktív fázis), Karácsonyi ajándék bor (előzetes/aktív)
+- Kampányoldalak: Újbor-válogatás, Black Friday (várólista/aktív fázis), Karácsonyi ajándék bor (előzetes/aktív), PIRI Mama landing (`pirimama.html` – a Graphasel-landing átültetése, `src/pirimama.py`)
 - Működő kosár (localStorage), mini-kosár, ingyenes-szállítás csík, pénztár validációval (18+ és ÁSZF nyilatkozat), köszönőoldal
 
 ## Betűtípusok

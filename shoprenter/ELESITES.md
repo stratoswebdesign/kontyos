@@ -1,5 +1,19 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## KÖVETKEZŐ KIADÁS: PIRI Mama landing – `/pirimama` (2026-11-17, előkészítve, élesben még semmi)
+A Graphasel Lovable-landingjének statikus átültetése (forrás: `src/pirimama.py`, demó: `pirimama.html`).
+A stílus és a JS az oldal snippetjében él → a jsDelivr-re rögzített `kontyos.css` / `kontyos.live.js` **változatlan**, nem kell újrarögzíteni.
+A képek a GitHub Pages-ről jönnek (`img/pirimama/`), mint a termékképek.
+1. Új tartalmi oldal (Tartalom › Egyedi aloldalak): cím „PIRI Mama forralt bor”, SEO-URL **`pirimama`**, menü/lábléc pipa nélkül, **Letiltott**.
+   SEO-cím: `PIRI Mama forralt bor – a tél fűszereivel | Kontyos`; meta-leírás: `PIRI Mama kész forralt gyümölcsborai valódi fűszerekkel:
+   klasszikus, epres, narancsos és alkoholmentes változat 1 literes palackban. Rendeld meg online, vagy kóstold meg az adventi vásárokon!`
+2. Témamásolás a `paris_5`-be (soha nem volt aktív): új fájl `snippets/ky-page-pirimama.tpl`, frissül `snippets/ky-page-forralt.tpl`
+   (link a PIRI Mama oldalra) és az `information/information.tpl` térképe (`"pirimama": "ky-page-pirimama"`).
+3. `paris_5` aktiválása → Labor › Cache törlés → oldal **Engedélyezett** → kívülről mérés (asztali + iPhone): kosárba tétel mind az 5 gombbal
+   (445, 486, 493, 487, 535 csomag, bögre), hírlevél-űrlap, fejléc sötét változata, a többi oldal változatlan.
+4. A `/forralt-bor` marad (saját SEO-oldal), a két oldal kölcsönösen linkel. A pirimama.hu → `https://www.kontyos.hu/pirimama` 301-et Artúr intézi.
+5. Sitemap / Search Console: az új URL beküldése.
+
 ## ÉLESÍTVE – 2026-11-10 este
 - 44 meglévő termék = sandbox (főkép, ár, akció; cikkszám/gyártói cikkszám érintetlen) – ellenőrizve mezőnként.
 - 22 új termék **Engedélyezett**, 29 régi **Letiltott** (a natúr almalé marad Engedélyezett – Sanyi dönt róla).

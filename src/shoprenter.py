@@ -44,7 +44,7 @@ NEW_SKU = {'goldberg-tonic': 'KY-GOLDBERG-TONIC', 'goldberg-ginger-ale': 'KY-GOL
 # ---- demó oldal → kontyos.hu URL (meglévő SEO-URL-ek a sitemap.xml-ből; * = új, javasolt) ----
 PAGE = {'index.html': '/', 'gyumolcsbor.html': '/gyumolcsbor', 'rolunk.html': '/rolunk', 'csomagok.html': '/kedvezmenyek/csomagajanlatok',
         'kosar.html': '/index.php?route=checkout/cart', 'info.html': '/kiszallitas', 'kereses.html': '/index.php?route=product/list',
-        'koktelok.html': '/koktelok', 'vasarok.html': '/vasarok', 'black-friday.html': '/black-friday', 'karacsonyi-ajandek-bor.html': '/karacsonyi-ajandek-bor', 'forralt-bor.html': '/forralt-bor',
+        'koktelok.html': '/koktelok', 'vasarok.html': '/vasarok', 'black-friday.html': '/black-friday', 'karacsonyi-ajandek-bor.html': '/karacsonyi-ajandek-bor', 'forralt-bor.html': '/forralt-bor', 'pirimama.html': '/pirimama',
         'ujbor-valogatas.html': '/ujbor-valogatas', 'penztar.html': '/index.php?route=checkout/cart', 'koszonjuk.html': '/',
         'aszf.html': '/aszf', 'adatkezeles.html': '/adatkezelesi-tajekoztato', 'elallas.html': '/withdrawal'}
 PROD = {'edes-eperbor': 'edes-eperbor', 'edes-szilvabor': 'edes-szilvabor', 'edes-kajszibor': 'edes-kajszibor', 'edes-meggybor': 'edes-meggybor',
@@ -107,6 +107,7 @@ def ren_js(js):
 def rewrite(htm):
     """Linkek, képek, srcset-ek átírása; a Twig-szintaxissal ütköző karakterek semlegesítése."""
     htm = re.sub(r'(href|src|poster|data-src|data-img)="([^"]+)"', lambda m: f'{m.group(1)}="{page_url(m.group(2))}"', htm)
+    htm = re.sub(r'srcset="([^"]+)"', lambda m: 'srcset="' + ', '.join(' '.join([page_url(x.split()[0])] + x.split()[1:]) for x in m.group(1).split(',') if x.strip()) + '"', htm)
     htm = re.sub(r'url\((?!["\']?(?:https?:|data:))["\']?([^)"\']+)["\']?\)', lambda m: f'url({page_url(m.group(1))})', htm)
     htm = re.sub(r'data-add="([^"]+)"', lambda m: f'data-add="{m.group(1)}" data-sku="{html.escape(SKU.get(m.group(1), NEW_SKU.get(m.group(1), "")))}"', htm)
     htm = re.sub(r'\?v=[0-9a-f]{10}', '', htm)
@@ -388,7 +389,7 @@ def main():
 
     # aloldalak
     pages = {'rolunk.html': 'ky-page-rolunk', 'koktelok.html': 'ky-page-koktelok', 'vasarok.html': 'ky-page-vasarok', 'csomagok.html': 'ky-page-csomagok',
-             'black-friday.html': 'ky-page-black-friday', 'karacsonyi-ajandek-bor.html': 'ky-page-karacsony', 'forralt-bor.html': 'ky-page-forralt', 'gyumolcsbor.html': 'ky-page-gyumolcsbor',
+             'black-friday.html': 'ky-page-black-friday', 'karacsonyi-ajandek-bor.html': 'ky-page-karacsony', 'forralt-bor.html': 'ky-page-forralt', 'pirimama.html': 'ky-page-pirimama', 'gyumolcsbor.html': 'ky-page-gyumolcsbor',
              'info.html': 'ky-page-info', 'aszf.html': 'ky-page-aszf', 'adatkezeles.html': 'ky-page-adatkezeles'}
     manifest = {}
     for f, name in pages.items():

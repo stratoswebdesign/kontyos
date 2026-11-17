@@ -34,6 +34,11 @@
   "url": "/forralt-bor",
   "body_class": "overlay-head"
  },
+ "ky-page-pirimama": {
+  "demo": "pirimama.html",
+  "url": "/pirimama",
+  "body_class": ""
+ },
  "ky-page-gyumolcsbor": {
   "demo": "gyumolcsbor.html",
   "url": "/gyumolcsbor",

@@ -560,7 +560,7 @@ def forralt_page():
               r, 'forralt', 'overlay-head')
     pg += header(r, 'forralt-bor.html') + '<main>' + season_hero(s_, r).replace('data-season="forralt"', 'data-season="forralt" data-keep', 1)
     pg += f'''<section class="sec" id="piri"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2">Forralt borok</h2>
-{cards(['piri-mama-forralt-bora', 'narancsos-piri-mama-forralt-bora', 'epres-piri-mama-forralt-bora', 'piri-mama-forro-itala-0'], r, 'cards cards-4 cards-big')}</div></section>
+{cards(['piri-mama-forralt-bora', 'narancsos-piri-mama-forralt-bora', 'epres-piri-mama-forralt-bora', 'piri-mama-forro-itala-0'], r, 'cards cards-4 cards-big')}<a class="btn ghost" href="{r}pirimama.html" style="align-self:flex-start">PIRI Mama világa – történet, vásárok →</a></div></section>
 <section class="sec pk-fblock"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Csomagban</p><h2 class="h2">Forraltbor-csomag</h2>
 <div class="packs-grid">{pack_card(SP["forralt-6"], r)}</div></div></section>
 <section class="sec"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Hozzá</p><h2 class="h2">PIRI Mama bögréje</h2>
@@ -1692,6 +1692,8 @@ def main():
     bf_page()
     xmas_page()
     forralt_page()
+    import pirimama
+    pirimama.build(sys.modules[__name__])
     cart()
     search_page()
     packs_page()
