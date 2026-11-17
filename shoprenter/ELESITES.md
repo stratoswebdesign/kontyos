@@ -1,18 +1,22 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
-## KÖVETKEZŐ KIADÁS: PIRI Mama landing – `/pirimama` (2026-11-17, előkészítve, élesben még semmi)
+## ÉLESÍTVE – 2026-11-17 este: PIRI Mama landing – `/pirimama` (aktív téma: „Kontyos 6”, `paris_7`)
 A Graphasel Lovable-landingjének statikus átültetése (forrás: `src/pirimama.py`, demó: `pirimama.html`).
-A stílus és a JS az oldal snippetjében él → a jsDelivr-re rögzített `kontyos.css` / `kontyos.live.js` **változatlan**, nem kell újrarögzíteni.
+A stílus és a JS az oldal snippetjében él → a jsDelivr-re rögzített `kontyos.css` / `kontyos.live.js` **változatlan** maradt.
 A képek a GitHub Pages-ről jönnek (`img/pirimama/`), mint a termékképek.
-1. Új tartalmi oldal (Tartalom › Egyedi aloldalak): cím „PIRI Mama forralt bor”, SEO-URL **`pirimama`**, menü/lábléc pipa nélkül, **Letiltott**.
-   SEO-cím: `PIRI Mama forralt bor – a tél fűszereivel | Kontyos`; meta-leírás: `PIRI Mama kész forralt gyümölcsborai valódi fűszerekkel:
-   klasszikus, epres, narancsos és alkoholmentes változat 1 literes palackban. Rendeld meg online, vagy kóstold meg az adventi vásárokon!`
-2. Témamásolás a `paris_5`-be (soha nem volt aktív): új fájl `snippets/ky-page-pirimama.tpl`, frissül `snippets/ky-page-forralt.tpl`
-   (link a PIRI Mama oldalra) és az `information/information.tpl` térképe (`"pirimama": "ky-page-pirimama"`).
-3. `paris_5` aktiválása → Labor › Cache törlés → oldal **Engedélyezett** → kívülről mérés (asztali + iPhone): kosárba tétel mind az 5 gombbal
-   (445, 486, 493, 487, 535 csomag, bögre), hírlevél-űrlap, fejléc sötét változata, a többi oldal változatlan.
-4. A `/forralt-bor` marad (saját SEO-oldal), a két oldal kölcsönösen linkel. A pirimama.hu → `https://www.kontyos.hu/pirimama` 301-et Artúr intézi.
-5. Sitemap / Search Console: az új URL beküldése.
+- Tartalmi oldal **80** („PIRI Mama forralt bor”, SEO-URL `pirimama`, menü/lábléc nélkül, Engedélyezett).
+  SEO-cím: `PIRI Mama forralt bor – a tél fűszereivel | Kontyos`; meta-leírás a 80-as oldalon.
+- **Fontos:** a `paris_5` NEM tiszta alap – a `paris_3`-ból készült a `paris_4`-gyel egy időben, és hiányoznak belőle a „Kontyos 4” módosításai
+  (pl. a lábléc régi telefonszáma). Ezért friss másolat készült: „Kontyos 5” (`paris_6`) = `paris_4` másolata.
+  - `paris_6`: új `snippets/ky-page-pirimama.tpl`, frissült `snippets/ky-page-forralt.tpl` (link a PIRI Mama oldalra), az `information/information.tpl`
+    mindkét `ky_imap` térképébe bekerült a `"pirimama": "ky-page-pirimama"` → aktiválva, cache törölve, oldal Engedélyezett.
+  - Élesben derült ki: a Webshop-doboz `.card` osztályát a generátor `k-card`-ra nevezte (Párizs-ütközés), az oldal saját stílusa viszont `.card`-ot várt
+    → javítás `pm-sc` osztállyal (commit 14b0462) + build-ellenőrzés; kiadás: „Kontyos 6” (`paris_7`) = `paris_6` másolata a javított snippettel → aktiválva, cache törölve.
+  - Következő kiadás alapja: friss másolat a `paris_7`-ből (a `paris_5` ne legyen alap).
+- Mérés (anonim, asztali + iPhone, 12 oldal × 2 kör): mind `paris_7`, a `/pirimama` 200, 22 belső link és 38 kép/videó él;
+  Playwright: sötét fejléc arany logóval, vásár-dátumok élnek, „Kosárba” valódi Shoprenter-kosárba tesz (0 → 1).
+  A konzol 2 JS-hibája (`addEventListener` / `offsetHeight` null) minden oldalon megvan, nem a landingtől jön.
+- Nyitott: pirimama.hu → `https://www.kontyos.hu/pirimama` 301 (Artúr); og:image; sitemap / Search Console; Joules et Jaques font és hero-fotó licence (Graphasel).
 
 ## ÉLESÍTVE – 2026-11-10 este
 - 44 meglévő termék = sandbox (főkép, ár, akció; cikkszám/gyártói cikkszám érintetlen) – ellenőrizve mezőnként.
