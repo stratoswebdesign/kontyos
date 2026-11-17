@@ -1,5 +1,17 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ÉLESÍTVE – 2026-11-17 18:25: kosárba tétel visszajelzése (aktív téma: „Kontyos 7”, `paris_8`)
+- Hiba: élesben a „Kosárba” után semmi nem látszott – az adapter (`src/shoprenter_adapter.js`) elnyelte a kattintást, a demó mini-kosara nem futott.
+- Javítás (commit d9e30a7): a gomb azonnal „dolgozik” (`ky-adding`), a Shoprenter-kosár frissítése után felugrik a mini-kosár
+  (termék, a valódi kosárösszegből számolt „még X Ft az ingyenes szállításig”, Tovább a kosárhoz / Vásárolok még, Illik mellé),
+  a fejléc kosár-számlálója ugrik egyet (`bump`). A felugró ablak `.ky`-burkolóban van (a stíluslap `.ky` alá zárt). Hiba esetén a termékoldalra visz.
+- Kiadás: `cdn_pin.py d9e30a7` → „Kontyos 7” (`paris_8`, a `paris_7` másolata): a `pagehead.tpl` és a `footer_scripts.tpl` jsDelivr-hivatkozásában
+  csak a commit-hash cserélve (219c1df → d9e30a7) → aktiválva, cache törölve. 219c1df óta a CSS/JS-ben más változás nem volt.
+- Előtte élesben próbálva (Playwright, a jsDelivr-kérés helyi fájlra cserélve), utána élesben valódi kattintással: /pirimama, /gyumolcsbor,
+  termékoldal (iPhone), főoldal (iPhone), Csomagajánlatok – mindenhol azonnali gombállapot, mini-kosár, számláló 0 → 1.
+- Következő kiadás alapja: friss másolat a `paris_8`-ból.
+
+
 ## ÉLESÍTVE – 2026-11-17 este: PIRI Mama landing – `/pirimama` (aktív téma: „Kontyos 6”, `paris_7`)
 A Graphasel Lovable-landingjének statikus átültetése (forrás: `src/pirimama.py`, demó: `pirimama.html`).
 A stílus és a JS az oldal snippetjében él → a jsDelivr-re rögzített `kontyos.css` / `kontyos.live.js` **változatlan** maradt.
