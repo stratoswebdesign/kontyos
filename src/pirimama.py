@@ -235,11 +235,11 @@ CSS = r'''
 .pm .pm-nl input:focus{outline:0;border-color:var(--pm-gold)}
 .pm .pm-nl .nl-note{flex-basis:100%;margin-top:6px;font-size:12px;line-height:1.5;color:rgba(205,187,139,.7)}
 .pm .pm-nl .nl-note a{color:inherit}
-/* ---- sötét fejléc (a Graphasel-landing éjkék világa) – fehér logó, keret nélkül ---- */
+/* ---- sötét fejléc (a Graphasel-landing éjkék világa) – arany logó, keret nélkül (Artúr, 11-17) ---- */
 [data-page="pirimama"] .site-head,body:has(.pm) .site-head{background:#080D1B!important;border-bottom:1px solid rgba(219,184,121,.14)}
 [data-page="pirimama"] .site-head .logo,body:has(.pm) .site-head .logo{background:transparent!important;box-shadow:none!important}
-[data-page="pirimama"] .site-head .logo .lb,[data-page="pirimama"] .site-head .logo .lg,body:has(.pm) .site-head .logo .lb,body:has(.pm) .site-head .logo .lg{display:none!important}
-[data-page="pirimama"] .site-head .logo .lw,body:has(.pm) .site-head .logo .lw{display:block!important}
+[data-page="pirimama"] .site-head .logo .lb,[data-page="pirimama"] .site-head .logo .lw,body:has(.pm) .site-head .logo .lb,body:has(.pm) .site-head .logo .lw{display:none!important}
+[data-page="pirimama"] .site-head .logo .lg,body:has(.pm) .site-head .logo .lg{display:block!important}
 [data-page="pirimama"] .site-head .nav a,body:has(.pm) .site-head .nav a{color:#E3CFA5!important}
 [data-page="pirimama"] .site-head .nav a:hover,body:has(.pm) .site-head .nav a:hover{color:#DBB879!important}
 [data-page="pirimama"] .site-head .menu-btn,body:has(.pm) .site-head .menu-btn{background:rgba(219,184,121,.14)!important;box-shadow:inset 0 0 0 1px rgba(219,184,121,.5)!important}
