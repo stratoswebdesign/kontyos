@@ -61,11 +61,12 @@ window.KY_CART_HTML = "<main><div class=\"wrap\" style=\"display:flex;flex-direc
     window.KY_SR_TOTAL = tp ? (parseInt(tp.textContent.replace(/\D/g, ''), 10) || 0) : 0;
     if (window.KY_PDP_REFRESH) window.KY_PDP_REFRESH();
   }
-  function srRefresh() {
+  function srRefresh(done) {
     var hx = document.querySelector('.ky-sr-cart hx\\:include, .ky-sr-cart [src*="_fragment"]');
     var src = hx && hx.getAttribute('src');
-    if (!src) { srCount(); return; }
-    fetch(src, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (t) { hx.innerHTML = t; srCount(); });
+    var fin = function () { srCount(); if (done) done(); };
+    if (!src) { fin(); return; }
+    fetch(src, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (t) { hx.innerHTML = t; fin(); }, fin);
   }
   window.KY_SR_REFRESH = srRefresh;
   (function watch() {
@@ -239,10 +240,17 @@ window.KY_CART_HTML = "<main><div class=\"wrap\" style=\"display:flex;flex-direc
     if (!pid) { var p = window.KONTYOS.p[id]; if (p && p.url) location.href = p.url; return; }
     var f = srForm(), action = (f && f.getAttribute('action')) || '/index.php?route=checkout/cart';
     var body = new FormData(); body.append('product_id', pid); body.append('quantity', q);
-    fetch(action, { method: 'POST', body: body, credentials: 'same-origin' }).then(function () {
-      a.classList.add('ky-added'); setTimeout(function () { a.classList.remove('ky-added'); }, 1500);
+    if (a.classList.contains('ky-adding')) return;
+    a.classList.add('ky-adding'); a.setAttribute('aria-busy', 'true');   // azonnali visszajelzés, amíg a Shoprenter válaszol
+    var done = function () { a.classList.remove('ky-adding'); a.removeAttribute('aria-busy'); };
+    fetch(action, { method: 'POST', body: body, credentials: 'same-origin' }).then(function (r) {
+      if (!r.ok) throw new Error('kosár: ' + r.status);
+      done(); a.classList.add('ky-added'); setTimeout(function () { a.classList.remove('ky-added'); }, 1500);
       if (window.KY_SR_CART) { location.reload(); return; }
-      srRefresh();
+      // a fejléc-számláló frissítése után felugrik a mini-kosár (termék, ingyenes szállításig hátralévő összeg, Tovább a kosárhoz)
+      srRefresh(function () { if (window.kyMini) window.kyMini(id, window.KY_SR_TOTAL); });
+    }).catch(function () {
+      done(); var p = window.KONTYOS.p[id]; if (p && p.url) location.href = p.url;   // hiba esetén a termékoldalra visz, ott a Shoprenter saját kosárgombja
     });
   }, true);
 })();
@@ -386,22 +394,34 @@ window.KY_CART_HTML = "<main><div class=\"wrap\" style=\"display:flex;flex-direc
 
   /* Mini-kosár */
   var miniEl;
-  function mini(id) {
+  var CART_URL = window.KY_SHOPRENTER ? '/index.php?route=checkout/cart' : '/index.php?route=checkout/cart';
+  /* a fejléc kosár-számlálója „ugrik” egyet, amikor valami bekerül */
+  function bump() {
+    document.querySelectorAll('[data-cart-count]').forEach(function (el) { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); });
+  }
+  /* base: a kosár végösszege (Shoprenterben a valódi kosárból, betétdíjjal) – ha nincs megadva, a demó-kosárból számol */
+  function mini(id, base) {
     var p = K.p[id]; if (!p) return;
     if (!miniEl) {
+      /* Shoprenterben a stíluslap a .ky gyökér alá van zárva, ezért a felugró ablak egy .ky-burkolóba kerül */
+      var host = document.createElement('div'); host.className = 'ky ky-mini-host';
       miniEl = document.createElement('div'); miniEl.className = 'mini'; miniEl.setAttribute('role', 'dialog'); miniEl.setAttribute('aria-label', 'Kosárba került');
-      document.body.appendChild(miniEl);
+      host.appendChild(miniEl); document.body.appendChild(host);
     }
-    var t = totals(load());
+    var t = typeof base === 'number' && base > 0
+      ? { free: base >= LIMIT, left: Math.max(0, LIMIT - base), pct: Math.min(100, Math.round(base / LIMIT * 100)) }
+      : totals(load());
     miniEl.innerHTML = '<div class="in"><div class="top"><span class="ok">✓ KOSÁRBA KERÜLT</span><button class="x" type="button" aria-label="Bezárás" data-mini-close>×</button></div>' +
       '<div class="item">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="">' : '') + '<div><b>' + esc(p.n) + '</b><span>' + fmt(p.price) + '</span></div></div>' +
       '<span style="font-size:13px">' + (t.free ? 'Ingyenes a szállítás!' : 'Még <b>' + fmt(t.left) + '</b> az ingyenes szállításig.') + '</span>' +
       '<div class="bar"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div>' +
-      '<div class="acts"><a class="k-btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="k-btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
+      '<div class="acts"><a class="k-btn blue" href="' + CART_URL + '">Tovább a kosárhoz</a><button class="k-btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
       upsHtml(p.ups || [], load().map(function (l) { return l.id; }), p.upg) + '</div>';
     miniEl.classList.add('open');
+    bump();
     clearTimeout(miniEl._t); miniEl._t = setTimeout(function () { miniEl.classList.remove('open'); }, 6000);
   }
+  window.kyMini = mini;
 
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-add]');

@@ -56,11 +56,12 @@
     window.KY_SR_TOTAL = tp ? (parseInt(tp.textContent.replace(/\D/g, ''), 10) || 0) : 0;
     if (window.KY_PDP_REFRESH) window.KY_PDP_REFRESH();
   }
-  function srRefresh() {
+  function srRefresh(done) {
     var hx = document.querySelector('.ky-sr-cart hx\\:include, .ky-sr-cart [src*="_fragment"]');
     var src = hx && hx.getAttribute('src');
-    if (!src) { srCount(); return; }
-    fetch(src, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (t) { hx.innerHTML = t; srCount(); });
+    var fin = function () { srCount(); if (done) done(); };
+    if (!src) { fin(); return; }
+    fetch(src, { credentials: 'same-origin' }).then(function (r) { return r.text(); }).then(function (t) { hx.innerHTML = t; fin(); }, fin);
   }
   window.KY_SR_REFRESH = srRefresh;
   (function watch() {
@@ -234,10 +235,17 @@
     if (!pid) { var p = window.KONTYOS.p[id]; if (p && p.url) location.href = p.url; return; }
     var f = srForm(), action = (f && f.getAttribute('action')) || '/index.php?route=checkout/cart';
     var body = new FormData(); body.append('product_id', pid); body.append('quantity', q);
-    fetch(action, { method: 'POST', body: body, credentials: 'same-origin' }).then(function () {
-      a.classList.add('ky-added'); setTimeout(function () { a.classList.remove('ky-added'); }, 1500);
+    if (a.classList.contains('ky-adding')) return;
+    a.classList.add('ky-adding'); a.setAttribute('aria-busy', 'true');   // azonnali visszajelzés, amíg a Shoprenter válaszol
+    var done = function () { a.classList.remove('ky-adding'); a.removeAttribute('aria-busy'); };
+    fetch(action, { method: 'POST', body: body, credentials: 'same-origin' }).then(function (r) {
+      if (!r.ok) throw new Error('kosár: ' + r.status);
+      done(); a.classList.add('ky-added'); setTimeout(function () { a.classList.remove('ky-added'); }, 1500);
       if (window.KY_SR_CART) { location.reload(); return; }
-      srRefresh();
+      // a fejléc-számláló frissítése után felugrik a mini-kosár (termék, ingyenes szállításig hátralévő összeg, Tovább a kosárhoz)
+      srRefresh(function () { if (window.kyMini) window.kyMini(id, window.KY_SR_TOTAL); });
+    }).catch(function () {
+      done(); var p = window.KONTYOS.p[id]; if (p && p.url) location.href = p.url;   // hiba esetén a termékoldalra visz, ott a Shoprenter saját kosárgombja
     });
   }, true);
 })();

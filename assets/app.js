@@ -137,22 +137,34 @@
 
   /* Mini-kosár */
   var miniEl;
-  function mini(id) {
+  var CART_URL = window.KY_SHOPRENTER ? '/index.php?route=checkout/cart' : ROOT + 'kosar.html';
+  /* a fejléc kosár-számlálója „ugrik” egyet, amikor valami bekerül */
+  function bump() {
+    document.querySelectorAll('[data-cart-count]').forEach(function (el) { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); });
+  }
+  /* base: a kosár végösszege (Shoprenterben a valódi kosárból, betétdíjjal) – ha nincs megadva, a demó-kosárból számol */
+  function mini(id, base) {
     var p = K.p[id]; if (!p) return;
     if (!miniEl) {
+      /* Shoprenterben a stíluslap a .ky gyökér alá van zárva, ezért a felugró ablak egy .ky-burkolóba kerül */
+      var host = document.createElement('div'); host.className = 'ky ky-mini-host';
       miniEl = document.createElement('div'); miniEl.className = 'mini'; miniEl.setAttribute('role', 'dialog'); miniEl.setAttribute('aria-label', 'Kosárba került');
-      document.body.appendChild(miniEl);
+      host.appendChild(miniEl); document.body.appendChild(host);
     }
-    var t = totals(load());
+    var t = typeof base === 'number' && base > 0
+      ? { free: base >= LIMIT, left: Math.max(0, LIMIT - base), pct: Math.min(100, Math.round(base / LIMIT * 100)) }
+      : totals(load());
     miniEl.innerHTML = '<div class="in"><div class="top"><span class="ok">✓ KOSÁRBA KERÜLT</span><button class="x" type="button" aria-label="Bezárás" data-mini-close>×</button></div>' +
       '<div class="item">' + (p.img ? '<img src="' + ROOT + p.img + '" alt="">' : '') + '<div><b>' + esc(p.n) + '</b><span>' + fmt(p.price) + '</span></div></div>' +
       '<span style="font-size:13px">' + (t.free ? 'Ingyenes a szállítás!' : 'Még <b>' + fmt(t.left) + '</b> az ingyenes szállításig.') + '</span>' +
       '<div class="bar"><i style="width:' + (t.free ? 100 : t.pct) + '%"></i></div>' +
-      '<div class="acts"><a class="btn blue" href="' + ROOT + 'kosar.html">Tovább a kosárhoz</a><button class="btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
+      '<div class="acts"><a class="btn blue" href="' + CART_URL + '">Tovább a kosárhoz</a><button class="btn ghost" type="button" data-mini-close>Vásárolok még</button></div>' +
       upsHtml(p.ups || [], load().map(function (l) { return l.id; }), p.upg) + '</div>';
     miniEl.classList.add('open');
+    bump();
     clearTimeout(miniEl._t); miniEl._t = setTimeout(function () { miniEl.classList.remove('open'); }, 6000);
   }
+  window.kyMini = mini;
 
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-add]');
