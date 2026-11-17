@@ -212,13 +212,13 @@ CSS = r'''
 .pm .pm-shop{display:grid;grid-template-columns:1fr 1fr;background:var(--pm-shop)}
 @media (max-width:980px){.pm .pm-shop{grid-template-columns:1fr}}
 .pm .pm-shop .l{position:relative;display:flex;align-items:center;padding:clamp(64px,10vw,150px) var(--gutter);background-image:repeating-linear-gradient(135deg,var(--pm-night) 0 33px,var(--pm-stripe) 33px 66px)}
-.pm .pm-shop .card{position:relative;width:100%;max-width:480px;margin:0 auto;padding:clamp(56px,6vw,90px) clamp(28px,4vw,56px);background:var(--pm-shop);text-align:center;color:var(--pm-ink)}
-.pm .pm-shop .card .st{position:absolute;top:-24px;right:48px;width:80px}
+.pm .pm-shop .pm-sc{position:relative;width:100%;max-width:480px;margin:0 auto;padding:clamp(56px,6vw,90px) clamp(28px,4vw,56px);background:var(--pm-shop);text-align:center;color:var(--pm-ink)}
+.pm .pm-shop .pm-sc .st{position:absolute;top:-24px;right:48px;width:80px}
 .pm .pm-shop h2,.pm .pm-shop .ct h2{font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.8vw,24px);line-height:1.5;letter-spacing:.65em;text-indent:.65em;text-transform:uppercase;color:var(--pm-ink)}
 @media (max-width:640px){.pm .pm-shop h2,.pm .pm-shop .ct h2{letter-spacing:.35em;text-indent:.35em}}
 .pm .pm-shop h3{margin-top:36px;font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.6vw,22px);line-height:1.4;color:var(--pm-gold-soft)}
-.pm .pm-shop .card p{margin-top:28px;font-size:16px;line-height:1.5}
-.pm .pm-shop .card .bb{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:40px}
+.pm .pm-shop .pm-sc p{margin-top:28px;font-size:16px;line-height:1.5}
+.pm .pm-shop .pm-sc .bb{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:40px}
 .pm .pm-shop .r{position:relative;padding:clamp(64px,8vw,110px) var(--gutter);color:var(--pm-ink)}
 .pm .pm-shop .ct{max-width:522px;margin:0 auto;text-align:center}
 .pm .pm-shop .ct ul{margin-top:40px;font-size:18px;line-height:1.6}
@@ -378,7 +378,7 @@ def build(B):
 <section class="pm-video" aria-label="Hangulatvideó"><video muted loop playsinline preload="none" poster="{r}img/video/piri_hangulat.webp" aria-label="Forró PIRI Mama forralt bor téli hangulatban"><source src="{r}img/pirimama/hangulat-720.mp4" type="video/mp4"></video></section>
 
 <section class="pm-shop" id="webshop">
-<div class="l"><div class="card" data-reveal><img class="st pm-twinkle" src="{r}img/pirimama/csillag-arany.svg" alt="" aria-hidden="true">
+<div class="l"><div class="pm-sc" data-reveal><img class="st pm-twinkle" src="{r}img/pirimama/csillag-arany.svg" alt="" aria-hidden="true">
 <h2>Webshop</h2><h3>Az ünnep ízei,<br>egyenesen hozzád.</h3>
 <p>PIRI Mama forralt borai és a Kontyos gyümölcsborai egy helyen. Találd meg az ünnepi kedvencedet – 25 000 Ft felett ingyen szállítunk.</p>
 <div class="bb"><a class="pm-btn gold" href="#termekek">Rendeld meg otthonra!</a><a class="pm-btn" href="{r}forralt-bor.html">Összes forralt bor és csomag</a></div></div></div>
@@ -391,4 +391,8 @@ def build(B):
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 <script>{JS}</script>
 </main>''' + B.footer(r)
+    import re as _re
+    # a Shoprenter-generátor a Párizs-ütköző osztályokat (card, btn, row…) k- előtaggal átnevezi – az oldal saját <style>-ját nem –, ezért itt tilos
+    _bad = {c for cl in _re.findall(r'class="([^"]*)"', pg[pg.find('<main'):pg.find('</main>')]) for c in cl.split()} & {'badge', 'btn', 'card', 'close', 'col', 'h1', 'h2', 'h3', 'head', 'lead', 'left', 'nav', 'price', 'right', 'row', 'small', 'tall', 'breadcrumb'}
+    assert not _bad, f'Párizs-ütköző osztálynév a PIRI Mama oldalon: {_bad}'
     B.write('pirimama.html', pg)
