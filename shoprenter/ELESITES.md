@@ -1,5 +1,16 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ELŐKÉSZÍTVE – 2026-11-18: termékértékelés írása (új téma: „Kontyos 8”, `paris_9` – AKTIVÁLÁSRA VÁR)
+- Hiba (Siket Gábor továbbította, 11-18): az értékelést kérő levélből érkező vásárló nem talált értékelő űrlapot. A Kontyos-termékoldal
+  a Párizs teljes tartalmát lecseréli, így a gyári `productreview` modul (`position_4`) is eltűnt; a vélemények statikusak (catalog.json).
+- Javítás (commit d6a7747): `shoprenter/snippets/ky-review.tpl` – a gyári modul rejtve renderelődik (product_id + CSRF), a látható űrlap
+  az `#ertekelesek` szekcióba kerül, és a gyári végpontra küld (`/index.php?route=product/productreview/addreview`) → admin › Termék értékelések, jóváhagyásra.
+  Koktélcsomagoknál (nincs vélemény-szekció) saját szekciót rajzol. Horgony: `#ertekeles-irasa` (a `#review_form` / `#review` is ide visz).
+- Élesben a snippet tartalma a `product/product.tpl` ky-ágába van beillesztve (`KY-REVIEW START/END`), mert a fájlszerkesztőben új fájl nem hozható létre.
+- Tesztelve élesben injektálva (asztali + iPhone): megjelenés, kliens-ellenőrzés, szerver-hibaág (hiányos adat → Shoprenter-hiba, friss token) –
+  valódi vélemény nem lett beküldve. JS/CSS (jsDelivr d9e30a7) változatlan.
+- Hátra: `paris_9` aktiválása, Labor › Cache törlés, mérés; az új (jóváhagyott) vélemények a Kontyos-oldalon csak a katalógus frissítése után látszanak.
+
 ## ÉLESÍTVE – 2026-11-17 18:25: kosárba tétel visszajelzése (aktív téma: „Kontyos 7”, `paris_8`)
 - Hiba: élesben a „Kosárba” után semmi nem látszott – az adapter (`src/shoprenter_adapter.js`) elnyelte a kattintást, a demó mini-kosara nem futott.
 - Javítás (commit d9e30a7): a gomb azonnal „dolgozik” (`ky-adding`), a Shoprenter-kosár frissítése után felugrik a mini-kosár
