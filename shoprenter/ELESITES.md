@@ -1,6 +1,6 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
-## ELŐKÉSZÍTVE – 2026-11-18: termékértékelés írása (új téma: „Kontyos 8”, `paris_9` – AKTIVÁLÁSRA VÁR)
+## ÉLESÍTVE – 2026-11-18 12:22: termékértékelés írása (aktív téma: „Kontyos 8”, `paris_9`)
 - Hiba (Siket Gábor továbbította, 11-18): az értékelést kérő levélből érkező vásárló nem talált értékelő űrlapot. A Kontyos-termékoldal
   a Párizs teljes tartalmát lecseréli, így a gyári `productreview` modul (`position_4`) is eltűnt; a vélemények statikusak (catalog.json).
 - Javítás (commit d6a7747): `shoprenter/snippets/ky-review.tpl` – a gyári modul rejtve renderelődik (product_id + CSRF), a látható űrlap
@@ -14,7 +14,12 @@
   szekció a `[PRODUCT_LIST_REVIEW]` változóval; javítva: logó-link, webshop@ e-mail-link (a fele zoltan.bencsik@-re mutatott), adatkezelési URL.
   Az EN változat érintetlen. A `[PRODUCT_LIST_REVIEW]` tényleges kimenete élő levélben még nem látott.
 - Az értékelések a boltban **automatikusan elfogadódnak** (Termék értékelések › Mind) – a köszönőszöveg ehhez igazítva (commit bbfa0e7, `paris_9`-ben is).
-- Hátra: `paris_9` aktiválása, Labor › Cache törlés, mérés; az új (jóváhagyott) vélemények a Kontyos-oldalon csak a katalógus frissítése után látszanak.
+- Aktiválva (Artúr jóváhagyásával) + Labor › Cache törlés. Mérés: 106/106 Kontyos-termékoldal (53 × asztali/iPhone) 200, mind `paris_9`,
+  mindegyiken a gyári űrlap + a Kontyos-űrlap; az „Édes ünnepek” csomag (522) nincs a térképben → a Párizs gyári űrlapja jelenik meg (működik).
+  Playwright élesben: PIRI (asztali), Kajszi `#review_form` horgonnyal (iPhone – az űrlap nyitva, fancybox nincs), Negroni (iPhone – saját szekció);
+  kliens-ellenőrzés OK, új JS-hiba nincs (a régi 2 marad). Valódi vélemény nem lett beküldve.
+- Nyitott: az új (automatikusan elfogadott) vélemények a Kontyos-oldalon csak a katalógus frissítése után látszanak (pl. nov. 3/8 PIRI Mama vélemények).
+- Következő kiadás alapja: friss másolat a `paris_9`-ből.
 
 ## ÉLESÍTVE – 2026-11-17 18:25: kosárba tétel visszajelzése (aktív téma: „Kontyos 7”, `paris_8`)
 - Hiba: élesben a „Kosárba” után semmi nem látszott – az adapter (`src/shoprenter_adapter.js`) elnyelte a kattintást, a demó mini-kosara nem futott.
