@@ -2,6 +2,16 @@
      Új arculat 2026-11-18. A régi levél minden szövege és változója megmaradt; új: a navy fejléc új logóval,
      az „Írj véleményt” szekció a [PRODUCT_LIST_REVIEW] változóval (a termékoldali értékelő űrlapra visz), javított linkek
      (logó → főoldal, webshop@kontyos.hu egy linkben, adatkezelési tájékoztató új URL-je). Táblás, inline stílusú, e-mail-biztos. -->
+<style type="text/css">
+/* a Shoprenter terméklistája ([PRODUCT_LIST_*]) osztály nélküli táblázat – a .ky-plist burkoló alatt a weboldal termékkártyáihoz igazítva */
+.ky-plist table{width:100%!important;border-collapse:collapse!important;}
+.ky-plist td{padding:10px 0!important;vertical-align:middle!important;border-bottom:1px solid #E2DACB;}
+.ky-plist tr:last-child td{border-bottom:0;}
+.ky-plist td:first-child{width:104px;}
+.ky-plist img{display:block!important;width:80px!important;height:80px!important;padding:6px!important;background:#FFFFFF!important;border:1px solid #E2DACB!important;border-radius:4px!important;}
+.ky-plist a,.ky-plist a:link,.ky-plist a:visited{color:#000000!important;text-decoration:none!important;font-family:Georgia,'Times New Roman',serif!important;font-weight:bold!important;font-size:16px!important;line-height:1.35!important;}
+.ky-plist a:hover{text-decoration:underline!important;}
+</style>
 <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%;background-color:#F3EEE5;border-collapse:collapse;">
 <tr><td align="center" style="padding:24px 12px;">
 <table width="600" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%;max-width:600px;border-collapse:collapse;background-color:#FFFFFF;">
@@ -27,7 +37,7 @@
 <p style="margin:0 0 6px;font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:#C8282E;">Írj véleményt</p>
 <p style="margin:0 0 12px;font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.25;text-transform:uppercase;color:#1B2A5C;">Kóstoltad már? Mondd el, hogy ízlett!</p>
 <p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#1B2A5C;">Kattints a termékre, és a termékoldalon az <strong>„Írd meg a véleményed”</strong> gombbal már írhatod is – csillag, pár mondat, és kész.</p>
-<div style="font-size:14px;line-height:1.6;color:#1B2A5C;">[PRODUCT_LIST_REVIEW]</div>
+<div class="ky-plist" style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.35;color:#000000;">[PRODUCT_LIST_REVIEW]</div>
 </td></tr>
 </table>
 </td></tr>
@@ -35,7 +45,7 @@
 <!-- a rendelt termékek (az eredeti lista) -->
 <tr><td style="padding:24px 40px 8px;font-family:Georgia,'Times New Roman',serif;color:#1B2A5C;">
 <p style="margin:0 0 14px;font-size:16px;line-height:1.65;color:#1B2A5C;">Az alábbi linkeken keresztül visszajelzéseddel/értékeléseddel bennünket és az új vásárlókat is segítheted:</p>
-<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#1B2A5C;">[PRODUCT_LIST_WITHOUT_PRICE]</div>
+<div class="ky-plist" style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.35;color:#000000;">[PRODUCT_LIST_WITHOUT_PRICE]</div>
 </td></tr>
 
 <!-- zárás -->
