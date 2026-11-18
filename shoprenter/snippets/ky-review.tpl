@@ -5,7 +5,7 @@
    Működés: a beépített modul rejtve renderelődik (product_id + CSRF-token), a látható Kontyos-űrlap a JS-sel bekerül az
    #ertekelesek szekcióba, és ugyanarra a Shoprenter-végpontra küld, mint a gyári űrlap:
    POST /index.php?route=product/productreview/addreview → JSON {data:{success|error|redirect_to|success_auto_accept}, formHTML}.
-   A beküldött vélemény a Shoprenter admin › Termék értékelések listájába kerül jóváhagyásra.
+   A beküldött vélemény a Shoprenter admin › Termék értékelések listájába kerül (a bolt beállítása: automatikus elfogadás).
    Szabályok (Shoprenter): név 3–25 karakter, szöveg 25–1000 karakter, csillag kötelező, közzétételi hozzájárulás kötelező.
    Horgony: #ertekeles-irasa (a régi #review_form / #review is ide visz). #}
 <script>(function(){var h=location.hash;if(h==='#review_form'||h==='#review'||h==='#productreview'){try{history.replaceState(null,'',location.pathname+location.search+'#ertekeles-irasa')}catch(e){}}})();</script>
@@ -43,7 +43,7 @@
   </form>
   <div class="ky-rv-done" hidden role="status">
     <b>Köszönjük a véleményed!</b>
-    <span>Megkaptuk – rövid ellenőrzés után jelenik meg a termékoldalon.</span>
+    <span>Megkaptuk – köszönjük, hogy segítesz a következő vásárlónak választani.</span>
   </div>
 </div>
 </template>
