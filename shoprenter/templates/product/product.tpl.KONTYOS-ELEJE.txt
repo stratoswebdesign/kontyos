@@ -11,6 +11,9 @@
      {% if ky_tpl %}
        {% include 'snippets/' ~ ky_tpl ~ '.tpl' %}
        <div hidden>{{ productaddtocart }}</div>   {# a Shoprenter űrlapja (product_id, kosár-végpont) a JS-nek #}
+       {% include 'snippets/ky-review.tpl' %}      {# értékelés írása: a gyári productreview modul (position_4) rejtve + Kontyos-űrlap (2026-11-18).
+                                                     ÉLESBEN (Kontyos 8 / paris_9) a snippet TARTALMA ide van beillesztve a
+                                                     „KY-REVIEW START/END” jelölők közé, mert a téma fájlszerkesztőjében új fájl nem hozható létre. #}
      {% else %}
        … az EREDETI Párizs-tartalom változatlanul …
      {% endif %}
