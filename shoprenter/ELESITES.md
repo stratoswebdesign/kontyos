@@ -1,5 +1,19 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ÉLESÍTVE – 2026-11-18 19:20: hópelyhek a PIRI Mama oldalakon (aktív téma: „Kontyos 9”, `paris_10`)
+- Kérés (Artúr): a Graphasel Lovable-landingjén az egész oldalon végig hulló hópelyhek – a /pirimama-ra és a forralt termékoldalakra is.
+- Commit 495d965: `snowfall()` (src/build.py) – fix, kattintás-átengedő réteg, 32 pehely (telefonon 18), a Graphasel arany hópehely-formája
+  (`img/pirimama/hopehely.svg`) maszkként, törtfehér színnel; `prefers-reduced-motion` esetén kikapcsol. CSS: `.page-snow` a `kontyos.css`-ben.
+  Oldalak: /pirimama + a 4 PIRI Mama termékoldal (klasszikus, epres, narancsos, 0%) – a többi oldal változatlan.
+- Kiadás: „Kontyos 9” (`paris_10`, a `paris_9` másolata): 5 snippet (`ky-p-piri-mama-forralt-bora`, `ky-p-epres-…`, `ky-p-narancsos-…`,
+  `ky-p-piri-mama-forro-itala-0`, `ky-page-pirimama`) – mindegyik élő tartalma egyezett a repó előző verziójával (5977cc5), csak utána csere;
+  `pagehead.tpl` + `footer_scripts.tpl`: d9e30a7 → 495d965 (a JS azonos, csak a CSS változott) → aktiválva, cache törölve.
+- Előtte élesben injektálva tesztelve (kontyos.css helyi fájlra cserélve + réteg beszúrva): fix réteg, maszk és animáció rendben.
+  Utána: 18 lekérés (9 oldal × asztali/iPhone) mind `paris_10` + 495d965; pehely csak a 5 PIRI-oldalon; Playwright: 32/18 pehely, mini-kosár
+  továbbra is működik, az értékelő űrlap megvan, új JS-hiba nincs.
+- Következő kiadás alapja: friss másolat a `paris_10`-ből.
+
+
 ## ÉLESÍTVE – 2026-11-18 12:22: termékértékelés írása (aktív téma: „Kontyos 8”, `paris_9`)
 - Hiba (Siket Gábor továbbította, 11-18): az értékelést kérő levélből érkező vásárló nem talált értékelő űrlapot. A Kontyos-termékoldal
   a Párizs teljes tartalmát lecseréli, így a gyári `productreview` modul (`position_4`) is eltűnt; a vélemények statikusak (catalog.json).
