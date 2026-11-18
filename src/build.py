@@ -331,6 +331,17 @@ def price_of(pid):
     return P[pid] if pid in P else SP[pid]
 
 
+def snowfall(n=32):
+    """Az egész oldalon végig hulló hópelyhek – a Graphasel PIRI Mama-landing (Lovable) Snowfall-rétegének átültetése:
+    egy fix, kattintás-átengedő réteg, 32 pehely (telefonon 18), determinisztikus elosztással, mint az eredetiben."""
+    fl = []
+    for i in range(n):
+        size = 10 + (i * 7) % 19
+        fl.append(f'<i{" class=\"m\"" if i > 17 else ""} style="left:{(i * 37.7) % 100:.1f}%;width:{size}px;opacity:{0.45 + ((i * 13) % 40) / 100:.2f};'
+                  f'--dur:{10 + (i * 7) % 11}s;--delay:-{(i * 3.17) % 21:.2f}s;--drift:{55 if i % 2 else -45}px"></i>')
+    return f'<div class="page-snow" aria-hidden="true">{"".join(fl)}</div>'
+
+
 def falling(r, kinds, n=22, seed=3):
     """A PIRI landing mozgó grafikai elemei (hópihe, magyal-levél, arany dísz) – lassan hulló réteg."""
     import random
@@ -1024,7 +1035,7 @@ def product_designed(p):
                f'<em>Recept és koktélcsomag ({ft(sp["price"])}) →</em></span></a></section>')
         m = '<section id="ertekelesek"'
         html = html.replace(m, blk + m, 1) if m in html else html + blk
-    pg += header(r, navcur, res['theme'], BACK.get(p['line'])) + '<main>' + html + '</main>' + res['bar'] + footer(r)
+    pg += header(r, navcur, res['theme'], BACK.get(p['line'])) + '<main>' + (snowfall() if p['line'] == 'piri' else '') + html + '</main>' + res['bar'] + footer(r)
     write(f"termek/{p['id']}.html", pg)
 
 
@@ -1108,7 +1119,7 @@ def product(p):
     pg += header(r)
     crumb_cat = {'klasszikus': ('gyumolcsbor.html', 'Gyümölcsborok'), 'klara': ('gyumolcsbor.html#klara', 'Klára'), 'friss': ('termek/friss-malna.html', 'FRISS'),
                  'secco': ('termek/berry-secco.html', 'Berry Secco'), 'palinka': ('termek/szamocapalinka.html', 'Pálinka'), 'csomag': ('csomagok.html', 'Csomagok'), 'partner': ('koktelok.html', 'Koktélok')}.get(L, ('gyumolcsbor.html', 'Termékek'))
-    pg += f'''<main><div class="wrap"><p class="breadcrumb" style="padding-top:4px;color:var(--ink)"><a href="{r}index.html" style="color:inherit">Főoldal</a> / <a href="{r}{crumb_cat[0]}" style="color:inherit">{crumb_cat[1]}</a> / {e(p['name'])}</p></div>
+    pg += f'''<main>{snowfall() if p['line'] == 'piri' else ''}<div class="wrap"><p class="breadcrumb" style="padding-top:4px;color:var(--ink)"><a href="{r}index.html" style="color:inherit">Főoldal</a> / <a href="{r}{crumb_cat[0]}" style="color:inherit">{crumb_cat[1]}</a> / {e(p['name'])}</p></div>
 <section class="wrap p-hero"><div class="p-media">{badge(p['id']).replace('pbadge', 'pbadge big')}<div class="arch{' flat' if is_pack else ''}"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{sbadge}</div>
 <div class="p-buy"><span class="kicker">{LINE_LABEL[L]}</span><h1>{e(p['name'])}</h1>{rating}
 <p style="font-size:16px;line-height:1.6;opacity:.9">{e(p['short'])}</p>{f'<p style="font-size:13px;font-weight:700;opacity:.75">{e(meta)}</p>' if meta else ''}

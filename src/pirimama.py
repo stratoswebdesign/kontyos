@@ -326,6 +326,7 @@ def build(B):
                 'PIRI Mama kész forralt gyümölcsborai valódi fűszerekkel: klasszikus, epres, narancsos és alkoholmentes változat 1 literes palackban. Rendeld meg online, vagy kóstold meg az adventi vásárokon!',
                 r, 'pirimama', '', f'<style>{CSS}</style>')
     pg += B.header(r) + f'''<main class="pm" id="top"><script>document.currentScript.parentNode.classList.add('pm-js')</script>
+{B.snowfall()}
 <section class="pm-hero" aria-labelledby="pm-h1">
 <div class="pm-hero-ph" data-px="0.35"><img src="{r}img/pirimama/hero-1920.webp" srcset="{r}img/pirimama/hero-800.webp 800w, {r}img/pirimama/hero-1200.webp 1200w, {r}img/pirimama/hero-1920.webp 1920w" sizes="100vw" alt="PIRI Mama forralt bor palackja téli fűszerek között" width="1920" height="1281" fetchpriority="high"></div>
 {B.falling(r, ('flake-gold', 'snow-dots', 'flake-gold'), 16, 9)}

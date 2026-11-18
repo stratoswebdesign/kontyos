@@ -166,6 +166,13 @@ p{margin:0}
 [data-add].ky-adding{opacity:.55;cursor:progress;pointer-events:none}
 @keyframes kbump{0%{transform:scale(1)}35%{transform:scale(1.5)}100%{transform:scale(1)}}
 [data-cart-count].bump{display:inline-block;animation:kbump .55s cubic-bezier(.22,1,.36,1)}
+/* hópelyhek az egész oldalon (PIRI Mama landing és a PIRI Mama termékoldalak) – a Graphasel-landing Snowfall-rétege */
+.page-snow{position:fixed;inset:0;z-index:40;overflow:hidden;pointer-events:none}
+.page-snow i{position:absolute;top:-40px;display:block;aspect-ratio:1;background:#EFEEEA;-webkit-mask:url(../img/pirimama/hopehely.svg) center/contain no-repeat;mask:url(../img/pirimama/hopehely.svg) center/contain no-repeat;animation:kfall var(--dur,18s) linear var(--delay,0s) infinite;will-change:transform}
+.page-snow i.m{display:none}
+@media (min-width:768px){.page-snow i.m{display:block}}
+@keyframes kfall{0%{transform:translate3d(0,-10vh,0) rotate(0)}100%{transform:translate3d(var(--drift,20px),110vh,0) rotate(240deg)}}
+@media (prefers-reduced-motion:reduce){.page-snow{display:none}}
 .mini .in{border:1px solid var(--navy);border-radius:2px;padding:18px;display:flex;flex-direction:column;gap:12px}
 .mini .top{display:flex;justify-content:space-between;align-items:center}
 .mini .ok{font-size:11px;font-weight:800;letter-spacing:.16em;color:#2E8C5A}
