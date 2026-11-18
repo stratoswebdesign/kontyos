@@ -9,6 +9,11 @@
 - Élesben a snippet tartalma a `product/product.tpl` ky-ágába van beillesztve (`KY-REVIEW START/END`), mert a fájlszerkesztőben új fájl nem hozható létre.
 - Tesztelve élesben injektálva (asztali + iPhone): megjelenés, kliens-ellenőrzés, szerver-hibaág (hiányos adat → Shoprenter-hiba, friss token) –
   valódi vélemény nem lett beküldve. JS/CSS (jsDelivr d9e30a7) változatlan.
+- 11-18 12:15: a **„Vélemény ösztönző”** automatikus levél (Marketing › Automatikus események, id 2, HU; 7 nappal a rendelés után) új arculatot kapott:
+  `shoprenter/email/velemeny-osztonzo.html` (a régi: `velemeny-osztonzo.EREDETI.html`). Minden régi szöveg és változó maradt; új „Írj véleményt”
+  szekció a `[PRODUCT_LIST_REVIEW]` változóval; javítva: logó-link, webshop@ e-mail-link (a fele zoltan.bencsik@-re mutatott), adatkezelési URL.
+  Az EN változat érintetlen. A `[PRODUCT_LIST_REVIEW]` tényleges kimenete élő levélben még nem látott.
+- Az értékelések a boltban **automatikusan elfogadódnak** (Termék értékelések › Mind) – a köszönőszöveg ehhez igazítva (commit bbfa0e7, `paris_9`-ben is).
 - Hátra: `paris_9` aktiválása, Labor › Cache törlés, mérés; az új (jóváhagyott) vélemények a Kontyos-oldalon csak a katalógus frissítése után látszanak.
 
 ## ÉLESÍTVE – 2026-11-17 18:25: kosárba tétel visszajelzése (aktív téma: „Kontyos 7”, `paris_8`)
