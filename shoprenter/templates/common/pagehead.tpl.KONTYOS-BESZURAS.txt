@@ -2,8 +2,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:wght@400..800&display=swap" rel="stylesheet">
-{# stílus: jsDelivr CDN, rögzített commit (495d965) – frissítés: shoprenter/cdn_pin.py #}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/stratoswebdesign/kontyos@495d965531e328832dc36971b2e3e86dbdb322a8/shoprenter/assets/kontyos.css">
+{# stílus: jsDelivr CDN, rögzített commit (890d0b9) – frissítés: shoprenter/cdn_pin.py #}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/stratoswebdesign/kontyos@890d0b9dac91013897fc5890d80ea562981616cb/shoprenter/assets/kontyos.css">
 <style>
 /* A Párizs-téma saját fejlécének/láblécének elrejtése a Kontyos-fejléc mellett */
 body .ky-head ~ header:not(.site-head), body .ky-foot ~ footer:not(.site-foot){display:none!important}
