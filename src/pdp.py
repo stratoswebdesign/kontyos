@@ -317,7 +317,7 @@ def t_piri(p):
 <div class="pd-pairband"><section class="pd-wrap pd-pair"><div class="mug"><span class="mugim">{_('badge')('piri-mama-bogreje').replace('pbadge', 'pbadge xs')}<img src="{r}{mug['img']}" alt="PIRI Mama bögréje 0,32 l" loading="lazy"></span><div><span class="k">MELLÉ</span><strong>PIRI Mama bögréje</strong><span>0,32 l · {ft(mug['price'])}</span><button type="button" data-add="piri-mama-bogreje">Hozzáadom</button></div></div>
 <div class="fair"><span class="k">ADVENTI VÁSÁROK</span><strong>Kóstold a standunknál</strong><span>Szeged · Óbuda · Győr · Szombathely · Veszprém · Pécs · Nyíregyháza</span><a href="{r}vasarok.html">Térkép és menetrend →</a></div></section></div>
 {info(p, c)}
-<section class="pd-video" aria-label="PIRI Mama hangulatvideó"><video src="{r}img/video/piri_hangulat.mp4" poster="{r}img/video/piri_hangulat.webp" autoplay muted loop playsinline preload="metadata"></video></section>
+<section class="pd-video" aria-label="PIRI Mama videó"><video poster="{r}img/video/piri_split.webp" autoplay muted loop playsinline preload="metadata" aria-label="PIRI Mama forralt bora – osztott képernyős videó"><source src="{r}img/video/piri_split-720.mp4" type="video/mp4" media="(max-width:900px)"><source src="{r}img/video/piri_split-1080.mp4" type="video/mp4"></video></section>
 {reviews(p, c)}
 <section class="sec pk-fblock pd-fpack"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">PIRI Mama</p><h2 class="h2" style="font-size:clamp(26px,3vw,40px)">Forralt csomag</h2>
 <div class="packs-grid">{_('pack_box')(_('SP')['forralt-6'], r, primary=True)}</div></div></section>

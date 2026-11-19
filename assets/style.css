@@ -2390,9 +2390,8 @@ body{overflow-wrap:normal}
 .pd-story.p .facts.ico>div{align-items:center;text-align:center}
 .pd-story.p .facts.ico .pico{margin-left:auto;margin-right:auto}
 /* PIRI oldal: hangulatvideó a vélemények fölött (később a reklámfilmre cseréljük) */
-.pd-video{position:relative;width:100%;height:min(80svh,720px);overflow:hidden;background:#111833}
-.pd-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-@media (max-width:860px){.pd-video{height:62svh}}
+.pd-video{position:relative;width:100%;height:min(56.25vw,100svh);overflow:hidden;background:#111833}
+.pd-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .flist .fl-web{display:inline-block;margin:6px 0 0 18px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#DBB879;text-decoration:none}.flist .fl-web:hover{text-decoration:underline}
 .pd-yt{background:#111833;padding:clamp(40px,5vw,72px) 0;color:#DBB879}
 .pd-yt .pd-lab{letter-spacing:.3em;margin:0 0 14px;color:#DBB879}

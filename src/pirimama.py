@@ -206,8 +206,15 @@ CSS = r'''
 .pm .pm-story .tx p+p{margin-top:14px}
 .pm .pm-story .ft{display:flex;justify-content:center;margin-top:30px}
 /* ---- videó ---- */
-.pm .pm-video{position:relative;height:min(100svh,860px);overflow:hidden;background:#000}
-.pm .pm-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pm .pm-video{position:relative;height:min(56.25vw,100svh);overflow:hidden;background:#000}
+.pm .pm-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.pm .pm-snd{position:absolute;right:clamp(12px,2vw,28px);bottom:clamp(12px,2vw,28px);z-index:2;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px 0 14px;border:1px solid rgba(219,184,121,.55);border-radius:999px;background:rgba(8,13,27,.6);color:var(--pm-gold-soft);
+  font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;line-height:1;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .2s,border-color .2s}
+.pm .pm-snd:hover{background:rgba(8,13,27,.82);border-color:var(--pm-gold)}
+.pm .pm-snd svg{width:20px;height:20px;flex:none}
+.pm .pm-snd .s-on,.pm .pm-snd[aria-pressed="true"] .s-off{display:none}
+.pm .pm-snd[aria-pressed="true"] .s-on{display:block}
+@media (max-width:600px){.pm .pm-snd{min-height:38px;padding:0 13px 0 10px;font-size:10px}.pm .pm-snd svg{width:17px;height:17px}}
 /* ---- webshop + kapcsolat ---- */
 .pm .pm-shop{display:grid;grid-template-columns:1fr 1fr;background:var(--pm-shop)}
 @media (max-width:980px){.pm .pm-shop{grid-template-columns:1fr}}
@@ -264,9 +271,12 @@ root.querySelectorAll('[data-pm-spec]').forEach(function(b){var c=b.closest('.pm
 var links=root.querySelectorAll('.pm-subnav a');
 if('IntersectionObserver' in window&&links.length){var so=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;links.forEach(function(a){if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});});},{rootMargin:'-45% 0px -50% 0px'});
 links.forEach(function(a){var s=document.getElementById(a.getAttribute('href').slice(1));if(s)so.observe(s);});}
-/* hangulatvideó: csak látótérben tölt és játszik */
+/* reklámfilm: csak látótérben tölt és játszik (némán indul, a gombbal hangosítható) */
 var v=root.querySelector('.pm-video video');
-if(v&&'IntersectionObserver' in window){var vo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(v.preload!=='auto'){v.preload='auto';}var p=v.play();if(p&&p.catch)p.catch(function(){});}else{v.pause();}});},{threshold:.25});vo.observe(v);}
+var go=function(){if(v.preload!=='auto'){v.preload='auto';}var p=v.play();if(p&&p.catch)p.catch(function(){});};
+if(v&&'IntersectionObserver' in window){var vo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();}else{v.pause();}});},{threshold:.25});vo.observe(v);}
+var sb=root.querySelector('.pm-snd'),heard=false;
+if(v&&sb){sb.addEventListener('click',function(){var on=v.muted;v.muted=!on;sb.setAttribute('aria-pressed',String(on));sb.querySelector('[data-snd-l]').textContent=on?'Némítás':'Hang be';sb.setAttribute('aria-label',on?'A film hangjának kikapcsolása':'A film hangjának bekapcsolása');if(on){if(!heard){heard=true;try{v.currentTime=0;}catch(x){}}go();}});}
 })();'''
 
 
@@ -376,7 +386,8 @@ def build(B):
 <div class="ft"><a class="pm-btn" href="{r}rolunk.html">Ismerd meg a borházat</a></div>
 </section>
 
-<section class="pm-video" aria-label="Hangulatvideó"><video muted loop playsinline preload="none" poster="{r}img/video/piri_hangulat.webp" aria-label="Forró PIRI Mama forralt bor téli hangulatban"><source src="{r}img/pirimama/hangulat-720.mp4" type="video/mp4"></video></section>
+<section class="pm-video" aria-label="PIRI Mama reklámfilm"><video muted loop playsinline preload="none" poster="{r}img/pirimama/hero-film.webp" aria-label="PIRI Mama forralt bora – reklámfilm"><source src="{r}img/pirimama/hero-film-720.mp4" type="video/mp4" media="(max-width:900px)"><source src="{r}img/pirimama/hero-film-1080.mp4" type="video/mp4"></video>
+<button class="pm-snd" type="button" aria-pressed="false" aria-label="A film hangjának bekapcsolása"><svg class="s-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="m17 9 5 6M22 9l-5 6"/></svg><svg class="s-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19.5 5.5a9 9 0 0 1 0 13"/></svg><span data-snd-l>Hang be</span></button></section>
 
 <section class="pm-shop" id="webshop">
 <div class="l"><div class="pm-sc" data-reveal><img class="st pm-twinkle" src="{r}img/pirimama/csillag-arany.svg" alt="" aria-hidden="true">
