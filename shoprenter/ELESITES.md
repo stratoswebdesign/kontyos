@@ -1,5 +1,27 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ÉLESÍTVE – 2026-11-19 09:05: PIRI Mama reklámfilmek + Széchenyi-badge (aktív téma: „Kontyos 10”, `paris_11`)
+- Kérés (Artúr): a /pirimama hangulatvideója helyére a hosszú, fekvő HERO-film; a PIRI termékoldalak videója helyére a split screen, fekvőben;
+  a Széchenyi-badge a főoldalon maradjon fix jobb lent, minden más oldalon elég a láblécben.
+- Források (Vision Studio, SwissTransfer, Artúr Letöltések mappája): `PIRI_Mama_FINAL_16x9.mov` (51 mp, 1080p) és a javított
+  `PR_Split screen16_9_final.mov` (nov. 18. 10:31, 17 mp, 4K). Webre: H.264 CRF 24/25, +faststart; 1080p + 720p (`<source media="(max-width:900px)">`),
+  poster = 0. képkocka (webp). HERO: `img/pirimama/hero-film-{1080,720}.mp4` (6,8 / 3,4 MB, AAC hang); split: `img/video/piri_split-{1080,720}.mp4` (2,6 / 1,1 MB, hang nélkül).
+- Commit 890d0b9: `.pm-video` / `.pd-video` 16:9 (`height:min(56.25vw,100svh)`, `object-fit:contain` – nincs vágás); a HERO némán, ismétlődve indul
+  látótérben, „Hang be / Némítás” gomb (`.pm-snd`; első hangosításkor elölről indul). A régi `piri_hangulat.mp4` / `hangulat-720.mp4` a repóban maradt.
+- Széchenyi (`pagehead.tpl`, cdn_pin.py): `body.home-body` → fix jobb lent (200×140, telefonon 120×84, a jogi sor jobbról 210 px-et hagy);
+  `body:not(.home-body)` → a `.ky-legal-logos` sorban, saját sorban (200×140, telefonon 180×126).
+- Kiadás: „Kontyos 10” (`paris_11`, a `paris_10` másolata): 5 snippet (`ky-page-pirimama`, 4× `ky-p-…piri…`) – az élő tartalom mind egyezett a d336d6c-vel;
+  `pagehead.tpl`: a Széchenyi-blokk csere + CSS-hash 495d965 → 890d0b9. **A `footer_scripts.tpl` nem változott**: élesben NEM a jsDelivr-es
+  `kontyos.live.js` töltődik, hanem `/custom/kontyos/image/data/ky-live-bw1129.js` (a 495d965 másolata módosított SEASON_DATES/PHASE_FROM-mal,
+  Black Week nov. 23–29.) – ez a változás nincs a repóban, a `cdn_pin.py` footer-kimenete ezért élesben nem használható vakon.
+- A témamásolás kétszer futott le (lassú visszajelzés) → a második „Kontyos 10” (`paris_12`) soha nem volt aktív, tiszta `paris_10`-másolat.
+- Tanulság: a fájlszerkesztőben a JS-ből hívott `Mentés`-kattintás nem mentett; a valódi kattintás igen. Ellenőrzés a szerverről:
+  `GET theme-api.shoprenter.com/shops/kontyos/themes/<téma>/files/template/<útvonal>` (X-JWT-Token fejléc) – a szerkesztő megnyitott fülei elavult tartalmat mutathatnak.
+- Mérés: 24/24 anonim lekérés (12 oldal × asztali/iPhone) `paris_11` + 890d0b9; a /pirimama-n HERO, a 4 PIRI termékoldalon split screen.
+  Playwright élesben: a videók játszanak (asztalon 1080p, iPhone-on 720p), a hanggomb működik; badge: főoldal fix (200 / 120 px), /pirimama,
+  termékoldal: lábléc (static); új JS-hiba nincs (a régi 2 marad). Cache-törlés nem kellett (a főoldal azonnal `paris_11`).
+- Következő kiadás alapja: friss másolat a `paris_11`-ből.
+
 ## ÉLESÍTVE – 2026-11-18 19:20: hópelyhek a PIRI Mama oldalakon (aktív téma: „Kontyos 9”, `paris_10`)
 - Kérés (Artúr): a Graphasel Lovable-landingjén az egész oldalon végig hulló hópelyhek – a /pirimama-ra és a forralt termékoldalakra is.
 - Commit 495d965: `snowfall()` (src/build.py) – fix, kattintás-átengedő réteg, 32 pehely (telefonon 18), a Graphasel arany hópehely-formája
