@@ -6,6 +6,7 @@ Használat:  python3 shoprenter/cdn_pin.py [commit-hash]   (alapértelmezés: az
 A rögzített hash miatt egy későbbi repó-módosítás nem kerül ki véletlenül élesbe; frissítéskor új hash-sel újra kell futtatni,
 és a két sort a téma fájlszerkesztőjében kicserélni.
 """
+import json
 import os
 import subprocess
 import sys
@@ -13,6 +14,24 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sha = sys.argv[1] if len(sys.argv) > 1 else subprocess.check_output(['git', 'rev-parse', 'origin/main'], cwd=HERE, text=True).strip()
 CDN = f'https://cdn.jsdelivr.net/gh/stratoswebdesign/kontyos@{sha}/shoprenter/assets/'
+
+# Shoprenter-termékopciók (pl. szín): éles product_id → [opció-azonosító, alapértelmezett érték] a catalog.json „opts” mezőiből
+_cat = json.load(open(os.path.join(HERE, '..', 'src', 'catalog.json'), encoding='utf-8'))
+_pid = json.load(open(os.path.join(HERE, 'live_pid.json'), encoding='utf-8'))
+_src = {x['id']: x['src'] for x in _cat}
+_man = json.load(open(os.path.join(HERE, 'manifest.json'), encoding='utf-8'))
+_sku = {v['url'].strip('/'): v.get('sku') for v in _man.values() if v.get('url')}
+OPTS = {}
+for x in _cat:
+    o = x.get('opts')
+    if not o:
+        continue
+    sku = _sku.get(x['src'])
+    if sku and _pid.get(sku):
+        OPTS[int(_pid[sku])] = [o['oid'], o['vals'][0][0]]
+    else:
+        print('FIGYELEM: nincs éles product_id:', x['id'])
+OPTS_JS = json.dumps(OPTS, separators=(',', ':'))
 
 head = f"""{{# ===== KONTYOS – a pagehead.tpl-ben a </head> ELÉ szúrandó (a {{{{ content_for_header }}}} maradjon!) ===== #}}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +59,8 @@ body.home-body .ky-foot .site-foot .ky-legal-logos .szechenyi img,body.home-body
 #auroraOverlay{{display:none!important}}
 body{{visibility:visible!important}}
 </style>
+{{# KONTYOS – termékopciók (szín, grafika): a Kosárba-kérés (POST product_id) mellé az option[ID] mező – a termékoldalon a kiválasztott, máshol (kártyák, ajánlók) az első érték #}}
+<script>(function(){{var O={OPTS_JS},f=window.fetch;if(!f)return;window.fetch=function(u,o){{try{{var b=o&&o.body;if(b&&typeof FormData!=='undefined'&&b instanceof FormData&&b.has('product_id')){{var x=O[b.get('product_id')];if(x&&!b.has('option['+x[0]+']')){{var c=document.querySelector('input[name="option['+x[0]+']"]:checked');b.append('option['+x[0]+']',c?c.value:x[1]);}}}}}}catch(e){{}}return f.apply(this,arguments);}};}})();</script>
 """
 
 def foot(js):

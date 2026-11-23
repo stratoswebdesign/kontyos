@@ -2476,7 +2476,23 @@
       }
     ],
     "img": "img/p/kontyos-borospohar-388.webp",
-    "tight": "img/t/kontyos-borospohar-388.webp"
+    "tight": "img/t/kontyos-borospohar-388.webp",
+    "opts": {
+      "oid": 1,
+      "label": "Szín",
+      "vals": [
+        [
+          1,
+          "Kék",
+          "img/p/kontyos-borospohar-388.webp"
+        ],
+        [
+          3,
+          "Piros",
+          "img/p/kontyos-borospohar-388-piros.webp"
+        ]
+      ]
+    }
   },
   {
     "id": "piri-mama-bogreje",
@@ -2513,7 +2529,7 @@
     "old": null,
     "tier": null,
     "avail": true,
-    "short": "Melegíthető és hűthető meggymag párna – a hideg esték kellemes kísérője",
+    "short": "Melegíthető és hűthető meggymag párna három színben (fehér, virágos, piros) – a hideg esték kellemes kísérője",
     "long": [
       "A meggymag párna sokáig megtartja a kellemes meleget: néhány perc melegítés után jólesően átmelegít egy hideg téli estén, nyáron hűtve pedig frissítő hideget ad.",
       "Kedves, praktikus ajándék – egy palack gyümölcsbor mellé tökéletes kis figyelmesség.",
@@ -2524,7 +2540,28 @@
     "rcount": 0,
     "reviews": [],
     "img": "img/p/meggymag-parna.webp",
-    "tight": "img/t/meggymag-parna.webp"
+    "tight": "img/t/meggymag-parna.webp",
+    "opts": {
+      "oid": 6,
+      "label": "Szín",
+      "vals": [
+        [
+          15,
+          "Fehér",
+          "img/p/meggymag-parna.webp"
+        ],
+        [
+          20,
+          "Virágos",
+          "img/p/meggymag-parna-viragos.webp"
+        ],
+        [
+          18,
+          "Piros",
+          "img/p/meggymag-parna-piros.webp"
+        ]
+      ]
+    }
   },
   {
     "id": "kontyos-szovettaska",
@@ -2537,7 +2574,7 @@
     "old": null,
     "tier": null,
     "avail": true,
-    "short": "Hosszú fülű vászontáska, kényelmes a napi bevásárláshoz",
+    "short": "Hosszú fülű vászontáska kék, indás mintával – kényelmes a napi bevásárláshoz",
     "long": [
       "Strapabíró, hosszú fülű vászontáska, ami a vállon is kényelmes – a napi bevásárláshoz, a piacra vagy épp egy borkóstolóra.",
       "Elfér benne egy-két palack kedvenc gyümölcsbor is, így a hazaút is stílusos. Ajándékcsomagok mellé is remek választás."
@@ -2547,7 +2584,18 @@
     "rcount": 0,
     "reviews": [],
     "img": "img/p/kontyos-szovettaska-392.webp",
-    "tight": "img/t/kontyos-szovettaska-392.webp"
+    "tight": "img/t/kontyos-szovettaska-392.webp",
+    "opts": {
+      "oid": 4,
+      "label": "Grafika",
+      "vals": [
+        [
+          10,
+          "Kék, indás minta",
+          "img/p/kontyos-szovettaska-392.webp"
+        ]
+      ]
+    }
   },
   {
     "id": "goldberg-tonic",
@@ -2662,7 +2710,6 @@
     "long": [
       "A Drumshanbo Gunpowder Irish Gin a The Shed Distillery-ben, az írországi Drumshanbóban készül, 12 botanikummal – köztük kínai gunpowder zöld teával, macedón borókával, kínai citrommal, indiai köménymaggal és román korianderrel. Egyedi, fűszeres ízvilág, ami a Don Cherry meggyes karakteréhez is tökéletesen illik.",
       "Illat: kardamom, citrusok, édes karamell és ánizs. Íz: citrusok, zöld teás jegyek és fűszerek. Lecsengés: hosszú, fűszeres és frissítő.",
-      "A készlet erejéig kék díszdobozban, ajándék pohárral érkezik.",
       "Partnertermék: a Kontyos koktélcsomagokhoz válogattuk, egyenként is megrendelheted."
     ],
     "params": [

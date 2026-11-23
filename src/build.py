@@ -92,8 +92,7 @@ SEASON_PACKS = [
          items=FORRALT6, tint='#FBE0CC', tag='FORRALT CSOMAG'),
     # Koktélcsomagok (Don Cherry oldal „Készítsd el otthon is!”, Csomagok – karácsony és Black Friday)
     dict(id='koktel-negroni', name='Don Cherry Negroni csomag', price=22990, old=25790, free=False, cocktail='Negroni',
-         items=['don-cherry', 'campari', 'gunpowder-gin'], tint='#F3E1D6', tag='KOKTÉLCSOMAG',
-         note='A gin a készlet erejéig díszdobozban, ajándék pohárral érkezik.'),
+         items=['don-cherry', 'campari', 'gunpowder-gin'], tint='#F3E1D6', tag='KOKTÉLCSOMAG'),
     dict(id='koktel-americano', name='Don Cherry Americano csomag', price=16990, old=19770, free=False, cocktail='Americano',
          items=['don-cherry', 'don-cherry', 'campari', 'don-cherry-gyumolcse'], tint='#F3E1D6', tag='KOKTÉLCSOMAG'),
     dict(id='koktel-tonic', name='Don Cherry & Tonic csomag', price=8990, old=10180, free=False, cocktail='Don Cherry & Tonic',
@@ -656,7 +655,7 @@ def packs_page():
 <div data-season="bf karacsony">{cocktail_packs(r, 'Koktélcsomagok ajándékba', 'Don Cherry Negroni, Americano vagy Don Cherry & Tonic – minden hozzávaló egy csomagban, a recepttel együtt. Ajándéknak is kész koktélest.', 'Don Cherry · koktélcsomagok', 'pk-koktel')}</div>
 {forralt}
 <section class="sec pk-allando" id="pk-allando"><div class="wrap" style="display:flex;flex-direction:column;gap:22px"><p class="kicker">Állandó ajánlatok</p><h2 class="h2" {H2}>Egész évben</h2>
-{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna'], r)}</div></section>
+{cards(['meggy-paros', 'eper-paros', 'konnyu-trio', 'bubi-paros', 'kontyos-borospohar', 'meggymag-parna', 'kontyos-szovettaska'], r)}</div></section>
 {choose_tiles(r, 'Nem tudtál még választani?', 'Böngéssz tovább a borházban.')}</main>''' + footer(r)
     write('csomagok.html', pg)
 
@@ -1070,6 +1069,19 @@ def product(p):
 <button type="button" data-pack="3" aria-pressed="false"><strong>3 palack</strong><span>{ft(p['price'])}/db</span></button>
 <button type="button" data-pack="6" aria-pressed="false">{em}<strong>6 palack</strong><span>{ft(p['tier'][1] if p['tier'] else p['price'])}/db</span></button></div>'''
     old = f'<s style="opacity:.55;font-size:15px">{ft(p["old"])}</s>' if p.get('old') else ''
+    # Shoprenter-termékopció (pl. szín): a választás a kosárba-kérés option[ID] mezőjébe kerül (a pagehead KONTYOS-opció szkriptje teszi hozzá)
+    optsel = ''
+    o = p.get('opts')
+    if o and len(o['vals']) > 1 and p['avail']:
+        optsel = (f'<fieldset class="ky-optsel" data-optsel><legend>{e(o["label"])}: <b data-opt-name>{e(o["vals"][0][1])}</b></legend><div class="ky-opts">'
+                  + ''.join(f'<label class="ky-opt"><input type="radio" name="option[{o["oid"]}]" value="{v}" data-img="{r}{im}" data-name="{e(n)}"{" checked" if i == 0 else ""}>'
+                            f'<span class="ky-sw"><img src="{r}{im}" alt="" loading="lazy"></span><span class="ky-onm">{e(n)}</span></label>' for i, (v, n, im) in enumerate(o['vals']))
+                  + '</div></fieldset>'
+                  '<script>(function(){var f=document.currentScript.previousElementSibling,m=document.querySelector(".p-media .arch img");'
+                  'f.addEventListener("change",function(ev){var i=ev.target;if(!i||!i.dataset.img)return;f.querySelector("[data-opt-name]").textContent=i.dataset.name;'
+                  'if(m){m.src=i.dataset.img;m.alt=m.alt.split(" – ")[0]+" – "+i.dataset.name;}});})();</script>')
+    elif o and p['avail']:
+        optsel = f'<p class="ky-optone">{e(o["label"])}: <b>{e(o["vals"][0][1])}</b></p>'
     if p['avail']:
         buy = f'''<div class="buyrow"><div class="price">{old}<b data-line>{ft(p['price'])}</b><small><span data-unit>{ft(p['price'])}</span>/db · bruttó{' · ' + param(p, 'Egységár') if param(p, 'Egységár') else ''}{f' · +{p["drs"]} Ft betétdíj' if p.get('drs') else ''}</small></div>
 <div class="qty"><button type="button" data-dec aria-label="Kevesebb">−</button><span data-q id="q">1</span><button type="button" data-inc aria-label="Több">+</button></div>
@@ -1123,7 +1135,7 @@ def product(p):
 <section class="wrap p-hero"><div class="p-media">{badge(p['id']).replace('pbadge', 'pbadge big')}<div class="arch{' flat' if is_pack else ''}"><img class="{'pack' if is_pack else ('jar' if p['id'] == 'don-cherry-gyumolcse' else '')}" src="{r}{img}" alt="{e(p['name'])}" width="500" height="1400"></div>{sbadge}</div>
 <div class="p-buy"><span class="kicker">{LINE_LABEL[L]}</span><h1>{e(p['name'])}</h1>{rating}
 <p style="font-size:16px;line-height:1.6;opacity:.9">{e(p['short'])}</p>{f'<p style="font-size:13px;font-weight:700;opacity:.75">{e(meta)}</p>' if meta else ''}
-{chips}{packs}<div data-buy="{p['id']}" style="display:flex;flex-direction:column;gap:16px">{buy}</div>{ship}{pdp.upsell(p)}</div></section>
+{chips}{packs}{optsel}<div data-buy="{p['id']}" style="display:flex;flex-direction:column;gap:16px">{buy}</div>{ship}{pdp.upsell(p)}</div></section>
 {story}
 <section class="p-info" style="{info_style}"><div class="wrap"><div class="desc"><h2 class="h2" style="font-size:36px">A termékről</h2><p>{e(p['short'])}</p>{long}</div>
 <div class="side">{f'<dl class="kv">{params}</dl>' if params else ''}{legal}</div></div></section>
@@ -1435,12 +1447,12 @@ def checkout():
     PP = {'mpl-automata': 'Csomagautomata kiválasztása', 'mpl-postapont': 'PostaPont kiválasztása', 'mpl-posta': 'Posta kiválasztása', 'gls-pont': 'GLS csomagpont kiválasztása'}
 
     def ship_html():
-        return ''.join(f'<label class="opt"><input type="radio" name="ship" value="{e(t)}" data-fee="{fee}" data-free="{free}" data-key="{k}"{" checked" if i == 0 else ""}><span><b>{t}</b><small>{sub}{" · ingyenes " + ft(free) + " felett" if free else ""}</small></span><b data-ship-price>{ft(fee) if fee else "Ingyenes"}</b></label>'
+        return ''.join(f'<label class="ky-opt"><input type="radio" name="ship" value="{e(t)}" data-fee="{fee}" data-free="{free}" data-key="{k}"{" checked" if i == 0 else ""}><span><b>{t}</b><small>{sub}{" · ingyenes " + ft(free) + " felett" if free else ""}</small></span><b data-ship-price>{ft(fee) if fee else "Ingyenes"}</b></label>'
                        + (f'<div class="pp-box" data-pp-box="{k}" hidden><span data-pp-sel>Még nincs kiválasztva átvételi pont.</span><button type="button" class="btn ghost" data-pp-open="{k}">{PP[k]}</button><span class="msg">Válassz átvételi pontot</span></div>' if k in PP else '')
                        for i, (k, t, sub, fee, free) in enumerate(ship_opts))
 
     def pay_html():
-        return ''.join(f'<label class="opt"><input type="radio" name="pay" value="{e(t)}" data-fee="{fee}" data-key="{k}"{" checked" if i == 0 else ""}><span><b>{t}</b><small>{sub}</small></span><b>{"+" + ft(fee) if fee else ""}</b></label>' for i, (k, t, sub, fee) in enumerate(pay_opts))
+        return ''.join(f'<label class="ky-opt"><input type="radio" name="pay" value="{e(t)}" data-fee="{fee}" data-key="{k}"{" checked" if i == 0 else ""}><span><b>{t}</b><small>{sub}</small></span><b>{"+" + ft(fee) if fee else ""}</b></label>' for i, (k, t, sub, fee) in enumerate(pay_opts))
 
     def fld(name, label, cls, typ='text', req='1', ac=''):
         return f'<div class="field {cls}"><label for="f-{name}">{label}</label><input id="f-{name}" name="{name}" type="{typ}" {"data-req=" + chr(34) + req + chr(34) if req else ""} autocomplete="{ac}"><span class="msg">Kötelező mező</span></div>'

@@ -24,3 +24,5 @@ body.home-body .ky-foot .site-foot .ky-legal-logos .szechenyi img,body.home-body
 #auroraOverlay{display:none!important}
 body{visibility:visible!important}
 </style>
+{# KONTYOS – termékopciók (szín, grafika): a Kosárba-kérés (POST product_id) mellé az option[ID] mező – a termékoldalon a kiválasztott, máshol (kártyák, ajánlók) az első érték #}
+<script>(function(){var O={"388":[1,1],"398":[6,15],"392":[4,10]},f=window.fetch;if(!f)return;window.fetch=function(u,o){try{var b=o&&o.body;if(b&&typeof FormData!=='undefined'&&b instanceof FormData&&b.has('product_id')){var x=O[b.get('product_id')];if(x&&!b.has('option['+x[0]+']')){var c=document.querySelector('input[name="option['+x[0]+']"]:checked');b.append('option['+x[0]+']',c?c.value:x[1]);}}}catch(e){}return f.apply(this,arguments);};})();</script>
