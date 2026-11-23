@@ -1,5 +1,27 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ÉLESÍTVE – 2026-11-23 15:25: kiegészítők színválasztója, szövettáska, gin-szöveg (aktív téma: „Kontyos 11”, `paris_13`)
+- Kérés (Artúr, Attila 11-13-i levele alapján + kinyomtatott korrektúra):
+  - Gunpowder gin: le kell venni „A készlet erejéig kék díszdobozban, ajándék pohárral érkezik.” mondatot → törölve a gin oldaláról, és a Negroni csomag
+    ugyanilyen megjegyzése is (Negroni-oldal, Don Cherry + Don gyümölcse oldal koktélcsomag-kártyája, Csomagok oldal). A Shoprenter-termékleírásokban nem volt benne.
+  - Meggymag párna és Kontyos borospohár: a régi oldalon a vevő színt választott. **A Shoprenterben megvannak a termékopciók**, csak a saját termékoldalunk nem küldte:
+    párna `option[6]` = 15 Fehér / 20 Virágos / 18 Piros; pohár `option[1]` = 1 kék / 3 piros; szövettáska `option[4]` = 10 „kék – indákkal” (egyetlen érték).
+  - Szövettáska: a „További képek” fülön lévő kép (`product/Kiegészítők/Indas_szovettaska.jpg`) lett a főkép (a hibás Kontyos2026-kép törölve a termékből), és felkerült a
+    Csomagok oldal „Egész évben” sorába (a Kiegészítők kategóriában eddig is ott volt).
+- Megoldás (commit 4676867): `catalog.json` „opts” mező; a termékoldalon színválasztó (képes választógombok, a főkép vált), `name="option[ID]"`;
+  a **pagehead.tpl-ben egy kis szkript** a kosárba tételhez (`fetch` POST `product_id`) hozzáteszi az `option[ID]` mezőt – a termékoldalon a kiválasztott,
+  máshol (kártyák, ajánlók, mini-kosár) az első értéket. Így a globális JS-hez (élesben `ky-live-bw1129m.js` a fájlkezelőből) nem kellett nyúlni.
+  Térkép: `cdn_pin.py` generálja a catalog „opts” + `live_pid.json` alapján (398, 388, 392). Új képek: `img/p/meggymag-parna-{viragos,piros}.webp`,
+  `img/p/kontyos-borospohar-388-piros.webp` (fehér háttér kivágva), szövettáska `img/p|t/kontyos-szovettaska-392.webp` (Indas).
+- Kiadás: „Kontyos 11” (`paris_13`, a `paris_11` másolata): 8 snippet (a `ky-page-csomagok` élőben eltért a repótól → célzott javítás az élő tartalmon:
+  megjegyzés törlése + szövettáska-kártya beszúrása) + `pagehead.tpl` (CSS 890d0b9 → 4676867, opció-szkript). `footer_scripts.tpl` változatlan.
+- Mérés: Playwright élesben, asztali + iPhone: párna 3 színgomb, választáskor vált a főkép; kosár: párna „Szín: Piros” (választott) / „Fehér” (alap),
+  pohár a Csomagok kártyájáról „Szín: kék”; gin/Negroni oldalon nincs „díszdoboz”; szövettáska új kép + „Grafika: Kék, indás minta”. Új JS-hiba nincs.
+- Tanulság (fájlszerkesztő): ha a megnyitott fül „Mentés” gombja szürke marad, a szerkesztő a tartalmat már mentettnek hiszi → előbb egy +„\n”-es
+  változat mentése, utána a pontos tartalomé (két valódi kattintás). A fülek bezárásakor felugró „Nem mentett változtatás” ablakokra mindig „Nem”.
+- Nyitott: a saját kosároldalunk (adapter) nem írja ki a kiválasztott színt a tétel alá (a Shoprenter-kosárban, a rendelésben és a visszaigazoló levélben benne van).
+- Következő kiadás alapja: friss másolat a `paris_13`-ból. (A `paris_12` „Kontyos 10” néven soha nem volt aktív.)
+
 ## ÉLESÍTVE – 2026-11-19 09:05: PIRI Mama reklámfilmek + Széchenyi-badge (aktív téma: „Kontyos 10”, `paris_11`)
 - Kérés (Artúr): a /pirimama hangulatvideója helyére a hosszú, fekvő HERO-film; a PIRI termékoldalak videója helyére a split screen, fekvőben;
   a Széchenyi-badge a főoldalon maradjon fix jobb lent, minden más oldalon elég a láblécben.
