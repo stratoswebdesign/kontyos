@@ -1,5 +1,28 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ÉLESÍTVE – 2026-11-26 15:25: DON CHERRY landing – `/don-cherry` (aktív téma: „Kontyos 13”, `paris_15`)
+- Kérés (Artúr): a Graphasel Don Cherry landingjét a PIRI Mama szabályai szerint kitenni; a doncherry.hu a kontyos.hu/don-cherry címre irányítson.
+- Forrás: Graphasel csomag (WeTransfer, nov. 26., Artúr Letöltések/`fejlesztesre`): Lovable TanStack-projekt (`don-cherry-cocktail-carousel.zip`, a képek csak
+  Lovable-eszközmutatók → a hiányzókat a közzétett `don-cherry-cocktail-carousel.lovable.app` `/__l5e/assets-v1/…` címeiről töltöttük le), fontleírás (Poppins Bold, Archivo SemiExpanded; a kód Montserrat 800-at használ a címekhez).
+- Átültetés (commit bbb6f23 + 14d18aa): `src/doncherry.py` → `doncherry.html` (a demófájl neve azért nem `don-cherry.html`, mert az a termékoldalak testvér-linkjével ütközne) → `snippets/ky-page-doncherry.tpl`.
+  Saját `<style>` (.dc) és JS az oldalon, a jsDelivr-es CSS/JS változatlan. Képek: `img/doncherry/` (webp + életkép-videó 832/540 px, 0,8 / 0,36 MB) a GitHub Pagesről.
+  - Valódi kosár: Vásárlás → `don-cherry`, `don-cherry-gyumolcse`; Koktélcsomag → `koktel-tonic` / `-negroni` / `-americano` / `-manhattan`; ár + termékoldal-link mindenhol.
+  - Vásárlista: a Graphasel feliratai, dátum + élő státusz a közös FAIRS-ból (`data-fair`). Kapcsolat: mailto-űrlap helyett HIRLEVEL5 hírlevél; cím 6773 (a forrásban 6775).
+  - Fejléc: sötétvörös (#7C000B), fehér logó, keret nélkül (`body:has(.dc)`); a Lovable fix menüje helyett ragadós belső menü.
+  - Koktélsor: natív, végtelen, húzható/nyilazható (Embla helyett); a képek a betöltés után előtöltődnek (mobilon különben lapozáskor villant).
+  - Koktélok oldal: link a landingre („Don Cherry világa…”).
+- Tartalmi oldal **83** („Don Cherry meggyvermut”, SEO-URL `don-cherry`, a 80-as beállításaival; SEO-cím: `DON CHERRY – prémium édes meggyvermut | Kontyos`).
+  Először Letiltottként, a téma aktiválása után Engedélyezett.
+- Kiadás 1: „Kontyos 12” (`paris_14`, a `paris_13` másolata): új `ky-page-doncherry`, `ky-page-koktelok` (élő = repó előző verziója, bd1bff6…),
+  `information.tpl` mindkét `ky_imap`-be `"don-cherry": "ky-page-doncherry"`. Kiadás 2 (15:20): „Kontyos 13” (`paris_15`, a `paris_14` másolata) – csak a
+  `ky-page-doncherry` (képelőtöltés). Mindkettő szerverről visszaolvasva bájtra egyezett. Cache-törlés nem kellett.
+- Mérés: 132/132 anonim lekérés (66 oldal × asztali/iPhone) 200 + `paris_15` (gyors sorozatnál a szerver 201-es, ~2 KB-os fojtó választ ad – lassítva újrapróbálva mind OK);
+  Playwright élesben asztali + iPhone: minden kép betölt, videó megy, lapozás azonnali, „Kosárba” valódi kosárba tesz (0 → 1) + mini-kosár; új JS-hiba nincs (a régi 2 marad).
+- doncherry.hu: Netlify `doncherry-atiranyitas` (site 3dcab147-46a7-45df-8739-c2d209fefd7c, `/*` → `https://www.kontyos.hu/don-cherry` 301!, SSO csak a nem-élesen),
+  domainek felvéve (doncherry.hu elsődleges + www). **DNS (Artúr, webdns.integrity.hu): A `@` és A `www` → 75.2.60.5** – utána tanúsítvány + mérés.
+- Tanulság: a fájlszerkesztőben egy már megnyitott fül „Mentés” gombja néha nem reagál JS-es tartalomcserére → valódi billentyűleütés (x + Backspace) után a valódi kattintás ment.
+- Következő kiadás alapja: friss másolat a `paris_15`-ből.
+
 ## ÉLESÍTVE – 2026-11-23 15:25: kiegészítők színválasztója, szövettáska, gin-szöveg (aktív téma: „Kontyos 11”, `paris_13`)
 - Kérés (Artúr, Attila 11-13-i levele alapján + kinyomtatott korrektúra):
   - Gunpowder gin: le kell venni „A készlet erejéig kék díszdobozban, ajándék pohárral érkezik.” mondatot → törölve a gin oldaláról, és a Negroni csomag
