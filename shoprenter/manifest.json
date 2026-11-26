@@ -39,6 +39,11 @@
   "url": "/pirimama",
   "body_class": ""
  },
+ "ky-page-doncherry": {
+  "demo": "doncherry.html",
+  "url": "/don-cherry",
+  "body_class": ""
+ },
  "ky-page-gyumolcsbor": {
   "demo": "gyumolcsbor.html",
   "url": "/gyumolcsbor",

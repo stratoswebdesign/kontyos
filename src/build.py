@@ -1353,7 +1353,7 @@ def cocktails_page():
 <div class="cgrid">{''.join(recipe_card(k, r) for k in FRUIT_PACKS)}</div></div></section>
 
 <section class="sec ckl-rec gtk don-rec" id="meggyvoros-estek"><div class="wrap"><div class="hd"><p class="kicker">Don Cherry koktélok</p><h2 class="h2">Négy klasszikus, egy meggyes csavar</h2></div>
-<div class="cgrid">{''.join(recipe_card(k, r) for k in DON_ALL)}</div></div></section>
+<div class="cgrid">{''.join(recipe_card(k, r) for k in DON_ALL)}</div><a class="btn ghost" href="{r}doncherry.html" style="margin-top:28px">Don Cherry világa – a vermut és a karakter →</a></div></section>
 </main>""" + footer(r)
     write('koktelok.html', pg)
 
@@ -1717,6 +1717,8 @@ def main():
     forralt_page()
     import pirimama
     pirimama.build(sys.modules[__name__])
+    import doncherry
+    doncherry.build(sys.modules[__name__])
     cart()
     search_page()
     packs_page()
