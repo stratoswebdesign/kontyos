@@ -1,6 +1,6 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
-## ÉLESÍTVE – 2026-11-26 15:25: DON CHERRY landing – `/don-cherry` (aktív téma: „Kontyos 13”, `paris_15`)
+## ÉLESÍTVE – 2026-11-26 14:28: DON CHERRY landing – `/don-cherry` (aktív téma: „Kontyos 13”, `paris_15`)
 - Kérés (Artúr): a Graphasel Don Cherry landingjét a PIRI Mama szabályai szerint kitenni; a doncherry.hu a kontyos.hu/don-cherry címre irányítson.
 - Forrás: Graphasel csomag (WeTransfer, nov. 26., Artúr Letöltések/`fejlesztesre`): Lovable TanStack-projekt (`don-cherry-cocktail-carousel.zip`, a képek csak
   Lovable-eszközmutatók → a hiányzókat a közzétett `don-cherry-cocktail-carousel.lovable.app` `/__l5e/assets-v1/…` címeiről töltöttük le), fontleírás (Poppins Bold, Archivo SemiExpanded; a kód Montserrat 800-at használ a címekhez).
@@ -13,8 +13,8 @@
   - Koktélok oldal: link a landingre („Don Cherry világa…”).
 - Tartalmi oldal **83** („Don Cherry meggyvermut”, SEO-URL `don-cherry`, a 80-as beállításaival; SEO-cím: `DON CHERRY – prémium édes meggyvermut | Kontyos`).
   Először Letiltottként, a téma aktiválása után Engedélyezett.
-- Kiadás 1: „Kontyos 12” (`paris_14`, a `paris_13` másolata): új `ky-page-doncherry`, `ky-page-koktelok` (élő = repó előző verziója, bd1bff6…),
-  `information.tpl` mindkét `ky_imap`-be `"don-cherry": "ky-page-doncherry"`. Kiadás 2 (15:20): „Kontyos 13” (`paris_15`, a `paris_14` másolata) – csak a
+- Kiadás 1 (14:15): „Kontyos 12” (`paris_14`, a `paris_13` másolata): új `ky-page-doncherry`, `ky-page-koktelok` (élő = repó előző verziója, bd1bff6…),
+  `information.tpl` mindkét `ky_imap`-be `"don-cherry": "ky-page-doncherry"`. Kiadás 2 (14:28): „Kontyos 13” (`paris_15`, a `paris_14` másolata) – csak a
   `ky-page-doncherry` (képelőtöltés). Mindkettő szerverről visszaolvasva bájtra egyezett. Cache-törlés nem kellett.
 - Mérés: 132/132 anonim lekérés (66 oldal × asztali/iPhone) 200 + `paris_15` (gyors sorozatnál a szerver 201-es, ~2 KB-os fojtó választ ad – lassítva újrapróbálva mind OK);
   Playwright élesben asztali + iPhone: minden kép betölt, videó megy, lapozás azonnali, „Kosárba” valódi kosárba tesz (0 → 1) + mini-kosár; új JS-hiba nincs (a régi 2 marad).
