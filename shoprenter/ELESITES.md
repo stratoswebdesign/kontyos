@@ -1,5 +1,15 @@
 # Élesítési forgatókönyv – kontyos.hu (Shoprenter, Párizs téma)
 
+## ÉLESÍTVE – 2026-11-26 16:55: Don Cherry koktélsor ujjal húzható (aktív téma: „Kontyos 14”, `paris_16`)
+- Hiba (Artúr, telefonon): a koktélsor nem volt swipe-olható. Ok: érintésnél a böngésző a pointert implicit a megérintett koktélgombhoz köti; amikor a húzás
+  elején `setPointerCapture`-rel átvettük a sorra, a gomb `lostpointercapture` eseménye felbuborékolt, és a kód húzásvégnek vette. Egérrel nincs implicit capture,
+  ezért az egérhúzásos teszt nem fogta meg.
+- Javítás (commit dac1ce0): `lostpointercapture` csak `e.target === vp` esetén zár. Teszt: CDP-s valódi érintésekkel (balra/jobbra húzás, függőleges görgetés a sáv
+  fölött → az oldal görög, koppintás a szomszédra) – demóban és élesben is rendben.
+- Kiadás: „Kontyos 14” (`paris_16`, a `paris_15` másolata), csak a `ky-page-doncherry` (b59ea91…), szerverről visszaolvasva egyezik. 132/132 oldal 200 + `paris_16`.
+- Tanulság: mobil interakciót **érintéses** (CDP `Input.dispatchTouchEvent`) teszttel kell ellenőrizni, nem egérhúzással.
+- Következő kiadás alapja: friss másolat a `paris_16`-ból.
+
 ## ÉLESÍTVE – 2026-11-26 14:28: DON CHERRY landing – `/don-cherry` (aktív téma: „Kontyos 13”, `paris_15`)
 - Kérés (Artúr): a Graphasel Don Cherry landingjét a PIRI Mama szabályai szerint kitenni; a doncherry.hu a kontyos.hu/don-cherry címre irányítson.
 - Forrás: Graphasel csomag (WeTransfer, nov. 26., Artúr Letöltések/`fejlesztesre`): Lovable TanStack-projekt (`don-cherry-cocktail-carousel.zip`, a képek csak
